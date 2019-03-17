@@ -1,4 +1,8 @@
-﻿## This is a project done by 4 students in CITM, a tribute to Samurai Shodown.
+﻿## Introduction
+
+
+
+We are four students from CITM in Terrassa and in our Project 1 subject we are making a tribute to the Samurai Shodown.
 
 
 
