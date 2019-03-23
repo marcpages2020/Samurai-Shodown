@@ -22,7 +22,7 @@ public:
 
 public:
 	SDL_Renderer* renderer = nullptr;
-	SDL_Texture* tex;
+
 };
 
 #endif //__ModuleRenderer_H__
