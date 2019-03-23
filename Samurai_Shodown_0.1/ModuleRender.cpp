@@ -42,7 +42,7 @@ update_status ModuleRender::PreUpdate()
 {
 	// TODO 7: Clear the screen to black before starting every frame
 	SDL_SetRenderDrawColor(App->render->renderer,0,0,0,255);
-	SDL_RenderPresent(App->render->renderer);
+	SDL_RenderPresent(renderer);
 	// TODO 10: Blit our test texture to check functionality
 	Blit(tex, 200, 200, NULL);
 	return update_status::UPDATE_CONTINUE;
@@ -51,7 +51,10 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::PostUpdate()
 {
 	// TODO 8: Switch buffers so we actually render
-
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, tex, NULL, NULL);
+	SDL_RenderPresent(renderer);
+	SDL_RenderCopy(renderer, tex, NULL, NULL);
 	return update_status::UPDATE_CONTINUE;
 }
 
