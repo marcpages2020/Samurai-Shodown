@@ -11,8 +11,7 @@ ModuleAudio::~ModuleAudio()
 bool ModuleAudio::Init() {
 	int flags = MIX_INIT_OGG;
 	Mix_Init(SDL_INIT_AUDIO);
-	Mix_Music *soundtrack;
-	Mix_Chunk *ippon;
+
 	int innited = Mix_Init(flags);
 	if (innited&flags != flags)
 	{
@@ -25,10 +24,7 @@ bool ModuleAudio::Init() {
 		return false;
 	}
 
-	soundtrack = App->audio->LoadMusic("Wan-Fu.ogg");
-	ippon= App->audio->LoadFX("Ippon.wav");
-	App->audio->PlayMusic(soundtrack);
-	App->audio->PlayFX(ippon);
+
 
 	return true;
 }

@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "SDL/include/SDL.h"
 #include "Application.h"
+#include "SDL_mixer/include/SDL_mixer.h"
 
 class ModuleScene: public Module 
 {
@@ -23,6 +24,9 @@ public:
 
 	int x = 0;
 	int y = 0;
+
+	Mix_Music *soundtrack;
+	Mix_Chunk *ippon;
 };
 
 #endif // !_MODULESCENE_H

@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
 
 ModuleScene::ModuleScene()
 {
@@ -15,8 +16,12 @@ ModuleScene::~ModuleScene()
 bool ModuleScene::Init() {
 
 	background = App->textures->Load("background.png");
-	//App->audio->PlaySong("Level1.ogg");
-	//App->audio->PlayFX("Ippon.wav");
+
+	soundtrack = App->audio->LoadMusic("Wan-Fu.ogg");
+	ippon = App->audio->LoadFX("Ippon.wav");
+
+	App->audio->PlayMusic(soundtrack);
+	App->audio->PlayFX(ippon);
 	return true;
 }
 
