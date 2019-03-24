@@ -11,30 +11,35 @@ ModuleAudio::~ModuleAudio()
 bool ModuleAudio::Init() {
 	int flags = MIX_INIT_OGG;
 	Mix_Init(SDL_INIT_AUDIO);
+	Mix_Music *soundtrack;
+	Mix_Chunk *ippon;
 	int innited = Mix_Init(flags);
 	if (innited&flags != flags)
 	{
 		LOG("Mix_Init: %s\n", Mix_GetError());
+		return false;
 	}
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024)==-1)
 	{
 		LOG("Mix_OpenAudio: %s\n", Mix_GetError());
+		return false;
 	}
+
+	soundtrack = App->audio->LoadMusic("Wan-Fu.ogg");
+	ippon= App->audio->LoadFX("Ippon.wav");
+	App->audio->PlayMusic(soundtrack);
+	App->audio->PlayFX(ippon);
 
 	return true;
 }
 
-void ModuleAudio::PlaySong(const char* path) {
+Mix_Music* ModuleAudio::LoadMusic(const char* path) {
 	Mix_Music* song;
 	song = Mix_LoadMUS(path);
 	if (!song)
 	{
 		LOG("Mix_LoadMUS(\"%s\"): %s\n",path, Mix_GetError());
 	}	
-	if (Mix_PlayMusic(song, -1) == -1)
-	{
-		LOG("Mix_PlayMusic: %s\n", Mix_GetError());
-	}
 	for (int i = 0; i < MAX_SONGS; i++)
 	{
 		if (songs[i]==nullptr)
@@ -43,18 +48,15 @@ void ModuleAudio::PlaySong(const char* path) {
 			break;
 		}
 	}
+	return song;
 }
 
-void ModuleAudio::PlayFX(const char* path) {
+Mix_Chunk* ModuleAudio::LoadFX(const char* path) {
 	Mix_Chunk* fx;
 	fx = Mix_LoadWAV(path);
 	if (!fx)
 	{
 		LOG("Mix_LoadWAV: %s\n", Mix_GetError());
-	}
-	if (Mix_PlayChannel(-1,fx,0)==-1)
-	{
-		LOG("Mix_PlayChannel: %s\n", Mix_GetError());
 	}
 	for (int i = 0; i < MAX_FX; i++)
 	{
@@ -64,17 +66,35 @@ void ModuleAudio::PlayFX(const char* path) {
 			break;
 		}
 	}
+	return fx;
+}
+
+bool ModuleAudio::PlayMusic(Mix_Music* song) {
+	if (Mix_PlayMusic(song, -1) == -1)
+	{
+		LOG("Mix_PlayMusic: %s\n", Mix_GetError());
+		return false;
+	}
+	return true;
+}
+
+bool ModuleAudio::PlayFX(Mix_Chunk* fx) {
+	if (Mix_PlayChannel(-1, fx, 0) == -1)
+	{
+		LOG("Mix_PlayChannel: %s\n", Mix_GetError());
+		return false;
+	}
+	return true;
 }
 
 bool ModuleAudio::CleanUp() {
 	
-	LOG("Freeing muisc");
+	LOG("Freeing music");
 
 	for (int i = 0; i < MAX_SONGS; i++)
 	{
 		if (songs[i]!=nullptr)
 		{
-			Mix_FreeMusic(songs[i]);
 			songs[i] = nullptr;
 		}
 	}
@@ -82,10 +102,10 @@ bool ModuleAudio::CleanUp() {
 	{
 		if (fxs[i]!=nullptr)
 		{
-			Mix_FreeChunk(fxs[i]);
 			fxs[i] = nullptr;
 		}
 	}
+
 
 	Mix_CloseAudio();
 	Mix_Quit();

@@ -76,7 +76,7 @@ bool ModuleRender::CleanUp()
 bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 {
 	bool ret = true;
-	SDL_Rect rect;
+	SDL_Rect rect,tri;
 	rect.x = x;
 	rect.y = y;
 
@@ -89,8 +89,6 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	{
 		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
 	}
-	rect.w = SCREEN_WIDTH;
-	rect.h = SCREEN_HEIGHT;
 	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
