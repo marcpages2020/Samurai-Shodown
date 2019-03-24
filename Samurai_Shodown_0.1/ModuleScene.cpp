@@ -15,10 +15,10 @@ ModuleScene::~ModuleScene()
 
 bool ModuleScene::Init() {
 
-	background = App->textures->Load("background.png");
+	background = App->textures->Load("Assets/Textures/background.png");
 
-	soundtrack = App->audio->LoadMusic("Level1.ogg");
-	ippon = App->audio->LoadFX("Ippon.wav");
+	soundtrack = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
+	ippon = App->audio->LoadFX("Assets/Audio/Fx/Ippon.wav");
 
 	App->audio->PlayMusic(soundtrack);
 	App->audio->PlayFX(ippon);
@@ -32,6 +32,7 @@ update_status ModuleScene::PreUpdate() {
 
 update_status ModuleScene::Update()
 {
+
 	SDL_Rect rect;
 	rect.x = 0;
 	rect.y = 0;
