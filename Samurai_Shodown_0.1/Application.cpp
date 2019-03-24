@@ -13,7 +13,7 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = scene = new ModuleScene();
-	//modules[5] = audio = new ModuleAudio();
+	modules[5] = audio = new ModuleAudio();
 }	
 
 Application::~Application()

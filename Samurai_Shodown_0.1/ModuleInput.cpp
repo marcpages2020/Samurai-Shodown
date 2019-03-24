@@ -44,7 +44,6 @@ update_status ModuleInput::Update()
 	}
 	else if (keyboard[SDL_SCANCODE_LEFT])
 	{
-		
 	}
 	else if (keyboard[SDL_SCANCODE_RIGHT])
 	{

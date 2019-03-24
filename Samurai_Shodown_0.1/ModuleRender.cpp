@@ -51,10 +51,11 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::PostUpdate()
 {
 	// TODO 8: Switch buffers so we actually render
-	SDL_RenderClear(renderer);
+	/*SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, tex, NULL, NULL);
 	SDL_RenderPresent(renderer);
 	SDL_RenderCopy(renderer, tex, NULL, NULL);
+	*/
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -76,7 +77,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	bool ret = true;
 	SDL_Rect rect;
 	rect.x = x;
-	rect.y = y;
+	rect.y = x;
 
 	if(section != nullptr)
 	{
@@ -87,7 +88,8 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	{
 		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
 	}
-
+	rect.w = SCREEN_WIDTH;
+	rect.h = SCREEN_HEIGHT;
 	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());

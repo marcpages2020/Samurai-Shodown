@@ -15,7 +15,6 @@ bool ModuleScene::Init() {
 
 	background = App->textures->Load("background.png");
 
-
 	return true;
 }
 
@@ -26,8 +25,8 @@ update_status ModuleScene::PreUpdate() {
 
 update_status ModuleScene::Update()
 {
-
-	App->render->Blit(background, 300, 300, NULL);
+	
+	App->render->Blit(background, 0,0, NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }
