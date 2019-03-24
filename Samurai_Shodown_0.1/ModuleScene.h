@@ -20,6 +20,9 @@ public:
 public:
 
 	SDL_Texture* background;
+
+	int x = 0;
+	int y = 0;
 };
 
 #endif // !_MODULESCENE_H

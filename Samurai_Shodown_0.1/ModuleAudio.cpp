@@ -1,4 +1,5 @@
 #include "ModuleAudio.h"
+#include "Application.h"
 #include "SDL/include/SDL.h"
 #pragma comment(lib,"SDL_mixer/libx86/SDL2_mixer.lib")
 
@@ -19,8 +20,7 @@ bool ModuleAudio::Init() {
 	{
 		LOG("Mix_OpenAudio: %s\n", Mix_GetError());
 	}
-	App->audio->PlaySong("Wan-Fu.ogg");
-	App->audio->PlayFX("Ippon.wav");
+
 	return true;
 }
 
@@ -87,7 +87,7 @@ bool ModuleAudio::CleanUp() {
 		}
 	}
 
-
+	Mix_CloseAudio();
 	Mix_Quit();
 	return true;
 }

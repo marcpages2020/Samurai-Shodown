@@ -41,8 +41,7 @@ bool ModuleRender::Init()
 update_status ModuleRender::PreUpdate()
 {
 	// TODO 7: Clear the screen to black before starting every frame
-	SDL_SetRenderDrawColor(App->render->renderer,0,0,0,255);
-	SDL_RenderPresent(renderer);
+	SDL_RenderClear(renderer);
 	// TODO 10: Blit our test texture to check functionality
 	
 	return update_status::UPDATE_CONTINUE;
@@ -56,6 +55,8 @@ update_status ModuleRender::PostUpdate()
 	SDL_RenderPresent(renderer);
 	SDL_RenderCopy(renderer, tex, NULL, NULL);
 	*/
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+	SDL_RenderPresent(renderer);
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -77,7 +78,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	bool ret = true;
 	SDL_Rect rect;
 	rect.x = x;
-	rect.y = x;
+	rect.y = y;
 
 	if(section != nullptr)
 	{

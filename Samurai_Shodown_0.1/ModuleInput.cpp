@@ -3,6 +3,8 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
+#include "ModuleScene.h"
+
 ModuleInput::ModuleInput() : Module()
 {}
 
@@ -44,10 +46,13 @@ update_status ModuleInput::Update()
 	}
 	else if (keyboard[SDL_SCANCODE_LEFT])
 	{
+		App->scene->x += 10;
 	}
 	else if (keyboard[SDL_SCANCODE_RIGHT])
 	{
+		App->scene->x -= 10;
 
+		
 	}
 	return update_status::UPDATE_CONTINUE;
 }

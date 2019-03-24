@@ -10,10 +10,11 @@ Application::Application()
 {
 	modules[0] = window = new ModuleWindow();
 	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene = new ModuleScene();
-	modules[5] = audio = new ModuleAudio();
+	modules[2] = audio = new ModuleAudio();
+	modules[3] = input = new ModuleInput();
+	modules[4] = textures = new ModuleTextures();
+	modules[5] = scene = new ModuleScene();
+
 }	
 
 Application::~Application()
@@ -53,8 +54,7 @@ bool Application::CleanUp()
 	bool ret = true;
 
 	for (int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
-	{
 		ret = modules[i]->CleanUp();
-	}
+
 	return ret;
 }
