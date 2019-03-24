@@ -46,11 +46,19 @@ update_status ModuleInput::Update()
 	}
 	else if (keyboard[SDL_SCANCODE_LEFT])
 	{
-		App->scene->x += 10;
+		if (App->scene->x<-10)
+		{
+			App->scene->x += 10;
+		}
+
 	}
 	else if (keyboard[SDL_SCANCODE_RIGHT])
 	{
-		App->scene->x -= 10;
+		if (App->scene->x>-180)
+		{
+			App->scene->x -= 10;
+		}
+
 
 		
 	}

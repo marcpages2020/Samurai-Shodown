@@ -17,7 +17,7 @@ bool ModuleScene::Init() {
 
 	background = App->textures->Load("background.png");
 
-	soundtrack = App->audio->LoadMusic("Wan-Fu.ogg");
+	soundtrack = App->audio->LoadMusic("Level1.ogg");
 	ippon = App->audio->LoadFX("Ippon.wav");
 
 	App->audio->PlayMusic(soundtrack);
@@ -32,8 +32,12 @@ update_status ModuleScene::PreUpdate() {
 
 update_status ModuleScene::Update()
 {
-	
-	App->render->Blit(background, x,y, NULL);
+	SDL_Rect rect;
+	rect.x = 0;
+	rect.y = 0;
+	rect.w = 1210;
+	rect.h = SCREEN_HEIGHT;
+	App->render->Blit(background, x,y, &rect);
 
 	return update_status::UPDATE_CONTINUE;
 }

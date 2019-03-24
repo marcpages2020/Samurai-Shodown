@@ -22,7 +22,7 @@ public:
 
 	SDL_Texture* background;
 
-	int x = 0;
+	int x = -92;
 	int y = 0;
 
 	Mix_Music *soundtrack;
