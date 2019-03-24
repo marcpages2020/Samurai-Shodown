@@ -15,9 +15,11 @@ public:
 
 	bool Init();
 	bool CleanUp();
+	Mix_Music* LoadMusic(const char* path);
+	bool PlayMusic(Mix_Music*);
+	Mix_Chunk* LoadFX(const char* path);
+	bool PlayFX(Mix_Chunk*);
 public:
-	void PlaySong(const char* path);
-	void PlayFX(const char* path);
 	Mix_Music *songs[MAX_SONGS];
 	Mix_Chunk *fxs[MAX_FX];
 };
