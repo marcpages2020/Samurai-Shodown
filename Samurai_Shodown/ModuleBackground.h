@@ -27,8 +27,7 @@ public:
 	SDL_Texture* haohmaruSpreadsheet = nullptr;
 	Animation Haohmaru;
 
-	int x = -92;
-	int y = -100;
+
 
 	Mix_Music *soundtrack;
 	Mix_Chunk *ippon;
