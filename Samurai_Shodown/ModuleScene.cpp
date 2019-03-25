@@ -54,7 +54,7 @@ update_status ModuleScene::Update()
 
 	// Draw everything	
 	App->render->Blit(background, x,y, &rect);
-	App->render->Blit(haohmaruSpreadsheet, 0, 0, &(Haohmaru.GetCurrentFrame()));
+	App->render->Blit(haohmaruSpreadsheet, 300, 600, &(Haohmaru.GetCurrentFrame()));
 
 	return update_status::UPDATE_CONTINUE;
 }
