@@ -3,18 +3,20 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleScene.h"
+#include "ModuleBackground.h"
+#include "ModulePlayer.h"
 #include "ModuleAudio.h"
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = audio = new ModuleAudio();
-	modules[3] = input = new ModuleInput();
-	modules[4] = textures = new ModuleTextures();
-	modules[5] = scene = new ModuleScene();
-
+	int i = -1;
+	modules[++i] = window = new ModuleWindow();
+	modules[++i] = render = new ModuleRender();
+	modules[++i] = input = new ModuleInput();
+	modules[++i] = audio = new ModuleAudio();
+	modules[++i] = textures = new ModuleTextures();
+	modules[++i] = background = new ModuleBackground();
+	modules[++i] = player = new ModulePlayer();
 }	
 
 Application::~Application()
@@ -29,6 +31,9 @@ bool Application::Init()
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
+
+	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->Start();
 
 	return ret;
 }
@@ -53,7 +58,7 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	for (int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
+	for(int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
 		ret = modules[i]->CleanUp();
 
 	return ret;
