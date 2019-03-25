@@ -12,6 +12,27 @@ ModulePlayer::ModulePlayer()
 	position.x = 100;
 	position.y = 220;
 
+	//idle animation
+	/*
+	idle.PushBack({ x,y,w,h });
+	idle.PushBack({ x,y,w,h });
+	idle.PushBack({ x,y,w,h });
+	*/
+
+	//jump animation
+	/*
+	jump.PushBack({ x,y,w,h });
+	jump.PushBack({ x,y,w,h });
+	jump.PushBack({ x,y,w,h });
+	*/
+
+	//punch animation
+	/*punch.PushBack({x,y,w,h});
+	punch.PushBack({ x,y,w,h });
+	punch.PushBack({ x,y,w,h });
+	*/
+
+	//kick animation
 	kick.PushBack({ 1506,167,62,97 });
 	kick.PushBack({ 1578,168,79,98 });
 	kick.PushBack({ 1657,170,99,100 });
@@ -48,11 +69,14 @@ update_status ModulePlayer::Update()
 		//current_animation = &kick;
 		App->render->Blit(haohmaruSpreadsheet, 150, 100, &(kick.GetCurrentFrame()));
 	}
+	if (App->input->keyboard[SDL_SCANCODE_U]==1)
+	{
 
+	}
 	//Draw everything
 	//SDL_Rect r = current_animation->GetCurrentFrame();
 
-	//App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(graphics, position.x, position.y - r.h, &r);
 	
 	
 	return UPDATE_CONTINUE;
