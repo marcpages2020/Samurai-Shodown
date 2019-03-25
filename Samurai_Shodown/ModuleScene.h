@@ -5,6 +5,7 @@
 #include "SDL/include/SDL.h"
 #include "Application.h"
 #include "SDL_mixer/include/SDL_mixer.h"
+#include "Animation.h"
 
 class ModuleScene: public Module 
 {
@@ -21,6 +22,8 @@ public:
 public:
 
 	SDL_Texture* background;
+	SDL_Texture* haohmaru;
+	Animation Haohmaru;
 
 	int x = -92;
 	int y = 0;

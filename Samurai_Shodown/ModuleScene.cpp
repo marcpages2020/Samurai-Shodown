@@ -7,7 +7,9 @@
 
 ModuleScene::ModuleScene()
 {
-
+	//Haohmaru kick
+	Haohmaru.PushBack({});
+	Haohmaru.speed = 0.2f;
 }
 
 ModuleScene::~ModuleScene()
@@ -17,6 +19,7 @@ ModuleScene::~ModuleScene()
 bool ModuleScene::Init() {
 
 	background = App->textures->Load("Assets/Textures/background.png");
+	haohmaru = App->textures->Load("Assets/Sprites/Characters/Haohmaru/spritesHaohmaru.png");
 
 	soundtrack = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
 	ippon = App->audio->LoadFX("Assets/Audio/Fx/Ippon.wav");
