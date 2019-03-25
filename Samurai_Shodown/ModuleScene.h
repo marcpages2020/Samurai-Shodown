@@ -22,7 +22,7 @@ public:
 public:
 
 	SDL_Texture* background;
-	SDL_Texture* haohmaru;
+	SDL_Texture* haohmaruSpreadsheet = nullptr;
 	Animation Haohmaru;
 
 	int x = -92;
