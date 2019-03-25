@@ -48,7 +48,7 @@ update_status ModuleBackground::Update()
 
 
 	// Draw everything	
-	App->render->Blit(background, -92, -100y, NULL);
+	App->render->Blit(background, -92, -100, NULL);
 	App->render->Blit(haohmaruSpreadsheet, 300, 600, &(Haohmaru.GetCurrentFrame()));
 
 
