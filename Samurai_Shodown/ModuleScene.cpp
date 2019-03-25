@@ -7,6 +7,7 @@
 
 ModuleScene::ModuleScene()
 {
+
 }
 
 ModuleScene::~ModuleScene()
