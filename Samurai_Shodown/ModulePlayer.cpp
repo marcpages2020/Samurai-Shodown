@@ -21,15 +21,15 @@ ModulePlayer::ModulePlayer()
 	kick.speed = 0.2f;
 }
 
-ModulePlayer::~ModulePlayer()
-{}
+ModulePlayer::~ModulePlayer(){
+
+}
 
 // Load assets
 bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures");
-	
 
 	haohmaruSpreadsheet = App->textures->Load("Assets/Sprites/Characters/Haohmaru/spritesHaohmaru.png");
 
@@ -39,7 +39,21 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	App->render->Blit(haohmaruSpreadsheet, 150, 100, &(kick.GetCurrentFrame()));
+	//Animation* current_animation = &idle;
+
+	int speed = 1;
+
+	if (App->input->keyboard[SDL_SCANCODE_J] == 1)
+	{
+		//current_animation = &kick;
+		App->render->Blit(haohmaruSpreadsheet, 150, 100, &(kick.GetCurrentFrame()));
+	}
+
+	//Draw everything
+	//SDL_Rect r = current_animation->GetCurrentFrame();
+
+	//App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	
 	
 	return UPDATE_CONTINUE;
 }
