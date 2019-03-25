@@ -9,7 +9,13 @@
 
 ModuleBackground::ModuleBackground()
 {
-	
+	Haohmaru.PushBack({ 1506,167,62,97 });
+	Haohmaru.PushBack({ 1578,168,79,98 });
+	Haohmaru.PushBack({ 1657,170,99,100 });
+	Haohmaru.PushBack({ 1756,167,110,97 });
+	Haohmaru.PushBack({ 1866,168,79,98 });
+	Haohmaru.PushBack({ 1945,167,62,97 });
+	Haohmaru.speed = 0.2f;
 
 }
 
@@ -43,7 +49,7 @@ update_status ModuleBackground::Update()
 
 	// Draw everything	
 	App->render->Blit(background, x, y, NULL);
-	App->render->Blit(haohmaruSpreadsheet, 0, 0, &(Haohmaru.GetCurrentFrame()));
+	App->render->Blit(haohmaruSpreadsheet, 300, 600, &(Haohmaru.GetCurrentFrame()));
 
 
 	return UPDATE_CONTINUE;
