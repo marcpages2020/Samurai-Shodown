@@ -20,19 +20,11 @@ public:
 	bool Start();
 	update_status Update();
 
-public:
-	
+public:	
 	SDL_Texture* background = nullptr;
-
-	SDL_Texture* haohmaruSpreadsheet = nullptr;
-	Animation Haohmaru;
-
-
 
 	Mix_Music *soundtrack;
 	Mix_Chunk *ippon;
-
-
 };
 
 #endif
