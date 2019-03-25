@@ -13,11 +13,17 @@ ModulePlayer::ModulePlayer()
 	position.y = 220;
 
 	//idle animation
-	/*
-	idle.PushBack({ x,y,w,h });
-	idle.PushBack({ x,y,w,h });
-	idle.PushBack({ x,y,w,h });
-	*/
+	idle.PushBack({ 15,20,70,108 });
+	idle.PushBack({ 89,20,72,108 });
+	idle.PushBack({ 165,20,71,108 });
+	idle.PushBack({ 239,18,72,111 });
+	idle.PushBack({ 314,18,72,111 });
+	idle.PushBack({ 389,18,72,110 });
+	idle.PushBack({ 463,15,74,111 });
+	idle.PushBack({ 539,15,74,111 });
+	idle.PushBack({ 615,15,73,111 });
+	
+
 
 	//jump animation
 	/*
@@ -76,7 +82,7 @@ update_status ModulePlayer::Update()
 	//Draw everything
 	//SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	//App->render->Blit(graphics, position.x, position.y - r.h, &r);
 	
 	
 	return UPDATE_CONTINUE;
