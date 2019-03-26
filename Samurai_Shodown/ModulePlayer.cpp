@@ -17,15 +17,15 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 92,22,72,109 });
 	idle.PushBack({ 168,22,71,109 });
 	idle.PushBack({ 245,20,72,111 });
-	//idle.PushBack({ 314,16,72,113 });
-	//idle.PushBack({ 389,17,72,112 });
-	//idle.PushBack({ 463,17,74,112 });
-	//idle.PushBack({ 539,17,74,112 });
-	//idle.PushBack({ 615,17,73,112 });
-	//idle.PushBack({ 239,18,72,111 });
-	//idle.PushBack({ 314,16,72,113 });
-	//idle.PushBack({ 389,17,72,112 });
-	idle.speed = 0.3f;
+	idle.PushBack({ 322,18,72,113 });
+	idle.PushBack({ 399,19,72,112 });
+	idle.PushBack({ 476,19,74,112 });
+	idle.PushBack({ 554,19,74,112 });
+	idle.PushBack({ 630,19,73,112 });
+	idle.PushBack({ 245,20,72,111 });
+	idle.PushBack({ 322,18,72,113 });
+	idle.PushBack({ 399,19,72,112 });
+	idle.speed = 0.5f;
 	
 	//forward animation
 
@@ -78,10 +78,12 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_A]==1)
 	{
+		current_animation = &backward;
 		position.x -= speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_D]==1)
 	{
+		current_animation = &forward;
 		position.x += speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_J] == 1)
