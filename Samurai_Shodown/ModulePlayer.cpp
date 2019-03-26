@@ -26,31 +26,14 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 322,18,72,113 });
 	idle.PushBack({ 399,19,72,112 });
 	idle.speed = 0.5f;
-	
-	//forward animation
-
-	//backward animation
-
-	//jump animation
-	/*
-	jump.PushBack({ x,y,w,h });
-	jump.PushBack({ x,y,w,h });
-	jump.PushBack({ x,y,w,h });
-	*/
-
-	//punch animation
-	/*punch.PushBack({x,y,w,h});
-	punch.PushBack({ x,y,w,h });
-	punch.PushBack({ x,y,w,h });
-	*/
 
 	//kick animation
-	kick.PushBack({ 1506,167,62,97 });
-	kick.PushBack({ 1578,168,79,98 });
-	kick.PushBack({ 1657,170,99,100 });
-	kick.PushBack({ 1756,167,110,97 });
-	kick.PushBack({ 1866,168,79,98 });
-	kick.PushBack({ 1945,167,62,97 });
+	kick.PushBack({ 16,137,66,95 });
+	kick.PushBack({ 87,137,66,95 });
+	kick.PushBack({ 158,137,66,95 });
+	kick.PushBack({ 229,134,86,98 });
+	kick.PushBack({ 320,134,86,98 });
+	kick.PushBack({ 411,134,86,98 });
 	kick.speed =0.4f;
 }
 
@@ -88,7 +71,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_J] == 1)
 	{
-		//current_animation = &kick;
+		current_animation = &kick;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_U]==1)
 	{
