@@ -26,6 +26,42 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 322,18,72,113 });
 	idle.PushBack({ 399,19,72,112 });
 	idle.speed = 0.5f;
+	
+	//forward animation
+	forward.PushBack({ 15,496,70,112 });
+	forward.PushBack({ 89,496,70,112 });
+	forward.PushBack({ 163,499,76,109 });
+	forward.PushBack({ 243,499,76,109 });
+	forward.PushBack({ 322,499,76,109 });
+	forward.PushBack({ 402,496,69,112 });
+	forward.PushBack({ 475,496,69,112 });
+	forward.PushBack({ 548,496,69,112 });
+	forward.PushBack({ 621,492,59,116 });
+	forward.PushBack({ 684,492,59,116 });
+	forward.PushBack({ 747,492,59,116 });
+	forward.PushBack({ 810,492,57,116 });
+	forward.PushBack({ 871,490,57,118 });
+	forward.PushBack({ 933,490,56,118 });
+	forward.PushBack({ 994,490,61,118 });
+	forward.PushBack({ 1060,492,61,116 });
+	forward.PushBack({ 1126,492,61,116 });
+	forward.speed = 0.4f;
+
+	//backward animation
+	
+	backward.speed = 0.4f;
+	//jump animation
+	/*
+	jump.PushBack({ x,y,w,h });
+	jump.PushBack({ x,y,w,h });
+	jump.PushBack({ x,y,w,h });
+	*/
+
+	//punch animation
+	/*punch.PushBack({x,y,w,h});
+	punch.PushBack({ x,y,w,h });
+	punch.PushBack({ x,y,w,h });
+	*/
 
 	//kick animation
 	kick.PushBack({ 16,137,66,95 });
