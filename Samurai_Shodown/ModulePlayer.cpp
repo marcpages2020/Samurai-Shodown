@@ -13,21 +13,23 @@ ModulePlayer::ModulePlayer()
 	position.y = 220;
 
 	//idle animation
-	idle.PushBack({ 15,20,71,109 });
-	idle.PushBack({ 90,20,72,109 });
-	idle.PushBack({ 165,20,71,109 });
-	idle.PushBack({ 239,18,72,111 });
-	idle.PushBack({ 314,16,72,113 });
-	idle.PushBack({ 389,17,72,112 });
-	idle.PushBack({ 463,17,74,112 });
-	idle.PushBack({ 539,17,74,112 });
-	idle.PushBack({ 615,17,73,112 });
-	idle.PushBack({ 239,18,72,111 });
-	idle.PushBack({ 314,16,72,113 });
-	idle.PushBack({ 389,17,72,112 });
+	idle.PushBack({ 16,22,71,109 });
+	idle.PushBack({ 92,22,72,109 });
+	idle.PushBack({ 168,22,71,109 });
+	idle.PushBack({ 245,20,72,111 });
+	//idle.PushBack({ 314,16,72,113 });
+	//idle.PushBack({ 389,17,72,112 });
+	//idle.PushBack({ 463,17,74,112 });
+	//idle.PushBack({ 539,17,74,112 });
+	//idle.PushBack({ 615,17,73,112 });
+	//idle.PushBack({ 239,18,72,111 });
+	//idle.PushBack({ 314,16,72,113 });
+	//idle.PushBack({ 389,17,72,112 });
 	idle.speed = 0.3f;
 	
+	//forward animation
 
+	//backward animation
 
 	//jump animation
 	/*
@@ -74,6 +76,14 @@ update_status ModulePlayer::Update()
 
 	int speed = 1;
 
+	if (App->input->keyboard[SDL_SCANCODE_A]==1)
+	{
+		position.x -= speed;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_D]==1)
+	{
+		position.x += speed;
+	}
 	if (App->input->keyboard[SDL_SCANCODE_J] == 1)
 	{
 		//current_animation = &kick;
