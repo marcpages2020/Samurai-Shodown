@@ -60,13 +60,13 @@ ModulePlayer::ModulePlayer()
 	backward.PushBack({ 711,608,82,121 });
 	backward.PushBack({ 798,608,82,121 });
 	backward.PushBack({ 884,608,82,121 });
-	backward.PushBack({ 971,607,69,121});
-	backward.PushBack({ 1045,611,69,117 });
-	backward.PushBack({ 1119,610,69,118 });
+	backward.PushBack({ 971,608,69,122});
+	backward.PushBack({ 1045,608,69,121});
+	backward.PushBack({ 1119,608,69,120 });
 	backward.PushBack({ 1193,614,74,114 });
 	backward.PushBack({ 1272,614,74,114 });
 	backward.PushBack({ 1351,614,74,114 });
-	backward.speed = 0.2f;
+	backward.speed = 0.4f;
 
 	//jump animation
 	/*
