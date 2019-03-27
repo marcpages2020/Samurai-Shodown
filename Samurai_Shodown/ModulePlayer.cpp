@@ -190,7 +190,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_U]==1)
 	{
-		//current_animation = &punch;
+		current_animation = &punch;
 	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
