@@ -50,47 +50,51 @@ ModulePlayer::ModulePlayer()
 	}
 
 	//backward animation
-	backward.PushBack({15,614,74,114});
-	backward.PushBack({ 94,614,74,114 });
-	backward.PushBack({ 173,614,74,114 });
-	backward.PushBack({ 264,610,68,118 });
-	backward.PushBack({ 337,610,68,118 });
-	backward.PushBack({ 410,612,68,117 });
-	backward.PushBack({ 482,609,67,121 });
-	backward.PushBack({ 553,608,67,121 });
-	backward.PushBack({ 624,608,82,121 });
-	backward.PushBack({ 711,608,82,121 });
-	backward.PushBack({ 798,608,82,121 });
-	backward.PushBack({ 884,608,82,121 });
-	backward.PushBack({ 971,608,69,122});
-	backward.PushBack({ 1045,608,69,121});
-	backward.PushBack({ 1119,608,69,120 });
-	backward.PushBack({ 1193,614,74,114 });
-	backward.PushBack({ 1272,614,74,114 });
-	backward.PushBack({ 1351,614,74,114 });
+
+	backward.PushBack({ 624,608,82,121 });//9
+	backward.PushBack({ 711,608,82,121 });//10
+	backward.PushBack({ 798,608,82,121 });//11
+	backward.PushBack({ 884,608,82,121 });//12
+	backward.PushBack({ 15,614,74,114 }); //1
+	backward.PushBack({ 94,614,74,114 }); //2
+	backward.PushBack({ 173,614,74,114 }); //3 
+	backward.PushBack({ 264,610,68,118 }); //4
+	backward.PushBack({ 337,610,68,118 }); //5
+	backward.PushBack({ 410,612,68,117 }); //6
+	backward.PushBack({ 482,609,67,121 });//7
+	backward.PushBack({ 553,608,67,121 });//8
+	backward.PushBack({ 971,608,69,122 });//13
+	backward.PushBack({ 1045,608,69,121 });//14
+	backward.PushBack({ 1119,608,69,120 });//15
+	backward.PushBack({ 1193,614,74,114 });//16
+	backward.PushBack({ 1272,614,74,114 });//17
+	backward.PushBack({ 1351,614,74,114 });//18
+
+	/*backward.PushBack({ 15,614,74,114 }); //1
+	backward.PushBack({ 94,614,74,114 }); //2
+	backward.PushBack({ 173,614,74,114 }); //3 
+	backward.PushBack({ 264,610,68,118 }); //4
+	backward.PushBack({ 337,610,68,118 }); //5
+	backward.PushBack({ 410,612,68,117 }); //6
+	backward.PushBack({ 482,609,67,121 });//7
+	backward.PushBack({ 553,608,67,121 });//8
+	backward.PushBack({ 624,608,82,121 });//9
+	backward.PushBack({ 711,608,82,121 });//10
+	backward.PushBack({ 798,608,82,121 });//11
+	backward.PushBack({ 884,608,82,121 });//12
+	backward.PushBack({ 971,608,69,122 });//13
+	backward.PushBack({ 1045,608,69,121 });//14
+	backward.PushBack({ 1119,608,69,120 });//15
+	backward.PushBack({ 1193,614,74,114 });//16
+	backward.PushBack({ 1272,614,74,114 });//17
+	backward.PushBack({ 1351,614,74,114 });//18
+	*/
+
 	backward.speed = 0.4f;
 
 	//backward animation 
 	{
-		backward.PushBack({ 15,614,74,114 });  	//add intermediate frames
-		backward.PushBack({ 94,614,74,114 });
-		backward.PushBack({ 173,614,74,114 });
-		backward.PushBack({ 264,610,68,118 });
-		backward.PushBack({ 337,610,68,118 });
-		backward.PushBack({ 410,612,68,117 });
-		backward.PushBack({ 482,609,67,121 });
-		backward.PushBack({ 553,608,67,121 });
-		/*backward.PushBack({ 624,608,82,121 }); //error
-		backward.PushBack({ 711,608,82,121 });
-		backward.PushBack({ 798,608,82,121 });
-		backward.PushBack({ 884,608,82,121 });
-		backward.PushBack({ 971,608,69,120 });
-		backward.PushBack({ 1045,611,69,117 });
-		backward.PushBack({ 1119,610,69,118 });
-		backward.PushBack({ 1193,614,74,114 });
-		backward.PushBack({ 1272,614,74,114 });
-		backward.PushBack({ 1351,614,74,114 });*/
-		backward.speed = 0.2f;
+
 	}
 
 
@@ -190,7 +194,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_U]==1)
 	{
-		current_animation = &punch;
+		//current_animation = &punch;
 	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
