@@ -48,7 +48,24 @@ ModulePlayer::ModulePlayer()
 	forward.speed = 0.4f;
 
 	//backward animation
-	
+	backward.PushBack({15,614,74,114});
+	backward.PushBack({ 94,614,74,114 });
+	backward.PushBack({ 173,614,74,114 });
+	backward.PushBack({ 264,610,68,118 });
+	backward.PushBack({ 337,610,68,118 });
+	backward.PushBack({ 410,611,68,117 });
+	backward.PushBack({ 486,609,62,110 });
+	backward.PushBack({ 554,608,65,110 });
+	backward.PushBack({ 624,618,82,110 });
+	backward.PushBack({ 711,618,82,110 });
+	backward.PushBack({ 798,618,82,110 });
+	backward.PushBack({ 884,618,82,110 });
+	backward.PushBack({ 971,611,69,117 });
+	backward.PushBack({ 1045,611,69,117 });
+	backward.PushBack({ 1119,610,69,118 });
+	backward.PushBack({ 1193,614,74,114 });
+	backward.PushBack({ 1272,614,74,114 });
+	backward.PushBack({ 1351,614,74,114 });
 	backward.speed = 0.4f;
 	//jump animation
 	/*
