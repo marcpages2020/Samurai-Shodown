@@ -13,21 +13,24 @@ ModulePlayer::ModulePlayer()
 	position.y = 220;
 
 	//idle animation
-	idle.PushBack({ 16,22,71,109 });
-	idle.PushBack({ 92,22,72,109 });
-	idle.PushBack({ 168,22,71,109 });
-	idle.PushBack({ 245,20,72,111 });
-	idle.PushBack({ 322,18,72,113 });
-	idle.PushBack({ 399,19,72,112 });
-	idle.PushBack({ 476,19,74,112 });
-	idle.PushBack({ 554,19,74,112 });
-	idle.PushBack({ 630,19,73,112 });
-	idle.PushBack({ 245,20,72,111 });
-	idle.PushBack({ 322,18,72,113 });
-	idle.PushBack({ 399,19,72,112 });
-	idle.speed = 0.5f;
-	
+	{
+		idle.PushBack({ 16,22,71,109 });
+		idle.PushBack({ 92,22,72,109 });
+		idle.PushBack({ 168,22,71,109 });
+		idle.PushBack({ 245,20,72,111 });
+		idle.PushBack({ 322,18,72,113 });
+		idle.PushBack({ 399,19,72,112 });
+		idle.PushBack({ 476,19,74,112 });
+		idle.PushBack({ 554,19,74,112 });
+		idle.PushBack({ 630,19,73,112 });
+		idle.PushBack({ 245,20,72,111 });
+		idle.PushBack({ 322,18,72,113 });
+		idle.PushBack({ 399,19,72,112 });
+		idle.speed = 0.5f;
+	}
+
 	//forward animation
+	{
 	forward.PushBack({ 15,496,70,112 });
 	forward.PushBack({ 89,496,70,112 });
 	forward.PushBack({ 163,499,76,109 });
@@ -46,27 +49,31 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 1060,492,61,116 });
 	forward.PushBack({ 1126,492,61,116 });
 	forward.speed = 0.4f;
+	}
 
-	//backward animation
-	backward.PushBack({15,614,74,114});
-	backward.PushBack({ 94,614,74,114 });
-	backward.PushBack({ 173,614,74,114 });
-	backward.PushBack({ 264,610,68,118 });
-	backward.PushBack({ 337,610,68,118 });
-	backward.PushBack({ 410,612,68,117 });
-	backward.PushBack({ 482,609,67,121 });
-	backward.PushBack({ 553,608,67,121 });
-	backward.PushBack({ 624,608,82,121 });
-	backward.PushBack({ 711,608,82,121 });
-	backward.PushBack({ 798,608,82,121 });
-	backward.PushBack({ 884,608,82,121 });
-	backward.PushBack({ 971,607,69,121});
-	backward.PushBack({ 1045,611,69,117 });
-	backward.PushBack({ 1119,610,69,118 });
-	backward.PushBack({ 1193,614,74,114 });
-	backward.PushBack({ 1272,614,74,114 });
-	backward.PushBack({ 1351,614,74,114 });
-	backward.speed = 0.2f;
+	//backward animation 
+	{
+		backward.PushBack({ 15,614,74,114 });
+		backward.PushBack({ 94,614,74,114 });
+		backward.PushBack({ 173,614,74,114 });
+		backward.PushBack({ 264,610,68,118 });
+		backward.PushBack({ 337,610,68,118 });
+		backward.PushBack({ 410,612,68,117 });
+		backward.PushBack({ 482,609,67,121 });
+		backward.PushBack({ 553,608,67,121 });
+		backward.PushBack({ 624,608,82,121 });
+		backward.PushBack({ 711,608,82,121 });
+		backward.PushBack({ 798,608,82,121 });
+		backward.PushBack({ 884,608,82,121 });
+		backward.PushBack({ 971,608,69,120 });
+		backward.PushBack({ 1045,611,69,117 });
+		backward.PushBack({ 1119,610,69,118 });
+		backward.PushBack({ 1193,614,74,114 });
+		backward.PushBack({ 1272,614,74,114 });
+		backward.PushBack({ 1351,614,74,114 });
+		//add intermediate frames
+		backward.speed = 0.2f;
+	}
 
 	//jump animation
 	/*
@@ -82,16 +89,18 @@ ModulePlayer::ModulePlayer()
 	*/
 
 	//kick animation
-	kick.PushBack({ 16,137,66,95 }); //initial kick frames
-	kick.PushBack({ 87,137,66,95 });
-	kick.PushBack({ 158,137,66,95 });
-	kick.PushBack({ 229,134,86,98 }); //final kick frames
-	kick.PushBack({ 320,134,86,98 });
-	kick.PushBack({ 411,134,86,98 });
-	kick.PushBack({ 16,137,66,95 }); //initial kick frames
-	kick.PushBack({ 87,137,66,95 });
-	kick.PushBack({ 158,137,66,95 });
-	kick.speed =0.2f;
+	{
+		kick.PushBack({ 16,137,66,95 }); //initial kick frames
+		kick.PushBack({ 87,137,66,95 });
+		kick.PushBack({ 158,137,66,95 });
+		kick.PushBack({ 229,134,86,98 }); //final kick frames
+		kick.PushBack({ 320,134,86,98 });
+		kick.PushBack({ 411,134,86,98 });
+		kick.PushBack({ 16,137,66,95 }); //initial kick frames
+		kick.PushBack({ 87,137,66,95 });
+		kick.PushBack({ 158,137,66,95 });
+		kick.speed = 0.2f;
+	}
 }
 
 ModulePlayer::~ModulePlayer(){
