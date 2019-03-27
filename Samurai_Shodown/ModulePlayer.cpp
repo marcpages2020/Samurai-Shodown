@@ -49,7 +49,6 @@ ModulePlayer::ModulePlayer()
 	forward.speed = 0.4f;
 	}
 
-<<<<<<< HEAD
 	//backward animation
 	backward.PushBack({15,614,74,114});
 	backward.PushBack({ 94,614,74,114 });
@@ -70,10 +69,10 @@ ModulePlayer::ModulePlayer()
 	backward.PushBack({ 1272,614,74,114 });
 	backward.PushBack({ 1351,614,74,114 });
 	backward.speed = 0.4f;
-=======
+
 	//backward animation 
 	{
-		backward.PushBack({ 15,614,74,114 });
+		backward.PushBack({ 15,614,74,114 });  	//add intermediate frames
 		backward.PushBack({ 94,614,74,114 });
 		backward.PushBack({ 173,614,74,114 });
 		backward.PushBack({ 264,610,68,118 });
@@ -81,7 +80,7 @@ ModulePlayer::ModulePlayer()
 		backward.PushBack({ 410,612,68,117 });
 		backward.PushBack({ 482,609,67,121 });
 		backward.PushBack({ 553,608,67,121 });
-		backward.PushBack({ 624,608,82,121 });
+		/*backward.PushBack({ 624,608,82,121 }); //error
 		backward.PushBack({ 711,608,82,121 });
 		backward.PushBack({ 798,608,82,121 });
 		backward.PushBack({ 884,608,82,121 });
@@ -90,11 +89,10 @@ ModulePlayer::ModulePlayer()
 		backward.PushBack({ 1119,610,69,118 });
 		backward.PushBack({ 1193,614,74,114 });
 		backward.PushBack({ 1272,614,74,114 });
-		backward.PushBack({ 1351,614,74,114 });
-		//add intermediate frames
+		backward.PushBack({ 1351,614,74,114 });*/
 		backward.speed = 0.2f;
 	}
->>>>>>> 71395474888061fb8157b88c765e981ce9cd17b8
+
 
 	//jump animation
 	/*
@@ -112,7 +110,7 @@ ModulePlayer::ModulePlayer()
 	*/
 
 	//punch animation
-
+	
 	punch.PushBack({ 14, 236, 69, 127 });
 	punch.PushBack({ 87, 236, 69, 127 });
 	punch.PushBack({ 160, 266, 79, 97 });
@@ -133,7 +131,7 @@ ModulePlayer::ModulePlayer()
 	punch.PushBack({ 1721, 277, 130, 86 });
 	punch.PushBack({ 1857, 277, 130, 86 });
 	punch.speed = 0.2f;
-
+	
 
 	//kick animation
 	{
@@ -192,7 +190,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_U]==1)
 	{
-		current_animation = &punch;
+		//current_animation = &punch;
 	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();

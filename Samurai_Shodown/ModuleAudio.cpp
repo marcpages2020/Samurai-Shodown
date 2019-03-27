@@ -22,7 +22,7 @@ bool ModuleAudio::Init() {
 	{
 		LOG("Mix_OpenAudio: %s\n", Mix_GetError());
 		//fix error: can't fnd a mastering voice
-		return true;
+		return false;
 	}
 
 
