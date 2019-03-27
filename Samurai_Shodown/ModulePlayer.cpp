@@ -74,7 +74,21 @@ ModulePlayer::ModulePlayer()
 	}
 
 	//jump animation
+<<<<<<< HEAD
 	jump.PushBack({16,371,60,112});
+=======
+	jump.PushBack({15,371,32,112});
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.PushBack({ ,,, });
+	jump.speed = 0.2f;
+>>>>>>> 364b8aeda0fd1e79f491ef12d3578be60a483cc1
 
 	//punch animation
 	/*punch.PushBack({x,y,w,h});
