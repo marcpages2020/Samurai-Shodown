@@ -74,6 +74,7 @@ ModulePlayer::ModulePlayer()
 	}
 
 	//jump animation
+	/*
 	jump.PushBack({16,371,60,112});
 	jump.PushBack({ ,,, });
 	jump.PushBack({ ,,, });
@@ -85,12 +86,31 @@ ModulePlayer::ModulePlayer()
 	jump.PushBack({ ,,, });
 	jump.PushBack({ ,,, });
 	jump.speed = 0.2f;
+	*/
 
 	//punch animation
-	/*punch.PushBack({x,y,w,h});
-	punch.PushBack({ x,y,w,h });
-	punch.PushBack({ x,y,w,h });
-	*/
+
+	punch.PushBack({ 14, 236, 69, 127 });
+	punch.PushBack({ 87, 236, 69, 127 });
+	punch.PushBack({ 160, 266, 79, 97 });
+	punch.PushBack({ 160, 266, 79, 97 });
+	punch.PushBack({ 243, 269, 79, 96 });
+	punch.PushBack({ 327, 267, 79, 97 });
+	punch.PushBack({ 410, 270, 129, 93 });
+	punch.PushBack({ 545, 277, 130, 86 });
+	punch.PushBack({ 679, 280, 130, 83 });
+	punch.PushBack({ 814, 280, 129, 83 });
+	punch.PushBack({ 946, 280, 130, 83 });
+	punch.PushBack({ 1080, 280, 130, 83 });
+	punch.PushBack({ 1213, 280, 120, 83 });
+	punch.PushBack({ 1336, 280, 120, 83 });
+	punch.PushBack({ 1461, 280, 83, 83 });
+	punch.PushBack({ 1547, 280, 83, 83 });
+	punch.PushBack({ 1634, 280, 83, 83 });
+	punch.PushBack({ 1721, 277, 130, 86 });
+	punch.PushBack({ 1857, 277, 130, 86 });
+	punch.speed = 0.2f;
+
 
 	//kick animation
 	{
