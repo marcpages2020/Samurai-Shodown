@@ -5,8 +5,6 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOAd
-
 ModulePlayer::ModulePlayer()
 {
 	position.x = 100;
@@ -126,13 +124,18 @@ update_status ModulePlayer::Update()
 		current_animation = &forward;
 		position.x += speed;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+	{
+		current_animation = &jump;
+		position.y += speed;
+	}
 	if (App->input->keyboard[SDL_SCANCODE_J] == 1)
 	{
 		current_animation = &kick;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_U]==1)
 	{
-		//current_animation = &punch;
+		current_animation = &punch;
 	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
