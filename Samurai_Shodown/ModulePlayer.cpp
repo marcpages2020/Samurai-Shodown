@@ -4,29 +4,8 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
-
-
-class Frame
-{
-public:
-	int MaxFrames;
-	int actualFrame=0;
-	bool available();
-	Frame() {}
-	Frame(int);
-	~Frame(){}
-};
-
-Frame::Frame(int max) {
-	MaxFrames = max;
-}
-bool Frame::available() {
-	if (actualFrame<MaxFrames)
-	{
-
-	}
-	return true;
-}
+#define FPS 60
+bool animationAvailable = true;
 ModulePlayer::ModulePlayer()
 {
 	position.x = 100;
@@ -72,7 +51,6 @@ ModulePlayer::ModulePlayer()
 	}
 
 	//backward animation
-
 	{
 	backward.PushBack({ 624,608,82,121 });//9
 	backward.PushBack({ 711,608,82,121 });//10
@@ -96,55 +74,56 @@ ModulePlayer::ModulePlayer()
 	}
 
 	//jump animation
-	
-	jump.PushBack({16, 371, 60, 112});
-	jump.PushBack({79, 371, 60, 112});
-	jump.PushBack({145, 371, 60, 112});
-	jump.PushBack({209, 371, 75, 92});
-	jump.PushBack({288, 371, 75, 92});
-	jump.PushBack({367, 371, 75, 92});
-	jump.PushBack({446, 371, 78, 83});
-	jump.PushBack({527, 371, 68, 112});
-	jump.PushBack({601, 371, 68, 112});
-	jump.PushBack({675, 371, 68, 112});
-	jump.speed = 0.2f;
-	
+	{
+		jump.PushBack({ 16, 371, 60, 112 });
+		jump.PushBack({ 79, 371, 60, 112 });
+		jump.PushBack({ 145, 371, 60, 112 });
+		jump.PushBack({ 209, 371, 75, 92 });
+		jump.PushBack({ 288, 371, 75, 92 });
+		jump.PushBack({ 367, 371, 75, 92 });
+		jump.PushBack({ 446, 371, 78, 83 });
+		jump.PushBack({ 527, 371, 68, 112 });
+		jump.PushBack({ 601, 371, 68, 112 });
+		jump.PushBack({ 675, 371, 68, 112 });
+		jump.speed = 0.2f;
+	}
 
 	//punch animation
-	
-	punch.PushBack({ 14, 236, 69, 127 });
-	punch.PushBack({ 87, 236, 69, 127 });
-	punch.PushBack({ 160, 266, 79, 97 });
-	punch.PushBack({ 160, 266, 79, 97 });
-	punch.PushBack({ 243, 269, 79, 96 });
-	punch.PushBack({ 327, 267, 79, 97 });
-	punch.PushBack({ 410, 270, 129, 93 });
-	punch.PushBack({ 545, 277, 130, 86 });
-	punch.PushBack({ 679, 280, 130, 83 });
-	punch.PushBack({ 814, 280, 129, 83 });
-	punch.PushBack({ 946, 280, 130, 83 });
-	punch.PushBack({ 1080, 280, 130, 83 });
-	punch.PushBack({ 1213, 280, 120, 83 });
-	punch.PushBack({ 1336, 280, 120, 83 });
-	punch.PushBack({ 1461, 280, 83, 83 });
-	punch.PushBack({ 1547, 280, 83, 83 });
-	punch.PushBack({ 1634, 280, 83, 83 });
-	punch.PushBack({ 1721, 277, 130, 86 });
-	punch.PushBack({ 1857, 277, 130, 86 });
-	punch.speed = 0.2f;
-	
+	{
+		punch.PushBack({ 14, 236, 69, 127 });
+		punch.PushBack({ 87, 236, 69, 127 });
+		punch.PushBack({ 160, 266, 79, 97 });
+		punch.PushBack({ 243, 269, 79, 96 });
+		punch.PushBack({ 327, 267, 79, 97 });
+		punch.PushBack({ 410, 270, 129, 93 });
+		punch.PushBack({ 545, 277, 130, 86 });
+		punch.PushBack({ 679, 280, 130, 83 });
+		punch.PushBack({ 814, 280, 129, 95 });
+		punch.PushBack({ 946, 280, 130, 95 });
+		punch.PushBack({ 1080, 280, 130, 95 });
+		punch.PushBack({ 1213, 280, 120, 95 });
+		punch.PushBack({ 1336, 280, 120, 95 });
+		punch.PushBack({ 1461, 280, 83, 95 });
+		punch.PushBack({ 1547, 280, 83, 95 });
+		punch.PushBack({ 1634, 280, 83, 95 });
+		punch.PushBack({ 1721, 277, 130, 86 });
+		punch.PushBack({ 1857, 277, 130, 86 });
+		punch.speed = 0.2f;
+	}
+
 	//kick animation
-	kick.PushBack({ 16,137,66,95 }); //initial kick frames
-	kick.PushBack({ 87,137,66,95 });
-	kick.PushBack({ 158,137,66,95 });
-	kick.PushBack({ 229,134,86,98 }); //final kick frames
-	kick.PushBack({ 320,134,86,98 });
-	kick.PushBack({ 411,134,86,98 });
-	kick.PushBack({ 16,137,66,95 }); //initial kick frames
-	kick.PushBack({ 87,137,66,95 });
-	kick.PushBack({ 158,137,66,95 });
-	kick.speed = 0.2f;
-	
+	{
+		kick.PushBack({ 16,137,66,95 }); //initial kick frames
+		kick.PushBack({ 87,137,66,95 });
+		kick.PushBack({ 158,137,66,95 });
+		kick.PushBack({ 229,134,86,98 }); //final kick frames
+		kick.PushBack({ 320,134,86,98 });
+		kick.PushBack({ 411,134,86,98 });
+		kick.PushBack({ 16,137,66,95 }); //initial kick frames
+		kick.PushBack({ 87,137,66,95 });
+		kick.PushBack({ 158,137,66,95 });
+		kick.speed = 0.2f;
+	}
 }
 
 ModulePlayer::~ModulePlayer(){
@@ -166,31 +145,57 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &idle;
-
+	//int frames=0,maxFrames=0;
+	/*fjump.maxFrames = 10;
+	fkick.maxFrames = 9;
+	fpunch.maxFrames=18;*/
 	int speed = 1;
 
-	if (App->input->keyboard[SDL_SCANCODE_A]==1)
+	//if (animationAvailable==true){
+
+		if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+		{
+			current_animation = &backward;
+			position.x -= speed;
+			//frames = 0;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_D] == 1)
+		{
+			current_animation = &forward;
+			position.x += speed;
+			//frames = 0;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+		{
+			current_animation = &jump;
+			//maxFrames = 10*FPS;
+			//animationAvailable == false;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_J] == 1)
+		{
+			current_animation = &kick;
+			//maxFrames = 9*FPS;
+			//animationAvailable = false;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_U] == 1)
+		{
+			current_animation = &punch;
+			//maxFrames = 18*FPS;
+			//animationAvailable = false;
+		}
+	//}
+	/*else
 	{
-		current_animation = &backward;
-		position.x -= speed;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_D]==1)
-	{
-		current_animation = &forward;
-		position.x += speed;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
-	{
-		current_animation = &jump;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_J] == 1)
-	{
-		current_animation = &kick;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_U]==1)
-	{
-		current_animation = &punch;
-	}
+		if (frames<maxFrames)
+		{
+			frames++;
+		}
+		else
+		{
+			animationAvailable = true;
+		}
+	}*/
+
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
