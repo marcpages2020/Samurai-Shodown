@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #define FPS 60
 bool animationAvailable = true;
+int mult = 1;
 enum STATE {
 	//IDLE,
 	//JUMP,
@@ -185,14 +186,15 @@ update_status ModulePlayer::Update()
 		{
 			current_animation = &jump;
 			//maxFrames = 10*FPS;
-			//animationAvailable == false;
-			if (position.y < 240) {
-				position.y -= speed; //goes up
+			//animationAvailable == false; 
+			if(position.y==60){
+				mult = -1; 
 			}
-			else {
-				position.y += speed; //goes down
+			else if(position.y==220)
+			{
+				mult = 1;
 			}
-			
+			position.y -= speed * mult;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_J] == 1)
 		{
