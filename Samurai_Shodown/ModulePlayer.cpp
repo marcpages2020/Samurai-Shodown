@@ -100,14 +100,14 @@ ModulePlayer::ModulePlayer()
 		punch.PushBack({ 679, 280, 130, 83 });
 		punch.PushBack({ 814, 280, 129, 95 });
 		punch.PushBack({ 946, 280, 130, 95 });
-		punch.PushBack({ 1080, 280, 130, 95 });
+		punch.PushBack({ 1081, 280, 130, 95 });
 		punch.PushBack({ 1213, 280, 120, 95 });
-		punch.PushBack({ 1336, 280, 120, 95 });
+		punch.PushBack({ 1337, 280, 120, 95 });
 		punch.PushBack({ 1461, 280, 83, 95 });
-		punch.PushBack({ 1547, 280, 83, 95 });
-		punch.PushBack({ 1634, 280, 83, 95 });
+		punch.PushBack({ 1548, 280, 83, 95 });
+		punch.PushBack({ 1635, 280, 83, 95 });
 		punch.PushBack({ 1721, 277, 130, 86 });
-		punch.PushBack({ 1857, 277, 130, 86 });
+		punch.PushBack({ 1856, 277, 130, 86 });
 		punch.speed = 0.2f;
 	}
 
