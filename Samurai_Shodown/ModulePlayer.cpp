@@ -6,6 +6,12 @@
 #include "ModulePlayer.h"
 #define FPS 60
 bool animationAvailable = true;
+enum STATE {
+	//IDLE,
+	//JUMP,
+	//PUNCH,
+	//KICK
+};
 ModulePlayer::ModulePlayer()
 {
 	position.x = 100;
@@ -26,6 +32,7 @@ ModulePlayer::ModulePlayer()
 		idle.PushBack({ 322,18,72,113 });
 		idle.PushBack({ 399,19,72,112 });
 		idle.speed = 0.5f;
+		idle.mframes = 12;
 	}
 
 	//forward animation
@@ -75,17 +82,24 @@ ModulePlayer::ModulePlayer()
 
 	//jump animation
 	{
-		jump.PushBack({ 16, 371, 60, 112 });
-		jump.PushBack({ 79, 371, 60, 112 });
+		jump.PushBack({ 15, 371, 60, 112 });
+		jump.PushBack({ 80, 371, 60, 112 });
 		jump.PushBack({ 145, 371, 60, 112 });
 		jump.PushBack({ 209, 371, 75, 92 });
 		jump.PushBack({ 288, 371, 75, 92 });
 		jump.PushBack({ 367, 371, 75, 92 });
 		jump.PushBack({ 446, 371, 78, 83 });
+		jump.PushBack({ 209, 371, 75, 92 });
+		jump.PushBack({ 288, 371, 75, 92 });
+		jump.PushBack({ 367, 371, 75, 92 });
+		jump.PushBack({ 15, 371, 60, 112 });
+		jump.PushBack({ 80, 371, 60, 112 });
+		jump.PushBack({ 145, 371, 60, 112 });
 		jump.PushBack({ 527, 371, 68, 112 });
 		jump.PushBack({ 601, 371, 68, 112 });
-		jump.PushBack({ 675, 371, 68, 112 });
+		jump.PushBack({ 674, 371, 68, 112 });
 		jump.speed = 0.2f;
+		jump.mframes = 16;
 	}
 
 	//punch animation
@@ -108,6 +122,7 @@ ModulePlayer::ModulePlayer()
 		punch.PushBack({ 1634, 280, 83, 95 });
 		punch.PushBack({ 1721, 277, 130, 86 });
 		punch.PushBack({ 1857, 277, 130, 86 });
+		punch.mframes = 18;
 		punch.speed = 0.2f;
 	}
 
@@ -122,6 +137,7 @@ ModulePlayer::ModulePlayer()
 		kick.PushBack({ 16,137,66,95 }); //initial kick frames
 		kick.PushBack({ 87,137,66,95 });
 		kick.PushBack({ 158,137,66,95 });
+		kick.mframes = 9;
 		kick.speed = 0.2f;
 	}
 }
