@@ -8,6 +8,15 @@
 
 struct SDL_Texture;
 
+enum States {
+	IDLE,
+	PUNCH,
+	JUMP,
+	KICK,
+	FORWARD,
+	BACKWARD,
+};
+
 class ModulePlayer : public Module
 {
 public:
