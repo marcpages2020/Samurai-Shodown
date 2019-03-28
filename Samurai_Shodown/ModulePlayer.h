@@ -25,6 +25,7 @@ struct PlayerInput {
 	bool pressing_D;
 	bool pressing_U;
 	bool pressing_J;
+	bool pressing_W;
 };
 
 class ModulePlayer : public Module

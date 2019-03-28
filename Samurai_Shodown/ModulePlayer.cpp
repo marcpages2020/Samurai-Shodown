@@ -73,7 +73,7 @@ ModulePlayer::ModulePlayer()
 
 	//jump animation
 	{
-		jump.PushBack({ 15, 371, 60, 112 }, 0.2f);
+		jump.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
 		jump.PushBack({ 80, 371, 60, 112 }, 0.2f);
 		jump.PushBack({ 145, 371, 60, 112 }, 0.2f);
 		jump.PushBack({ 209, 371, 75, 92 }, 0.2f);
@@ -83,12 +83,12 @@ ModulePlayer::ModulePlayer()
 		jump.PushBack({ 209, 371, 75, 92 }, 0.2f);
 		jump.PushBack({ 288, 371, 75, 92 }, 0.2f);
 		jump.PushBack({ 367, 371, 75, 92 }, 0.2f);
-		jump.PushBack({ 15, 371, 60, 112 }, 0.2f);
+		jump.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
 		jump.PushBack({ 80, 371, 60, 112 }, 0.2f);
 		jump.PushBack({ 145, 371, 60, 112 }, 0.2f);
-		jump.PushBack({ 527, 371, 68, 112 }, 0.2f);
-		jump.PushBack({ 601, 371, 68, 112 }, 0.2f);
-		jump.PushBack({ 674, 371, 68, 112 }, 0.2f);
+		jump.PushBack({ 527, 371, 68, 112 }, 0.2f); //8
+		jump.PushBack({ 601, 371, 68, 112 }, 0.2f); //9
+		jump.PushBack({ 674, 371, 68, 112 }, 0.2f); //10
 	}
 
 	//punch animation
@@ -101,29 +101,29 @@ ModulePlayer::ModulePlayer()
 		punch.PushBack({ 410, 270, 129, 93 }, 0.2f);
 		punch.PushBack({ 545, 277, 130, 86 }, 0.2f);
 		punch.PushBack({ 679, 280, 130, 83 }, 0.2f);
-		punch.PushBack({ 814, 280, 129, 95 }, 0.2f);
+		punch.PushBack({ 814, 280, 129, 95 }, 0.2f); //9
 		punch.PushBack({ 946, 280, 130, 95 }, 0.2f);
 		punch.PushBack({ 1081, 280, 130, 95 }, 0.2f);
 		punch.PushBack({ 1213, 280, 120, 95 }, 0.2f);
 		punch.PushBack({ 1337, 280, 120, 95 }, 0.2f);
 		punch.PushBack({ 1461, 280, 83, 95 }, 0.2f);
 		punch.PushBack({ 1548, 280, 83, 95 }, 0.2f);
-		punch.PushBack({ 1635, 280, 83, 95 }, 0.2f);
+		punch.PushBack({ 1635, 280, 83, 95 }, 0.2f); //16
 		punch.PushBack({ 1721, 277, 130, 86 }, 0.2f);
 		punch.PushBack({ 1857, 277, 130, 86 }, 0.2f);
 	}
 
 	//kick animation
 	{
-		kick.PushBack({ 16,137,66,95 }, 0.2f); //initial kick frames
-		kick.PushBack({ 87,137,66,95 }, 0.2f);
-		kick.PushBack({ 158,137,66,95 }, 0.2f);
-		kick.PushBack({ 229,134,86,98 }, 0.2f); //final kick frames
-		kick.PushBack({ 320,134,86,98 }, 0.2f);
-		kick.PushBack({ 411,134,86,98 }, 0.2f);
-		kick.PushBack({ 16,137,66,95 }, 0.2f); //initial kick frames
-		kick.PushBack({ 87,137,66,95 }, 0.2f);
-		kick.PushBack({ 158,137,66,95 }, 0.2f);
+		kick.PushBack({ 16,137,66,95 }, 0.3f); //initial kick frames
+		kick.PushBack({ 87,137,66,95 }, 0.3f);
+		kick.PushBack({ 158,137,66,95 }, 0.3f);
+		kick.PushBack({ 229,134,86,98 }, 0.3f); //final kick frames
+		kick.PushBack({ 320,134,86,98 }, 0.1f);
+		kick.PushBack({ 411,134,86,98 }, 0.1f);
+		kick.PushBack({ 16,137,66,95 }, 0.1f); //initial kick frames
+		kick.PushBack({ 87,137,66,95 }, 0.1f);
+		kick.PushBack({ 158,137,66,95 }, 0.1f);
 	}
 }
 
@@ -152,6 +152,7 @@ update_status ModulePlayer::PreUpdate()
 	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == 1;
 	player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == 1;
 	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == 1;
+	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == 1;
 	
 	if (state == IDLE) {
 		if (player_input.pressing_A)
@@ -162,6 +163,8 @@ update_status ModulePlayer::PreUpdate()
 			state = KICK;
 		if (player_input.pressing_U)
 			state = PUNCH;
+		if (player_input.pressing_W)
+			state = JUMP;
 	}
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
@@ -178,8 +181,23 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 	if (state == PUNCH) {
+		if ((current_animation->SeeCurrentFrame()>=7) && (current_animation->SeeCurrentFrame() <= 14))
+		{
+			position.y = 232;
+		}
+		else
+		{
+			position.y = 220;
+		}
 		if (current_animation == &punch && current_animation->SeeCurrentFrame() == 16) {
 			state = IDLE;
+		}
+	}
+	if (state == JUMP)
+	{
+		if (current_animation==&jump && current_animation->SeeCurrentFrame()== 15)
+		{
+			state == IDLE;
 		}
 	}
 
@@ -189,15 +207,6 @@ update_status ModulePlayer::PreUpdate()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	
-	//int frames=0,maxFrames=0;
-	/*fjump.maxFrames = 10;
-	fkick.maxFrames = 9;
-	fpunch.maxFrames=18;*/
-	
-
-	//if (animationAvailable==true){
-
 	/*	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
 		{
 			current_animation = &backward;
@@ -258,6 +267,17 @@ update_status ModulePlayer::Update()
 		current_animation = &punch;
 		break;
 	case JUMP:
+		current_animation = &jump;
+		if (position.y == 160) {
+			mult = -1;
+		}
+		else if (position.y == 220)
+		{
+			mult = 1;
+			state = IDLE;
+		}
+		position.y -= 2*speed * mult;
+		
 		break;
 	case KICK:
 		current_animation = &kick;
@@ -274,10 +294,6 @@ update_status ModulePlayer::Update()
 		LOG("No state found :(");
 		break;
 	}
-
-
-
-
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
