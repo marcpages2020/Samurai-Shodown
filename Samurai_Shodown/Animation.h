@@ -2,6 +2,7 @@
 #define __ANIMATION_H__
 
 #include "SDL/include/SDL_rect.h"
+#include <math.h>
 #define MAX_FRAMES 25
 
 struct Frame {
@@ -36,6 +37,10 @@ public:
 			current_frame = 0;
 
 		return frames[(int)current_frame].rect;
+	}
+
+	int SeeCurrentFrame() {
+		return (int)floor(current_frame);
 	}
 };
 

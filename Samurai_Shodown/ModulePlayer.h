@@ -19,6 +19,14 @@ enum States {
 	BACKWARD,
 };
 
+struct PlayerInput {
+
+	bool pressing_A;
+	bool pressing_D;
+	bool pressing_U;
+	bool pressing_J;
+};
+
 class ModulePlayer : public Module
 {
 public:
@@ -26,6 +34,7 @@ public:
 	~ModulePlayer();
 
 	bool Start();
+	update_status PreUpdate();
 	update_status Update();
 
 public:
@@ -42,7 +51,11 @@ public:
 
 	bool animationAvailable = true;
 	int mult = 1;
-	
+
+	Animation* current_animation = nullptr;
+	PlayerInput player_input;
+	States state;
+	int speed = 1;
 
 };
 

@@ -139,22 +139,66 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 
+	state = IDLE;
+	current_animation = &idle;
+
 	return ret;
+}
+
+update_status ModulePlayer::PreUpdate()
+{
+
+	player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == 1;
+	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == 1;
+	player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == 1;
+	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == 1;
+	
+	if (state == IDLE) {
+		if (player_input.pressing_A)
+			state = BACKWARD;
+		if (player_input.pressing_D)
+			state = FORWARD;
+		if (player_input.pressing_J)
+			state = KICK;
+		if (player_input.pressing_U)
+			state = PUNCH;
+	}
+	if (state == BACKWARD) {
+		if (!player_input.pressing_A)
+			state = IDLE;
+	}
+	if (state == FORWARD) {
+		if (!player_input.pressing_D)
+			state = IDLE;
+	}
+	if (state == KICK) {
+		int x = (int)current_animation->SeeCurrentFrame();
+		if (current_animation == &kick && current_animation->SeeCurrentFrame() == 7) {
+			state = IDLE;
+		}
+	}
+	if (state == PUNCH) {
+		if (current_animation == &punch && current_animation->SeeCurrentFrame() == 16) {
+			state = IDLE;
+		}
+	}
+
+	return UPDATE_CONTINUE;
 }
 
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	Animation* current_animation = &idle;
+	
 	//int frames=0,maxFrames=0;
 	/*fjump.maxFrames = 10;
 	fkick.maxFrames = 9;
 	fpunch.maxFrames=18;*/
-	int speed = 1;
+	
 
 	//if (animationAvailable==true){
 
-		if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+	/*	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
 		{
 			current_animation = &backward;
 			position.x -= speed;
@@ -204,6 +248,35 @@ update_status ModulePlayer::Update()
 			animationAvailable = true;
 		}
 	}*/
+	
+	switch (state)
+	{
+	case IDLE:
+		current_animation = &idle;
+		break;
+	case PUNCH:
+		current_animation = &punch;
+		break;
+	case JUMP:
+		break;
+	case KICK:
+		current_animation = &kick;
+		break;
+	case FORWARD:
+		current_animation = &forward;
+		position.x += speed;
+		break;
+	case BACKWARD:
+		current_animation = &backward;
+		position.x -= speed;
+		break;
+	default:
+		LOG("No state found :(");
+		break;
+	}
+
+
+
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
