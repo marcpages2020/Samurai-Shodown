@@ -1,6 +1,8 @@
 #ifndef __ModulePlayer_H__
 #define __ModulePlayer_H__
 
+#define FPS 60
+
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
@@ -37,6 +39,10 @@ public:
 	Animation kick;
 	Animation jump;
 	iPoint position;
+
+	bool animationAvailable = true;
+	int mult = 1;
+	
 
 };
 
