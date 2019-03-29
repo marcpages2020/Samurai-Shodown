@@ -109,8 +109,7 @@ ModulePlayer::ModulePlayer()
 		punch.PushBack({ 1461, 280, 83, 95 }, 0.2f);
 		punch.PushBack({ 1548, 280, 83, 95 }, 0.2f);
 		punch.PushBack({ 1635, 280, 83, 95 }, 0.2f); //16
-		punch.PushBack({ 1721, 277, 130, 86 }, 0.2f);
-		punch.PushBack({ 1857, 277, 130, 86 }, 0.2f);
+
 	}
 
 	//kick animation
@@ -189,8 +188,9 @@ update_status ModulePlayer::PreUpdate()
 		{
 			position.y = 220;
 		}
-		if (current_animation == &punch && current_animation->SeeCurrentFrame() == 16) {
+		if (current_animation == &punch && current_animation->SeeCurrentFrame() == 14) {
 			state = IDLE;
+			punch.current_frame = 0;
 		}
 	}
 	if (state == JUMP)

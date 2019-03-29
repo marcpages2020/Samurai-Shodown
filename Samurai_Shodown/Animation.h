@@ -16,9 +16,9 @@ class Animation
 public:
 
 	Frame frames[MAX_FRAMES];
-
-private:
 	float current_frame;
+private:
+	
 	int last_frame = -1;
 
 public:
@@ -40,7 +40,7 @@ public:
 	}
 
 	int SeeCurrentFrame() {
-		return (int)floor(current_frame);
+		return (int)current_frame;
 	}
 };
 
