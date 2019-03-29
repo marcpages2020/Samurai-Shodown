@@ -302,3 +302,9 @@ update_status ModulePlayer::Update()
 	
 	return UPDATE_CONTINUE;
 }
+
+bool ModulePlayer::CleanUp() {
+	LOG("Unloading player");
+	App->textures->Unload(graphics);
+	return true;
+}
