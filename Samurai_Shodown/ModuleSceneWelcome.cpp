@@ -6,10 +6,14 @@
 #include "ModulePlayer.h"
 
 ModuleSceneWelcome::ModuleSceneWelcome()
-{}
+{
+
+}
 
 ModuleSceneWelcome::~ModuleSceneWelcome()
-{}
+{
+
+}
 
 // Load assets
 bool ModuleSceneWelcome::Start()
@@ -17,6 +21,7 @@ bool ModuleSceneWelcome::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("");
+
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	return ret;
