@@ -22,7 +22,6 @@ public:
 
 public:	
 	SDL_Texture* background = nullptr;
-
 	Mix_Music *soundtrack;
 	Mix_Chunk *ippon;
 };

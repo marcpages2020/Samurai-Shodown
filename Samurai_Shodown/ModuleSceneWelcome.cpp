@@ -4,26 +4,22 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleInput.h"
 
 ModuleSceneWelcome::ModuleSceneWelcome()
-{
-
-}
+{}
 
 ModuleSceneWelcome::~ModuleSceneWelcome()
-{
-
-}
+{}
 
 // Load assets
 bool ModuleSceneWelcome::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("");
-
+	graphics = App->textures->Load("Assets/Textures/menu.png");
 	// TODO 1: Enable (and properly disable) the player module
-	App->player->Enable();
 	return ret;
 }
 
@@ -38,10 +34,16 @@ bool ModuleSceneWelcome::CleanUp()
 // Update: draw background
 update_status ModuleSceneWelcome::Update()
 {
+	welcome.x = 0;
+	welcome.y = 0;
+	welcome.w = SCREEN_WIDTH;
+	welcome.h = SCREEN_HEIGHT;
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, 0, 160, &ground);
-
+	App->render->Blit(graphics,NULL, NULL, &welcome);
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
-
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	{
+		App->fade->FadeToBlack((Module*)App->scene_welcome, (Module*)App->scene_haohmaru, 2.5f);
+	}
 	return UPDATE_CONTINUE;
 }

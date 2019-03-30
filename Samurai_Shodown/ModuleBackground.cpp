@@ -19,9 +19,9 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+
 	App->player->Enable();
 	background = App->textures->Load("Assets/Textures/background.png");
-	
 
 	soundtrack = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
 	ippon = App->audio->LoadFX("Assets/Audio/Fx/Ippon.wav");
