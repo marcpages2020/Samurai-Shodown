@@ -9,30 +9,30 @@
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 {
-	background.PushBack({ 0,0,512,333 }, 0.12f); //0
-	background.PushBack({ 512,0,512,333 }, 0.12f);
-	background.PushBack({ 1024,0,512,333 }, 0.12f);
-	background.PushBack({ 1536,0,512,333 }, 0.12f);
-	background.PushBack({ 0,333,512,333 }, 0.12f); //512
-	background.PushBack({ 512,333,512,333 }, 0.12f);
-	background.PushBack({ 1024,333,512,333 }, 0.12f);
-	background.PushBack({ 1536,333,512,333 }, 0.12f);
-	background.PushBack({ 0,666,512,333 }, 0.12f); //1024
-	background.PushBack({ 512,666,512,333 }, 0.12f);
-	background.PushBack({ 1024,666,512,333 }, 0.12f);
-	background.PushBack({ 1536,666,512,333 }, 0.12f);
-	background.PushBack({ 0,999,512,333 }, 0.12f); //1536
-	background.PushBack({ 512,999,512,333 }, 0.12f);
-	background.PushBack({ 1024,999,512,333 }, 0.12f);
-	background.PushBack({ 1536,999,512,333 }, 0.12f);
-	background.PushBack({ 0,1332,512,333 }, 0.12f); //2048
-	background.PushBack({ 512,1332,512,333 }, 0.12f);
-	background.PushBack({ 1024,1332,512,333 }, 0.12f);
-	background.PushBack({ 1536,1332,512,333 }, 0.12f);
-	background.PushBack({ 0,1665,512,333 }, 0.12f); //2560
-	background.PushBack({ 512,1665,512,333 }, 0.12f);
-	background.PushBack({ 1024,1665,512,333 }, 0.12f);
-	background.PushBack({ 1536,1665,512,333 }, 0.12f);
+	background.PushBack({ 0,0,512,333 }, 0.08f); //0
+	background.PushBack({ 512,0,512,333 }, 0.08);
+	background.PushBack({ 1024,0,512,333 }, 0.08f);
+	background.PushBack({ 1536,0,512,333 }, 0.08f);
+	background.PushBack({ 0,333,512,333 }, 0.08f); //512
+	background.PushBack({ 512,333,512,333 }, 0.08f);
+	background.PushBack({ 1024,333,512,333 }, 0.08f);
+	background.PushBack({ 1536,333,512,333 }, 0.08f);
+	background.PushBack({ 0,666,512,333 }, 0.08f); //1024
+	background.PushBack({ 512,666,512,333 }, 0.08f);
+	background.PushBack({ 1024,666,512,333 }, 0.08f);
+	background.PushBack({ 1536,666,512,333 }, 0.08f);
+	background.PushBack({ 0,999,512,333 }, 0.08f); //1536
+	background.PushBack({ 512,999,512,333 }, 0.08f);
+	background.PushBack({ 1024,999,512,333 }, 0.08f);
+	background.PushBack({ 1536,999,512,333 }, 0.08f);
+	background.PushBack({ 0,1332,512,333 }, 0.08f); //2048
+	background.PushBack({ 512,1332,512,333 }, 0.08f);
+	background.PushBack({ 1024,1332,512,333 }, 0.08f);
+	background.PushBack({ 1536,1332,512,333 }, 0.08f);
+	background.PushBack({ 0,1665,512,333 }, 0.08f); //2560
+	background.PushBack({ 512,1665,512,333 }, 0.08f);
+	background.PushBack({ 1024,1665,512,333 }, 0.08f);
+	background.PushBack({ 1536,1665,512,333 }, 0.08f);
 }
 
 ModuleSceneHaohmaru::~ModuleSceneHaohmaru()
