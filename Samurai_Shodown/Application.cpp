@@ -18,10 +18,10 @@ Application::Application()
 	modules[++i] = input = new ModuleInput();
 	modules[++i] = audio = new ModuleAudio();
 	modules[++i] = textures = new ModuleTextures();
-	modules[++i] = player = new ModulePlayer();
 	modules[++i] = background = new ModuleBackground();
 	modules[++i] = scene_welcome = new ModuleSceneWelcome();
 	modules[++i] = scene_haohmaru = new ModuleSceneHaohmaru();
+	modules[++i] = player = new ModulePlayer();
 	modules[++i] = fade = new ModuleFadeToBlack();
 
 }	
@@ -40,7 +40,8 @@ bool Application::Init()
 	player->Disable();
 	// Disable the map that you do not start with
 	App->background->Disable();
-	App->scene_haohmaru->Disable();
+	App->scene_welcome->Disable();
+	//App->scene_haohmaru->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

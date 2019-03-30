@@ -207,57 +207,6 @@ update_status ModulePlayer::PreUpdate()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	/*	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
-		{
-			current_animation = &backward;
-			position.x -= speed;
-			//frames = 0;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_D] == 1)
-		{
-			current_animation = &forward;
-			position.x += speed;
-			//frames = 0;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_W] == 1)
-		{
-			current_animation = &jump;
-			//maxFrames = 10*FPS;
-			//animationAvailable == false; 
-			if(position.y==60){
-				mult = -1; 
-			}
-			else if(position.y==220)
-			{
-				mult = 1;
-			}
-			position.y -= speed * mult;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_J] == 1)
-		{
-			current_animation = &kick;
-			//maxFrames = 9*FPS;
-			//animationAvailable = false;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_U] == 1)
-		{
-			current_animation = &punch;
-			//maxFrames = 18*FPS;
-			//animationAvailable = false;
-		}
-	//}
-	/*else
-	{
-		if (frames<maxFrames)
-		{
-			frames++;
-		}
-		else
-		{
-			animationAvailable = true;
-		}
-	}*/
-	
 	switch (state)
 	{
 	case IDLE:
