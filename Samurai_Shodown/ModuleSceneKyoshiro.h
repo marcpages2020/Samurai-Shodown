@@ -1,5 +1,5 @@
-#ifndef __MODULESCENEHAOHMARU_H__
-#define __MODULESCENEHAOHMARU_H__
+#ifndef _MODULESCENEKYOSHIRO_H
+#define _MODULESCENEKYOSHIRO_H
 
 #include "Module.h"
 #include "Animation.h"
@@ -16,11 +16,11 @@
 
 struct SDL_Texture;
 
-class ModuleSceneHaohmaru : public Module
+class ModuleSceneKyoshiro : public Module
 {
 public:
-	ModuleSceneHaohmaru();
-	~ModuleSceneHaohmaru();
+	ModuleSceneKyoshiro();
+	~ModuleSceneKyoshiro();
 
 	bool Start();
 	update_status Update();
@@ -31,5 +31,5 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 };
+#endif // !_MODULESCENEKYOSHIRO_H
 
-#endif // __MODULESCENEHAOHMARU_H__
