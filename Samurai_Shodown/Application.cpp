@@ -3,7 +3,6 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleBackground.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
@@ -18,7 +17,6 @@ Application::Application()
 	modules[++i] = input = new ModuleInput();
 	modules[++i] = audio = new ModuleAudio();
 	modules[++i] = textures = new ModuleTextures();
-	modules[++i] = background = new ModuleBackground();
 	modules[++i] = scene_welcome = new ModuleSceneWelcome();
 	modules[++i] = scene_haohmaru = new ModuleSceneHaohmaru();
 	modules[++i] = player = new ModulePlayer();
@@ -39,9 +37,8 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	// Disable the map that you do not start with
-	App->background->Disable();
-	App->scene_welcome->Disable();
-	//App->scene_haohmaru->Disable();
+	//App->scene_welcome->Disable();
+	App->scene_haohmaru->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

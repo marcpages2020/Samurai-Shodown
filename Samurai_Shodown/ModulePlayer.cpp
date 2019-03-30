@@ -197,7 +197,7 @@ update_status ModulePlayer::PreUpdate()
 	{
 		if (current_animation==&jump && current_animation->SeeCurrentFrame()== 15)
 		{
-			state == IDLE;
+			state = IDLE;
 		}
 	}
 
