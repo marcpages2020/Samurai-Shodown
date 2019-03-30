@@ -4,14 +4,12 @@
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleBackground::ModuleBackground()
-{
-	
-
-}
+{}
 
 ModuleBackground::~ModuleBackground()
 {}
@@ -21,7 +19,7 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-
+	App->player->Enable();
 	background = App->textures->Load("Assets/Textures/background.png");
 	
 

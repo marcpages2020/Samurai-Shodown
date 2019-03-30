@@ -35,7 +35,6 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	// Disable the map that you do not start with
-	background->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

@@ -28,6 +28,9 @@
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleSceneHaohmaru.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -60,6 +63,9 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneHaohmaru.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
