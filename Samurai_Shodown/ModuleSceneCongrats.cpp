@@ -1,27 +1,21 @@
-#include "Globals.h"
-#include "Application.h"
 #include "ModuleSceneCongrats.h"
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "ModulePlayer.h"
+
 
 ModuleSceneCongrats::ModuleSceneCongrats()
 {
-
 }
 
 ModuleSceneCongrats::~ModuleSceneCongrats()
 {
-
 }
 
 // Load assets
 bool ModuleSceneCongrats::Start()
 {
-	LOG("Loading background assets");
+	LOG("Loading congrats stage assets");
 	bool ret = true;
-	graphics = App->textures->Load("");
-
+	graphics = App->textures->Load("");//add picture
+	music = App->audio->LoadMusic(""); //add music
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	return ret;
@@ -39,7 +33,7 @@ bool ModuleSceneCongrats::CleanUp()
 update_status ModuleSceneCongrats::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, 0, 160, &ground);
+	App->render->Blit(graphics, 0, 160, congrats);
 
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 

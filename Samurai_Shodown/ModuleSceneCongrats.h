@@ -3,7 +3,13 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "ModuleTextures.h"
+#include "ModuleRender.h"
+#include "ModulePlayer.h"
 #include "Globals.h"
+#include "Application.h"
+#include "ModuleAudio.h"
+#include "SDL_mixer/include/SDL_mixer.h"
 
 struct SDL_Texture;
 
@@ -18,13 +24,9 @@ public:
 	bool CleanUp();
 
 public:
-
+	Mix_Music* music;
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect ground;
-	SDL_Rect roof;
-	SDL_Rect foreground;
-	SDL_Rect background;
-	Animation water;
+	SDL_Rect congrats;
 };
 
 #endif // __MODULESCENECONGRATS_H__

@@ -1,11 +1,5 @@
-#include "Globals.h"
-#include "Application.h"
 #include "ModuleSceneWelcome.h"
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "ModulePlayer.h"
-#include "ModuleFadeToBlack.h"
-#include "ModuleInput.h"
+
 
 ModuleSceneWelcome::ModuleSceneWelcome()
 {}
@@ -19,6 +13,7 @@ bool ModuleSceneWelcome::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Textures/menu.png");
+	music = App->audio->LoadMusic(""); //add music
 	// TODO 1: Enable (and properly disable) the player module
 	return ret;
 }
