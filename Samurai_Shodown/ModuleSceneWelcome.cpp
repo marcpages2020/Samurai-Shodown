@@ -13,7 +13,7 @@ bool ModuleSceneWelcome::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Textures/menu.png");
-	music = App->audio->LoadMusic(""); //add music
+	music = App->audio->LoadMusic("Assets/Audio/Music/menu.ogg"); 
 	// TODO 1: Enable (and properly disable) the player module
 	return ret;
 }
@@ -24,6 +24,7 @@ bool ModuleSceneWelcome::CleanUp()
 	LOG("Unloading Welcome stage");
 	App->player->Disable();
 	App->textures->Unload(graphics);
+	//App->audio->CleanUp();
 	return true;
 }
 

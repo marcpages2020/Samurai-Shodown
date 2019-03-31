@@ -15,7 +15,7 @@ bool ModuleSceneCongrats::Start()
 	LOG("Loading congrats stage assets");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Textures/congrats.png"); //change picture
-//	music = App->audio->LoadMusic(""); //add music
+	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); //add music
 	// TODO 1: Enable (and properly disable) the player module
 	return ret;
 }
