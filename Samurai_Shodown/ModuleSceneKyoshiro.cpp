@@ -50,7 +50,7 @@ update_status ModuleSceneKyoshiro::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 	{
-		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_kyoshiro,2.5);
+		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_congrats,2.5);
 	}
 
 	return UPDATE_CONTINUE;
