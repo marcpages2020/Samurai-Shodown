@@ -17,7 +17,6 @@ bool ModuleSceneCongrats::Start()
 	graphics = App->textures->Load("Assets/Textures/congrats.png"); //change picture
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); //add music
 	App->audio->PlayMusic(music);
-	// TODO 1: Enable (and properly disable) the player module
 	return ret;
 }
 
@@ -26,6 +25,9 @@ bool ModuleSceneCongrats::CleanUp()
 {
 	LOG("Unloading Congrats stage");
 	App->player->Disable();
+	App->textures->Unload(graphics);
+	Mix_FadeOutMusic(1250);
+	//App->audio->CleanUp();
 	return true;
 }
 

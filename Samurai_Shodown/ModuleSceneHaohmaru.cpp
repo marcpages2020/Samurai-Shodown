@@ -44,7 +44,6 @@ bool ModuleSceneHaohmaru::Start()
 	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
 	App->audio->PlayMusic(music);
-	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	return ret;
 }
@@ -55,6 +54,8 @@ bool ModuleSceneHaohmaru::CleanUp()
 	LOG("Unloading Haohmaru stage");
 	App->player->Disable();
 	App->textures->Unload(graphics);
+	Mix_FadeOutMusic(1250);
+	//App->audio->CleanUp();
 	return true;
 }
 

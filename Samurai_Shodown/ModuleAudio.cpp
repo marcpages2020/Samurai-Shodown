@@ -67,7 +67,7 @@ Mix_Chunk* ModuleAudio::LoadFX(const char* path) {
 }
 
 bool ModuleAudio::PlayMusic(Mix_Music* song) {
-	if (Mix_PlayMusic(song, -1) == -1)
+	if (Mix_FadeInMusic(song, -1,1250) == -1)
 	{
 		LOG("Mix_PlayMusic: %s\n", Mix_GetError());
 		return false;
@@ -76,7 +76,7 @@ bool ModuleAudio::PlayMusic(Mix_Music* song) {
 }
 
 bool ModuleAudio::PlayFX(Mix_Chunk* fx) {
-	if (Mix_PlayChannel(-1, fx, 0) == -1)
+	if (Mix_FadeInChannel(-1, fx, 0,2000) == -1)
 	{
 		LOG("Mix_PlayChannel: %s\n", Mix_GetError());
 		return false;
@@ -102,8 +102,6 @@ bool ModuleAudio::CleanUp() {
 			fxs[i] = nullptr;
 		}
 	}
-
-
 	Mix_CloseAudio();
 	Mix_Quit();
 	return true;
