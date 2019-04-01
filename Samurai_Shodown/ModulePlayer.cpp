@@ -178,7 +178,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_A)
 			state = BACKWARD;
 		if (player_input.pressing_D)
-			state = FORWARD;
+			state = FORWARD;w
 		if (player_input.pressing_J)
 			state = KICK;
 		if (player_input.pressing_U)
