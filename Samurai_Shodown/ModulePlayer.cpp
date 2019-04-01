@@ -149,11 +149,11 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::PreUpdate()
 {
 
-	player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == 1;
-	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == 1;
-	player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == 1;
-	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == 1;
-	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == 1;
+	player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
+	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+	player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
+	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
+	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 	
 	if (state == IDLE) {
 		if (player_input.pressing_A)

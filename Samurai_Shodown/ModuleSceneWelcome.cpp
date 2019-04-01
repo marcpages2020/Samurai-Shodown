@@ -40,7 +40,7 @@ update_status ModuleSceneWelcome::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics,NULL, NULL, &welcome);
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_welcome, (Module*)App->scene_haohmaru, 2.5f);
 	}
