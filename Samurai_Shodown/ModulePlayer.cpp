@@ -129,6 +129,22 @@ ModulePlayer::ModulePlayer()
 			kick.PushBack({ 158,137,66,95 }, 0.3f);
 			kick.loop = false;
 		}
+
+		//crouch animation
+		{
+			crouch.PushBack({ 15, 732, 68, 110}, 0.2f);
+			crouch.PushBack({ 94, 732, 68, 110}, 0.2f);
+			crouch.PushBack({ 180, 732, 68, 110}, 0.2f);
+			crouch.PushBack({ 253, 766, 88, 76}, 0.2f);
+			crouch.PushBack({ 358, 766, 88, 76}, 0.2f);
+			crouch.PushBack({ 459, 766, 88, 76}, 0.2f);
+			crouch.PushBack({ 558, 766, 88, 76}, 0.2f);
+			crouch.PushBack({ 656, 766, 88, 76}, 0.2f);
+			crouch.PushBack({ 769, 732, 68, 110}, 0.2f);
+			crouch.PushBack({ 846, 732, 68, 110}, 0.2f);
+			crouch.PushBack({ 919, 732, 68, 110}, 0.2f);
+			crouch.loop = false;
+		}
 	}
 
 }
@@ -152,9 +168,11 @@ update_status ModulePlayer::PreUpdate()
 
 	player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
 	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+	player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
 	player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
 	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
 	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+	
 	
 	if (state == IDLE) {
 		if (player_input.pressing_A)
@@ -167,6 +185,8 @@ update_status ModulePlayer::PreUpdate()
 			state = PUNCH;
 		if (player_input.pressing_W)
 			state = JUMP;
+		if (player_input.pressing_S)
+			state = CROUCH;
 	}
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
@@ -195,6 +215,14 @@ update_status ModulePlayer::PreUpdate()
 		{
 			state = IDLE;
 			jump.Reset();
+		}
+	}
+	if (state == CROUCH) 
+	{
+		if (current_animation->Finished())
+		{
+			state = IDLE;
+			crouch.Reset();
 		}
 	}
 
@@ -235,6 +263,8 @@ update_status ModulePlayer::Update()
 		current_animation = &backward;
 		position.x -= speed;
 		break;
+	case CROUCH:
+		current_animation = &crouch;
 	default:
 		LOG("No state found :(");
 		break;
