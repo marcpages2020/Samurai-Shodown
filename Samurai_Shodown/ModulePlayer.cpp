@@ -9,7 +9,7 @@
 ModulePlayer::ModulePlayer()
 {
 
-	position.x = 100;
+	position.x = 70;
 	position.y = initialy;
 
 	//animations
@@ -178,7 +178,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_A)
 			state = BACKWARD;
 		if (player_input.pressing_D)
-			state = FORWARD;w
+			state = FORWARD;
 		if (player_input.pressing_J)
 			state = KICK;
 		if (player_input.pressing_U)
@@ -219,10 +219,6 @@ update_status ModulePlayer::PreUpdate()
 	}
 	if (state == CROUCH) 
 	{
-	//	if ()
-		{
-
-		}
 		if (current_animation->Finished())
 		{
 			state = IDLE;
