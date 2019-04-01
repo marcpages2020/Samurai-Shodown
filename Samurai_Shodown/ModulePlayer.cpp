@@ -16,18 +16,18 @@ ModulePlayer::ModulePlayer()
 	{
 		//idle animation
 		{
-			idle.PushBack({ 16,22,71,109 }, 0.5f);
-			idle.PushBack({ 92,22,72,109 }, 0.5f);
-			idle.PushBack({ 168,22,71,109 }, 0.5f);
-			idle.PushBack({ 245,20,72,111 }, 0.5f);
-			idle.PushBack({ 322,18,72,113 }, 0.5f);
-			idle.PushBack({ 399,19,72,112 }, 0.5f);
-			idle.PushBack({ 476,19,74,112 }, 0.5f);
-			idle.PushBack({ 554,19,74,112 }, 0.5f);
-			idle.PushBack({ 630,19,73,112 }, 0.5f);
-			idle.PushBack({ 245,20,72,111 }, 0.5f);
-			idle.PushBack({ 322,18,72,113 }, 0.5f);
-			idle.PushBack({ 399,19,72,112 }, 0.5f);
+			idle.PushBack({ 16,22,71,109 }, 0.3f);
+			idle.PushBack({ 92,22,72,109 }, 0.3f);
+			idle.PushBack({ 168,22,71,109 }, 0.3f);
+			idle.PushBack({ 245,20,72,111 }, 0.3f);
+			idle.PushBack({ 322,18,72,113 }, 0.3f);
+			idle.PushBack({ 399,19,72,112 }, 0.3f);
+			idle.PushBack({ 476,19,74,112 }, 0.3f);
+			idle.PushBack({ 554,19,74,112 }, 0.3f);
+			idle.PushBack({ 630,19,73,112 }, 0.3f);
+			idle.PushBack({ 245,20,72,111 }, 0.3f);
+			idle.PushBack({ 322,18,72,113 }, 0.3f);
+			idle.PushBack({ 399,19,72,112 }, 0.3f);
 
 		}
 
@@ -242,7 +242,7 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP:
 		current_animation = &jump;
-		if (position.y == 160) {
+		if (position.y <= 120) {
 			mult = -1;
 		}
 		else if (position.y == initialy)
@@ -250,7 +250,7 @@ update_status ModulePlayer::Update()
 			mult = 1;
 			state = IDLE;
 		}
-		position.y -= speed * mult;
+		position.y -= speed*2 * mult;
 		break;
 	case KICK:
 		current_animation = &kick;
@@ -273,8 +273,7 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	
-	
+
 	return UPDATE_CONTINUE;
 }
 

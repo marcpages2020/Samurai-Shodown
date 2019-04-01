@@ -65,8 +65,9 @@ update_status ModuleSceneHaohmaru::Update()
 	SDL_Rect b;
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
+	//b.w = SCREEN_WIDTH*1.5;
+	//b.h = SCREEN_HEIGHT *1.5;
 	App->render->Blit(graphics,-92,-100,&b,0.75f);
-	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_kyoshiro,2.5);

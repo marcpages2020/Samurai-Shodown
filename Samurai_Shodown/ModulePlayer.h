@@ -1,8 +1,6 @@
 #ifndef __ModulePlayer_H__
 #define __ModulePlayer_H__
 
-#define FPS 60
-
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
@@ -60,7 +58,7 @@ public:
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
-	float speed = 1;
+	float speed = 2;
 
 };
 

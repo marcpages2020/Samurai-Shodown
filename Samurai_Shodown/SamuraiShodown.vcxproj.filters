@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Globals.cpp" />
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -25,28 +22,32 @@
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneHaohmaru.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneWelcome.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneCongrats.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneKyoshiro.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneCongrats.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneHaohmaru.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneKyoshiro.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneWelcome.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Globals.h" />
-    <ClInclude Include="MemLeaks.h" />
-    <ClInclude Include="p2Point.h" />
     <ClInclude Include="ModuleWindow.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -71,25 +72,46 @@
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneHaohmaru.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneWelcome.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneCongrats.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneKyoshiro.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeaks.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneWelcome.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneCongrats.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneHaohmaru.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneKyoshiro.h">
+      <Filter>Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">
       <UniqueIdentifier>{d44e6e9d-93d1-462e-83ed-d6bf905e97cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{46ed48df-fe2d-45d6-970a-c163ac4b78c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Scenes">
+      <UniqueIdentifier>{008970d4-2720-489b-9b4a-79db479b41a6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
