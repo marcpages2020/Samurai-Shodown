@@ -43,8 +43,8 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	// Disable the map that you do not start with
-	//scene_welcome->Disable();
-	scene_haohmaru->Disable();
+	scene_welcome->Disable();
+	//scene_haohmaru->Disable();
 	scene_kyoshiro->Disable();
 	scene_congrats->Disable();
 
