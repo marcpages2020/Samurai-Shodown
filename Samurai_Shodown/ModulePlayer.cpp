@@ -106,9 +106,10 @@ ModulePlayer::ModulePlayer()
 		punch.PushBack({ 1081, 280, 130, 95 }, 0.2f);
 		punch.PushBack({ 1213, 280, 120, 95 }, 0.2f);
 		punch.PushBack({ 1337, 280, 120, 95 }, 0.2f);
-		punch.PushBack({ 1461, 280, 83, 95 }, 0.2f);
-		punch.PushBack({ 1548, 280, 83, 95 }, 0.2f);
-		punch.PushBack({ 1635, 280, 83, 95 }, 0.2f); //16
+		punch.PushBack({ 1461, 280, 83, 95 }, 0.4f);
+		punch.PushBack({ 1548, 280, 83, 95 }, 0.4f);
+		punch.PushBack({ 1635, 280, 83, 95 }, 0.4f); //16
+		punch.loop = false;
 
 	}
 
@@ -120,9 +121,10 @@ ModulePlayer::ModulePlayer()
 		kick.PushBack({ 229,134,86,98 }, 0.3f); //final kick frames
 		kick.PushBack({ 320,134,86,98 }, 0.1f);
 		kick.PushBack({ 411,134,86,98 }, 0.1f);
-		kick.PushBack({ 16,137,66,95 }, 0.1f); //initial kick frames
-		kick.PushBack({ 87,137,66,95 }, 0.1f);
-		kick.PushBack({ 158,137,66,95 }, 0.1f);
+		kick.PushBack({ 16,137,66,95 }, 0.3f); //initial kick frames
+		kick.PushBack({ 87,137,66,95 }, 0.3f);
+		kick.PushBack({ 158,137,66,95 }, 0.3f);
+		kick.loop = false;
 	}
 }
 
@@ -174,28 +176,21 @@ update_status ModulePlayer::PreUpdate()
 			state = IDLE;
 	}
 	if (state == KICK) {
-		int x = (int)current_animation->SeeCurrentFrame();
-		if (current_animation == &kick && current_animation->SeeCurrentFrame() == 7) {
+		if (current_animation->Finished()) {
 			state = IDLE;
+			kick.Reset();
 		}
 	}
 	if (state == PUNCH) {
-		if ((current_animation->SeeCurrentFrame()>=7) && (current_animation->SeeCurrentFrame() <= 14))
-		{
-			position.y = 232;
-		}
-		else
-		{
-			position.y = 220;
-		}
-		if (current_animation == &punch && current_animation->SeeCurrentFrame() == 14) {
+
+		if (current_animation->Finished()) {
 			state = IDLE;
-			punch.current_frame = 0;
+			punch.Reset();
 		}
 	}
 	if (state == JUMP)
 	{
-		if (current_animation==&jump && current_animation->SeeCurrentFrame()== 15)
+		if (current_animation==&jump && current_animation->Finished())
 		{
 			state = IDLE;
 		}
