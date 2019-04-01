@@ -8,8 +8,9 @@
 
 ModulePlayer::ModulePlayer()
 {
+
 	position.x = 100;
-	position.y = 215;
+	position.y = initialy;
 
 	//animations
 	{
@@ -193,6 +194,7 @@ update_status ModulePlayer::PreUpdate()
 		if (current_animation==&jump && current_animation->Finished())
 		{
 			state = IDLE;
+			jump.Reset();
 		}
 	}
 
@@ -215,13 +217,12 @@ update_status ModulePlayer::Update()
 		if (position.y == 160) {
 			mult = -1;
 		}
-		else if (position.y == 215)
+		else if (position.y == initialy)
 		{
 			mult = 1;
 			state = IDLE;
 		}
-		position.y -= 2*speed * mult;
-		
+		position.y -= speed * mult;
 		break;
 	case KICK:
 		current_animation = &kick;

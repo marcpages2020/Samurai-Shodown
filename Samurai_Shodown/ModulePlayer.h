@@ -53,11 +53,11 @@ public:
 
 	bool animationAvailable = true;
 	int mult = 1;
-
+	int initialy = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
-	int speed = 1;
+	float speed = 1;
 
 };
 
