@@ -9,6 +9,7 @@
 #include "ModuleSceneWelcome.h"
 #include "ModuleSceneHaohmaru.h"
 #include "ModuleSceneKyoshiro.h"
+#include "ModuleParticles.h"
 #include "ModuleSceneCongrats.h"
 
 Application::Application()
@@ -24,6 +25,7 @@ Application::Application()
 	modules[++i] = scene_kyoshiro = new ModuleSceneKyoshiro();
 	modules[++i] = scene_congrats = new ModuleSceneCongrats();
 	modules[++i] = player = new ModulePlayer();
+	modules[++i] = particles = new ModuleParticles();
 	modules[++i] = fade = new ModuleFadeToBlack();
 
 }	
