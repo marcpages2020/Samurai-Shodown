@@ -14,11 +14,11 @@ struct Frame {
 class Animation
 {
 public:
-
+	bool loop = true;
 	Frame frames[MAX_FRAMES];
 	float current_frame;
 private:
-	
+	int loops;
 	int last_frame = -1;
 
 public:
@@ -33,12 +33,23 @@ public:
 	SDL_Rect& GetCurrentFrame()
 	{
 		current_frame += frames[(int)current_frame].speed;
-		if(current_frame >= last_frame)
-			current_frame = 0;
+		if (current_frame >= last_frame) {
+			current_frame = (loop) ? 0.0f : last_frame - 1;
+			loops++;
+		}
+
 
 		return frames[(int)current_frame].rect;
 	}
+	bool Finished() const
+	{
+		return loops > 0;
+	}
 
+	void Reset()
+	{
+		current_frame = 0;
+	}
 	int SeeCurrentFrame() {
 		return (int)current_frame;
 	}
