@@ -77,8 +77,8 @@ ModulePlayer::ModulePlayer()
 		//jump animation
 		{
 			jump.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
-			jump.PushBack({ 80, 371, 60, 112 }, 0.2f);
-			jump.PushBack({ 145, 371, 60, 112 }, 0.2f);
+			jump.PushBack({ 80, 371, 60, 112 }, 0.2f); //2
+			jump.PushBack({ 145, 371, 60, 112 }, 0.2f); //3
 			jump.PushBack({ 209, 371, 75, 92 }, 0.2f);
 			jump.PushBack({ 288, 371, 75, 92 }, 0.2f);
 			jump.PushBack({ 367, 371, 75, 92 }, 0.2f);
