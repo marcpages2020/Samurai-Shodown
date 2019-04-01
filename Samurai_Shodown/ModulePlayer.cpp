@@ -219,6 +219,10 @@ update_status ModulePlayer::PreUpdate()
 	}
 	if (state == CROUCH) 
 	{
+	//	if ()
+		{
+
+		}
 		if (current_animation->Finished())
 		{
 			state = IDLE;
