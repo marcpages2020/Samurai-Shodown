@@ -214,7 +214,7 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP:
 		current_animation = &jump;
-		if (position.y <= 160) {
+		if (position.y <= 120) {
 			mult = -1;
 		}
 		else if (position.y == initialy)
@@ -222,7 +222,7 @@ update_status ModulePlayer::Update()
 			mult = 1;
 			state = IDLE;
 		}
-		position.y -= speed/1.5 * mult;
+		position.y -= speed*2 * mult;
 		break;
 	case KICK:
 		current_animation = &kick;
@@ -243,8 +243,7 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	
-	
+
 	return UPDATE_CONTINUE;
 }
 
