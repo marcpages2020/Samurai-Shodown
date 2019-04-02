@@ -10,7 +10,7 @@ ModulePlayer::ModulePlayer()
 {
 
 	position.x = 70;
-	position.y = initialy;
+	position.y = initial_y;
 
 	//animations
 	{
@@ -145,6 +145,7 @@ ModulePlayer::ModulePlayer()
 			crouch.PushBack({ 919, 732, 68, 110}, 0.2f);
 			crouch.loop = false;
 		}
+		//tornado animation
 	}
 
 }
@@ -187,6 +188,7 @@ update_status ModulePlayer::PreUpdate()
 			state = JUMP;
 		if (player_input.pressing_S)
 			state = CROUCH;
+		position.y = initial_y;
 	}
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
@@ -203,10 +205,11 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 	if (state == PUNCH) {
-		if ((&punch.GetCurrentFrame ==2))
+		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 15))
 		{
-
+			position.y = initial_y+11.5;
 		}
+		else { position.y = initial_y; }
 		if (current_animation->Finished()) {
 			state = IDLE;
 			punch.Reset();
@@ -245,15 +248,16 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP:
 		current_animation = &jump;
+		position.y -= speed * 2 * mult;
 		if (position.y <= 120) {
 			mult = -1;
 		}
-		else if (position.y == initialy)
+		else if (position.y == initial_y)
 		{
 			mult = 1;
 			state = IDLE;
 		}
-		position.y -= speed*2 * mult;
+
 		break;
 	case KICK:
 		current_animation = &kick;

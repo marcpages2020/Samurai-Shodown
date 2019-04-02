@@ -54,7 +54,7 @@ public:
 
 	bool animationAvailable = true;
 	int mult = 1;
-	int initialy = 215;
+	int initial_y = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
