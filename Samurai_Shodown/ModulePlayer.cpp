@@ -109,9 +109,11 @@ ModulePlayer::ModulePlayer()
 			punch.PushBack({ 1081, 280, 130, 95 }, 0.5f);
 			punch.PushBack({ 1213, 280, 120, 95 }, 0.5f);
 			punch.PushBack({ 1337, 280, 120, 95 }, 0.5f);
-			punch.PushBack({ 1461, 280, 83, 95 }, 0.7f);
-			punch.PushBack({ 1548, 280, 83, 95 }, 0.7f);
-			punch.PushBack({ 1635, 280, 83, 95 }, 0.7f); //16
+			punch.PushBack({ 1461, 280, 83, 95 }, 0.5f);
+			punch.PushBack({ 1548, 280, 83, 95 }, 0.5f);
+			punch.PushBack({ 1635, 280, 83, 95 }, 0.5f); //16
+			punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
+			punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
 			punch.loop = false;
 
 		}
@@ -177,7 +179,7 @@ ModulePlayer::ModulePlayer()
 			twister.PushBack({ 512, 923, 84, 93}, 0.4f);
 			twister.PushBack({ 599, 896, 72, 120}, 0.4f);
 			twister.PushBack({ 673, 896, 72, 120}, 0.4f);
-			twister.PushBack({ 748, 896, 72, 120}, 0.4f);
+			twister.PushBack({ 748, 896, 72, 120}, 0.4);
 			twister.loop = false;
 		}
 
@@ -288,7 +290,7 @@ update_status ModulePlayer::Update()
 		break;
 	case PUNCH:
 		current_animation = &punch;
-		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 15))
+		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 17))
 		{
 			position.y = initial_y + 11.5;
 		}
