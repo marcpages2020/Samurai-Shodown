@@ -244,11 +244,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 	if (state == PUNCH) {
-		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 15))
-		{
-			position.y = initial_y+11.5;
-		}
-		else { position.y = initial_y; }
+
 		if (current_animation->Finished()) {
 			state = IDLE;
 			punch.Reset();
@@ -278,7 +274,6 @@ update_status ModulePlayer::PreUpdate()
 			twister.Reset();
 		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
@@ -289,9 +284,15 @@ update_status ModulePlayer::Update()
 	{
 	case IDLE:
 		current_animation = &idle;
+		position.y = initial_y;
 		break;
 	case PUNCH:
 		current_animation = &punch;
+		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 15))
+		{
+			position.y = initial_y + 11.5;
+		}
+		else { position.y = initial_y; }
 		break;
 	case JUMP:
 		current_animation = &jump;
@@ -304,7 +305,6 @@ update_status ModulePlayer::Update()
 			mult = 1;
 			state = IDLE;
 		}
-
 		break;
 	case KICK:
 		current_animation = &kick;
