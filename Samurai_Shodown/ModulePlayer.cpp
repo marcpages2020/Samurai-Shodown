@@ -148,36 +148,36 @@ ModulePlayer::ModulePlayer()
 
 		//twister animation
 		{
-			twister.PushBack({ 15, 798, 90, 90}, 0.2f);
-			twister.PushBack({ 106, 798, 90, 90}, 0.2f);
-			twister.PushBack({ 197, 798, 90, 90}, 0.2f);
-			twister.PushBack({ 289, 798, 71, 90}, 0.2f);
-			twister.PushBack({ 362, 798, 71, 90}, 0.2f);
-			twister.PushBack({ 435, 803, 74, 86}, 0.2f);
-			twister.PushBack({ 511, 803, 74, 86}, 0.2f);
-			twister.PushBack({ 586, 795, 59, 94}, 0.2f);
-			twister.PushBack({ 646, 795, 59, 94}, 0.2f);
-			twister.PushBack({ 709, 788, 93, 101}, 0.2f);
-			twister.PushBack({ 809, 788, 93, 101}, 0.2f);
-			twister.PushBack({ 909, 788, 93, 101}, 0.2f);
-			twister.PushBack({ 1006, 734, 62, 155}, 0.2f);
-			twister.PushBack({ 1071, 734, 62, 155}, 0.2f);
-			twister.PushBack({ 1138, 734, 62, 155}, 0.2f);
-			twister.PushBack({ 1203, 787, 100, 102}, 0.2f);
-			twister.PushBack({ 1313, 787, 100, 102}, 0.2f);
-			twister.PushBack({ 1429, 787, 100, 102}, 0.2f);
-			twister.PushBack({ 1543, 795, 98, 94}, 0.2f);
-			twister.PushBack({ 1646, 795, 98, 94}, 0.2f);
-			twister.PushBack({ 1749, 795, 98, 94}, 0.2f);
-			twister.PushBack({ 15, 923, 104, 93}, 0.2f);
-			twister.PushBack({ 121, 923, 104, 93}, 0.2f);
-			twister.PushBack({ 228, 923, 104, 93}, 0.2f);
-			twister.PushBack({ 337, 923, 84, 93}, 0.2f);
-			twister.PushBack({ 425, 923, 84, 93}, 0.2f);
-			twister.PushBack({ 512, 923, 84, 93}, 0.2f);
-			twister.PushBack({ 599, 896, 72, 120}, 0.2f);
-			twister.PushBack({ 673, 896, 72, 120}, 0.2f);
-			twister.PushBack({ 748, 896, 72, 120}, 0.2f);
+			twister.PushBack({ 15, 798, 90, 90}, 0.4f);
+			twister.PushBack({ 106, 798, 90, 90}, 0.4f);
+			twister.PushBack({ 197, 798, 90, 90}, 0.4f);
+			twister.PushBack({ 289, 798, 71, 90}, 0.4f);
+			twister.PushBack({ 362, 798, 71, 90}, 0.4f);
+			twister.PushBack({ 435, 803, 74, 86}, 0.4f);
+			twister.PushBack({ 511, 803, 74, 86}, 0.4f);
+			twister.PushBack({ 586, 795, 59, 94}, 0.4f);
+			twister.PushBack({ 646, 795, 59, 94}, 0.4f);
+			twister.PushBack({ 709, 788, 93, 101}, 0.4f);
+			twister.PushBack({ 809, 788, 93, 101}, 0.4f);
+			twister.PushBack({ 909, 788, 93, 101}, 0.4f);
+			twister.PushBack({ 1006, 734, 62, 155}, 0.4f);
+			twister.PushBack({ 1071, 734, 62, 155}, 0.4f);
+			twister.PushBack({ 1138, 734, 62, 155}, 0.4f);
+			twister.PushBack({ 1203, 787, 100, 102}, 0.4f);
+			twister.PushBack({ 1313, 787, 100, 102}, 0.4f);
+			twister.PushBack({ 1429, 787, 100, 102}, 0.4f);
+			twister.PushBack({ 1543, 795, 98, 94}, 0.4f);
+			twister.PushBack({ 1646, 795, 98, 94}, 0.4f);
+			twister.PushBack({ 1749, 795, 98, 94}, 0.4f);
+			twister.PushBack({ 15, 923, 104, 93}, 0.4f);
+			twister.PushBack({ 121, 923, 104, 93}, 0.4f);
+			twister.PushBack({ 228, 923, 104, 93}, 0.4f);
+			twister.PushBack({ 337, 923, 84, 93}, 0.4f);
+			twister.PushBack({ 425, 923, 84, 93}, 0.4f);
+			twister.PushBack({ 512, 923, 84, 93}, 0.4f);
+			twister.PushBack({ 599, 896, 72, 120}, 0.4f);
+			twister.PushBack({ 673, 896, 72, 120}, 0.4f);
+			twister.PushBack({ 748, 896, 72, 120}, 0.4f);
 			twister.loop = false;
 		}
 
