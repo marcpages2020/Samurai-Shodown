@@ -66,8 +66,12 @@ Mix_Chunk* ModuleAudio::LoadFX(const char* path) {
 	return fx;
 }
 
-bool ModuleAudio::PlayMusic(Mix_Music* song) {
-	if (Mix_FadeInMusic(song, -1,1250) == -1)
+bool ModuleAudio::PlayMusic(Mix_Music* song,int times) {
+	if (times==NULL)
+	{
+		times = -1;
+	}
+	if (Mix_FadeInMusic(song, times,1250) == -1)
 	{
 		LOG("Mix_PlayMusic: %s\n", Mix_GetError());
 		return false;

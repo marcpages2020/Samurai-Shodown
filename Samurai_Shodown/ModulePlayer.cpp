@@ -96,37 +96,37 @@ ModulePlayer::ModulePlayer()
 
 		//punch animation
 		{
-			punch.PushBack({ 14, 236, 69, 127 }, 0.2f);
-			punch.PushBack({ 87, 236, 69, 127 }, 0.1f);
-			punch.PushBack({ 160, 266, 79, 97 }, 0.1f);
-			punch.PushBack({ 243, 269, 79, 96 }, 0.2f);
-			punch.PushBack({ 327, 267, 79, 97 }, 0.2f);
-			punch.PushBack({ 410, 270, 129, 93 }, 0.2f);
-			punch.PushBack({ 545, 277, 130, 86 }, 0.2f);
-			punch.PushBack({ 679, 280, 130, 83 }, 0.2f);
-			punch.PushBack({ 814, 280, 129, 95 }, 0.2f); //9
-			punch.PushBack({ 946, 280, 130, 95 }, 0.2f);
-			punch.PushBack({ 1081, 280, 130, 95 }, 0.2f);
-			punch.PushBack({ 1213, 280, 120, 95 }, 0.2f);
-			punch.PushBack({ 1337, 280, 120, 95 }, 0.2f);
-			punch.PushBack({ 1461, 280, 83, 95 }, 0.4f);
-			punch.PushBack({ 1548, 280, 83, 95 }, 0.4f);
-			punch.PushBack({ 1635, 280, 83, 95 }, 0.4f); //16
+			punch.PushBack({ 14, 236, 69, 127 }, 0.5f);
+			punch.PushBack({ 87, 236, 69, 127 }, 0.3f);
+			punch.PushBack({ 160, 266, 79, 97 }, 0.3f);
+			punch.PushBack({ 243, 269, 79, 96 }, 0.5f);
+			punch.PushBack({ 327, 267, 79, 97 }, 0.5f);
+			punch.PushBack({ 410, 270, 129, 93 }, 0.5f);
+			punch.PushBack({ 545, 277, 130, 86 }, 0.5f);
+			punch.PushBack({ 679, 280, 130, 83 }, 0.5f);
+			punch.PushBack({ 814, 280, 129, 95 }, 0.5f); //9
+			punch.PushBack({ 946, 280, 130, 95 }, 0.5f);
+			punch.PushBack({ 1081, 280, 130, 95 }, 0.5f);
+			punch.PushBack({ 1213, 280, 120, 95 }, 0.5f);
+			punch.PushBack({ 1337, 280, 120, 95 }, 0.5f);
+			punch.PushBack({ 1461, 280, 83, 95 }, 0.7f);
+			punch.PushBack({ 1548, 280, 83, 95 }, 0.7f);
+			punch.PushBack({ 1635, 280, 83, 95 }, 0.7f); //16
 			punch.loop = false;
 
 		}
 
 		//kick animation
 		{
-			kick.PushBack({ 16,137,66,95 }, 0.3f); //initial kick frames
-			kick.PushBack({ 87,137,66,95 }, 0.3f);
-			kick.PushBack({ 158,137,66,95 }, 0.3f);
-			kick.PushBack({ 229,134,86,98 }, 0.3f); //final kick frames
-			kick.PushBack({ 320,134,86,98 }, 0.1f);
-			kick.PushBack({ 411,134,86,98 }, 0.1f);
-			kick.PushBack({ 16,137,66,95 }, 0.3f); //initial kick frames
-			kick.PushBack({ 87,137,66,95 }, 0.3f);
-			kick.PushBack({ 158,137,66,95 }, 0.3f);
+			kick.PushBack({ 16,137,66,95 }, 0.8f); //initial kick frames
+			kick.PushBack({ 87,137,66,95 }, 0.8f);
+			kick.PushBack({ 158,137,66,95 }, 0.8f);
+			kick.PushBack({ 229,134,86,98 }, 0.6f); //final kick frames
+			kick.PushBack({ 320,134,86,98 }, 0.6f);
+			kick.PushBack({ 411,134,86,98 }, 0.6f);
+			kick.PushBack({ 16,137,66,95 }, 0.7f); //initial kick frames
+			kick.PushBack({ 87,137,66,95 }, 0.7f);
+			kick.PushBack({ 158,137,66,95 }, 0.7f);
 			kick.loop = false;
 		}
 
@@ -203,7 +203,10 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 	if (state == PUNCH) {
+		if ((&punch.GetCurrentFrame ==2))
+		{
 
+		}
 		if (current_animation->Finished()) {
 			state = IDLE;
 			punch.Reset();

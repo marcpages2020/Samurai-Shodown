@@ -43,7 +43,7 @@ bool ModuleSceneHaohmaru::Start()
 
 	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
-	App->audio->PlayMusic(music);
+	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	return ret;
 }

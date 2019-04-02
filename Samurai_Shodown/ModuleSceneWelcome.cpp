@@ -14,7 +14,7 @@ bool ModuleSceneWelcome::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Textures/menu.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/menu.ogg"); 
-	App->audio->PlayMusic(music);
+	App->audio->PlayMusic(music,NULL);
 	// TODO 1: Enable (and properly disable) the player module
 	return ret;
 }

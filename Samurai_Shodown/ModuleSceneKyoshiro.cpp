@@ -25,7 +25,7 @@ bool ModuleSceneKyoshiro::Start()
 
 	graphics = App->textures->Load("Assets/Textures/KyoshiroScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Kyoshiro.ogg");
-	App->audio->PlayMusic(music);
+	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	return ret;
 }
