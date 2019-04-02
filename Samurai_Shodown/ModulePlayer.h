@@ -16,6 +16,7 @@ enum States {
 	FORWARD,
 	BACKWARD,
 	CROUCH,	
+	TWISTER,
 };
 
 struct PlayerInput {
@@ -26,6 +27,7 @@ struct PlayerInput {
 	bool pressing_J;
 	bool pressing_W;
 	bool pressing_S;
+	bool pressing_K;
 };
 
 class ModulePlayer : public Module
@@ -50,6 +52,7 @@ public:
 	Animation kick;
 	Animation jump;
 	Animation crouch;
+	Animation twister;
 	iPoint position;
 
 	bool animationAvailable = true;
