@@ -152,7 +152,7 @@ bool ModuleNeoGeo::CleanUp()
 	LOG("Unloading space scene");
 
 	App->textures->Unload(intro);
-
+	App->audio->UnLoadMusic(music);
 	change = false;
 	Neogeo.Reset();
 	SNK.Reset();

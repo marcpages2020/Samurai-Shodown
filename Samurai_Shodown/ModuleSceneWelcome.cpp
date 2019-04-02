@@ -25,6 +25,7 @@ bool ModuleSceneWelcome::CleanUp()
 	LOG("Unloading Welcome stage");
 	App->player->Disable();
 	App->textures->Unload(graphics);
+	App->audio->UnLoadMusic(music);
 	Mix_FadeOutMusic(1250);
 	//App->audio->CleanUp();
 	return true;

@@ -84,6 +84,32 @@ bool ModuleAudio::PlayFX(Mix_Chunk* fx) {
 	return true;
 }
 
+bool ModuleAudio::UnLoadMusic(Mix_Music * mus)
+{
+	for (int i = 0; i < MAX_SONGS; ++i) {
+		if (songs[i] == mus) {
+			Mix_FreeMusic(mus);
+			songs[i] = nullptr;
+			mus = nullptr;
+			break;
+		}
+	}
+	return true;
+}
+
+bool ModuleAudio::UnLoadFx(Mix_Chunk * chunk)
+{
+	for (int i = 0; i < MAX_FX; ++i) {
+		if (fxs[i] == chunk) {
+			Mix_FreeChunk(chunk);
+			fxs[i] = nullptr;
+			chunk = nullptr;
+			break;
+		}
+	}
+	return true;
+}
+
 bool ModuleAudio::CleanUp() {
 	
 	LOG("Freeing music");

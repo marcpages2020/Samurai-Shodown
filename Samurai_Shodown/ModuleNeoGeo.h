@@ -12,11 +12,7 @@ class ModuleNeoGeo : public Module
 public:
 	ModuleNeoGeo();
 	~ModuleNeoGeo();
-	Animation* anim = nullptr;
-	Animation* anim2 = nullptr;
-	Animation* anim3 = nullptr;
-	Animation* anim4 = nullptr;
-	Animation* anim5 = nullptr;
+
 	bool Start();
 	update_status Update();
 	bool CleanUp();
@@ -24,6 +20,13 @@ public:
 public:
 
 	SDL_Texture * intro = nullptr;
+
+	Animation* anim = nullptr;
+	Animation* anim2 = nullptr;
+	Animation* anim3 = nullptr;
+	Animation* anim4 = nullptr;
+	Animation* anim5 = nullptr;
+
 	Animation Neogeo;
 	Animation SNK;
 	Animation Letters;

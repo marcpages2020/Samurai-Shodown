@@ -55,6 +55,7 @@ bool ModuleSceneHaohmaru::CleanUp()
 	App->player->Disable();
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
+	App->audio->UnLoadMusic(music);
 	//App->audio->CleanUp();
 	return true;
 }
