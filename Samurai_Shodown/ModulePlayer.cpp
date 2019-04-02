@@ -178,7 +178,7 @@ ModulePlayer::ModulePlayer()
 			twister.PushBack({ 599, 896, 72, 120}, 0.2f);
 			twister.PushBack({ 673, 896, 72, 120}, 0.2f);
 			twister.PushBack({ 748, 896, 72, 120}, 0.2f);
-			crouch.loop = false;
+			twister.loop = false;
 		}
 
 
