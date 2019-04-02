@@ -3,7 +3,7 @@
 
 #include "SDL/include/SDL_rect.h"
 #include <math.h>
-#define MAX_FRAMES 25
+#define MAX_FRAMES 50
 
 struct Frame {
 

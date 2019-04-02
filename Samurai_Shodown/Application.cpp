@@ -11,6 +11,7 @@
 #include "ModuleSceneKyoshiro.h"
 #include "ModuleParticles.h"
 #include "ModuleSceneCongrats.h"
+#include "ModuleNeoGeo.h"
 
 Application::Application()
 {
@@ -21,6 +22,7 @@ Application::Application()
 	modules[++i] = audio = new ModuleAudio();
 	modules[++i] = textures = new ModuleTextures();
 	modules[++i] = scene_welcome = new ModuleSceneWelcome();
+	modules[++i] = neo_geo = new ModuleNeoGeo();
 	modules[++i] = scene_haohmaru = new ModuleSceneHaohmaru();
 	modules[++i] = scene_kyoshiro = new ModuleSceneKyoshiro();
 	modules[++i] = scene_congrats = new ModuleSceneCongrats();
@@ -44,7 +46,7 @@ bool Application::Init()
 	player->Disable();
 	// Disable the map that you do not start with
 	scene_welcome->Disable();
-	//scene_haohmaru->Disable();
+	scene_haohmaru->Disable();
 	scene_kyoshiro->Disable();
 	scene_congrats->Disable();
 

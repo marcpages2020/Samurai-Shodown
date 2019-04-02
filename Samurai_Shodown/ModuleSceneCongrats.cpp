@@ -47,7 +47,7 @@ update_status ModuleSceneCongrats::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->scene_welcome, 2.5);
+		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);
 	}
 
 	return UPDATE_CONTINUE;
