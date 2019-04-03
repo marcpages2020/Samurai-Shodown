@@ -20,11 +20,16 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("rtype/particles.png");
+	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	//tornado particle
+	{
+		tornado.anim.PushBack({ 1917,1023,44,209 });
+		tornado.anim.PushBack({1977,1023,44,209});
+		tornado.anim.loop = false;
+		
 
+	}
 	
-
-
 	return true;
 }
 
@@ -81,7 +86,6 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->born = SDL_GetTicks() + delay;
 	p->position.x = x;
 	p->position.y = y;
-
 	active[last_particle++] = p;
 }
 
@@ -103,17 +107,16 @@ bool Particle::Update()
 {
 	bool ret = true;
 
-	if(life > 0)
+	if (life > 0)
 	{
-		if((SDL_GetTicks() - born) > life)
+		if ((SDL_GetTicks() - born) > life)
 			ret = false;
 	}
 	else
-		if(anim.Finished())
+		if (anim.Finished())
 			ret = false;
 
 	position.x += speed.x;
 	position.y += speed.y;
-
 	return ret;
 }

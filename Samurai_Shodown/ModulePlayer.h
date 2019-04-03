@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "ModuleParticles.h"
 
 struct SDL_Texture;
 
@@ -55,12 +56,14 @@ public:
 	Animation twister;
 	iPoint position;
 
+
 	bool animationAvailable = true;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
+	Particle tornado;
 	float speed = 2;
 
 };

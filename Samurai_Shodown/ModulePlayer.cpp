@@ -11,6 +11,7 @@ ModulePlayer::ModulePlayer()
 
 	position.x = 70;
 	position.y = initial_y;
+	tornado.speed.x = 1;
 
 	//animations
 	{
@@ -183,7 +184,6 @@ ModulePlayer::ModulePlayer()
 			twister.loop = false;
 		}
 
-
 	}
 
 }
@@ -227,8 +227,10 @@ update_status ModulePlayer::PreUpdate()
 			state = JUMP;
 		if (player_input.pressing_S)
 			state = CROUCH;
-		if (player_input.pressing_K)
+		if (player_input.pressing_K) {
 			state = TWISTER;
+			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 209);
+		}
 	
 	}
 	if (state == BACKWARD) {
@@ -323,6 +325,8 @@ update_status ModulePlayer::Update()
 		current_animation = &crouch;
 		break;
 	case TWISTER:
+		tornado.position.x += tornado.speed.x;
+		tornado.Update();
 		current_animation = &twister;
 		break;
 	default:
