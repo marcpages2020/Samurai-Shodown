@@ -180,38 +180,7 @@ ModulePlayer::ModulePlayer()
 			twister.loop = false;
 
 			//Twister animation (only the twister)
-			twisterAlone.PushBack({ 15,1216,20,17 });
-			twisterAlone.PushBack({ 40,1215,22,18 });
-			twisterAlone.PushBack({ 67,1197,29,33 });
-			twisterAlone.PushBack({ 102,1199,42,31 });
-			twisterAlone.PushBack({ 150,1181,29,49 });
-			twisterAlone.PushBack({ 183,1183,42,47 });
-			twisterAlone.PushBack({ 234,1141,74,89 });
-			twisterAlone.PushBack({ 313,1141,74,89 });
-			twisterAlone.PushBack({ 392,1142,81,88 });
-			twisterAlone.PushBack({ 480,1143,80,87 });
-			twisterAlone.PushBack({ 575,1148,82,82 });
-			twisterAlone.PushBack({ 662,1150,81,80 });
-			twisterAlone.PushBack({ 749,1154,83,76 });
-			twisterAlone.PushBack({ 837,1152,83,75 });
-			twisterAlone.PushBack({ 925,1161,82,69 });
-			twisterAlone.PushBack({ 1012,1163,78,67 });
-			twisterAlone.PushBack({ 1096,1162,75,67 });
-			twisterAlone.PushBack({ 1178,1154,72,76 });
-			twisterAlone.PushBack({ 1255,1153,66,76 });
-			twisterAlone.PushBack({ 1332,1148,51,82 });
-			twisterAlone.PushBack({ 1388,1147,51,82 });
-			twisterAlone.PushBack({ 1444,1142,40,87 });
-			twisterAlone.PushBack({ 1492,1146,43,86 });
-			twisterAlone.PushBack({ 1540,1142,61,89 });
-			twisterAlone.PushBack({ 1606,1093,45,138 });
-			twisterAlone.PushBack({ 1656,1093,45,138 });
-			twisterAlone.PushBack({ 1704,1031,44,202 });
-			twisterAlone.PushBack({ 1757,1025,44,202 });
-			twisterAlone.PushBack({ 1805,1024,56,207 });
-			twisterAlone.PushBack({ 1866,1025,44,208 });
-			twisterAlone.PushBack({ 1917,1024,56,206 });
-			twisterAlone.PushBack({ 1978,1026,44,207 });
+			
 
 			twisterAlone.loop = false;
 		}
