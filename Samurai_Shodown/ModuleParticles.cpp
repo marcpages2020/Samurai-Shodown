@@ -25,6 +25,8 @@ bool ModuleParticles::Start()
 	{
 		tornado.anim.PushBack({ 1917,1023,44,209 });
 		tornado.anim.PushBack({1977,1023,44,209});
+		tornado.life = 5000;
+		tornado.speed = { 2,0 };
 		tornado.anim.loop = false;
 		
 

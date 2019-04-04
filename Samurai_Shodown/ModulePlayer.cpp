@@ -110,11 +110,11 @@ ModulePlayer::ModulePlayer()
 			punch.PushBack({ 1081, 280, 130, 95 }, 0.5f);
 			punch.PushBack({ 1213, 280, 120, 95 }, 0.5f);
 			punch.PushBack({ 1337, 280, 120, 95 }, 0.5f);
-			punch.PushBack({ 1461, 280, 83, 95 }, 0.5f);
-			punch.PushBack({ 1548, 280, 83, 95 }, 0.5f);
-			punch.PushBack({ 1635, 280, 83, 95 }, 0.5f); //16
-			punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
-			punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
+			punch.PushBack({ 1461, 280, 83, 95 }, 0.8f);
+			punch.PushBack({ 1548, 280, 83, 95 }, 0.8f);
+			punch.PushBack({ 1635, 280, 83, 95 }, 0.8f); //16
+			//punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
+			//punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
 			punch.loop = false;
 
 		}
@@ -151,36 +151,36 @@ ModulePlayer::ModulePlayer()
 
 		//twister animation
 		{
-			twister.PushBack({ 15, 798, 90, 90}, 0.4f);
-			twister.PushBack({ 106, 798, 90, 90}, 0.4f);
-			twister.PushBack({ 197, 798, 90, 90}, 0.4f);
-			twister.PushBack({ 289, 798, 71, 90}, 0.4f);
-			twister.PushBack({ 362, 798, 71, 90}, 0.4f);
-			twister.PushBack({ 435, 803, 74, 86}, 0.4f);
-			twister.PushBack({ 511, 803, 74, 86}, 0.4f);
-			twister.PushBack({ 586, 795, 59, 94}, 0.4f);
-			twister.PushBack({ 646, 795, 59, 94}, 0.4f);
-			twister.PushBack({ 709, 788, 93, 101}, 0.4f);
-			twister.PushBack({ 809, 788, 93, 101}, 0.4f);
-			twister.PushBack({ 909, 788, 93, 101}, 0.4f);
-			twister.PushBack({ 1006, 734, 62, 155}, 0.4f);
-			twister.PushBack({ 1071, 734, 62, 155}, 0.4f);
-			twister.PushBack({ 1138, 734, 62, 155}, 0.4f);
-			twister.PushBack({ 1203, 787, 100, 102}, 0.4f);
-			twister.PushBack({ 1313, 787, 100, 102}, 0.4f);
-			twister.PushBack({ 1429, 787, 100, 102}, 0.4f);
-			twister.PushBack({ 1543, 795, 98, 94}, 0.4f);
-			twister.PushBack({ 1646, 795, 98, 94}, 0.4f);
-			twister.PushBack({ 1749, 795, 98, 94}, 0.4f);
-			twister.PushBack({ 15, 923, 104, 93}, 0.4f);
-			twister.PushBack({ 121, 923, 104, 93}, 0.4f);
-			twister.PushBack({ 228, 923, 104, 93}, 0.4f);
-			twister.PushBack({ 337, 923, 84, 93}, 0.4f);
-			twister.PushBack({ 425, 923, 84, 93}, 0.4f);
-			twister.PushBack({ 512, 923, 84, 93}, 0.4f);
-			twister.PushBack({ 599, 896, 72, 120}, 0.4f);
-			twister.PushBack({ 673, 896, 72, 120}, 0.4f);
-			twister.PushBack({ 748, 896, 72, 120}, 0.4);
+			twister.PushBack({ 15, 798, 90, 90}, 0.6f);
+			twister.PushBack({ 106, 798, 90, 90}, 0.6f);
+			twister.PushBack({ 197, 798, 90, 90}, 0.6f);
+			twister.PushBack({ 289, 798, 71, 90}, 0.6f);
+			twister.PushBack({ 362, 798, 71, 90}, 0.6f);
+			twister.PushBack({ 435, 803, 74, 86}, 0.6f);
+			twister.PushBack({ 511, 803, 74, 86}, 0.6f);
+			twister.PushBack({ 586, 795, 59, 94}, 0.6f);
+			twister.PushBack({ 646, 795, 59, 94}, 0.6f);
+			twister.PushBack({ 709, 788, 93, 101}, 0.6f);
+			twister.PushBack({ 809, 788, 93, 101}, 0.6f);
+			twister.PushBack({ 909, 788, 93, 101}, 0.6f);
+			twister.PushBack({ 1006, 734, 62, 155}, 0.6f);
+			twister.PushBack({ 1071, 734, 62, 155}, 0.6f);
+			twister.PushBack({ 1138, 734, 62, 155}, 0.6f);
+			twister.PushBack({ 1203, 787, 100, 102}, 0.6f);
+			twister.PushBack({ 1313, 787, 100, 102}, 0.6f);
+			twister.PushBack({ 1429, 787, 100, 102}, 0.6f);
+			twister.PushBack({ 1543, 795, 98, 94}, 0.6f);
+			twister.PushBack({ 1646, 795, 98, 94}, 0.6f);
+			twister.PushBack({ 1749, 795, 98, 94}, 0.6f);
+			twister.PushBack({ 15, 923, 104, 93}, 0.6f);
+			twister.PushBack({ 121, 923, 104, 93}, 0.6f);
+			twister.PushBack({ 228, 923, 104, 93}, 0.6f);
+			twister.PushBack({ 337, 923, 84, 93}, 0.6f);
+			twister.PushBack({ 425, 923, 84, 93}, 0.6f);
+			twister.PushBack({ 512, 923, 84, 93}, 0.6f);
+			twister.PushBack({ 599, 896, 72, 120}, 0.6f);
+			twister.PushBack({ 673, 896, 72, 120}, 0.6f);
+			twister.PushBack({ 748, 896, 72, 120}, 0.6f);
 			twister.loop = false;
 		}
 
@@ -229,7 +229,6 @@ update_status ModulePlayer::PreUpdate()
 			state = CROUCH;
 		if (player_input.pressing_K) {
 			state = TWISTER;
-			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 209);
 		}
 	
 	}
@@ -325,9 +324,9 @@ update_status ModulePlayer::Update()
 		current_animation = &crouch;
 		break;
 	case TWISTER:
-		tornado.position.x += tornado.speed.x;
-		tornado.Update();
 		current_animation = &twister;
+		if (current_animation->SeeCurrentFrame() == 10)
+			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 209);
 		break;
 	default:
 		LOG("No state found :(");
