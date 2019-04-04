@@ -5,10 +5,8 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 
-
 ModulePlayer::ModulePlayer()
 {
-
 	position.x = 70;
 	position.y = initial_y;
 	tornado.speed.x = 1;
@@ -29,7 +27,6 @@ ModulePlayer::ModulePlayer()
 			idle.PushBack({ 245,20,72,111 }, 0.3f);
 			idle.PushBack({ 322,18,72,113 }, 0.3f);
 			idle.PushBack({ 399,19,72,112 }, 0.3f);
-
 		}
 
 		//forward animation
@@ -116,7 +113,6 @@ ModulePlayer::ModulePlayer()
 			//punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
 			//punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
 			punch.loop = false;
-
 		}
 
 		//kick animation
@@ -182,10 +178,44 @@ ModulePlayer::ModulePlayer()
 			twister.PushBack({ 673, 896, 72, 120}, 0.6f);
 			twister.PushBack({ 748, 896, 72, 120}, 0.6f);
 			twister.loop = false;
+
+			//Twister animation (only the twister)
+			twisterAlone.PushBack({ 15,1216,20,17 });
+			twisterAlone.PushBack({ 40,1215,22,18 });
+			twisterAlone.PushBack({ 67,1197,29,33 });
+			twisterAlone.PushBack({ 102,1199,42,31 });
+			twisterAlone.PushBack({ 150,1181,29,49 });
+			twisterAlone.PushBack({ 183,1183,42,47 });
+			twisterAlone.PushBack({ 234,1141,74,89 });
+			twisterAlone.PushBack({ 313,1141,74,89 });
+			twisterAlone.PushBack({ 392,1142,81,88 });
+			twisterAlone.PushBack({ 480,1143,80,87 });
+			twisterAlone.PushBack({ 575,1148,82,82 });
+			twisterAlone.PushBack({ 662,1150,81,80 });
+			twisterAlone.PushBack({ 749,1154,83,76 });
+			twisterAlone.PushBack({ 837,1152,83,75 });
+			twisterAlone.PushBack({ 925,1161,82,69 });
+			twisterAlone.PushBack({ 1012,1163,78,67 });
+			twisterAlone.PushBack({ 1096,1162,75,67 });
+			twisterAlone.PushBack({ 1178,1154,72,76 });
+			twisterAlone.PushBack({ 1255,1153,66,76 });
+			twisterAlone.PushBack({ 1332,1148,51,82 });
+			twisterAlone.PushBack({ 1388,1147,51,82 });
+			twisterAlone.PushBack({ 1444,1142,40,87 });
+			twisterAlone.PushBack({ 1492,1146,43,86 });
+			twisterAlone.PushBack({ 1540,1142,61,89 });
+			twisterAlone.PushBack({ 1606,1093,45,138 });
+			twisterAlone.PushBack({ 1656,1093,45,138 });
+			twisterAlone.PushBack({ 1704,1031,44,202 });
+			twisterAlone.PushBack({ 1757,1025,44,202 });
+			twisterAlone.PushBack({ 1805,1024,56,207 });
+			twisterAlone.PushBack({ 1866,1025,44,208 });
+			twisterAlone.PushBack({ 1917,1024,56,206 });
+			twisterAlone.PushBack({ 1978,1026,44,207 });
+
+			twisterAlone.loop = false;
 		}
-
 	}
-
 }
 
 ModulePlayer::~ModulePlayer(){}
@@ -204,7 +234,6 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::PreUpdate()
 {
-
 	player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
 	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
 	player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
@@ -229,8 +258,7 @@ update_status ModulePlayer::PreUpdate()
 			state = CROUCH;
 		if (player_input.pressing_K) {
 			state = TWISTER;
-		}
-	
+		}	
 	}
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
@@ -332,6 +360,7 @@ update_status ModulePlayer::Update()
 		LOG("No state found :(");
 		break;
 	}
+
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 

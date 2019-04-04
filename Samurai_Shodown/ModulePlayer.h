@@ -54,6 +54,7 @@ public:
 	Animation jump;
 	Animation crouch;
 	Animation twister;
+	Animation twisterAlone;
 	iPoint position;
 
 
