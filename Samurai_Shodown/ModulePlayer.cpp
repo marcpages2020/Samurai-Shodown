@@ -323,7 +323,7 @@ update_status ModulePlayer::Update()
 	case TWISTER:
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10)
-			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 209);
+			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y-40);
 		break;
 	default:
 		LOG("No state found :(");
