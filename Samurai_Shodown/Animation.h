@@ -5,6 +5,8 @@
 #include <math.h>
 #define MAX_FRAMES 50
 
+struct Collider;
+
 struct Frame {
 
 	SDL_Rect rect;

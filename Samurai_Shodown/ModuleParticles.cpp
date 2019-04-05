@@ -56,7 +56,7 @@ bool ModuleParticles::Start()
 		tornado.anim.PushBack({ 1917,1024,56,206 },0.3f);
 		tornado.anim.PushBack({ 1978,1026,44,207 },0.3f);
 		tornado.life = 5000;
-		tornado.speed = { 2,0};
+		tornado.speed = { 2,-1};
 		if (tornado.anim.SeeCurrentFrame() < 3)
 		{
 			tornado.position.y = 215;

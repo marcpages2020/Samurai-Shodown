@@ -3,6 +3,8 @@
 
 #include "Globals.h"
 
+struct Collider;
+
 class Module
 {
 private:
@@ -16,6 +18,7 @@ public:
 	virtual update_status Update()		{ return update_status::UPDATE_CONTINUE; }
 	virtual update_status PostUpdate() 	{ return update_status::UPDATE_CONTINUE; }
 	virtual bool CleanUp()				{ return true; }
+	virtual void OnCollision(Collider* c1, Collider* c2) {}
 	bool IsEnabled() const { return enabled; }
 
 	void Enable()

@@ -66,8 +66,7 @@ update_status ModuleSceneHaohmaru::Update()
 	SDL_Rect b;
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
-	//b.w = SCREEN_WIDTH*1.5;
-	//b.h = SCREEN_HEIGHT *1.5;
+
 	App->render->Blit(graphics,-92,-100,&b,0.75f);
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
