@@ -11,12 +11,8 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_WALL][COLLIDER_WALL] = false;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER] = true;
 
-
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
-
-
-
 }
 
 // Destructor
@@ -121,7 +117,6 @@ bool ModuleCollision::CleanUp()
 			colliders[i] = nullptr;
 		}
 	}
-
 	return true;
 }
 
@@ -145,8 +140,7 @@ Collider* ModuleCollision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module
 
 bool Collider::CheckCollision(const SDL_Rect& r) const
 {
-	// TODO 0: Return true if there is an overlap
+	// Return true if there is an overlap
 	// between argument "r" and property "rect"
-
 	return !(r.x > rect.x + rect.w && r.x + r.w < rect.x && r.y + r.h < rect.y && r.y > rect.y + rect.h);
 }

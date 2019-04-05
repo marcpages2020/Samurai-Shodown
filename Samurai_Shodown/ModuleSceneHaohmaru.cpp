@@ -1,5 +1,6 @@
 #include "ModuleSceneHaohmaru.h"
-
+#include "ModuleCollision.h"
+#include "Application.h"
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 {
@@ -28,7 +29,7 @@ ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 		background.PushBack({ 0,1665,512,333 }, 0.08f); //2560
 		background.PushBack({ 512,1665,512,333 }, 0.08f);
 		background.PushBack({ 1024,1665,512,333 }, 0.08f);
-		background.PushBack({ 1536,1665,512,333 }, 0.08f);
+		background.PushBack({ 1536,1665,512,333 }, 0.08f);		
 	}
 }
 
@@ -45,6 +46,11 @@ bool ModuleSceneHaohmaru::Start()
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
+
+	//Colliders for the screen borders
+	App->collision->AddCollider({ -160,0,50,1000 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 430,0,50,1000 }, COLLIDER_WALL);
+
 	return ret;
 }
 
