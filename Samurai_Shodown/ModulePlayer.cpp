@@ -4,6 +4,9 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleCollision.h"
+
+Collider *player = nullptr;
 
 ModulePlayer::ModulePlayer()
 {
@@ -197,7 +200,7 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	state = IDLE;
 	current_animation = &idle;
-
+	player = App->collision->AddCollider({ position.x,position.y-95,71,95 },COLLIDER_PLAYER);
 	return ret;
 }
 
@@ -296,13 +299,14 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP:
 		current_animation = &jump;
-		position.y -= speed * 2 * mult;
+		position.y -= speed * 1.75 * mult;
 		if (position.y <= 120) {
 			mult = -1;
 		}
 		else if (position.y == initial_y)
 		{
 			mult = 1;
+			jump.Reset();
 			state = IDLE;
 		}
 		break;

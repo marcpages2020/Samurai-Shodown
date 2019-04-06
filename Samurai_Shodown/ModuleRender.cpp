@@ -52,17 +52,17 @@ update_status ModuleRender::Update()
 	int speed = 3;
 
 	//Make the camera move up and down
-	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_UP] == KEY_REPEAT)&&(camera.y<180))
 		camera.y += speed;
 
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT)&&(camera.y>-30))
 		camera.y -= speed;
 
 	//Make the camera move left and right
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT) && (camera.x > -140))
 		camera.x -= speed;
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT) && (camera.x < 350))
 		camera.x += speed;
 
 	return update_status::UPDATE_CONTINUE;

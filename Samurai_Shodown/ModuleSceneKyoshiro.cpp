@@ -10,7 +10,7 @@ ModuleSceneKyoshiro::ModuleSceneKyoshiro()
 		background.PushBack({ 0,78,512,333 }, 0.08f);
 		background.PushBack({ 512,78,512,333 }, 0.08f);
 		background.PushBack({ 0,527,512,333 }, 0.08f);
-		background.PushBack({ 512,527,512,333 }, 0.08f);
+		//background.PushBack({ 512,527,512,333 }, 0.08f);
 	}
 }
 
