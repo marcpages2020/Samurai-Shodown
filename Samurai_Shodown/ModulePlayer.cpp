@@ -8,12 +8,12 @@
 
 Collider *player = nullptr;
 
+
 ModulePlayer::ModulePlayer()
 {
 	position.x = 70;
 	position.y = initial_y;
 	tornado.speed.x = 1;
-
 	//animations
 	{
 		//idle animation
@@ -349,7 +349,7 @@ bool ModulePlayer::CleanUp() {
 	return true;
 }
 
-void ModulePlayer::OnCollision(Collider* c1) {
+void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	if (player->CheckCollision(c1->rect)==true)
 	{
 	}

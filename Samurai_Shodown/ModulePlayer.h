@@ -56,7 +56,7 @@ public:
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;
-	void OnCollision(Collider* c1);
+	void OnCollision(Collider* c1,Collider* c2);
 
 	bool animationAvailable = true;
 	int mult = 1;
