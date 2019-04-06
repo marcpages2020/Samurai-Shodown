@@ -43,10 +43,9 @@ update_status ModuleSceneCongrats::Update()
 	congrats.h = SCREEN_HEIGHT;
 
 	// Draw everything --------------------------------------
-
 	App->render->Blit(graphics, NULL, NULL, &congrats);
 
-	// TODO 2: make so pressing SPACE the KEN stage is loaded
+	// Make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);

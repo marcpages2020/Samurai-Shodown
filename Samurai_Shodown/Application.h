@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 13
+#define NUM_MODULES 14
 
 class ModuleWindow;
 class ModuleInput;
@@ -19,6 +19,7 @@ class ModuleSceneHaohmaru;
 class ModuleSceneKyoshiro;
 class ModuleSceneCongrats;
 class ModuleParticles;
+class ModuleCollision;
 class ModuleNeoGeo;
 
 class Application
@@ -39,6 +40,7 @@ public:
 	ModuleSceneCongrats* scene_congrats = nullptr;
 	ModuleParticles* particles = nullptr;
 	ModuleNeoGeo* neo_geo = nullptr;
+	ModuleCollision* collision = nullptr;
 
 public:
 

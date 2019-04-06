@@ -1,6 +1,5 @@
 #include "ModuleSceneWelcome.h"
 
-
 ModuleSceneWelcome::ModuleSceneWelcome()
 {}
 
@@ -15,7 +14,7 @@ bool ModuleSceneWelcome::Start()
 	graphics = App->textures->Load("Assets/Textures/menu.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/menu.ogg"); 
 	App->audio->PlayMusic(music,NULL);
-	// TODO 1: Enable (and properly disable) the player module
+	
 	return ret;
 }
 
@@ -40,7 +39,7 @@ update_status ModuleSceneWelcome::Update()
 	welcome.h = SCREEN_HEIGHT;
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics,NULL, NULL, &welcome);
-	// TODO 2: make so pressing SPACE the KEN stage is loaded
+	// Make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_welcome, (Module*)App->scene_haohmaru, 2.5f);

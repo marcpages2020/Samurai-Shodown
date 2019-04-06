@@ -12,6 +12,7 @@
 #include "ModuleParticles.h"
 #include "ModuleSceneCongrats.h"
 #include "ModuleNeoGeo.h"
+#include "ModuleCollision.h"
 
 Application::Application()
 {
@@ -28,6 +29,7 @@ Application::Application()
 	modules[++i] = scene_congrats = new ModuleSceneCongrats();
 	modules[++i] = player = new ModulePlayer();
 	modules[++i] = particles = new ModuleParticles();
+	modules[++i] = collision = new ModuleCollision();
 	modules[++i] = fade = new ModuleFadeToBlack();
 
 }	
