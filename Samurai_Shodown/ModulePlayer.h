@@ -41,7 +41,7 @@ public:
 	update_status PreUpdate();
 	update_status Update();
 	bool CleanUp();
-
+	void OnCollision(Collider* c1, Collider* c2);
 public:
 
 	SDL_Texture* graphics = nullptr;
@@ -56,15 +56,14 @@ public:
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;
-	void OnCollision(Collider* c1,Collider* c2);
 
+	Collider *collider_player = nullptr;
 	bool animationAvailable = true;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
-	Particle tornado;
 	float speed = 2;
 
 };

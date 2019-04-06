@@ -6,14 +6,14 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 
-Collider *player = nullptr;
+
 
 
 ModulePlayer::ModulePlayer()
 {
 	position.x = 70;
 	position.y = initial_y;
-	tornado.speed.x = 1;
+
 	//animations
 	{
 		//idle animation
@@ -200,7 +200,8 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	state = IDLE;
 	current_animation = &idle;
-	player = App->collision->AddCollider({ position.x,position.y-95,71,95 },COLLIDER_PLAYER);
+	if (!collider_player)
+		collider_player = App->collision->AddCollider({ 0, 0,71,95 },COLLIDER_PLAYER,(Module*)App->player);
 	return ret;
 }
 
@@ -337,20 +338,29 @@ update_status ModulePlayer::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	player->SetPos(position.x, position.y-95);
+	
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-
+	collider_player->SetPos(position.x, position.y - 95);
 	return UPDATE_CONTINUE;
 }
 
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
+	collider_player = nullptr;
 	return true;
 }
 
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
-	if (player->CheckCollision(c1->rect)==true)
+
+	switch (c2->type) 
 	{
+	case COLLIDER_WALL:
+		// aqui posa que vols que passi quan xoqui el player contre un collider que sigui wall. NO es necessari crear un que sigui wall left i un que sigui wall right!!!!
+
+		break;
+	default:
+		break;
 	}
+
 }

@@ -29,8 +29,7 @@ bool ModuleSceneKyoshiro::Start()
 	App->player->Enable();
 
 	//Colliders for the screen borders
-	App->collision->AddCollider({ -110,0,50,1000 }, COLLIDER_WALL);
-	//App->collision->AddCollider({ 500,0,50,1000 }, COLLIDER_WALL);
+
 
 	return ret;
 }
@@ -43,6 +42,7 @@ bool ModuleSceneKyoshiro::CleanUp()
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
+	App->collision->CleanUp();
 	//App->audio->CleanUp();
 	return true;
 }

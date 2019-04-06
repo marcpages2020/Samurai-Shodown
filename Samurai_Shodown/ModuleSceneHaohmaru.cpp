@@ -49,8 +49,8 @@ bool ModuleSceneHaohmaru::Start()
 	App->player->Enable();
 
 	//Colliders for the screen borders
-	App->collision->AddCollider({ -160,0,50,1000 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 430,0,50,1000 }, COLLIDER_WALL);
+	App->collision->AddCollider({ -165,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	App->collision->AddCollider({ 427,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 
 	return ret;
 }
@@ -63,6 +63,7 @@ bool ModuleSceneHaohmaru::CleanUp()
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
+	App->collision->CleanUp();
 	//App->audio->CleanUp();
 	return true;
 }
