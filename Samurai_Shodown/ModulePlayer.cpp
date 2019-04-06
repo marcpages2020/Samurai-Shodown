@@ -337,7 +337,7 @@ update_status ModulePlayer::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-
+	player->SetPos(position.x, position.y-95);
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
 
 	return UPDATE_CONTINUE;
@@ -347,4 +347,10 @@ bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
 	return true;
+}
+
+void ModulePlayer::OnCollision(Collider* c1) {
+	if (player->CheckCollision(c1->rect)==true)
+	{
+	}
 }

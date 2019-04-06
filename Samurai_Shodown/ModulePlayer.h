@@ -56,7 +56,7 @@ public:
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;
-
+	void OnCollision(Collider* c1);
 
 	bool animationAvailable = true;
 	int mult = 1;
@@ -69,4 +69,4 @@ public:
 
 };
 
-#endif
+#endif // __ModulePlayer_H__
