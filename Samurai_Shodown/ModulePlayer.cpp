@@ -211,6 +211,7 @@ update_status ModulePlayer::PreUpdate()
 	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
 	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 	player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
+	player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 	
 	
 	if (state == IDLE) {
@@ -226,9 +227,8 @@ update_status ModulePlayer::PreUpdate()
 			state = JUMP;
 		if (player_input.pressing_S)
 			state = CROUCH;
-		if (player_input.pressing_K) {
+		if (player_input.pressing_K)
 			state = TWISTER;
-		}	
 	}
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
@@ -275,6 +275,11 @@ update_status ModulePlayer::PreUpdate()
 			twister.Reset();
 		}
 	}
+		if ((player_input.pressing_F5) && (god_mode == false)) 
+		god_mode = true;
+		else if ((player_input.pressing_F5) && (god_mode == true))
+		god_mode = false;
+
 	return UPDATE_CONTINUE;
 }
 
@@ -327,7 +332,7 @@ update_status ModulePlayer::Update()
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10)
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205);
-
+//			collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
 		break;
 	default:
 		LOG("No state found :(");
@@ -338,7 +343,16 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	collider_player->SetPos(position.x, position.y - 95);
+	if (god_mode==false)
+	{
+		collider_player->SetPos(position.x, position.y - 95);
+	}
+	else if (god_mode==true)
+	{
+		collider_player->SetPos(2000, 2000);
+	}
+
+	//collider_player_particles->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
 	return UPDATE_CONTINUE;
 }
 
@@ -354,7 +368,6 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	switch (c2->type) 
 	{
 	case COLLIDER_WALL:
-		// aqui posa que vols que passi quan xoqui el player contra un collider que sigui wall. NO es necessari crear un que sigui wall left i un que sigui wall right!!!!
 		position.x = lposition.x;
 		break;
 	default:

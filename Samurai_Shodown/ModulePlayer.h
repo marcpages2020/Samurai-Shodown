@@ -17,7 +17,7 @@ enum States {
 	FORWARD,
 	BACKWARD,
 	CROUCH,	
-	TWISTER,
+	TWISTER
 };
 
 struct PlayerInput {
@@ -29,6 +29,7 @@ struct PlayerInput {
 	bool pressing_W;
 	bool pressing_S;
 	bool pressing_K;
+	bool pressing_F5;
 };
 
 class ModulePlayer : public Module
@@ -58,6 +59,8 @@ public:
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player = nullptr;
+	bool god_mode = true;
+	//Collider *collider_player_particles = nullptr;
 	bool animationAvailable = true;
 	int mult = 1;
 	int initial_y = 215;

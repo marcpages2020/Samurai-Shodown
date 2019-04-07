@@ -4,7 +4,6 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
-
 #include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles()
