@@ -8,8 +8,8 @@
 ModuleRender::ModuleRender() : Module()
 {
 	camera.x = camera.y = 0;
-	camera.w = SCREEN_WIDTH;
-	camera.h = SCREEN_HEIGHT;
+	camera.w = SCREEN_SIZE;
+	camera.h = SCREEN_SIZE;
 }
 
 // Destructor
