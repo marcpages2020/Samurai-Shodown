@@ -279,7 +279,6 @@ update_status ModulePlayer::PreUpdate()
 		{
 			state = IDLE;
 			twister.Reset();
-			collider_player_particles->SetPos(1000,1000);
 		}
 	}
 		if ((player_input.pressing_F5) && (god_mode == false)) 
