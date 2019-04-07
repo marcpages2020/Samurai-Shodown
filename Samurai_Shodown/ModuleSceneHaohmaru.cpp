@@ -1,6 +1,7 @@
 #include "ModuleSceneHaohmaru.h"
 #include "ModuleCollision.h"
 #include "Application.h"
+#include "ModulePlayer2.h"
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 {
@@ -47,7 +48,7 @@ bool ModuleSceneHaohmaru::Start()
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
-
+	App->player2->Enable();
 	//Colliders for the screen borders
 	App->collision->AddCollider({ -165,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	App->collision->AddCollider({ 427,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
@@ -60,6 +61,7 @@ bool ModuleSceneHaohmaru::CleanUp()
 {
 	LOG("Unloading Haohmaru stage");
 	App->player->Disable();
+	App->player2->Disable();
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);

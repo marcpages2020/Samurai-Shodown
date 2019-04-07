@@ -1,7 +1,7 @@
 #include "ModuleSceneKyoshiro.h"
 #include "Application.h"
 #include "ModuleCollision.h"
-#include "Application.h"
+#include "ModulePlayer2.h"
 
 ModuleSceneKyoshiro::ModuleSceneKyoshiro()
 {
@@ -27,6 +27,7 @@ bool ModuleSceneKyoshiro::Start()
 	music = App->audio->LoadMusic("Assets/Audio/Music/Kyoshiro.ogg");
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();
+	App->player2->Enable();
 
 	//Colliders for the screen borders
 

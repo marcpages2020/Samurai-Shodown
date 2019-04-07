@@ -200,7 +200,7 @@ bool ModulePlayer::Start()
 	current_animation = &idle;
 	if (!collider_player)
 		collider_player = App->collision->AddCollider({ 0, 0,71,95 },COLLIDER_PLAYER,(Module*)App->player);
-
+	
 	return ret;
 }
 
@@ -332,7 +332,7 @@ update_status ModulePlayer::Update()
 	case TWISTER:
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10) {
-			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205,COLLIDER_PLAYER_PARTICLES);
+			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
 		}
 		break;
 	default:
@@ -359,7 +359,6 @@ bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
 	collider_player = nullptr;
-
 	return true;
 }
 
