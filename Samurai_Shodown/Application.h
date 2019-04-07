@@ -4,13 +4,14 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 14
+#define NUM_MODULES 15
 
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
 class ModulePlayer;
+class ModulePlayer2;
 class ModuleAudio;
 class ModuleFadeToBlack;
 class Module;
@@ -41,6 +42,7 @@ public:
 	ModuleParticles* particles = nullptr;
 	ModuleNeoGeo* neo_geo = nullptr;
 	ModuleCollision* collision = nullptr;
+	ModulePlayer2* player2 = nullptr;
 
 public:
 
