@@ -9,6 +9,7 @@
 ModulePlayer::ModulePlayer()
 {
 	position.x = 70;
+	lposition.x = position.x;
 	position.y = initial_y;
 
 	//animations
@@ -368,6 +369,9 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	switch (c2->type) 
 	{
 	case COLLIDER_WALL:
+		position.x = lposition.x;
+		break;
+	case COLLIDER_PLAYER_2:
 		position.x = lposition.x;
 		break;
 	default:

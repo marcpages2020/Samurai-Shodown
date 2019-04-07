@@ -8,7 +8,7 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x = 200;
+	position.x = 230;
 	position.y = initial_y;
 
 	//animations
@@ -198,7 +198,7 @@ bool ModulePlayer2::Start()
 	//state = IDLE;
 	current_animation = &idle;
 	if (!collider_player2)
-		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player);
 	return ret;
 }
 
@@ -335,16 +335,15 @@ update_status ModulePlayer2::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	if (god_mode == false)
-	{
+	//if (god_mode == false)
+	//{
 		collider_player2->SetPos(position.x, position.y - 95);
-	}
-	else if (god_mode == true)
-	{
-		collider_player2->SetPos(2000, 2000);
-	}
+	//}
+	//else if (god_mode == true)
+	//{
+		//collider_player2->SetPos(2000, 2000);
+	//}
 
 	//collider_player_particles->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
 	return UPDATE_CONTINUE;
