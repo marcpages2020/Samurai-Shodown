@@ -331,9 +331,10 @@ update_status ModulePlayer::Update()
 		break;
 	case TWISTER:
 		current_animation = &twister;
-		if (current_animation->SeeCurrentFrame() == 10)
+		if (current_animation->SeeCurrentFrame() == 10) {
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205);
-		collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+			collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+		}
 		break;
 	default:
 		LOG("No state found :(");
@@ -353,7 +354,7 @@ update_status ModulePlayer::Update()
 		collider_player->SetPos(2000, 2000);
 	}
 
-	//collider_player_particles->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
+	collider_player_particles->SetPos(100, 100);
 	return UPDATE_CONTINUE;
 }
 
