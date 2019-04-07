@@ -200,6 +200,11 @@ bool ModulePlayer::Start()
 	current_animation = &idle;
 	if (!collider_player)
 		collider_player = App->collision->AddCollider({ 0, 0,71,95 },COLLIDER_PLAYER,(Module*)App->player);
+	if (!collider_player_particles)
+	{
+		collider_player_particles = App->collision->AddCollider({1000,1000,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+	}
+
 	return ret;
 }
 
@@ -274,6 +279,7 @@ update_status ModulePlayer::PreUpdate()
 		{
 			state = IDLE;
 			twister.Reset();
+			collider_player_particles->SetPos(1000,1000);
 		}
 	}
 		if ((player_input.pressing_F5) && (god_mode == false)) 
@@ -333,7 +339,7 @@ update_status ModulePlayer::Update()
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10) {
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205);
-			collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+			collider_player_particles->SetPos(position.x+50,position.y-205);
 		}
 		break;
 	default:
@@ -353,8 +359,6 @@ update_status ModulePlayer::Update()
 	{
 		collider_player->SetPos(2000, 2000);
 	}
-
-	collider_player_particles->SetPos(100, 100);
 	return UPDATE_CONTINUE;
 }
 
