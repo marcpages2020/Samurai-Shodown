@@ -59,7 +59,7 @@ public:
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player = nullptr;
-	Collider *collider_player_particles = nullptr;
+
 	bool god_mode = false;
 	bool animationAvailable = true;
 	int mult = 1;
