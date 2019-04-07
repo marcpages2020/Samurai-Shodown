@@ -333,7 +333,7 @@ update_status ModulePlayer::Update()
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10)
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205);
-//			collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+		collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
 		break;
 	default:
 		LOG("No state found :(");
@@ -361,6 +361,7 @@ bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
 	collider_player = nullptr;
+	collider_player_particles = nullptr;
 	return true;
 }
 
