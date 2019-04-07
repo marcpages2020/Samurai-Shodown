@@ -77,7 +77,7 @@ update_status ModuleRender::PostUpdate()
 // Called before quitting
 bool ModuleRender::CleanUp()
 {
-	LOG("Destroying renderer");
+	LOG("Destroying renderer \n");
 
 	//Destroy window
 	if (renderer != NULL)

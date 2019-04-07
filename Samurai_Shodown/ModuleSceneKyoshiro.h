@@ -27,7 +27,7 @@ public:
 	bool CleanUp();
 
 public:
-	Mix_Music *music;
+	Mix_Music *music=nullptr;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 };

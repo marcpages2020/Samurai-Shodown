@@ -5,11 +5,12 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
+#include <crtdbg.h>
 
 ModulePlayer::ModulePlayer()
 {
 	position.x = 70;
-	lposition.x = position.x;
+	lposition = position;
 	position.y = initial_y;
 
 	//animations
@@ -194,7 +195,7 @@ ModulePlayer::~ModulePlayer(){}
 bool ModulePlayer::Start()
 {
 	bool ret = true;
-	LOG("Loading player textures");
+	LOG("Loading player textures\n");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	state = IDLE;
 	current_animation = &idle;

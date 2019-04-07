@@ -43,6 +43,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+
 public:
 
 	SDL_Texture* graphics = nullptr;
@@ -59,16 +60,13 @@ public:
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player = nullptr;
-
 	bool god_mode = false;
-	bool animationAvailable = true;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
 	float speed = 2;
-
 };
 
 #endif // __ModulePlayer_H__

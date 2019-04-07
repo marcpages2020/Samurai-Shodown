@@ -193,7 +193,7 @@ ModulePlayer2::~ModulePlayer2() {}
 bool ModulePlayer2::Start()
 {
 	bool ret = true;
-	LOG("Loading player textures");
+	LOG("Loading player textures\n");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	//state = IDLE;
 	current_animation = &idle;

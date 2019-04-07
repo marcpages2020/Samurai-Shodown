@@ -10,7 +10,7 @@ ModuleSceneKyoshiro::ModuleSceneKyoshiro()
 		background.PushBack({ 0,78,512,333 }, 0.08f);
 		background.PushBack({ 512,78,512,333 }, 0.08f);
 		background.PushBack({ 0,527,512,333 }, 0.08f);
-		//background.PushBack({ 512,527,512,333 }, 0.08f);
+		background.PushBack({ 512,527,512,333 }, 0.08f);
 	}
 }
 
@@ -40,6 +40,7 @@ bool ModuleSceneKyoshiro::CleanUp()
 {
 	LOG("Unloading Kyoshiro stage");
 	App->player->Disable();
+	App->player2->Disable();
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);

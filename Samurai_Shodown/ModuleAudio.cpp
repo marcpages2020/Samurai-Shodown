@@ -66,7 +66,7 @@ Mix_Chunk* ModuleAudio::LoadFX(const char* path) {
 	return fx;
 }
 
-bool ModuleAudio::PlayMusic(Mix_Music* song,int times) {
+bool ModuleAudio::PlayMusic(Mix_Music* song, int times) {
 	if (times==NULL)
 	{
 		times = -1;
@@ -116,7 +116,7 @@ bool ModuleAudio::UnLoadFx(Mix_Chunk * chunk)
 
 bool ModuleAudio::CleanUp() {
 	
-	LOG("Freeing music");
+	LOG("Freeing music\n");
 
 	for (int i = 0; i < MAX_SONGS; i++)
 	{
