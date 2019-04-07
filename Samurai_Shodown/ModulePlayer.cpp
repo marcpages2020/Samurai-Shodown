@@ -6,9 +6,6 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 
-
-
-
 ModulePlayer::ModulePlayer()
 {
 	position.x = 70;
@@ -284,6 +281,7 @@ update_status ModulePlayer::PreUpdate()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	lposition = position;
 	switch (state)
 	{
 	case IDLE:
@@ -356,8 +354,8 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	switch (c2->type) 
 	{
 	case COLLIDER_WALL:
-		// aqui posa que vols que passi quan xoqui el player contre un collider que sigui wall. NO es necessari crear un que sigui wall left i un que sigui wall right!!!!
-
+		// aqui posa que vols que passi quan xoqui el player contra un collider que sigui wall. NO es necessari crear un que sigui wall left i un que sigui wall right!!!!
+		position.x = lposition.x;
 		break;
 	default:
 		break;

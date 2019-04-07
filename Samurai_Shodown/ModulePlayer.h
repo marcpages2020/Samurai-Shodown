@@ -56,7 +56,7 @@ public:
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;
-
+	iPoint lposition;
 	Collider *collider_player = nullptr;
 	bool animationAvailable = true;
 	int mult = 1;
