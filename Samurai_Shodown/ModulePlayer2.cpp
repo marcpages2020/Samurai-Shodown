@@ -9,7 +9,7 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x = 230;
+	position.x= lposition.x = 230;
 	position.y = initial_y;
 
 	//animations
@@ -197,7 +197,7 @@ bool ModulePlayer2::Start()
 	state2 = IDLE2;
 	current_animation = &idle;
 	if (!collider_player2)
-		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player);
+		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	return ret;
 }
 
@@ -211,6 +211,7 @@ update_status ModulePlayer2::PreUpdate()
 	player_input2.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN;
 	player_input2.pressing_5 = App->input->keyboard[SDL_SCANCODE_5] == KEY_DOWN;
 	player_input2.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
+	player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 	
 	
 	if (state2 == IDLE2) {
@@ -276,7 +277,14 @@ update_status ModulePlayer2::PreUpdate()
 			twister.Reset();
 		}
 	}
-	
+	if ((player_input2.pressing_F5) && (collider_player2 != nullptr)) {
+		collider_player2->to_delete = true;
+		collider_player2 = nullptr;
+	}
+	else if ((player_input2.pressing_F5) && (collider_player2 == nullptr))
+	{
+		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player);
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -329,7 +337,7 @@ update_status ModulePlayer2::Update()
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10)
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205);
-					//collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+			//collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
 		break;
 	default:
 		LOG("No state found :(");
@@ -339,15 +347,10 @@ update_status ModulePlayer2::Update()
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	App->render->Blit(graphics, position.x, position.y - r.h, &r,SDL_FLIP_HORIZONTAL);
-	if (god_mode == false)
+	if (collider_player2 != nullptr)
 	{
 		collider_player2->SetPos(position.x, position.y - 95);
 	}
-	else if (god_mode == true)
-	{
-		collider_player2->SetPos(2000, 2000);
-	}
-
 	//collider_player_particles->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
 	return UPDATE_CONTINUE;
 }
@@ -367,6 +370,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER_PARTICLES:
+		break;
+	case COLLIDER_PLAYER:
+		position.x = lposition.x;
 		break;
 	default:
 		break;

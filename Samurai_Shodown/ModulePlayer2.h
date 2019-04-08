@@ -30,6 +30,7 @@ struct PlayerInput2 {
 	bool pressing_B;
 	bool pressing_N;
 	bool pressing_M;
+	bool pressing_F5;
 };
 
 class ModulePlayer2 : public Module
@@ -59,7 +60,6 @@ public:
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player2 = nullptr;
-	bool god_mode = true;
 	//Collider *collider_player_particles = nullptr;
 	int mult = 1;
 	int initial_y = 215;
