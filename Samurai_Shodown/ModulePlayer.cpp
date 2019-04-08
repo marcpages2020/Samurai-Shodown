@@ -179,8 +179,8 @@ ModulePlayer::ModulePlayer()
 			twister.PushBack({ 748, 896, 72, 120}, 0.6f);
 			twister.loop = false;
 
-			//Twister animation (only the twister)
-			
+
+			//Twister animation (only the twister)			
 
 			twisterAlone.loop = false;
 		}

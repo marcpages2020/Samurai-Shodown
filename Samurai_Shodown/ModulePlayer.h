@@ -9,14 +9,17 @@
 
 struct SDL_Texture;
 
-enum States {
+enum States 
+{
 	IDLE,
-	PUNCH,
-	JUMP,
-	KICK,
 	FORWARD,
 	BACKWARD,
-	CROUCH,	
+	CROUCH,
+	JUMP_NEUTRAL,
+	JUMP_FORWARD,
+	JUMP_BACKWARD,
+	KICK,
+	PUNCH,	
 	TWISTER
 };
 
