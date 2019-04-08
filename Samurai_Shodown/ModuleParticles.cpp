@@ -13,7 +13,7 @@
 ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-		active[i] = nullptr;
+	active[i] = nullptr;
 	tornado.anim.PushBack({ 15,1026,20,207 }, 0.3f);
 	tornado.anim.PushBack({ 40,1026,22,207 }, 0.3f);
 	tornado.anim.PushBack({ 67,1026,29,207 }, 0.3f);
@@ -61,10 +61,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-
-
-
-
 	return true;
 }
 
@@ -73,7 +69,6 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
-
 	// Unload fx
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

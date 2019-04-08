@@ -17,29 +17,29 @@
 
 Application::Application()
 {
-	int i = -1;
-	modules[++i] = window = new ModuleWindow();
-	modules[++i] = render = new ModuleRender();
-	modules[++i] = input = new ModuleInput();
-	modules[++i] = audio = new ModuleAudio();
-	modules[++i] = textures = new ModuleTextures();
-	modules[++i] = scene_welcome = new ModuleSceneWelcome();
-	modules[++i] = neo_geo = new ModuleNeoGeo();
-	modules[++i] = scene_haohmaru = new ModuleSceneHaohmaru();
-	modules[++i] = scene_kyoshiro = new ModuleSceneKyoshiro();
-	modules[++i] = scene_congrats = new ModuleSceneCongrats();
-	modules[++i] = player = new ModulePlayer();
-	modules[++i] = player2 = new ModulePlayer2();
-	modules[++i] = particles = new ModuleParticles();
-	modules[++i] = collision = new ModuleCollision();
-	modules[++i] = fade = new ModuleFadeToBlack();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = scene_welcome = new ModuleSceneWelcome();
+	modules[i++] = neo_geo = new ModuleNeoGeo();
+	modules[i++] = scene_haohmaru = new ModuleSceneHaohmaru();
+	modules[i++] = scene_kyoshiro = new ModuleSceneKyoshiro();
+	modules[i++] = scene_congrats = new ModuleSceneCongrats();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = player2 = new ModulePlayer2();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fade = new ModuleFadeToBlack();
 
 }	
 
 Application::~Application()
 {
 	for (int i = NUM_MODULES - 1; i >= 0; --i)
-		delete modules[i];
+	delete modules[i];
 }
 
 bool Application::Init()
@@ -86,7 +86,7 @@ bool Application::CleanUp()
 	bool ret = true;
 
 	for (int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
-		ret = modules[i]->CleanUp();
+		ret = modules[i]->CleanUp() ? modules[i]->CleanUp():true;
 
 	return ret;
 }

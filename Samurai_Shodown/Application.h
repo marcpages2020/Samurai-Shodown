@@ -33,6 +33,7 @@ public:
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
 	ModulePlayer* player = nullptr;
+	ModulePlayer2* player2 = nullptr;
 	ModuleAudio* audio = nullptr;
 	ModuleFadeToBlack*	fade = nullptr;
 	ModuleSceneWelcome* scene_welcome = nullptr;
@@ -42,7 +43,7 @@ public:
 	ModuleParticles* particles = nullptr;
 	ModuleNeoGeo* neo_geo = nullptr;
 	ModuleCollision* collision = nullptr;
-	ModulePlayer2* player2 = nullptr;
+
 
 public:
 
