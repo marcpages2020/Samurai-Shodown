@@ -18,13 +18,13 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_PARTICLES][COLLIDER_PLAYER] = false;
 
 
+	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_2] = true;
+
+
+	matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_PLAYER_PARTICLES][COLLIDER_WALL] = false;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_PARTICLES] = false;
 
-	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_2] = true;
-
-	
-	//matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER] = true;
 }
 
 // Destructor
