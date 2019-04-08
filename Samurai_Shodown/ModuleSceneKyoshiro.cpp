@@ -54,7 +54,7 @@ update_status ModuleSceneKyoshiro::Update()
 	SDL_Rect b;
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
-	App->render->Blit(graphics, -60, -100, &b, 0.75f);
+	App->render->Blit(graphics, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_congrats, 2.5);

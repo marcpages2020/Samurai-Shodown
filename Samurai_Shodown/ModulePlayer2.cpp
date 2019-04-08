@@ -335,7 +335,7 @@ update_status ModulePlayer2::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	App->render->Blit(graphics, position.x, position.y - r.h, &r,NULL, 1);
+	App->render->Blit(graphics, position.x, position.y - r.h, &r,SDL_FLIP_HORIZONTAL);
 	//if (god_mode == false)
 	//{
 		collider_player2->SetPos(position.x, position.y - 95);
