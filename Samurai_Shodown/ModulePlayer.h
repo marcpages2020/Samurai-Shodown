@@ -66,6 +66,7 @@ public:
 	PlayerInput player_input;
 	States state;
 	float speed = 2;
+	bool is_tornado_created = false;
 };
 
 #endif // __ModulePlayer_H__

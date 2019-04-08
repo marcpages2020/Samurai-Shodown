@@ -274,6 +274,7 @@ update_status ModulePlayer::PreUpdate()
 		{
 			state = IDLE;
 			twister.Reset();
+			is_tornado_created = false;
 		}
 	}
 	
@@ -336,8 +337,9 @@ update_status ModulePlayer::Update()
 		break;
 	case TWISTER:
 		current_animation = &twister;
-		if (current_animation->SeeCurrentFrame() == 10) {
+		if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+			is_tornado_created = true;
 		}
 		break;
 	default:
