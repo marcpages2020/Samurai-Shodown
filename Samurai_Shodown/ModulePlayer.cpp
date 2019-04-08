@@ -133,17 +133,15 @@ ModulePlayer::ModulePlayer()
 
 		//crouch animation
 		{
-			crouch.PushBack({ 15, 732, 68, 110}, 0.2f);
-			crouch.PushBack({ 94, 732, 68, 110}, 0.2f);
-			crouch.PushBack({ 180, 732, 68, 110}, 0.2f);
-			crouch.PushBack({ 253, 766, 88, 76}, 0.2f);
-			crouch.PushBack({ 358, 766, 88, 76}, 0.2f);
-			crouch.PushBack({ 459, 766, 88, 76}, 0.2f);
-			crouch.PushBack({ 558, 766, 88, 76}, 0.2f);
-			crouch.PushBack({ 656, 766, 88, 76}, 0.2f);
-			crouch.PushBack({ 769, 732, 68, 110}, 0.2f);
-			crouch.PushBack({ 846, 732, 68, 110}, 0.2f);
-			crouch.PushBack({ 919, 732, 68, 110}, 0.2f);
+			crouch.PushBack({ 15, 1240, 68, 110}, 0.3f);
+			crouch.PushBack({ 94, 1240, 68, 110}, 0.3f);
+			crouch.PushBack({ 180, 1240, 68, 110}, 0.3f);
+			crouch.PushBack({ 253, 1273, 88, 76}, 0.3f);
+			crouch.PushBack({ 358, 1273, 88, 76}, 0.3f);
+			crouch.PushBack({ 459, 1273, 88, 76}, 0.3f);
+			crouch.PushBack({ 564, 1240, 68, 110}, 0.3f);
+			crouch.PushBack({ 645, 1240, 68, 110}, 0.3f);
+			crouch.PushBack({ 724, 1240, 68, 110}, 0.3f);
 			crouch.loop = false;
 		}
 
