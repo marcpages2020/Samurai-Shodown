@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 
+
 ModulePlayer2::ModulePlayer2()
 {
 	position.x = 230;
@@ -131,17 +132,15 @@ ModulePlayer2::ModulePlayer2()
 
 		//crouch animation
 		{
-			crouch.PushBack({ 15, 732, 68, 110 }, 0.2f);
-			crouch.PushBack({ 94, 732, 68, 110 }, 0.2f);
-			crouch.PushBack({ 180, 732, 68, 110 }, 0.2f);
-			crouch.PushBack({ 253, 766, 88, 76 }, 0.2f);
-			crouch.PushBack({ 358, 766, 88, 76 }, 0.2f);
-			crouch.PushBack({ 459, 766, 88, 76 }, 0.2f);
-			crouch.PushBack({ 558, 766, 88, 76 }, 0.2f);
-			crouch.PushBack({ 656, 766, 88, 76 }, 0.2f);
-			crouch.PushBack({ 769, 732, 68, 110 }, 0.2f);
-			crouch.PushBack({ 846, 732, 68, 110 }, 0.2f);
-			crouch.PushBack({ 919, 732, 68, 110 }, 0.2f);
+			crouch.PushBack({ 15, 1240, 68, 110 }, 0.3f);
+			crouch.PushBack({ 94, 1240, 68, 110 }, 0.3f);
+			crouch.PushBack({ 180, 1240, 68, 110 }, 0.3f);
+			crouch.PushBack({ 253, 1273, 88, 76 }, 0.3f);
+			crouch.PushBack({ 358, 1273, 88, 76 }, 0.3f);
+			crouch.PushBack({ 459, 1273, 88, 76 }, 0.3f);
+			crouch.PushBack({ 564, 1240, 68, 110 }, 0.3f);
+			crouch.PushBack({ 645, 1240, 68, 110 }, 0.3f);
+			crouch.PushBack({ 724, 1240, 68, 110 }, 0.3f);
 			crouch.loop = false;
 		}
 
@@ -195,7 +194,7 @@ bool ModulePlayer2::Start()
 	bool ret = true;
 	LOG("Loading player textures\n");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	//state = IDLE;
+	state2 = IDLE2;
 	current_animation = &idle;
 	if (!collider_player2)
 		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player);
@@ -205,75 +204,79 @@ bool ModulePlayer2::Start()
 update_status ModulePlayer2::PreUpdate()
 {
 
-	/*
-	if (state == IDLE) {
-		if (player_input.pressing_A)
-			state = BACKWARD;
-		if (player_input.pressing_D)
-			state = FORWARD;
-		if (player_input.pressing_J)
-			state = KICK;
-		if (player_input.pressing_U)
-			state = PUNCH;
-		if (player_input.pressing_W)
-			state = JUMP;
-		if (player_input.pressing_S)
-			state = CROUCH;
-		if (player_input.pressing_K)
-			state = TWISTER;
+	player_input2.pressing_1 = App->input->keyboard[SDL_SCANCODE_1] == KEY_REPEAT;
+	player_input2.pressing_3 = App->input->keyboard[SDL_SCANCODE_3] == KEY_REPEAT;
+	player_input2.pressing_2 = App->input->keyboard[SDL_SCANCODE_2] == KEY_REPEAT;
+	player_input2.pressing_N = App->input->keyboard[SDL_SCANCODE_N] == KEY_DOWN;
+	player_input2.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN;
+	player_input2.pressing_5 = App->input->keyboard[SDL_SCANCODE_5] == KEY_DOWN;
+	player_input2.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
+	
+	
+	if (state2 == IDLE2) {
+		if (player_input2.pressing_1)
+			state2 = BACKWARD2;
+		if (player_input2.pressing_3)
+			state2 = FORWARD2;
+		if (player_input2.pressing_N)
+			state2 = KICK2;
+		if (player_input2.pressing_M)
+			state2 = PUNCH2;
+		if (player_input2.pressing_5)
+			state2 = JUMP2;
+		if (player_input2.pressing_2)
+			state2 = CROUCH2;
+		if (player_input2.pressing_B)
+			state2 = TWISTER2;
 			
 	}
 	
-	if (state == BACKWARD) {
-		if (!player_input.pressing_A)
-			state = IDLE;
+	if (state2 == BACKWARD2) {
+		if (!player_input2.pressing_1)
+			state2 = IDLE2;
 	}
-	if (state == FORWARD) {
-		if (!player_input.pressing_D)
-			state = IDLE;
+	if (state2 == FORWARD2) {
+		if (!player_input2.pressing_3)
+			state2 = IDLE2;
 	}
-	if (state == KICK) {
+	if (state2 == KICK2) {
 		if (current_animation->Finished()) {
-			state = IDLE;
+			state2 = IDLE2;
 			kick.Reset();
 		}
 	}
-	if (state == PUNCH) {
+	if (state2 == PUNCH2) {
 
 		if (current_animation->Finished()) {
-			state = IDLE;
+			state2 = IDLE2;
 			punch.Reset();
 		}
 	}
-	if (state == JUMP)
+	if (state2 == JUMP2)
 	{
 		if (current_animation == &jump && current_animation->Finished())
 		{
-			state = IDLE;
+			state2 = IDLE2;
 			jump.Reset();
 		}
 	}
-	if (state == CROUCH)
+	if (state2 == CROUCH2)
 	{
 		if (current_animation->Finished())
 		{
-			state = IDLE;
+			state2 = IDLE2;
 			crouch.Reset();
 		}
 	}
-	if (state == TWISTER)
+	if (state2 == TWISTER2)
 	{
 		if (current_animation->Finished())
 		{
-			state = IDLE;
+			state2 = IDLE2;
 			twister.Reset();
 		}
 	}
-	if ((player_input.pressing_F5) && (god_mode == false))
-		god_mode = true;
-	else if ((player_input.pressing_F5) && (god_mode == true))
-		god_mode = false;
-		*/
+	
 	return UPDATE_CONTINUE;
 }
 
@@ -281,13 +284,13 @@ update_status ModulePlayer2::PreUpdate()
 update_status ModulePlayer2::Update()
 {
 	lposition = position;
-	/*switch (state)
+	switch (state2)
 	{
-	case IDLE:
+	case IDLE2:
 		current_animation = &idle;
 		position.y = initial_y;
 		break;
-	case PUNCH:
+	case PUNCH2:
 		current_animation = &punch;
 		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 17))
 		{
@@ -295,7 +298,7 @@ update_status ModulePlayer2::Update()
 		}
 		else { position.y = initial_y; }
 		break;
-	case JUMP:
+	case JUMP2:
 		current_animation = &jump;
 		position.y -= speed * 1.75 * mult;
 		if (position.y <= 120) {
@@ -305,45 +308,45 @@ update_status ModulePlayer2::Update()
 		{
 			mult = 1;
 			jump.Reset();
-			state = IDLE;
+			state2 = IDLE2;
 		}
 		break;
-	case KICK:
+	case KICK2:
 		current_animation = &kick;
 		break;
-	case FORWARD:
+	case FORWARD2:
 		current_animation = &forward;
 		position.x += speed;
 		break;
-	case BACKWARD:
+	case BACKWARD2:
 		current_animation = &backward;
 		position.x -= speed;
 		break;
-	case CROUCH:
+	case CROUCH2:
 		current_animation = &crouch;
 		break;
-	case TWISTER:
+	case TWISTER2:
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10)
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205);
-		//			collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+					//collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
 		break;
 	default:
 		LOG("No state found :(");
 		break;
-	}*/
+	}
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	App->render->Blit(graphics, position.x, position.y - r.h, &r,SDL_FLIP_HORIZONTAL);
-	//if (god_mode == false)
-	//{
+	if (god_mode == false)
+	{
 		collider_player2->SetPos(position.x, position.y - 95);
-	//}
-	//else if (god_mode == true)
-	//{
-		//collider_player2->SetPos(2000, 2000);
-	//}
+	}
+	else if (god_mode == true)
+	{
+		collider_player2->SetPos(2000, 2000);
+	}
 
 	//collider_player_particles->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
 	return UPDATE_CONTINUE;

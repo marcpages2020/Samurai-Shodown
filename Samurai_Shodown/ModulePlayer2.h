@@ -7,22 +7,30 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 
+
 struct SDL_Texture;
 
-/*struct PlayerInput {
+enum States2 {
+	IDLE2,
+	PUNCH2,
+	JUMP2,
+	KICK2,
+	FORWARD2,
+	BACKWARD2,
+	CROUCH2,
+	TWISTER2,
+};
 
-};*/
 
-/*enum States {
-	IDLE,
-	PUNCH,
-	JUMP,
-	KICK,
-	FORWARD,
-	BACKWARD,
-	CROUCH,
-	TWISTER
-};*/
+struct PlayerInput2 {
+	bool pressing_1;
+	bool pressing_3;
+	bool pressing_2;
+	bool pressing_5;
+	bool pressing_B;
+	bool pressing_N;
+	bool pressing_M;
+};
 
 class ModulePlayer2 : public Module
 {
@@ -56,8 +64,8 @@ public:
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
-	//PlayerInput player_input;
-	//States state;
+	PlayerInput2 player_input2;
+	States2 state2;
 	float speed = 2;
 };
 
