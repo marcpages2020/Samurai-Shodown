@@ -234,6 +234,8 @@ update_status ModulePlayer::PreUpdate()
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
 			state = IDLE;
+		if (player_input.pressing_U)
+			state = PUNCH;
 	}
 	if (state == FORWARD) {
 		if (!player_input.pressing_D)
