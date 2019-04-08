@@ -279,8 +279,14 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 	
-	if (player_input.pressing_F5)
-		god_mode = !god_mode;
+	if ((player_input.pressing_F5) && (collider_player!=nullptr)) {
+		collider_player->to_delete=true;
+		collider_player = nullptr;
+	}
+	else if ((player_input.pressing_F5)&&(collider_player==nullptr))
+	{
+		collider_player = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -345,14 +351,11 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	if (god_mode==false)
+	if (collider_player != nullptr)
 	{
 		collider_player->SetPos(position.x, position.y - 95);
 	}
-	else if (god_mode==true)
-	{
-		collider_player->SetPos(2000, 2000);
-	}
+	
 	return UPDATE_CONTINUE;
 }
 
@@ -362,6 +365,7 @@ bool ModulePlayer::CleanUp() {
 	collider_player = nullptr;
 	return true;
 }
+
 
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
