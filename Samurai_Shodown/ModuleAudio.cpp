@@ -21,8 +21,17 @@ bool ModuleAudio::Init() {
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024)==-1)
 	{
 		LOG("Mix_OpenAudio: %s\n", Mix_GetError());
-		//fix error: can't fnd a mastering voice
-		return true;
+		/*if (Mix_GetError() == "XAudio2: Couldn't create mastering voice")
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}*/
+		Mix_CloseAudio();
+		//Mix_OpenAudio: XAudio2: Couldn't create mastering voice
+
 	}
 
 	return true;
