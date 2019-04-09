@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
-#include <crtdbg.h>
+
 
 ModulePlayer::ModulePlayer()
 {
@@ -196,6 +196,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	LOG("Loading player textures\n");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	light_attack = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player_1)
@@ -223,8 +224,10 @@ update_status ModulePlayer::PreUpdate()
 			state = FORWARD;
 		if (player_input.pressing_J)
 			state = KICK;
-		if (player_input.pressing_U)
+		if (player_input.pressing_U) {
 			state = PUNCH;
+			App->audio->PlayFX(light_attack);
+		}
 		if (player_input.pressing_W)
 			state = JUMP_NEUTRAL;
 		if (player_input.pressing_S)
@@ -235,8 +238,10 @@ update_status ModulePlayer::PreUpdate()
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
 			state = IDLE;
-		if (player_input.pressing_U)
+		if (player_input.pressing_U) {
 			state = PUNCH;
+			App->audio->PlayFX(light_attack);
+		}
 		if (player_input.pressing_J)
 			state = KICK;
 		if (player_input.pressing_W)
@@ -245,8 +250,10 @@ update_status ModulePlayer::PreUpdate()
 	if (state == FORWARD) {
 		if (!player_input.pressing_D)
 			state = IDLE;
-		if (player_input.pressing_U)
+		if (player_input.pressing_U) {
 			state = PUNCH;
+			App->audio->PlayFX(light_attack);
+		}
 		if (player_input.pressing_J)
 			state = KICK;
 		if (player_input.pressing_W)
@@ -259,7 +266,6 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 	if (state == PUNCH) {
-
 		if (current_animation->Finished()) {
 			state = IDLE;
 			punch.Reset();
@@ -408,6 +414,14 @@ update_status ModulePlayer::Update()
 	case BACKWARD:
 		current_animation = &backward;
 		position.x -= speed;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 15, position.y - 85);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 10, position.y - 45);
+		}
 		break;
 	case CROUCH_DOWN:
 		current_animation = &crouch_down;
@@ -442,6 +456,7 @@ update_status ModulePlayer::Update()
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
+	
 	collider_player_1 = nullptr;
 	collider_player_2 = nullptr;
 	collider_player_3 = nullptr;
