@@ -15,9 +15,13 @@ enum States2 {
 	PUNCH2,
 	JUMP2,
 	KICK2,
+	JUMP_NEUTRAL2,
+	JUMP_FORWARD2,
+	JUMP_BACKWARD2,
 	FORWARD2,
 	BACKWARD2,
-	CROUCH2,
+	CROUCH2_UP,
+	CROUCH2_DOWN,
 	TWISTER2,
 };
 
@@ -53,20 +57,24 @@ public:
 	Animation backward;
 	Animation punch;
 	Animation kick;
-	Animation jump;
-	Animation crouch;
+	Animation jump_neutral2;
+	Animation jump_forward2;
+	Animation jump_backward2;
+	Animation crouch2_down;
+	Animation crouch2_up;
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player2 = nullptr;
-	//Collider *collider_player_particles = nullptr;
+	Collider *collider_player_particles = nullptr;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput2 player_input2;
 	States2 state2;
 	float speed = 2;
+	bool is_tornado_created2 = false;
 };
 
 #endif // !_ModulePlayer2_H
