@@ -409,14 +409,20 @@ update_status ModulePlayer::Update()
 		if (collider_player_1 != nullptr)
 		{
 			collider_player_1->SetPos(position.x + 15, position.y - 85);
+			collider_player_1->SetSize(35,40);
 		}
 		if (collider_player_2 != nullptr)
 		{
 			collider_player_2->SetPos(position.x + 10, position.y - 45);
+			collider_player_2->SetSize(50, 45);
 		}
 		break;
 	case PUNCH:
 		current_animation = &punch;
+		collider_player_1->SetPos(position.x+35,position.y-60);
+		collider_player_1->SetSize(50, 47);
+		collider_player_2->SetPos(position.x+5, position.y-10);
+		collider_player_2->SetSize(70,15);
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
@@ -434,7 +440,7 @@ update_status ModulePlayer::Update()
 	case JUMP_FORWARD:
 		current_animation = &jump_forward;
 		position.y -= speed * 1.75 * mult;
-		position.x += speed;
+		position.x += 1.25*speed;
 		if (position.y <= 120) {
 			mult = -1;
 		}
@@ -448,7 +454,7 @@ update_status ModulePlayer::Update()
 	case JUMP_BACKWARD:
 		current_animation = &jump_backward;
 		position.y -= speed * 1.75 * mult;
-		position.x -= speed;
+		position.x -= 1.25*speed;
 		if (position.y <= 120) {
 			mult = -1;
 		}
@@ -488,6 +494,10 @@ update_status ModulePlayer::Update()
 		break;
 	case CROUCH_DOWN:
 		current_animation = &crouch_down;
+		collider_player_1->SetPos(position.x + 45, position.y-65);
+		collider_player_1->SetSize(35, 35);
+		collider_player_2->SetPos(position.x+30,position.y-30);
+		collider_player_2->SetSize(50, 30);
 		break;
 	case CROUCH_UP:
 		current_animation = &crouch_up;
@@ -508,14 +518,14 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	if (collider_player_1 != nullptr)
+	/*if (collider_player_1 != nullptr)
 	{
 		collider_player_1->SetPos(position.x+15, position.y - 85);
 	}
 	if (collider_player_2 != nullptr)
 	{
 		collider_player_2->SetPos(position.x + 10, position.y - 45);
-	}
+	}*/
 	return UPDATE_CONTINUE;
 }
 
