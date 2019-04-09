@@ -198,9 +198,10 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	state = IDLE;
 	current_animation = &idle;
-	if (!collider_player)
-		collider_player = App->collision->AddCollider({ 0, 0,50,95 },COLLIDER_PLAYER,(Module*)App->player);
-	
+	if (!collider_player_1)
+		collider_player_1 = App->collision->AddCollider({ 0, 0,35,40 },COLLIDER_PLAYER,(Module*)App->player);
+	if (!collider_player_2)
+		collider_player_2 = App->collision->AddCollider({ 0, 0,50,95 }, COLLIDER_PLAYER, (Module*)App->player);
 	return ret;
 }
 
@@ -313,13 +314,23 @@ update_status ModulePlayer::PreUpdate()
 		}
 	}
 
-	if ((player_input.pressing_F5) && (collider_player != nullptr)) {
-		collider_player->to_delete = true;
-		collider_player = nullptr;
+	if ((player_input.pressing_F5) && (collider_player_1 != nullptr)) {
+		collider_player_1->to_delete = true;
+		collider_player_1 = nullptr;
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->to_delete = true;
+			collider_player_2 = nullptr;
+		}
+		if (collider_player_3 != nullptr)
+		{
+			collider_player_3->to_delete = true;
+			collider_player_3 = nullptr;
+		}
 	}
-	else if ((player_input.pressing_F5) && (collider_player == nullptr))
+	else if ((player_input.pressing_F5) && (collider_player_1 == nullptr))
 	{
-		collider_player = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+		collider_player_1 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
 	}
 
 	return UPDATE_CONTINUE;
@@ -412,9 +423,9 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	if (collider_player != nullptr)
+	if (collider_player_1 != nullptr)
 	{
-		collider_player->SetPos(position.x+8, position.y - 95);
+		collider_player_1->SetPos(position.x+15, position.y - 85);
 	}
 	
 	return UPDATE_CONTINUE;
@@ -423,7 +434,9 @@ update_status ModulePlayer::Update()
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
-	collider_player = nullptr;
+	collider_player_1 = nullptr;
+	collider_player_2 = nullptr;
+	collider_player_3 = nullptr;
 	return true;
 }
 

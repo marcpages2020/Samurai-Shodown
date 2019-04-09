@@ -403,7 +403,7 @@ update_status ModulePlayer2::Update()
 		if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
 			is_tornado_created2 = true;
-			collider_player_particles = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
+			collider_player_particles2 = App->collision->AddCollider({ position.x + 50,position.y - 205,83,207 }, COLLIDER_PLAYER_PARTICLES, (Module*)App->player);
 		}
 		break;
 	default:
@@ -418,7 +418,7 @@ update_status ModulePlayer2::Update()
 	{
 		collider_player2->SetPos(position.x, position.y - 95);
 	}
-	collider_player_particles->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
+	//collider_player_particles2->SetPos(App->particles->tornado.position.x, App->particles->tornado.position.y);
 	return UPDATE_CONTINUE;
 }
 

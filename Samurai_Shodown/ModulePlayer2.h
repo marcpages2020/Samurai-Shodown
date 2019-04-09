@@ -67,7 +67,7 @@ public:
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player2 = nullptr;
-	Collider *collider_player_particles = nullptr;
+	Collider *collider_player_particles2 = nullptr;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
