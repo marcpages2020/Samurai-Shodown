@@ -201,7 +201,7 @@ bool ModulePlayer::Start()
 	if (!collider_player_1)
 		collider_player_1 = App->collision->AddCollider({ 0, 0,35,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_2)
-		collider_player_2 = App->collision->AddCollider({ 0, 0,50,95 }, COLLIDER_PLAYER, (Module*)App->player);
+		collider_player_2 = App->collision->AddCollider({ 0, 0,50,45 }, COLLIDER_PLAYER, (Module*)App->player);
 	return ret;
 }
 
@@ -345,6 +345,14 @@ update_status ModulePlayer::Update()
 	case IDLE:
 		current_animation = &idle;
 		position.y = initial_y;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 15, position.y - 85);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 10, position.y - 45);
+		}
 		break;
 	case PUNCH:
 		current_animation = &punch;
