@@ -467,6 +467,10 @@ update_status ModulePlayer::Update()
 		break;
 	case KICK:
 		current_animation = &kick;
+		collider_player_1->SetPos(position.x + 15, position.y - 75);
+		collider_player_1->SetSize(50, 30);
+		collider_player_2->SetPos(position.x+20, position.y - 80);
+		collider_player_2->SetSize(25, 85);
 		break;
 	case FORWARD:
 		current_animation = &forward;
