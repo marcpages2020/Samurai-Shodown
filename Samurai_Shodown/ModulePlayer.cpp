@@ -74,24 +74,24 @@ ModulePlayer::ModulePlayer()
 			backward.PushBack({ 1351,614,74,114 }, 0.4f);//18
 		}
 
-		//jump animation
+		//jump neutral animation
 		{
-			jump.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
-			jump.PushBack({ 80, 371, 60, 112 }, 0.2f); //2
-			jump.PushBack({ 145, 371, 60, 112 }, 0.2f); //3
-			jump.PushBack({ 209, 371, 75, 92 }, 0.2f);
-			jump.PushBack({ 288, 371, 75, 92 }, 0.2f);
-			jump.PushBack({ 367, 371, 75, 92 }, 0.2f);
-			jump.PushBack({ 446, 371, 78, 83 }, 0.2f);
-			jump.PushBack({ 209, 371, 75, 92 }, 0.2f);
-			jump.PushBack({ 288, 371, 75, 92 }, 0.2f);
-			jump.PushBack({ 367, 371, 75, 92 }, 0.2f);
-			jump.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
-			jump.PushBack({ 80, 371, 60, 112 }, 0.2f);
-			jump.PushBack({ 145, 371, 60, 112 }, 0.2f);
-			jump.PushBack({ 527, 371, 68, 112 }, 0.2f); //8
-			jump.PushBack({ 601, 371, 68, 112 }, 0.2f); //9
-			jump.PushBack({ 674, 371, 68, 112 }, 0.2f); //10
+			jump_neutral.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
+			jump_neutral.PushBack({ 80, 371, 60, 112 }, 0.2f); //2
+			jump_neutral.PushBack({ 145, 371, 60, 112 }, 0.2f); //3
+			jump_neutral.PushBack({ 209, 371, 75, 92 }, 0.2f);
+			jump_neutral.PushBack({ 288, 371, 75, 92 }, 0.2f);
+			jump_neutral.PushBack({ 367, 371, 75, 92 }, 0.2f);
+			jump_neutral.PushBack({ 446, 371, 78, 83 }, 0.2f);
+			jump_neutral.PushBack({ 209, 371, 75, 92 }, 0.2f);
+			jump_neutral.PushBack({ 288, 371, 75, 92 }, 0.2f);
+			jump_neutral.PushBack({ 367, 371, 75, 92 }, 0.2f);
+			jump_neutral.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
+			jump_neutral.PushBack({ 80, 371, 60, 112 }, 0.2f);
+			jump_neutral.PushBack({ 145, 371, 60, 112 }, 0.2f);
+			jump_neutral.PushBack({ 527, 371, 68, 112 }, 0.2f); //8
+			jump_neutral.PushBack({ 601, 371, 68, 112 }, 0.2f); //9
+			jump_neutral.PushBack({ 674, 371, 68, 112 }, 0.2f); //10
 		}
 
 		//punch animation
@@ -133,16 +133,18 @@ ModulePlayer::ModulePlayer()
 
 		//crouch animation
 		{
-			crouch.PushBack({ 15, 1240, 68, 110}, 0.3f);
-			crouch.PushBack({ 94, 1240, 68, 110}, 0.3f);
-			crouch.PushBack({ 180, 1240, 68, 110}, 0.3f);
-			crouch.PushBack({ 253, 1273, 88, 76}, 0.3f);
-			crouch.PushBack({ 358, 1273, 88, 76}, 0.3f);
-			crouch.PushBack({ 459, 1273, 88, 76}, 0.3f);
-			crouch.PushBack({ 564, 1240, 68, 110}, 0.3f);
-			crouch.PushBack({ 645, 1240, 68, 110}, 0.3f);
-			crouch.PushBack({ 724, 1240, 68, 110}, 0.3f);
-			crouch.loop = false;
+			crouch_down.PushBack({ 15, 1240, 68, 110}, 0.3f);
+			crouch_down.PushBack({ 94, 1240, 68, 110}, 0.3f);
+			crouch_down.PushBack({ 180, 1240, 68, 110}, 0.3f);
+			crouch_down.PushBack({ 253, 1273, 88, 76}, 0.3f);
+			crouch_down.PushBack({ 358, 1273, 88, 76}, 0.3f);
+			crouch_down.PushBack({ 459, 1273, 88, 76 }, 0.3f);
+			crouch_down.loop = false;
+
+			crouch_up.PushBack({ 180, 1240, 68, 110 }, 0.3f);
+			crouch_up.PushBack({ 94, 1240, 68, 110 }, 0.3f);
+			crouch_up.PushBack({ 15, 1240, 68, 110 }, 0.3f);	
+			crouch_up.loop = false;
 		}
 
 		//twister animation
@@ -179,7 +181,6 @@ ModulePlayer::ModulePlayer()
 			twister.PushBack({ 748, 896, 72, 120}, 0.6f);
 			twister.loop = false;
 
-
 			//Twister animation (only the twister)			
 
 			twisterAlone.loop = false;
@@ -213,8 +214,7 @@ update_status ModulePlayer::PreUpdate()
 	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 	player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
 	player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
-	
-	
+		
 	if (state == IDLE) {
 		if (player_input.pressing_A)
 			state = BACKWARD;
@@ -227,7 +227,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_W)
 			state = JUMP_NEUTRAL;
 		if (player_input.pressing_S)
-			state = CROUCH;
+			state = CROUCH_DOWN;
 		if (player_input.pressing_K)
 			state = TWISTER;
 	}
@@ -236,10 +236,20 @@ update_status ModulePlayer::PreUpdate()
 			state = IDLE;
 		if (player_input.pressing_U)
 			state = PUNCH;
+		if (player_input.pressing_J)
+			state = KICK;
+		if (player_input.pressing_W)
+			state = JUMP_BACKWARD;
 	}
 	if (state == FORWARD) {
 		if (!player_input.pressing_D)
 			state = IDLE;
+		if (player_input.pressing_U)
+			state = PUNCH;
+		if (player_input.pressing_J)
+			state = KICK;
+		if (player_input.pressing_W)
+			state = JUMP_FORWARD;
 	}
 	if (state == KICK) {
 		if (current_animation->Finished()) {
@@ -256,18 +266,41 @@ update_status ModulePlayer::PreUpdate()
 	}
 	if (state == JUMP_NEUTRAL)
 	{
-		if (current_animation==&jump && current_animation->Finished())
+		if (current_animation->Finished())
 		{
 			state = IDLE;
-			jump.Reset();
+			jump_neutral.Reset();
 		}
 	}
-	if (state == CROUCH) 
+	if (state == JUMP_FORWARD)
+	{
+		if (current_animation->Finished())
+		{
+			state = IDLE;
+			jump_forward.Reset();
+		}
+	}
+	if (state == JUMP_BACKWARD)
+	{
+		if (current_animation->Finished())
+		{
+			state = IDLE;
+			jump_backward.Reset();
+		}
+	}
+	if (state == CROUCH_DOWN) 
 	{
 		if (!player_input.pressing_S)
 		{
+			state = CROUCH_UP;
+			crouch_down.Reset();
+		}
+	}
+	if (state == CROUCH_UP) 
+	{
+		if (current_animation->Finished()) {
 			state = IDLE;
-			crouch.Reset();
+			crouch_up.Reset();
 		}
 	}
 	if (state == TWISTER) 
@@ -311,7 +344,7 @@ update_status ModulePlayer::Update()
 		else { position.y = initial_y; }
 		break;
 	case JUMP_NEUTRAL:
-		current_animation = &jump;
+		current_animation = &jump_neutral;
 		position.y -= speed * 1.75 * mult;
 		if (position.y <= 120) {
 			mult = -1;
@@ -319,7 +352,35 @@ update_status ModulePlayer::Update()
 		else if (position.y == initial_y)
 		{
 			mult = 1;
-			jump.Reset();
+			jump_neutral.Reset();
+			state = IDLE;
+		}
+		break;
+	case JUMP_FORWARD:
+		current_animation = &jump_forward;
+		position.y -= speed * 1.75 * mult;
+		position.x += speed;
+		if (position.y <= 120) {
+			mult = -1;
+		}
+		else if (position.y == initial_y)
+		{
+			mult = 1;
+			jump_forward.Reset();
+			state = IDLE;
+		}
+		break;
+	case JUMP_BACKWARD:
+		current_animation = &jump_backward;
+		position.y -= speed * 1.75 * mult;
+		position.x -= speed;
+		if (position.y <= 120) {
+			mult = -1;
+		}
+		else if (position.y == initial_y)
+		{
+			mult = 1;
+			jump_backward.Reset();
 			state = IDLE;
 		}
 		break;
@@ -334,8 +395,11 @@ update_status ModulePlayer::Update()
 		current_animation = &backward;
 		position.x -= speed;
 		break;
-	case CROUCH:
-		current_animation = &crouch;
+	case CROUCH_DOWN:
+		current_animation = &crouch_down;
+		break;
+	case CROUCH_UP:
+		current_animation = &crouch_up;
 		break;
 	case TWISTER:
 		current_animation = &twister;
