@@ -225,7 +225,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_U)
 			state = PUNCH;
 		if (player_input.pressing_W)
-			state = JUMP;
+			state = JUMP_NEUTRAL;
 		if (player_input.pressing_S)
 			state = CROUCH;
 		if (player_input.pressing_K)
@@ -254,7 +254,7 @@ update_status ModulePlayer::PreUpdate()
 			punch.Reset();
 		}
 	}
-	if (state == JUMP)
+	if (state == JUMP_NEUTRAL)
 	{
 		if (current_animation==&jump && current_animation->Finished())
 		{
@@ -264,7 +264,7 @@ update_status ModulePlayer::PreUpdate()
 	}
 	if (state == CROUCH) 
 	{
-		if (current_animation->Finished())
+		if (!player_input.pressing_S)
 		{
 			state = IDLE;
 			crouch.Reset();
@@ -310,7 +310,7 @@ update_status ModulePlayer::Update()
 		}
 		else { position.y = initial_y; }
 		break;
-	case JUMP:
+	case JUMP_NEUTRAL:
 		current_animation = &jump;
 		position.y -= speed * 1.75 * mult;
 		if (position.y <= 120) {
