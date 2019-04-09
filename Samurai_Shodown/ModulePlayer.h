@@ -20,7 +20,7 @@ enum States
 	JUMP_FORWARD,
 	JUMP_BACKWARD,
 	KICK,
-	PUNCH,	
+	PUNCH,
 	TWISTER
 };
 
@@ -50,7 +50,7 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture * graphics = nullptr;
 	SDL_Texture* haohmaruSpreadsheet = nullptr;
 	Animation idle;
 	Animation forward;

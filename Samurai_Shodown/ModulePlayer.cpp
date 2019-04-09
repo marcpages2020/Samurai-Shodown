@@ -214,7 +214,7 @@ update_status ModulePlayer::PreUpdate()
 	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 	player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
 	player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
-		
+
 	if (state == IDLE) {
 		if (player_input.pressing_A)
 			state = BACKWARD;
@@ -288,7 +288,7 @@ update_status ModulePlayer::PreUpdate()
 			jump_backward.Reset();
 		}
 	}
-	if (state == CROUCH_DOWN) 
+	if (state == CROUCH_DOWN)
 	{
 		if (!player_input.pressing_S)
 		{
@@ -296,14 +296,14 @@ update_status ModulePlayer::PreUpdate()
 			crouch_down.Reset();
 		}
 	}
-	if (state == CROUCH_UP) 
+	if (state == CROUCH_UP)
 	{
 		if (current_animation->Finished()) {
 			state = IDLE;
 			crouch_up.Reset();
 		}
 	}
-	if (state == TWISTER) 
+	if (state == TWISTER)
 	{
 		if (current_animation->Finished())
 		{
@@ -312,12 +312,12 @@ update_status ModulePlayer::PreUpdate()
 			is_tornado_created = false;
 		}
 	}
-	
-	if ((player_input.pressing_F5) && (collider_player!=nullptr)) {
-		collider_player->to_delete=true;
+
+	if ((player_input.pressing_F5) && (collider_player != nullptr)) {
+		collider_player->to_delete = true;
 		collider_player = nullptr;
 	}
-	else if ((player_input.pressing_F5)&&(collider_player==nullptr))
+	else if ((player_input.pressing_F5) && (collider_player == nullptr))
 	{
 		collider_player = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
 	}
