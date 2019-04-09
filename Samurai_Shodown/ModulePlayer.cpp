@@ -133,17 +133,17 @@ ModulePlayer::ModulePlayer()
 
 		//crouch animation
 		{
-			crouch_down.PushBack({ 15, 1240, 68, 110}, 0.3f);
-			crouch_down.PushBack({ 94, 1240, 68, 110}, 0.3f);
-			crouch_down.PushBack({ 180, 1240, 68, 110}, 0.3f);
-			crouch_down.PushBack({ 253, 1273, 88, 76}, 0.3f);
-			crouch_down.PushBack({ 358, 1273, 88, 76}, 0.3f);
-			crouch_down.PushBack({ 459, 1273, 88, 76 }, 0.3f);
+			crouch_down.PushBack({ 15, 1240, 68, 110}, 0.5f);
+			crouch_down.PushBack({ 94, 1240, 68, 110}, 0.5f);
+			crouch_down.PushBack({ 180, 1240, 68, 110}, 0.5f);
+			crouch_down.PushBack({ 253, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 358, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 459, 1273, 88, 76 }, 0.5f);
 			crouch_down.loop = false;
 
-			crouch_up.PushBack({ 180, 1240, 68, 110 }, 0.3f);
-			crouch_up.PushBack({ 94, 1240, 68, 110 }, 0.3f);
-			crouch_up.PushBack({ 15, 1240, 68, 110 }, 0.3f);	
+			crouch_up.PushBack({ 180, 1240, 68, 110 }, 0.5f);
+			crouch_up.PushBack({ 94, 1240, 68, 110 }, 0.5f);
+			crouch_up.PushBack({ 15, 1240, 68, 110 }, 0.5f);	
 			crouch_up.loop = false;
 		}
 
@@ -199,7 +199,7 @@ bool ModulePlayer::Start()
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player)
-		collider_player = App->collision->AddCollider({ 0, 0,71,95 },COLLIDER_PLAYER,(Module*)App->player);
+		collider_player = App->collision->AddCollider({ 0, 0,50,95 },COLLIDER_PLAYER,(Module*)App->player);
 	
 	return ret;
 }
@@ -337,11 +337,6 @@ update_status ModulePlayer::Update()
 		break;
 	case PUNCH:
 		current_animation = &punch;
-		if (((int)punch.SeeCurrentFrame() >= 7) && ((int)punch.SeeCurrentFrame() <= 17))
-		{
-			position.y = initial_y + 11.5;
-		}
-		else { position.y = initial_y; }
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
@@ -419,7 +414,7 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
 	if (collider_player != nullptr)
 	{
-		collider_player->SetPos(position.x, position.y - 95);
+		collider_player->SetPos(position.x+8, position.y - 95);
 	}
 	
 	return UPDATE_CONTINUE;

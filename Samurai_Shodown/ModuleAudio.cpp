@@ -30,6 +30,7 @@ bool ModuleAudio::Init() {
 			return false;
 		}*/
 		Mix_CloseAudio();
+		Mix_Quit();
 		//Mix_OpenAudio: XAudio2: Couldn't create mastering voice
 
 	}
