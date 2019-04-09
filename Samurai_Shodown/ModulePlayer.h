@@ -9,17 +9,18 @@
 
 struct SDL_Texture;
 
-enum States 
+enum States
 {
 	IDLE,
 	FORWARD,
 	BACKWARD,
-	CROUCH,
+	CROUCH_UP,
+	CROUCH_DOWN,
 	JUMP_NEUTRAL,
 	JUMP_FORWARD,
 	JUMP_BACKWARD,
 	KICK,
-	PUNCH,	
+	PUNCH,
 	TWISTER
 };
 
@@ -49,15 +50,18 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture * graphics = nullptr;
 	SDL_Texture* haohmaruSpreadsheet = nullptr;
 	Animation idle;
 	Animation forward;
 	Animation backward;
 	Animation punch;
 	Animation kick;
-	Animation jump;
-	Animation crouch;
+	Animation jump_neutral;
+	Animation jump_forward;
+	Animation jump_backward;
+	Animation crouch_up;
+	Animation crouch_down;
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;
