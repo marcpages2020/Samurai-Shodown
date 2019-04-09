@@ -197,6 +197,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures\n");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	light_attack = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
+	light_kick = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player_1)
@@ -222,8 +223,10 @@ update_status ModulePlayer::PreUpdate()
 			state = BACKWARD;
 		if (player_input.pressing_D)
 			state = FORWARD;
-		if (player_input.pressing_J)
+		if (player_input.pressing_J) {
 			state = KICK;
+			App->audio->PlayFX(light_kick);
+		}
 		if (player_input.pressing_U) {
 			state = PUNCH;
 			App->audio->PlayFX(light_attack);
@@ -410,6 +413,14 @@ update_status ModulePlayer::Update()
 	case FORWARD:
 		current_animation = &forward;
 		position.x += speed;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 15, position.y - 85);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 10, position.y - 45);
+		}
 		break;
 	case BACKWARD:
 		current_animation = &backward;
@@ -449,14 +460,17 @@ update_status ModulePlayer::Update()
 	{
 		collider_player_1->SetPos(position.x+15, position.y - 85);
 	}
-	
+	if (collider_player_2 != nullptr)
+	{
+		collider_player_2->SetPos(position.x + 10, position.y - 45);
+	}
 	return UPDATE_CONTINUE;
 }
 
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
-	
+	App->audio->UnLoadFx(light_attack);
 	collider_player_1 = nullptr;
 	collider_player_2 = nullptr;
 	collider_player_3 = nullptr;

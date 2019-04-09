@@ -78,6 +78,7 @@ public:
 	float speed = 2;
 	bool is_tornado_created = false;
 	Mix_Chunk* light_attack;
+	Mix_Chunk* light_kick;
 };
 
 #endif // __ModulePlayer_H__
