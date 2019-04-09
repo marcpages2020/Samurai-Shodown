@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 struct SDL_Texture;
 
@@ -76,6 +77,8 @@ public:
 	States state;
 	float speed = 2;
 	bool is_tornado_created = false;
+	Mix_Chunk* light_attack;
+	Mix_Chunk* light_kick;
 };
 
 #endif // __ModulePlayer_H__

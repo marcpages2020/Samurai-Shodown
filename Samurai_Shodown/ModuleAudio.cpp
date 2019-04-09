@@ -88,7 +88,7 @@ bool ModuleAudio::PlayMusic(Mix_Music* song, int times) {
 }
 
 bool ModuleAudio::PlayFX(Mix_Chunk* fx) {
-	if (Mix_FadeInChannel(-1, fx, 0,2000) == -1)
+	if (Mix_PlayChannel(-1, fx, 0) == -1)
 	{
 		LOG("Mix_PlayChannel: %s\n", Mix_GetError());
 		return false;
