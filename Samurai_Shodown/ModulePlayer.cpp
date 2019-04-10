@@ -250,8 +250,9 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	LOG("Loading player textures\n");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	light_attack = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
-	light_kick = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
+	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
+	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
+	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player_1)
@@ -279,25 +280,27 @@ update_status ModulePlayer::PreUpdate()
 			state = FORWARD;
 		if (player_input.pressing_J) {
 			state = KICK;
-			App->audio->PlayFX(light_kick);
+			App->audio->PlayFX(light_kick_fx);
 		}
 		if (player_input.pressing_U) {
 			state = PUNCH;
-			App->audio->PlayFX(light_attack);
+			App->audio->PlayFX(light_attack_fx);
 		}
 		if (player_input.pressing_W)
 			state = JUMP_NEUTRAL;
 		if (player_input.pressing_S)
 			state = CROUCH_DOWN;
-		if (player_input.pressing_K)
+		if (player_input.pressing_K) {
+			App->audio->PlayFX(twister_fx);
 			state = TWISTER;
+		}
 	}
 	if (state == BACKWARD) {
 		if (!player_input.pressing_A)
 			state = IDLE;
 		if (player_input.pressing_U) {
 			state = PUNCH;
-			App->audio->PlayFX(light_attack);
+			App->audio->PlayFX(light_attack_fx);
 		}
 		if (player_input.pressing_J)
 			state = KICK;
@@ -309,7 +312,7 @@ update_status ModulePlayer::PreUpdate()
 			state = IDLE;
 		if (player_input.pressing_U) {
 			state = PUNCH;
-			App->audio->PlayFX(light_attack);
+			App->audio->PlayFX(light_attack_fx);
 		}
 		if (player_input.pressing_J)
 			state = KICK;
@@ -394,6 +397,10 @@ update_status ModulePlayer::PreUpdate()
 	else if ((player_input.pressing_F5) && (collider_player_1 == nullptr))
 	{
 		collider_player_1 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+		if (collider_player_2==nullptr)
+		{
+			collider_player_2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+		}
 	}
 
 	return UPDATE_CONTINUE;
@@ -433,41 +440,46 @@ update_status ModulePlayer::Update()
 		break;
 	case BACKWARD:
 		current_animation = &backward;
-
-		collider_player_1->SetPos(position.x, position.y - 85);
-		collider_player_1->SetSize(45, 40);
-		collider_player_2->SetPos(position.x, position.y - 45);
-		collider_player_2->SetSize(60, 45);
-		
-		position.x -= speed;
 		if (collider_player_1 != nullptr)
 		{
-			collider_player_1->SetPos(position.x + 15, position.y - 85);
+			collider_player_1->SetPos(position.x, position.y - 85);
+			collider_player_1->SetSize(45, 40);
+		}	
+		if (collider_player_2 != nullptr) {
+			collider_player_2->SetPos(position.x, position.y - 45);
+			collider_player_2->SetSize(60, 45);
+		}
+		position.x -= speed;
+		break;
+
+	case CROUCH_DOWN:
+		current_animation = &crouch_down;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 45, position.y - 65);
+			collider_player_1->SetSize(35, 35);
 		}
 		if (collider_player_2 != nullptr)
 		{
-			collider_player_2->SetPos(position.x + 10, position.y - 45);
+			collider_player_2->SetPos(position.x + 30, position.y - 30);
+			collider_player_2->SetSize(50, 30);
 		}
-		break;
-	case CROUCH_DOWN:
-		current_animation = &crouch_down;
-
-		collider_player_1->SetPos(position.x + 45, position.y - 65);
-		collider_player_1->SetSize(35, 35);
-		collider_player_2->SetPos(position.x + 30, position.y - 30);
-		collider_player_2->SetSize(50, 30);
 		break;
 	case CROUCH_UP:
 		current_animation = &crouch_up;		
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
-
-		collider_player_1->SetPos(position.x, position.y - 90);
-		collider_player_1->SetSize(35, 35);
-		collider_player_2->SetPos(position.x, position.y - 50);
-		collider_player_2->SetSize(50, 30);
-
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x, position.y - 90);
+			collider_player_1->SetSize(35, 35);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x, position.y - 50);
+			collider_player_2->SetSize(50, 30);
+		}
 		position.y -= speed * 1.75 * mult;
 
 		if (position.y <= 120) {
@@ -482,12 +494,16 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP_FORWARD:
 		current_animation = &jump_forward;
-
-		collider_player_1->SetPos(position.x + 20, position.y - 90);
-		collider_player_1->SetSize(35, 35);
-		collider_player_2->SetPos(position.x + 20, position.y - 50);
-		collider_player_2->SetSize(50, 30);
-
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 20, position.y - 90);
+			collider_player_1->SetSize(35, 35);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 20, position.y - 50);
+			collider_player_2->SetSize(50, 30);
+		}
 		position.y -= speed * 1.75 * mult;
 		position.x += 1.25*speed;
 
@@ -503,12 +519,16 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP_BACKWARD:
 		current_animation = &jump_backward;
-
-		collider_player_1->SetPos(position.x + 10, position.y - 90);
-		collider_player_1->SetSize(35, 35);
-		collider_player_2->SetPos(position.x + 10, position.y - 50);
-		collider_player_2->SetSize(50, 30);
-
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 10, position.y - 90);
+			collider_player_1->SetSize(35, 35);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 10, position.y - 50);
+			collider_player_2->SetSize(50, 30);
+		}
 		position.y -= speed * 1.75 * mult;
 		position.x -= 1.25*speed;
 
@@ -524,19 +544,29 @@ update_status ModulePlayer::Update()
 		break;
 	case PUNCH:
 		current_animation = &punch;
-
-		collider_player_1->SetPos(position.x + 35, position.y - 60);
-		collider_player_1->SetSize(50, 47);
-		collider_player_2->SetPos(position.x + 5, position.y - 10);
-		collider_player_2->SetSize(70, 15);
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 35, position.y - 60);
+			collider_player_1->SetSize(50, 47);
+		}		
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 5, position.y - 10);
+			collider_player_2->SetSize(70, 15);
+		}
 		break;
 	case KICK:
 		current_animation = &kick;
-
-		collider_player_1->SetPos(position.x + 15, position.y - 75);
-		collider_player_1->SetSize(50, 30);
-		collider_player_2->SetPos(position.x+20, position.y - 80);
-		collider_player_2->SetSize(25, 85);
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 15, position.y - 75);
+			collider_player_1->SetSize(50, 30);
+		}		
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 20, position.y - 80);
+			collider_player_2->SetSize(25, 85);
+		}
 		break;	
 	case TWISTER:
 		current_animation = &twister;
@@ -568,7 +598,8 @@ update_status ModulePlayer::Update()
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
 	App->textures->Unload(graphics);
-	App->audio->UnLoadFx(light_attack);
+	App->audio->UnLoadFx(light_attack_fx);
+	App->audio->UnLoadFx(light_kick_fx);
 	collider_player_1 = nullptr;
 	collider_player_2 = nullptr;
 	collider_player_3 = nullptr;
