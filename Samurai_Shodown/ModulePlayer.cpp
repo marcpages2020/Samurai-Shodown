@@ -423,7 +423,7 @@ update_status ModulePlayer::Update()
 		if (collider_player_2 != nullptr)
 		{
 			collider_player_2->SetPos(position.x + 10, position.y - 45);
-			collider_player_2->SetSize(50, 45);
+			collider_player_2->SetSize(45, 45);
 		}
 		break;	
 	case FORWARD:
@@ -570,6 +570,16 @@ update_status ModulePlayer::Update()
 		break;	
 	case TWISTER:
 		current_animation = &twister;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x+45,position.y-75);
+			collider_player_1->SetSize(40,45);
+		}
+		if (collider_player_2!=nullptr)
+		{
+			collider_player_2->SetPos(position.x + 30, position.y - 35);
+			collider_player_2->SetSize(60,40);
+		}
 		if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
 			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
 			is_tornado_created = true;
