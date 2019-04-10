@@ -433,6 +433,12 @@ update_status ModulePlayer::Update()
 		break;
 	case BACKWARD:
 		current_animation = &backward;
+
+		collider_player_1->SetPos(position.x, position.y - 85);
+		collider_player_1->SetSize(45, 40);
+		collider_player_2->SetPos(position.x, position.y - 45);
+		collider_player_2->SetSize(60, 45);
+		
 		position.x -= speed;
 		if (collider_player_1 != nullptr)
 		{
@@ -452,13 +458,15 @@ update_status ModulePlayer::Update()
 		collider_player_2->SetSize(50, 30);
 		break;
 	case CROUCH_UP:
-		current_animation = &crouch_up;
+		current_animation = &crouch_up;		
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
 
 		collider_player_1->SetPos(position.x, position.y - 90);
+		collider_player_1->SetSize(35, 35);
 		collider_player_2->SetPos(position.x, position.y - 50);
+		collider_player_2->SetSize(50, 30);
 
 		position.y -= speed * 1.75 * mult;
 
@@ -516,6 +524,7 @@ update_status ModulePlayer::Update()
 		break;
 	case PUNCH:
 		current_animation = &punch;
+
 		collider_player_1->SetPos(position.x + 35, position.y - 60);
 		collider_player_1->SetSize(50, 47);
 		collider_player_2->SetPos(position.x + 5, position.y - 10);
@@ -523,6 +532,7 @@ update_status ModulePlayer::Update()
 		break;
 	case KICK:
 		current_animation = &kick;
+
 		collider_player_1->SetPos(position.x + 15, position.y - 75);
 		collider_player_1->SetSize(50, 30);
 		collider_player_2->SetPos(position.x+20, position.y - 80);
