@@ -442,12 +442,12 @@ update_status ModulePlayer::Update()
 		current_animation = &backward;
 		if (collider_player_1 != nullptr)
 		{
-			collider_player_1->SetPos(position.x, position.y - 85);
-			collider_player_1->SetSize(45, 40);
+			collider_player_1->SetPos(position.x+25, position.y - 85);
+			collider_player_1->SetSize(35, 40);
 		}	
 		if (collider_player_2 != nullptr) {
-			collider_player_2->SetPos(position.x, position.y - 45);
-			collider_player_2->SetSize(60, 45);
+			collider_player_2->SetPos(position.x+20, position.y - 45);
+			collider_player_2->SetSize(50, 45);
 		}
 		position.x -= speed;
 		break;
