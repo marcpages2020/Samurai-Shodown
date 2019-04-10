@@ -28,7 +28,10 @@ public:
 public:
 	_Mix_Music* music;
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* Letters = nullptr;
 	SDL_Rect welcome;
+	Animation letters;
+	Animation * curr = nullptr;
 };
 
 #endif // __MODULESCENEWELCOME_H__

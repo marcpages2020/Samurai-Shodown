@@ -22,14 +22,16 @@ public:
 private:
 	int loops;
 	int num_frames = 0;
-	int last_frame = -1;
+	int last_frame = 0;
+	int cont = -1;
 
 public:
 
 	void PushBack(const SDL_Rect& rect, float speed = 1.0f)
 	{
 		num_frames++;
-		int i = ++last_frame;
+		++last_frame;
+		int i = ++cont;
 		frames[i].rect = rect;
 		frames[i].speed = speed;
 	}
@@ -38,7 +40,7 @@ public:
 	{
 		current_frame += frames[(int)current_frame].speed;
 		if (current_frame >= last_frame) {
-			current_frame = (loop) ? 0.0f : last_frame;
+			current_frame = (loop) ? 0.0f : last_frame - 1;
 			loops++;
 		}
 
