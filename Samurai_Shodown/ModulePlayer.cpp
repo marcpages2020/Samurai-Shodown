@@ -185,6 +185,7 @@ ModulePlayer::ModulePlayer()
 
 		//crouch animation
 		{
+			//Crouch Down
 			crouch_down.PushBack({ 15, 1240, 68, 110}, 0.5f);
 			crouch_down.PushBack({ 94, 1240, 68, 110}, 0.5f);
 			crouch_down.PushBack({ 180, 1240, 68, 110}, 0.5f);
@@ -193,6 +194,7 @@ ModulePlayer::ModulePlayer()
 			crouch_down.PushBack({ 459, 1273, 88, 76 }, 0.5f);
 			crouch_down.loop = false;
 
+			//Crouch Up
 			crouch_up.PushBack({ 180, 1240, 68, 110 }, 0.5f);
 			crouch_up.PushBack({ 94, 1240, 68, 110 }, 0.5f);
 			crouch_up.PushBack({ 15, 1240, 68, 110 }, 0.5f);	
@@ -416,16 +418,45 @@ update_status ModulePlayer::Update()
 			collider_player_2->SetPos(position.x + 10, position.y - 45);
 			collider_player_2->SetSize(50, 45);
 		}
+		break;	
+	case FORWARD:
+		current_animation = &forward;
+		position.x += speed;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 15, position.y - 85);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 10, position.y - 45);
+		}
 		break;
-	case PUNCH:
-		current_animation = &punch;
-		collider_player_1->SetPos(position.x+35,position.y-60);
-		collider_player_1->SetSize(50, 47);
-		collider_player_2->SetPos(position.x+5, position.y-10);
-		collider_player_2->SetSize(70,15);
+	case BACKWARD:
+		current_animation = &backward;
+		position.x -= speed;
+		if (collider_player_1 != nullptr)
+		{
+			collider_player_1->SetPos(position.x + 15, position.y - 85);
+		}
+		if (collider_player_2 != nullptr)
+		{
+			collider_player_2->SetPos(position.x + 10, position.y - 45);
+		}
+		break;
+	case CROUCH_DOWN:
+		current_animation = &crouch_down;
+		collider_player_1->SetPos(position.x + 45, position.y - 65);
+		collider_player_1->SetSize(35, 35);
+		collider_player_2->SetPos(position.x + 30, position.y - 30);
+		collider_player_2->SetSize(50, 30);
+		break;
+	case CROUCH_UP:
+		current_animation = &crouch_up;
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
+		collider_player_1->SetPos(position.x, position.y - 90);
+		collider_player_2->SetPos(position.x, position.y - 50);
 		position.y -= speed * 1.75 * mult;
 		if (position.y <= 120) {
 			mult = -1;
@@ -465,47 +496,20 @@ update_status ModulePlayer::Update()
 			state = IDLE;
 		}
 		break;
+	case PUNCH:
+		current_animation = &punch;
+		collider_player_1->SetPos(position.x + 35, position.y - 60);
+		collider_player_1->SetSize(50, 47);
+		collider_player_2->SetPos(position.x + 5, position.y - 10);
+		collider_player_2->SetSize(70, 15);
+		break;
 	case KICK:
 		current_animation = &kick;
 		collider_player_1->SetPos(position.x + 15, position.y - 75);
 		collider_player_1->SetSize(50, 30);
 		collider_player_2->SetPos(position.x+20, position.y - 80);
 		collider_player_2->SetSize(25, 85);
-		break;
-	case FORWARD:
-		current_animation = &forward;
-		position.x += speed;
-		if (collider_player_1 != nullptr)
-		{
-			collider_player_1->SetPos(position.x + 15, position.y - 85);
-		}
-		if (collider_player_2 != nullptr)
-		{
-			collider_player_2->SetPos(position.x + 10, position.y - 45);
-		}
-		break;
-	case BACKWARD:
-		current_animation = &backward;
-		position.x -= speed;
-		if (collider_player_1 != nullptr)
-		{
-			collider_player_1->SetPos(position.x + 15, position.y - 85);
-		}
-		if (collider_player_2 != nullptr)
-		{
-			collider_player_2->SetPos(position.x + 10, position.y - 45);
-		}
-		break;
-	case CROUCH_DOWN:
-		current_animation = &crouch_down;
-		collider_player_1->SetPos(position.x + 45, position.y-65);
-		collider_player_1->SetSize(35, 35);
-		collider_player_2->SetPos(position.x+30,position.y-30);
-		collider_player_2->SetSize(50, 30);
-		break;
-	case CROUCH_UP:
-		current_animation = &crouch_up;
-		break;
+		break;	
 	case TWISTER:
 		current_animation = &twister;
 		if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
