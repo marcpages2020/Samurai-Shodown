@@ -77,8 +77,9 @@ public:
 	States state;
 	float speed = 2;
 	bool is_tornado_created = false;
-	Mix_Chunk* light_attack;
-	Mix_Chunk* light_kick;
+	Mix_Chunk* light_attack_fx;
+	Mix_Chunk* light_kick_fx;
+	Mix_Chunk* twister_fx;
 };
 
 #endif // __ModulePlayer_H__
