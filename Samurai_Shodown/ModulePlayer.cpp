@@ -445,6 +445,7 @@ update_status ModulePlayer::Update()
 		break;
 	case CROUCH_DOWN:
 		current_animation = &crouch_down;
+
 		collider_player_1->SetPos(position.x + 45, position.y - 65);
 		collider_player_1->SetSize(35, 35);
 		collider_player_2->SetPos(position.x + 30, position.y - 30);
@@ -455,9 +456,12 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
+
 		collider_player_1->SetPos(position.x, position.y - 90);
 		collider_player_2->SetPos(position.x, position.y - 50);
+
 		position.y -= speed * 1.75 * mult;
+
 		if (position.y <= 120) {
 			mult = -1;
 		}
@@ -470,8 +474,15 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP_FORWARD:
 		current_animation = &jump_forward;
+
+		collider_player_1->SetPos(position.x + 20, position.y - 90);
+		collider_player_1->SetSize(35, 35);
+		collider_player_2->SetPos(position.x + 20, position.y - 50);
+		collider_player_2->SetSize(50, 30);
+
 		position.y -= speed * 1.75 * mult;
 		position.x += 1.25*speed;
+
 		if (position.y <= 120) {
 			mult = -1;
 		}
@@ -484,8 +495,15 @@ update_status ModulePlayer::Update()
 		break;
 	case JUMP_BACKWARD:
 		current_animation = &jump_backward;
+
+		collider_player_1->SetPos(position.x + 10, position.y - 90);
+		collider_player_1->SetSize(35, 35);
+		collider_player_2->SetPos(position.x + 10, position.y - 50);
+		collider_player_2->SetSize(50, 30);
+
 		position.y -= speed * 1.75 * mult;
 		position.x -= 1.25*speed;
+
 		if (position.y <= 120) {
 			mult = -1;
 		}
