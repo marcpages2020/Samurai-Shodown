@@ -184,6 +184,29 @@ ModulePlayer::ModulePlayer()
 			kick.loop = false;
 		}
 
+		//get hit animation
+		{
+			hit.PushBack({ 14, 1616, 78, 100}, 0.3f);
+			hit.PushBack({ 105, 1616, 78, 100}, 0.3f);
+			hit.PushBack({ 195, 1616, 78, 100}, 0.3f);
+			hit.loop = false;
+		}
+
+
+		//get hit animation 2
+		{
+			hit.PushBack({14, 1616, 78, 100}, 0.3f);
+			hit.PushBack({105, 1616, 78, 100}, 0.3f);
+			hit.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit.PushBack({282, 1616, 77, 94}, 0.3f);
+			hit.PushBack({367, 1616, 77, 94}, 0.3f);
+			hit.PushBack({452, 1616, 77, 94}, 0.3f);
+			hit.PushBack({14, 1616, 78, 100}, 0.3f);
+			hit.PushBack({105, 1616, 78, 100}, 0.3f);
+			hit.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit.loop = false;
+		}
+
 		//crouch animation
 		{
 			//Crouch Down
