@@ -63,6 +63,8 @@ public:
 	Animation jump_backward;
 	Animation crouch_up;
 	Animation crouch_down;
+	Animation crouch_punch;
+	Animation crouch_kick;
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;

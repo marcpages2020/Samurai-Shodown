@@ -560,7 +560,7 @@ update_status ModulePlayer::Update()
 		current_animation = &kick;
 		if (collider_player_1 != nullptr)
 		{
-			collider_player_1->SetPos(position.x + 15, position.y - 75);
+			collider_player_1->SetPos(position.x + 30, position.y - 50);
 			collider_player_1->SetSize(50, 30);
 		}		
 		if (collider_player_1 != nullptr)
