@@ -17,6 +17,8 @@ enum States
 	BACKWARD,
 	CROUCH_UP,
 	CROUCH_DOWN,
+	CROUCH_KICK,
+	CROUCH_PUNCH,
 	JUMP_NEUTRAL,
 	JUMP_FORWARD,
 	JUMP_BACKWARD,
@@ -65,6 +67,8 @@ public:
 	Animation jump_backward;
 	Animation crouch_up;
 	Animation crouch_down;
+	Animation crouch_punch;
+	Animation crouch_kick;
 	Animation twister;
 	Animation twisterAlone;
 	iPoint position;

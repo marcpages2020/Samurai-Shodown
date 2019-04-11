@@ -386,6 +386,12 @@ update_status ModulePlayer::PreUpdate()
 			state = CROUCH_UP;
 			crouch_down.Reset();
 		}
+		if (player_input.pressing_J) {
+			state = CROUCH_KICK;
+		}
+		if (player_input.pressing_U) {
+			state = CROUCH_PUNCH;
+		}
 	}
 	if (state == CROUCH_UP)
 	{
@@ -403,32 +409,45 @@ update_status ModulePlayer::PreUpdate()
 			is_tornado_created = false;
 		}
 	}
-
-	if ((player_input.pressing_F5) && (collider_player_1 != nullptr)) {
-		collider_player_1->to_delete = true;
-		collider_player_1 = nullptr;
-		if (collider_player_2 != nullptr)
-		{
-			collider_player_2->to_delete = true;
-			collider_player_2 = nullptr;
-		}
-		if (collider_player_3 != nullptr)
-		{
-			collider_player_3->to_delete = true;
-			collider_player_3 = nullptr;
+	if (state == CROUCH_KICK) {
+		if (current_animation->Finished()) {
+			state = IDLE;
+			crouch_kick.Reset();
 		}
 	}
-	else if ((player_input.pressing_F5) && (collider_player_1 == nullptr))
-	{
-		collider_player_1 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-		if (collider_player_2==nullptr)
-		{
-			collider_player_2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+	if (state == CROUCH_PUNCH) {
+		if (current_animation->Finished()) {
+			state = IDLE;
+			crouch_punch.Reset();
 		}
 	}
 
-	return UPDATE_CONTINUE;
-}
+		if ((player_input.pressing_F5) && (collider_player_1 != nullptr)) {
+			collider_player_1->to_delete = true;
+			collider_player_1 = nullptr;
+			if (collider_player_2 != nullptr)
+			{
+				collider_player_2->to_delete = true;
+				collider_player_2 = nullptr;
+			}
+			if (collider_player_3 != nullptr)
+			{
+				collider_player_3->to_delete = true;
+				collider_player_3 = nullptr;
+			}
+		}
+		else if ((player_input.pressing_F5) && (collider_player_1 == nullptr))
+		{
+			collider_player_1 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+			if (collider_player_2 == nullptr)
+			{
+				collider_player_2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
+			}
+		}
+
+		return UPDATE_CONTINUE;
+	}
+
 
 // Update: draw background
 update_status ModulePlayer::Update()
@@ -491,6 +510,12 @@ update_status ModulePlayer::Update()
 		break;
 	case CROUCH_UP:
 		current_animation = &crouch_up;		
+		break;
+	case CROUCH_KICK:
+		current_animation = &crouch_kick;
+		break;
+	case CROUCH_PUNCH:
+		current_animation = &crouch_punch;
 		break;
 	case JUMP_NEUTRAL:
 		current_animation = &jump_neutral;
@@ -583,7 +608,7 @@ update_status ModulePlayer::Update()
 		current_animation = &kick;
 		if (collider_player_1 != nullptr)
 		{
-			collider_player_1->SetPos(position.x + 15, position.y - 75);
+			collider_player_1->SetPos(position.x + 30, position.y - 50);
 			collider_player_1->SetSize(50, 30);
 		}		
 		if (collider_player_1 != nullptr)
