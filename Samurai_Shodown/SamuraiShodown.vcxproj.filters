@@ -55,6 +55,9 @@
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -118,6 +121,9 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModulePlayer2.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
