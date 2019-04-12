@@ -73,9 +73,9 @@ public:
 	Animation twisterAlone;
 	iPoint position;
 	iPoint lposition;
-	Collider *collider_player_1 = nullptr;
-	Collider *collider_player_2 = nullptr;
-	Collider *collider_player_3 = nullptr;
+	Collider *collider_player_up = nullptr;
+	Collider *collider_player_down = nullptr;
+	Collider *collider_player_extra = nullptr;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
