@@ -65,12 +65,6 @@ update_status ModuleRender::Update()
 	if ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT) && (camera.x < 350))
 		camera.x += speed * 0.7f;
 
-	//Make the camera move with the player
-	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT) && (camera.x > -140))
-		camera.x -= speed;
-	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT) && (camera.x < 350))
-		camera.x += speed;
-
 	return update_status::UPDATE_CONTINUE;
 }
 
