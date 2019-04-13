@@ -120,10 +120,12 @@ void ModuleCollision::DebugDraw()
 		case COLLIDER_PLAYER: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
-		case COLLIDER_PLAYER_2: //red
-			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+		case COLLIDER_PLAYER_2: //orange
+			App->render->DrawQuad(colliders[i]->rect, 155, 155, 0, alpha);
 		case COLLIDER_PLAYER_PARTICLES:
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+		case COLLIDER_PLAYER_1_ATTACK: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		}
 	}

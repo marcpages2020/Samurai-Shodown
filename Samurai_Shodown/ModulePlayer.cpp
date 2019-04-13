@@ -603,6 +603,12 @@ update_status ModulePlayer::Update()
 			collider_player_down->SetPos(position.x + 5, position.y - 10);
 			collider_player_down->SetSize(70, 15);
 		}
+		if (collider_player_attack == nullptr)
+		{
+			collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+
+		}
+		collider_player_attack->SetPos(position.x + 20, position.y - 30);
 		break;
 	case KICK:
 		current_animation = &kick;
