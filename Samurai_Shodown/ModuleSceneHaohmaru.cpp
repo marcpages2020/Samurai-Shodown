@@ -1,7 +1,9 @@
 #include "ModuleSceneHaohmaru.h"
 #include "ModuleCollision.h"
 #include "Application.h"
+#include "ModuleFonts.h"
 #include "ModulePlayer2.h"
+#include <iostream>
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 {
@@ -52,7 +54,8 @@ bool ModuleSceneHaohmaru::Start()
 	//Colliders for the screen borders
 	App->collision->AddCollider({ -165,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	App->collision->AddCollider({ 427,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-
+	font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
+	start_time = SDL_GetTicks();
 	return ret;
 }
 
@@ -76,7 +79,26 @@ update_status ModuleSceneHaohmaru::Update()
 	SDL_Rect b;
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
-	App->render->Blit(graphics,-92,-100,&b,SDL_FLIP_NONE,0.75f);
+	
+
+
+
+
+	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE, 0.75f);
+
+	if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
+		--time_fight;
+		start_time = SDL_GetTicks();
+	}
+
+	sprintf_s(time_text, 10, "%7d", time_fight);
+
+	App->fonts->BlitText(160, 25, font, time_text);
+
+	if (time_fight == 0) { // time has been up, so game should end. Win who has more HP
+		// put code xd
+	}
+
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_kyoshiro,2.5);

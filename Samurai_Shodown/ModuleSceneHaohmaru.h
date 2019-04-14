@@ -30,6 +30,11 @@ public:
 	Mix_Music *music;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
+	uint time_fight = 96;
+	int font = 0;
+	float start_time = 0.0f;
+	char time_text[10];
+
 };
 
 #endif // __MODULESCENEHAOHMARU_H__
