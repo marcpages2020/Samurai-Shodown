@@ -589,13 +589,21 @@ update_status ModulePlayer::Update()
 			current_animation = &jump_backward;
 			if (collider_player_up != nullptr)
 			{
-				collider_player_up->SetPos(position.x + 10, position.y - 90);
+				collider_player_up->SetPos(position.x, position.y - 90);
 				collider_player_up->SetSize(35, 35);
 			}
 			if (collider_player_down != nullptr)
 			{
-				collider_player_down->SetPos(position.x + 10, position.y - 50);
-				collider_player_down->SetSize(50, 30);
+				collider_player_down->SetPos(position.x, position.y - 50);
+				collider_player_down->SetSize(40, 30);
+			}
+			if (current_animation->SeeCurrentFrame() > 4)
+			{
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 10, position.y - 45);
+					collider_player_up->SetSize(35, 35);
+				}
 			}
 			position.y -= speed * 1.75 * mult;
 			position.x -= 1.25*speed;
