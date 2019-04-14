@@ -626,13 +626,24 @@ update_status ModulePlayer::Update()
 		current_animation = &kick;
 		if (collider_player_up != nullptr)
 		{
-			collider_player_up->SetPos(position.x + 30, position.y - 50);
+			collider_player_up->SetPos(position.x + 10, position.y - 70);
 			collider_player_up->SetSize(50, 30);
-		}		
-		if (collider_player_up != nullptr)
+		}
+		if (collider_player_mid != nullptr)
+		{
+			collider_player_mid->SetPos(position.x + 30, position.y - 50);
+			collider_player_mid->SetSize(40, 30);
+		}	
+		if (collider_player_down != nullptr)
 		{
 			collider_player_down->SetPos(position.x + 20, position.y - 80);
 			collider_player_down->SetSize(25, 85);
+		}
+		if (collider_player_attack == nullptr)
+		{
+			collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+			collider_player_attack->SetPos(position.x + 30, position.y - 30);
+			collider_player_attack->SetSize(35, 25);
 		}
 		break;	
 	case TWISTER:
