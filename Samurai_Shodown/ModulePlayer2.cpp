@@ -448,6 +448,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER_1_ATTACK:
+		life -= 10;
 		break;
 	default:
 		break;

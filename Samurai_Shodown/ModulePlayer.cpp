@@ -720,22 +720,27 @@ bool ModulePlayer::CleanUp() {
 
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
-	switch (c2->type) 
+	switch (c2->type)
 	{
 	case COLLIDER_WALL:
 		position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER_2:
-		if (position.x <  App->player2->position.x)
+		if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER))
 		{
-			position.x = lposition.x - speed;
-		}
-		else
-		{
-			position.x = lposition.x + speed;
-		}
-		break;
+			if (position.x < App->player2->position.x)
+			{
+				position.x = lposition.x - speed;
+			}
 
+			else
+			{
+			position.x = lposition.x + speed;
+			}
+	}
+		break;
+	case COLLIDER_PLAYER_2_ATTACK:
+		life -= 10;
 	default:
 		break;
 	}
