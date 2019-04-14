@@ -348,6 +348,11 @@ update_status ModulePlayer::PreUpdate()
 			if (current_animation->Finished()) {
 				state = IDLE;
 				kick.Reset();
+				if (collider_player_mid != nullptr)
+				{
+					collider_player_mid->to_delete = true;
+					collider_player_mid = nullptr;
+				}
 			}
 		}
 		if (state == PUNCH) {
@@ -619,7 +624,7 @@ update_status ModulePlayer::Update()
 			}
 			if (collider_player_attack == nullptr)
 			{
-				collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 
 			}
 			collider_player_attack->SetPos(position.x + 60, position.y - 50);
@@ -631,11 +636,13 @@ update_status ModulePlayer::Update()
 			{
 				collider_player_up->SetPos(position.x + 10, position.y - 70);
 				collider_player_up->SetSize(50, 30);
-			}
-			if (collider_player_mid != nullptr)
-			{
-				collider_player_mid->SetPos(position.x + 30, position.y - 50);
-				collider_player_mid->SetSize(40, 30);
+
+				if (collider_player_mid == nullptr)
+				{
+					collider_player_mid = App->collision->AddCollider({ position.x + 30,position.y - 50 ,25,30 }, COLLIDER_PLAYER, (Module*)App->player);
+					collider_player_mid->SetPos(position.x + 30, position.y - 35);
+					collider_player_mid->SetSize(45, 30);
+				}
 			}
 			if (collider_player_down != nullptr)
 			{
@@ -645,8 +652,8 @@ update_status ModulePlayer::Update()
 			if (collider_player_attack == nullptr)
 			{
 				collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-				collider_player_attack->SetPos(position.x + 30, position.y - 30);
-				collider_player_attack->SetSize(35, 25);
+				collider_player_attack->SetPos(position.x + 30, position.y - 35);
+				collider_player_attack->SetSize(56, 30);
 			}
 			break;
 		case TWISTER:
