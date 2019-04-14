@@ -425,16 +425,19 @@ update_status ModulePlayer::PreUpdate()
 		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
 			collider_player_up->to_delete = true;
 			collider_player_up = nullptr;
+
+			if (collider_player_mid != nullptr)
+			{
+				collider_player_mid->to_delete = true;
+				collider_player_mid = nullptr;
+			}
+
 			if (collider_player_down != nullptr)
 			{
 				collider_player_down->to_delete = true;
 				collider_player_down = nullptr;
 			}
-			if (collider_player_extra != nullptr)
-			{
-				collider_player_extra->to_delete = true;
-				collider_player_extra = nullptr;
-			}
+			
 		}
 		else if ((player_input.pressing_F5) && (collider_player_up == nullptr))
 		{
@@ -445,6 +448,13 @@ update_status ModulePlayer::PreUpdate()
 			}
 		}
 
+		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (collider_player_attack != nullptr))
+		{
+			collider_player_attack->to_delete = true;
+			collider_player_attack = nullptr;
+		}
+
+
 		return UPDATE_CONTINUE;
 	}
 
@@ -453,6 +463,7 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 	lposition = position;
+
 	switch (state)
 	{
 	case IDLE:
@@ -608,7 +619,8 @@ update_status ModulePlayer::Update()
 			collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 
 		}
-		collider_player_attack->SetPos(position.x + 20, position.y - 30);
+		collider_player_attack->SetPos(position.x + 60, position.y - 50);
+		collider_player_attack->SetSize(67, 30);
 		break;
 	case KICK:
 		current_animation = &kick;
@@ -649,14 +661,7 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	/*if (collider_player_1 != nullptr)
-	{
-		collider_player_1->SetPos(position.x+15, position.y - 85);
-	}
-	if (collider_player_2 != nullptr)
-	{
-		collider_player_2->SetPos(position.x + 10, position.y - 45);
-	}*/
+
 	return UPDATE_CONTINUE;
 }
 
@@ -666,8 +671,8 @@ bool ModulePlayer::CleanUp() {
 	App->audio->UnLoadFx(light_attack_fx);
 	App->audio->UnLoadFx(light_kick_fx);
 	collider_player_up = nullptr;
+	collider_player_mid = nullptr;
 	collider_player_down = nullptr;
-	collider_player_extra = nullptr;
 	return true;
 }
 

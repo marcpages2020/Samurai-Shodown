@@ -74,8 +74,8 @@ public:
 	iPoint position;
 	iPoint lposition;
 	Collider *collider_player_up = nullptr;
+	Collider *collider_player_mid = nullptr;
 	Collider *collider_player_down = nullptr;
-	Collider *collider_player_extra = nullptr;
 	Collider *collider_player_attack = nullptr;
 	int mult = 1;
 	int initial_y = 215;
