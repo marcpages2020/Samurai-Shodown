@@ -46,6 +46,7 @@ public:
 	ModuleCollision* collision = nullptr;
 	ModuleFonts* fonts = nullptr;
 
+	bool is_paused = false;
 
 public:
 
@@ -55,7 +56,7 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
-
+	void ChangePause();
 };
 
 // Global var made extern for Application ---

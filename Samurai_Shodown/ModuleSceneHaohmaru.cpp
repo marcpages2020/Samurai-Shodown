@@ -80,18 +80,19 @@ update_status ModuleSceneHaohmaru::Update()
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
 	
+	if (!App->is_paused) {
+		if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
+			--time_fight;
+			start_time = SDL_GetTicks();
+		}
+	}
 
+	sprintf_s(time_text, 10, "%7d", time_fight);
 
 
 
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE, 0.75f);
 
-	if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
-		--time_fight;
-		start_time = SDL_GetTicks();
-	}
-
-	sprintf_s(time_text, 10, "%7d", time_fight);
 
 	App->fonts->BlitText(160, 25, font, time_text);
 

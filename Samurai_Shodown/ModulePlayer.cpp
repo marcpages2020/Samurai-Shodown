@@ -288,139 +288,140 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::PreUpdate()
 {
-	player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
-	player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
-	player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-	player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
-	player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
-	player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
-	player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
-	player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
+	if (!App->is_paused) {
+		player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
+		player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+		player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
+		player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
+		player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
+		player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+		player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
+		player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
-	if (state == IDLE) {
-		if (player_input.pressing_A)
-			state = BACKWARD;
-		if (player_input.pressing_D)
-			state = FORWARD;
-		if (player_input.pressing_J) {
-			state = KICK;
-			App->audio->PlayFX(light_kick_fx);
+		if (state == IDLE) {
+			if (player_input.pressing_A)
+				state = BACKWARD;
+			if (player_input.pressing_D)
+				state = FORWARD;
+			if (player_input.pressing_J) {
+				state = KICK;
+				App->audio->PlayFX(light_kick_fx);
+			}
+			if (player_input.pressing_U) {
+				state = PUNCH;
+				App->audio->PlayFX(light_attack_fx);
+			}
+			if (player_input.pressing_W)
+				state = JUMP_NEUTRAL;
+			if (player_input.pressing_S)
+				state = CROUCH_DOWN;
+			if (player_input.pressing_K) {
+				App->audio->PlayFX(twister_fx);
+				state = TWISTER;
+			}
 		}
-		if (player_input.pressing_U) {
-			state = PUNCH;
-			App->audio->PlayFX(light_attack_fx);
+		if (state == BACKWARD) {
+			if (!player_input.pressing_A)
+				state = IDLE;
+			if (player_input.pressing_U) {
+				state = PUNCH;
+				App->audio->PlayFX(light_attack_fx);
+			}
+			if (player_input.pressing_J)
+				state = KICK;
+			if (player_input.pressing_W)
+				state = JUMP_BACKWARD;
 		}
-		if (player_input.pressing_W)
-			state = JUMP_NEUTRAL;
-		if (player_input.pressing_S)
-			state = CROUCH_DOWN;
-		if (player_input.pressing_K) {
-			App->audio->PlayFX(twister_fx);
-			state = TWISTER;
+		if (state == FORWARD) {
+			if (!player_input.pressing_D)
+				state = IDLE;
+			if (player_input.pressing_U) {
+				state = PUNCH;
+				App->audio->PlayFX(light_attack_fx);
+			}
+			if (player_input.pressing_J)
+				state = KICK;
+			if (player_input.pressing_W)
+				state = JUMP_FORWARD;
 		}
-	}
-	if (state == BACKWARD) {
-		if (!player_input.pressing_A)
-			state = IDLE;
-		if (player_input.pressing_U) {
-			state = PUNCH;
-			App->audio->PlayFX(light_attack_fx);
+		if (state == KICK) {
+			if (current_animation->Finished()) {
+				state = IDLE;
+				kick.Reset();
+			}
 		}
-		if (player_input.pressing_J)
-			state = KICK;
-		if (player_input.pressing_W)
-			state = JUMP_BACKWARD;
-	}
-	if (state == FORWARD) {
-		if (!player_input.pressing_D)
-			state = IDLE;
-		if (player_input.pressing_U) {
-			state = PUNCH;
-			App->audio->PlayFX(light_attack_fx);
+		if (state == PUNCH) {
+			if (current_animation->Finished()) {
+				state = IDLE;
+				punch.Reset();
+			}
 		}
-		if (player_input.pressing_J)
-			state = KICK;
-		if (player_input.pressing_W)
-			state = JUMP_FORWARD;
-	}
-	if (state == KICK) {
-		if (current_animation->Finished()) {
-			state = IDLE;
-			kick.Reset();
-		}
-	}
-	if (state == PUNCH) {
-		if (current_animation->Finished()) {
-			state = IDLE;
-			punch.Reset();
-		}
-	}
-	if (state == JUMP_NEUTRAL)
-	{
-		if (current_animation->Finished())
+		if (state == JUMP_NEUTRAL)
 		{
-			state = IDLE;
-			jump_neutral.Reset();
+			if (current_animation->Finished())
+			{
+				state = IDLE;
+				jump_neutral.Reset();
+			}
 		}
-	}
-	if (state == JUMP_FORWARD)
-	{
-		if (current_animation->Finished())
+		if (state == JUMP_FORWARD)
 		{
-			state = IDLE;
-			jump_forward.Reset();
+			if (current_animation->Finished())
+			{
+				state = IDLE;
+				jump_forward.Reset();
+			}
 		}
-	}
-	if (state == JUMP_BACKWARD)
-	{
-		if (current_animation->Finished())
+		if (state == JUMP_BACKWARD)
 		{
-			state = IDLE;
-			jump_backward.Reset();
+			if (current_animation->Finished())
+			{
+				state = IDLE;
+				jump_backward.Reset();
+			}
 		}
-	}
-	if (state == CROUCH_DOWN)
-	{
-		if (!player_input.pressing_S)
+		if (state == CROUCH_DOWN)
 		{
-			state = CROUCH_UP;
-			crouch_down.Reset();
+			if (!player_input.pressing_S)
+			{
+				state = CROUCH_UP;
+				crouch_down.Reset();
+			}
+			if (player_input.pressing_J) {
+				state = CROUCH_KICK;
+			}
+			if (player_input.pressing_U) {
+				state = CROUCH_PUNCH;
+			}
 		}
-		if (player_input.pressing_J) {
-			state = CROUCH_KICK;
-		}
-		if (player_input.pressing_U) {
-			state = CROUCH_PUNCH;
-		}
-	}
-	if (state == CROUCH_UP)
-	{
-		if (current_animation->Finished()) {
-			state = IDLE;
-			crouch_up.Reset();
-		}
-	}
-	if (state == TWISTER)
-	{
-		if (current_animation->Finished())
+		if (state == CROUCH_UP)
 		{
-			state = IDLE;
-			twister.Reset();
-			is_tornado_created = false;
+			if (current_animation->Finished()) {
+				state = IDLE;
+				crouch_up.Reset();
+			}
 		}
-	}
-	if (state == CROUCH_KICK) {
-		if (current_animation->Finished()) {
-			state = IDLE;
-			crouch_kick.Reset();
+		if (state == TWISTER)
+		{
+			if (current_animation->Finished())
+			{
+				state = IDLE;
+				twister.Reset();
+				is_tornado_created = false;
+			}
 		}
-	}
-	if (state == CROUCH_PUNCH) {
-		if (current_animation->Finished()) {
-			state = IDLE;
-			crouch_punch.Reset();
+		if (state == CROUCH_KICK) {
+			if (current_animation->Finished()) {
+				state = IDLE;
+				crouch_kick.Reset();
+			}
 		}
-	}
+		if (state == CROUCH_PUNCH) {
+			if (current_animation->Finished()) {
+				state = IDLE;
+				crouch_punch.Reset();
+			}
+		}
 
 		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
 			collider_player_up->to_delete = true;
@@ -437,7 +438,7 @@ update_status ModulePlayer::PreUpdate()
 				collider_player_down->to_delete = true;
 				collider_player_down = nullptr;
 			}
-			
+
 		}
 		else if ((player_input.pressing_F5) && (collider_player_up == nullptr))
 		{
@@ -454,6 +455,8 @@ update_status ModulePlayer::PreUpdate()
 			collider_player_attack = nullptr;
 		}
 
+	}
+	
 
 		return UPDATE_CONTINUE;
 	}
@@ -463,210 +466,212 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 	lposition = position;
+	if (!App->is_paused) {
+		switch (state)
+		{
+		case IDLE:
+			current_animation = &idle;
+			position.y = initial_y;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 15, position.y - 85);
+				collider_player_up->SetSize(35, 40);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 10, position.y - 45);
+				collider_player_down->SetSize(45, 45);
+			}
+			break;
+		case FORWARD:
+			current_animation = &forward;
+			position.x += speed;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 15, position.y - 85);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 10, position.y - 45);
+			}
+			break;
+		case BACKWARD:
+			current_animation = &backward;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 25, position.y - 85);
+				collider_player_up->SetSize(35, 40);
+			}
+			if (collider_player_down != nullptr) {
+				collider_player_down->SetPos(position.x + 20, position.y - 45);
+				collider_player_down->SetSize(50, 45);
+			}
+			position.x -= speed;
+			break;
 
-	switch (state)
-	{
-	case IDLE:
-		current_animation = &idle;
-		position.y = initial_y;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 15, position.y - 85);
-			collider_player_up->SetSize(35,40);
-		}
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 10, position.y - 45);
-			collider_player_down->SetSize(45, 45);
-		}
-		break;	
-	case FORWARD:
-		current_animation = &forward;
-		position.x += speed;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 15, position.y - 85);
-		}
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 10, position.y - 45);
-		}
-		break;
-	case BACKWARD:
-		current_animation = &backward;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x+25, position.y - 85);
-			collider_player_up->SetSize(35, 40);
-		}	
-		if (collider_player_down != nullptr) {
-			collider_player_down->SetPos(position.x+20, position.y - 45);
-			collider_player_down->SetSize(50, 45);
-		}
-		position.x -= speed;
-		break;
+		case CROUCH_DOWN:
+			current_animation = &crouch_down;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 45, position.y - 65);
+				collider_player_up->SetSize(35, 35);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 30, position.y - 30);
+				collider_player_down->SetSize(50, 30);
+			}
+			break;
+		case CROUCH_UP:
+			current_animation = &crouch_up;
+			break;
+		case CROUCH_KICK:
+			current_animation = &crouch_kick;
+			break;
+		case CROUCH_PUNCH:
+			current_animation = &crouch_punch;
+			break;
+		case JUMP_NEUTRAL:
+			current_animation = &jump_neutral;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x, position.y - 90);
+				collider_player_up->SetSize(35, 35);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x, position.y - 50);
+				collider_player_down->SetSize(50, 30);
+			}
+			position.y -= speed * 1.75 * mult;
 
-	case CROUCH_DOWN:
-		current_animation = &crouch_down;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 45, position.y - 65);
-			collider_player_up->SetSize(35, 35);
-		}
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 30, position.y - 30);
-			collider_player_down->SetSize(50, 30);
-		}
-		break;
-	case CROUCH_UP:
-		current_animation = &crouch_up;		
-		break;
-	case CROUCH_KICK:
-		current_animation = &crouch_kick;
-		break;
-	case CROUCH_PUNCH:
-		current_animation = &crouch_punch;
-		break;
-	case JUMP_NEUTRAL:
-		current_animation = &jump_neutral;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x, position.y - 90);
-			collider_player_up->SetSize(35, 35);
-		}
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x, position.y - 50);
-			collider_player_down->SetSize(50, 30);
-		}
-		position.y -= speed * 1.75 * mult;
+			if (position.y <= 120) {
+				mult = -1;
+			}
+			else if (position.y == initial_y)
+			{
+				mult = 1;
+				jump_neutral.Reset();
+				state = IDLE;
+			}
+			break;
+		case JUMP_FORWARD:
+			current_animation = &jump_forward;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 20, position.y - 90);
+				collider_player_up->SetSize(35, 35);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 20, position.y - 50);
+				collider_player_down->SetSize(50, 30);
+			}
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed;
 
-		if (position.y <= 120) {
-			mult = -1;
-		}
-		else if (position.y == initial_y)
-		{
-			mult = 1;
-			jump_neutral.Reset();
-			state = IDLE;
-		}
-		break;
-	case JUMP_FORWARD:
-		current_animation = &jump_forward;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 20, position.y - 90);
-			collider_player_up->SetSize(35, 35);
-		}
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 20, position.y - 50);
-			collider_player_down->SetSize(50, 30);
-		}
-		position.y -= speed * 1.75 * mult;
-		position.x += 1.25*speed;
+			if (position.y <= 120) {
+				mult = -1;
+			}
+			else if (position.y == initial_y)
+			{
+				mult = 1;
+				jump_forward.Reset();
+				state = IDLE;
+			}
+			break;
+		case JUMP_BACKWARD:
+			current_animation = &jump_backward;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 10, position.y - 90);
+				collider_player_up->SetSize(35, 35);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 10, position.y - 50);
+				collider_player_down->SetSize(50, 30);
+			}
+			position.y -= speed * 1.75 * mult;
+			position.x -= 1.25*speed;
 
-		if (position.y <= 120) {
-			mult = -1;
-		}
-		else if (position.y == initial_y)
-		{
-			mult = 1;
-			jump_forward.Reset();
-			state = IDLE;
-		}
-		break;
-	case JUMP_BACKWARD:
-		current_animation = &jump_backward;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 10, position.y - 90);
-			collider_player_up->SetSize(35, 35);
-		}
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 10, position.y - 50);
-			collider_player_down->SetSize(50, 30);
-		}
-		position.y -= speed * 1.75 * mult;
-		position.x -= 1.25*speed;
+			if (position.y <= 120) {
+				mult = -1;
+			}
+			else if (position.y == initial_y)
+			{
+				mult = 1;
+				jump_backward.Reset();
+				state = IDLE;
+			}
+			break;
+		case PUNCH:
+			current_animation = &punch;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 35, position.y - 60);
+				collider_player_up->SetSize(50, 47);
+			}
+			if (collider_player_up != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 5, position.y - 10);
+				collider_player_down->SetSize(70, 15);
+			}
+			if (collider_player_attack == nullptr)
+			{
+				collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 
-		if (position.y <= 120) {
-			mult = -1;
+			}
+			collider_player_attack->SetPos(position.x + 60, position.y - 50);
+			collider_player_attack->SetSize(67, 30);
+			break;
+		case KICK:
+			current_animation = &kick;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 10, position.y - 70);
+				collider_player_up->SetSize(50, 30);
+			}
+			if (collider_player_mid != nullptr)
+			{
+				collider_player_mid->SetPos(position.x + 30, position.y - 50);
+				collider_player_mid->SetSize(40, 30);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 20, position.y - 80);
+				collider_player_down->SetSize(25, 85);
+			}
+			if (collider_player_attack == nullptr)
+			{
+				collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				collider_player_attack->SetPos(position.x + 30, position.y - 30);
+				collider_player_attack->SetSize(35, 25);
+			}
+			break;
+		case TWISTER:
+			current_animation = &twister;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x + 45, position.y - 75);
+				collider_player_up->SetSize(40, 45);
+			}
+			if (collider_player_down != nullptr)
+			{
+				collider_player_down->SetPos(position.x + 30, position.y - 35);
+				collider_player_down->SetSize(60, 40);
+			}
+			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+				App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+				is_tornado_created = true;
+			}
+			break;
+		default:
+			LOG("No state found :(");
+			break;
 		}
-		else if (position.y == initial_y)
-		{
-			mult = 1;
-			jump_backward.Reset();
-			state = IDLE;
-		}
-		break;
-	case PUNCH:
-		current_animation = &punch;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 35, position.y - 60);
-			collider_player_up->SetSize(50, 47);
-		}		
-		if (collider_player_up != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 5, position.y - 10);
-			collider_player_down->SetSize(70, 15);
-		}
-		if (collider_player_attack == nullptr)
-		{
-			collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-
-		}
-		collider_player_attack->SetPos(position.x + 60, position.y - 50);
-		collider_player_attack->SetSize(67, 30);
-		break;
-	case KICK:
-		current_animation = &kick;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x + 10, position.y - 70);
-			collider_player_up->SetSize(50, 30);
-		}
-		if (collider_player_mid != nullptr)
-		{
-			collider_player_mid->SetPos(position.x + 30, position.y - 50);
-			collider_player_mid->SetSize(40, 30);
-		}	
-		if (collider_player_down != nullptr)
-		{
-			collider_player_down->SetPos(position.x + 20, position.y - 80);
-			collider_player_down->SetSize(25, 85);
-		}
-		if (collider_player_attack == nullptr)
-		{
-			collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-			collider_player_attack->SetPos(position.x + 30, position.y - 30);
-			collider_player_attack->SetSize(35, 25);
-		}
-		break;	
-	case TWISTER:
-		current_animation = &twister;
-		if (collider_player_up != nullptr)
-		{
-			collider_player_up->SetPos(position.x+45,position.y-75);
-			collider_player_up->SetSize(40,45);
-		}
-		if (collider_player_down!=nullptr)
-		{
-			collider_player_down->SetPos(position.x + 30, position.y - 35);
-			collider_player_down->SetSize(60,40);
-		}
-		if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
-			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
-			is_tornado_created = true;
-		}
-		break;
-	default:
-		LOG("No state found :(");
-		break;
 	}
+	
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
