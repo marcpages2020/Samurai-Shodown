@@ -77,6 +77,7 @@ public:
 	Collider *collider_player_mid = nullptr;
 	Collider *collider_player_down = nullptr;
 	Collider *collider_player_attack = nullptr;
+	int life;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;

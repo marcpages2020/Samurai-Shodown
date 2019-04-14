@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
-
+#include "ModulePlayer2.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -480,12 +480,12 @@ update_status ModulePlayer::Update()
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 15, position.y - 85);
-				collider_player_up->SetSize(35, 40);
+				collider_player_up->SetSize(30, 40);
 			}
 			if (collider_player_down != nullptr)
 			{
 				collider_player_down->SetPos(position.x + 10, position.y - 45);
-				collider_player_down->SetSize(45, 45);
+				collider_player_down->SetSize(40, 45);
 			}
 			break;
 		case FORWARD:
@@ -494,10 +494,12 @@ update_status ModulePlayer::Update()
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 15, position.y - 85);
+				collider_player_up->SetSize(30, 40);
 			}
 			if (collider_player_down != nullptr)
 			{
 				collider_player_down->SetPos(position.x + 10, position.y - 45);
+				collider_player_down->SetSize(35, 45);
 			}
 			break;
 		case BACKWARD:
@@ -724,8 +726,16 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER_2:
-		position.x = lposition.x;
+		if (position.x <  App->player2->position.x)
+		{
+			position.x = lposition.x - speed;
+		}
+		else
+		{
+			position.x = lposition.x + speed;
+		}
 		break;
+
 	default:
 		break;
 	}
