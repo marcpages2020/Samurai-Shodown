@@ -4,6 +4,7 @@
 #include "ModuleFonts.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "ModuleInput.h"
 #include <iostream>
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
@@ -135,7 +136,11 @@ update_status ModuleSceneHaohmaru::Update()
 		}
 		round_end = false;
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_F7])
+	{
+		round_end = true;
+		victory = true;
+	}
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_kyoshiro,2.5);
