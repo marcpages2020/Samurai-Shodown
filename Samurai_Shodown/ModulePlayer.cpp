@@ -463,9 +463,10 @@ update_status ModulePlayer::PreUpdate()
 	}
 	if (collider_player_attack != nullptr)
 	{
-		if (attack_frames >= 3)
+		if (attack_frames == 3)
 		{
 			collider_player_attack->to_delete = true;
+			attack_frames = 0;
 		}
 		attack_frames++;
 	}
