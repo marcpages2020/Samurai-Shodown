@@ -28,6 +28,7 @@ public:
 
 public:
 	Mix_Music *music;
+	Mix_Chunk *ippon;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 	uint time_fight = 96;
@@ -36,6 +37,9 @@ public:
 	char time_text[10];
 	int player1_wins;
 	int player2_wins;
+	int draw;
+	bool victory=false;
+	bool round_end = false;
 };
 
 #endif // __MODULESCENEHAOHMARU_H__

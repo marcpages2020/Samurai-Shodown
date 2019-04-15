@@ -278,7 +278,6 @@ bool ModulePlayer::Start()
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	state = IDLE;
-	life = 100;
 	current_animation = &idle;
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ 0, 0,35,40 },COLLIDER_PLAYER,(Module*)App->player);
@@ -462,7 +461,14 @@ update_status ModulePlayer::PreUpdate()
 		}
 
 	}
-	
+	if (collider_player_attack != nullptr)
+	{
+		if (attack_frames >= 3)
+		{
+			collider_player_attack->to_delete = true;
+		}
+		attack_frames++;
+	}
 
 		return UPDATE_CONTINUE;
 	}
@@ -648,6 +654,7 @@ update_status ModulePlayer::Update()
 			}
 			collider_player_attack->SetPos(position.x + 60, position.y - 50);
 			collider_player_attack->SetSize(67, 30);
+
 			break;
 		case KICK:
 			current_animation = &kick;

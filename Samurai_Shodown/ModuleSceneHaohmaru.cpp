@@ -49,6 +49,7 @@ bool ModuleSceneHaohmaru::Start()
 
 	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
+	ippon = App->audio->LoadFX("Assets/Audio/Fx/Ippon.wav");
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	App->player2->Enable();
@@ -109,8 +110,33 @@ update_status ModuleSceneHaohmaru::Update()
 			player2_wins++;
 		}
 	}
+	if (App->player->life <= 0)
+	{
+		player2_wins++;
+		round_end = true;
+	}
+	if (App->player2->life <= 0)
+	{
+		player1_wins++;
+		round_end = true;
+	}
+	
+	if (round_end == true)
+	{
+		App->audio->PlayFX(ippon);
+		if ((player1_wins == 2)||(player2_wins==2))
+		{
+			victory = true;
+		}
+		else
+		{
+			App->player->life = 100;
+			App->player2->life = 100;
+		}
+		round_end = false;
+	}
 
-	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(player1_wins >= 2) || (player2_wins >= 2))
+	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_kyoshiro,2.5);
 	}

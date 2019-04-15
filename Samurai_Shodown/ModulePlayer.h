@@ -77,7 +77,7 @@ public:
 	Collider *collider_player_mid = nullptr;
 	Collider *collider_player_down = nullptr;
 	Collider *collider_player_attack = nullptr;
-	int life;
+	int life=100;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
@@ -88,6 +88,7 @@ public:
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
+	int attack_frames=0;
 };
 
 #endif // __ModulePlayer_H__
