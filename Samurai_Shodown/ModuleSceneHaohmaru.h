@@ -34,7 +34,8 @@ public:
 	int font = 0;
 	float start_time = 0.0f;
 	char time_text[10];
-
+	int player1_wins;
+	int player2_wins;
 };
 
 #endif // __MODULESCENEHAOHMARU_H__

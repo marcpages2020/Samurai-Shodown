@@ -201,6 +201,7 @@ bool ModulePlayer2::Start()
 	current_animation = &idle;
 	if (!collider_player2)
 		collider_player2 = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player2);
+	life = 100;
 	return ret;
 }
 

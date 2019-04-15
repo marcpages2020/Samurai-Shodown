@@ -278,6 +278,7 @@ bool ModulePlayer::Start()
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	state = IDLE;
+	life = 100;
 	current_animation = &idle;
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ 0, 0,35,40 },COLLIDER_PLAYER,(Module*)App->player);
