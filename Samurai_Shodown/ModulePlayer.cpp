@@ -165,8 +165,8 @@ ModulePlayer::ModulePlayer()
 			punch.PushBack({ 1461, 268, 83, 95 }, 0.8f);
 			punch.PushBack({ 1548, 268, 83, 95 }, 0.8f);
 			punch.PushBack({ 1635, 268, 83, 95 }, 0.8f); //16
-			//punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
-			//punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
+			punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
+			punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
 			punch.loop = false;
 		}
 
@@ -195,16 +195,16 @@ ModulePlayer::ModulePlayer()
 
 		//get hit animation 2
 		{
-			hit.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit.PushBack({195, 1616, 78, 100}, 0.3f);
-			hit.PushBack({282, 1616, 77, 94}, 0.3f);
-			hit.PushBack({367, 1616, 77, 94}, 0.3f);
-			hit.PushBack({452, 1616, 77, 94}, 0.3f);
-			hit.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit.PushBack({195, 1616, 78, 100}, 0.3f);
-			hit.loop = false;
+			hit2.PushBack({14, 1616, 78, 100}, 0.3f);
+			hit2.PushBack({105, 1616, 78, 100}, 0.3f);
+			hit2.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit2.PushBack({282, 1616, 77, 94}, 0.3f);
+			hit2.PushBack({367, 1616, 77, 94}, 0.3f);
+			hit2.PushBack({452, 1616, 77, 94}, 0.3f);
+			hit2.PushBack({14, 1616, 78, 100}, 0.3f);
+			hit2.PushBack({105, 1616, 78, 100}, 0.3f);
+			hit2.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit2.loop = false;
 		}
 
 		//crouch animation
@@ -280,9 +280,10 @@ bool ModulePlayer::Start()
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player_up)
-		collider_player_up = App->collision->AddCollider({ 0, 0,35,40 },COLLIDER_PLAYER,(Module*)App->player);
+		collider_player_up = App->collision->AddCollider({ position.x+15, position.y-85,30,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_down)
-		collider_player_down = App->collision->AddCollider({ 0, 0,50,45 }, COLLIDER_PLAYER, (Module*)App->player);
+		collider_player_down = App->collision->AddCollider({ position.x+10, position.y-45,40,45 }, COLLIDER_PLAYER, (Module*)App->player);
+	test_collider = App->collision->AddCollider({ 150,160,30,30 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 	return ret;
 }
 
@@ -427,6 +428,13 @@ update_status ModulePlayer::PreUpdate()
 				crouch_punch.Reset();
 			}
 		}
+		if (state==HIT) {
+			if (current_animation->Finished()){
+				state = IDLE;
+				hit2.Reset();
+
+			}
+		}
 
 		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
 			collider_player_up->to_delete = true;
@@ -472,7 +480,7 @@ update_status ModulePlayer::PreUpdate()
 	}
 
 		return UPDATE_CONTINUE;
-	}
+}
 
 
 // Update: draw background
@@ -558,7 +566,7 @@ update_status ModulePlayer::Update()
 				collider_player_down->SetPos(position.x, position.y - 50);
 				collider_player_down->SetSize(50, 30);
 			}
-			position.y -= speed * 1.75 * mult;
+			position.y -= speed * 2 * mult;
 
 			if (position.y <= 120) {
 				mult = -1;
@@ -700,6 +708,14 @@ update_status ModulePlayer::Update()
 				is_tornado_created = true;
 			}
 			break;
+		case HIT: 
+			current_animation = &hit2;
+			if (collider_player_up != nullptr)
+			{
+				collider_player_up->SetPos(position.x+15, position.y-85);
+				collider_player_down->SetPos(position.x + 10, position.y - 45);
+			}
+			break;
 		default:
 			LOG("No state found :(");
 			break;
@@ -750,6 +766,8 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
 		life -= 10;
+		state = HIT;
+		position.x -= 10;
 	default:
 		break;
 	}

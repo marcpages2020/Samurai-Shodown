@@ -12,8 +12,6 @@ struct SDL_Texture;
 
 enum States
 {
-	IDLE,
-	FORWARD,
 	BACKWARD,
 	CROUCH_UP,
 	CROUCH_DOWN,
@@ -22,9 +20,12 @@ enum States
 	JUMP_NEUTRAL,
 	JUMP_FORWARD,
 	JUMP_BACKWARD,
+	FORWARD,
+	IDLE,
 	KICK,
 	PUNCH,
-	TWISTER
+	TWISTER,
+	HIT
 };
 
 struct PlayerInput {
@@ -77,6 +78,7 @@ public:
 	Collider *collider_player_mid = nullptr;
 	Collider *collider_player_down = nullptr;
 	Collider *collider_player_attack = nullptr;
+	Collider *test_collider = nullptr;
 	int life=100;
 	int mult = 1;
 	int initial_y = 215;

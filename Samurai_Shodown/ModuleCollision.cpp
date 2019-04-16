@@ -121,12 +121,16 @@ void ModuleCollision::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
 		case COLLIDER_PLAYER_2: //orange
-			App->render->DrawQuad(colliders[i]->rect, 155, 155, 0, alpha);
+			App->render->DrawQuad(colliders[i]->rect, 255, 165, 0, alpha);
+			break;
 		case COLLIDER_PLAYER_PARTICLES:
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
 		case COLLIDER_PLAYER_1_ATTACK: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
+		case COLLIDER_PLAYER_2_ATTACK: //purple
+			App->render->DrawQuad(colliders[i]->rect, 180, 150, 190, alpha);
 		}
 	}
 }
@@ -168,7 +172,7 @@ Collider* ModuleCollision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module
 bool Collider::CheckCollision(const SDL_Rect& r) const
 {
 	return (rect.x < r.x + r.w &&
-		rect.x + rect.w > r.x &&
-		rect.y < r.y + r.h &&
-		rect.h + rect.y > r.y);
+			rect.x + rect.w > r.x &&
+			rect.y < r.y + r.h &&
+			rect.h + rect.y > r.y);
 }
