@@ -3,6 +3,32 @@
 
 ModuleSceneCongrats::ModuleSceneCongrats()
 {
+	background.PushBack({ 0,0,512,333 }, 0.08f); //0
+	background.PushBack({ 512,0,512,333 }, 0.08);
+	background.PushBack({ 1024,0,512,333 }, 0.08f);
+	background.PushBack({ 1536,0,512,333 }, 0.08f);
+	background.PushBack({ 0,333,512,333 }, 0.08f); //512
+	background.PushBack({ 512,333,512,333 }, 0.08f);
+	background.PushBack({ 1024,333,512,333 }, 0.08f);
+	background.PushBack({ 1536,333,512,333 }, 0.08f);
+	background.PushBack({ 0,666,512,333 }, 0.08f); //1024
+	background.PushBack({ 512,666,512,333 }, 0.08f);
+	background.PushBack({ 1024,666,512,333 }, 0.08f);
+	background.PushBack({ 1536,666,512,333 }, 0.08f);
+	background.PushBack({ 0,999,512,333 }, 0.08f); //1536
+	background.PushBack({ 512,999,512,333 }, 0.08f);
+	background.PushBack({ 1024,999,512,333 }, 0.08f);
+	background.PushBack({ 1536,999,512,333 }, 0.08f);
+	background.PushBack({ 0,1332,512,333 }, 0.08f); //2048
+	background.PushBack({ 512,1332,512,333 }, 0.08f);
+	background.PushBack({ 1024,1332,512,333 }, 0.08f);
+	background.PushBack({ 1536,1332,512,333 }, 0.08f);
+	background.PushBack({ 0,1665,512,333 }, 0.08f); //2560
+	background.PushBack({ 512,1665,512,333 }, 0.08f);
+	background.PushBack({ 1024,1665,512,333 }, 0.08f);
+	background.PushBack({ 1536,1665,512,333 }, 0.08f);
+
+	position.x = 500;
 }
 
 ModuleSceneCongrats::~ModuleSceneCongrats()
@@ -14,8 +40,9 @@ bool ModuleSceneCongrats::Start()
 {
 	LOG("Loading congrats stage assets");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Textures/congrats.png"); //change picture
-	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); //add music
+	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png"); 
+	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
+	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
 	App->audio->PlayMusic(music,NULL);
 	return ret;
 }
@@ -36,20 +63,28 @@ bool ModuleSceneCongrats::CleanUp()
 // Update: draw background
 update_status ModuleSceneCongrats::Update()
 {
-	SDL_Rect congrats;
-	congrats.x = 0;
-	congrats.y = 0;
-	congrats.w = SCREEN_WIDTH;
-	congrats.h = SCREEN_HEIGHT;
+	SDL_Rect congrats,hao;
+	SDL_Rect black_left_rect,black_right_rect;
+	black_left_rect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+	black_right_rect = { SCREEN_WIDTH, 0, SCREEN_WIDTH , SCREEN_HEIGHT };
+	congrats = background.GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, NULL, NULL, &congrats);
+
+	App->render->Blit(graphics, NULL, -100, &congrats);
+	App->render->Blit(haohmaru, 40, 20, NULL);
+
+	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, 255);
+	SDL_RenderFillRect(App->render->renderer, &black_left_rect);
+	SDL_RenderFillRect(App->render->renderer, &black_right_rect);
+
+	black_left_rect.x -= SCREEN_WIDTH*SCREEN_SIZE;
+	black_right_rect.x += SCREEN_WIDTH* SCREEN_SIZE;
 
 	// Make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);
 	}
-
 	return UPDATE_CONTINUE;
 }

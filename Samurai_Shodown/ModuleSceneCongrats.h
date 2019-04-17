@@ -24,11 +24,12 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-
+	Animation background;
 public:
 	Mix_Music* music;
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect congrats;
+	SDL_Texture* haohmaru = nullptr;
+	iPoint position;
 };
 
 #endif // __MODULESCENECONGRATS_H__
