@@ -1,5 +1,5 @@
 #include "ModuleSceneCongrats.h"
-
+#include "ModuleWindow.h"
 
 ModuleSceneCongrats::ModuleSceneCongrats()
 {
@@ -63,25 +63,9 @@ bool ModuleSceneCongrats::CleanUp()
 // Update: draw background
 update_status ModuleSceneCongrats::Update()
 {
-	SDL_Rect congrats,hao;
-	SDL_Rect black_left_rect,black_right_rect;
-	black_left_rect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
-	black_right_rect = { SCREEN_WIDTH, 0, SCREEN_WIDTH , SCREEN_HEIGHT };
-	congrats = background.GetCurrentFrame();
-
-	// Draw everything --------------------------------------
-
-	App->render->Blit(graphics, NULL, -100, &congrats);
-	App->render->Blit(haohmaru, 40, 20, NULL);
-
-	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, 255);
-	SDL_RenderFillRect(App->render->renderer, &black_left_rect);
-	SDL_RenderFillRect(App->render->renderer, &black_right_rect);
-
-	black_left_rect.x -= SCREEN_WIDTH*SCREEN_SIZE;
-	black_right_rect.x += SCREEN_WIDTH* SCREEN_SIZE;
-
-	// Make so pressing SPACE the KEN stage is loaded
+	SDL_Surface* surface = SDL_GetWindowSurface(App->window->window);
+	SDL_Rect left_black_square, right_black_square;
+	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);

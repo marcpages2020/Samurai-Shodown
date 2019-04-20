@@ -227,9 +227,9 @@ ModulePlayer::ModulePlayer()
 
 		//crouch punch
 		{
-			crouch_punch.PushBack({12, 1735, 87, 87}, 0.3f);
-			crouch_punch.PushBack({121, 1735, 84, 87}, 0.3f);
-			crouch_punch.PushBack({215, 1735, 84, 87}, 0.3f);
+			crouch_punch.PushBack({12, 1705, 87, 107}, 0.3f);
+			crouch_punch.PushBack({121, 1705, 84, 107}, 0.3f);
+			crouch_punch.PushBack({215, 1705, 84, 107}, 0.3f);
 			crouch_punch.PushBack({311, 1735, 125, 87}, 0.3f);
 			crouch_punch.PushBack({455, 1735, 125, 87}, 0.3f);
 			crouch_punch.PushBack({591, 1735, 125, 87}, 0.3f);
@@ -317,7 +317,7 @@ bool ModulePlayer::Start()
 		collider_player_up = App->collision->AddCollider({ position.x+15, position.y-85,30,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_down)
 		collider_player_down = App->collision->AddCollider({ position.x+10, position.y-45,40,45 }, COLLIDER_PLAYER, (Module*)App->player);
-	test_collider = App->collision->AddCollider({ 150,160,30,30 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+	//test_collider = App->collision->AddCollider({ 150,160,30,30 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 	return ret;
 }
 
