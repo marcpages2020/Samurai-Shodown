@@ -29,6 +29,10 @@ public:
 	Mix_Music* music;
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* haohmaru = nullptr;
+	SDL_Rect left_black_square{ 0, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT };
+	SDL_Rect right_black_square{ SCREEN_WIDTH / 2,0, SCREEN_WIDTH / 2,SCREEN_HEIGHT};
+	SDL_Rect up_black_square{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/5 };
+	SDL_Rect down_black_square{ 0,(SCREEN_HEIGHT/5)*4+5, SCREEN_WIDTH,SCREEN_HEIGHT/5};
 	iPoint position;
 };
 

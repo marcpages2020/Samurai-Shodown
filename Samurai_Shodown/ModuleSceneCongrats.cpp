@@ -63,9 +63,23 @@ bool ModuleSceneCongrats::CleanUp()
 // Update: draw background
 update_status ModuleSceneCongrats::Update()
 {
-	SDL_Surface* surface = SDL_GetWindowSurface(App->window->window);
-	SDL_Rect left_black_square, right_black_square;
+	SDL_Rect background_r;
+	background_r = background.GetCurrentFrame();
+	App->render->Blit(graphics, NULL, -100, &background_r);
+	App->render->Blit(haohmaru, 40, 20, NULL);
+	App->render->DrawQuad(left_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	App->render->DrawQuad(right_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	App->render->DrawQuad(up_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	SDL_RenderPresent(App->render->renderer);
+	if (right_black_square.w > 0)
+	{
+		left_black_square.w -= 10;
+		right_black_square.x += 10;
+	}
 	
+
+
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);
