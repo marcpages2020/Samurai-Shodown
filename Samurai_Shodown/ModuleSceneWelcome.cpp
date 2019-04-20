@@ -19,8 +19,6 @@ ModuleSceneWelcome::ModuleSceneWelcome()
 		letters.PushBack({ 253,456,253,114 }, 0.1f);
 		letters.PushBack({ 506,456,253,114 }, 0.1f);
 		letters.PushBack({ 0,570,253,114 }, 0.1f);
-
-
 	}
 }
 
