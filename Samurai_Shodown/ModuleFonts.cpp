@@ -3,7 +3,6 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleFonts.h"
-
 #include<string.h>
 
 // Constructor

@@ -1,4 +1,5 @@
 #include "ModuleSceneCongrats.h"
+#include "ModuleFonts.h"
 #include "ModuleWindow.h"
 
 ModuleSceneCongrats::ModuleSceneCongrats()
@@ -56,6 +57,7 @@ bool ModuleSceneCongrats::Start()
 	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
 	judges_t = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
+	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-!,'", 1);
 	App->audio->PlayMusic(music,1);
 	return ret;
 }
@@ -70,7 +72,8 @@ bool ModuleSceneCongrats::CleanUp()
 	App->textures->Unload(judges_t);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
-	//App->audio->CleanUp();
+	App->audio->CleanUp();
+	App->fonts->UnLoad(font);
 	return true;
 }
 
@@ -103,6 +106,7 @@ update_status ModuleSceneCongrats::Update()
 		App->render->DrawQuad(left_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(right_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+		App->fonts->BlitText(10, (SCREEN_HEIGHT / 5) * 4 - 10, font, "ABCD");
 		SDL_RenderPresent(App->render->renderer);
 
 		if (right_black_square.w > 0)
@@ -111,6 +115,8 @@ update_status ModuleSceneCongrats::Update()
 			right_black_square.x += 10;
 		}
 	}
+
+
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{

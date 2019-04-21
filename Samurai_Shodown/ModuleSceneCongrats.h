@@ -1,6 +1,5 @@
 #ifndef __MODULESCENECONGRATS_H__
 #define __MODULESCENECONGRATS_H__
-
 #include "Module.h"
 #include "Animation.h"
 #include "ModuleTextures.h"
@@ -38,6 +37,7 @@ public:
 	int hao_position;
 	int judges_position;
 	int background_position;
+	int font = 0;
 };
 
 #endif // __MODULESCENECONGRATS_H__
