@@ -11,7 +11,6 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "SDL_mixer/include/SDL_mixer.h"
-
 struct SDL_Texture;
 
 class ModuleSceneCongrats : public Module
@@ -38,6 +37,8 @@ public:
 	int judges_position;
 	int background_position;
 	int font = 0;
+	int sentence;
+
 };
 
 #endif // __MODULESCENECONGRATS_H__

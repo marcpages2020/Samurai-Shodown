@@ -1,6 +1,8 @@
 #include "ModuleSceneCongrats.h"
 #include "ModuleFonts.h"
 #include "ModuleWindow.h"
+#include <time.h>
+#include <random>
 
 ModuleSceneCongrats::ModuleSceneCongrats()
 {
@@ -42,13 +44,14 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 	hao_position = SCREEN_WIDTH+100;
 	judges_position = -150;
 	background_position = -250;
+
+	
 }
 
 ModuleSceneCongrats::~ModuleSceneCongrats()
 {
 }
 
-// Load assets
 bool ModuleSceneCongrats::Start()
 {
 	LOG("Loading congrats stage assets");
@@ -57,27 +60,14 @@ bool ModuleSceneCongrats::Start()
 	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
 	judges_t = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
-	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-!,'", 1);
+	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-!", 1);
 	App->audio->PlayMusic(music,1);
+	srand(time(NULL));
+	sentence = rand() % 2;
 	return ret;
+	//srand(time(NULL));
 }
 
-// Load assets
-bool ModuleSceneCongrats::CleanUp()
-{
-	LOG("Unloading Congrats stage");
-	App->player->Disable();
-	App->textures->Unload(background_t);
-	App->textures->Unload(haohmaru);
-	App->textures->Unload(judges_t);
-	Mix_FadeOutMusic(1250);
-	App->audio->UnLoadMusic(music);
-	App->audio->CleanUp();
-	App->fonts->UnLoad(font);
-	return true;
-}
-
-// Update: draw background
 update_status ModuleSceneCongrats::Update()
 {
 	SDL_Rect background_r,judges_r;
@@ -98,7 +88,7 @@ update_status ModuleSceneCongrats::Update()
 	{
 		background_position += 8;
 	}
-	//black lines and haohmaru
+	//black lines and Haohmaru
 	{
 
 		App->render->DrawQuad(up_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
@@ -106,7 +96,17 @@ update_status ModuleSceneCongrats::Update()
 		App->render->DrawQuad(left_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(right_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-		App->fonts->BlitText(10, (SCREEN_HEIGHT / 5) * 4 - 10, font, "ABCD");
+		if ( sentence == 1)
+		{
+			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4 , font, "FOR WIMPS LIKE YOU USING");
+			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "MY FULL POWER IS A NO-NO");
+		}
+		else if (sentence == 0)
+		{
+			App->fonts->BlitText(SCREEN_WIDTH/4, (SCREEN_HEIGHT / 5) * 4 , font, "TO CALL ME 'AWESOME'");
+			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
+		}
+
 		SDL_RenderPresent(App->render->renderer);
 
 		if (right_black_square.w > 0)
@@ -115,7 +115,7 @@ update_status ModuleSceneCongrats::Update()
 			right_black_square.x += 10;
 		}
 	}
-
+	
 
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
@@ -123,4 +123,18 @@ update_status ModuleSceneCongrats::Update()
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);
 	}
 	return UPDATE_CONTINUE;
+}
+
+bool ModuleSceneCongrats::CleanUp()
+{
+	LOG("Unloading Congrats stage");
+	App->player->Disable();
+	App->textures->Unload(background_t);
+	App->textures->Unload(haohmaru);
+	App->textures->Unload(judges_t);
+	Mix_FadeOutMusic(1250);
+	App->audio->UnLoadMusic(music);
+	App->audio->CleanUp();
+	App->fonts->UnLoad(font);
+	return true;
 }
