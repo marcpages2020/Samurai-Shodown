@@ -3,32 +3,44 @@
 
 ModuleSceneCongrats::ModuleSceneCongrats()
 {
-	background.PushBack({ 0,0,512,333 }, 0.15f); //0
-	background.PushBack({ 512,0,512,333 }, 0.15f);
-	background.PushBack({ 1024,0,512,333 }, 0.15f);
-	background.PushBack({ 1536,0,512,333 }, 0.15f);
-	background.PushBack({ 0,333,512,333 }, 0.15f); //512
-	background.PushBack({ 512,333,512,333 }, 0.15f);
-	background.PushBack({ 1024,333,512,333 }, 0.15f);
-	background.PushBack({ 1536,333,512,333 }, 0.15f);
-	background.PushBack({ 0,666,512,333 }, 0.15f); //1024
-	background.PushBack({ 512,666,512,333 }, 0.15f);
-	background.PushBack({ 1024,666,512,333 }, 0.15f);
-	background.PushBack({ 1536,666,512,333 }, 0.15f);
-	background.PushBack({ 0,999,512,333 }, 0.15f); //1536
-	background.PushBack({ 512,999,512,333 }, 0.15f);
-	background.PushBack({ 1024,999,512,333 }, 0.15f);
-	background.PushBack({ 1536,999,512,333 }, 0.15f);
-	background.PushBack({ 0,1332,512,333 }, 0.15f); //2048
-	background.PushBack({ 512,1332,512,333 }, 0.15f);
-	background.PushBack({ 1024,1332,512,333 }, 0.15f);
-	background.PushBack({ 1536,1332,512,333 }, 0.15f);
-	background.PushBack({ 0,1665,512,333 }, 0.15f); //2560
-	background.PushBack({ 512,1665,512,333 }, 0.15f);
-	background.PushBack({ 1024,1665,512,333 }, 0.15f);
-	background.PushBack({ 1536,1665,512,333 }, 0.15f);
+	//background
+	{
+		background.PushBack({ 0,0,512,333 }, 0.15f); //0
+		background.PushBack({ 512,0,512,333 }, 0.15f);
+		background.PushBack({ 1024,0,512,333 }, 0.15f);
+		background.PushBack({ 1536,0,512,333 }, 0.15f);
+		background.PushBack({ 0,333,512,333 }, 0.15f); //512
+		background.PushBack({ 512,333,512,333 }, 0.15f);
+		background.PushBack({ 1024,333,512,333 }, 0.15f);
+		background.PushBack({ 1536,333,512,333 }, 0.15f);
+		background.PushBack({ 0,666,512,333 }, 0.15f); //1024
+		background.PushBack({ 512,666,512,333 }, 0.15f);
+		background.PushBack({ 1024,666,512,333 }, 0.15f);
+		background.PushBack({ 1536,666,512,333 }, 0.15f);
+		background.PushBack({ 0,999,512,333 }, 0.15f); //1536
+		background.PushBack({ 512,999,512,333 }, 0.15f);
+		background.PushBack({ 1024,999,512,333 }, 0.15f);
+		background.PushBack({ 1536,999,512,333 }, 0.15f);
+		background.PushBack({ 0,1332,512,333 }, 0.15f); //2048
+		background.PushBack({ 512,1332,512,333 }, 0.15f);
+		background.PushBack({ 1024,1332,512,333 }, 0.15f);
+		background.PushBack({ 1536,1332,512,333 }, 0.15f);
+		background.PushBack({ 0,1665,512,333 }, 0.15f); //2560
+		background.PushBack({ 512,1665,512,333 }, 0.15f);
+		background.PushBack({ 1024,1665,512,333 }, 0.15f);
+		background.PushBack({ 1536,1665,512,333 }, 0.15f);
+	}
 
-	position.x = SCREEN_WIDTH+100;
+	//judges
+	{
+		judges.PushBack({23,21,196,85}, 0.4f);
+		judges.PushBack({256,21,194,85 }, 0.4f);
+		judges.PushBack({23,122,198,85 }, 0.4f);
+		judges.PushBack({ 256,122,194,85 }, 0.4f);
+	}
+	hao_position = SCREEN_WIDTH+100;
+	judges_position = -150;
+	background_position = -250;
 }
 
 ModuleSceneCongrats::~ModuleSceneCongrats()
@@ -40,10 +52,11 @@ bool ModuleSceneCongrats::Start()
 {
 	LOG("Loading congrats stage assets");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png"); 
+	background_t = App->textures->Load("Assets/Textures/HaohmaruScene.png"); 
 	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
+	judges_t = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
-	App->audio->PlayMusic(music,NULL);
+	App->audio->PlayMusic(music,1);
 	return ret;
 }
 
@@ -52,7 +65,9 @@ bool ModuleSceneCongrats::CleanUp()
 {
 	LOG("Unloading Congrats stage");
 	App->player->Disable();
-	App->textures->Unload(graphics);
+	App->textures->Unload(background_t);
+	App->textures->Unload(haohmaru);
+	App->textures->Unload(judges_t);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
 	//App->audio->CleanUp();
@@ -62,20 +77,29 @@ bool ModuleSceneCongrats::CleanUp()
 // Update: draw background
 update_status ModuleSceneCongrats::Update()
 {
-	SDL_Rect background_r;
+	SDL_Rect background_r,judges_r;
 	background_r = background.GetCurrentFrame();
-	App->render->Blit(graphics, NULL, -100, &background_r);
-	if (position.x > 30)
+	judges_r = judges.GetCurrentFrame();
+	App->render->Blit(background_t, background_position, -140, &background_r);
+	App->render->Blit(judges_t, judges_position, 80, &judges_r);
+	if (hao_position > 50)
 	{
-		position.x -= 10;
+		hao_position -= 10;
 	}
 
-
+	if (judges_position < SCREEN_WIDTH+20)
+	{
+		judges_position +=4;
+	}
+	if (background_position < -10)
+	{
+		background_position += 8;
+	}
 	//black lines and haohmaru
 	{
 
 		App->render->DrawQuad(up_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-		App->render->Blit(haohmaru, position.x, 23, NULL);
+		App->render->Blit(haohmaru, hao_position, 23, NULL);
 		App->render->DrawQuad(left_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(right_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
