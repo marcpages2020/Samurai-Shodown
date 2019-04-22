@@ -60,7 +60,7 @@ bool ModuleSceneCongrats::Start()
 	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
 	judges_t = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
-	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-!", 1);
+	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-! ", 1);
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
 	sentence = rand() % 2;
