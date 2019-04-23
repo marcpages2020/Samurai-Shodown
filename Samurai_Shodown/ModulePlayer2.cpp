@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModuleSceneHaohmaru.h"
 
 
 ModulePlayer2::ModulePlayer2()
@@ -791,7 +792,13 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		App->audio->PlayFX(hit_fx);
 		life -= 10;
 		state2 = HIT2;
-		App->player->collider_player_attack->to_delete;
+		App->player->collider_player_attack->to_delete=true;
+		break;
+	case COLLIDER_PLAYER_PARTICLES:
+		App->audio->PlayFX(hit_fx);
+		life -= 20;
+		state2 = HIT2;
+		break;
 	default:
 		break;
 	}

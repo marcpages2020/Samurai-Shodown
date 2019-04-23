@@ -9,8 +9,6 @@
 
 ModulePlayer::ModulePlayer()
 {
-
-
 	//animations
 	{
 		//idle animation

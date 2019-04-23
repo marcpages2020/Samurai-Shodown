@@ -138,6 +138,7 @@ update_status ModuleSceneHaohmaru::Update()
 		{
 			App->player->life = 100;
 			App->player2->life = 100;
+			time_fight = 96;
 		}
 		round_end = false;
 	}
