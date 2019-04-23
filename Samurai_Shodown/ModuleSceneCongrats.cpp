@@ -45,9 +45,7 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 		judges.PushBack({23,122,198,85 }, 0.4f);
 		judges.PushBack({ 256,122,194,85 }, 0.4f);
 	}
-	hao_position = SCREEN_WIDTH+100;
-	judges_position = -150;
-	background_position = -250;
+	
 
 	
 }
@@ -68,6 +66,9 @@ bool ModuleSceneCongrats::Start()
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
 	sentence = rand() % 2;
+	hao_position = SCREEN_WIDTH + 100;
+	judges_position = -150;
+	background_position = -250;
 	return ret;
 	//srand(time(NULL));
 }
@@ -111,7 +112,7 @@ update_status ModuleSceneCongrats::Update()
 			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
 		}
 
-		SDL_RenderPresent(App->render->renderer);
+		//SDL_RenderPresent(App->render->renderer);
 
 		if (right_black_square.w > 0)
 		{
@@ -145,5 +146,6 @@ bool ModuleSceneCongrats::CleanUp()
 	App->player->life = 100;
 	App->player2->life = 100;
 	App->scene_haohmaru->victory = false;
+	App->scene_haohmaru->start_time = 0.0F;
 	return true;
 }

@@ -61,6 +61,7 @@ bool ModuleSceneHaohmaru::Start()
 	start_time = SDL_GetTicks();
 	player1_wins = 0;
 	player2_wins = 0;
+	time_fight = 96;
 	return ret;
 }
 
