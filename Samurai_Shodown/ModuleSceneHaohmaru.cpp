@@ -137,6 +137,7 @@ update_status ModuleSceneHaohmaru::Update()
 		else
 		{
 			App->player->life = 100;
+			App->player->position = App->player->initial_position;
 			App->player2->life = 100;
 			time_fight = 96;
 		}

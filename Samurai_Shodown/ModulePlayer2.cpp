@@ -294,8 +294,9 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	position.x = lposition.x = 230;
-	position.y = initial_y;
+	position.x = initial_position.x = 230;
+	position.y = initial_position.y =215;
+	lposition = position;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
@@ -495,7 +496,7 @@ update_status ModulePlayer2::Update()
 		{
 		case IDLE2:
 			current_animation = &idle2;
-			position.y = initial_y;
+			position.y = lposition.y;
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
@@ -594,7 +595,7 @@ update_status ModulePlayer2::Update()
 			if (position.y <= 120) {
 				mult = -1;
 			}
-			else if (position.y == initial_y)
+			else if (position.y == initial_position.y)
 			{
 				mult = 1;
 				jump_neutral2.Reset();
@@ -627,7 +628,7 @@ update_status ModulePlayer2::Update()
 			if (position.y <= 120) {
 				mult = -1;
 			}
-			else if (position.y == initial_y)
+			else if (position.y == initial_position.y)
 			{
 				mult = 1;
 				jump_forward2.Reset();
@@ -660,7 +661,7 @@ update_status ModulePlayer2::Update()
 			if (position.y <= 120) {
 				mult = -1;
 			}
-			else if (position.y == initial_y)
+			else if (position.y == initial_position.y)
 			{
 				mult = 1;
 				jump_backward2.Reset();

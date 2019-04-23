@@ -56,9 +56,9 @@ bool Application::Init()
 	// Disable the map that you do not start with
 	neo_geo->Disable();
 	scene_welcome->Disable();
-	//scene_haohmaru->Disable();
+	scene_haohmaru->Disable();
 	scene_kyoshiro->Disable();
-	scene_congrats->Disable();
+	//scene_congrats->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

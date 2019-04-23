@@ -71,6 +71,7 @@ public:
 	Animation twisterAlone2;
 	iPoint position;
 	iPoint lposition;
+	iPoint initial_position;
 	Collider *collider_player_2_up = nullptr;
 	Collider *collider_player_2_mid = nullptr;
 	Collider *collider_player_2_down = nullptr;
@@ -78,7 +79,6 @@ public:
 	Collider *test_collider = nullptr;
 	int life = 100;
 	int mult = 1;
-	int initial_y = 215;
 	Animation* current_animation = nullptr;
 	PlayerInput2 player_input2;
 	States2 state2;

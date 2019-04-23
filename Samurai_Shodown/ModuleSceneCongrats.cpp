@@ -44,10 +44,7 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 		judges.PushBack({256,21,194,85 }, 0.4f);
 		judges.PushBack({23,122,198,85 }, 0.4f);
 		judges.PushBack({ 256,122,194,85 }, 0.4f);
-	}
-	
-
-	
+	}	
 }
 
 ModuleSceneCongrats::~ModuleSceneCongrats()
@@ -103,8 +100,8 @@ update_status ModuleSceneCongrats::Update()
 		App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		if ( sentence == 1)
 		{
-			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4 , font, "FOR WIMPS LIKE YOU USING");
-			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "MY FULL POWER IS A NO-NO");
+			App->fonts->BlitText(SCREEN_WIDTH / 4-20, (SCREEN_HEIGHT / 5) * 4 , font, "FOR WIMPS LIKE YOU USING");
+			App->fonts->BlitText(SCREEN_WIDTH / 4-20, (SCREEN_HEIGHT / 5) * 4+20, font, "MY FULL POWER IS A NO-NO");
 		}
 		else if (sentence == 0)
 		{
@@ -112,7 +109,7 @@ update_status ModuleSceneCongrats::Update()
 			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
 		}
 
-		//SDL_RenderPresent(App->render->renderer);
+		SDL_RenderPresent(App->render->renderer);
 
 		if (right_black_square.w > 0)
 		{
