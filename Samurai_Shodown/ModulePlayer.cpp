@@ -498,7 +498,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 
 	}
-	if (collider_player_attack != nullptr)
+	/*if (collider_player_attack != nullptr)
 	{
 		if (attack_frames == 4)
 		{
@@ -506,7 +506,7 @@ update_status ModulePlayer::PreUpdate()
 			attack_frames = 0;
 		}
 		attack_frames++;
-	}
+	}*/
 
 		return UPDATE_CONTINUE;
 }
@@ -581,13 +581,17 @@ update_status ModulePlayer::Update()
 			current_animation = &crouch_kick;
 			if (collider_player_up != nullptr)
 			{
-				collider_player_up->SetPos(position.x + 20, position.y - 65);
-				collider_player_up->SetSize(35, 35);
+				collider_player_up->SetPos(position.x + 10, position.y - 55);
+				collider_player_up->SetSize(40, 35);
 			}
 			if (collider_player_down != nullptr)
 			{
-				collider_player_down->SetPos(position.x, position.y - 25);
-				collider_player_down->SetSize(90, 25);
+				collider_player_down->SetPos(position.x+5, position.y - 20);
+				collider_player_down->SetSize(75, 25);
+			}
+			if (collider_player_attack == nullptr) {
+				collider_player_attack = App->collision->AddCollider({ position.x+15, position.y-10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				collider_player_attack->SetSize(85,15);
 			}
 			break;
 		case CROUCH_PUNCH:
