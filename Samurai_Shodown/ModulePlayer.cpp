@@ -94,25 +94,24 @@ ModulePlayer::ModulePlayer()
 		{
 			jump_forward.PushBack({ 15, 1362, 63, 130 }, 0.3f);
 			jump_forward.PushBack({ 83, 1362, 63, 130 }, 0.3f);
-			jump_forward.PushBack({ 151, 1362, 63, 130 }, 0.3f);
-			jump_forward.PushBack({ 224, 1362, 74, 93 }, 0.3f);
-			jump_forward.PushBack({ 307, 1362, 74, 93 }, 0.3f);
-			jump_forward.PushBack({ 391, 1362, 74, 93 }, 0.3f);
-			jump_forward.PushBack({ 478, 1362, 62, 81 }, 0.3f);
-			jump_forward.PushBack({ 559, 1362, 62, 81 }, 0.3f);
-			jump_forward.PushBack({ 631, 1362, 62, 81 }, 0.3f);
-			jump_forward.PushBack({ 706, 1362, 80, 62 }, 0.3f);
-			jump_forward.PushBack({ 799, 1362, 80, 62 }, 0.3f);
-			jump_forward.PushBack({ 888, 1362, 80, 62 }, 0.3f);
-			jump_forward.PushBack({ 981, 1362, 62, 81 }, 0.3f);
-			jump_forward.PushBack({ 1066, 1362, 62, 81 }, 0.3f);
-			jump_forward.PushBack({ 1152, 1362, 62, 81 }, 0.3f);
-			jump_forward.PushBack({ 1226, 1362, 80, 62 }, 0.3f);
-			jump_forward.PushBack({ 1312, 1362, 80, 62 }, 0.3f);
-			jump_forward.PushBack({ 1407, 1362, 80, 62 }, 0.3f);
-			jump_forward.PushBack({ 1509, 1362, 77, 85 }, 0.3f);
-			jump_forward.PushBack({ 1595, 1362, 77, 85 }, 0.3f);
-			jump_forward.PushBack({ 1686, 1362, 77, 85 }, 0.3f);
+			//jump_forward.PushBack({ 151, 1362, 63, 130 }, 0.3f);
+			//jump_forward.PushBack({ 224, 1362, 74, 93 }, 0.3f);
+			//jump_forward.PushBack({ 307, 1362, 74, 93 }, 0.3f);
+			//jump_forward.PushBack({ 391, 1362, 74, 93 }, 0.3f);
+			//jump_forward.PushBack({ 478, 1362, 62, 81 }, 0.3f);
+			//jump_forward.PushBack({ 559, 1362, 62, 81 }, 0.3f);
+			//jump_forward.PushBack({ 631, 1362, 62, 81 }, 0.3f);
+			//jump_forward.PushBack({ 706, 1362, 80, 62 }, 0.3f);
+			//jump_forward.PushBack({ 799, 1362, 80, 62 }, 0.3f);
+			//jump_forward.PushBack({ 981, 1362, 62, 81 }, 0.3f);
+			//jump_forward.PushBack({ 1066, 1362, 62, 81 }, 0.3f);
+			//jump_forward.PushBack({ 1152, 1362, 62, 81 }, 0.3f);
+			//jump_forward.PushBack({ 1226, 1362, 80, 62 }, 0.3f);
+			//jump_forward.PushBack({ 1312, 1362, 80, 62 }, 0.3f);
+			//jump_forward.PushBack({ 1407, 1362, 80, 62 }, 0.3f);
+			//jump_forward.PushBack({ 1509, 1362, 77, 85 }, 0.3f);
+			//jump_forward.PushBack({ 1595, 1362, 77, 85 }, 0.3f);
+			//jump_forward.PushBack({ 1686, 1362, 77, 85 }, 0.3f);
 			jump_forward.loop = false;
 		}
 
@@ -213,22 +212,22 @@ ModulePlayer::ModulePlayer()
 
 		//crouch punch
 		{
-			crouch_punch.PushBack({12, 1705, 87, 107}, 0.3f);
-			crouch_punch.PushBack({121, 1705, 84, 107}, 0.3f);
-			crouch_punch.PushBack({215, 1705, 84, 107}, 0.3f);
-			crouch_punch.PushBack({311, 1735, 125, 87}, 0.3f);
-			crouch_punch.PushBack({455, 1735, 125, 87}, 0.3f);
-			crouch_punch.PushBack({591, 1735, 125, 87}, 0.3f);
-			crouch_punch.PushBack({734, 1735, 125, 87}, 0.3f);
-			crouch_punch.PushBack({881, 1735, 125, 87}, 0.3f);
-			crouch_punch.PushBack({1028, 1735, 125, 87}, 0.3f);
-			crouch_punch.PushBack({1178, 1735, 84, 87}, 0.3f);
-			crouch_punch.PushBack({1294, 1735, 84, 87}, 0.6f);
-			crouch_punch.PushBack({1408, 1735, 84, 87}, 0.6f);
-			crouch_punch.PushBack({1514, 1735, 81, 87}, 0.6f);
-			crouch_punch.PushBack({1618, 1735, 81, 87}, 0.6f);
-			crouch_punch.PushBack({1725, 1735, 83, 87}, 0.6f);
-			crouch_punch.PushBack({1827, 1735, 83, 87}, 0.6f);
+			crouch_punch.PushBack({12, 1718, 87, 110}, 0.3f);
+			crouch_punch.PushBack({121, 1718, 84, 93}, 0.3f);
+			crouch_punch.PushBack({215, 1718, 84, 93}, 0.3f);
+			crouch_punch.PushBack({311, 1718, 125, 93}, 0.3f);
+			crouch_punch.PushBack({455, 1718, 125, 93 }, 0.3f);
+			crouch_punch.PushBack({591, 1718, 125, 93 }, 0.3f);
+			crouch_punch.PushBack({734, 1718, 125, 93 }, 0.3f);
+			crouch_punch.PushBack({881, 1718, 125, 93 }, 0.3f);
+			crouch_punch.PushBack({1028, 1718, 125, 93 }, 0.3f);
+			crouch_punch.PushBack({1178, 1718, 84, 93 }, 0.3f);
+			crouch_punch.PushBack({1294, 1718, 84, 93 }, 0.6f);
+			crouch_punch.PushBack({1408, 1718, 84, 93 }, 0.6f);
+			crouch_punch.PushBack({1514, 1718, 81, 93 }, 0.6f);
+			crouch_punch.PushBack({1618, 1718, 81, 93 }, 0.6f);
+			crouch_punch.PushBack({1725, 1718, 83, 93 }, 0.6f);
+			crouch_punch.PushBack({1827, 1718, 83, 93 }, 0.6f);
 			crouch_punch.loop = false;
 		}
 
