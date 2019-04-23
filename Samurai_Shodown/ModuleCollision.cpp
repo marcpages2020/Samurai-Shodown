@@ -9,15 +9,17 @@ ModuleCollision::ModuleCollision()
 		colliders[i] = nullptr;
 
 	matrix[COLLIDER_WALL][COLLIDER_WALL] = false;
+
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_PARTICLES] = false;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
+
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_PARTICLES] = false;
 	matrix[COLLIDER_PLAYER_PARTICLES][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_2] = true;
 
+	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_2] = true;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER] = true;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_2_ATTACK] = true;
