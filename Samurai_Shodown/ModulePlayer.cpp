@@ -94,24 +94,24 @@ ModulePlayer::ModulePlayer()
 		{
 			jump_forward.PushBack({ 15, 1362, 63, 130 }, 0.3f);
 			jump_forward.PushBack({ 83, 1362, 63, 130 }, 0.3f);
-			//jump_forward.PushBack({ 151, 1362, 63, 130 }, 0.3f);
-			//jump_forward.PushBack({ 224, 1362, 74, 93 }, 0.3f);
-			//jump_forward.PushBack({ 307, 1362, 74, 93 }, 0.3f);
-			//jump_forward.PushBack({ 391, 1362, 74, 93 }, 0.3f);
-			//jump_forward.PushBack({ 478, 1362, 62, 81 }, 0.3f);
-			//jump_forward.PushBack({ 559, 1362, 62, 81 }, 0.3f);
-			//jump_forward.PushBack({ 631, 1362, 62, 81 }, 0.3f);
-			//jump_forward.PushBack({ 706, 1362, 80, 62 }, 0.3f);
-			//jump_forward.PushBack({ 799, 1362, 80, 62 }, 0.3f);
-			//jump_forward.PushBack({ 981, 1362, 62, 81 }, 0.3f);
-			//jump_forward.PushBack({ 1066, 1362, 62, 81 }, 0.3f);
-			//jump_forward.PushBack({ 1152, 1362, 62, 81 }, 0.3f);
-			//jump_forward.PushBack({ 1226, 1362, 80, 62 }, 0.3f);
-			//jump_forward.PushBack({ 1312, 1362, 80, 62 }, 0.3f);
-			//jump_forward.PushBack({ 1407, 1362, 80, 62 }, 0.3f);
-			//jump_forward.PushBack({ 1509, 1362, 77, 85 }, 0.3f);
-			//jump_forward.PushBack({ 1595, 1362, 77, 85 }, 0.3f);
-			//jump_forward.PushBack({ 1686, 1362, 77, 85 }, 0.3f);
+			jump_forward.PushBack({ 151, 1362, 63, 130 }, 0.3f);
+			jump_forward.PushBack({ 224, 1362, 74, 93 }, 0.3f);
+			jump_forward.PushBack({ 307, 1362, 74, 93 }, 0.3f);
+			jump_forward.PushBack({ 391, 1362, 74, 93 }, 0.3f);
+			jump_forward.PushBack({ 478, 1362, 62, 81 }, 0.3f);
+			jump_forward.PushBack({ 559, 1362, 62, 81 }, 0.3f);
+			jump_forward.PushBack({ 631, 1362, 62, 81 }, 0.3f);
+			jump_forward.PushBack({ 706, 1362, 80, 62 }, 0.3f);
+			jump_forward.PushBack({ 799, 1362, 80, 62 }, 0.3f);
+			jump_forward.PushBack({ 981, 1362, 62, 81 }, 0.3f);
+			jump_forward.PushBack({ 1066, 1362, 62, 81 }, 0.3f);
+			jump_forward.PushBack({ 1152, 1362, 62, 81 }, 0.3f);
+			jump_forward.PushBack({ 1226, 1362, 80, 62 }, 0.3f);
+			jump_forward.PushBack({ 1312, 1362, 80, 62 }, 0.3f);
+			jump_forward.PushBack({ 1407, 1362, 80, 62 }, 0.3f);
+			jump_forward.PushBack({ 1509, 1362, 77, 85 }, 0.3f);
+			jump_forward.PushBack({ 1595, 1362, 77, 85 }, 0.3f);
+			jump_forward.PushBack({ 1686, 1362, 77, 85 }, 0.3f);
 			jump_forward.loop = false;
 		}
 
@@ -143,24 +143,24 @@ ModulePlayer::ModulePlayer()
 
 		//punch animation
 		{
-			punch.PushBack({ 14, 236, 69, 127 }, 0.5f);
-			punch.PushBack({ 87, 236, 69, 127 }, 0.3f);
-			punch.PushBack({ 160, 266, 79, 97 }, 0.3f);
-			punch.PushBack({ 243, 269, 79, 96 }, 0.5f);
-			punch.PushBack({ 327, 267, 79, 97 }, 0.5f);
-			punch.PushBack({ 410, 270, 129, 93 }, 0.5f);
-			punch.PushBack({ 545, 277, 130, 86 }, 0.5f);
-			punch.PushBack({ 679, 280, 130, 83 }, 0.5f);
-			punch.PushBack({ 814, 268, 129, 95 }, 0.5f); //9
-			punch.PushBack({ 946, 268, 130, 95 }, 0.5f);
-			punch.PushBack({ 1081, 268, 130, 95 }, 0.5f);
-			punch.PushBack({ 1213, 268, 120, 95 }, 0.5f);
-			punch.PushBack({ 1337, 268, 120, 95 }, 0.5f);
-			punch.PushBack({ 1461, 268, 83, 95 }, 0.8f);
-			punch.PushBack({ 1548, 268, 83, 95 }, 0.8f);
-			punch.PushBack({ 1635, 268, 83, 95 }, 0.8f); //16
-			punch.PushBack({ 1721, 278,131, 96 }, 0.7f);
-			punch.PushBack({ 1856, 278, 131, 96 }, 0.7f);
+			punch.PushBack({ 14, 236, 69, 130 }, 0.5f);
+			punch.PushBack({ 87, 236, 69, 130 }, 0.3f);
+			punch.PushBack({ 160, 236, 79, 127 }, 0.3f);
+			punch.PushBack({ 243, 236, 79, 127 }, 0.5f);
+			punch.PushBack({ 327, 236, 79, 127 }, 0.5f);
+			punch.PushBack({ 410, 236, 129, 127 }, 0.5f);
+			punch.PushBack({ 545, 236, 130, 127 }, 0.5f);
+			punch.PushBack({ 679, 236, 130, 127 }, 0.5f);
+			punch.PushBack({ 814, 236, 129, 127 }, 0.5f); //9
+			punch.PushBack({ 946, 236, 130, 127 }, 0.5f);
+			punch.PushBack({ 1081, 236, 130, 127 }, 0.5f);
+			punch.PushBack({ 1213, 236, 120, 127 }, 0.5f);
+			punch.PushBack({ 1337, 236, 120, 127 }, 0.5f);
+			punch.PushBack({ 1461, 236, 83, 127 }, 0.8f);
+			punch.PushBack({ 1548, 236, 83, 127 }, 0.8f);
+			punch.PushBack({ 1635, 236, 83, 127 }, 0.8f); //16
+			punch.PushBack({ 1721, 236,131, 127 }, 0.7f);
+			punch.PushBack({ 1856, 236, 131, 127 }, 0.7f);
 			punch.loop = false;
 		}
 
