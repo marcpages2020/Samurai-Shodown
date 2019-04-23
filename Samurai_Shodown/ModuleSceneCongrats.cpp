@@ -68,6 +68,7 @@ bool ModuleSceneCongrats::Start()
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
 	sentence = rand() % 2;
+	App->render->camera.x = App->render->camera.y = 0;
 	return ret;
 	//srand(time(NULL));
 }
