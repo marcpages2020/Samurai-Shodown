@@ -747,7 +747,7 @@ update_status ModulePlayer2::Update()
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(graphics, position.x, position.y - r.h, &r,SDL_FLIP_HORIZONTAL);
 
 	return UPDATE_CONTINUE;
 }
@@ -790,7 +790,6 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		App->audio->PlayFX(hit_fx);
 		life -= 10;
 		state2 = HIT2;
-		position.x -= 10;
 		App->player->collider_player_attack->to_delete;
 	default:
 		break;
