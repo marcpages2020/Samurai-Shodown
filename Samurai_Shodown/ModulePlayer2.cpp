@@ -10,8 +10,7 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x= lposition.x = 230;
-	position.y = initial_y;
+
 
 	//animations
 	{
@@ -294,6 +293,8 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
+	position.x = lposition.x = 230;
+	position.y = initial_y;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");

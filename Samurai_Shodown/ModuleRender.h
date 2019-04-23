@@ -8,6 +8,7 @@
 
 struct SDL_Renderer;
 struct SDL_Texture;
+struct Collider;
 
 class ModuleRender : public Module
 {
@@ -26,9 +27,15 @@ public:
 
 	bool DrawQuad(const SDL_Rect & rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera = true);
 
+	void MoveCamera();
+	void SetCamera();
+private:
+	Collider* left = nullptr;
+	Collider* right = nullptr;
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
+
 };
 
 #endif //__ModuleRenderer_H__

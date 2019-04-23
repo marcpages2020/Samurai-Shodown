@@ -3,13 +3,16 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
+#include "ModuleCollision.h"
 #include "SDL/include/SDL.h"
+#include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 ModuleRender::ModuleRender() : Module()
 {
 	camera.x = camera.y = 0;
-	camera.w = SCREEN_SIZE;
-	camera.h = SCREEN_SIZE;
+	camera.w = SCREEN_WIDTH;
+	camera.h = SCREEN_HEIGHT;
 }
 
 // Destructor
@@ -168,4 +171,35 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	}
 
 	return ret;
+}
+
+void ModuleRender::MoveCamera()
+{
+
+	iPoint player_1 = App->player->position;
+	iPoint player_2 = App->player2->position;
+
+	if (player_1.x < left->rect.x + left->rect.w) {
+		if (player_2.x + 50 < right->rect.x) {
+			right->rect.x -= App->player->speed;
+			left->rect.x -= App->player->speed;
+			camera.x -= App->player->speed * SCREEN_SIZE;
+		}
+	}
+	else if (player_2.x > right->rect.x - 50) {
+		if (player_1.x > left->rect.x + left->rect.w) {
+			right->rect.x += App->player->speed;
+			left->rect.x += App->player->speed;
+			camera.x += App->player->speed * SCREEN_SIZE;
+		}
+	}
+
+}
+
+void ModuleRender::SetCamera()
+{
+
+	left = App->collision->AddCollider({ -50,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+
 }
