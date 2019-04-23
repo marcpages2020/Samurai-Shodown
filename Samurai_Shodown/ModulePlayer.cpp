@@ -597,16 +597,16 @@ update_status ModulePlayer::Update()
 			break;
 		case CROUCH_PUNCH:
 			current_animation = &crouch_punch;
-			/*if (collider_player_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 45, position.y - 65);
 				collider_player_up->SetSize(35, 35);
 			}
 			if (collider_player_down != nullptr)
 			{
-				collider_player_down->SetPos(position.x + 30, position.y - 30);
-				collider_player_down->SetSize(50, 30);
-			}*/
+				collider_player_down->SetPos(position.x, position.y - 30);
+				collider_player_down->SetSize(100, 30);
+			}
 			break;
 		case JUMP_NEUTRAL:
 			current_animation = &jump_neutral;
