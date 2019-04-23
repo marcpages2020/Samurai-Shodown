@@ -88,6 +88,7 @@ public:
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
+	Mix_Chunk* hit_fx;
 	int attack_frames=0;
 };
 

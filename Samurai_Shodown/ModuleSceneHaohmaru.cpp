@@ -143,7 +143,7 @@ update_status ModuleSceneHaohmaru::Update()
 	}
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
-		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_kyoshiro,2.5);
+		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,0);
 	}
 	return UPDATE_CONTINUE;
 }

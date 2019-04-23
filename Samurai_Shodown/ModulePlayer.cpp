@@ -300,6 +300,7 @@ bool ModulePlayer::Start()
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
+	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player_up)
@@ -322,140 +323,144 @@ update_status ModulePlayer::PreUpdate()
 		player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
 		player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
-		if (state == IDLE) {
-			if (player_input.pressing_A)
-				state = BACKWARD;
-			if (player_input.pressing_D)
-				state = FORWARD;
-			if (player_input.pressing_J) {
-				state = KICK;
-				App->audio->PlayFX(light_kick_fx);
-			}
-			if (player_input.pressing_U) {
-				state = PUNCH;
-				App->audio->PlayFX(light_attack_fx);
-			}
-			if (player_input.pressing_W)
-				state = JUMP_NEUTRAL;
-			if (player_input.pressing_S)
-				state = CROUCH_DOWN;
-			if (player_input.pressing_K) {
-				App->audio->PlayFX(twister_fx);
-				state = TWISTER;
-			}
-		}
-		if (state == BACKWARD) {
-			if (!player_input.pressing_A)
-				state = IDLE;
-			if (player_input.pressing_U) {
-				state = PUNCH;
-				App->audio->PlayFX(light_attack_fx);
-			}
-			if (player_input.pressing_J)
-				state = KICK;
-			if (player_input.pressing_W)
-				state = JUMP_BACKWARD;
-		}
-		if (state == FORWARD) {
-			if (!player_input.pressing_D)
-				state = IDLE;
-			if (player_input.pressing_U) {
-				state = PUNCH;
-				App->audio->PlayFX(light_attack_fx);
-			}
-			if (player_input.pressing_J)
-				state = KICK;
-			if (player_input.pressing_W)
-				state = JUMP_FORWARD;
-		}
-		if (state == KICK) {
-			if (current_animation->Finished()) {
-				state = IDLE;
-				kick.Reset();
-				if (collider_player_mid != nullptr)
-				{
-					collider_player_mid->to_delete = true;
-					collider_player_mid = nullptr;
+		//states 
+
+		{
+			if (state == IDLE) {
+				if (player_input.pressing_A)
+					state = BACKWARD;
+				if (player_input.pressing_D)
+					state = FORWARD;
+				if (player_input.pressing_J) {
+					state = KICK;
+					App->audio->PlayFX(light_kick_fx);
+				}
+				if (player_input.pressing_U) {
+					state = PUNCH;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_W)
+					state = JUMP_NEUTRAL;
+				if (player_input.pressing_S)
+					state = CROUCH_DOWN;
+				if (player_input.pressing_K) {
+					App->audio->PlayFX(twister_fx);
+					state = TWISTER;
 				}
 			}
-		}
-		if (state == PUNCH) {
-			if (current_animation->Finished()) {
-				state = IDLE;
-				punch.Reset();
+			if (state == BACKWARD) {
+				if (!player_input.pressing_A)
+					state = IDLE;
+				if (player_input.pressing_U) {
+					state = PUNCH;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_J)
+					state = KICK;
+				if (player_input.pressing_W)
+					state = JUMP_BACKWARD;
 			}
-		}
-		if (state == JUMP_NEUTRAL)
-		{
-			if (current_animation->Finished())
+			if (state == FORWARD) {
+				if (!player_input.pressing_D)
+					state = IDLE;
+				if (player_input.pressing_U) {
+					state = PUNCH;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_J)
+					state = KICK;
+				if (player_input.pressing_W)
+					state = JUMP_FORWARD;
+			}
+			if (state == KICK) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					kick.Reset();
+					if (collider_player_mid != nullptr)
+					{
+						collider_player_mid->to_delete = true;
+						collider_player_mid = nullptr;
+					}
+				}
+			}
+			if (state == PUNCH) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					punch.Reset();
+				}
+			}
+			if (state == JUMP_NEUTRAL)
 			{
-				state = IDLE;
-				jump_neutral.Reset();
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					jump_neutral.Reset();
+				}
 			}
-		}
-		if (state == JUMP_FORWARD)
-		{
-			if (current_animation->Finished())
+			if (state == JUMP_FORWARD)
 			{
-				state = IDLE;
-				jump_forward.Reset();
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					jump_forward.Reset();
+				}
 			}
-		}
-		if (state == JUMP_BACKWARD)
-		{
-			if (current_animation->Finished())
+			if (state == JUMP_BACKWARD)
 			{
-				state = IDLE;
-				jump_backward.Reset();
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					jump_backward.Reset();
+				}
 			}
-		}
-		if (state == CROUCH_DOWN)
-		{
-			if (!player_input.pressing_S)
+			if (state == CROUCH_DOWN)
 			{
-				state = CROUCH_UP;
-				crouch_down.Reset();
+				if (!player_input.pressing_S)
+				{
+					state = CROUCH_UP;
+					crouch_down.Reset();
+				}
+				if (player_input.pressing_J) {
+					state = CROUCH_KICK;
+				}
+				if (player_input.pressing_U) {
+					state = CROUCH_PUNCH;
+				}
 			}
-			if (player_input.pressing_J) {
-				state = CROUCH_KICK;
-			}
-			if (player_input.pressing_U) {
-				state = CROUCH_PUNCH;
-			}
-		}
-		if (state == CROUCH_UP)
-		{
-			if (current_animation->Finished()) {
-				state = IDLE;
-				crouch_up.Reset();
-			}
-		}
-		if (state == TWISTER)
-		{
-			if (current_animation->Finished())
+			if (state == CROUCH_UP)
 			{
-				state = IDLE;
-				twister.Reset();
-				is_tornado_created = false;
+				if (current_animation->Finished()) {
+					state = IDLE;
+					crouch_up.Reset();
+				}
 			}
-		}
-		if (state == CROUCH_KICK) {
-			if (current_animation->Finished()) {
-				state = IDLE;
-				crouch_kick.Reset();
+			if (state == TWISTER)
+			{
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					twister.Reset();
+					is_tornado_created = false;
+				}
 			}
-		}
-		if (state == CROUCH_PUNCH) {
-			if (current_animation->Finished()) {
-				state = IDLE;
-				crouch_punch.Reset();
+			if (state == CROUCH_KICK) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					crouch_kick.Reset();
+				}
 			}
-		}
-		if (state==HIT) {
-			if (current_animation->Finished()){
-				state = IDLE;
-				hit.Reset();
+			if (state == CROUCH_PUNCH) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					crouch_punch.Reset();
+				}
+			}
+			if (state == HIT) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					hit.Reset();
 
+				}
 			}
 		}
 
@@ -493,9 +498,9 @@ update_status ModulePlayer::PreUpdate()
 	}
 	if (collider_player_attack != nullptr)
 	{
-		if (attack_frames == 3)
+		if (attack_frames == 4)
 		{
-			collider_player_attack->to_delete = true;
+			collider_player_attack->to_delete=true;
 			attack_frames = 0;
 		}
 		attack_frames++;
@@ -700,8 +705,8 @@ update_status ModulePlayer::Update()
 			}
 			if (collider_player_attack == nullptr)
 			{
-				collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-
+				collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+				collider_player_attack->to_delete = false;
 			}
 			collider_player_attack->SetPos(position.x + 60, position.y - 50);
 			collider_player_attack->SetSize(67, 30);
@@ -807,6 +812,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	}
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
+		App->audio->PlayFX(hit_fx);
 		life -= 10;
 		state = HIT;
 		position.x -= 10;

@@ -71,10 +71,10 @@ public:
 	Animation twisterAlone2;
 	iPoint position;
 	iPoint lposition;
-	Collider *collider_player_up = nullptr;
-	Collider *collider_player_mid = nullptr;
-	Collider *collider_player_down = nullptr;
-	Collider *collider_player_attack = nullptr;
+	Collider *collider_player_2_up = nullptr;
+	Collider *collider_player_2_mid = nullptr;
+	Collider *collider_player_2_down = nullptr;
+	Collider *collider_player_2_attack = nullptr;
 	Collider *test_collider = nullptr;
 	int life = 100;
 	int mult = 1;
@@ -87,6 +87,7 @@ public:
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
+	Mix_Chunk* hit_fx;
 	int attack_frames = 0;
 };
 
