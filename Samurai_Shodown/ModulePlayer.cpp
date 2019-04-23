@@ -422,9 +422,11 @@ update_status ModulePlayer::PreUpdate()
 				}
 				if (player_input.pressing_J) {
 					state = CROUCH_KICK;
+					App->audio->PlayFX(light_kick_fx);
 				}
 				if (player_input.pressing_U) {
 					state = CROUCH_PUNCH;
+					App->audio->PlayFX(light_attack_fx);
 				}
 			}
 			if (state == CROUCH_UP)

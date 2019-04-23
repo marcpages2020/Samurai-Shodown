@@ -102,13 +102,16 @@ update_status ModuleSceneHaohmaru::Update()
 		if (App->player->life > App->player2->life)
 		{
 			player1_wins++;
+			round_end = true;
 		}
 		else if (App->player->life == App->player2->life)
 		{
 			draw++;
+			round_end = true;
 		}
 		else {
 			player2_wins++;
+			round_end = true;
 		}
 	}
 	if (App->player->life <= 0)
@@ -139,7 +142,7 @@ update_status ModuleSceneHaohmaru::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F7])
 	{
 		round_end = true;
-		victory = true;
+		//victory = true;
 	}
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{

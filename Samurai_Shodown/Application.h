@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 16
+#define NUM_MODULES 17
 
 class ModuleWindow;
 class ModuleInput;
@@ -23,6 +23,7 @@ class ModuleParticles;
 class ModuleCollision;
 class ModuleFonts;
 class ModuleNeoGeo;
+class ModuleUI;
 
 class Application
 {
@@ -45,6 +46,7 @@ public:
 	ModuleNeoGeo* neo_geo = nullptr;
 	ModuleCollision* collision = nullptr;
 	ModuleFonts* fonts = nullptr;
+	ModuleUI* ui = nullptr;
 
 	bool is_paused = false;
 
