@@ -67,6 +67,10 @@ bool ModuleSceneCongrats::Start()
 	srand(time(NULL));
 	sentence = rand() % 2;
 	App->render->camera.x = App->render->camera.y = 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f5ba606460361a03aea1ff4023bd8a557b6d166
 	hao_position = SCREEN_WIDTH + 100;
 	judges_position = -150;
 	background_position = -250;

@@ -55,13 +55,14 @@ bool ModuleSceneHaohmaru::Start()
 	App->player->Enable();
 	App->player2->Enable();
 	//Colliders for the screen borders
-	App->collision->AddCollider({ -165,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	App->collision->AddCollider({ -148,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	App->collision->AddCollider({ 427,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	start_time = SDL_GetTicks();
 	player1_wins = 0;
 	player2_wins = 0;
 	time_fight = 96;
+	App->render->SetCamera();
 	return ret;
 }
 
@@ -145,6 +146,7 @@ update_status ModuleSceneHaohmaru::Update()
 		round_end = true;
 		victory = true;
 	}
+	App->render->MoveCamera();
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,0);

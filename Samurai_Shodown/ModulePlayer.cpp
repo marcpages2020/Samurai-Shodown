@@ -9,9 +9,7 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 70;
-	lposition = position;
-	position.y = initial_y;
+
 
 	//animations
 	{
@@ -296,6 +294,9 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
+	position.x = 70;
+	lposition = position;
+	position.y = initial_y;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
@@ -801,7 +802,10 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL:
-		position.x = lposition.x;
+		if (position.x < c2->rect.x + c2->rect.w && player_input.pressing_A)
+			position.x = lposition.x;
+		if (position.x > c2->rect.x + c2->rect.w && player_input.pressing_D)
+			position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER_2:
 		if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER))
