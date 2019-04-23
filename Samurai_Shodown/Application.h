@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 
-#define NUM_MODULES 15
+#define NUM_MODULES 16
 
 class ModuleWindow;
 class ModuleInput;
@@ -21,6 +21,7 @@ class ModuleSceneKyoshiro;
 class ModuleSceneCongrats;
 class ModuleParticles;
 class ModuleCollision;
+class ModuleFonts;
 class ModuleNeoGeo;
 
 class Application
@@ -43,7 +44,9 @@ public:
 	ModuleParticles* particles = nullptr;
 	ModuleNeoGeo* neo_geo = nullptr;
 	ModuleCollision* collision = nullptr;
+	ModuleFonts* fonts = nullptr;
 
+	bool is_paused = false;
 
 public:
 
@@ -53,7 +56,7 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
-
+	void ChangePause();
 };
 
 // Global var made extern for Application ---

@@ -13,6 +13,7 @@
 #include "ModuleSceneCongrats.h"
 #include "ModuleNeoGeo.h"
 #include "ModuleCollision.h"
+#include "ModuleFonts.h"
 #include "ModulePlayer2.h"
 
 Application::Application()
@@ -31,6 +32,7 @@ Application::Application()
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 
@@ -51,8 +53,8 @@ bool Application::Init()
 	player2->Disable();
 	// Disable the map that you do not start with
 	neo_geo->Disable();
-	//scene_welcome->Disable();
-	scene_haohmaru->Disable();
+	scene_welcome->Disable();
+	//scene_haohmaru->Disable();
 	scene_kyoshiro->Disable();
 	scene_congrats->Disable();
 
@@ -78,6 +80,9 @@ update_status Application::Update()
 	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
+	if (input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
+		App->ChangePause();
+
 	return ret;
 }
 
@@ -89,4 +94,9 @@ bool Application::CleanUp()
 		ret = modules[i]->CleanUp() ? modules[i]->CleanUp():true;
 
 	return ret;
+}
+
+void Application::ChangePause()
+{
+	is_paused = !is_paused;
 }

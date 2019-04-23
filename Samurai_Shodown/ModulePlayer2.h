@@ -6,23 +6,25 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
-
+#include "ModuleAudio.h"
 
 struct SDL_Texture;
 
 enum States2 {
-	IDLE2,
-	PUNCH2,
-	JUMP2,
-	KICK2,
+	BACKWARD2,
+	CROUCH_UP2,
+	CROUCH_DOWN2,
+	CROUCH_KICK2,
+	CROUCH_PUNCH2,
 	JUMP_NEUTRAL2,
 	JUMP_FORWARD2,
 	JUMP_BACKWARD2,
 	FORWARD2,
-	BACKWARD2,
-	CROUCH2_UP,
-	CROUCH2_DOWN,
+	IDLE2,
+	KICK2,
+	PUNCH2,
 	TWISTER2,
+	HIT2
 };
 
 
@@ -52,22 +54,29 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* haohmaruSpreadsheet = nullptr;
-	Animation idle;
-	Animation forward;
-	Animation backward;
-	Animation punch;
-	Animation kick;
+	Animation idle2;
+	Animation forward2;
+	Animation backward2;
+	Animation punch2;
+	Animation kick2;
+	Animation hit2;
 	Animation jump_neutral2;
 	Animation jump_forward2;
 	Animation jump_backward2;
-	Animation crouch2_down;
-	Animation crouch2_up;
-	Animation twister;
-	Animation twisterAlone;
+	Animation crouch_down2;
+	Animation crouch_up2;
+	Animation crouch_punch2;
+	Animation crouch_kick2;
+	Animation twister2;
+	Animation twisterAlone2;
 	iPoint position;
 	iPoint lposition;
-	Collider *collider_player2 = nullptr;
-	Collider *collider_player_particles2 = nullptr;
+	Collider *collider_player_up = nullptr;
+	Collider *collider_player_mid = nullptr;
+	Collider *collider_player_down = nullptr;
+	Collider *collider_player_attack = nullptr;
+	Collider *test_collider = nullptr;
+	int life = 100;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
@@ -75,6 +84,10 @@ public:
 	States2 state2;
 	float speed = 2;
 	bool is_tornado_created2 = false;
+	Mix_Chunk* light_attack_fx;
+	Mix_Chunk* light_kick_fx;
+	Mix_Chunk* twister_fx;
+	int attack_frames = 0;
 };
 
 #endif // !_ModulePlayer2_H

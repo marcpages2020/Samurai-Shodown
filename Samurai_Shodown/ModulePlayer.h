@@ -12,8 +12,6 @@ struct SDL_Texture;
 
 enum States
 {
-	IDLE,
-	FORWARD,
 	BACKWARD,
 	CROUCH_UP,
 	CROUCH_DOWN,
@@ -22,9 +20,12 @@ enum States
 	JUMP_NEUTRAL,
 	JUMP_FORWARD,
 	JUMP_BACKWARD,
+	FORWARD,
+	IDLE,
 	KICK,
 	PUNCH,
-	TWISTER
+	TWISTER,
+	HIT
 };
 
 struct PlayerInput {
@@ -50,7 +51,6 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-
 public:
 
 	SDL_Texture * graphics = nullptr;
@@ -60,8 +60,7 @@ public:
 	Animation backward;
 	Animation punch;
 	Animation kick;
-	Animation hit;
-	Animation hit2;
+	Animation hit;	
 	Animation jump_neutral;
 	Animation jump_forward;
 	Animation jump_backward;
@@ -73,9 +72,12 @@ public:
 	Animation twisterAlone;
 	iPoint position;
 	iPoint lposition;
-	Collider *collider_player_1 = nullptr;
-	Collider *collider_player_2 = nullptr;
-	Collider *collider_player_3 = nullptr;
+	Collider *collider_player_up = nullptr;
+	Collider *collider_player_mid = nullptr;
+	Collider *collider_player_down = nullptr;
+	Collider *collider_player_attack = nullptr;
+	Collider *test_collider = nullptr;
+	int life=100;
 	int mult = 1;
 	int initial_y = 215;
 	Animation* current_animation = nullptr;
@@ -86,6 +88,7 @@ public:
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
+	int attack_frames=0;
 };
 
 #endif // __ModulePlayer_H__

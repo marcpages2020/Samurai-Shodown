@@ -65,12 +65,6 @@ update_status ModuleRender::Update()
 	if ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT) && (camera.x < 350))
 		camera.x += speed * 0.7f;
 
-	//Make the camera move with the player
-	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT) && (camera.x > -140))
-		camera.x -= speed;
-	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT) && (camera.x < 350))
-		camera.x += speed;
-
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -95,14 +89,23 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect * section, SDL_RendererFlip flip, float speed, double angle, int pivot_x, int pivot_y) const
+bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect * section, SDL_RendererFlip flip, float speed, bool use_camera, double angle, int pivot_x, int pivot_y) const
 {
 	bool ret = true;
 	uint scale = (uint)SCREEN_SIZE;
 
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * scale;
-	rect.y = (int)(camera.y * speed) + y * scale;
+	if (use_camera)
+	{
+		rect.x = (int)(-camera.x * speed) + x * scale;
+		rect.y = (int)(-camera.y * speed) + y * scale;
+	}
+	else
+	{
+		rect.x = x * scale;
+		rect.y = y * scale;
+	}
+
 
 	if (section != NULL)
 	{
@@ -146,11 +149,17 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	SDL_Rect rec(rect);
 	if (use_camera)
 	{
-		rec.x = (int)(camera.x + rect.x * SCREEN_SIZE);
-		rec.y = (int)(camera.y + rect.y * SCREEN_SIZE);
-		rec.w *= SCREEN_SIZE;
-		rec.h *= SCREEN_SIZE;
+		rec.x = (int)(-camera.x + rect.x * SCREEN_SIZE);
+		rec.y = (int)(-camera.y + rect.y * SCREEN_SIZE);
 	}
+	else
+	{
+		rec.x *= SCREEN_SIZE;
+		rec.y *= SCREEN_SIZE;
+	}
+
+	rec.w *= SCREEN_SIZE;
+	rec.h *= SCREEN_SIZE;
 
 	if (SDL_RenderFillRect(renderer, &rec) != 0)
 	{
