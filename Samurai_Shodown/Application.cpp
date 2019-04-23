@@ -15,6 +15,7 @@
 #include "ModuleCollision.h"
 #include "ModuleFonts.h"
 #include "ModulePlayer2.h"
+#include "ModuleUI.h"
 
 Application::Application()
 {
@@ -35,6 +36,7 @@ Application::Application()
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = ui = new ModuleUI();
 
 }	
 
