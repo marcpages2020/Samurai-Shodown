@@ -100,6 +100,7 @@ update_status ModuleSceneHaohmaru::Update()
 
 	App->fonts->BlitText(160, 25, font, time_text);
 
+	// run out of time
 	if (time_fight == 0) {
 		if (App->player->life > App->player2->life)
 		{
@@ -116,29 +117,36 @@ update_status ModuleSceneHaohmaru::Update()
 			round_end = true;
 		}
 	}
+	// player 1 dies
 	if (App->player->life <= 0)
 	{
 		player2_wins++;
 		round_end = true;
 	}
+	// player 2 dies
 	if (App->player2->life <= 0)
 	{
 		player1_wins++;
 		round_end = true;
 	}
-	
+	// round end
 	if (round_end == true)
 	{
 		App->audio->PlayFX(ippon);
+		//victory
 		if ((player1_wins == 2)||(player2_wins==2))
 		{
 			victory = true;
 		}
+		//the battle continues
 		else
 		{
 			App->player->life = 100;
 			App->player->position = App->player->initial_position;
+			App->player->state = IDLE;
 			App->player2->life = 100;
+			App->player2->position = App->player2->initial_position;
+			App->player2->state2 = IDLE2;
 			time_fight = 96;
 		}
 		round_end = false;
