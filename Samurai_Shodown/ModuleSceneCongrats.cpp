@@ -66,13 +66,11 @@ bool ModuleSceneCongrats::Start()
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
 	sentence = rand() % 2;
-<<<<<<< HEAD
 	App->render->camera.x = App->render->camera.y = 0;
-=======
+
 	hao_position = SCREEN_WIDTH + 100;
 	judges_position = -150;
 	background_position = -250;
->>>>>>> e403b56714564e4d770ff78c683e651cd53d9515
 	return ret;
 	//srand(time(NULL));
 }
