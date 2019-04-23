@@ -143,8 +143,7 @@ ModulePlayer::ModulePlayer()
 			jump_backward.PushBack({ 1509, 1492, 77, 85 }, 0.3f);
 			jump_backward.PushBack({ 1595, 1492, 77, 85 }, 0.3f);
 			jump_backward.PushBack({ 1686, 1492, 77, 85 }, 0.3f);
-			jump_backward.loop = false;
-			
+			jump_backward.loop = false;			
 		}
 
 		//punch animation
@@ -184,27 +183,18 @@ ModulePlayer::ModulePlayer()
 			kick.loop = false;
 		}
 
-		//get hit animation
-		{
-			hit.PushBack({ 14, 1616, 78, 100}, 0.3f);
-			hit.PushBack({ 105, 1616, 78, 100}, 0.3f);
-			hit.PushBack({ 195, 1616, 78, 100}, 0.3f);
-			hit.loop = false;
-		}
-
-
 		//get hit animation 2
 		{
-			hit2.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit2.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit2.PushBack({195, 1616, 78, 100}, 0.3f);
-			hit2.PushBack({282, 1616, 77, 94}, 0.3f);
-			hit2.PushBack({367, 1616, 77, 94}, 0.3f);
-			hit2.PushBack({452, 1616, 77, 94}, 0.3f);
-			hit2.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit2.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit2.PushBack({195, 1616, 78, 100}, 0.3f);
-			hit2.loop = false;
+			hit.PushBack({14, 1616, 78, 100}, 0.3f);
+			hit.PushBack({105, 1616, 78, 100}, 0.3f);
+			hit.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit.PushBack({282, 1616, 77, 94}, 0.3f);
+			hit.PushBack({367, 1616, 77, 94}, 0.3f);
+			hit.PushBack({452, 1616, 77, 94}, 0.3f);
+			hit.PushBack({14, 1616, 78, 100}, 0.3f);
+			hit.PushBack({105, 1616, 78, 100}, 0.3f);
+			hit.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit.loop = false;
 		}
 
 		//crouch animation
@@ -293,8 +283,7 @@ ModulePlayer::ModulePlayer()
 			twister.PushBack({ 748, 896, 72, 120}, 0.6f);
 			twister.loop = false;
 
-			//Twister animation (only the twister)			
-
+			//Twister animation (only the twister)
 			twisterAlone.loop = false;
 		}
 	}
@@ -465,7 +454,7 @@ update_status ModulePlayer::PreUpdate()
 		if (state==HIT) {
 			if (current_animation->Finished()){
 				state = IDLE;
-				hit2.Reset();
+				hit.Reset();
 
 			}
 		}
@@ -485,7 +474,6 @@ update_status ModulePlayer::PreUpdate()
 				collider_player_down->to_delete = true;
 				collider_player_down = nullptr;
 			}
-
 		}
 		else if ((player_input.pressing_F5) && (collider_player_up == nullptr))
 		{
@@ -763,7 +751,7 @@ update_status ModulePlayer::Update()
 			}
 			break;
 		case HIT: 
-			current_animation = &hit2;
+			current_animation = &hit;
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x+15, position.y-85);

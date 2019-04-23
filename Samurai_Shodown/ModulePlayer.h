@@ -51,7 +51,6 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-
 public:
 
 	SDL_Texture * graphics = nullptr;
@@ -61,8 +60,7 @@ public:
 	Animation backward;
 	Animation punch;
 	Animation kick;
-	Animation hit;
-	Animation hit2;
+	Animation hit;	
 	Animation jump_neutral;
 	Animation jump_forward;
 	Animation jump_backward;
