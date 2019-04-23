@@ -203,3 +203,22 @@ void ModuleRender::SetCamera()
 	right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 
 }
+
+bool ModuleRender::VericalTransition() {
+	DrawQuad(up_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	DrawQuad(down_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+
+	if (down_black_rect.y <= SCREEN_HEIGHT / 2)
+	{
+		up_black_rect.h = 0;
+		down_black_rect.y = SCREEN_HEIGHT;
+		return false;
+	}
+	else
+	{
+		up_black_rect.h += 2;
+		down_black_rect.y -= 2;
+		return true;
+	}
+
+}

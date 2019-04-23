@@ -141,12 +141,16 @@ update_status ModuleSceneHaohmaru::Update()
 		//the battle continues
 		else
 		{
+			transition = true;
+			App->player->Disable();
+			App->player2->Disable();
+			/*
 			App->player->life = 100;
 			App->player->position = App->player->initial_position;
 			App->player->state = IDLE;
 			App->player2->life = 100;
 			App->player2->position = App->player2->initial_position;
-			App->player2->state2 = IDLE2;
+			App->player2->state2 = IDLE2;*/
 			time_fight = 96;
 		}
 		round_end = false;
@@ -154,11 +158,27 @@ update_status ModuleSceneHaohmaru::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F7])
 	{
 		round_end = true;
-		victory = true;
+		//victory = true;
+	}
+	if (transition==true)
+	{
+		if (App->render->VericalTransition() == false)
+		{
+			transition = false;
+			App->player->Enable();
+			App->player2->Enable();
+		}
+		else
+		{
+			App->render->VericalTransition();
+		}
+
 	}
 	App->render->MoveCamera();
+
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
+		App->render->VericalTransition();
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,0);
 	}
 	return UPDATE_CONTINUE;
