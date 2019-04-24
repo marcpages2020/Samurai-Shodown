@@ -604,6 +604,10 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetPos(position.x, position.y - 30);
 				collider_player_2_down->SetSize(100, 30);
 			}
+			if (current_animation->SeeCurrentFrame() < 3 || current_animation->SeeCurrentFrame() > 7) {
+				collider_player_2_up->SetPos(position.x, position.y - 65);
+				collider_player_2_up->SetSize(35, 35);
+			}
 			break;
 		case JUMP_NEUTRAL2:
 			current_animation = &jump_neutral2;
