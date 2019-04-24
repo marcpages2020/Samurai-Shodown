@@ -541,6 +541,7 @@ update_status ModulePlayer2::Update()
 
 		case CROUCH_DOWN2:
 			current_animation = &crouch_down2;
+			
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x +10, position.y - 80);
@@ -551,10 +552,11 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetPos(position.x, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
 			}
-			if (current_animation->SeeCurrentFrame() > 4) {
+			if (current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) { 
 				collider_player_2_up->SetPos(position.x, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
 			}
+			
 			break;
 		case CROUCH_UP2:
 			current_animation = &crouch_up2;
