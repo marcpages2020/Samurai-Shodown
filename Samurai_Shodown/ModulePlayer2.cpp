@@ -579,12 +579,12 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_neutral2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 90);
+				collider_player_2_up->SetPos(position.x+25, position.y - 90);
 				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x, position.y - 50);
+				collider_player_2_down->SetPos(position.x+20, position.y - 50);
 				collider_player_2_down->SetSize(50, 30);
 			}
 			position.y -= speed * 2 * mult;
