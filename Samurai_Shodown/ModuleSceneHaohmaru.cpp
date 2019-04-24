@@ -55,8 +55,8 @@ bool ModuleSceneHaohmaru::Start()
 	App->player->Enable();
 	App->player2->Enable();
 	//Colliders for the screen borders
-	App->collision->AddCollider({ -148,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-	App->collision->AddCollider({ 427,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	left_wall = App->collision->AddCollider({ -148,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	right_wall= App->collision->AddCollider({ 427,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	start_time = SDL_GetTicks();
 	player1_wins = 0;
@@ -86,7 +86,7 @@ update_status ModuleSceneHaohmaru::Update()
 	SDL_Rect b;
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
-	
+
 	if (!App->is_paused) {
 		if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
 			--time_fight;
@@ -97,7 +97,6 @@ update_status ModuleSceneHaohmaru::Update()
 	sprintf_s(time_text, 10, "%7d", time_fight);
 
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE, 0.75f);
-
 	App->fonts->BlitText(160, 25, font, time_text);
 
 	// run out of time
@@ -149,6 +148,7 @@ update_status ModuleSceneHaohmaru::Update()
 			App->player2->position = App->player2->initial_position;
 			App->player2->state2 = IDLE2;
 			time_fight = 96;
+			App->render->camera.x = App->render->camera.y= 0;
 		}
 		round_end = false;
 	}
@@ -181,7 +181,10 @@ update_status ModuleSceneHaohmaru::Update()
 			App->render->HorizontalTransition();
 		}
 	}
+
 	App->render->MoveCamera();
+	//left_wall->SetPos(b.x - 50, 0);
+	//right_wall->SetPos(b.x + b.w, 0);
 
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{

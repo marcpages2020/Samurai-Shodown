@@ -773,12 +773,15 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL:
-		position.x = lposition.x;
+		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_3)
+			position.x = lposition.x;
+		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_1)
+			position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER:
 		if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2))
 		{
-			if (position.x < App->player2->position.x)
+			if (position.x < App->player->position.x)
 			{
 				position.x = lposition.x - speed;
 			}
@@ -794,6 +797,15 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		life -= 10;
 		state2 = HIT2;
 		App->player->collider_player_attack->to_delete=true;
+		if (position.x < App->player->position.x)
+		{
+			position.x += -10;
+		}
+
+		else
+		{
+			position.x += 10;
+		}
 		break;
 	case COLLIDER_PLAYER_PARTICLES:
 		App->audio->PlayFX(hit_fx);

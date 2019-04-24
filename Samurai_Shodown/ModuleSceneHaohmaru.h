@@ -13,6 +13,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "SDL_mixer/include/SDL_mixer.h"
+#include "ModuleCollision.h"
 
 struct SDL_Texture;
 
@@ -32,6 +33,8 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 	uint time_fight = 96;
+	Collider* left_wall;
+	Collider* right_wall;
 	int font = 0;
 	float start_time = 0.0f;
 	char time_text[10];

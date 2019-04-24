@@ -212,22 +212,22 @@ ModulePlayer::ModulePlayer()
 
 		//crouch punch
 		{
-			crouch_punch.PushBack({12, 1718, 87, 110}, 0.3f);
-			crouch_punch.PushBack({121, 1718, 84, 93}, 0.3f);
-			crouch_punch.PushBack({215, 1718, 84, 93}, 0.3f);
-			crouch_punch.PushBack({311, 1718, 125, 93}, 0.3f);
-			crouch_punch.PushBack({455, 1718, 125, 93 }, 0.3f);
-			crouch_punch.PushBack({591, 1718, 125, 93 }, 0.3f);
-			crouch_punch.PushBack({734, 1718, 125, 93 }, 0.3f);
-			crouch_punch.PushBack({881, 1718, 125, 93 }, 0.3f);
-			crouch_punch.PushBack({1028, 1718, 125, 93 }, 0.3f);
-			crouch_punch.PushBack({1178, 1718, 84, 93 }, 0.3f);
-			crouch_punch.PushBack({1294, 1718, 84, 93 }, 0.6f);
-			crouch_punch.PushBack({1408, 1718, 84, 93 }, 0.6f);
-			crouch_punch.PushBack({1514, 1718, 81, 93 }, 0.6f);
-			crouch_punch.PushBack({1618, 1718, 81, 93 }, 0.6f);
-			crouch_punch.PushBack({1725, 1718, 83, 93 }, 0.6f);
-			crouch_punch.PushBack({1827, 1718, 83, 93 }, 0.6f);
+			crouch_punch.PushBack({0, 1718, 99, 110}, 0.3f);
+			crouch_punch.PushBack({109, 1718, 96, 93}, 0.3f);
+			crouch_punch.PushBack({203, 1718, 96, 93}, 0.3f);
+			crouch_punch.PushBack({299, 1718, 137, 93}, 0.3f);
+			crouch_punch.PushBack({443, 1718, 137, 93 }, 0.3f);
+			crouch_punch.PushBack({579, 1718, 137, 93 }, 0.3f);
+			crouch_punch.PushBack({722, 1718, 137, 93 }, 0.3f);
+			crouch_punch.PushBack({869, 1718, 137, 93 }, 0.3f);
+			crouch_punch.PushBack({1016, 1718, 137, 93 }, 0.3f);
+			crouch_punch.PushBack({1166, 1718, 96, 93 }, 0.3f);
+			crouch_punch.PushBack({1282, 1718, 96, 93 }, 0.6f);
+			crouch_punch.PushBack({1396, 1718, 96, 93 }, 0.6f);
+			crouch_punch.PushBack({1502, 1718, 93, 93 }, 0.6f);
+			crouch_punch.PushBack({1606, 1718, 93, 93 }, 0.6f);
+			crouch_punch.PushBack({1713, 1718, 95, 93 }, 0.6f);
+			crouch_punch.PushBack({1815, 1718, 95, 93 }, 0.6f);
 			crouch_punch.loop = false;
 		}
 
@@ -596,13 +596,17 @@ update_status ModulePlayer::Update()
 			current_animation = &crouch_punch;
 			if (collider_player_up != nullptr)
 			{
-				collider_player_up->SetPos(position.x + 45, position.y - 65);
-				collider_player_up->SetSize(35, 35);
+				collider_player_up->SetPos(position.x + 55, position.y - 45);
+				collider_player_up->SetSize(38, 35);
 			}
 			if (collider_player_down != nullptr)
 			{
-				collider_player_down->SetPos(position.x, position.y - 30);
-				collider_player_down->SetSize(100, 30);
+				collider_player_down->SetPos(position.x+15, position.y - 15);
+				collider_player_down->SetSize(60, 15);
+			}
+			if (collider_player_attack == nullptr)
+			{
+				collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 			}
 			break;
 		case JUMP_NEUTRAL:
@@ -822,7 +826,15 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		App->audio->PlayFX(hit_fx);
 		life -= 10;
 		state = HIT;
-		position.x -= 10;
+		if (position.x < App->player2->position.x)
+		{
+			position.x += -10;
+		}
+
+		else
+		{
+			position.x += 10;
+		}
 	default:
 		break;
 	}
