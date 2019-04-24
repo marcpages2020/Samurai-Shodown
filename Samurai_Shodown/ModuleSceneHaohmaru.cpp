@@ -154,6 +154,7 @@ update_status ModuleSceneHaohmaru::Update()
 			App->player2->state2 = IDLE2;
 			time_fight = 96;
 			App->render->camera.x = App->render->camera.y= 0;
+			App->render->SetCamera();
 		}
 		round_end = false;
 	}
@@ -189,8 +190,8 @@ update_status ModuleSceneHaohmaru::Update()
 	}
 	
 	App->render->MoveCamera();
-	//left_wall->SetPos(b.x - 50, 0);
-	//right_wall->SetPos(b.x + b.w, 0);
+	left_wall->SetPos(b.x - 50, 0);
+	right_wall->SetPos(b.x + b.w, 0);
 
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{

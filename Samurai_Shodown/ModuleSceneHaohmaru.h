@@ -48,6 +48,7 @@ public:
 	bool htransition = false;
 	SDL_Rect up_black_rect {0,0,SCREEN_WIDTH,SCREEN_HEIGHT/2};
 	SDL_Rect down_black_rect{ 0,SCREEN_HEIGHT / 2,SCREEN_WIDTH, SCREEN_HEIGHT / 2 };
+	
 };
 
 #endif // __MODULESCENEHAOHMARU_H__
