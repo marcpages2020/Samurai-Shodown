@@ -160,7 +160,7 @@ update_status ModuleSceneHaohmaru::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F7])
 	{
 		round_end = true;
-		victory = true;
+		//victory = true;
 		App->audio->PlayFX(victory_fx);
 	}
 	if (vtransition==true)

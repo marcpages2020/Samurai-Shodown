@@ -594,6 +594,7 @@ update_status ModulePlayer2::Update()
 			}
 			else if (position.y == initial_position.y)
 			{
+				
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
