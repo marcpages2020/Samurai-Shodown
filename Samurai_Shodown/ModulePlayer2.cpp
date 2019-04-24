@@ -543,13 +543,17 @@ update_status ModulePlayer2::Update()
 			current_animation = &crouch_down2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 65);
-				collider_player_2_up->SetSize(35, 35);
+				collider_player_2_up->SetPos(position.x +10, position.y - 80);
+				collider_player_2_up->SetSize(35, 50);
 			}
 			if (collider_player_2_down != nullptr)
 			{
 				collider_player_2_down->SetPos(position.x, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
+			}
+			if (current_animation->SeeCurrentFrame() > 4) {
+				collider_player_2_up->SetPos(position.x, position.y - 65);
+				collider_player_2_up->SetSize(35, 35);
 			}
 			break;
 		case CROUCH_UP2:

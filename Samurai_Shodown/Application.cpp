@@ -84,6 +84,8 @@ update_status Application::Update()
 
 	if (input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
 		App->ChangePause();
+	if (input->keyboard[SDL_SCANCODE_0] == KEY_DOWN)
+		App->ChangePause();
 
 	return ret;
 }
