@@ -620,7 +620,7 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x += 1.25*speed;
+			position.x -= 1.25*speed;
 
 			if (position.y <= 120) {
 				mult = -1;
@@ -653,7 +653,7 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed;
+			position.x += 1.25*speed;
 
 			if (position.y <= 120) {
 				mult = -1;
@@ -669,7 +669,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &punch2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 35, position.y - 60);
+				collider_player_2_up->SetPos(position.x, position.y - 60);
 				collider_player_2_up->SetSize(50, 47);
 			}
 			if (collider_player_2_up != nullptr)
