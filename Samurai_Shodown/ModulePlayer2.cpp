@@ -328,16 +328,22 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = FORWARD2;
 			if (player_input2.pressing_3)
 				state2 = BACKWARD2;
-			if (player_input2.pressing_N)
+			if (player_input2.pressing_N){
 				state2 = KICK2;
-			if (player_input2.pressing_M)
+			App->audio->PlayFX(light_kick_fx);
+		}
+			if (player_input2.pressing_M) {
 				state2 = PUNCH2;
+				App->audio->PlayFX(light_attack_fx);
+			}
 			if (player_input2.pressing_5)
 				state2 = JUMP_NEUTRAL2;
 			if (player_input2.pressing_2)
 				state2 = CROUCH_DOWN2;
-			if (player_input2.pressing_B)
+			if (player_input2.pressing_B) {
+				App->audio->PlayFX(twister_fx);
 				state2 = TWISTER2;
+			}
 		}
 
 		if (state2 == BACKWARD2) {
