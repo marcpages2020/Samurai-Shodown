@@ -726,7 +726,7 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetSize(60, 40);
 			}
 			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
-				App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+				App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
 				is_tornado_created2 = true;
 			}
 			break;
@@ -810,6 +810,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		App->audio->PlayFX(hit_fx);
 		life -= 20;
 		state2 = HIT2;
+		position.x += 5;
 		break;
 	default:
 		break;

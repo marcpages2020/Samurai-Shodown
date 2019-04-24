@@ -38,6 +38,9 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_2_ATTACK][COLLIDER_PLAYER_2] = false;
 
 	matrix[COLLIDER_PLAYER_PARTICLES][COLLIDER_WALL] = false;
+
+	matrix[COLLIDER_PLAYER_2_PARTICLES][COLLIDER_PLAYER_2] = false;
+	matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER_2_PARTICLES] = false;
 }
 
 // Destructor
@@ -128,7 +131,7 @@ void ModuleCollision::DebugDraw()
 		case COLLIDER_PLAYER_2: //orange
 			App->render->DrawQuad(colliders[i]->rect, 255, 165, 0, alpha);
 			break;
-		case COLLIDER_PLAYER_PARTICLES:
+		case COLLIDER_PLAYER_PARTICLES: //yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		case COLLIDER_PLAYER_1_ATTACK: // red
@@ -136,6 +139,10 @@ void ModuleCollision::DebugDraw()
 			break;
 		case COLLIDER_PLAYER_2_ATTACK: //purple
 			App->render->DrawQuad(colliders[i]->rect, 180, 150, 190, alpha);
+			break;
+		case COLLIDER_PLAYER_2_PARTICLES:
+			App->render->DrawQuad(colliders[i]->rect, 205, 130, 60, alpha);
+			break;
 		}
 	}
 }

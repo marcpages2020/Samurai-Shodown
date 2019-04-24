@@ -14,6 +14,7 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	active[i] = nullptr;
+
 	tornado.anim.PushBack({ 15,1026,20,207 }, 0.3f);
 	tornado.anim.PushBack({ 40,1026,22,207 }, 0.3f);
 	tornado.anim.PushBack({ 67,1026,29,207 }, 0.3f);
@@ -180,8 +181,17 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
+	if (coll->type == COLLIDER_PLAYER_PARTICLES)
+	{
+		position.x += speed.x;
+		position.y += speed.y;
+	}
+	else if (coll->type == COLLIDER_PLAYER_2_PARTICLES)
+	{
+		position.x -= speed.x;
+		position.y += speed.y;
+	}
+	
 
 	if (coll != nullptr)
 		coll->SetPos(position.x, position.y);
