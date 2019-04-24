@@ -776,6 +776,7 @@ bool ModulePlayer2::CleanUp() {
 	collider_player_2_up = nullptr;
 	collider_player_2_mid = nullptr;
 	collider_player_2_down = nullptr;
+	App->ui->Disable();
 	return true;
 }
 

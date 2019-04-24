@@ -27,14 +27,36 @@ bool ModuleUI::Start() {
 
 bool ModuleUI::CleanUp() {
 	LOG("UI Unloaded\n");
+	App->textures->Unload(ui_png);
 	return true;
 }
 
+
+
 update_status ModuleUI::Update() {
 
-	SDL_Rect rect{ 6,17,132,13 };
-	
 
+
+	UpdateBars();
+
+
+	SDL_Rect rect{ 6,17,132,13 };
+	//player 1 bar
+	App->render->Blit(ui_png, 20, 20, &rect, SDL_FLIP_NONE, false);
+	App->render->Blit(ui_png, 22, 22, &life_1, SDL_FLIP_NONE, false);
+
+	//player 2 bar
+	App->render->Blit(ui_png, 210, 20, &rect, SDL_FLIP_NONE, false);
+	App->render->Blit(ui_png, 212, 22, &life_2, SDL_FLIP_NONE, false);
+
+
+	return UPDATE_CONTINUE;
+}
+
+
+
+void ModuleUI::UpdateBars()
+{
 	if (current_life1 != App->player->life) {
 		int new_width = currentW_player1;
 		int quantity = App->player->life - current_life1;
@@ -70,10 +92,6 @@ update_status ModuleUI::Update() {
 		life_1.w = currentW_player1;
 	}
 
-	//player 1
-	App->render->Blit(ui_png, 20, 20, &rect, SDL_FLIP_NONE, false);
-	App->render->Blit(ui_png, 22, 22, &life_1, SDL_FLIP_NONE, false);
-
 	if (current_life2 != App->player2->life) {
 		int new_width = currentW_player2;
 		int quantity = App->player2->life - current_life2;
@@ -108,11 +126,4 @@ update_status ModuleUI::Update() {
 		}
 		life_2.w = currentW_player2;
 	}
-
-	//player 2
-	App->render->Blit(ui_png, 210, 20, &rect, SDL_FLIP_NONE, false);
-	App->render->Blit(ui_png, 212, 22, &life_2, SDL_FLIP_NONE, false);
-
-
-	return UPDATE_CONTINUE;
 }
