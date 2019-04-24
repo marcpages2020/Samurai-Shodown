@@ -696,7 +696,7 @@ update_status ModulePlayer2::Update()
 				if (collider_player_2_mid == nullptr)
 				{
 					collider_player_2_mid = App->collision->AddCollider({ position.x + 30,position.y - 50 ,25,30 }, COLLIDER_PLAYER_2, (Module*)App->player2);
-					collider_player_2_mid->SetPos(position.x + 30, position.y - 35);
+					collider_player_2_mid->SetPos(position.x, position.y-37);
 					collider_player_2_mid->SetSize(45, 30);
 				}
 			}
