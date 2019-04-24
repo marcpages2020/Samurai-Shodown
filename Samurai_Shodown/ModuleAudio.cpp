@@ -93,7 +93,7 @@ bool ModuleAudio::PlayFX(Mix_Chunk* fx) {
 		LOG("Mix_PlayChannel: %s\n", Mix_GetError());
 		return false;
 	}
-	Mix_FreeChunk(fx);
+	//Mix_FreeChunk(fx);
 	return true;
 }
 
