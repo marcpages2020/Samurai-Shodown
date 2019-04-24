@@ -523,7 +523,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &backward2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 85);
+				collider_player_2_up->SetPos(position.x +10, position.y - 85);
 				collider_player_2_up->SetSize(35, 40);
 			}
 			if (collider_player_2_down != nullptr) {
@@ -537,12 +537,12 @@ update_status ModulePlayer2::Update()
 			current_animation = &crouch_down2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 45, position.y - 65);
+				collider_player_2_up->SetPos(position.x, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 30, position.y - 30);
+				collider_player_2_down->SetPos(position.x, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
 			}
 			break;
