@@ -161,6 +161,8 @@ update_status ModuleSceneHaohmaru::Update()
 	{
 		round_end = true;
 		victory = true;
+		//victory = true;
+		App->audio->PlayFX(victory_fx);
 	}
 	if (vtransition==true)
 	{

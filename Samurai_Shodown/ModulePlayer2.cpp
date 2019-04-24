@@ -8,11 +8,8 @@
 #include "ModulePlayer.h"
 #include "ModuleSceneHaohmaru.h"
 
-
 ModulePlayer2::ModulePlayer2()
 {
-
-
 	//animations
 	{
 		//idle animation
@@ -328,9 +325,9 @@ update_status ModulePlayer2::PreUpdate()
 
 		if (state2 == IDLE2) {
 			if (player_input2.pressing_1)
-				state2 = BACKWARD2;
-			if (player_input2.pressing_3)
 				state2 = FORWARD2;
+			if (player_input2.pressing_3)
+				state2 = BACKWARD2;
 			if (player_input2.pressing_N)
 				state2 = KICK2;
 			if (player_input2.pressing_M)
@@ -344,7 +341,7 @@ update_status ModulePlayer2::PreUpdate()
 		}
 
 		if (state2 == BACKWARD2) {
-			if (!player_input2.pressing_1)
+			if (!player_input2.pressing_3)
 				state2 = IDLE2;
 			if (player_input2.pressing_M)
 				state2 = PUNCH2;
@@ -354,7 +351,7 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_BACKWARD2;
 		}
 		if (state2 == FORWARD2) {
-			if (!player_input2.pressing_3)
+			if (!player_input2.pressing_1)
 				state2 = IDLE2;
 			if (player_input2.pressing_M)
 				state2 = PUNCH2;
@@ -510,7 +507,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case FORWARD2:
 			current_animation = &forward2;
-			position.x += speed;
+			position.x -= speed;
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
@@ -526,26 +523,26 @@ update_status ModulePlayer2::Update()
 			current_animation = &backward2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 25, position.y - 85);
+				collider_player_2_up->SetPos(position.x +10, position.y - 85);
 				collider_player_2_up->SetSize(35, 40);
 			}
 			if (collider_player_2_down != nullptr) {
-				collider_player_2_down->SetPos(position.x + 20, position.y - 45);
+				collider_player_2_down->SetPos(position.x, position.y - 45);
 				collider_player_2_down->SetSize(50, 45);
 			}
-			position.x -= speed;
+			position.x += speed;
 			break;
 
 		case CROUCH_DOWN2:
 			current_animation = &crouch_down2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 45, position.y - 65);
+				collider_player_2_up->SetPos(position.x, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 30, position.y - 30);
+				collider_player_2_down->SetPos(position.x, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
 			}
 			break;
@@ -582,12 +579,12 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_neutral2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 90);
+				collider_player_2_up->SetPos(position.x+25, position.y - 90);
 				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x, position.y - 50);
+				collider_player_2_down->SetPos(position.x+20, position.y - 50);
 				collider_player_2_down->SetSize(50, 30);
 			}
 			position.y -= speed * 2 * mult;
@@ -597,6 +594,7 @@ update_status ModulePlayer2::Update()
 			}
 			else if (position.y == initial_position.y)
 			{
+				
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
@@ -606,7 +604,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_forward2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 15, position.y - 90);
+				collider_player_2_up->SetPos(position.x + 30, position.y - 90);
 				collider_player_2_up->SetSize(40, 50);
 			}
 			if (collider_player_2_down != nullptr)
@@ -623,7 +621,7 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x += 1.25*speed;
+			position.x -= 1.25*speed;
 
 			if (position.y <= 120) {
 				mult = -1;
@@ -639,24 +637,24 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_backward2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 90);
+				collider_player_2_up->SetPos(position.x +30, position.y - 90);
 				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x, position.y - 50);
+				collider_player_2_down->SetPos(position.x+30, position.y - 50);
 				collider_player_2_down->SetSize(40, 30);
 			}
 			if (current_animation->SeeCurrentFrame() > 4)
 			{
 				if (collider_player_2_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 10, position.y - 45);
+					collider_player_2_up->SetPos(position.x + 10, position.y - 90);
 					collider_player_2_up->SetSize(35, 35);
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed;
+			position.x += 1.25*speed;
 
 			if (position.y <= 120) {
 				mult = -1;
@@ -672,7 +670,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &punch2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 35, position.y - 60);
+				collider_player_2_up->SetPos(position.x, position.y - 60);
 				collider_player_2_up->SetSize(50, 47);
 			}
 			if (collider_player_2_up != nullptr)
@@ -699,7 +697,7 @@ update_status ModulePlayer2::Update()
 				if (collider_player_2_mid == nullptr)
 				{
 					collider_player_2_mid = App->collision->AddCollider({ position.x + 30,position.y - 50 ,25,30 }, COLLIDER_PLAYER_2, (Module*)App->player2);
-					collider_player_2_mid->SetPos(position.x + 30, position.y - 35);
+					collider_player_2_mid->SetPos(position.x, position.y-37);
 					collider_player_2_mid->SetSize(45, 30);
 				}
 			}
@@ -719,12 +717,12 @@ update_status ModulePlayer2::Update()
 			current_animation = &twister2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 45, position.y - 75);
+				collider_player_2_up->SetPos(position.x, position.y - 75);
 				collider_player_2_up->SetSize(40, 45);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 30, position.y - 35);
+				collider_player_2_down->SetPos(position.x, position.y - 35);
 				collider_player_2_down->SetSize(60, 40);
 			}
 			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
@@ -774,9 +772,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL:
-		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_3)
+		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_1)
 			position.x = lposition.x;
-		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_1)
+		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_3)
 			position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER:
