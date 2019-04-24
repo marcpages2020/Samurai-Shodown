@@ -7,6 +7,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleSceneHaohmaru.h"
+#include "ModuleUI.h"
 
 ModulePlayer2::ModulePlayer2()
 {
@@ -306,6 +307,8 @@ bool ModulePlayer2::Start()
 		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	if (!collider_player_2_down)
 		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER_2, (Module*)App->player2);
+
+	App->ui->Enable();
 	//test_collider = App->collision->AddCollider({ 150,160,30,30 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 	return ret;
 }
