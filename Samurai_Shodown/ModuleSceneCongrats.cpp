@@ -84,7 +84,7 @@ update_status ModuleSceneCongrats::Update()
 
 	if (judges_position < SCREEN_WIDTH+20)
 	{
-		judges_position +=4;
+		judges_position +=3;
 	}
 	if (background_position < -10)
 	{
