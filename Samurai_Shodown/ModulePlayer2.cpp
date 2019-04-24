@@ -716,12 +716,12 @@ update_status ModulePlayer2::Update()
 			current_animation = &twister2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 45, position.y - 75);
+				collider_player_2_up->SetPos(position.x, position.y - 75);
 				collider_player_2_up->SetSize(40, 45);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 30, position.y - 35);
+				collider_player_2_down->SetPos(position.x, position.y - 35);
 				collider_player_2_down->SetSize(60, 40);
 			}
 			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
