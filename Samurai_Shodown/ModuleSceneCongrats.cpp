@@ -12,30 +12,30 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 {
 	//background
 	{
-		background.PushBack({ 0,0,512,333 }, 0.15f); //0
-		background.PushBack({ 512,0,512,333 }, 0.15f);
-		background.PushBack({ 1024,0,512,333 }, 0.15f);
-		background.PushBack({ 1536,0,512,333 }, 0.15f);
-		background.PushBack({ 0,333,512,333 }, 0.15f); //512
-		background.PushBack({ 512,333,512,333 }, 0.15f);
-		background.PushBack({ 1024,333,512,333 }, 0.15f);
-		background.PushBack({ 1536,333,512,333 }, 0.15f);
-		background.PushBack({ 0,666,512,333 }, 0.15f); //1024
-		background.PushBack({ 512,666,512,333 }, 0.15f);
-		background.PushBack({ 1024,666,512,333 }, 0.15f);
-		background.PushBack({ 1536,666,512,333 }, 0.15f);
-		background.PushBack({ 0,999,512,333 }, 0.15f); //1536
-		background.PushBack({ 512,999,512,333 }, 0.15f);
-		background.PushBack({ 1024,999,512,333 }, 0.15f);
-		background.PushBack({ 1536,999,512,333 }, 0.15f);
-		background.PushBack({ 0,1332,512,333 }, 0.15f); //2048
-		background.PushBack({ 512,1332,512,333 }, 0.15f);
-		background.PushBack({ 1024,1332,512,333 }, 0.15f);
-		background.PushBack({ 1536,1332,512,333 }, 0.15f);
-		background.PushBack({ 0,1665,512,333 }, 0.15f); //2560
-		background.PushBack({ 512,1665,512,333 }, 0.15f);
-		background.PushBack({ 1024,1665,512,333 }, 0.15f);
-		background.PushBack({ 1536,1665,512,333 }, 0.15f);
+		background.PushBack({ 0,0,512,333 }, 0.08f); //0
+		background.PushBack({ 512,0,512,333 }, 0.08);
+		background.PushBack({ 1024,0,512,333 }, 0.08f);
+		background.PushBack({ 1536,0,512,333 }, 0.08f);
+		background.PushBack({ 0,333,512,333 }, 0.08f); //512
+		background.PushBack({ 512,333,512,333 }, 0.08f);
+		background.PushBack({ 1024,333,512,333 }, 0.08f);
+		background.PushBack({ 1536,333,512,333 }, 0.08f);
+		background.PushBack({ 0,666,512,333 }, 0.08f); //1024
+		background.PushBack({ 512,666,512,333 }, 0.08f);
+		background.PushBack({ 1024,666,512,333 }, 0.08f);
+		background.PushBack({ 1536,666,512,333 }, 0.08f);
+		background.PushBack({ 0,999,512,333 }, 0.08f); //1536
+		background.PushBack({ 512,999,512,333 }, 0.08f);
+		background.PushBack({ 1024,999,512,333 }, 0.08f);
+		background.PushBack({ 1536,999,512,333 }, 0.08f);
+		background.PushBack({ 0,1332,512,333 }, 0.08f); //2048
+		background.PushBack({ 512,1332,512,333 }, 0.08f);
+		background.PushBack({ 1024,1332,512,333 }, 0.08f);
+		background.PushBack({ 1536,1332,512,333 }, 0.08f);
+		background.PushBack({ 0,1665,512,333 }, 0.08f); //2560
+		background.PushBack({ 512,1665,512,333 }, 0.08f);
+		background.PushBack({ 1024,1665,512,333 }, 0.08f);
+		background.PushBack({ 1536,1665,512,333 }, 0.08f);
 	}
 
 	//judges
@@ -79,7 +79,7 @@ update_status ModuleSceneCongrats::Update()
 	App->render->Blit(judges_t, judges_position, 80, &judges_r);
 	if (hao_position > 50)
 	{
-		hao_position -= 10;
+		hao_position -= 5;
 	}
 
 	if (judges_position < SCREEN_WIDTH+20)
@@ -88,7 +88,7 @@ update_status ModuleSceneCongrats::Update()
 	}
 	if (background_position < -10)
 	{
-		background_position += 8;
+		background_position += 4;
 	}
 	//black lines and Haohmaru
 	{
@@ -109,20 +109,18 @@ update_status ModuleSceneCongrats::Update()
 			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
 		}
 
-		SDL_RenderPresent(App->render->renderer);
+		//SDL_RenderPresent(App->render->renderer);
 
 		if (right_black_square.w > 0)
 		{
-			left_black_square.w -= 10;
-			right_black_square.x += 10;
+			left_black_square.w -= 5;
+			right_black_square.x += 5;
 		}
 	}
 	
-
-	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo, 2.5);
+		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo,2.5f);
 	}
 	return UPDATE_CONTINUE;
 }

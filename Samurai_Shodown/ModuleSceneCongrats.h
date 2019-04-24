@@ -38,7 +38,7 @@ public:
 	int background_position;
 	int font = 0;
 	int sentence;
-
+	bool transition = false;
 };
 
 #endif // __MODULESCENECONGRATS_H__

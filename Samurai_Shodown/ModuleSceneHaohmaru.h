@@ -40,7 +40,8 @@ public:
 	int draw;
 	bool victory=false;
 	bool round_end = false;
-	bool transition = false;
+	bool vtransition = false;
+	bool htransition = false;
 	SDL_Rect up_black_rect {0,0,SCREEN_WIDTH,SCREEN_HEIGHT/2};
 	SDL_Rect down_black_rect{ 0,SCREEN_HEIGHT / 2,SCREEN_WIDTH, SCREEN_HEIGHT / 2 };
 };
