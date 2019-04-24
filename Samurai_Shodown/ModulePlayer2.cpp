@@ -782,9 +782,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL:
-		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_1)
+		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_3)
 			position.x = lposition.x;
-		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_3)
+		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_1)
 			position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER:
