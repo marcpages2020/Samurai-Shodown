@@ -47,7 +47,6 @@ bool ModuleSceneHaohmaru::Start()
 {
 	LOG("Loading Haohmaru Scene");
 	bool ret = true;
-
 	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
 	ippon = App->audio->LoadFX("Assets/Audio/Fx/Ippon.wav");
@@ -69,11 +68,15 @@ bool ModuleSceneHaohmaru::Start()
 // Load assets
 bool ModuleSceneHaohmaru::CleanUp()
 {
-	LOG("Unloading Haohmaru stage");
-	App->player->Disable();
-	App->player2->Disable();
+	LOG("Unloading Haohmaru Scene");
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
+	App->audio->UnLoadFx(ippon);
+	App->player->Disable();
+	App->player2->Disable();
+	left_wall = nullptr;
+	right_wall = nullptr;
+	App->fonts->UnLoad(font);
 	App->audio->UnLoadMusic(music);
 	App->collision->CleanUp();
 	//App->audio->CleanUp();
