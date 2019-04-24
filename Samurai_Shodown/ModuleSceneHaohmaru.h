@@ -30,6 +30,7 @@ public:
 public:
 	Mix_Music *music;
 	Mix_Chunk *ippon;
+	Mix_Chunk *victory_fx;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 	uint time_fight = 96;

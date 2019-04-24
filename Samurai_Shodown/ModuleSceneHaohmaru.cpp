@@ -49,7 +49,8 @@ bool ModuleSceneHaohmaru::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
-	ippon = App->audio->LoadFX("Assets/Audio/Fx/Ippon.wav");
+	ippon = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
+	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	App->player2->Enable();
@@ -132,13 +133,14 @@ update_status ModuleSceneHaohmaru::Update()
 		round_end = true;
 	}
 	// round end
-	if (round_end == true)
+	if ((round_end == true)&&(victory==false))
 	{
 		App->audio->PlayFX(ippon);
 		//victory
 		if ((player1_wins == 2)||(player2_wins==2))
 		{
 			victory = true;
+			App->audio->PlayFX(victory_fx);
 		}
 		//the battle continues
 		else
@@ -158,7 +160,8 @@ update_status ModuleSceneHaohmaru::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F7])
 	{
 		round_end = true;
-		//victory = true;
+		victory = true;
+		App->audio->PlayFX(victory_fx);
 	}
 	if (vtransition==true)
 	{
@@ -184,14 +187,13 @@ update_status ModuleSceneHaohmaru::Update()
 			App->render->HorizontalTransition();
 		}
 	}
-
+	
 	App->render->MoveCamera();
 	//left_wall->SetPos(b.x - 50, 0);
 	//right_wall->SetPos(b.x + b.w, 0);
 
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
-		App->render->VericalTransition();
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,1.5f);
 	}
 	return UPDATE_CONTINUE;
