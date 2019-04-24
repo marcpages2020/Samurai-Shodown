@@ -56,16 +56,16 @@ update_status ModuleUI::Update() {
 	}
 
 	SDL_Rect name{ 0,0,64,8 }; // haomaru name
-	App->render->Blit(ui_png, 17, 32, &name, SDL_FLIP_NONE, false); //
-	App->render->Blit(ui_png, 298, 32, &name, SDL_FLIP_NONE, false);
+	App->render->Blit(ui_png, 27, 32, &name, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 288, 32, &name, SDL_FLIP_NONE, false);
 	SDL_Rect rect{ 6,17,132,13 }; // bar
 	//player 1 bar
-	App->render->Blit(ui_png, 8, 17, &rect, SDL_FLIP_NONE, false); //
-	App->render->Blit(ui_png, 10, 19, &life_1, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 18, 17, &rect, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 20, 19, &life_1, SDL_FLIP_NONE, false); //
 
 	//player 2 bar
-	App->render->Blit(ui_png, 243, 17, &rect, SDL_FLIP_NONE, false); //
-	App->render->Blit(ui_png, 245, 19, &life_2, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, false); //
 
 
 	return UPDATE_CONTINUE;
