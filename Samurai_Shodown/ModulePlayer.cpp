@@ -322,7 +322,6 @@ update_status ModulePlayer::PreUpdate()
 		player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
 		//states 
-
 		{
 			if (state == IDLE) {
 				if (player_input.pressing_A)
