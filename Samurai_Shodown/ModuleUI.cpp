@@ -39,15 +39,17 @@ update_status ModuleUI::Update() {
 
 	UpdateBars();
 
-
-	SDL_Rect rect{ 6,17,132,13 };
+	SDL_Rect name{ 0,0,64,8 }; // haomaru name
+	App->render->Blit(ui_png, 17, 32, &name, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 298, 32, &name, SDL_FLIP_NONE, false);
+	SDL_Rect rect{ 6,17,132,13 }; // bar
 	//player 1 bar
-	App->render->Blit(ui_png, 20, 20, &rect, SDL_FLIP_NONE, false);
-	App->render->Blit(ui_png, 22, 22, &life_1, SDL_FLIP_NONE, false);
+	App->render->Blit(ui_png, 8, 17, &rect, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 10, 19, &life_1, SDL_FLIP_NONE, false); //
 
 	//player 2 bar
-	App->render->Blit(ui_png, 210, 20, &rect, SDL_FLIP_NONE, false);
-	App->render->Blit(ui_png, 212, 22, &life_2, SDL_FLIP_NONE, false);
+	App->render->Blit(ui_png, 243, 17, &rect, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 245, 19, &life_2, SDL_FLIP_NONE, false); //
 
 
 	return UPDATE_CONTINUE;
