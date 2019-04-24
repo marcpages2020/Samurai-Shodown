@@ -1,6 +1,7 @@
 #ifndef _MODULE_UI
 #define _MODULE_UI
 #include "Module.h"
+#include "Animation.h"
 #include "SDL/include/SDL_rect.h"
 struct SDL_Texture;
 
@@ -20,7 +21,8 @@ public:
 	SDL_Texture * ui_png = nullptr;
 
 	
-
+	Animation animKO;
+	bool animKO_active = false;
 	
 	//BARS
 	int max_capacity = 0;

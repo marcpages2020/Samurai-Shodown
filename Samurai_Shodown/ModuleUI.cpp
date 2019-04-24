@@ -5,7 +5,14 @@
 #include "ModulePlayer2.h"
 #include "ModuleRender.h"
 
-ModuleUI::ModuleUI() {}
+ModuleUI::ModuleUI() {
+
+	animKO.PushBack({ 151,0,26,23 }, 0.1F);
+	animKO.PushBack({ 151,23,26,23 }, 0.1F);
+
+
+
+}
 
 ModuleUI::~ModuleUI() {}
 
@@ -22,6 +29,8 @@ bool ModuleUI::Start() {
 	currentW_player2 = life_2.w;
 	current_life2 = max_capacity;
 	current_life1 = max_capacity;
+
+	animKO_active = false;
 	return true;
 }
 
@@ -38,6 +47,13 @@ update_status ModuleUI::Update() {
 
 
 	UpdateBars();
+
+	if (!animKO_active) {
+		App->render->Blit(ui_png, SCREEN_WIDTH/2 - 13, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, false);
+	}
+	else {
+		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13 / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, false);
+	}
 
 	SDL_Rect name{ 0,0,64,8 }; // haomaru name
 	App->render->Blit(ui_png, 17, 32, &name, SDL_FLIP_NONE, false); //
@@ -59,6 +75,11 @@ update_status ModuleUI::Update() {
 
 void ModuleUI::UpdateBars()
 {
+
+	if (App->player->life < 30 || App->player2->life < 30)
+		animKO_active = true;
+
+
 	if (current_life1 != App->player->life) {
 		int new_width = currentW_player1;
 		int quantity = App->player->life - current_life1;

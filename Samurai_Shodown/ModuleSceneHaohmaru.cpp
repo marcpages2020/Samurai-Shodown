@@ -5,6 +5,8 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
+
+#include "ModuleUI.h"
 #include <iostream>
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
@@ -145,6 +147,7 @@ update_status ModuleSceneHaohmaru::Update()
 		//the battle continues
 		else
 		{
+			
 			vtransition = true;
 			App->player->life = 100;
 			App->player->position = App->player->initial_position;
@@ -153,6 +156,7 @@ update_status ModuleSceneHaohmaru::Update()
 			App->player2->position = App->player2->initial_position;
 			App->player2->state2 = IDLE2;
 			time_fight = 96;
+			App->ui->animKO_active = false;
 			App->render->camera.x = App->render->camera.y= 0;
 			App->render->SetCamera();
 		}
