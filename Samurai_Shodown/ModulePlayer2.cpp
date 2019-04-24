@@ -8,11 +8,8 @@
 #include "ModulePlayer.h"
 #include "ModuleSceneHaohmaru.h"
 
-
 ModulePlayer2::ModulePlayer2()
 {
-
-
 	//animations
 	{
 		//idle animation
@@ -328,9 +325,9 @@ update_status ModulePlayer2::PreUpdate()
 
 		if (state2 == IDLE2) {
 			if (player_input2.pressing_1)
-				state2 = BACKWARD2;
-			if (player_input2.pressing_3)
 				state2 = FORWARD2;
+			if (player_input2.pressing_3)
+				state2 = BACKWARD2;
 			if (player_input2.pressing_N)
 				state2 = KICK2;
 			if (player_input2.pressing_M)
@@ -344,7 +341,7 @@ update_status ModulePlayer2::PreUpdate()
 		}
 
 		if (state2 == BACKWARD2) {
-			if (!player_input2.pressing_1)
+			if (!player_input2.pressing_3)
 				state2 = IDLE2;
 			if (player_input2.pressing_M)
 				state2 = PUNCH2;
@@ -354,7 +351,7 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_BACKWARD2;
 		}
 		if (state2 == FORWARD2) {
-			if (!player_input2.pressing_3)
+			if (!player_input2.pressing_1)
 				state2 = IDLE2;
 			if (player_input2.pressing_M)
 				state2 = PUNCH2;
@@ -510,7 +507,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case FORWARD2:
 			current_animation = &forward2;
-			position.x += speed;
+			position.x -= speed;
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
@@ -526,14 +523,14 @@ update_status ModulePlayer2::Update()
 			current_animation = &backward2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 25, position.y - 85);
+				collider_player_2_up->SetPos(position.x, position.y - 85);
 				collider_player_2_up->SetSize(35, 40);
 			}
 			if (collider_player_2_down != nullptr) {
-				collider_player_2_down->SetPos(position.x + 20, position.y - 45);
+				collider_player_2_down->SetPos(position.x, position.y - 45);
 				collider_player_2_down->SetSize(50, 45);
 			}
-			position.x -= speed;
+			position.x += speed;
 			break;
 
 		case CROUCH_DOWN2:
@@ -774,9 +771,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL:
-		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_3)
+		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_1)
 			position.x = lposition.x;
-		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_1)
+		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_3)
 			position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER:
