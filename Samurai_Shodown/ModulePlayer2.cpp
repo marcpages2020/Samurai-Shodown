@@ -213,22 +213,22 @@ ModulePlayer2::ModulePlayer2()
 
 		//crouch punch
 		{
-			crouch_punch2.PushBack({ 12, 1705, 87, 107 }, 0.3f);
-			crouch_punch2.PushBack({ 121, 1705, 84, 107 }, 0.3f);
-			crouch_punch2.PushBack({ 215, 1705, 84, 107 }, 0.3f);
-			crouch_punch2.PushBack({ 311, 1735, 125, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 455, 1735, 125, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 591, 1735, 125, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 734, 1735, 125, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 881, 1735, 125, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 1028, 1735, 125, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 1178, 1735, 84, 87 }, 0.3f);
-			crouch_punch2.PushBack({ 1294, 1735, 84, 87 }, 0.6f);
-			crouch_punch2.PushBack({ 1408, 1735, 84, 87 }, 0.6f);
-			crouch_punch2.PushBack({ 1514, 1735, 81, 87 }, 0.6f);
-			crouch_punch2.PushBack({ 1618, 1735, 81, 87 }, 0.6f);
-			crouch_punch2.PushBack({ 1725, 1735, 83, 87 }, 0.6f);
-			crouch_punch2.PushBack({ 1827, 1735, 83, 87 }, 0.6f);
+			crouch_punch2.PushBack({ 0, 1718, 99, 110 }, 0.3f);
+			crouch_punch2.PushBack({ 109, 1718, 96, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 203, 1718, 96, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 299, 1718, 137, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 443, 1718, 137, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 579, 1718, 137, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 722, 1718, 137, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 869, 1718, 137, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 1016, 1718, 137, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 1166, 1718, 96, 93 }, 0.3f);
+			crouch_punch2.PushBack({ 1282, 1718, 96, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1396, 1718, 96, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1502, 1718, 93, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1606, 1718, 93, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1713, 1718, 95, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1815, 1718, 95, 93 }, 0.6f);
 			crouch_punch2.loop = false;
 		}
 
@@ -411,6 +411,14 @@ update_status ModulePlayer2::PreUpdate()
 			{
 				state2 = CROUCH_UP2;
 				crouch_down2.Reset();
+			}
+			if (player_input2.pressing_N) {
+				state2 = CROUCH_KICK2;
+				App->audio->PlayFX(light_kick_fx);
+			}
+			if (player_input2.pressing_M) {
+				state2 = CROUCH_PUNCH2;
+				App->audio->PlayFX(light_attack_fx);
 			}
 		}
 		if (state2 == CROUCH_UP2)
