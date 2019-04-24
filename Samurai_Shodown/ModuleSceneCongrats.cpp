@@ -105,7 +105,7 @@ update_status ModuleSceneCongrats::Update()
 		}
 		else if (sentence == 0)
 		{
-			App->fonts->BlitText(SCREEN_WIDTH/4, (SCREEN_HEIGHT / 5) * 4 , font, "TO CALL ME 'AWESOME'");
+			App->fonts->BlitText(SCREEN_WIDTH/4+5, (SCREEN_HEIGHT / 5) * 4, font, "TO CALL ME 'AWESOME'");
 			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
 		}
 
