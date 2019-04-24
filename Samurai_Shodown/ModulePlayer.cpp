@@ -837,6 +837,13 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		{
 			position.x += 10;
 		}
+		break;
+	case COLLIDER_PLAYER_2_PARTICLES:
+		App->audio->PlayFX(hit_fx);
+		life -= 20;
+		state = HIT;
+		position.x -= 5;
+		break;
 	default:
 		break;
 	}

@@ -198,10 +198,16 @@ void ModuleRender::MoveCamera()
 
 void ModuleRender::SetCamera()
 {
-
-	left = App->collision->AddCollider({ -50,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-	right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-
+	if (left == nullptr)
+	{
+		left = App->collision->AddCollider({ -50,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+		right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	}
+	else
+	{
+		left->SetPos(-50, 0);
+		right->SetPos(camera.w, 0);
+	}
 }
 
 bool ModuleRender::VericalTransition() {

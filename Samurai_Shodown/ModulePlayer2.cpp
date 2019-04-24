@@ -331,16 +331,22 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = FORWARD2;
 			if (player_input2.pressing_3)
 				state2 = BACKWARD2;
-			if (player_input2.pressing_N)
+			if (player_input2.pressing_N){
 				state2 = KICK2;
-			if (player_input2.pressing_M)
+			App->audio->PlayFX(light_kick_fx);
+		}
+			if (player_input2.pressing_M) {
 				state2 = PUNCH2;
+				App->audio->PlayFX(light_attack_fx);
+			}
 			if (player_input2.pressing_5)
 				state2 = JUMP_NEUTRAL2;
 			if (player_input2.pressing_2)
 				state2 = CROUCH_DOWN2;
-			if (player_input2.pressing_B)
+			if (player_input2.pressing_B) {
+				App->audio->PlayFX(twister_fx);
 				state2 = TWISTER2;
+			}
 		}
 
 		if (state2 == BACKWARD2) {
@@ -540,13 +546,17 @@ update_status ModulePlayer2::Update()
 			current_animation = &crouch_down2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 65);
-				collider_player_2_up->SetSize(35, 35);
+				collider_player_2_up->SetPos(position.x +10, position.y - 80);
+				collider_player_2_up->SetSize(35, 50);
 			}
 			if (collider_player_2_down != nullptr)
 			{
 				collider_player_2_down->SetPos(position.x, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
+			}
+			if (current_animation->SeeCurrentFrame() > 4) {
+				collider_player_2_up->SetPos(position.x, position.y - 65);
+				collider_player_2_up->SetSize(35, 35);
 			}
 			break;
 		case CROUCH_UP2:
@@ -729,7 +739,7 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetSize(60, 40);
 			}
 			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
-				App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+				App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
 				is_tornado_created2 = true;
 			}
 			break;
@@ -775,9 +785,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL:
-		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_1)
+		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_3)
 			position.x = lposition.x;
-		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_3)
+		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_1)
 			position.x = lposition.x;
 		break;
 	case COLLIDER_PLAYER:
@@ -813,6 +823,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		App->audio->PlayFX(hit_fx);
 		life -= 20;
 		state2 = HIT2;
+		position.x += 5;
 		break;
 	default:
 		break;
