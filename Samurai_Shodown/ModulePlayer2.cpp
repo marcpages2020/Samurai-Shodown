@@ -760,6 +760,7 @@ bool ModulePlayer2::CleanUp() {
 	App->textures->Unload(graphics);
 	App->audio->UnLoadFx(light_attack_fx);
 	App->audio->UnLoadFx(light_kick_fx);
+	App->audio->UnLoadFx(twister_fx);
 	App->audio->UnLoadFx(hit_fx);
 	collider_player_2_up = nullptr;
 	collider_player_2_mid = nullptr;
