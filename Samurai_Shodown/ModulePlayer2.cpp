@@ -833,38 +833,43 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		}
 		break;
 	case COLLIDER_PLAYER_1_ATTACK:
-		App->audio->PlayFX(hit_fx);
-		life -= 10;
-		state2 = HIT2;
-		App->player->collider_player_attack->to_delete = true;
-		if (position.x < App->player->position.x)
-		{
-			position.x += -10;
-		}
+		if (!App->player->collider_player_attack->to_delete) {
+			switch (App->player->state)
+			{
+			case States::KICK:
+				App->ui->player1_point += 50;
+				break;
+			case States::PUNCH:
+				App->ui->player1_point += 50;
+				break;
+			case States::CROUCH_PUNCH:
+				App->ui->player1_point += 200;
+				break;
+			case States::CROUCH_KICK:
+				App->ui->player1_point += 200;
+				break;
+			case States::TWISTER:
+				App->ui->player1_point += 400;
+			default:
+				break;
+			}
+			App->audio->PlayFX(hit_fx);
+			life -= 10;
+			state2 = HIT2;
+			App->player->collider_player_attack->to_delete = true;
+			if (position.x < App->player->position.x)
+			{
+				position.x += -10;
+			}
 
-		else
-		{
-			position.x += 10;
+			else
+			{
+				position.x += 10;
+			}
 		}
-		switch (App->player->state)
-		{
-		case States::KICK:
-			App->ui->player1_point += 50;
-			break;
-		case States::PUNCH:
-			App->ui->player1_point += 50;
-			break;
-		case States::CROUCH_PUNCH:
-			App->ui->player1_point += 200;
-			break;
-		case States::CROUCH_KICK:
-			App->ui->player1_point += 200;
-			break;
-		case States::TWISTER:
-			App->ui->player1_point += 400;
-		default:
-			break;
-		}
+		
+		
+		
 		break;
 	case COLLIDER_PLAYER_PARTICLES:
 		App->audio->PlayFX(hit_fx);
