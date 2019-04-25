@@ -24,7 +24,8 @@ enum States2 {
 	KICK2,
 	PUNCH2,
 	TWISTER2,
-	HIT2
+	HIT2,
+	DEATH2
 };
 
 
@@ -60,6 +61,7 @@ public:
 	Animation punch2;
 	Animation kick2;
 	Animation hit2;
+	Animation die2;
 	Animation jump_neutral2;
 	Animation jump_forward2;
 	Animation jump_backward2;

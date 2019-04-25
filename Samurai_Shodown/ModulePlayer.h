@@ -70,6 +70,7 @@ public:
 	Animation crouch_kick;
 	Animation twister;
 	Animation twisterAlone;
+	Animation die;
 	iPoint position;
 	iPoint lposition;
 	iPoint initial_position;

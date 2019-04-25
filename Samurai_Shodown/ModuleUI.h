@@ -67,6 +67,15 @@ public:
 	char time_text[10];
 	void timer();
 	void ResetScene();
+	bool die_scene = false;
+	SDL_Texture* finish_round = nullptr;
+	void DieScene();
+	Animation ipon;
+	float ipon_time = 0;
+	Animation haohmaru;
+	float haohmaru_time = 0;
+	bool ipon_finished = false;
+	bool haomaru_finished = false;
 };
 
 #endif // !_MODULE_UI

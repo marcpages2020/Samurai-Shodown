@@ -281,6 +281,9 @@ ModulePlayer2::ModulePlayer2()
 			//Twister animation (only the twister)
 			twisterAlone2.loop = false;
 		}
+		{
+			die2.PushBack({ 852,0,108,54 });
+		}
 	}
 }
 
@@ -774,6 +777,9 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
 			}
 			break;
+		case DEATH2:
+			current_animation = &die2;
+			break;
 		default:
 			LOG("No state found :(");
 			break;
@@ -806,78 +812,80 @@ bool ModulePlayer2::CleanUp() {
 
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
-
-	switch (c2->type)
-	{
-	case COLLIDER_WALL_LEFT:
-		if (!player_input2.pressing_3)
-			position.x += speed;
-
-		break;
-	case COLLIDER_WALL_RIGHT:
-		if (!player_input2.pressing_1)
-			position.x -= speed;
-		break;
-	case COLLIDER_PLAYER:
-		if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2))
+	if (state2 != DEATH2) {
+		switch (c2->type)
 		{
-			if (position.x < App->player->position.x)
+		case COLLIDER_WALL_LEFT:
+			if (!player_input2.pressing_3)
+				position.x += speed;
+
+			break;
+		case COLLIDER_WALL_RIGHT:
+			if (!player_input2.pressing_1)
+				position.x -= speed;
+			break;
+		case COLLIDER_PLAYER:
+			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2))
 			{
-				position.x = lposition.x - speed;
+				if (position.x < App->player->position.x)
+				{
+					position.x = lposition.x - speed;
+				}
+
+				else
+				{
+					position.x = lposition.x + speed;
+				}
+			}
+			break;
+		case COLLIDER_PLAYER_1_ATTACK:
+			if (!App->player->collider_player_attack->to_delete) {
+				switch (App->player->state)
+				{
+				case States::KICK:
+					App->ui->player1_point += 50;
+					break;
+				case States::PUNCH:
+					App->ui->player1_point += 50;
+					break;
+				case States::CROUCH_PUNCH:
+					App->ui->player1_point += 200;
+					break;
+				case States::CROUCH_KICK:
+					App->ui->player1_point += 200;
+					break;
+				case States::TWISTER:
+					App->ui->player1_point += 400;
+				default:
+					break;
+				}
+				App->audio->PlayFX(hit_fx);
+				life -= 10;
+				state2 = HIT2;
+				App->player->collider_player_attack->to_delete = true;
+				if (position.x < App->player->position.x)
+				{
+					position.x += -10;
+				}
+
+				else
+				{
+					position.x += 10;
+				}
 			}
 
-			else
-			{
-				position.x = lposition.x + speed;
-			}
-		}
-		break;
-	case COLLIDER_PLAYER_1_ATTACK:
-		if (!App->player->collider_player_attack->to_delete) {
-			switch (App->player->state)
-			{
-			case States::KICK:
-				App->ui->player1_point += 50;
-				break;
-			case States::PUNCH:
-				App->ui->player1_point += 50;
-				break;
-			case States::CROUCH_PUNCH:
-				App->ui->player1_point += 200;
-				break;
-			case States::CROUCH_KICK:
-				App->ui->player1_point += 200;
-				break;
-			case States::TWISTER:
-				App->ui->player1_point += 400;
-			default:
-				break;
-			}
+
+
+			break;
+		case COLLIDER_PLAYER_PARTICLES:
 			App->audio->PlayFX(hit_fx);
-			life -= 10;
+			life -= 20;
 			state2 = HIT2;
-			App->player->collider_player_attack->to_delete = true;
-			if (position.x < App->player->position.x)
-			{
-				position.x += -10;
-			}
-
-			else
-			{
-				position.x += 10;
-			}
+			position.x += 5;
+			break;
+		default:
+			break;
 		}
-		
-		
-		
-		break;
-	case COLLIDER_PLAYER_PARTICLES:
-		App->audio->PlayFX(hit_fx);
-		life -= 20;
-		state2 = HIT2;
-		position.x += 5;
-		break;
-	default:
-		break;
 	}
+	
 }

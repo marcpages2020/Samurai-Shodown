@@ -281,6 +281,9 @@ ModulePlayer::ModulePlayer()
 			//Twister animation (only the twister)
 			twisterAlone.loop = false;
 		}
+		{
+			die.PushBack({ 852,0,108,54 });
+		}
 	}
 }
 
