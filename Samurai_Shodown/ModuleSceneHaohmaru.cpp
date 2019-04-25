@@ -11,7 +11,6 @@
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 {
-
 	//background animation
 	{
 		background.PushBack({ 0,0,512,333 }, 0.08f); //0
@@ -56,7 +55,6 @@ bool ModuleSceneHaohmaru::Start()
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	App->player2->Enable();
-	//Colliders for the screen borders
 	left_wall = App->collision->AddCollider({ -142,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	right_wall= App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
@@ -64,6 +62,7 @@ bool ModuleSceneHaohmaru::Start()
 	player1_wins = 0;
 	player2_wins = 0;
 	time_fight = 96;
+	//App->render->camera.x = App->render->camera.y = 0;
 	App->render->SetCamera();
 	return ret;
 }
@@ -191,7 +190,9 @@ update_status ModuleSceneHaohmaru::Update()
 			App->ui->HorizontalTransition();
 		}
 	}
+
 	App->render->MoveCamera();
+
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,1.5f);
