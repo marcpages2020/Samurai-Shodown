@@ -197,38 +197,37 @@ ModulePlayer2::ModulePlayer2()
 
 		//crouch animation
 		{
-			crouch_down2.PushBack({ 15, 1240, 68, 110 }, 0.3f);
-			crouch_down2.PushBack({ 94, 1240, 68, 110 }, 0.3f);
-			crouch_down2.PushBack({ 180, 1240, 68, 110 }, 0.3f);
-			crouch_down2.PushBack({ 253, 1273, 88, 76 }, 0.3f);
-			crouch_down2.PushBack({ 358, 1273, 88, 76 }, 0.3f);
-			crouch_down2.PushBack({ 459, 1273, 88, 76 }, 0.3f);
+			crouch_down2.PushBack({ 15, 1239, 68, 110 }, 0.5f);
+			crouch_down2.PushBack({ 94, 1239, 68, 110 }, 0.5f);
+			crouch_down2.PushBack({ 180, 1239, 68, 110 }, 0.5f);
+			crouch_down2.PushBack({ 300, 1273, 88, 76 }, 0.5f);
+			crouch_down2.PushBack({ 423, 1273, 88, 76 }, 0.5f);
+			crouch_down2.PushBack({ 551, 1273, 88, 76 }, 0.5f);
 			crouch_down2.loop = false;
 			
-			crouch_up2.PushBack({ 564, 1240, 68, 110 }, 0.3f);
-			crouch_up2.PushBack({ 645, 1240, 68, 110 }, 0.3f);
-			crouch_up2.PushBack({ 724, 1240, 68, 110 }, 0.3f);
+			crouch_up2.PushBack({ 180, 12439, 68, 110 }, 0.5f);
+			crouch_up2.PushBack({ 94, 12439, 68, 110 }, 0.5f);
+			crouch_up2.PushBack({ 15, 1239, 68, 110 }, 0.5f);
 			crouch_up2.loop = false;
 		}
 
 		//crouch punch
 		{
-			crouch_punch2.PushBack({ 0, 1718, 99, 110 }, 0.3f);
-			crouch_punch2.PushBack({ 109, 1718, 96, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 203, 1718, 96, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 299, 1718, 137, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 443, 1718, 137, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 579, 1718, 137, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 722, 1718, 137, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 869, 1718, 137, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 1016, 1718, 137, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 1166, 1718, 96, 93 }, 0.3f);
-			crouch_punch2.PushBack({ 1282, 1718, 96, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1396, 1718, 96, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1502, 1718, 93, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1606, 1718, 93, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1713, 1718, 95, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1815, 1718, 95, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 15, 1718, 100, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 102, 1718, 104, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 210, 1718, 109, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 324, 1718, 155, 90 }, 0.6f);
+			crouch_punch2.PushBack({ 476, 1718, 155, 90 }, 0.6f);
+			crouch_punch2.PushBack({ 640, 1718, 155, 91 }, 0.6f);
+			crouch_punch2.PushBack({ 792, 1718, 154, 92 }, 0.6f);
+			crouch_punch2.PushBack({ 953, 1718, 150, 94 }, 0.6f);
+			crouch_punch2.PushBack({ 1129, 1718, 150, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1287, 1718, 111, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1411, 1718, 111, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1539, 1718, 111, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1660, 1718, 111, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1786, 1718, 111, 93 }, 0.6f);
+			crouch_punch2.PushBack({ 1901, 1718, 109, 93 }, 0.6f);
 			crouch_punch2.loop = false;
 		}
 
