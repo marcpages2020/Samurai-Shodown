@@ -571,7 +571,7 @@ update_status ModulePlayer2::Update()
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x, position.y - 25);
+				collider_player_2_down->SetPos(position.x+20, position.y - 25);
 				collider_player_2_down->SetSize(90, 25);
 			}
 			if (current_animation->SeeCurrentFrame() < 2) {
@@ -582,8 +582,8 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			if (collider_player_2_attack == nullptr) {
-				collider_player_2_attack = App->collision->AddCollider({ position.x -20, position.y - 50,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-				collider_player_2_attack->SetSize(85, 15);
+				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y-15,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+				collider_player_2_attack->SetSize(50, 15);
 			}
 			
 			break;
