@@ -89,6 +89,7 @@ public:
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	int attack_frames=0;
+	void PlayerCollidersCleanUp();
 };
 
 #endif // __ModulePlayer_H__

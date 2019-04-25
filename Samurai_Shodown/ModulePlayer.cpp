@@ -495,17 +495,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 
 	}
-	/*if (collider_player_attack != nullptr)
-	{
-		if (attack_frames == 4)
-		{
-			collider_player_attack->to_delete=true;
-			attack_frames = 0;
-		}
-		attack_frames++;
-	}*/
-
-		return UPDATE_CONTINUE;
+	return UPDATE_CONTINUE;
 }
 
 
@@ -776,7 +766,6 @@ update_status ModulePlayer::Update()
 		}
 	}
 	
-
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
@@ -831,7 +820,6 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		{
 			position.x += -10;
 		}
-
 		else
 		{
 			position.x += 10;
@@ -845,5 +833,20 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		break;
 	default:
 		break;
+	}
+}
+
+void ModulePlayer::PlayerCollidersCleanUp() {
+	if (collider_player_up != nullptr)
+	{
+		collider_player_up->to_delete = true;
+	}
+	if (collider_player_mid != nullptr)
+	{
+		collider_player_mid->to_delete = true;
+	}
+	if (collider_player_down != nullptr)
+	{
+		collider_player_down->to_delete = true;
 	}
 }
