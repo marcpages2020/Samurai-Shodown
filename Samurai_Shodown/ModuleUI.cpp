@@ -33,6 +33,8 @@ bool ModuleUI::Start() {
 	animKO_active = false;
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
+	ippon = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
+	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	return true;
 }
 
@@ -41,6 +43,7 @@ bool ModuleUI::CleanUp() {
 	App->textures->Unload(ui_png);
 	App->fonts->UnLoad(font_point_numbers);
 	App->fonts->UnLoad(timer_font);
+	App->audio->UnLoadFx(ippon);
 	return true;
 }
 
@@ -79,8 +82,67 @@ update_status ModuleUI::Update() {
 	//player 2 bar
 	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
 	App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, 1.0F, false); //
+	
+	if (App->player->life <= 0)
+	{
+		player2_wins++;
+		round_end = true;
+	}
+	// player 2 dies
+	if (App->player2->life <= 0)
+	{
+		player1_wins++;
+		round_end = true;
+	}
+	if ((round_end == true) && (victory == false))
+	{
+		App->audio->PlayFX(ippon);
+		//victory
+		if ((player1_wins == 2) || (player2_wins == 2))
+		{
+			victory = true;
+			App->audio->PlayFX(victory_fx);
+		}
+		//the battle continues
+		else
+		{
+			vtransition = true;
+			App->ui->ResetSecene();
+		}
+		round_end = false;
+	}
 
+	if (App->input->keyboard[SDL_SCANCODE_F7])
+	{
+		round_end = true;
+		//victory = true;
+		App->audio->PlayFX(victory_fx);
+	}
 
+	if (vtransition == true)
+	{
+		if (App->ui->VericalTransition() == false)
+		{
+			vtransition = false;
+			htransition = true;
+		}
+		else
+		{
+			App->ui->VericalTransition();
+		}
+
+	}
+	if (htransition == true)
+	{
+		if (App->ui->HorizontalTransition() == false)
+		{
+			htransition = false;
+		}
+		else
+		{
+			App->ui->HorizontalTransition();
+		}
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -210,17 +272,17 @@ void ModuleUI::timer() {
 	if (time_fight == 0) {
 		if (App->player->life > App->player2->life)
 		{
-		App->scene_haohmaru->player1_wins++;
-		App->scene_haohmaru->round_end = true;
+		player1_wins++;
+		round_end = true;
 		}
 		else if (App->player->life == App->player2->life)
 		{
-			App->scene_haohmaru->draw++;
-			App->scene_haohmaru->round_end = true;
+			draw++;
+			round_end = true;
 		}
 		else {
-			App->scene_haohmaru->player2_wins++;
-			App->scene_haohmaru->round_end = true;
+			player2_wins++;
+			round_end = true;
 		}
 	}
 }

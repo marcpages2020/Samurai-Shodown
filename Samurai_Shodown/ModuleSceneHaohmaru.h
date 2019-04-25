@@ -29,21 +29,14 @@ public:
 
 public:
 	Mix_Music *music;
-	Mix_Chunk *ippon;
-	Mix_Chunk *victory_fx;
+
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 	Collider* left_wall;
 	Collider* right_wall;
 	int font = 0;
 	float start_time = 0.0f;
-	int player1_wins;
-	int player2_wins;
-	int draw;
-	bool victory=false;
-	bool round_end = false;
-	bool vtransition = false;
-	bool htransition = false;
+
 	SDL_Rect up_black_rect {0,0,SCREEN_WIDTH,SCREEN_HEIGHT/2};
 	SDL_Rect down_black_rect{ 0,SCREEN_HEIGHT / 2,SCREEN_WIDTH, SCREEN_HEIGHT / 2 };
 };

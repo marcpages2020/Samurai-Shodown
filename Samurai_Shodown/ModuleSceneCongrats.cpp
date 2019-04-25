@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "Application.h"
 #include "ModuleSceneHaohmaru.h"
+#include "ModuleUI.h"
 #include <time.h>
 #include <random>
 
@@ -139,7 +140,7 @@ bool ModuleSceneCongrats::CleanUp()
 	judges.Reset();
 	App->player->life = 100;
 	App->player2->life = 100;
-	App->scene_haohmaru->victory = false;
+	App->ui->victory = false;
 	App->scene_haohmaru->start_time = 0.0F;
 	return true;
 }

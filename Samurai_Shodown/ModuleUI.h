@@ -3,6 +3,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "SDL/include/SDL_rect.h"
+#include "ModuleAudio.h"
 struct SDL_Texture;
 
 class ModuleUI : public Module 
@@ -46,11 +47,20 @@ public:
 	SDL_Rect right_black_rect{ SCREEN_WIDTH / 2 ,0,SCREEN_WIDTH / 2,SCREEN_HEIGHT };
 	bool VericalTransition();
 	bool HorizontalTransition();
+	bool round_end = false;
+	bool victory = false;
+	bool vtransition = false;
+	bool htransition = false;
+	Mix_Chunk *ippon;
+	Mix_Chunk *victory_fx;
 	float start_time = 0.0f;
 	int font_point_numbers = 0;
 	int timer_font = 0;
 	int player1_point = 0;
 	int player2_point = 0;
+	int player1_wins=0;
+	int player2_wins=0;
+	int draw=0;
 	char point_text1[10];
 	char point_text2[10];
 	uint time_fight = 96;

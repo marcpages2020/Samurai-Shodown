@@ -5,7 +5,6 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
-
 #include "ModuleUI.h"
 #include <iostream>
 
@@ -50,17 +49,13 @@ bool ModuleSceneHaohmaru::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Textures/HaohmaruScene.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Haohmaru.ogg");
-	ippon = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
-	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	App->player2->Enable();
+	App->ui->Enable();
 	left_wall = App->collision->AddCollider({ -142,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	right_wall= App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	App->ui->start_time = SDL_GetTicks();
-	//start_time = SDL_GetTicks();
-	player1_wins = 0;
-	player2_wins = 0;
 	App->render->SetCamera();
 	return ret;
 }
@@ -71,9 +66,9 @@ bool ModuleSceneHaohmaru::CleanUp()
 	LOG("Unloading Haohmaru Scene");
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
-	App->audio->UnLoadFx(ippon);
 	App->player->Disable();
 	App->player2->Disable();
+	App->ui->Disable();
 	App->audio->UnLoadMusic(music);
 	//App->collision->CleanUp();
 	left_wall = nullptr;
@@ -91,74 +86,10 @@ update_status ModuleSceneHaohmaru::Update()
 	b = background.GetCurrentFrame();
 
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE);
-	
-	// run out of time
-
-	// player 1 dies
-	if (App->player->life <= 0)
-	{
-		player2_wins++;
-		round_end = true;
-	}
-	// player 2 dies
-	if (App->player2->life <= 0)
-	{
-		player1_wins++;
-		round_end = true;
-	}
-	// round end
-	if ((round_end == true)&&(victory==false))
-	{
-		App->audio->PlayFX(ippon);
-		//victory
-		if ((player1_wins == 2)||(player2_wins==2))
-		{
-			victory = true;
-			App->audio->PlayFX(victory_fx);
-		}
-		//the battle continues
-		else
-		{
-			vtransition = true;
-			App->ui->ResetSecene();
-		}
-		round_end = false;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_F7])
-	{
-		round_end = true;
-		//victory = true;
-		App->audio->PlayFX(victory_fx);
-	}
-	if (vtransition==true)
-	{
-		if (App->ui->VericalTransition() == false)
-		{
-			vtransition = false;
-			htransition = true;
-		}
-		else
-		{
-			App->ui->VericalTransition();
-		}
-
-	}
-	if (htransition == true)
-	{
-		if (App->ui->HorizontalTransition()==false)
-		{
-			htransition = false;
-		}
-		else
-		{
-			App->ui->HorizontalTransition();
-		}
-	}
-
 	App->render->MoveCamera();
 	App->ui->timer();
 
-	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
+	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(App->ui->victory==true))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,1.5f);
 	}
