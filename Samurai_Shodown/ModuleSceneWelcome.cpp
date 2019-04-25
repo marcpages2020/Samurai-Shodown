@@ -3,7 +3,7 @@
 ModuleSceneWelcome::ModuleSceneWelcome()
 {
 	{
-		letters.PushBack({ 0,0,253,114 }, 0.03f);
+		letters.PushBack({ 0,0,253,114 }, 0.02f);
 		letters.PushBack({ 253,0,253,114 }, 0.1f);
 		letters.PushBack({ 506,0,253,114 }, 0.1f);
 		letters.PushBack({ 0,114,253,114 }, 0.1f);
@@ -22,52 +22,52 @@ ModuleSceneWelcome::ModuleSceneWelcome()
 	}
 
 	{
-		white.PushBack({ 0,0,242,130 }, 0.1F);
-		white.PushBack({ 0,130,242,130 }, 0.1F);
-		white.PushBack({ 0,260,242,130 }, 0.1F);
-		white.PushBack({ 0,390,242,130 }, 0.1F);
-		white.PushBack({ 0,520,242,130 }, 0.1F);
-		white.PushBack({ 0,650,242,130 }, 0.1F);
-		white.PushBack({ 0,780,242,130 }, 0.1F);
-		white.PushBack({ 0,910,242,130 }, 0.1F);
-		white.PushBack({ 242,0,242,130 }, 0.1F);
-		white.PushBack({ 242,130,242,130 }, 0.1F);
-		white.PushBack({ 242,260,242,130 }, 0.1F);
-		white.PushBack({ 242,390,242,130 }, 0.1F);
-		white.PushBack({ 242,520,242,130 }, 0.1F);
-		white.PushBack({ 242,650,242,130 }, 0.1F);
-		white.PushBack({ 242,780,242,130 }, 0.1F);
-		white.PushBack({ 242,910,242,130 }, 0.1F);
-		white.PushBack({ 484,0,242,130 }, 0.1F);
-		white.PushBack({ 484,130,242,130 }, 0.1F);
-		white.PushBack({ 484,260,242,130 }, 0.1F);
-		white.PushBack({ 484,390,242,130 }, 0.1F);
-		white.PushBack({ 484,520,242,130 }, 0.1F);
-		white.PushBack({ 484,650,242,130 }, 0.1F);
-		white.PushBack({ 484,780,242,130 }, 0.1F);
-		white.PushBack({ 484,910,242,130 }, 0.1F);
-		white.PushBack({ 726,0,242,130 }, 0.1F);
-		white.PushBack({ 726,130,242,130 }, 0.1F);
-		white.PushBack({ 726,260,242,130 }, 0.1F);
-		white.PushBack({ 726,390,242,130 }, 0.1F);
-		white.PushBack({ 726,520,242,130 }, 0.1F);
-		white.PushBack({ 726,650,242,130 }, 0.1F);
-		white.PushBack({ 726,780,242,130 }, 0.1F);
-		white.PushBack({ 726,910,242,130 }, 0.1F);
-		white.PushBack({ 968,0,242,130 }, 0.1F);
-		white.PushBack({ 968,130,242,130 }, 0.1F);
-		white.PushBack({ 968,260,242,130 }, 0.1F);
-		white.PushBack({ 968,390,242,130 }, 0.1F);
-		white.PushBack({ 968,520,242,130 }, 0.1F);
-		white.PushBack({ 968,650,242,130 }, 0.1F);
-		white.PushBack({ 968,780,242,130 }, 0.1F);
-		white.PushBack({ 968,910,242,130 }, 0.1F);
-		white.PushBack({ 1210,0,242,130 }, 0.1F);
-		white.PushBack({ 1210,130,242,130 }, 0.1F);
-		white.PushBack({ 1210,260,242,130 }, 0.1F);
-		white.PushBack({ 1210,390,242,130 }, 0.1F);
-		white.PushBack({ 1210,390,242,130 }, 0.1F);
-		white.PushBack({ 1210,390,242,130 }, 0.1F);
+		white.PushBack({ 0,0,242,130 }, 0.3F);
+		white.PushBack({ 0,130,242,130 }, 0.3F);
+		white.PushBack({ 0,260,242,130 }, 0.3F);
+		white.PushBack({ 0,390,242,130 }, 0.3F);
+		white.PushBack({ 0,520,242,130 }, 0.3F);
+		white.PushBack({ 0,650,242,130 }, 0.3F);
+		white.PushBack({ 0,780,242,130 }, 0.3F);
+		white.PushBack({ 0,910,242,130 }, 0.3F);
+		white.PushBack({ 242,0,242,130 }, 0.3F);
+		white.PushBack({ 242,130,242,130 }, 0.3F);
+		white.PushBack({ 242,260,242,130 }, 0.3F);
+		white.PushBack({ 242,390,242,130 }, 0.3F);
+		white.PushBack({ 242,520,242,130 }, 0.3F);
+		white.PushBack({ 242,650,242,130 }, 0.3F);
+		white.PushBack({ 242,780,242,130 }, 0.3F);
+		white.PushBack({ 242,910,242,130 }, 0.3F);
+		white.PushBack({ 484,0,242,130 }, 0.3F);
+		white.PushBack({ 484,130,242,130 }, 0.3F);
+		white.PushBack({ 484,260,242,130 }, 0.3F);
+		white.PushBack({ 484,390,242,130 }, 0.3F);
+		white.PushBack({ 484,520,242,130 }, 0.3F);
+		white.PushBack({ 484,650,242,130 }, 0.3F);
+		white.PushBack({ 484,780,242,130 }, 0.3F);
+		white.PushBack({ 484,910,242,130 }, 0.3F);
+		white.PushBack({ 726,0,242,130 }, 0.3F);
+		white.PushBack({ 726,130,242,130 }, 0.3F);
+		white.PushBack({ 726,260,242,130 }, 0.3F);
+		white.PushBack({ 726,390,242,130 }, 0.3F);
+		white.PushBack({ 726,520,242,130 }, 0.3F);
+		white.PushBack({ 726,650,242,130 }, 0.3F);
+		white.PushBack({ 726,780,242,130 }, 0.3F);
+		white.PushBack({ 726,910,242,130 }, 0.3F);
+		white.PushBack({ 968,0,242,130 }, 0.3F);
+		white.PushBack({ 968,130,242,130 }, 0.3F);
+		white.PushBack({ 968,260,242,130 }, 0.3F);
+		white.PushBack({ 968,390,242,130 }, 0.3F);
+		white.PushBack({ 968,520,242,130 }, 0.3F);
+		white.PushBack({ 968,650,242,130 }, 0.3F);
+		white.PushBack({ 968,780,242,130 }, 0.3F);
+		white.PushBack({ 968,910,242,130 }, 0.3F);
+		white.PushBack({ 1210,0,242,130 }, 0.3F);
+		white.PushBack({ 1210,130,242,130 }, 0.3F);
+		white.PushBack({ 1210,260,242,130 }, 0.3F);
+		white.PushBack({ 1210,390,242,130 }, 0.3F);
+		white.PushBack({ 1210,390,242,130 }, 0.3F);
+		white.PushBack({ 1210,390,242,130 }, 0.3F);
 		white.loop = false;
 	}
 
@@ -119,7 +119,7 @@ update_status ModuleSceneWelcome::Update()
 		App->render->Blit(Letters, 60, 50, &curr->GetCurrentFrame());
 	}
 	else {
-		App->render->Blit(white_letters, 60, 50, &white.GetCurrentFrame());
+		App->render->Blit(white_letters, 68, 29, &white.GetCurrentFrame());
 	}
 	if (white.SeeCurrentFrame() == 45 && alpha > 10) {
 		App->render->DrawQuad({ 0,0,SCREEN_WIDTH,SCREEN_HEIGHT }, 255, 255, 255, alpha);
