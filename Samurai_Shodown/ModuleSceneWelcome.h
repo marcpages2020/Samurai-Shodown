@@ -32,6 +32,9 @@ public:
 	SDL_Rect welcome;
 	Animation letters;
 	Animation * curr = nullptr;
+	bool first_anim_finished = false;
+	Animation white;
+	SDL_Texture* white_letters = nullptr;
 };
 
 #endif // __MODULESCENEWELCOME_H__
