@@ -57,12 +57,10 @@ bool ModuleSceneHaohmaru::Start()
 	App->player2->Enable();
 	left_wall = App->collision->AddCollider({ -142,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 	right_wall= App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-	font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
-	start_time = SDL_GetTicks();
+	App->ui->start_time = SDL_GetTicks();
+	//start_time = SDL_GetTicks();
 	player1_wins = 0;
 	player2_wins = 0;
-	time_fight = 96;
-	//App->render->camera.x = App->render->camera.y = 0;
 	App->render->SetCamera();
 	return ret;
 }
@@ -76,7 +74,6 @@ bool ModuleSceneHaohmaru::CleanUp()
 	App->audio->UnLoadFx(ippon);
 	App->player->Disable();
 	App->player2->Disable();
-	App->fonts->UnLoad(font);
 	App->audio->UnLoadMusic(music);
 	//App->collision->CleanUp();
 	left_wall = nullptr;
@@ -91,35 +88,10 @@ update_status ModuleSceneHaohmaru::Update()
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
 
-	if (!App->is_paused) {
-		if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
-			--time_fight;
-			start_time = SDL_GetTicks();
-		}
-	}
-
-	sprintf_s(time_text, 10, "%7d", time_fight);
-
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE);
-	App->fonts->BlitText(177, 40, font, time_text);
-
+	
 	// run out of time
-	if (time_fight == 0) {
-		if (App->player->life > App->player2->life)
-		{
-			player1_wins++;
-			round_end = true;
-		}
-		else if (App->player->life == App->player2->life)
-		{
-			draw++;
-			round_end = true;
-		}
-		else {
-			player2_wins++;
-			round_end = true;
-		}
-	}
+
 	// player 1 dies
 	if (App->player->life <= 0)
 	{
@@ -153,7 +125,7 @@ update_status ModuleSceneHaohmaru::Update()
 			App->player2->life = 100;
 			App->player2->position = App->player2->initial_position;
 			App->player2->state2 = IDLE2;
-			time_fight = 96;
+			//time_fight = 96;
 			App->ui->animKO_active = false;
 			App->render->camera.x = App->render->camera.y= 0;
 			App->render->SetCamera();
@@ -192,6 +164,7 @@ update_status ModuleSceneHaohmaru::Update()
 	}
 
 	App->render->MoveCamera();
+	App->ui->timer();
 
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
