@@ -5,9 +5,10 @@
 #include "ModulePlayer2.h"
 #include "ModuleRender.h"
 #include "ModuleFonts.h"
+#include "ModuleSceneHaohmaru.h"
 #include <iostream>
-ModuleUI::ModuleUI() {
 
+ModuleUI::ModuleUI() {
 	animKO.PushBack({ 151,0,26,23 }, 0.1F);
 	animKO.PushBack({ 151,23,26,23 }, 0.1F);
 }
@@ -22,7 +23,7 @@ bool ModuleUI::Start() {
 	App->player->life = 100;
 	App->player2->life = 100;
 	currentW_player1 = life_1.w;
-
+	time_fight = 96;
 	max_capacity = App->player->life;
 	currentW_player2 = life_2.w;
 	current_life2 = max_capacity;
@@ -31,6 +32,7 @@ bool ModuleUI::Start() {
 	player2_point = 0;
 	animKO_active = false;
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
+	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	return true;
 }
 
@@ -38,16 +40,13 @@ bool ModuleUI::CleanUp() {
 	LOG("UI Unloaded\n");
 	App->textures->Unload(ui_png);
 	App->fonts->UnLoad(font_point_numbers);
+	App->fonts->UnLoad(timer_font);
 	return true;
 }
 
 update_status ModuleUI::Update() {
 
-
-
 	UpdateBars();
-
-
 
 	// player 1 points
 	sprintf_s(point_text1, 10, "%7d", player1_point);
@@ -198,3 +197,31 @@ bool ModuleUI::HorizontalTransition() {
 		return true;
 	}
 }
+
+void ModuleUI::timer() {
+	if (!App->is_paused) {
+		if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
+			--time_fight;
+			start_time = SDL_GetTicks();
+		}
+	}
+	sprintf_s(time_text, 10, "%7d", time_fight);
+	App->fonts->BlitText(177, 40, timer_font, time_text);
+	if (time_fight == 0) {
+		if (App->player->life > App->player2->life)
+		{
+		App->scene_haohmaru->player1_wins++;
+		App->scene_haohmaru->round_end = true;
+		}
+		else if (App->player->life == App->player2->life)
+		{
+			App->scene_haohmaru->draw++;
+			App->scene_haohmaru->round_end = true;
+		}
+		else {
+			App->scene_haohmaru->player2_wins++;
+			App->scene_haohmaru->round_end = true;
+		}
+	}
+}
+
