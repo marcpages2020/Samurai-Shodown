@@ -152,7 +152,7 @@ bool ModuleNeoGeo::Start()
 // UnLoad assets
 bool ModuleNeoGeo::CleanUp()
 {
-	LOG("Unloading space scene");
+	LOG("Unloading NeoGeo scene");
 
 	App->textures->Unload(intro);
 	App->audio->UnLoadMusic(music);
