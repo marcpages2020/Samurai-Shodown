@@ -79,6 +79,7 @@ bool ModuleSceneHaohmaru::CleanUp()
 	App->player2->Disable();
 	App->fonts->UnLoad(font);
 	App->audio->UnLoadMusic(music);
+	//App->collision->CleanUp();
 	left_wall = nullptr;
 	right_wall = nullptr;
 	return true;
