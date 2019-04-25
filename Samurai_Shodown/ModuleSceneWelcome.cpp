@@ -66,6 +66,8 @@ ModuleSceneWelcome::ModuleSceneWelcome()
 		white.PushBack({ 1210,130,242,130 }, 0.1F);
 		white.PushBack({ 1210,260,242,130 }, 0.1F);
 		white.PushBack({ 1210,390,242,130 }, 0.1F);
+		white.PushBack({ 1210,390,242,130 }, 0.1F);
+		white.PushBack({ 1210,390,242,130 }, 0.1F);
 		white.loop = false;
 	}
 
@@ -119,7 +121,7 @@ update_status ModuleSceneWelcome::Update()
 	else {
 		App->render->Blit(white_letters, 60, 50, &white.GetCurrentFrame());
 	}
-	if (white.SeeCurrentFrame() == 43 && alpha > 10) {
+	if (white.SeeCurrentFrame() == 45 && alpha > 10) {
 		App->render->DrawQuad({ 0,0,SCREEN_WIDTH,SCREEN_HEIGHT }, 255, 255, 255, alpha);
 		alpha -= 5;
 		first_anim_finished = true;
