@@ -494,7 +494,6 @@ update_status ModulePlayer::PreUpdate()
 			collider_player_attack->to_delete = true;
 			collider_player_attack = nullptr;
 		}
-
 	}
 	return UPDATE_CONTINUE;
 }
