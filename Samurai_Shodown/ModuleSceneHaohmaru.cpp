@@ -117,18 +117,8 @@ update_status ModuleSceneHaohmaru::Update()
 		//the battle continues
 		else
 		{
-			
 			vtransition = true;
-			App->player->life = 100;
-			App->player->position = App->player->initial_position;
-			App->player->state = IDLE;
-			App->player2->life = 100;
-			App->player2->position = App->player2->initial_position;
-			App->player2->state2 = IDLE2;
-			//time_fight = 96;
-			App->ui->animKO_active = false;
-			App->render->camera.x = App->render->camera.y= 0;
-			App->render->SetCamera();
+			App->ui->ResetSecene();
 		}
 		round_end = false;
 	}
