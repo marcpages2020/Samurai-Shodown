@@ -814,6 +814,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		App->audio->PlayFX(hit_fx);
 		life -= 10;
 		state = HIT;
+		App->player2->collider_player_2_attack->to_delete = true;
 		if (position.x < App->player2->position.x)
 		{
 			position.x += -10;
