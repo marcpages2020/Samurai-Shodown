@@ -146,24 +146,24 @@ ModulePlayer2::ModulePlayer2()
 
 		//punch animation
 		{
-			punch2.PushBack({ 14, 236, 69, 127 }, 0.5f);
-			punch2.PushBack({ 87, 236, 69, 127 }, 0.3f);
-			punch2.PushBack({ 160, 266, 79, 97 }, 0.3f);
-			punch2.PushBack({ 243, 269, 79, 96 }, 0.5f);
-			punch2.PushBack({ 327, 267, 79, 97 }, 0.5f);
-			punch2.PushBack({ 410, 270, 129, 93 }, 0.5f);
-			punch2.PushBack({ 545, 277, 130, 86 }, 0.5f);
-			punch2.PushBack({ 679, 280, 130, 83 }, 0.5f);
-			punch2.PushBack({ 814, 268, 129, 95 }, 0.5f); //9
-			punch2.PushBack({ 946, 268, 130, 95 }, 0.5f);
-			punch2.PushBack({ 1081, 268, 130, 95 }, 0.5f);
-			punch2.PushBack({ 1213, 268, 120, 95 }, 0.5f);
-			punch2.PushBack({ 1337, 268, 120, 95 }, 0.5f);
-			punch2.PushBack({ 1461, 268, 83, 95 }, 0.8f);
-			punch2.PushBack({ 1548, 268, 83, 95 }, 0.8f);
-			punch2.PushBack({ 1635, 268, 83, 95 }, 0.8f); //16
-			//punch2.PushBack({ 1721, 278,131, 96 }, 0.7f);
-			//punch2.PushBack({ 1856, 278, 131, 96 }, 0.7f);
+			punch2.PushBack({ 14, 236, 69, 130 }, 0.5f);
+			punch2.PushBack({ 87, 236, 69, 130 }, 0.3f);
+			punch2.PushBack({ 160, 236, 79, 127 }, 0.3f);
+			punch2.PushBack({ 243, 236, 79, 127 }, 0.5f);
+			punch2.PushBack({ 327, 236, 79, 127 }, 0.5f);
+			punch2.PushBack({ 410, 236, 129, 127 }, 0.5f);
+			punch2.PushBack({ 545, 236, 130, 127 }, 0.5f);
+			punch2.PushBack({ 679, 236, 130, 127 }, 0.5f);
+			punch2.PushBack({ 814, 236, 129, 127 }, 0.5f); //9
+			punch2.PushBack({ 946, 236, 130, 127 }, 0.5f);
+			punch2.PushBack({ 1081, 236, 130, 127 }, 0.5f);
+			punch2.PushBack({ 1213, 236, 120, 127 }, 0.5f);
+			punch2.PushBack({ 1337, 236, 120, 127 }, 0.5f);
+			punch2.PushBack({ 1461, 236, 83, 127 }, 0.8f);
+			punch2.PushBack({ 1548, 236, 83, 127 }, 0.8f);
+			punch2.PushBack({ 1635, 236, 83, 127 }, 0.8f); //16
+			punch2.PushBack({ 1721, 236,131, 127 }, 0.7f);
+			punch2.PushBack({ 1856, 236, 131, 127 }, 0.7f);
 			punch2.loop = false;
 		}
 
@@ -603,6 +603,10 @@ update_status ModulePlayer2::Update()
 				collider_player_2_up->SetPos(position.x, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
 			}
+			if (collider_player_2_attack == nullptr)
+			{
+				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+			}
 			break;
 		case JUMP_NEUTRAL2:
 			current_animation = &jump_neutral2;
@@ -738,7 +742,7 @@ update_status ModulePlayer2::Update()
 			if (collider_player_2_attack == nullptr)
 			{
 				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-				collider_player_2_attack->SetPos(position.x + 30, position.y - 35);
+				collider_player_2_attack->SetPos(position.x, position.y - 35);
 				collider_player_2_attack->SetSize(56, 30);
 			}
 			break;
