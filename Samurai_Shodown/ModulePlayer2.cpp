@@ -841,6 +841,23 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		{
 			position.x += 10;
 		}
+		switch (App->player->state)
+		{
+		case States::KICK:
+			App->ui->player1_point += 50;
+			break;
+		case States::PUNCH:
+			App->ui->player1_point += 50;
+			break;
+		case States::CROUCH_PUNCH:
+			App->ui->player1_point += 200;
+			break;
+		case States::CROUCH_KICK:
+			App->ui->player1_point += 200;
+			break;
+		default:
+			break;
+		}
 		break;
 	case COLLIDER_PLAYER_PARTICLES:
 		App->audio->PlayFX(hit_fx);

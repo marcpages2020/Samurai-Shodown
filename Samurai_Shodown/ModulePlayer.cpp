@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleUI.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer2.h"
 
@@ -810,7 +811,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 			{
 			position.x = lposition.x + speed;
 			}
-	}
+		}
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
 		App->audio->PlayFX(hit_fx);
@@ -823,6 +824,23 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		else
 		{
 			position.x += 10;
+		}
+		switch (App->player2->state2)
+		{
+		case States2::KICK2:
+			App->ui->player2_point += 50;
+			break;
+		case States2::PUNCH2:
+			App->ui->player2_point += 50;
+			break;
+		case States2::CROUCH_PUNCH2:
+			App->ui->player2_point += 200;
+			break;
+		case States2::CROUCH_KICK2:
+			App->ui->player2_point += 200;
+			break;
+		default:
+			break;
 		}
 		break;
 	case COLLIDER_PLAYER_2_PARTICLES:
