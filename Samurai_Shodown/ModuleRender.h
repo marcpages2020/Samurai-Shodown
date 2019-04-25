@@ -27,13 +27,12 @@ public:
 
 	void MoveCamera();
 	void SetCamera();
-private:
-	Collider* left = nullptr;
-	Collider* right = nullptr;
+	
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
-
+	Collider* left = nullptr;
+	Collider* right = nullptr;
 };
 
 #endif //__ModuleRenderer_H__

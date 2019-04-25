@@ -33,12 +33,10 @@ public:
 	Mix_Chunk *victory_fx;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
-	uint time_fight = 96;
 	Collider* left_wall;
 	Collider* right_wall;
 	int font = 0;
 	float start_time = 0.0f;
-	char time_text[10];
 	int player1_wins;
 	int player2_wins;
 	int draw;

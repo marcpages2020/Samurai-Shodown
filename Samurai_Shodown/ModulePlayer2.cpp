@@ -486,16 +486,6 @@ update_status ModulePlayer2::PreUpdate()
 			collider_player_2_attack->to_delete = true;
 			collider_player_2_attack = nullptr;
 		}
-
-	}
-	if (collider_player_2_attack != nullptr)
-	{
-		if (attack_frames == 3)
-		{
-			collider_player_2_attack->to_delete = true;
-			attack_frames = 0;
-		}
-		attack_frames++;
 	}
 	
 	return UPDATE_CONTINUE;
@@ -581,7 +571,7 @@ update_status ModulePlayer2::Update()
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x, position.y - 25);
+				collider_player_2_down->SetPos(position.x+20, position.y - 25);
 				collider_player_2_down->SetSize(90, 25);
 			}
 			if (current_animation->SeeCurrentFrame() < 2) {
@@ -591,6 +581,11 @@ update_status ModulePlayer2::Update()
 					collider_player_2_up->SetSize(35, 35);
 				}
 			}
+			if (collider_player_2_attack == nullptr) {
+				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y-15,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+				collider_player_2_attack->SetSize(50, 15);
+			}
+			
 			break;
 		case CROUCH_PUNCH2:
 			current_animation = &crouch_punch2;
@@ -607,6 +602,10 @@ update_status ModulePlayer2::Update()
 			if (current_animation->SeeCurrentFrame() < 3 || current_animation->SeeCurrentFrame() > 7) {
 				collider_player_2_up->SetPos(position.x, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
+			}
+			if (collider_player_2_attack == nullptr)
+			{
+				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
 			}
 			break;
 		case JUMP_NEUTRAL2:
