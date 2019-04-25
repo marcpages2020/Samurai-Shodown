@@ -179,7 +179,7 @@ void ModuleRender::MoveCamera()
 
 	iPoint player_1 = App->player->position;
 	iPoint player_2 = App->player2->position;
-	int left_limit = App->scene_haohmaru->left_wall->rect.x + 50;
+	int left_limit = App->scene_haohmaru->left_wall->rect.x-125;
 	int right_limit = App->scene_haohmaru->right_wall->rect.x;
 
 	if ((player_1.x < left->rect.x + left->rect.w)&&(camera.x > left_limit)) {

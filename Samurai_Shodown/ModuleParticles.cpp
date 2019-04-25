@@ -189,17 +189,19 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 
-	if (coll->type == COLLIDER_PLAYER_PARTICLES)
+	if (!App->is_paused)
 	{
-		position.x += speed.x;
-		position.y += speed.y;
+		if (coll->type == COLLIDER_PLAYER_PARTICLES)
+		{
+			position.x += speed.x;
+			position.y += speed.y;
+		}
+		else if (coll->type == COLLIDER_PLAYER_2_PARTICLES)
+		{
+			position.x -= speed.x;
+			position.y += speed.y;
+		}
 	}
-	else if (coll->type == COLLIDER_PLAYER_2_PARTICLES)
-	{
-		position.x -= speed.x;
-		position.y += speed.y;
-	}
-	
 
 	if (coll != nullptr)
 		coll->SetPos(position.x, position.y);

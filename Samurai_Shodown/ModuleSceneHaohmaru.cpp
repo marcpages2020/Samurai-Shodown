@@ -87,7 +87,6 @@ update_status ModuleSceneHaohmaru::Update()
 
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE);
 	App->render->MoveCamera();
-	App->ui->timer();
 
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(App->ui->victory==true))
 	{

@@ -35,8 +35,8 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = collision = new ModuleCollision();
-	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = ui = new ModuleUI();
+	modules[i++] = fade = new ModuleFadeToBlack();
 
 }	
 
@@ -55,9 +55,9 @@ bool Application::Init()
 	player2->Disable();
 	// Disable the map that you do not start with
 	neo_geo->Disable();
-	//scene_welcome->Disable();
+	scene_welcome->Disable();
 	ui->Disable();
-	scene_haohmaru->Disable();
+	//scene_haohmaru->Disable();
 	scene_kyoshiro->Disable();
 	scene_congrats->Disable();
 

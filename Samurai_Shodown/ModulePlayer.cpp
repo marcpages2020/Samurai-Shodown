@@ -804,7 +804,6 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 			{
 				position.x = lposition.x - speed;
 			}
-
 			else
 			{
 			position.x = lposition.x + speed;
@@ -837,6 +836,8 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		case States2::CROUCH_KICK2:
 			App->ui->player2_point += 200;
 			break;
+		case States2::TWISTER2:
+			App->ui->player2_point += 400;
 		default:
 			break;
 		}

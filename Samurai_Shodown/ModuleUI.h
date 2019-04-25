@@ -45,7 +45,7 @@ public:
 	SDL_Rect down_black_rect{ 0,SCREEN_HEIGHT,SCREEN_WIDTH, SCREEN_HEIGHT / 2 };
 	SDL_Rect left_black_rect{ 0 ,0,SCREEN_WIDTH / 2,SCREEN_HEIGHT };
 	SDL_Rect right_black_rect{ SCREEN_WIDTH / 2 ,0,SCREEN_WIDTH / 2,SCREEN_HEIGHT };
-	bool VericalTransition();
+	bool VerticalTransition();
 	bool HorizontalTransition();
 	bool round_end = false;
 	bool victory = false;
@@ -66,7 +66,7 @@ public:
 	uint time_fight = 96;
 	char time_text[10];
 	void timer();
-	void ResetSecene();
+	void ResetScene();
 };
 
 #endif // !_MODULE_UI

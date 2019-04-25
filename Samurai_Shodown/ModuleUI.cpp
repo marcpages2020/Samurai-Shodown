@@ -50,7 +50,7 @@ bool ModuleUI::CleanUp() {
 update_status ModuleUI::Update() {
 
 	UpdateBars();
-
+	timer();
 	// player 1 points
 	sprintf_s(point_text1, 10, "%7d", player1_point);
 	App->fonts->BlitText(77, 8, font_point_numbers, point_text1);
@@ -94,9 +94,10 @@ update_status ModuleUI::Update() {
 		player1_wins++;
 		round_end = true;
 	}
-	if ((round_end == true) && (victory == false))
+	if (round_end == true)
 	{
-		App->audio->PlayFX(ippon);
+		App->player->life = 1;
+		App->player2->life = 1;
 		//victory
 		if ((player1_wins == 2) || (player2_wins == 2))
 		{
@@ -107,8 +108,8 @@ update_status ModuleUI::Update() {
 		else
 		{
 			vtransition = true;
-			App->ui->ResetSecene();
 		}
+		App->audio->PlayFX(ippon);
 		round_end = false;
 	}
 
@@ -116,19 +117,19 @@ update_status ModuleUI::Update() {
 	{
 		round_end = true;
 		//victory = true;
-		App->audio->PlayFX(victory_fx);
 	}
 
 	if (vtransition == true)
 	{
-		if (App->ui->VericalTransition() == false)
+		if (App->ui->VerticalTransition() == false)
 		{
 			vtransition = false;
 			htransition = true;
+			App->ui->ResetScene();
 		}
 		else
 		{
-			App->ui->VericalTransition();
+			App->ui->VerticalTransition();
 		}
 
 	}
@@ -143,6 +144,7 @@ update_status ModuleUI::Update() {
 			App->ui->HorizontalTransition();
 		}
 	}
+	
 	return UPDATE_CONTINUE;
 }
 
@@ -151,7 +153,6 @@ void ModuleUI::UpdateBars()
 
 	if (App->player->life < 30 || App->player2->life < 30)
 		animKO_active = true;
-
 
 	if (current_life1 != App->player->life) {
 		int new_width = currentW_player1;
@@ -224,7 +225,7 @@ void ModuleUI::UpdateBars()
 	}
 }
 
-bool ModuleUI::VericalTransition() {
+bool ModuleUI::VerticalTransition() {
 	App->render->DrawQuad(up_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 	App->render->DrawQuad(down_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 
@@ -287,7 +288,7 @@ void ModuleUI::timer() {
 	}
 }
 
-void ModuleUI::ResetSecene() {
+void ModuleUI::ResetScene() {
 	App->player->life = 100;
 	App->player->position = App->player->initial_position;
 	App->player->state = IDLE;

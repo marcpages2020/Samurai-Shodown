@@ -372,6 +372,10 @@ update_status ModulePlayer2::PreUpdate()
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				kick2.Reset();
+				if (collider_player_2_mid != nullptr)
+				{
+					collider_player_2_mid->to_delete = true;
+				}
 			}
 		}
 		if (state2 == PUNCH2) {
@@ -853,6 +857,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		case States::CROUCH_KICK:
 			App->ui->player1_point += 200;
 			break;
+		case States::TWISTER:
+			App->ui->player1_point += 400;
 		default:
 			break;
 		}
