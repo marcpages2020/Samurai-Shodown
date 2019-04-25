@@ -196,39 +196,38 @@ ModulePlayer::ModulePlayer()
 		//crouch animation
 		{
 			//Crouch Down
-			crouch_down.PushBack({ 15, 1240, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 94, 1240, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 180, 1240, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 253, 1273, 88, 76}, 0.5f);
-			crouch_down.PushBack({ 358, 1273, 88, 76}, 0.5f);
-			crouch_down.PushBack({ 459, 1273, 88, 76 }, 0.5f);
+			crouch_down.PushBack({ 15, 1239, 68, 110}, 0.5f);
+			crouch_down.PushBack({ 94, 1239, 68, 110}, 0.5f);
+			crouch_down.PushBack({ 180, 1239, 68, 110}, 0.5f);
+			crouch_down.PushBack({ 300, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 423, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 551, 1273, 88, 76 }, 0.5f);
 			crouch_down.loop = false;
 
 			//Crouch Up
-			crouch_up.PushBack({ 180, 1240, 68, 110 }, 0.5f);
-			crouch_up.PushBack({ 94, 1240, 68, 110 }, 0.5f);
-			crouch_up.PushBack({ 15, 1240, 68, 110 }, 0.5f);	
+			crouch_up.PushBack({ 180, 12439, 68, 110 }, 0.5f);
+			crouch_up.PushBack({ 94, 12439, 68, 110 }, 0.5f);
+			crouch_up.PushBack({ 15, 1239, 68, 110 }, 0.5f);	
 			crouch_up.loop = false;
 		}
 
 		//crouch punch
 		{
-			crouch_punch.PushBack({15, 1718, 100, 93}, 0.3f);
-			crouch_punch.PushBack({102, 1718, 104, 93}, 0.3f);
-			crouch_punch.PushBack({198, 1718, 96, 93}, 0.3f);
-			//crouch_punch.PushBack({299, 1718, 137, 93}, 0.3f);
-			//crouch_punch.PushBack({443, 1718, 137, 93 }, 0.3f);
-			//crouch_punch.PushBack({579, 1718, 137, 93 }, 0.3f);
-			//crouch_punch.PushBack({722, 1718, 137, 93 }, 0.3f);
-			//crouch_punch.PushBack({869, 1718, 137, 93 }, 0.3f);
-			//crouch_punch.PushBack({1016, 1718, 137, 93 }, 0.3f);
-			//crouch_punch.PushBack({1166, 1718, 96, 93 }, 0.3f);
-			//crouch_punch.PushBack({1282, 1718, 96, 93 }, 0.6f);
-			//crouch_punch.PushBack({1396, 1718, 96, 93 }, 0.6f);
-			//crouch_punch.PushBack({1502, 1718, 93, 93 }, 0.6f);
-			//crouch_punch.PushBack({1606, 1718, 93, 93 }, 0.6f);
-			//crouch_punch.PushBack({1713, 1718, 95, 93 }, 0.6f);
-			//crouch_punch.PushBack({1815, 1718, 95, 93 }, 0.6f);
+			crouch_punch.PushBack({15, 1718, 100, 93}, 0.6f);
+			crouch_punch.PushBack({102, 1718, 104, 93}, 0.6f);
+			crouch_punch.PushBack({210, 1718, 109, 93}, 0.6f);
+			crouch_punch.PushBack({324, 1718, 155, 90}, 0.6f);
+			crouch_punch.PushBack({476, 1718, 155, 90 }, 0.6f);
+			crouch_punch.PushBack({640, 1718, 155, 91 }, 0.6f);
+			crouch_punch.PushBack({792, 1718, 154, 92 }, 0.6f);
+			crouch_punch.PushBack({953, 1718, 150, 94 }, 0.6f);
+			crouch_punch.PushBack({1129, 1718, 150, 93 }, 0.6f);
+			crouch_punch.PushBack({1287, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({1411, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({1539, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({1660, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({1786, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({1901, 1718, 109, 93 }, 0.6f);
 			crouch_punch.loop = false;
 		}
 
