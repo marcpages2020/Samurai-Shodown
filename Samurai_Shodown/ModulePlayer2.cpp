@@ -603,6 +603,10 @@ update_status ModulePlayer2::Update()
 				collider_player_2_up->SetPos(position.x, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
 			}
+			if (collider_player_2_attack == nullptr)
+			{
+				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+			}
 			break;
 		case JUMP_NEUTRAL2:
 			current_animation = &jump_neutral2;
