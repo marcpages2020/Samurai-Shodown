@@ -20,6 +20,55 @@ ModuleSceneWelcome::ModuleSceneWelcome()
 		letters.PushBack({ 506,456,253,114 }, 0.1f);
 		letters.PushBack({ 0,570,253,114 }, 0.1f);
 	}
+
+	{
+		white.PushBack({ 0,0,242,130 }, 0.1F);
+		white.PushBack({ 0,130,242,130 }, 0.1F);
+		white.PushBack({ 0,260,242,130 }, 0.1F);
+		white.PushBack({ 0,390,242,130 }, 0.1F);
+		white.PushBack({ 0,520,242,130 }, 0.1F);
+		white.PushBack({ 0,650,242,130 }, 0.1F);
+		white.PushBack({ 0,780,242,130 }, 0.1F);
+		white.PushBack({ 0,910,242,130 }, 0.1F);
+		white.PushBack({ 242,0,242,130 }, 0.1F);
+		white.PushBack({ 242,130,242,130 }, 0.1F);
+		white.PushBack({ 242,260,242,130 }, 0.1F);
+		white.PushBack({ 242,390,242,130 }, 0.1F);
+		white.PushBack({ 242,520,242,130 }, 0.1F);
+		white.PushBack({ 242,650,242,130 }, 0.1F);
+		white.PushBack({ 242,780,242,130 }, 0.1F);
+		white.PushBack({ 242,910,242,130 }, 0.1F);
+		white.PushBack({ 484,0,242,130 }, 0.1F);
+		white.PushBack({ 484,130,242,130 }, 0.1F);
+		white.PushBack({ 484,260,242,130 }, 0.1F);
+		white.PushBack({ 484,390,242,130 }, 0.1F);
+		white.PushBack({ 484,520,242,130 }, 0.1F);
+		white.PushBack({ 484,650,242,130 }, 0.1F);
+		white.PushBack({ 484,780,242,130 }, 0.1F);
+		white.PushBack({ 484,910,242,130 }, 0.1F);
+		white.PushBack({ 726,0,242,130 }, 0.1F);
+		white.PushBack({ 726,130,242,130 }, 0.1F);
+		white.PushBack({ 726,260,242,130 }, 0.1F);
+		white.PushBack({ 726,390,242,130 }, 0.1F);
+		white.PushBack({ 726,520,242,130 }, 0.1F);
+		white.PushBack({ 726,650,242,130 }, 0.1F);
+		white.PushBack({ 726,780,242,130 }, 0.1F);
+		white.PushBack({ 726,910,242,130 }, 0.1F);
+		white.PushBack({ 968,0,242,130 }, 0.1F);
+		white.PushBack({ 968,130,242,130 }, 0.1F);
+		white.PushBack({ 968,260,242,130 }, 0.1F);
+		white.PushBack({ 968,390,242,130 }, 0.1F);
+		white.PushBack({ 968,520,242,130 }, 0.1F);
+		white.PushBack({ 968,650,242,130 }, 0.1F);
+		white.PushBack({ 968,780,242,130 }, 0.1F);
+		white.PushBack({ 968,910,242,130 }, 0.1F);
+		white.PushBack({ 1210,0,242,130 }, 0.1F);
+		white.PushBack({ 1210,130,242,130 }, 0.1F);
+		white.PushBack({ 1210,260,242,130 }, 0.1F);
+		white.PushBack({ 1210,390,242,130 }, 0.1F);
+		white.loop = false;
+	}
+
 }
 
 ModuleSceneWelcome::~ModuleSceneWelcome()
@@ -33,6 +82,7 @@ bool ModuleSceneWelcome::Start()
 	graphics = App->textures->Load("Assets/Textures/menu1.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/menu.ogg"); 
 	Letters = App->textures->Load("Assets/Textures/3SamuraiShodownLetters.png");
+	white_letters = App->textures->Load("Assets/Textures/white_letters.png");
 	App->audio->PlayMusic(music,NULL);
 	curr = &letters;
 	return ret;
@@ -58,9 +108,15 @@ update_status ModuleSceneWelcome::Update()
 	welcome.y = 0;
 	welcome.w = SCREEN_WIDTH;
 	welcome.h = SCREEN_HEIGHT;
-	// Draw everything --------------------------------------	
-	App->render->Blit(graphics,NULL, NULL, &welcome);
-	App->render->Blit(Letters, 60, 50, &curr->GetCurrentFrame());
+	App->render->Blit(graphics, NULL, NULL, &welcome);
+
+	if (first_anim_finished) {
+		App->render->Blit(Letters, 60, 50, &curr->GetCurrentFrame());
+	}
+	else {
+		App->render->Blit(white_letters, 60, 50, &white.GetCurrentFrame());
+	}
+	
 	// Make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
