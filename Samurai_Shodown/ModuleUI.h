@@ -17,6 +17,7 @@ public:
 
 	void UpdateBars();
 
+
 public:
 	SDL_Texture * ui_png = nullptr;
 
@@ -44,6 +45,11 @@ public:
 	SDL_Rect right_black_rect{ SCREEN_WIDTH / 2 ,0,SCREEN_WIDTH / 2,SCREEN_HEIGHT };
 	bool VericalTransition();
 	bool HorizontalTransition();
+	int font_point_numbers = 0;
+	int player1_point = 0;
+	int player2_point = 0;
+	char point_text1[10];
+	char point_text2[10];
 };
 
 #endif // !_MODULE_UI

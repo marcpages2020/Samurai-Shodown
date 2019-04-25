@@ -4,7 +4,8 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleRender.h"
-
+#include "ModuleFonts.h"
+#include <iostream>
 ModuleUI::ModuleUI() {
 
 	animKO.PushBack({ 151,0,26,23 }, 0.1F);
@@ -26,14 +27,17 @@ bool ModuleUI::Start() {
 	currentW_player2 = life_2.w;
 	current_life2 = max_capacity;
 	current_life1 = max_capacity;
-
+	player1_point = 0;
+	player2_point = 0;
 	animKO_active = false;
+	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	return true;
 }
 
 bool ModuleUI::CleanUp() {
 	LOG("UI Unloaded\n");
 	App->textures->Unload(ui_png);
+	App->fonts->UnLoad(font_point_numbers);
 	return true;
 }
 
@@ -43,24 +47,39 @@ update_status ModuleUI::Update() {
 
 	UpdateBars();
 
-	if (!animKO_active) {
-		App->render->Blit(ui_png, SCREEN_WIDTH/2 - 13, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, false);
+
+
+	// player 1 points
+	sprintf_s(point_text1, 10, "%7d", player1_point);
+	App->fonts->BlitText(77, 8, font_point_numbers, point_text1);
+	// player 1 points
+	sprintf_s(point_text2, 10, "%7d", player2_point);
+	App->fonts->BlitText(313, 8, font_point_numbers, point_text2);
+
+	SDL_Rect player1_p{ 182,0,23,8 }; // P1 =
+	App->render->Blit(ui_png, 27, 8, &player1_p, SDL_FLIP_NONE,1.0F,false);
+	SDL_Rect player2_p{ 182,8,23,16 }; // P2 =
+	App->render->Blit(ui_png, 263, 8, &player2_p, SDL_FLIP_NONE, 1.0F, false);
+
+	// KO image
+	if (!animKO_active) { 
+		App->render->Blit(ui_png, SCREEN_WIDTH/2 - 13, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 	}
 	else {
-		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13 / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, false);
+		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13 / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 	}
 
 	SDL_Rect name{ 0,0,64,8 }; // haomaru name
-	App->render->Blit(ui_png, 27, 32, &name, SDL_FLIP_NONE, false); //
-	App->render->Blit(ui_png, 288, 32, &name, SDL_FLIP_NONE, false);
+	App->render->Blit(ui_png, 27, 32, &name, SDL_FLIP_NONE, 1.0F, false); //
+	App->render->Blit(ui_png, 288, 32, &name, SDL_FLIP_NONE, 1.0F, false);
 	SDL_Rect rect{ 6,17,132,13 }; // bar
 	//player 1 bar
-	App->render->Blit(ui_png, 18, 17, &rect, SDL_FLIP_NONE, false); //
-	App->render->Blit(ui_png, 20, 19, &life_1, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 18, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
+	App->render->Blit(ui_png, 20, 19, &life_1, SDL_FLIP_NONE, 1.0F, false); //
 
 	//player 2 bar
-	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, false); //
-	App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, false); //
+	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
+	App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, 1.0F, false); //
 
 
 	return UPDATE_CONTINUE;

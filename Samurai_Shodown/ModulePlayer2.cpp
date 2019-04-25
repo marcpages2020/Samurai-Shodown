@@ -794,6 +794,7 @@ bool ModulePlayer2::CleanUp() {
 	App->audio->UnLoadFx(light_kick_fx);
 	App->audio->UnLoadFx(twister_fx);
 	App->audio->UnLoadFx(hit_fx);
+	App->collision->CleanUp();
 	collider_player_2_up = nullptr;
 	collider_player_2_mid = nullptr;
 	collider_player_2_down = nullptr;
