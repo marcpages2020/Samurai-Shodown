@@ -213,22 +213,22 @@ ModulePlayer::ModulePlayer()
 
 		//crouch punch
 		{
-			crouch_punch.PushBack({0, 1718, 99, 110}, 0.3f);
-			crouch_punch.PushBack({109, 1718, 96, 93}, 0.3f);
-			crouch_punch.PushBack({203, 1718, 96, 93}, 0.3f);
-			crouch_punch.PushBack({299, 1718, 137, 93}, 0.3f);
-			crouch_punch.PushBack({443, 1718, 137, 93 }, 0.3f);
-			crouch_punch.PushBack({579, 1718, 137, 93 }, 0.3f);
-			crouch_punch.PushBack({722, 1718, 137, 93 }, 0.3f);
-			crouch_punch.PushBack({869, 1718, 137, 93 }, 0.3f);
-			crouch_punch.PushBack({1016, 1718, 137, 93 }, 0.3f);
-			crouch_punch.PushBack({1166, 1718, 96, 93 }, 0.3f);
-			crouch_punch.PushBack({1282, 1718, 96, 93 }, 0.6f);
-			crouch_punch.PushBack({1396, 1718, 96, 93 }, 0.6f);
-			crouch_punch.PushBack({1502, 1718, 93, 93 }, 0.6f);
-			crouch_punch.PushBack({1606, 1718, 93, 93 }, 0.6f);
-			crouch_punch.PushBack({1713, 1718, 95, 93 }, 0.6f);
-			crouch_punch.PushBack({1815, 1718, 95, 93 }, 0.6f);
+			crouch_punch.PushBack({15, 1718, 100, 93}, 0.3f);
+			crouch_punch.PushBack({102, 1718, 104, 93}, 0.3f);
+			crouch_punch.PushBack({198, 1718, 96, 93}, 0.3f);
+			//crouch_punch.PushBack({299, 1718, 137, 93}, 0.3f);
+			//crouch_punch.PushBack({443, 1718, 137, 93 }, 0.3f);
+			//crouch_punch.PushBack({579, 1718, 137, 93 }, 0.3f);
+			//crouch_punch.PushBack({722, 1718, 137, 93 }, 0.3f);
+			//crouch_punch.PushBack({869, 1718, 137, 93 }, 0.3f);
+			//crouch_punch.PushBack({1016, 1718, 137, 93 }, 0.3f);
+			//crouch_punch.PushBack({1166, 1718, 96, 93 }, 0.3f);
+			//crouch_punch.PushBack({1282, 1718, 96, 93 }, 0.6f);
+			//crouch_punch.PushBack({1396, 1718, 96, 93 }, 0.6f);
+			//crouch_punch.PushBack({1502, 1718, 93, 93 }, 0.6f);
+			//crouch_punch.PushBack({1606, 1718, 93, 93 }, 0.6f);
+			//crouch_punch.PushBack({1713, 1718, 95, 93 }, 0.6f);
+			//crouch_punch.PushBack({1815, 1718, 95, 93 }, 0.6f);
 			crouch_punch.loop = false;
 		}
 
