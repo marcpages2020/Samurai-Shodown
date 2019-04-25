@@ -78,6 +78,8 @@ bool ModuleSceneHaohmaru::CleanUp()
 	//App->collision->CleanUp();
 	left_wall = nullptr;
 	right_wall = nullptr;
+	App->render->left = nullptr;
+	App->render->right = nullptr;
 	return true;
 }
 

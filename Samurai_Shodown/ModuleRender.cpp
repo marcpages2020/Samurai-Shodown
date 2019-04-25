@@ -201,7 +201,7 @@ void ModuleRender::MoveCamera()
 
 void ModuleRender::SetCamera()
 {
-	if ((left == nullptr)&&(right == nullptr))
+	if ((!left)&&(!right))
 	{
 		left = App->collision->AddCollider({ -50,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
 		right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
