@@ -39,17 +39,24 @@ public:
 	int currentW_player2 = 0;
 	bool decrease_player2 = false;
 	SDL_Rect life_2{ 8,32,128,9 };
+	//transitions
 	SDL_Rect up_black_rect{ 0 ,0,SCREEN_WIDTH,0 };
 	SDL_Rect down_black_rect{ 0,SCREEN_HEIGHT,SCREEN_WIDTH, SCREEN_HEIGHT / 2 };
 	SDL_Rect left_black_rect{ 0 ,0,SCREEN_WIDTH / 2,SCREEN_HEIGHT };
 	SDL_Rect right_black_rect{ SCREEN_WIDTH / 2 ,0,SCREEN_WIDTH / 2,SCREEN_HEIGHT };
 	bool VericalTransition();
 	bool HorizontalTransition();
+	float start_time = 0.0f;
 	int font_point_numbers = 0;
+	int timer_font = 0;
 	int player1_point = 0;
 	int player2_point = 0;
 	char point_text1[10];
 	char point_text2[10];
+	uint time_fight = 96;
+	char time_text[10];
+	void timer();
+	void ResetSecene();
 };
 
 #endif // !_MODULE_UI

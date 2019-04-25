@@ -101,7 +101,15 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			if (p->coll->type==COLLIDER_PLAYER_PARTICLES)
+			{
+				App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			}
+			else if (p->coll->type == COLLIDER_PLAYER_2_PARTICLES)
+			{
+				App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
+			}
+
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
