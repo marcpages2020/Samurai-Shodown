@@ -343,6 +343,7 @@ void ModuleUI::ResetScene() {
 	App->render->SetCamera();
 	ipon.Reset();
 	ipon_finished = false;
+	haohmaru.Reset();
 	haomaru_finished = false;
 }
 
