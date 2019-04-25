@@ -110,13 +110,20 @@ update_status ModuleSceneWelcome::Update()
 	welcome.h = SCREEN_HEIGHT;
 	App->render->Blit(graphics, NULL, NULL, &welcome);
 
+
+
+
 	if (first_anim_finished) {
 		App->render->Blit(Letters, 60, 50, &curr->GetCurrentFrame());
 	}
 	else {
 		App->render->Blit(white_letters, 60, 50, &white.GetCurrentFrame());
 	}
-	
+	if (white.SeeCurrentFrame() == 43 && alpha > 10) {
+		App->render->DrawQuad({ 0,0,SCREEN_WIDTH,SCREEN_HEIGHT }, 255, 255, 255, alpha);
+		alpha -= 5;
+		first_anim_finished = true;
+	}
 	// Make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
