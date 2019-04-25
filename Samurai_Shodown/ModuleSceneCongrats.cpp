@@ -134,7 +134,6 @@ bool ModuleSceneCongrats::CleanUp()
 	App->textures->Unload(judges_t);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
-	App->audio->CleanUp();
 	App->fonts->UnLoad(font);
 	background.Reset();
 	judges.Reset();

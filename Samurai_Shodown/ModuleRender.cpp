@@ -209,4 +209,3 @@ void ModuleRender::SetCamera()
 		right->SetPos(camera.w, 0);
 	}
 }
-

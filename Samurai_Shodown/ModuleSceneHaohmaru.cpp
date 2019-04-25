@@ -77,13 +77,11 @@ bool ModuleSceneHaohmaru::CleanUp()
 	App->audio->UnLoadFx(ippon);
 	App->player->Disable();
 	App->player2->Disable();
-
 	App->fonts->UnLoad(font);
 	App->audio->UnLoadMusic(music);
 	App->collision->CleanUp();
 	left_wall = nullptr;
 	right_wall = nullptr;
-	//App->audio->CleanUp();
 	return true;
 }
 
@@ -193,9 +191,7 @@ update_status ModuleSceneHaohmaru::Update()
 			App->ui->HorizontalTransition();
 		}
 	}
-	
 	App->render->MoveCamera();
-
 
 	if((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)||(victory==true))
 	{
