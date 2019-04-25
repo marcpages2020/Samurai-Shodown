@@ -179,17 +179,15 @@ void ModuleRender::MoveCamera()
 
 	iPoint player_1 = App->player->position;
 	iPoint player_2 = App->player2->position;
-	int left_limit = App->scene_haohmaru->left_wall->rect.x-125;
-	int right_limit = App->scene_haohmaru->right_wall->rect.x;
 
-	if ((player_1.x < left->rect.x + left->rect.w)&&(camera.x > left_limit)) {
+	if ((player_1.x < left->rect.x + left->rect.w)) {
 		if (player_2.x + 50 < right->rect.x) {
 			right->rect.x -= App->player->speed;
 			left->rect.x -= App->player->speed;
 			camera.x -= App->player->speed * SCREEN_SIZE;
 		}
 	}
-	else if ((player_2.x > right->rect.x - 50)&&(camera.x+SCREEN_WIDTH<right_limit)) {
+	else if ((player_2.x > right->rect.x - 50)) {
 		if (player_1.x > left->rect.x + left->rect.w) {
 			right->rect.x += App->player->speed;
 			left->rect.x += App->player->speed;
@@ -203,8 +201,8 @@ void ModuleRender::SetCamera()
 {
 	if ((!left)&&(!right))
 	{
-		left = App->collision->AddCollider({ -50,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-		right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+		left = App->collision->AddCollider({ -50,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
+		right = App->collision->AddCollider({ camera.w,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	}
 	left->SetPos(-50, 0);
 	right->SetPos(camera.w, 0);

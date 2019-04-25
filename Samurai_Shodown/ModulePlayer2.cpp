@@ -809,11 +809,14 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 
 	switch (c2->type)
 	{
-	case COLLIDER_WALL:
-		if (position.x < c2->rect.x + c2->rect.w && player_input2.pressing_3)
-			position.x = lposition.x;
-		if (position.x > c2->rect.x + c2->rect.w && player_input2.pressing_1)
-			position.x = lposition.x;
+	case COLLIDER_WALL_LEFT:
+		if (!player_input2.pressing_3)
+			position.x += speed;
+
+		break;
+	case COLLIDER_WALL_RIGHT:
+		if (!player_input2.pressing_1)
+			position.x -= speed;
 		break;
 	case COLLIDER_PLAYER:
 		if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2))

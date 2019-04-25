@@ -53,8 +53,8 @@ bool ModuleSceneHaohmaru::Start()
 	App->player->Enable();
 	App->player2->Enable();
 	App->ui->Enable();
-	left_wall = App->collision->AddCollider({ -142,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
-	right_wall= App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL);
+	left_wall = App->collision->AddCollider({ -121,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
+	right_wall= App->collision->AddCollider({ 415,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	App->ui->start_time = SDL_GetTicks();
 	App->render->SetCamera();
 	return ret;
