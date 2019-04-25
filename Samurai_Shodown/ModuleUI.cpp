@@ -9,9 +9,6 @@ ModuleUI::ModuleUI() {
 
 	animKO.PushBack({ 151,0,26,23 }, 0.1F);
 	animKO.PushBack({ 151,23,26,23 }, 0.1F);
-
-
-
 }
 
 ModuleUI::~ModuleUI() {}
@@ -39,8 +36,6 @@ bool ModuleUI::CleanUp() {
 	App->textures->Unload(ui_png);
 	return true;
 }
-
-
 
 update_status ModuleUI::Update() {
 
@@ -70,8 +65,6 @@ update_status ModuleUI::Update() {
 
 	return UPDATE_CONTINUE;
 }
-
-
 
 void ModuleUI::UpdateBars()
 {
@@ -148,5 +141,41 @@ void ModuleUI::UpdateBars()
 			decrease_player2 = false;
 		}
 		life_2.w = currentW_player2;
+	}
+}
+
+bool ModuleUI::VericalTransition() {
+	App->render->DrawQuad(up_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	App->render->DrawQuad(down_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+
+	if (down_black_rect.y <= SCREEN_HEIGHT / 2)
+	{
+		up_black_rect.h = 0;
+		down_black_rect.y = SCREEN_HEIGHT;
+		return false;
+	}
+	else
+	{
+		up_black_rect.h += 2;
+		down_black_rect.y -= 2;
+		return true;
+	}
+}
+
+bool ModuleUI::HorizontalTransition() {
+	App->render->DrawQuad(right_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+	App->render->DrawQuad(left_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+
+	if (left_black_rect.w <= 0)
+	{
+		left_black_rect.w = SCREEN_WIDTH / 2;
+		right_black_rect.x = SCREEN_WIDTH / 2;
+		return false;
+	}
+	else
+	{
+		left_black_rect.w -= 2;
+		right_black_rect.x += 2;
+		return true;
 	}
 }

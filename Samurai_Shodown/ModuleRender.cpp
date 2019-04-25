@@ -210,38 +210,3 @@ void ModuleRender::SetCamera()
 	}
 }
 
-bool ModuleRender::VericalTransition() {
-	DrawQuad(up_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-	DrawQuad(down_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-
-	if (down_black_rect.y <= SCREEN_HEIGHT / 2)
-	{
-		up_black_rect.h = 0;
-		down_black_rect.y = SCREEN_HEIGHT;
-		return false;
-	}
-	else
-	{
-		up_black_rect.h += 2;
-		down_black_rect.y -= 2;
-		return true;
-	}
-}
-
-bool ModuleRender::HorizontalTransition() {
-	DrawQuad(right_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-	DrawQuad(left_black_rect, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-
-	if (left_black_rect.w <= 0)
-	{
-		left_black_rect.w = SCREEN_WIDTH/2;
-		right_black_rect.x = SCREEN_WIDTH/2;
-		return false;
-	}
-	else
-	{
-		left_black_rect.w -= 2;
-		right_black_rect.x += 2;
-		return true;
-	}
-}

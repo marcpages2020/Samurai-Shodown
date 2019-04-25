@@ -171,26 +171,26 @@ update_status ModuleSceneHaohmaru::Update()
 	}
 	if (vtransition==true)
 	{
-		if (App->render->VericalTransition() == false)
+		if (App->ui->VericalTransition() == false)
 		{
 			vtransition = false;
 			htransition = true;
 		}
 		else
 		{
-			App->render->VericalTransition();
+			App->ui->VericalTransition();
 		}
 
 	}
 	if (htransition == true)
 	{
-		if (App->render->HorizontalTransition()==false)
+		if (App->ui->HorizontalTransition()==false)
 		{
 			htransition = false;
 		}
 		else
 		{
-			App->render->HorizontalTransition();
+			App->ui->HorizontalTransition();
 		}
 	}
 	
@@ -203,3 +203,4 @@ update_status ModuleSceneHaohmaru::Update()
 	}
 	return UPDATE_CONTINUE;
 }
+
