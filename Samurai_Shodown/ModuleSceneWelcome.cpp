@@ -98,7 +98,9 @@ bool ModuleSceneWelcome::CleanUp()
 	App->textures->Unload(graphics);
 	App->audio->UnLoadMusic(music);
 	App->textures->Unload(Letters);
+	white.Reset();
 	Mix_FadeOutMusic(1250);
+	first_anim_finished = false;
 	//App->audio->CleanUp();
 	return true;
 }
@@ -111,7 +113,7 @@ update_status ModuleSceneWelcome::Update()
 	welcome.w = SCREEN_WIDTH;
 	welcome.h = SCREEN_HEIGHT;
 	App->render->Blit(graphics, NULL, NULL, &welcome);
-
+	
 
 
 
