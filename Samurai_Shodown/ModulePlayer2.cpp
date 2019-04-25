@@ -591,6 +591,10 @@ update_status ModulePlayer2::Update()
 					collider_player_2_up->SetSize(35, 35);
 				}
 			}
+			if (collider_player_2_attack == nullptr) {
+				collider_player_2_attack = App->collision->AddCollider({ position.x + 15, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				collider_player_2_attack->SetSize(85, 15);
+			}
 			break;
 		case CROUCH_PUNCH2:
 			current_animation = &crouch_punch2;
@@ -827,7 +831,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			}
 		}
 		break;
-	case COLLIDER_PLAYER_1_ATTACK:
+	case COLLIDER_PLAYER_2_ATTACK:
 		App->audio->PlayFX(hit_fx);
 		life -= 10;
 		state2 = HIT2;
