@@ -98,6 +98,7 @@ bool ModuleSceneWelcome::CleanUp()
 	App->textures->Unload(graphics);
 	App->audio->UnLoadMusic(music);
 	App->textures->Unload(Letters);
+	App->textures->Unload(white_letters);
 	white.Reset();
 	Mix_FadeOutMusic(1250);
 	first_anim_finished = false;
