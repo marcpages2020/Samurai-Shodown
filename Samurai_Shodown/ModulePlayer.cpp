@@ -146,9 +146,9 @@ ModulePlayer::ModulePlayer()
 		{
 			punch.PushBack({ 14, 236, 69, 130 }, 0.5f);
 			punch.PushBack({ 87, 236, 69, 130 }, 0.3f);
-			punch.PushBack({ 160, 236, 79, 127 }, 0.3f);
+			punch.PushBack({ 164, 235, 79, 127 }, 0.3f);
 			punch.PushBack({ 243, 236, 79, 127 }, 0.5f);
-			punch.PushBack({ 327, 236, 79, 127 }, 0.5f);
+			punch.PushBack({ 331, 236, 79, 127 }, 0.5f);
 			punch.PushBack({ 410, 236, 129, 127 }, 0.5f);
 			punch.PushBack({ 545, 236, 130, 127 }, 0.5f);
 			punch.PushBack({ 679, 236, 130, 127 }, 0.5f);
@@ -199,9 +199,9 @@ ModulePlayer::ModulePlayer()
 			crouch_down.PushBack({ 15, 1239, 68, 110}, 0.5f);
 			crouch_down.PushBack({ 94, 1239, 68, 110}, 0.5f);
 			crouch_down.PushBack({ 180, 1239, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 300, 1273, 88, 76}, 0.5f);
-			crouch_down.PushBack({ 423, 1273, 88, 76}, 0.5f);
-			crouch_down.PushBack({ 551, 1273, 88, 76 }, 0.5f);
+			crouch_down.PushBack({ 299, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 431, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 557, 1273, 88, 76 }, 0.5f);
 			crouch_down.loop = false;
 
 			//Crouch Up
