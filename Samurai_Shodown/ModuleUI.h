@@ -17,6 +17,7 @@ public:
 	bool CleanUp();
 
 	void UpdateBars();
+	void VictorySprite();
 
 
 public:

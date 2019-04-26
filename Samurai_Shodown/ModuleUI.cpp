@@ -90,6 +90,7 @@ update_status ModuleUI::Update() {
 	UpdateBars();
 	timer();
 	DieScene();
+	VictorySprite();
 	// player 1 points
 	sprintf_s(point_text1, 10, "%7d", player1_point);
 	App->fonts->BlitText(77, 8, font_point_numbers, point_text1);
@@ -271,6 +272,27 @@ void ModuleUI::UpdateBars()
 		}
 		life_2.w = currentW_player2;
 	}
+}
+
+void ModuleUI::VictorySprite()
+{
+	SDL_Rect win{ 214,0,24,15 };
+	if (player1_wins == 1) {
+		App->render->Blit(ui_png, 5, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+	}
+	else if (player1_wins == 2) {
+		App->render->Blit(ui_png, 5, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+		App->render->Blit(ui_png, 33, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+	}
+
+	if (player2_wins == 1) {
+		App->render->Blit(ui_png, 355, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+	}
+	else if (player2_wins == 2) {
+		App->render->Blit(ui_png, 325, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+		App->render->Blit(ui_png, 353, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+	}
+
 }
 
 bool ModuleUI::VerticalTransition() {
