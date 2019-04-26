@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "SDL/include/SDL_render.h"
 #include "ModuleAudio.h"
 
 struct SDL_Texture;
@@ -91,6 +92,7 @@ public:
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	int attack_frames = 0;
+	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 };
 
 #endif // !_ModulePlayer2_H
