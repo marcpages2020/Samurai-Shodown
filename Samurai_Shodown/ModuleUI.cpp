@@ -136,8 +136,14 @@ update_status ModuleUI::Update() {
 	}
 	if (round_end == true)
 	{
-		App->player->life = 1;
-		App->player2->life = 1;
+		if (App->player->life <= 0)
+		{
+			App->player->life = 1;
+		}
+		if (App->player2->life <= 0)
+		{
+			App->player2->life = 1;
+		}
 		//victory
 		if ((player1_wins == 2) || (player2_wins == 2))
 		{
