@@ -491,7 +491,7 @@ void ModuleUI::ResetScene() {
 void ModuleUI::DieScene()
 {
 
-	if (die_scene) {
+	if (die_scene && (player1_win || player2_win)) {
 		if (player1_wins != 2 && player2_wins != 2 && !points_done) {
 			if (!ippon_finished) {
 				if (ippon_time >= SDL_GetTicks() - 1000) {

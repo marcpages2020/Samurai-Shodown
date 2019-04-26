@@ -818,7 +818,11 @@ update_status ModulePlayer2::Update()
 	else {
 		flip = SDL_FLIP_HORIZONTAL;
 	}
-	App->render->Blit(graphics, position.x, position.y - r.h, &r,flip);
+	if (flip == SDL_FLIP_HORIZONTAL) {
+		App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
+	}
+	else
+		App->render->Blit(graphics, position.x, position.y - r.h, &r,flip);
 
 	return UPDATE_CONTINUE;
 }

@@ -62,6 +62,9 @@ public:
 	int SeeCurrentFrame() {
 		return (int)current_frame;
 	}
+	SDL_Rect GetCurrentRect(){
+		return frames[(int)current_frame].rect;
+	}
 };
 
 #endif
