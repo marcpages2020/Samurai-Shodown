@@ -13,21 +13,21 @@ ModuleUI::ModuleUI() {
 	animKO.PushBack({ 151,23,26,23 }, 0.1F);
 
 	int y = -32;
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.PushBack({ 0,y += 32,92,32 }, 0.6F);
-	ipon.loop = false;
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
+	ippon.loop = false;
 
 	y = -33;
 	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
@@ -70,7 +70,7 @@ bool ModuleUI::Start() {
 	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
-	ippon = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
+	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
 	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	return true;
 }
@@ -81,7 +81,7 @@ bool ModuleUI::CleanUp() {
 	App->textures->Unload(finish_round);
 	App->fonts->UnLoad(font_point_numbers);
 	App->fonts->UnLoad(timer_font);
-	App->audio->UnLoadFx(ippon);
+	App->audio->UnLoadFx(ippon_fx);
 	return true;
 }
 
@@ -155,10 +155,10 @@ update_status ModuleUI::Update() {
 		{
 			vtransition = true;
 		}
-		App->audio->PlayFX(ippon);
+		App->audio->PlayFX(ippon_fx);
 		round_end = false;
 		die_scene = true;
-		ipon_time = SDL_GetTicks();
+		ippon_time = SDL_GetTicks();
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F7])
@@ -347,8 +347,8 @@ void ModuleUI::ResetScene() {
 	animKO_active = false;
 	App->render->camera.x = App->render->camera.y = 0;
 	App->render->SetCamera();
-	ipon.Reset();
-	ipon_finished = false;
+	ippon.Reset();
+	ippon_finished = false;
 	haohmaru.Reset();
 	haomaru_finished = false;
 }
@@ -357,19 +357,19 @@ void ModuleUI::DieScene()
 {
 
 	if (die_scene) {
-		if (!ipon_finished) {
-			if (ipon_time >= SDL_GetTicks() - 1000) {
-				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ipon.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+		if (!ippon_finished) {
+			if (ippon_time >= SDL_GetTicks() - 1000) {
+				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 			}
-			else if (ipon.SeeCurrentFrame() < 13) {
-				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ipon.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+			else if (ippon.SeeCurrentFrame() < 13) {
+				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 			}
 			else {
-				ipon_finished = true;
+				ippon_finished = true;
 				haohmaru_time = SDL_GetTicks();
 			}
 		}
-		if (!haomaru_finished && ipon_finished) {
+		if (!haomaru_finished && ippon_finished) {
 			if (haohmaru_time >= SDL_GetTicks() - 2000) {
 				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 			}

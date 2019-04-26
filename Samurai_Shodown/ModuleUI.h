@@ -51,7 +51,7 @@ public:
 	bool victory = false;
 	bool vtransition = false;
 	bool htransition = false;
-	Mix_Chunk *ippon;
+	Mix_Chunk *ippon_fx;
 	Mix_Chunk *victory_fx;
 	float start_time = 0.0f;
 	int font_point_numbers = 0;
@@ -70,11 +70,11 @@ public:
 	bool die_scene = false;
 	SDL_Texture* finish_round = nullptr;
 	void DieScene();
-	Animation ipon;
-	float ipon_time = 0;
+	Animation ippon;
+	float ippon_time = 0;
 	Animation haohmaru;
 	float haohmaru_time = 0;
-	bool ipon_finished = false;
+	bool ippon_finished = false;
 	bool haomaru_finished = false;
 };
 
