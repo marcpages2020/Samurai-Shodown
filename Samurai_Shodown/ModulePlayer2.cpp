@@ -420,7 +420,7 @@ update_status ModulePlayer2::PreUpdate()
 			}
 			if (player_input2.pressing_N) {
 				state2 = CROUCH_KICK2;
-				App->audio->PlayFX(light_kick_fx);
+				App->audio->PlayFX(light_kick_fx);				
 			}
 			if (player_input2.pressing_M) {
 				state2 = CROUCH_PUNCH2;
@@ -443,7 +443,8 @@ update_status ModulePlayer2::PreUpdate()
 				is_tornado_created2 = false;
 			}
 		}
-		if (state2 == CROUCH_KICK2) {
+		if (state2 == CROUCH_KICK2) 
+		{			
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				crouch_kick2.Reset();
@@ -570,6 +571,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case CROUCH_KICK2:
 			current_animation = &crouch_kick2;
+			
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x + 20, position.y - 65);
@@ -580,7 +582,8 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetPos(position.x+20, position.y - 25);
 				collider_player_2_down->SetSize(90, 25);
 			}
-			if (current_animation->SeeCurrentFrame() < 2) {
+			if (current_animation->SeeCurrentFrame() < 2) 
+			{
 				if (collider_player_2_up != nullptr)
 				{
 					collider_player_2_up->SetPos(position.x, position.y - 65);
