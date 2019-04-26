@@ -649,6 +649,10 @@ update_status ModulePlayer::Update()
 					collider_player_up->SetSize(45, 35);
 				}
 			}
+			if (flip == SDL_FLIP_HORIZONTAL) 
+			{
+				//Change colliders
+			}
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed;
 
