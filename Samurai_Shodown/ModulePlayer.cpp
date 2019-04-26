@@ -351,7 +351,8 @@ update_status ModulePlayer::PreUpdate()
 			if (state == BACKWARD) {
 				if (!player_input.pressing_A)
 					state = IDLE;
-				if (player_input.pressing_U) {
+				if (player_input.pressing_U) 
+				{
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
