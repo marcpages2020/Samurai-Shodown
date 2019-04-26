@@ -66,6 +66,11 @@ public:
 	char point_text2[10];
 	uint time_fight = 96;
 	char time_text[10];
+	char point_gain_life[10];
+	char char_points[10];
+	char char_time[10];
+	char char_total[10];
+	char char_hit_percentatge[10];
 	void timer();
 	void ResetScene();
 	bool die_scene = false;
@@ -80,6 +85,16 @@ public:
 	bool haomaru_finished = false;
 	Animation victory_anim;
 	Animation well_done;
+	bool points_done = false;
+	int points_life_gain = 0;
+	int time_points = 0;
+	int points_hit = 0;
+	float points_first_wait = 0;
+	float points_second_wait = 0;
+	bool life_done = false;
+	bool time_done = false;
+	bool hit_percent_done = false;
+	int total_points = 0;
 };
 
 #endif // !_MODULE_UI

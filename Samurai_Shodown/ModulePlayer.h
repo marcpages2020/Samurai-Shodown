@@ -71,6 +71,8 @@ public:
 	Animation crouch_kick;
 	Animation twister;
 	Animation twisterAlone;
+	int hit_percent = 0;
+	int hit_done = 0;
 	Animation die;
 	iPoint position;
 	iPoint lposition;

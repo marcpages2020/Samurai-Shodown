@@ -334,10 +334,12 @@ update_status ModulePlayer2::PreUpdate()
 			if (player_input2.pressing_right)
 				state2 = BACKWARD2;
 			if (player_input2.pressing_N){
+				hit_done++;
 				state2 = KICK2;
 			App->audio->PlayFX(light_kick_fx);
 		}
 			if (player_input2.pressing_M) {
+				hit_done++;
 				state2 = PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
 			}
@@ -346,6 +348,7 @@ update_status ModulePlayer2::PreUpdate()
 			if (player_input2.pressing_down)
 				state2 = CROUCH_DOWN2;
 			if (player_input2.pressing_B) {
+				hit_done++;
 				App->audio->PlayFX(twister_fx);
 				state2 = TWISTER2;
 			}
@@ -353,20 +356,32 @@ update_status ModulePlayer2::PreUpdate()
 		if (state2 == BACKWARD2) {
 			if (!player_input2.pressing_right)
 				state2 = IDLE2;
-			if (player_input2.pressing_M)
+			if (player_input2.pressing_M) {
+				hit_done++;
 				state2 = PUNCH2;
-			if (player_input2.pressing_N)
+			}
+
+			if (player_input2.pressing_N) {
+				hit_done++;
 				state2 = KICK2;
+			}
+
 			if (player_input2.pressing_up)
 				state2 = JUMP_BACKWARD2;
 		}
 		if (state2 == FORWARD2) {
 			if (!player_input2.pressing_left)
 				state2 = IDLE2;
-			if (player_input2.pressing_M)
+			if (player_input2.pressing_M) {
+				hit_done++;
 				state2 = PUNCH2;
-			if (player_input2.pressing_N)
+			}
+				
+			if (player_input2.pressing_N) {
+				hit_done++;
 				state2 = KICK2;
+			}
+		
 			if (player_input2.pressing_up)
 				state2 = JUMP_FORWARD2;
 		}
@@ -422,10 +437,12 @@ update_status ModulePlayer2::PreUpdate()
 				crouch_down2.Reset();
 			}
 			if (player_input2.pressing_N) {
+				hit_done++;
 				state2 = CROUCH_KICK2;
 				App->audio->PlayFX(light_kick_fx);				
 			}
 			if (player_input2.pressing_M) {
+				hit_done++;
 				state2 = CROUCH_PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
 			}
@@ -441,6 +458,7 @@ update_status ModulePlayer2::PreUpdate()
 		{
 			if (current_animation->Finished())
 			{
+				hit_done++;
 				state2 = IDLE2;
 				twister2.Reset();
 				is_tornado_created2 = false;
@@ -849,6 +867,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			break;
 		case COLLIDER_PLAYER_1_ATTACK:
 			if (!App->player->collider_player_attack->to_delete) {
+				App->player->hit_percent++;
 				switch (App->player->state)
 				{
 				case States::KICK:

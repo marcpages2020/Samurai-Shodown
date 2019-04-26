@@ -82,6 +82,8 @@ public:
 	Collider *test_collider = nullptr;
 	int life = 100;
 	int mult = 1;
+	int hit_percent = 0;
+	int hit_done = 0;
 	Animation* current_animation = nullptr;
 	PlayerInput2 player_input2;
 	States2 state2;

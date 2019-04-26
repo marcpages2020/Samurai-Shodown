@@ -110,6 +110,35 @@ bool ModuleUI::Start() {
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
 	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
+	App->player->life = 100;
+	App->player->position = App->player->initial_position;
+	App->player->state = IDLE;
+	App->player2->life = 100;
+	App->player2->position = App->player2->initial_position;
+	App->player2->state2 = IDLE2;
+	time_fight = 96;
+	animKO_active = false;
+	App->render->camera.x = App->render->camera.y = 0;
+	App->render->SetCamera();
+	ippon.Reset();
+	ippon_finished = false;
+	haohmaru.Reset();
+	App->player->hit_done = 0;
+	App->player->hit_percent = 0;
+	App->player2->hit_done = 0;
+	App->player2->hit_percent = 0;
+	haomaru_finished = false;
+	die_scene = false;
+	total_points = 0;
+	points_done = false;
+	well_done.Reset();
+	victory_anim.Reset();
+	ippon_time = 0;
+	points_first_wait = 0;
+	points_second_wait = 0;
+	life_done = false;
+	time_done = false;
+	hit_percent_done = false;
 	return true;
 }
 
@@ -165,13 +194,24 @@ update_status ModuleUI::Update() {
 	{
 		player2_wins++;
 		round_end = true;
+		points_life_gain = (6400 * App->player2->life) / 100;
+		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
+		float percent = ((float)(App->player2->hit_percent * 100) / (float)(App->player2->hit_done * 100));
+		points_hit = ((percent * 100) * 20000) / 100;
+		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 	}
 	// player 2 dies
 	if (App->player2->life <= 0)
 	{
 		player1_wins++;
 		App->player2->state2 = States2::DEATH2;
+		points_life_gain = (6400 * App->player->life) / 100;
+		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
+		float percent = ((float)(App->player->hit_percent * 100) / (float)(App->player->hit_done * 100));
+		points_hit = ((percent*100) * 20000) / 100;
+		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 		round_end = true;
+		
 	}
 	if (round_end == true)
 	{
@@ -376,12 +416,20 @@ bool ModuleUI::HorizontalTransition() {
 
 void ModuleUI::timer() {
 	if (!App->is_paused) {
-		if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
-			--time_fight;
-			start_time = SDL_GetTicks();
+		if (!die_scene) {
+			if (start_time <= SDL_GetTicks() - 1000 && time_fight > 0) {
+				--time_fight;
+				start_time = SDL_GetTicks();
+			}
 		}
+		
 	}
-	sprintf_s(time_text, 10, "%7d", time_fight);
+	if (!die_scene) {
+		sprintf_s(time_text, 10, "%7d", time_fight);
+		time_points = time_fight * 100;
+		sprintf_s(char_time, 10, "%7d", time_points);
+	}
+		
 	App->fonts->BlitText(177, 40, timer_font, time_text);
 	if (time_fight == 0) {
 		if (App->player->life > App->player2->life)
@@ -416,18 +464,29 @@ void ModuleUI::ResetScene() {
 	ippon.Reset();
 	ippon_finished = false;
 	haohmaru.Reset();
+	App->player->hit_done = 0;
+	App->player->hit_percent = 0;
+	App->player2->hit_done = 0;
+	App->player2->hit_percent = 0;
 	haomaru_finished = false;
 	die_scene = false;
+	total_points = 0;
+	points_done = false;
 	well_done.Reset();
 	victory_anim.Reset();
 	ippon_time = 0;
+	points_first_wait = 0;
+	points_second_wait = 0;
+	life_done = false;
+	time_done = false;
+	hit_percent_done = false;
 }
 
 void ModuleUI::DieScene()
 {
 
 	if (die_scene) {
-		if (player1_wins != 2 && player2_wins != 2) {
+		if (player1_wins != 2 && player2_wins != 2 && !points_done) {
 			if (!ippon_finished) {
 				if (ippon_time >= SDL_GetTicks() - 1000) {
 					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
@@ -449,11 +508,12 @@ void ModuleUI::DieScene()
 					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 				}
 				else {
-					die_scene = false;
+					points_done = true;
+					points_first_wait = SDL_GetTicks();
 				}
 			}
 		}
-		else if (player1_wins == 2) {
+		else if (player1_wins == 2 && !points_done) {
 			if (!ippon_finished) {
 				if (ippon_time >= SDL_GetTicks() - 1000) {
 					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &victory_anim.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
@@ -475,10 +535,111 @@ void ModuleUI::DieScene()
 					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 143, SCREEN_HEIGHT / 2 - 16, &well_done.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 				}
 				else {
-					die_scene = false;
+					points_done = true;
+					points_first_wait = SDL_GetTicks();
 				}
 			}
 		}
-	}
+		else if (player2_wins == 2 && !points_done) {
+			if (!ippon_finished) {
+				if (ippon_time >= SDL_GetTicks() - 1000) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &victory_anim.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+				}
+				else if (victory_anim.SeeCurrentFrame() < 13) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &victory_anim.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				}
+				else {
+					ippon_finished = true;
+					haohmaru_time = SDL_GetTicks();
+					rest_time = SDL_GetTicks();
+				}
+			}
+			if (!haomaru_finished && ippon_finished && rest_time <= SDL_GetTicks() - 500) {
+				if (haohmaru_time >= SDL_GetTicks() - 2000) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 143, SCREEN_HEIGHT / 2 - 16, &well_done.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+				}
+				else if (well_done.SeeCurrentFrame() < 13) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 143, SCREEN_HEIGHT / 2 - 16, &well_done.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				}
+				else {
+					points_done = true;
+					points_first_wait = SDL_GetTicks();
+				}
+			}
+		}
+		if (points_done) {
+			SDL_Rect r{ 706,0,75,127 };
+			App->render->Blit(finish_round, 103, 65, &r, SDL_FLIP_NONE, 1.0F, false);
+			if (points_first_wait >= SDL_GetTicks() - 800) {
+				App->fonts->BlitText(193, 68, timer_font, point_gain_life);
+				App->fonts->BlitText(193, 105, timer_font, char_time);
+				App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
+				App->fonts->BlitText(193, 174, timer_font, "0");
+			} 
+			else if (!life_done && !time_done && !hit_percent_done && points_first_wait < SDL_GetTicks() - 800) {
+				if (points_life_gain > 0) {
+					points_life_gain-=100;
+					total_points+=100;
+					sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
+					App->fonts->BlitText(193, 68, timer_font, point_gain_life);
+					sprintf_s(char_total, 10, "%7d", total_points);
+					App->fonts->BlitText(193, 174, timer_font, char_total);
+				}
+				else {
+					life_done = true;
+					points_life_gain = 0;
+					sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
+				}
+					
+				App->fonts->BlitText(193, 105, timer_font, char_time);
+				App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
+			}
+			else if (life_done && !time_done && !hit_percent_done && points_first_wait < SDL_GetTicks() - 800) {
+				if (time_points > 0) {
+					time_points-=100;
+					total_points+=100;
+					sprintf_s(char_time, 10, "%7d", time_points);
+					App->fonts->BlitText(193, 105, timer_font, char_time);
+					sprintf_s(char_total, 10, "%7d", total_points);
+					App->fonts->BlitText(193, 174, timer_font, char_total);
+				}
+				else {
+					time_points = 0;
+					sprintf_s(char_time, 10, "%7d", time_points);
+					time_done = true;
+				}
+					
+				App->fonts->BlitText(193, 68, timer_font, point_gain_life);
+				App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
+			}
+			else if (life_done && time_done && !hit_percent_done && points_first_wait < SDL_GetTicks() - 800) {
+				if (points_hit > 0) {
+					points_hit -= 100;
+					total_points += 100;
+					sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
+					App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
+					sprintf_s(char_total, 10, "%7d", total_points);
+					App->fonts->BlitText(193, 174, timer_font, char_total);
+				}
+				else {
+					points_hit = 0;
+					sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
+					hit_percent_done = true;
+					points_second_wait = SDL_GetTicks();
+				}
+				App->fonts->BlitText(193, 105, timer_font, char_time);
+				App->fonts->BlitText(193, 68, timer_font, point_gain_life);
+			}
+			else if (life_done && time_done && hit_percent_done && points_first_wait < SDL_GetTicks() - 800 && points_second_wait <= SDL_GetTicks() - 1500) {
 
+				die_scene = false;
+			}
+			else {
+				App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
+				App->fonts->BlitText(193, 174, timer_font, char_total);
+				App->fonts->BlitText(193, 105, timer_font, char_time);
+				App->fonts->BlitText(193, 68, timer_font, point_gain_life);
+			}
+		}
+	}
 }

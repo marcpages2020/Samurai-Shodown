@@ -335,10 +335,12 @@ update_status ModulePlayer::PreUpdate()
 					state = FORWARD;
 				if (player_input.pressing_J) {
 					state = KICK;
+					hit_done++;
 					App->audio->PlayFX(light_kick_fx);
 				}
 				if (player_input.pressing_U) {
 					state = PUNCH;
+					hit_done++;
 					App->audio->PlayFX(light_attack_fx);
 				}
 				if (player_input.pressing_W)
@@ -347,6 +349,7 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_DOWN;
 				if (player_input.pressing_K) {
 					App->audio->PlayFX(twister_fx);
+					hit_done++;
 					state = TWISTER;
 				}
 			}
@@ -355,11 +358,14 @@ update_status ModulePlayer::PreUpdate()
 					state = IDLE;
 				if (player_input.pressing_U) 
 				{
+					hit_done++;
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_J)
+				if (player_input.pressing_J) {
+					hit_done++;
 					state = KICK;
+				}
 				if (player_input.pressing_W)
 					state = JUMP_BACKWARD;
 			}
@@ -367,11 +373,14 @@ update_status ModulePlayer::PreUpdate()
 				if (!player_input.pressing_D)
 					state = IDLE;
 				if (player_input.pressing_U) {
+					hit_done++;
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_J)
+				if (player_input.pressing_J) {
 					state = KICK;
+					hit_done++;
+				}
 				if (player_input.pressing_W)
 					state = JUMP_FORWARD;
 			}
@@ -428,10 +437,12 @@ update_status ModulePlayer::PreUpdate()
 					crouch_down.Reset();
 				}
 				if (player_input.pressing_J) {
+					hit_done++;
 					state = CROUCH_KICK;
 					App->audio->PlayFX(light_kick_fx);
 				}
 				if (player_input.pressing_U) {
+					hit_done++;
 					state = CROUCH_PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
@@ -834,6 +845,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
 		if (!App->player2->collider_player_2_attack->to_delete) {
+			App->player2->hit_percent++;
 			App->audio->PlayFX(hit_fx);
 			life -= 10;
 			state = HIT;
