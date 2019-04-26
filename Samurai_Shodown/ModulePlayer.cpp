@@ -774,8 +774,13 @@ update_status ModulePlayer::Update()
 	
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	if (position.x < App->player2->position.x) {
+		flip = SDL_FLIP_NONE;
+	}
+	else {
+		flip = SDL_FLIP_HORIZONTAL;
+	}
+	App->render->Blit(graphics, position.x, position.y - r.h, &r, flip);
 
 	return UPDATE_CONTINUE;
 }

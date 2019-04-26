@@ -318,20 +318,20 @@ bool ModulePlayer2::Start()
 update_status ModulePlayer2::PreUpdate()
 {
 	if (!App->is_paused) {
-		player_input2.pressing_1 = App->input->keyboard[SDL_SCANCODE_1] == KEY_REPEAT;
-		player_input2.pressing_3 = App->input->keyboard[SDL_SCANCODE_3] == KEY_REPEAT;
-		player_input2.pressing_2 = App->input->keyboard[SDL_SCANCODE_2] == KEY_REPEAT;
+		player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT;
+		player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT;
+		player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT;
+		player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN;
 		player_input2.pressing_N = App->input->keyboard[SDL_SCANCODE_N] == KEY_DOWN;
 		player_input2.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN;
-		player_input2.pressing_5 = App->input->keyboard[SDL_SCANCODE_5] == KEY_DOWN;
 		player_input2.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
 		player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
 
 		if (state2 == IDLE2) {
-			if (player_input2.pressing_1)
+			if (player_input2.pressing_left)
 				state2 = FORWARD2;
-			if (player_input2.pressing_3)
+			if (player_input2.pressing_right)
 				state2 = BACKWARD2;
 			if (player_input2.pressing_N){
 				state2 = KICK2;
@@ -341,9 +341,9 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
 			}
-			if (player_input2.pressing_5)
+			if (player_input2.pressing_up)
 				state2 = JUMP_NEUTRAL2;
-			if (player_input2.pressing_2)
+			if (player_input2.pressing_down)
 				state2 = CROUCH_DOWN2;
 			if (player_input2.pressing_B) {
 				App->audio->PlayFX(twister_fx);
@@ -351,23 +351,23 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		if (state2 == BACKWARD2) {
-			if (!player_input2.pressing_3)
+			if (!player_input2.pressing_right)
 				state2 = IDLE2;
 			if (player_input2.pressing_M)
 				state2 = PUNCH2;
 			if (player_input2.pressing_N)
 				state2 = KICK2;
-			if (player_input2.pressing_5)
+			if (player_input2.pressing_up)
 				state2 = JUMP_BACKWARD2;
 		}
 		if (state2 == FORWARD2) {
-			if (!player_input2.pressing_1)
+			if (!player_input2.pressing_left)
 				state2 = IDLE2;
 			if (player_input2.pressing_M)
 				state2 = PUNCH2;
 			if (player_input2.pressing_N)
 				state2 = KICK2;
-			if (player_input2.pressing_5)
+			if (player_input2.pressing_up)
 				state2 = JUMP_FORWARD2;
 		}
 		if (state2 == KICK2) {
@@ -416,7 +416,7 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == CROUCH_DOWN2)
 		{
-			if (!player_input2.pressing_2)
+			if (!player_input2.pressing_down)
 			{
 				state2 = CROUCH_UP2;
 				crouch_down2.Reset();
@@ -794,8 +794,13 @@ update_status ModulePlayer2::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-
-	App->render->Blit(graphics, position.x, position.y - r.h, &r,SDL_FLIP_HORIZONTAL);
+	if (position.x < App->player->position.x) {
+		flip = SDL_FLIP_NONE;
+	}
+	else {
+		flip = SDL_FLIP_HORIZONTAL;
+	}
+	App->render->Blit(graphics, position.x, position.y - r.h, &r,flip);
 
 	return UPDATE_CONTINUE;
 }
@@ -821,12 +826,12 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		switch (c2->type)
 		{
 		case COLLIDER_WALL_LEFT:
-			if (!player_input2.pressing_3)
+			if (!player_input2.pressing_right)
 				position.x += speed;
 
 			break;
 		case COLLIDER_WALL_RIGHT:
-			if (!player_input2.pressing_1)
+			if (!player_input2.pressing_left)
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER:

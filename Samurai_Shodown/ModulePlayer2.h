@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleParticles.h"
+#include "SDL/include/SDL_render.h"
 #include "ModuleAudio.h"
 
 struct SDL_Texture;
@@ -30,10 +31,10 @@ enum States2 {
 
 
 struct PlayerInput2 {
-	bool pressing_1;
-	bool pressing_3;
-	bool pressing_2;
-	bool pressing_5;
+	bool pressing_left;
+	bool pressing_right;
+	bool pressing_down;
+	bool pressing_up;
 	bool pressing_B;
 	bool pressing_N;
 	bool pressing_M;
@@ -91,6 +92,7 @@ public:
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	int attack_frames = 0;
+	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 };
 
 #endif // !_ModulePlayer2_H
