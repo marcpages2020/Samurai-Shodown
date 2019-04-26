@@ -29,23 +29,42 @@ ModuleUI::ModuleUI() {
 	ippon.PushBack({ 0,y += 32,92,32 }, 0.6F);
 	ippon.loop = false;
 
-	y = -33;
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
-	haohmaru.PushBack({ 102,y += 33,127,33 }, 0.6F);
+	y = -32;
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
+	haohmaru.PushBack({ 102,y += 32,127,32 }, 0.6F);
 	haohmaru.loop = false;
+
+	float speed = 0.5F;
+	y = -32;
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
+	victory_anim.loop = false;
 
 }
 
@@ -374,36 +393,65 @@ void ModuleUI::ResetScene() {
 	ippon_finished = false;
 	haohmaru.Reset();
 	haomaru_finished = false;
+	victory_anim.Reset();
 }
 
 void ModuleUI::DieScene()
 {
 
 	if (die_scene) {
-		if (!ippon_finished) {
-			if (ippon_time >= SDL_GetTicks() - 1000) {
-				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+		if (player1_wins != 2 && player2_wins != 2) {
+			if (!ippon_finished) {
+				if (ippon_time >= SDL_GetTicks() - 1000) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+				}
+				else if (ippon.SeeCurrentFrame() < 13) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				}
+				else {
+					ippon_finished = true;
+					haohmaru_time = SDL_GetTicks();
+					rest_time = SDL_GetTicks();
+				}
 			}
-			else if (ippon.SeeCurrentFrame() < 13) {
-				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 46, SCREEN_HEIGHT / 2 - 16, &ippon.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
-			}
-			else {
-				ippon_finished = true;
-				haohmaru_time = SDL_GetTicks();
+			if (!haomaru_finished && ippon_finished && rest_time <= SDL_GetTicks() - 500) {
+				if (haohmaru_time >= SDL_GetTicks() - 2000) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+				}
+				else if (haohmaru.SeeCurrentFrame() < 14) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				}
+				else {
+					die_scene = false;
+				}
 			}
 		}
-		if (!haomaru_finished && ippon_finished) {
-			if (haohmaru_time >= SDL_GetTicks() - 2000) {
-				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+		else if (player1_wins == 2) {
+			if (!ippon_finished) {
+				if (ippon_time >= SDL_GetTicks() - 1000) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &victory_anim.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+				}
+				else if (victory_anim.SeeCurrentFrame() < 13) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &victory_anim.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				}
+				else {
+					ippon_finished = true;
+					haohmaru_time = SDL_GetTicks();
+					rest_time = SDL_GetTicks();
+				}
 			}
-			else if (haohmaru.SeeCurrentFrame() < 14) {
-				App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
-			}
-			else {
-				die_scene = false;
+			if (!haomaru_finished && ippon_finished && rest_time <= SDL_GetTicks() - 500) {
+				if (haohmaru_time >= SDL_GetTicks() - 2000) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+				}
+				else if (haohmaru.SeeCurrentFrame() < 14) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				}
+				else {
+					die_scene = false;
+				}
 			}
 		}
-		
 	}
 
 }

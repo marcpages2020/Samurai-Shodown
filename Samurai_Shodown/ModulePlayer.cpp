@@ -302,6 +302,8 @@ bool ModulePlayer::Start()
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
+	App->ui->player1_point = 0;
+	App->ui->player2_point = 0;
 	state = IDLE;
 	current_animation = &idle;
 	if (!collider_player_up)

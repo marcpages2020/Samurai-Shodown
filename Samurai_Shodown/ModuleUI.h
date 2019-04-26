@@ -76,7 +76,9 @@ public:
 	Animation haohmaru;
 	float haohmaru_time = 0;
 	bool ippon_finished = false;
+	float rest_time = 0;
 	bool haomaru_finished = false;
+	Animation victory_anim;
 };
 
 #endif // !_MODULE_UI
