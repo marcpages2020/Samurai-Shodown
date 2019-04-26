@@ -7,6 +7,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "SDL/include/SDL_render.h"
 
 struct SDL_Texture;
 
@@ -91,6 +92,7 @@ public:
 	Mix_Chunk* hit_fx;
 	int attack_frames=0;
 	void PlayerCollidersCleanUp();
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
 
 #endif // __ModulePlayer_H__

@@ -333,6 +333,7 @@ void ModuleUI::timer() {
 			player2_wins++;
 			round_end = true;
 		}
+		die_scene = true;
 	}
 }
 
