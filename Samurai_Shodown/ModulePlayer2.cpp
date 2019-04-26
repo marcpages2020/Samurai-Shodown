@@ -388,9 +388,9 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_NEUTRAL2)
 		{
-			if (player_input2.pressing_3)
+			if (player_input2.pressing_right)
 				state2 = JUMP_BACKWARD2;
-			if (player_input2.pressing_1)
+			if (player_input2.pressing_left)
 				state2 = JUMP_FORWARD2;
 			if (current_animation->Finished())
 			{
