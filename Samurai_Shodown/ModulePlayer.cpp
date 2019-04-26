@@ -391,6 +391,10 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_NEUTRAL)
 			{
+				if (player_input.pressing_A)
+					state = JUMP_BACKWARD;
+				if (player_input.pressing_D)
+					state = JUMP_FORWARD;
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -513,8 +517,8 @@ update_status ModulePlayer::Update()
 			position.y = initial_position.y;
 			if (collider_player_up != nullptr)
 			{
-				collider_player_up->SetPos(position.x + 15, position.y - 85);
-				collider_player_up->SetSize(30, 40);
+				collider_player_up->SetPos(position.x + 15, position.y - 80);
+				collider_player_up->SetSize(30, 35);
 			}
 			if (collider_player_down != nullptr)
 			{
@@ -614,7 +618,7 @@ update_status ModulePlayer::Update()
 			}
 			position.y -= speed * 2 * mult;
 
-			if (position.y <= 120) {
+			if (position.y <= 115) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -647,7 +651,7 @@ update_status ModulePlayer::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed;
 
-			if (position.y <= 120) {
+			if (position.y <= 110) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -680,7 +684,7 @@ update_status ModulePlayer::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x -= 1.25*speed;
 
-			if (position.y <= 120) {
+			if (position.y <= 110) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
