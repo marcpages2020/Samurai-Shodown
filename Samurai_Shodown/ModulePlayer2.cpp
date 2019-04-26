@@ -350,7 +350,6 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = TWISTER2;
 			}
 		}
-
 		if (state2 == BACKWARD2) {
 			if (!player_input2.pressing_right)
 				state2 = IDLE2;
@@ -389,6 +388,10 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_NEUTRAL2)
 		{
+			if (player_input2.pressing_right)
+				state2 = JUMP_BACKWARD2;
+			if (player_input2.pressing_left)
+				state2 = JUMP_FORWARD2;
 			if (current_animation->Finished())
 			{
 				state2 = IDLE2;
@@ -460,7 +463,6 @@ update_status ModulePlayer2::PreUpdate()
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				hit2.Reset();
-
 			}
 		}
 		if ((player_input2.pressing_F5) && (collider_player_2_up != nullptr)) {
@@ -510,12 +512,12 @@ update_status ModulePlayer2::Update()
 			position.y = lposition.y;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
-				collider_player_2_up->SetSize(30, 40);
+				collider_player_2_up->SetPos(position.x + 25, position.y - 80);
+				collider_player_2_up->SetSize(30, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
+				collider_player_2_down->SetPos(position.x + 20, position.y - 45);
 				collider_player_2_down->SetSize(40, 45);
 			}
 			break;
@@ -646,26 +648,26 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_forward2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 30, position.y - 90);
+				collider_player_2_up->SetPos(position.x, position.y - 90);
 				collider_player_2_up->SetSize(40, 50);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 10, position.y - 50);
+				collider_player_2_down->SetPos(position.x +20, position.y - 50);
 				collider_player_2_down->SetSize(30, 50);
 			}
-			if (current_animation->SeeCurrentFrame() > 4)
+			if (current_animation->SeeCurrentFrame() > 5)
 			{
 				if (collider_player_2_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 10, position.y - 45);
+					collider_player_2_up->SetPos(position.x, position.y - 45);
 					collider_player_2_up->SetSize(45, 35);
 				}
 			}
 			position.y -= speed * 1.75 * mult;
 			position.x -= 1.25*speed;
 
-			if (position.y <= 120) {
+			if (position.y <= 110) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -698,7 +700,7 @@ update_status ModulePlayer2::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed;
 
-			if (position.y <= 120) {
+			if (position.y <= 110) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -773,7 +775,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 		case HIT2:
-			current_animation = &hit2;
+			current_animation = &hit2;			
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
@@ -792,8 +794,13 @@ update_status ModulePlayer2::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-
-	App->render->Blit(graphics, position.x, position.y - r.h, &r,SDL_FLIP_HORIZONTAL);
+	if (position.x < App->player->position.x) {
+		flip = SDL_FLIP_NONE;
+	}
+	else {
+		flip = SDL_FLIP_HORIZONTAL;
+	}
+	App->render->Blit(graphics, position.x, position.y - r.h, &r,flip);
 
 	return UPDATE_CONTINUE;
 }
@@ -833,8 +840,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				if (position.x < App->player->position.x)
 				{
 					position.x = lposition.x - speed;
-				}
-
+				}				
 				else
 				{
 					position.x = lposition.x + speed;
@@ -859,6 +865,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					break;
 				case States::TWISTER:
 					App->ui->player1_point += 400;
+					break;				
 				default:
 					break;
 				}
@@ -876,9 +883,6 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					position.x += 10;
 				}
 			}
-
-
-
 			break;
 		case COLLIDER_PLAYER_PARTICLES:
 			App->audio->PlayFX(hit_fx);
