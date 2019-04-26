@@ -30,10 +30,10 @@ enum States2 {
 
 
 struct PlayerInput2 {
-	bool pressing_1;
-	bool pressing_3;
-	bool pressing_2;
-	bool pressing_5;
+	bool pressing_left;
+	bool pressing_right;
+	bool pressing_down;
+	bool pressing_up;
 	bool pressing_B;
 	bool pressing_N;
 	bool pressing_M;
