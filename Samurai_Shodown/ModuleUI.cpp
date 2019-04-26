@@ -67,20 +67,20 @@ ModuleUI::ModuleUI() {
 	victory_anim.loop = false;
 
 	y = -32;
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
-	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
 	well_done.loop = false;
 
 }
@@ -101,6 +101,8 @@ bool ModuleUI::Start() {
 	current_life2 = max_capacity;
 	current_life1 = max_capacity;
 	player1_point = 0;
+	player1_wins = 0;
+	player2_wins = 0;
 	player2_point = 0;
 	animKO_active = false;
 	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
@@ -415,8 +417,10 @@ void ModuleUI::ResetScene() {
 	ippon_finished = false;
 	haohmaru.Reset();
 	haomaru_finished = false;
+	die_scene = false;
 	well_done.Reset();
 	victory_anim.Reset();
+	ippon_time = 0;
 }
 
 void ModuleUI::DieScene()
@@ -465,12 +469,10 @@ void ModuleUI::DieScene()
 			}
 			if (!haomaru_finished && ippon_finished && rest_time <= SDL_GetTicks() - 500) {
 				if (haohmaru_time >= SDL_GetTicks() - 2000) {
-					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 101, SCREEN_HEIGHT / 2 - 16, &well_done.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
-					App->render->Blit(finish_round, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 143, SCREEN_HEIGHT / 2 - 16, &well_done.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 				}
-				else if (haohmaru.SeeCurrentFrame() < 14) {
-					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 101, SCREEN_HEIGHT / 2 - 16, &well_done.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
-					App->render->Blit(finish_round, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+				else if (well_done.SeeCurrentFrame() < 13) {
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 143, SCREEN_HEIGHT / 2 - 16, &well_done.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 				}
 				else {
 					die_scene = false;
