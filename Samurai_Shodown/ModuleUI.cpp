@@ -111,6 +111,8 @@ bool ModuleUI::Start() {
 	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
 	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	App->player->life = 100;
+	player1_win = false;
+	player2_win = false;
 	App->player->position = App->player->initial_position;
 	App->player->state = IDLE;
 	App->player2->life = 100;
@@ -192,6 +194,7 @@ update_status ModuleUI::Update() {
 	
 	if (App->player->life <= 0)
 	{
+		player2_win = true;
 		player2_wins++;
 		round_end = true;
 		points_life_gain = (6400 * App->player2->life) / 100;
@@ -203,6 +206,7 @@ update_status ModuleUI::Update() {
 	// player 2 dies
 	if (App->player2->life <= 0)
 	{
+		player1_win = true;
 		player1_wins++;
 		App->player2->state2 = States2::DEATH2;
 		points_life_gain = (6400 * App->player->life) / 100;
@@ -473,6 +477,8 @@ void ModuleUI::ResetScene() {
 	total_points = 0;
 	points_done = false;
 	well_done.Reset();
+	player1_win = false;
+	player2_win = false;
 	victory_anim.Reset();
 	ippon_time = 0;
 	points_first_wait = 0;
@@ -578,6 +584,10 @@ void ModuleUI::DieScene()
 			} 
 			else if (!life_done && !time_done && !hit_percent_done && points_first_wait < SDL_GetTicks() - 800) {
 				if (points_life_gain > 0) {
+					if (player1_win)
+						player1_point += 100;
+					else if (player2_win)
+						player2_point += 100;
 					points_life_gain-=100;
 					total_points+=100;
 					sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
@@ -596,6 +606,10 @@ void ModuleUI::DieScene()
 			}
 			else if (life_done && !time_done && !hit_percent_done && points_first_wait < SDL_GetTicks() - 800) {
 				if (time_points > 0) {
+					if (player1_win)
+						player1_point += 100;
+					else if (player2_win)
+						player2_point += 100;
 					time_points-=100;
 					total_points+=100;
 					sprintf_s(char_time, 10, "%7d", time_points);
@@ -614,6 +628,10 @@ void ModuleUI::DieScene()
 			}
 			else if (life_done && time_done && !hit_percent_done && points_first_wait < SDL_GetTicks() - 800) {
 				if (points_hit > 0) {
+					if (player1_win)
+						player1_point += 100;
+					else if (player2_win)
+						player2_point += 100;
 					points_hit -= 100;
 					total_points += 100;
 					sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
