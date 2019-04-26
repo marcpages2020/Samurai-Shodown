@@ -79,6 +79,7 @@ public:
 	float rest_time = 0;
 	bool haomaru_finished = false;
 	Animation victory_anim;
+	Animation well_done;
 };
 
 #endif // !_MODULE_UI

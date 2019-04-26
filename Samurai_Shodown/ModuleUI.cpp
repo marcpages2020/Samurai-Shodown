@@ -66,6 +66,23 @@ ModuleUI::ModuleUI() {
 	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
 	victory_anim.loop = false;
 
+	y = -32;
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.PushBack({ 367,y += 32,127,32 }, 0.6F);
+	well_done.loop = false;
+
 }
 
 ModuleUI::~ModuleUI() {}
@@ -181,12 +198,17 @@ update_status ModuleUI::Update() {
 		ippon_time = SDL_GetTicks();
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F7])
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
 	{
 		round_end = true;
 		//victory = true;
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_F11] == KEY_DOWN)
+	{
+		round_end = true;
+		player1_wins++;
+		//victory = true;
+	}
 	if (vtransition == true && !die_scene)
 	{
 		if (App->ui->VerticalTransition() == false)
@@ -393,6 +415,7 @@ void ModuleUI::ResetScene() {
 	ippon_finished = false;
 	haohmaru.Reset();
 	haomaru_finished = false;
+	well_done.Reset();
 	victory_anim.Reset();
 }
 
@@ -442,10 +465,12 @@ void ModuleUI::DieScene()
 			}
 			if (!haomaru_finished && ippon_finished && rest_time <= SDL_GetTicks() - 500) {
 				if (haohmaru_time >= SDL_GetTicks() - 2000) {
-					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 101, SCREEN_HEIGHT / 2 - 16, &well_done.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 16, &haohmaru.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 				}
 				else if (haohmaru.SeeCurrentFrame() < 14) {
-					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 63, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 101, SCREEN_HEIGHT / 2 - 16, &well_done.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+					App->render->Blit(finish_round, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 16, &haohmaru.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 				}
 				else {
 					die_scene = false;
