@@ -350,7 +350,6 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = TWISTER2;
 			}
 		}
-
 		if (state2 == BACKWARD2) {
 			if (!player_input2.pressing_3)
 				state2 = IDLE2;
@@ -389,6 +388,10 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_NEUTRAL2)
 		{
+			if (player_input2.pressing_3)
+				state2 = JUMP_BACKWARD2;
+			if (player_input2.pressing_1)
+				state2 = JUMP_FORWARD2;
 			if (current_animation->Finished())
 			{
 				state2 = IDLE2;
@@ -460,7 +463,6 @@ update_status ModulePlayer2::PreUpdate()
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				hit2.Reset();
-
 			}
 		}
 		if ((player_input2.pressing_F5) && (collider_player_2_up != nullptr)) {
@@ -773,7 +775,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 		case HIT2:
-			current_animation = &hit2;
+			current_animation = &hit2;			
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
@@ -833,8 +835,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				if (position.x < App->player->position.x)
 				{
 					position.x = lposition.x - speed;
-				}
-
+				}				
 				else
 				{
 					position.x = lposition.x + speed;
@@ -859,6 +860,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					break;
 				case States::TWISTER:
 					App->ui->player1_point += 400;
+					break;				
 				default:
 					break;
 				}
@@ -876,9 +878,6 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					position.x += 10;
 				}
 			}
-
-
-
 			break;
 		case COLLIDER_PLAYER_PARTICLES:
 			App->audio->PlayFX(hit_fx);

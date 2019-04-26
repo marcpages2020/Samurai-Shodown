@@ -391,6 +391,10 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_NEUTRAL)
 			{
+				if (player_input.pressing_A)
+					state = JUMP_BACKWARD;
+				if (player_input.pressing_D)
+					state = JUMP_FORWARD;
 				if (current_animation->Finished())
 				{
 					state = IDLE;
