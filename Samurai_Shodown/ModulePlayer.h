@@ -35,12 +35,12 @@ struct PlayerInput {
 
 	bool pressing_A;
 	bool pressing_D;
-	bool pressing_U;
-	bool pressing_J;
+	bool pressing_C;
+	bool pressing_B;
 	bool pressing_W;
 	bool pressing_S;
-	bool pressing_K;
-	bool pressing_F5;
+	bool pressing_V;
+	bool pressing_F4;
 };
 
 class ModulePlayer : public Module
@@ -79,6 +79,7 @@ public:
 	Animation die;
 	iPoint position;
 	iPoint lposition;
+	bool god = false;
 	iPoint initial_position;
 	Collider *collider_player_up = nullptr;
 	Collider *collider_player_mid = nullptr;

@@ -344,11 +344,11 @@ update_status ModulePlayer::PreUpdate()
 		player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
 		player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
 		player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-		player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
-		player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
+		player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN;
+		player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;
 		player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
-		player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
-		player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
+		player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
+		player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 
 		//states 
 		{
@@ -357,12 +357,12 @@ update_status ModulePlayer::PreUpdate()
 					state = BACKWARD;
 				if (player_input.pressing_D)
 					state = FORWARD;
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					state = KICK;
 					hit_done++;
 					App->audio->PlayFX(light_kick_fx);
 				}
-				if (player_input.pressing_U) {
+				if (player_input.pressing_V) {
 					state = PUNCH;
 					hit_done++;
 					App->audio->PlayFX(light_attack_fx);
@@ -371,7 +371,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_NEUTRAL;
 				if (player_input.pressing_S)
 					state = CROUCH_DOWN;
-				if (player_input.pressing_K) {
+				if (player_input.pressing_B) {
 					App->audio->PlayFX(twister_fx);
 					hit_done++;
 					state = TWISTER;
@@ -380,13 +380,13 @@ update_status ModulePlayer::PreUpdate()
 			if (state == BACKWARD) {
 				if (!player_input.pressing_A)
 					state = IDLE;
-				if (player_input.pressing_U) 
+				if (player_input.pressing_V) 
 				{
 					hit_done++;
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					hit_done++;
 					state = KICK;
 				}
@@ -396,12 +396,12 @@ update_status ModulePlayer::PreUpdate()
 			if (state == FORWARD) {
 				if (!player_input.pressing_D)
 					state = IDLE;
-				if (player_input.pressing_U) {
+				if (player_input.pressing_V) {
 					hit_done++;
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					state = KICK;
 					hit_done++;
 				}
@@ -460,12 +460,12 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_UP;
 					crouch_down.Reset();
 				}
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					hit_done++;
 					state = CROUCH_KICK;
 					App->audio->PlayFX(light_kick_fx);
 				}
-				if (player_input.pressing_U) {
+				if (player_input.pressing_V) {
 					hit_done++;
 					state = CROUCH_PUNCH;
 					App->audio->PlayFX(light_attack_fx);
@@ -516,29 +516,8 @@ update_status ModulePlayer::PreUpdate()
 			}
 		}
 
-		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
-			collider_player_up->to_delete = true;
-			collider_player_up = nullptr;
-
-			if (collider_player_mid != nullptr)
-			{
-				collider_player_mid->to_delete = true;
-				collider_player_mid = nullptr;
-			}
-
-			if (collider_player_down != nullptr)
-			{
-				collider_player_down->to_delete = true;
-				collider_player_down = nullptr;
-			}
-		}
-		else if ((player_input.pressing_F5) && (collider_player_up == nullptr))
-		{
-			collider_player_up = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-			if (collider_player_down == nullptr)
-			{
-				collider_player_down = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-			}
+		if ((player_input.pressing_F4)) {
+			god = !god;
 		}
 
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (collider_player_attack != nullptr))
@@ -985,7 +964,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		}
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
-		if (!App->player2->collider_player_2_attack->to_delete) {
+		if (!App->player2->collider_player_2_attack->to_delete && !god) {
 			App->player2->hit_percent++;
 			App->audio->PlayFX(hit_fx);
 			life -= 10;

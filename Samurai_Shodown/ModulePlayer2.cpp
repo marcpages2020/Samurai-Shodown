@@ -324,6 +324,7 @@ bool ModulePlayer2::Start()
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/Hit_1.wav");
 	state2 = IDLE2;
+	god = false;
 	life = 100;
 	current_animation = &idle2;
 	if (!collider_player_2_up)
@@ -343,9 +344,9 @@ update_status ModulePlayer2::PreUpdate()
 		player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT;
 		player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT;
 		player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN;
-		player_input2.pressing_N = App->input->keyboard[SDL_SCANCODE_N] == KEY_DOWN;
-		player_input2.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN;
-		player_input2.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
+		player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
+		player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
+		player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN;
 		player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
 
@@ -354,12 +355,12 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = FORWARD2;
 			if (player_input2.pressing_right)
 				state2 = BACKWARD2;
-			if (player_input2.pressing_N){
+			if (player_input2.pressing_J){
 				hit_done++;
 				state2 = KICK2;
 			App->audio->PlayFX(light_kick_fx);
 		}
-			if (player_input2.pressing_M) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
@@ -368,7 +369,7 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_NEUTRAL2;
 			if (player_input2.pressing_down)
 				state2 = CROUCH_DOWN2;
-			if (player_input2.pressing_B) {
+			if (player_input2.pressing_L) {
 				hit_done++;
 				App->audio->PlayFX(twister_fx);
 				state2 = TWISTER2;
@@ -377,12 +378,12 @@ update_status ModulePlayer2::PreUpdate()
 		if (state2 == BACKWARD2) {
 			if (!player_input2.pressing_right)
 				state2 = IDLE2;
-			if (player_input2.pressing_M) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = PUNCH2;
 			}
 
-			if (player_input2.pressing_N) {
+			if (player_input2.pressing_J) {
 				hit_done++;
 				state2 = KICK2;
 			}
@@ -393,12 +394,12 @@ update_status ModulePlayer2::PreUpdate()
 		if (state2 == FORWARD2) {
 			if (!player_input2.pressing_left)
 				state2 = IDLE2;
-			if (player_input2.pressing_M) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = PUNCH2;
 			}
 				
-			if (player_input2.pressing_N) {
+			if (player_input2.pressing_J) {
 				hit_done++;
 				state2 = KICK2;
 			}
@@ -457,12 +458,12 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = CROUCH_UP2;
 				crouch_down2.Reset();
 			}
-			if (player_input2.pressing_N) {
+			if (player_input2.pressing_J) {
 				hit_done++;
 				state2 = CROUCH_KICK2;
 				App->audio->PlayFX(light_kick_fx);				
 			}
-			if (player_input2.pressing_M) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = CROUCH_PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
@@ -536,6 +537,8 @@ update_status ModulePlayer2::PreUpdate()
 			{
 				collider_player_2_down = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 			}
+		if ((player_input2.pressing_F5)) {
+			god = !god;
 		}
 
 		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (collider_player_2_attack != nullptr))
@@ -988,7 +991,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			}
 			break;
 		case COLLIDER_PLAYER_1_ATTACK:
-			if (!App->player->collider_player_attack->to_delete) {
+			if (!App->player->collider_player_attack->to_delete && !god) {
 				App->player->hit_percent++;
 				switch (App->player->state)
 				{
