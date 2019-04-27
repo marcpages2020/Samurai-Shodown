@@ -609,9 +609,17 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetSize(50, 30);
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
+				collider_player_2_up->SetPos(position.x + 20, position.y - 65);
+				collider_player_2_up->SetSize(35, 35);
+
+				collider_player_2_down->SetPos(position.x + 10, position.y - 30);
+				collider_player_2_down->SetSize(50, 30);
 				
+				collider_player_2_up->SetPos(position.x + 45, position.y - 65);
+				collider_player_2_up->SetSize(35, 35);
 
-
+				collider_player_2_down->SetPos(position.x + 30, position.y - 30);
+				collider_player_2_down->SetSize(50, 30);
 			}
 			break;
 		case CROUCH_UP2:

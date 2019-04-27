@@ -640,7 +640,18 @@ update_status ModulePlayer::Update()
 				collider_player_down->SetSize(50, 30);
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
-			
+				collider_player_up->SetPos(position.x - 15, position.y - 80);
+				collider_player_up->SetSize(35, 50);
+
+				collider_player_down->SetPos(position.x - 20, position.y - 30);
+				collider_player_down->SetSize(50, 30);
+				
+				collider_player_up->SetPos(position.x - 40, position.y - 65);
+				collider_player_up->SetSize(35, 35);
+				
+				collider_player_down->SetPos(position.x - 40, position.y - 30);
+				collider_player_down->SetSize(50, 30);
+				
 			
 			}
 			break;
