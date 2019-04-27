@@ -530,8 +530,8 @@ update_status ModulePlayer2::Update()
 			position.y = lposition.y;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x - 10, position.y - 80);
-				collider_player_2_up->SetSize(30, 35);
+				collider_player_2_up->SetPos(position.x - 10, position.y - 75);
+				collider_player_2_up->SetSize(30, 30);
 			}
 			if (collider_player_2_down != nullptr)
 			{
