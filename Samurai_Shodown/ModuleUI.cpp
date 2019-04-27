@@ -48,6 +48,7 @@ ModuleUI::ModuleUI() {
 	haohmaru.loop = false;
 
 	float speed = 0.5F;
+
 	y = -32;
 	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
 	victory_anim.PushBack({ 243,y += 32,111,32 }, speed);
@@ -83,6 +84,37 @@ ModuleUI::ModuleUI() {
 	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
 	well_done.loop = false;
 
+	//en garde
+	{
+		en_garde.PushBack({ 805,0,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,32,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,64,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,96,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,128,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,160,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,192,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,224,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,256,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,288,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,320,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,352,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,384,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,416,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,448,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,480,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,512,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,544,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,576,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,608,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,640,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,672,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,704,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,736,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,768,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,800,194,32 }, 0.4f);
+		en_garde.loop = false;
+
+	}
 }
 
 ModuleUI::~ModuleUI() {}

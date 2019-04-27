@@ -26,6 +26,8 @@ public:
 	Animation animKO;
 	bool animKO_active = false;
 	
+	SDL_Rect* en_garde_rect = nullptr;
+
 	//BARS
 	int max_capacity = 0;
 	int max_width = 128;
@@ -85,6 +87,7 @@ public:
 	bool haomaru_finished = false;
 	Animation victory_anim;
 	Animation well_done;
+	Animation en_garde;
 	bool points_done = false;
 	int points_life_gain = 0;
 	int time_points = 0;
