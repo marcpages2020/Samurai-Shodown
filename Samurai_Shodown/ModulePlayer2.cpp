@@ -611,6 +611,7 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
 				collider_player_2_down->SetSize(40, 45);
+				shadow_x = position.x - shadow_w / 2;
 			}
 			break;
 		case FORWARD2:
