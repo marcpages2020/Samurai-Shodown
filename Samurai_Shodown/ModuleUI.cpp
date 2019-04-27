@@ -83,6 +83,40 @@ ModuleUI::ModuleUI() {
 	well_done.PushBack({ 367,y += 32,286,32 }, 0.6F);
 	well_done.loop = false;
 
+	y = -32;
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.PushBack({ 269,y += 32,111,32 }, 0.6F);
+	time_up_anim.loop = false;
+
+	y = -32;
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.PushBack({ 406,y += 32,63,32 }, 0.6F);
+	draw_anim.loop = false;
+
 }
 
 ModuleUI::~ModuleUI() {}
@@ -121,14 +155,17 @@ bool ModuleUI::Start() {
 	time_fight = 96;
 	animKO_active = false;
 	App->render->camera.x = App->render->camera.y = 0;
+	draw_anim.Reset();
 	App->render->SetCamera();
 	ippon.Reset();
 	ippon_finished = false;
 	haohmaru.Reset();
+	is_draw = false;
 	App->player->hit_done = 0;
 	App->player->hit_percent = 0;
 	App->player2->hit_done = 0;
 	App->player2->hit_percent = 0;
+	time_up = false;
 	haomaru_finished = false;
 	die_scene = false;
 	total_points = 0;
@@ -141,6 +178,7 @@ bool ModuleUI::Start() {
 	points_second_wait = 0;
 	life_done = false;
 	time_done = false;
+	time_up_anim.Reset();
 	hit_percent_done = false;
 	return true;
 }
@@ -450,6 +488,7 @@ void ModuleUI::timer() {
 		}
 		else if (App->player->life == App->player2->life)
 		{
+			is_draw = true;
 			draw++;
 			round_end = true;
 		}
@@ -464,11 +503,14 @@ void ModuleUI::timer() {
 			round_end = true;
 		}
 		time_count = true;
+		time_up = true;
+		time_up_wait = SDL_GetTicks();
 	}
 }
 
 void ModuleUI::ResetScene() {
 	App->player->life = 100;
+	time_up = false;
 	App->player->position = App->player->initial_position;
 	App->player->state = IDLE;
 	App->player2->life = 100;
@@ -481,6 +523,7 @@ void ModuleUI::ResetScene() {
 	ippon.Reset();
 	ippon_finished = false;
 	haohmaru.Reset();
+	draw_anim.Reset();
 	App->player->hit_done = 0;
 	App->player->hit_percent = 0;
 	App->player2->hit_done = 0;
@@ -494,10 +537,12 @@ void ModuleUI::ResetScene() {
 	player1_win = false;
 	player2_win = false;
 	victory_anim.Reset();
+	time_up_anim.Reset();
 	ippon_time = 0;
 	points_first_wait = 0;
 	points_second_wait = 0;
 	life_done = false;
+	is_draw = false;
 	time_done = false;
 	hit_percent_done = false;
 }
@@ -505,7 +550,7 @@ void ModuleUI::ResetScene() {
 void ModuleUI::DieScene()
 {
 
-	if (die_scene && (player1_win || player2_win)) {
+	if (die_scene && (player1_win || player2_win) && !time_up) {
 		if (player1_wins != 2 && player2_wins != 2 && !points_done) {
 			if (!ippon_finished) {
 				if (ippon_time >= SDL_GetTicks() - 1000) {
@@ -674,7 +719,27 @@ void ModuleUI::DieScene()
 			}
 		}
 	}
-	else if (die_scene && !player1_win && !player2_win) {
-
+	else if (time_up) {
+		if (time_up_wait > SDL_GetTicks() - 1000) {
+			App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &time_up_anim.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+		}
+		else if (time_up_anim.SeeCurrentFrame() < 13) {
+			App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 16, &time_up_anim.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+		}
+		else {
+			time_up = false;
+			ippon_time = SDL_GetTicks();
+		}
+	}
+	else if (die_scene && !player1_win && !player2_win && !time_up) {
+		if (ippon_time > SDL_GetTicks() - 1000) {
+			App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 31, SCREEN_HEIGHT / 2 - 16, &draw_anim.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+		}
+		else if (draw_anim.SeeCurrentFrame() < 13) {
+			App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 31, SCREEN_HEIGHT / 2 - 16, &draw_anim.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+		}
+		else {
+			die_scene = false;
+		}
 	}
 }

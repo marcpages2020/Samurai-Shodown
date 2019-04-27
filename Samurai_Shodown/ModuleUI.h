@@ -91,8 +91,13 @@ public:
 	int points_hit = 0;
 	float points_first_wait = 0;
 	float points_second_wait = 0;
+	bool is_draw = false;
 	bool player1_win = false;
+	Animation draw_anim;
+	Animation time_up_anim;
 	bool player2_win = false;
+	bool time_up = false;
+	float time_up_wait = 0;
 	bool time_count = false;
 	bool life_done = false;
 	bool time_done = false;
