@@ -35,11 +35,11 @@ struct PlayerInput {
 
 	bool pressing_A;
 	bool pressing_D;
-	bool pressing_U;
-	bool pressing_J;
+	bool pressing_C;
+	bool pressing_B;
 	bool pressing_W;
 	bool pressing_S;
-	bool pressing_K;
+	bool pressing_V;
 	bool pressing_F4;
 };
 

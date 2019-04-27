@@ -35,9 +35,9 @@ struct PlayerInput2 {
 	bool pressing_right;
 	bool pressing_down;
 	bool pressing_up;
-	bool pressing_B;
-	bool pressing_N;
-	bool pressing_M;
+	bool pressing_J;
+	bool pressing_K;
+	bool pressing_L;
 	bool pressing_F5;
 };
 
