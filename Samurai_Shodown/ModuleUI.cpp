@@ -660,4 +660,7 @@ void ModuleUI::DieScene()
 			}
 		}
 	}
+	else if (die_scene && !player1_win && !player2_win) {
+
+	}
 }
