@@ -365,7 +365,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	position.x = initial_position.x = 280;
+	position.x = initial_position.x = shadow_x = 280;
 	position.y = initial_position.y =215;
 	lposition = position;
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
@@ -616,6 +616,7 @@ update_status ModulePlayer2::Update()
 		case FORWARD2:
 			current_animation = &forward2;
 			position.x -= speed;
+			shadow_x = position.x;
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x - 10, position.y - 85);
@@ -636,6 +637,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case BACKWARD2:
 			current_animation = &backward2;
+			shadow_x = position.x;
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x - 25, position.y - 85);
@@ -651,13 +653,14 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 20, position.y - 45);
 				collider_player_2_down->SetSize(50, 45);
+				shadow_x -= shadow_w / 3 - 5;
 			}
 			position.x += speed;
 			break;
 
 		case CROUCH_DOWN2:
 			current_animation = &crouch_down2;
-
+			shadow_x = position.x-5;
 			if (collider_player_2_up != nullptr)
 			{
 				collider_player_2_up->SetPos(position.x - 15, position.y - 80);
@@ -687,6 +690,7 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 30, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
+				shadow_x -= shadow_w / 3;
 			}
 			break;
 		case CROUCH_UP2:
@@ -694,7 +698,6 @@ update_status ModulePlayer2::Update()
 			break;
 		case CROUCH_KICK2:
 			current_animation = &crouch_kick2;
-
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr) {
 					collider_player_2_up->SetPos(position.x + 10, position.y - 55);
@@ -729,7 +732,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case CROUCH_PUNCH2:
 			current_animation = &crouch_punch2;
-
+			shadow_x = position.x;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				collider_player_2_up->SetPos(position.x + 55, position.y - 45);
 				collider_player_2_up->SetSize(38, 35);
@@ -741,6 +744,7 @@ update_status ModulePlayer2::Update()
 				{
 					collider_player_2_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
 				}
+				shadow_x -= shadow_w / 3;
 			}
 			else {
 				if (collider_player_2_up != nullptr)
@@ -1012,6 +1016,7 @@ update_status ModulePlayer2::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	if (position.x < App->player->position.x) {
 		flip = SDL_FLIP_NONE;
 	}
@@ -1019,10 +1024,14 @@ update_status ModulePlayer2::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
+		App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
 		App->render->Blit(App->player->graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
-	else
-		App->render->Blit(App->player->graphics, position.x, position.y - r.h, &r,flip);
+	else {
+		App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+		App->render->Blit(App->player->graphics, position.x, position.y - r.h, &r, flip);
+	}
+
 
 	return UPDATE_CONTINUE;
 }
