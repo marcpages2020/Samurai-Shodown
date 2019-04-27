@@ -118,7 +118,10 @@ update_status ModuleSceneCongrats::Update()
 			right_black_square.x += 5;
 		}
 	}
-	
+	if (App->ui->player1_wins == 2)
+		App->fonts->BlitText(120, 20, font, "PLAYER ONE WINS");
+	else 
+		App->fonts->BlitText(120, 20, font, "PLAYER TWO WINS");
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo,2.5f);

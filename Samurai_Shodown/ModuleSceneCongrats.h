@@ -39,6 +39,7 @@ public:
 	int font = 0;
 	int sentence;
 	bool transition = false;
+	int font_point_numbers = -1;
 };
 
 #endif // __MODULESCENECONGRATS_H__
