@@ -610,6 +610,13 @@ update_status ModulePlayer::Update()
 				collider_player_down->SetPos(position.x + 20, position.y - 45);
 				collider_player_down->SetSize(50, 45);
 			}
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 25, position.y - 85);
+				collider_player_up->SetSize(35, 40);
+
+				collider_player_down->SetPos(position.x - 30, position.y - 45);
+				collider_player_down->SetSize(50, 45);
+			}
 			position.x -= speed;
 			break;
 
