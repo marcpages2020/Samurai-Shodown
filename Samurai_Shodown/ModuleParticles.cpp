@@ -122,7 +122,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -135,9 +135,10 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			if (collider_type != COLLIDER_NONE)
 				p->coll = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
-			break;
+			return p;
 		}
 	}
+
 }
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)

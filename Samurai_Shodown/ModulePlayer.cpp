@@ -965,23 +965,40 @@ update_status ModulePlayer::Update()
 			break;
 		case TWISTER:
 			current_animation = &twister;
-			if (collider_player_up != nullptr)
-			{
-				collider_player_up->SetPos(position.x + 45, position.y - 75);
-				collider_player_up->SetSize(40, 45);
-			}
-			if (collider_player_down != nullptr)
-			{
-				collider_player_down->SetPos(position.x + 30, position.y - 35);
-				collider_player_down->SetSize(60, 40);
-			}
-			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
-				App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
-				is_tornado_created = true;
-			}
+			
 			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 45, position.y - 75);
+					collider_player_up->SetSize(40, 45);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 30, position.y - 35);
+					collider_player_down->SetSize(60, 40);
+				}
+				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+					Particle* p = App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+					is_tornado_created = true;
+					p->speed = { -2,0 };
+				}
 
-
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 45, position.y - 75);
+					collider_player_up->SetSize(40, 45);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 30, position.y - 35);
+					collider_player_down->SetSize(60, 40);
+				}
+				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+					App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+					is_tornado_created = true;
+				}
 			}
 			break;
 		case WIN:
