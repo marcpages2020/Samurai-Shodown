@@ -323,10 +323,9 @@ update_status ModuleUI::Update() {
 		round_end = true;
 		//victory = true;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_F11] == KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
 	{
-		round_end = true;
-		player1_wins++;
+		time_fight = 0;
 		//victory = true;
 	}
 	if (vtransition == true && !die_scene)

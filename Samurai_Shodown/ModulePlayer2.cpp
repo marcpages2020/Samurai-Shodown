@@ -303,6 +303,7 @@ bool ModulePlayer2::Start()
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/Hit_1.wav");
 	state2 = IDLE2;
+	god = false;
 	life = 100;
 	current_animation = &idle2;
 	if (!collider_player_2_up)
@@ -483,29 +484,8 @@ update_status ModulePlayer2::PreUpdate()
 				hit2.Reset();
 			}
 		}
-		if ((player_input2.pressing_F5) && (collider_player_2_up != nullptr)) {
-			collider_player_2_up->to_delete = true;
-			collider_player_2_up = nullptr;
-
-			if (collider_player_2_mid != nullptr)
-			{
-				collider_player_2_mid->to_delete = true;
-				collider_player_2_mid = nullptr;
-			}
-
-			if (collider_player_2_down != nullptr)
-			{
-				collider_player_2_down->to_delete = true;
-				collider_player_2_down = nullptr;
-			}
-		}
-		else if ((player_input2.pressing_F5) && (collider_player_2_up == nullptr))
-		{
-			collider_player_2_up = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player2);
-			if (collider_player_2_down == nullptr)
-			{
-				collider_player_2_down = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER_2, (Module*)App->player2);
-			}
+		if ((player_input2.pressing_F5)) {
+			god = !god;
 		}
 
 		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (collider_player_2_attack != nullptr))
@@ -955,7 +935,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			}
 			break;
 		case COLLIDER_PLAYER_1_ATTACK:
-			if (!App->player->collider_player_attack->to_delete) {
+			if (!App->player->collider_player_attack->to_delete && !god) {
 				App->player->hit_percent++;
 				switch (App->player->state)
 				{

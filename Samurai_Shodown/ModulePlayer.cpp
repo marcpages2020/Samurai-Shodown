@@ -348,7 +348,7 @@ update_status ModulePlayer::PreUpdate()
 		player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
 		player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 		player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
-		player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
+		player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 
 		//states 
 		{
@@ -516,29 +516,8 @@ update_status ModulePlayer::PreUpdate()
 			}
 		}
 
-		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
-			collider_player_up->to_delete = true;
-			collider_player_up = nullptr;
-
-			if (collider_player_mid != nullptr)
-			{
-				collider_player_mid->to_delete = true;
-				collider_player_mid = nullptr;
-			}
-
-			if (collider_player_down != nullptr)
-			{
-				collider_player_down->to_delete = true;
-				collider_player_down = nullptr;
-			}
-		}
-		else if ((player_input.pressing_F5) && (collider_player_up == nullptr))
-		{
-			collider_player_up = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-			if (collider_player_down == nullptr)
-			{
-				collider_player_down = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-			}
+		if ((player_input.pressing_F4)) {
+			god = !god;
 		}
 
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (collider_player_attack != nullptr))
@@ -985,7 +964,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		}
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
-		if (!App->player2->collider_player_2_attack->to_delete) {
+		if (!App->player2->collider_player_2_attack->to_delete && !god) {
 			App->player2->hit_percent++;
 			App->audio->PlayFX(hit_fx);
 			life -= 10;

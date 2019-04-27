@@ -55,9 +55,13 @@ update_status ModuleSceneKyoshiro::Update()
 	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
 	App->render->Blit(graphics, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_congrats, 2.5);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN))
+	{
+		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_haohmaru, 1.5f);
 	}
 
 	return UPDATE_CONTINUE;
