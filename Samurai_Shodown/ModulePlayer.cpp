@@ -308,6 +308,7 @@ ModulePlayer::ModulePlayer()
 			en_garde.PushBack({ 1721, 236,131, 127 }, 0.4f);
 			en_garde.loop = false;
 		}
+<<<<<<< HEAD
 
 		//win animation
 		{
@@ -359,6 +360,8 @@ ModulePlayer::ModulePlayer()
 			win.PushBack({1052, 2666, 72, 112}, 0.15f);
 			win.loop = false;
 		}
+=======
+>>>>>>> 2b222270164a649b6afac359cb18ec4c5b99e462
 }
 }
 
@@ -565,6 +568,7 @@ update_status ModulePlayer::PreUpdate()
 					en_garde.Reset();
 				}
 			}
+<<<<<<< HEAD
 			if (state == WIN)
 			{
 				if(current_animation->Finished())
@@ -573,6 +577,8 @@ update_status ModulePlayer::PreUpdate()
 					win.Reset();
 				}
 			}
+=======
+>>>>>>> 2b222270164a649b6afac359cb18ec4c5b99e462
 		}
 
 		if ((player_input.pressing_F4)) {
@@ -957,9 +963,6 @@ update_status ModulePlayer::Update()
 			break;
 		case EN_GARDE:
 			current_animation = &en_garde;
-			break;
-		case WIN:
-			current_animation = &win;
 			break;
 		default:
 			LOG("No state found :(");

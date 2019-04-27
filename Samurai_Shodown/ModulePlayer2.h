@@ -26,9 +26,13 @@ enum States2 {
 	PUNCH2,
 	TWISTER2,
 	HIT2,
+<<<<<<< HEAD
 	EN_GARDE2,
 	DEATH2,
 	WIN2
+=======
+	DEATH2
+>>>>>>> 2b222270164a649b6afac359cb18ec4c5b99e462
 };
 
 
@@ -76,7 +80,6 @@ public:
 	Animation crouch_kick2;
 	Animation twister2;
 	Animation twisterAlone2;
-	Animation en_garde2;
 	iPoint position;
 	iPoint lposition;
 	iPoint initial_position;
