@@ -2,11 +2,41 @@
 
 
 
-We are four students from CITM in Terrassa and in our Project 1 subject we are making a tribute to the Samurai Shodown.
+We are four students from CITM in Terrassa and in our Project 1 subject we are making a tribute to the Samurai Shodown (fighting game).
 
+## Controls
 
+* Sapce to pass/skip screens(intros and ending).
+* F1 to show colliders
+* F2 change between the two stages
+* F3 Go to win screen
+* F4 god mode player 1
+* F5 god mode player 2
+* F6 pause game
+* F7 finish round as a draw
+* F8 finish round seting the time to 0
 
-Team:
+### Player 1
+
+* A to go left
+* D to go right
+* W to jump
+* S to crouch
+* C to kick
+* V to punch
+* B to do a twister
+
+### Player 2
+
+* Left arrow to go left
+* Right arrow to go right
+* Up arrow to jump
+* Down arrow to crouch
+* J to kick
+* K to punch
+* L to do a twister
+
+## Team:
 
 Marc Pages: https://github.com/marcpages2020
 
