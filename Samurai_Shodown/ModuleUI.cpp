@@ -122,31 +122,31 @@ ModuleUI::ModuleUI() {
 	//en garde
 	{
 		en_garde.PushBack({ 805,0,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,32,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,64,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,96,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,128,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,160,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,192,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,224,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,256,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,288,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,320,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,352,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,384,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,416,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,448,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,480,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,512,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,544,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,576,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,608,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,640,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,672,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,704,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,736,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,768,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,800,194,32 }, 0.4f);
+		en_garde.PushBack({ 806,33,194,32 }, 0.4f);
+		en_garde.PushBack({ 806,66,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,99,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,132,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,165,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,198,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,231,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,264,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,297,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,330,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,363,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,395,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,429,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,461,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,493,194,32 }, 0.4f);
+		en_garde.PushBack({ 804,524,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,558,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,590,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,622,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,654,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,686,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,718,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,749,194,32 }, 0.4f);
+		en_garde.PushBack({ 806,781,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,813,194,32 }, 0.4f);
 		en_garde.loop = false;
 
 	}
@@ -208,12 +208,14 @@ bool ModuleUI::Start() {
 	victory_anim.Reset();
 	ippon_time = 0;
 	points_first_wait = 0;
+	en_garde_bool = true;
 	points_second_wait = 0;
 	life_done = false;
 	time_done = false;
 	time_up_anim.Reset();
 	hit_percent_done = false;
 	App->player->state = EN_GARDE;
+	App->player2->state2 = EN_GARDE2;
 	return true;
 }
 
@@ -355,7 +357,16 @@ update_status ModuleUI::Update() {
 			App->ui->HorizontalTransition();
 		}
 	}
-	
+	if (en_garde_bool == true)
+	{
+		
+		App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 2 - 50, &en_garde.GetCurrentFrame());
+		if (en_garde.Finished())
+		{
+			en_garde.Reset();
+			en_garde_bool = false;
+		}
+	}
 	return UPDATE_CONTINUE;
 }
 
