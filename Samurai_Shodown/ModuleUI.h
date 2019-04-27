@@ -94,7 +94,7 @@ public:
 	int points_hit = 0;
 	float points_first_wait = 0;
 	float points_second_wait = 0;
-
+	bool show_ui=false;
 	bool is_draw = false;
 	bool player1_win = false;
 	Animation draw_anim;

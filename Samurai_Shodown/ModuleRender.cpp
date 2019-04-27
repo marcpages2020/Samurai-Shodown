@@ -187,14 +187,27 @@ void ModuleRender::MoveCamera()
 			camera.x -= App->player->speed * SCREEN_SIZE;
 		}
 	}
-	else if ((player_2.x > right->rect.x - 50)) {
+	else if ((player_2.x > right->rect.x - 48)) {
 		if (player_1.x > left->rect.x + left->rect.w) {
 			right->rect.x += App->player->speed;
 			left->rect.x += App->player->speed;
 			camera.x += App->player->speed * SCREEN_SIZE;
 		}
 	}
-
+	if ((player_2.x < left->rect.x + left->rect.w)) {
+		if (player_1.x + 50 < right->rect.x) {
+			right->rect.x -= App->player->speed;
+			left->rect.x -= App->player->speed;
+			camera.x -= App->player->speed * SCREEN_SIZE;
+		}
+	}
+	else if ((player_1.x > right->rect.x - 50)) {
+		if (player_2.x > left->rect.x + left->rect.w) {
+			right->rect.x += App->player->speed;
+			left->rect.x += App->player->speed;
+			camera.x += App->player->speed * SCREEN_SIZE;
+		}
+	}
 }
 
 void ModuleRender::SetCamera()

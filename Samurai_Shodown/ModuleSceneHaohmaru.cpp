@@ -54,7 +54,7 @@ bool ModuleSceneHaohmaru::Start()
 	App->player2->Enable();
 	App->ui->Enable();
 	left_wall = App->collision->AddCollider({ -121,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
-	right_wall= App->collision->AddCollider({ 389,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
+	right_wall= App->collision->AddCollider({ 390,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	App->ui->start_time = SDL_GetTicks();
 	App->render->SetCamera();
 	return ret;
@@ -65,12 +65,11 @@ bool ModuleSceneHaohmaru::CleanUp()
 {
 	LOG("Unloading Haohmaru Scene");
 	App->textures->Unload(graphics);
+	App->audio->UnLoadMusic(music);
 	Mix_FadeOutMusic(1250);
 	App->player->Disable();
 	App->player2->Disable();
 	App->ui->Disable();
-	App->audio->UnLoadMusic(music);
-	//App->collision->CleanUp();
 	left_wall = nullptr;
 	right_wall = nullptr;
 	App->render->left = nullptr;
@@ -88,7 +87,7 @@ update_status ModuleSceneHaohmaru::Update()
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE);
 	App->render->MoveCamera();
 
-	if((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)||(App->ui->victory==true && !App->ui->die_scene))
+	if(((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)||(App->ui->victory==true && !App->ui->die_scene))||(App->ui->draw==3 && !App->ui->die_scene))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,1.5f);
 	}

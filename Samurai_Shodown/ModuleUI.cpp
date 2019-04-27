@@ -220,17 +220,20 @@ bool ModuleUI::Start() {
 }
 
 bool ModuleUI::CleanUp() {
+
 	LOG("UI Unloaded\n");
 	App->textures->Unload(ui_png);
 	App->textures->Unload(finish_round);
 	App->fonts->UnLoad(font_point_numbers);
 	App->fonts->UnLoad(timer_font);
 	App->audio->UnLoadFx(ippon_fx);
+	App->audio->UnLoadFx(victory_fx);
 	return true;
 }
 
 update_status ModuleUI::Update() {
-
+	if (show_ui==true)
+	{
 	UpdateBars();
 	timer();
 	DieScene();
@@ -243,13 +246,13 @@ update_status ModuleUI::Update() {
 	App->fonts->BlitText(313, 8, font_point_numbers, point_text2);
 
 	SDL_Rect player1_p{ 182,0,23,8 }; // P1 =
-	App->render->Blit(ui_png, 27, 8, &player1_p, SDL_FLIP_NONE,1.0F,false);
+	App->render->Blit(ui_png, 27, 8, &player1_p, SDL_FLIP_NONE, 1.0F, false);
 	SDL_Rect player2_p{ 182,8,23,16 }; // P2 =
 	App->render->Blit(ui_png, 263, 8, &player2_p, SDL_FLIP_NONE, 1.0F, false);
 
 	// KO image
-	if (!animKO_active) { 
-		App->render->Blit(ui_png, SCREEN_WIDTH/2 - 13, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+	if (!animKO_active) {
+		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 	}
 	else {
 		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13 / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
@@ -266,7 +269,8 @@ update_status ModuleUI::Update() {
 	//player 2 bar
 	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
 	App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, 1.0F, false); //
-	
+
+	// player 1 dies
 	if (App->player->life <= 0)
 	{
 		player2_win = true;
@@ -290,10 +294,10 @@ update_status ModuleUI::Update() {
 		points_life_gain = (6400 * App->player->life) / 100;
 		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
 		float percent = ((float)(App->player->hit_percent * 100) / (float)(App->player->hit_done * 100));
-		points_hit = ((percent*100) * 20000) / 100;
+		points_hit = ((percent * 100) * 20000) / 100;
 		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 		round_end = true;
-		
+
 	}
 	if (round_end == true)
 	{
@@ -321,10 +325,10 @@ update_status ModuleUI::Update() {
 		die_scene = true;
 		ippon_time = SDL_GetTicks();
 	}
-
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
 	{
 		round_end = true;
+		draw++;
 		//victory = true;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
@@ -357,6 +361,7 @@ update_status ModuleUI::Update() {
 			App->ui->HorizontalTransition();
 		}
 	}
+	}
 	if (en_garde_bool == true)
 	{
 		
@@ -365,6 +370,7 @@ update_status ModuleUI::Update() {
 		{
 			en_garde.Reset();
 			en_garde_bool = false;
+			show_ui = true;
 		}
 	}
 	return UPDATE_CONTINUE;
