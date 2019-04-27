@@ -148,9 +148,9 @@ ModulePlayer2::ModulePlayer2()
 		{
 			punch2.PushBack({ 14, 236, 69, 130 }, 0.5f);
 			punch2.PushBack({ 87, 236, 69, 130 }, 0.3f);
-			punch2.PushBack({ 160, 236, 79, 127 }, 0.3f);
+			punch2.PushBack({ 164, 235, 79, 127 }, 0.3f);
 			punch2.PushBack({ 243, 236, 79, 127 }, 0.5f);
-			punch2.PushBack({ 327, 236, 79, 127 }, 0.5f);
+			punch2.PushBack({ 331, 236, 79, 127 }, 0.5f);
 			punch2.PushBack({ 410, 236, 129, 127 }, 0.5f);
 			punch2.PushBack({ 545, 236, 130, 127 }, 0.5f);
 			punch2.PushBack({ 679, 236, 130, 127 }, 0.5f);
@@ -797,18 +797,18 @@ update_status ModulePlayer2::Update()
 			current_animation = &punch2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x, position.y - 60);
+				collider_player_2_up->SetPos(position.x-20, position.y - 60);
 				collider_player_2_up->SetSize(50, 47);
 			}
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x + 5, position.y - 10);
+				collider_player_2_down->SetPos(position.x-10, position.y - 10);
 				collider_player_2_down->SetSize(70, 15);
 			}
 			if (collider_player_2_attack == nullptr)
 			{
-				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-
+				collider_player_2_attack = App->collision->AddCollider({ position.x-500, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+				collider_player_2_attack->SetSize(560, 300);
 			}
 			collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
 			collider_player_2_attack->SetSize(67, 30);
