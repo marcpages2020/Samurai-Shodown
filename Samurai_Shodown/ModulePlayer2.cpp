@@ -602,8 +602,11 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetSize(50, 30);
 			}
 			if (collider_player_2_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
-				collider_player_2_up->SetPos(position.x, position.y - 65);
+				collider_player_2_up->SetPos(position.x-40, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
+				
+				collider_player_2_down->SetPos(position.x - 40, position.y - 30);
+				collider_player_2_down->SetSize(50, 30);
 			}
 			
 			break;
