@@ -659,21 +659,17 @@ update_status ModulePlayer2::Update()
 			current_animation = &crouch_punch2;
 			if (collider_player_2_up != nullptr)
 			{
-				collider_player_2_up->SetPos(position.x + 45, position.y - 65);
+				collider_player_2_up->SetPos(position.x-40, position.y - 65);
 				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_down != nullptr)
 			{
-				collider_player_2_down->SetPos(position.x, position.y - 30);
+				collider_player_2_down->SetPos(position.x-30, position.y - 30);
 				collider_player_2_down->SetSize(100, 30);
-			}
-			if (current_animation->SeeCurrentFrame() < 3 || current_animation->SeeCurrentFrame() > 7) {
-				collider_player_2_up->SetPos(position.x, position.y - 65);
-				collider_player_2_up->SetSize(35, 35);
 			}
 			if (collider_player_2_attack == nullptr)
 			{
-				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+				collider_player_2_attack = App->collision->AddCollider({ position.x-70, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
 
