@@ -559,6 +559,13 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetPos(position.x - 15, position.y - 45);
 				collider_player_2_down->SetSize(35, 45);
 			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
+				collider_player_2_up->SetSize(30, 40);
+
+				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
+				collider_player_2_down->SetSize(35, 45);
+			}
 			break;
 		case BACKWARD2:
 			current_animation = &backward2;
