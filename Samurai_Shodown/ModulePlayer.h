@@ -95,6 +95,7 @@ public:
 	States state;
 	float speed = 2;
 	bool is_tornado_created = false;
+	bool shadow_blit = true;
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;

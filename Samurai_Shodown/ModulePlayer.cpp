@@ -1038,7 +1038,6 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	
-
 	if (position.x < App->player2->position.x) {
 		flip = SDL_FLIP_NONE;
 	}
@@ -1046,13 +1045,25 @@ update_status ModulePlayer::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
-		App->render->Blit(graphics, shadow_x- shadow.w/2, initial_position.y - 7, &shadow, flip);
+		if (shadow_blit) {
+			App->render->Blit(graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+			shadow_blit = false;
+		}
+		else 
+			shadow_blit = true;
 		App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
-		App->render->Blit(graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+		if (shadow_blit) {
+			App->render->Blit(graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+			shadow_blit = false;
+		}
+		else
+			shadow_blit = true;
 		App->render->Blit(graphics, position.x, position.y - r.h, &r, flip);
+
 	}
+
 	return UPDATE_CONTINUE;
 }
 
