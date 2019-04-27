@@ -927,7 +927,6 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x + 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
 				}
-
 			}
 			break;
 		case DEATH:
@@ -974,12 +973,12 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 45, position.y - 75);
+					collider_player_up->SetPos(position.x , position.y - 75);
 					collider_player_up->SetSize(40, 45);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 30, position.y - 35);
+					collider_player_down->SetPos(position.x -20, position.y - 35);
 					collider_player_down->SetSize(60, 40);
 				}
 				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
@@ -987,17 +986,16 @@ update_status ModulePlayer::Update()
 					is_tornado_created = true;
 					p->speed = { -2,0 };
 				}
-
 			}
 			else {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 45, position.y - 75);
+					collider_player_up->SetPos(position.x+15, position.y - 75);
 					collider_player_up->SetSize(40, 45);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 30, position.y - 35);
+					collider_player_down->SetPos(position.x+10, position.y - 35);
 					collider_player_down->SetSize(60, 40);
 				}
 				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {

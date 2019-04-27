@@ -54,10 +54,10 @@ bool Application::Init()
 	player->Disable();
 	player2->Disable();
 	// Disable the map that you do not start with
-	//neo_geo->Disable();
+	neo_geo->Disable();
 	scene_welcome->Disable();
 	ui->Disable();
-	scene_haohmaru->Disable();
+	//scene_haohmaru->Disable();
 	scene_kyoshiro->Disable();
 	scene_congrats->Disable();
 
