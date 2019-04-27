@@ -26,7 +26,7 @@ public:
 	Animation animKO;
 	bool animKO_active = false;
 	
-	SDL_Rect* en_garde_rect = nullptr;
+	SDL_Rect en_garde_rect;
 
 	//BARS
 	int max_capacity = 0;
@@ -87,7 +87,6 @@ public:
 	bool haomaru_finished = false;
 	Animation victory_anim;
 	Animation well_done;
-	Animation en_garde;
 	bool points_done = false;
 	int points_life_gain = 0;
 	int time_points = 0;
@@ -106,6 +105,9 @@ public:
 	bool time_done = false;
 	bool hit_percent_done = false;
 	int total_points = 0;
+	Animation en_garde;
+	bool en_garde_bool = false;
+	void en_garde_scene();
 };
 
 #endif // !_MODULE_UI
