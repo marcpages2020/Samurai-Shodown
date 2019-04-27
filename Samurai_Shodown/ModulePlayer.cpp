@@ -307,6 +307,58 @@ ModulePlayer::ModulePlayer()
 			en_garde.PushBack({ 1721, 236,131, 127 }, 0.4f);
 			en_garde.loop = false;
 		}
+
+		//win animation
+		
+		{
+			win.PushBack({45, 2072, 76, 177}, 0.15f);
+			win.PushBack({144, 2072, 76, 177}, 0.15f);
+			win.PushBack({233, 2079, 90, 170}, 0.15f);
+			win.PushBack({322, 2071, 90, 178}, 0.15f);
+			win.PushBack({436, 2038, 76, 209}, 0.15f);
+			win.PushBack({535, 2038, 76, 209 }, 0.15f);
+			win.PushBack({628, 2038, 74, 209 }, 0.15f);
+			win.PushBack({727 , 2038, 74, 209 }, 0.15f);
+			win.PushBack({823, 2038, 74, 209 }, 0.15f);
+			win.PushBack({920, 2038, 74, 209 }, 0.15f);
+			win.PushBack({1020, 2130, 74, 118}, 0.15f);
+			win.PushBack({1123, 2146, 49, 102}, 0.15f);
+			win.PushBack({1213, 2142, 63, 106}, 0.15f);
+			win.PushBack({1288, 2142, 96, 106}, 0.15f);
+			win.PushBack({1409, 2142, 96, 106}, 0.15f);
+			win.PushBack({1528, 2142, 83, 106}, 0.15f);
+			win.PushBack({1631, 2142, 79, 106}, 0.15f);
+			win.PushBack({1722, 2142, 98, 106}, 0.15f);
+			win.PushBack({1838, 2142, 97, 106}, 0.15f);
+			win.PushBack({42, 2357, 80, 106}, 0.15f);
+			win.PushBack({157, 2357, 79, 106}, 0.15f);
+			win.PushBack({258, 2357, 98, 106}, 0.15f);
+			win.PushBack({381, 2357, 96, 106}, 0.15f);
+			win.PushBack({495, 2357, 83, 106}, 0.15f);
+			win.PushBack({590, 2357, 80, 106}, 0.15f);
+			win.PushBack({704, 2357, 71, 106}, 0.15f);
+			win.PushBack({802, 2353, 98, 209}, 0.15f);
+			win.PushBack({908, 2353, 98, 209}, 0.15f);
+			win.PushBack({1024, 2353, 74, 209}, 0.15f);
+			win.PushBack({1123, 2353, 74, 209}, 0.15f);
+			win.PushBack({1213, 2353, 76, 209}, 0.15f);
+			win.PushBack({1302, 2353, 83, 209}, 0.15f);
+			win.PushBack({1405, 2353, 100, 209}, 0.15f);
+			win.PushBack({1521, 2353, 100, 209}, 0.15f);
+			win.PushBack({1635, 2353, 89, 209}, 0.15f);
+			win.PushBack({1751, 2353, 89, 209}, 0.15f);
+			win.PushBack({1862, 2353, 72, 209}, 0.15f);
+			win.PushBack({71, 2588, 72, 190}, 0.15f);
+			win.PushBack({180, 2598, 72, 180}, 0.15f);
+			win.PushBack({277, 2603, 72, 175}, 0.15f);
+			win.PushBack({380, 2613, 72, 165}, 0.15f);
+			win.PushBack({476, 2621, 72, 157}, 0.15f);
+			win.PushBack({577, 2630, 72, 148}, 0.15f);
+			win.PushBack({670, 2666, 72, 112}, 0.15f);
+			win.PushBack({765, 2666, 72, 112}, 0.15f);
+			win.PushBack({1052, 2666, 72, 112}, 0.15f);
+			win.loop = false;
+		}
 }
 }
 
@@ -511,6 +563,14 @@ update_status ModulePlayer::PreUpdate()
 				{
 					state = IDLE;
 					en_garde.Reset();
+				}
+			}
+			if (state == WIN)
+			{
+				if(current_animation->Finished())
+				{
+					state == IDLE;
+					win.Reset();
 				}
 			}
 		}
@@ -895,6 +955,9 @@ update_status ModulePlayer::Update()
 			break;
 		case EN_GARDE:
 			current_animation = &en_garde;
+			break;
+		case WIN:
+			current_animation = &win;
 			break;
 		default:
 			LOG("No state found :(");
