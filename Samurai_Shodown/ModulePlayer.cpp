@@ -618,6 +618,8 @@ update_status ModulePlayer::Update()
 
 				collider_player_down->SetPos(position.x - 15, position.y - 45);
 				collider_player_down->SetSize(40, 45);
+
+				shadow_x += shadow_w/2;
 			}
 			break;
 		case FORWARD:
@@ -639,6 +641,7 @@ update_status ModulePlayer::Update()
 
 				collider_player_down->SetPos(position.x - 15, position.y - 45);
 				collider_player_down->SetSize(35, 45);
+				shadow_x += shadow_w / 2;
 
 			}
 			break;
@@ -661,7 +664,6 @@ update_status ModulePlayer::Update()
 				collider_player_down->SetPos(position.x - 30, position.y - 45);
 				collider_player_down->SetSize(50, 45);
 				shadow_x -= shadow_w / 3 - 5;
-
 			}
 			position.x -= speed;
 			break;
