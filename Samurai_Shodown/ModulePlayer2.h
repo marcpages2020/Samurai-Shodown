@@ -26,13 +26,12 @@ enum States2 {
 	PUNCH2,
 	TWISTER2,
 	HIT2,
-<<<<<<< HEAD
 	EN_GARDE2,
 	DEATH2,
 	WIN2
-=======
-	DEATH2
->>>>>>> 2b222270164a649b6afac359cb18ec4c5b99e462
+
+
+
 };
 
 
@@ -75,6 +74,7 @@ public:
 	Animation crouch_down2;
 	Animation win2;
 	bool god = false;
+	Animation en_garde2;
 	Animation crouch_up2;
 	Animation crouch_punch2;
 	Animation crouch_kick2;
