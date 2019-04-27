@@ -281,10 +281,33 @@ ModulePlayer::ModulePlayer()
 			//Twister animation (only the twister)
 			twisterAlone.loop = false;
 		}
+
+		//die
 		{
 			die.PushBack({ 852,0,108,54 });
 		}
-	}
+	
+		//en garde
+		{
+			en_garde.PushBack({ 14, 1921, 74,113 }, 0.15f);
+			en_garde.PushBack({ 95, 1921, 78,113 }, 0.15f);
+			en_garde.PushBack({ 182, 1921, 79,113 }, 0.15f);
+			en_garde.PushBack({ 264, 1921, 79,113 }, 0.15f);
+			en_garde.PushBack({ 346, 1921, 81,113 }, 0.15f);
+			en_garde.PushBack({ 433, 1921, 78,113 }, 0.15f);
+			en_garde.PushBack({ 517, 1921, 79,113 }, 0.15f);
+			en_garde.PushBack({ 595, 1921, 74,113 }, 0.15f);
+			en_garde.PushBack({ 677, 1921, 73,113 }, 0.15f);
+			en_garde.PushBack({ 164, 235, 79, 127 }, 0.15f);
+			en_garde.PushBack({ 243, 236, 79, 127 }, 0.15f);
+			//punch
+			en_garde.PushBack({ 1721, 236,131, 127 }, 0.4f);
+			en_garde.PushBack({ 1856, 236, 131, 127 }, 0.4f);
+			en_garde.PushBack({ 1461, 236, 83, 127 }, 0.4f);
+			en_garde.PushBack({ 1721, 236,131, 127 }, 0.4f);
+			en_garde.loop = false;
+		}
+}
 }
 
 ModulePlayer::~ModulePlayer(){}
@@ -482,6 +505,14 @@ update_status ModulePlayer::PreUpdate()
 
 				}
 			}
+			if (state == EN_GARDE)
+			{
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					en_garde.Reset();
+				}
+			}
 		}
 
 		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
@@ -531,8 +562,8 @@ update_status ModulePlayer::Update()
 			position.y = initial_position.y;
 			if (collider_player_up != nullptr)
 			{
-				collider_player_up->SetPos(position.x + 15, position.y - 75);
-				collider_player_up->SetSize(30, 30);
+				collider_player_up->SetPos(position.x + 15, position.y - 80);
+				collider_player_up->SetSize(30, 35);
 			}
 			if (collider_player_down != nullptr)
 			{
@@ -783,6 +814,9 @@ update_status ModulePlayer::Update()
 				collider_player_up->SetPos(position.x+15, position.y-85);
 				collider_player_down->SetPos(position.x + 10, position.y - 45);
 			}
+			break;
+		case EN_GARDE:
+			current_animation = &en_garde;
 			break;
 		default:
 			LOG("No state found :(");
