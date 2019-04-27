@@ -27,7 +27,8 @@ enum States2 {
 	TWISTER2,
 	HIT2,
 	EN_GARDE2,
-	DEATH2
+	DEATH2,
+	WIN2
 };
 
 
@@ -68,6 +69,7 @@ public:
 	Animation jump_forward2;
 	Animation jump_backward2;
 	Animation crouch_down2;
+	Animation win2;
 	bool god = false;
 	Animation crouch_up2;
 	Animation crouch_punch2;

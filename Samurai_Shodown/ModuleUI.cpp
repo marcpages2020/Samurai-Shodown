@@ -289,6 +289,7 @@ update_status ModuleUI::Update() {
 		points_hit = ((percent * 100) * 20000) / 100;
 		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 		App->player->state = States::DEATH;
+		App->player2->state2 = WIN2;
 	}
 	// player 2 dies
 	if (App->player2->life <= 0)
@@ -296,6 +297,7 @@ update_status ModuleUI::Update() {
 		player1_win = true;
 		player1_wins++;
 		App->player2->state2 = States2::DEATH2;
+		App->player->state = WIN;
 		points_life_gain = (6400 * App->player->life) / 100;
 		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
 		float percent = ((float)(App->player->hit_percent * 100) / (float)(App->player->hit_done * 100));
@@ -789,8 +791,4 @@ void ModuleUI::DieScene()
 			die_scene = false;
 		}
 	}
-}
-
-void ModuleUI::en_garde_scene() {
-	
 }

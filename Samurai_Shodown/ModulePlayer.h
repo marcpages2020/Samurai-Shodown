@@ -29,8 +29,7 @@ enum States
 	HIT,
 	EN_GARDE,
 	WIN,
-	DEATH
-
+	DEATH,
 };
 
 struct PlayerInput {

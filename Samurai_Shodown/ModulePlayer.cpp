@@ -310,7 +310,6 @@ ModulePlayer::ModulePlayer()
 		}
 
 		//win animation
-		
 		{
 			win.PushBack({45, 2072, 76, 177}, 0.15f);
 			win.PushBack({144, 2072, 76, 177}, 0.15f);
@@ -570,7 +569,7 @@ update_status ModulePlayer::PreUpdate()
 			{
 				if(current_animation->Finished())
 				{
-					state == IDLE;
+					state = IDLE;
 					win.Reset();
 				}
 			}
@@ -851,7 +850,7 @@ update_status ModulePlayer::Update()
 			if (position.y <= 110) {
 				mult = -1;
 			}
-			else if (position.y == initial_position.y)
+			else if ((position.y == initial_position.y)||(position.y == initial_position.y + 2))
 			{
 				mult = 1;
 				jump_backward.Reset();

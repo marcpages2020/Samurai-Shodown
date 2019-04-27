@@ -107,7 +107,6 @@ public:
 	int total_points = 0;
 	Animation en_garde;
 	bool en_garde_bool = false;
-	void en_garde_scene();
 };
 
 #endif // !_MODULE_UI
