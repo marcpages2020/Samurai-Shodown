@@ -141,6 +141,7 @@ bool ModuleUI::Start() {
 	life_done = false;
 	time_done = false;
 	hit_percent_done = false;
+	App->player->state = EN_GARDE;
 	return true;
 }
 
