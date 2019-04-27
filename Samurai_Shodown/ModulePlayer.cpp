@@ -371,7 +371,7 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	initial_position.x = position.x = shadow_x = 280;
+	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");

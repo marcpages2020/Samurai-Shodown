@@ -365,7 +365,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	position.x = initial_position.x = shadow_x = 70;
+	position.x = initial_position.x = shadow_x = 280;
 	position.y = initial_position.y =215;
 	lposition = position;
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
@@ -382,7 +382,6 @@ bool ModulePlayer2::Start()
 		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 
 	App->ui->Enable();
-	//test_collider = App->collision->AddCollider({ 150,160,30,30 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 	return ret;
 }
 
@@ -712,6 +711,7 @@ update_status ModulePlayer2::Update()
 				if (collider_player_2_attack == nullptr) {
 					collider_player_2_attack = App->collision->AddCollider({ position.x + 15, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
 					collider_player_2_attack->SetSize(85, 15);
+					shadow_x = position.x;
 				}
 			}
 			else {
@@ -745,7 +745,7 @@ update_status ModulePlayer2::Update()
 				{
 					collider_player_2_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
 				}
-				shadow_x -= shadow_w / 3;
+				shadow_x = position.x+shadow_w/3;
 			}
 			else {
 				if (collider_player_2_up != nullptr)
@@ -794,6 +794,7 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x, position.y - 50);
 				collider_player_2_down->SetSize(50, 30);
+				shadow_x = position.x;
 			}
 			break;
 		case JUMP_FORWARD2:
@@ -830,9 +831,8 @@ update_status ModulePlayer2::Update()
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
 
-
-
 			}
+			shadow_x = position.x;
 			break;
 		case JUMP_BACKWARD2:
 			current_animation = &jump_backward2;
@@ -871,7 +871,9 @@ update_status ModulePlayer2::Update()
 					collider_player_2_up->SetPos(position.x + 20, position.y - 45);
 					collider_player_2_up->SetSize(35, 35);
 				}
+
 			}
+			shadow_x = position.x;
 			break;
 		case PUNCH2:
 			current_animation = &punch2;
@@ -1018,6 +1020,7 @@ update_status ModulePlayer2::Update()
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	SDL_Rect shadow = { 1348, 2627, 70, 17 };
+
 	if (position.x < App->player->position.x) {
 		flip = SDL_FLIP_NONE;
 	}
@@ -1025,14 +1028,26 @@ update_status ModulePlayer2::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
-		App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+		if (shadow_blit) {
+			App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+			shadow_blit = false;
+		}
+		else {
+			shadow_blit = true;
+		}
 		App->render->Blit(App->player->graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
-		App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+		if (shadow_blit) {
+			App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+			shadow_blit = false;
+		}
+		else {
+			shadow_blit = true;
+		}
 		App->render->Blit(App->player->graphics, position.x, position.y - r.h, &r, flip);
-	}
 
+	}
 
 	return UPDATE_CONTINUE;
 }
