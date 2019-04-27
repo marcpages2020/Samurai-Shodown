@@ -1026,11 +1026,21 @@ update_status ModulePlayer2::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
-		App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+		if (shadow_blit) {
+			shadow_blit = false;
+			App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+		}
+		else
+			shadow_blit = true;
 		App->render->Blit(App->player->graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
-		App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+		if (shadow_blit) {
+			shadow_blit = false;
+			App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+		}
+		else
+			shadow_blit = true;
 		App->render->Blit(App->player->graphics, position.x, position.y - r.h, &r, flip);
 	}
 

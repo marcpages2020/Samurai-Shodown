@@ -67,6 +67,7 @@ public:
 	Animation jump_forward2;
 	Animation jump_backward2;
 	Animation crouch_down2;
+	bool shadow_blit = true;
 	Animation win2;
 	bool god = false;
 	Animation en_garde2;
