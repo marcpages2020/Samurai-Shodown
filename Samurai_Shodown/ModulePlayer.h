@@ -27,14 +27,11 @@ enum States
 	PUNCH,
 	TWISTER,
 	HIT,
-<<<<<<< HEAD
 	EN_GARDE,
 	WIN,
 	DEATH,
-=======
-	EN_GARDE, 
-	DEATH
->>>>>>> 2b222270164a649b6afac359cb18ec4c5b99e462
+
+
 };
 
 struct PlayerInput {
@@ -102,6 +99,7 @@ public:
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
+	Animation win;
 	int attack_frames=0;
 	void PlayerCollidersCleanUp();
 	SDL_RendererFlip flip = SDL_FLIP_NONE;

@@ -106,11 +106,9 @@ public:
 	bool time_done = false;
 	bool hit_percent_done = false;
 	int total_points = 0;
-<<<<<<< HEAD
-	Animation en_garde;
+
 	bool en_garde_bool = false;
-=======
->>>>>>> 2b222270164a649b6afac359cb18ec4c5b99e462
+
 };
 
 #endif // !_MODULE_UI
