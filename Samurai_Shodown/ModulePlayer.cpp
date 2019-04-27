@@ -371,7 +371,7 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	initial_position.x = position.x = 70 ;
+	initial_position.x = position.x = shadow_x = 70 ;
 	position.y = initial_position.y = 215;
 	lposition = position;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
@@ -595,6 +595,7 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 	lposition = position;
+	shadow_x = position.x;
 	if (!App->is_paused) {
 		switch (state)
 		{
@@ -659,6 +660,7 @@ update_status ModulePlayer::Update()
 				collider_player_down->SetSize(50, 45);
 			}
 			position.x -= speed;
+			shadow_x = position.x + 10;
 			break;
 
 		case CROUCH_DOWN:
@@ -692,9 +694,8 @@ update_status ModulePlayer::Update()
 				
 				collider_player_down->SetPos(position.x - 40, position.y - 30);
 				collider_player_down->SetSize(50, 30);
-				
-			
 			}
+			shadow_x = position.x + 16;
 			break;
 		case CROUCH_UP:
 			current_animation = &crouch_up;
@@ -773,6 +774,7 @@ update_status ModulePlayer::Update()
 					collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 				}
 			}
+			shadow_x = position.x + 20;
 			break;
 		case JUMP_NEUTRAL:
 			current_animation = &jump_neutral;
@@ -1027,6 +1029,9 @@ update_status ModulePlayer::Update()
 	
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	
+
 	if (position.x < App->player2->position.x) {
 		flip = SDL_FLIP_NONE;
 	}
@@ -1037,6 +1042,7 @@ update_status ModulePlayer::Update()
 		App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else
+		App->render->Blit(graphics, shadow_x, initial_position.y-7, &shadow,flip);
 		App->render->Blit(graphics, position.x, position.y - r.h, &r, flip);
 
 

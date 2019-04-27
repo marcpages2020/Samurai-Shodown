@@ -102,6 +102,7 @@ public:
 	Animation win;
 	int attack_frames=0;
 	void PlayerCollidersCleanUp();
+	int shadow_x;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
 

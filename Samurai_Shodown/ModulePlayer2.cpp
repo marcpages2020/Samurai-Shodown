@@ -365,7 +365,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	position.x = initial_position.x = 230;
+	position.x = initial_position.x = 280;
 	position.y = initial_position.y =215;
 	lposition = position;
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
