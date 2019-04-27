@@ -158,12 +158,13 @@ ModulePlayer::ModulePlayer()
 			punch.PushBack({ 1213, 236, 120, 127 }, 0.5f);
 			punch.PushBack({ 1337, 236, 120, 127 }, 0.5f);
 			punch.PushBack({ 1461, 236, 83, 127 }, 0.8f);
-			punch.PushBack({ 1548, 236, 83, 127 }, 0.8f);
-			punch.PushBack({ 1635, 236, 83, 127 }, 0.8f); //16
-			punch.PushBack({ 1721, 236,131, 127 }, 0.7f);
-			punch.PushBack({ 1856, 236, 131, 127 }, 0.7f);
+			punch.PushBack({ 1548, 236, 83, 127 }, 6.8f);
+			punch.PushBack({ 1635, 236, 83, 127 }, 6.8f); //16
+			punch.PushBack({ 1721, 236,131, 127 }, 6.7f);
+			punch.PushBack({ 1856, 236, 131, 127 }, 6.7f);
 			punch.loop = false;
 		}
+
 
 		//kick animation
 		{
@@ -187,9 +188,9 @@ ModulePlayer::ModulePlayer()
 			hit.PushBack({282, 1616, 77, 94}, 0.3f);
 			hit.PushBack({367, 1616, 77, 94}, 0.3f);
 			hit.PushBack({452, 1616, 77, 94}, 0.3f);
-			hit.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit.PushBack({14, 1616, 78, 100}, 6.3f);
+			hit.PushBack({105, 1616, 78, 100}, 6.3f);
+			hit.PushBack({195, 1616, 78, 100}, 6.3f);
 			hit.loop = false;
 		}
 
@@ -395,11 +396,11 @@ update_status ModulePlayer::PreUpdate()
 		player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
 		player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
 		player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-		player_input.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
-		player_input.pressing_U = App->input->keyboard[SDL_SCANCODE_U] == KEY_DOWN;
+		player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN;
+		player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;
 		player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
-		player_input.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
-		player_input.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
+		player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
+		player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 
 		//states 
 		{
@@ -408,12 +409,12 @@ update_status ModulePlayer::PreUpdate()
 					state = BACKWARD;
 				if (player_input.pressing_D)
 					state = FORWARD;
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					state = KICK;
 					hit_done++;
 					App->audio->PlayFX(light_kick_fx);
 				}
-				if (player_input.pressing_U) {
+				if (player_input.pressing_V) {
 					state = PUNCH;
 					hit_done++;
 					App->audio->PlayFX(light_attack_fx);
@@ -422,7 +423,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_NEUTRAL;
 				if (player_input.pressing_S)
 					state = CROUCH_DOWN;
-				if (player_input.pressing_K) {
+				if (player_input.pressing_B) {
 					App->audio->PlayFX(twister_fx);
 					hit_done++;
 					state = TWISTER;
@@ -431,13 +432,13 @@ update_status ModulePlayer::PreUpdate()
 			if (state == BACKWARD) {
 				if (!player_input.pressing_A)
 					state = IDLE;
-				if (player_input.pressing_U) 
+				if (player_input.pressing_V) 
 				{
 					hit_done++;
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					hit_done++;
 					state = KICK;
 				}
@@ -447,12 +448,12 @@ update_status ModulePlayer::PreUpdate()
 			if (state == FORWARD) {
 				if (!player_input.pressing_D)
 					state = IDLE;
-				if (player_input.pressing_U) {
+				if (player_input.pressing_V) {
 					hit_done++;
 					state = PUNCH;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					state = KICK;
 					hit_done++;
 				}
@@ -511,12 +512,12 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_UP;
 					crouch_down.Reset();
 				}
-				if (player_input.pressing_J) {
+				if (player_input.pressing_C) {
 					hit_done++;
 					state = CROUCH_KICK;
 					App->audio->PlayFX(light_kick_fx);
 				}
-				if (player_input.pressing_U) {
+				if (player_input.pressing_V) {
 					hit_done++;
 					state = CROUCH_PUNCH;
 					App->audio->PlayFX(light_attack_fx);
@@ -575,29 +576,8 @@ update_status ModulePlayer::PreUpdate()
 			}
 		}
 
-		if ((player_input.pressing_F5) && (collider_player_up != nullptr)) {
-			collider_player_up->to_delete = true;
-			collider_player_up = nullptr;
-
-			if (collider_player_mid != nullptr)
-			{
-				collider_player_mid->to_delete = true;
-				collider_player_mid = nullptr;
-			}
-
-			if (collider_player_down != nullptr)
-			{
-				collider_player_down->to_delete = true;
-				collider_player_down = nullptr;
-			}
-		}
-		else if ((player_input.pressing_F5) && (collider_player_up == nullptr))
-		{
-			collider_player_up = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-			if (collider_player_down == nullptr)
-			{
-				collider_player_down = App->collision->AddCollider({ 0, 0,71,95 }, COLLIDER_PLAYER, (Module*)App->player);
-			}
+		if ((player_input.pressing_F4)) {
+			god = !god;
 		}
 
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (collider_player_attack != nullptr))
@@ -720,6 +700,7 @@ update_status ModulePlayer::Update()
 			break;
 		case CROUCH_KICK:
 			current_animation = &crouch_kick;
+
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 10, position.y - 55);
@@ -735,8 +716,16 @@ update_status ModulePlayer::Update()
 				collider_player_attack->SetSize(85,15);
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 10, position.y - 55);
+				collider_player_up->SetSize(40, 35);
 
-
+				collider_player_down->SetPos(position.x - 30, position.y - 20);
+				collider_player_down->SetSize(75, 25);
+				
+				if (collider_player_attack == nullptr) {
+					collider_player_attack = App->collision->AddCollider({ position.x - 50, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetSize(85, 15);
+				}
 			}
 			break;
 		case CROUCH_PUNCH:
@@ -756,8 +745,16 @@ update_status ModulePlayer::Update()
 				collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
-
-
+				collider_player_up->SetPos(position.x - 40, position.y - 65);
+				collider_player_up->SetSize(35, 35);
+					
+				collider_player_down->SetPos(position.x - 30, position.y - 30);
+				collider_player_down->SetSize(100, 30);
+				
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x - 70, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				}
 			}
 			break;
 		case JUMP_NEUTRAL:
@@ -784,8 +781,11 @@ update_status ModulePlayer::Update()
 				state = IDLE;
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x, position.y - 90);
+				collider_player_up->SetSize(35, 35);
 
-
+				collider_player_down->SetPos(position.x - 12, position.y - 50);
+				collider_player_down->SetSize(50, 30);
 			}
 			break;
 		case JUMP_FORWARD:
@@ -841,7 +841,7 @@ update_status ModulePlayer::Update()
 			{
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 10, position.y - 45);
+					collider_player_up->SetPos(position.x + 20, position.y - 45);
 					collider_player_up->SetSize(35, 35);
 				}
 			}
@@ -858,8 +858,10 @@ update_status ModulePlayer::Update()
 				state = IDLE;
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
-
-
+				if (current_animation->SeeCurrentFrame() > 4) {
+					collider_player_up->SetPos(position.x + 20, position.y - 45);
+					collider_player_up->SetSize(35, 35);
+				}				
 			}
 			break;
 		case PUNCH:
@@ -886,24 +888,16 @@ update_status ModulePlayer::Update()
 
 			}
 			break;
+		case DEATH:
+			current_animation = &die;
+			break;
 		case KICK:
 			current_animation = &kick;
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 10, position.y - 70);
 				collider_player_up->SetSize(50, 30);
-
-				if (collider_player_mid == nullptr)
-				{
-					collider_player_mid = App->collision->AddCollider({ position.x + 30,position.y - 50 ,25,30 }, COLLIDER_PLAYER, (Module*)App->player);
-					collider_player_mid->SetPos(position.x + 30, position.y - 35);
-					collider_player_mid->SetSize(45, 30);
-				}
-			}
-			if (flip == SDL_FLIP_HORIZONTAL) {
-
-
-			}
+			}			
 			if (collider_player_down != nullptr)
 			{
 				collider_player_down->SetPos(position.x + 20, position.y - 80);
@@ -916,8 +910,17 @@ update_status ModulePlayer::Update()
 				collider_player_attack->SetSize(56, 30);
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 20, position.y - 70);
+				collider_player_up->SetSize(50, 30);
 
+				collider_player_down->SetPos(position.x, position.y - 80);
+				collider_player_down->SetSize(25, 85);
 
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x - 43, position.y - 35,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack->SetSize(56, 30);
+				}
 			}
 			break;
 		case TWISTER:
@@ -1024,7 +1027,7 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 		}
 		break;
 	case COLLIDER_PLAYER_2_ATTACK:
-		if (!App->player2->collider_player_2_attack->to_delete) {
+		if (!App->player2->collider_player_2_attack->to_delete && !god) {
 			App->player2->hit_percent++;
 			App->audio->PlayFX(hit_fx);
 			life -= 10;

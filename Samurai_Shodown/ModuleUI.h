@@ -26,6 +26,8 @@ public:
 	Animation animKO;
 	bool animKO_active = false;
 	
+	SDL_Rect* en_garde_rect = nullptr;
+
 	//BARS
 	int max_capacity = 0;
 	int max_width = 128;
@@ -85,14 +87,21 @@ public:
 	bool haomaru_finished = false;
 	Animation victory_anim;
 	Animation well_done;
+	Animation en_garde;
 	bool points_done = false;
 	int points_life_gain = 0;
 	int time_points = 0;
 	int points_hit = 0;
 	float points_first_wait = 0;
 	float points_second_wait = 0;
+	bool is_draw = false;
 	bool player1_win = false;
+	Animation draw_anim;
+	Animation time_up_anim;
 	bool player2_win = false;
+	bool time_up = false;
+	float time_up_wait = 0;
+	bool time_count = false;
 	bool life_done = false;
 	bool time_done = false;
 	bool hit_percent_done = false;

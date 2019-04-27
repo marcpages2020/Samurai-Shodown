@@ -35,9 +35,9 @@ struct PlayerInput2 {
 	bool pressing_right;
 	bool pressing_down;
 	bool pressing_up;
-	bool pressing_B;
-	bool pressing_N;
-	bool pressing_M;
+	bool pressing_J;
+	bool pressing_K;
+	bool pressing_L;
 	bool pressing_F5;
 };
 
@@ -67,6 +67,7 @@ public:
 	Animation jump_forward2;
 	Animation jump_backward2;
 	Animation crouch_down2;
+	bool god = false;
 	Animation crouch_up2;
 	Animation crouch_punch2;
 	Animation crouch_kick2;
