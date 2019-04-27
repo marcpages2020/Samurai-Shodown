@@ -165,6 +165,7 @@ ModulePlayer::ModulePlayer()
 			punch.loop = false;
 		}
 
+
 		//kick animation
 		{
 			kick.PushBack({ 16,137,66,95 }, 0.8f); //initial kick frames
@@ -847,6 +848,9 @@ update_status ModulePlayer::Update()
 
 
 			}
+			break;
+		case DEATH:
+			current_animation = &die;
 			break;
 		case KICK:
 			current_animation = &kick;

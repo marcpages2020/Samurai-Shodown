@@ -27,7 +27,8 @@ enum States
 	PUNCH,
 	TWISTER,
 	HIT,
-	EN_GARDE
+	EN_GARDE, 
+	DEATH
 };
 
 struct PlayerInput {

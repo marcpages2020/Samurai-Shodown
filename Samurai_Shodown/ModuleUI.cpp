@@ -275,6 +275,7 @@ update_status ModuleUI::Update() {
 		float percent = ((float)(App->player2->hit_percent * 100) / (float)(App->player2->hit_done * 100));
 		points_hit = ((percent * 100) * 20000) / 100;
 		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
+		App->player->state = States::DEATH;
 	}
 	// player 2 dies
 	if (App->player2->life <= 0)
