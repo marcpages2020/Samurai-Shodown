@@ -660,6 +660,7 @@ update_status ModulePlayer::Update()
 			break;
 		case CROUCH_KICK:
 			current_animation = &crouch_kick;
+
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 10, position.y - 55);
