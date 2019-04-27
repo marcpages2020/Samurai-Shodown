@@ -100,9 +100,9 @@ bool ModuleSceneWelcome::CleanUp()
 	App->textures->Unload(Letters);
 	App->textures->Unload(white_letters);
 	white.Reset();
+	alpha = 255;
 	Mix_FadeOutMusic(1250);
 	first_anim_finished = false;
-	//App->audio->CleanUp();
 	return true;
 }
 
@@ -115,9 +115,6 @@ update_status ModuleSceneWelcome::Update()
 	welcome.h = SCREEN_HEIGHT;
 	App->render->Blit(graphics, NULL, NULL, &welcome);
 	
-
-
-
 	if (first_anim_finished) {
 		App->render->Blit(Letters, 60, 50, &curr->GetCurrentFrame());
 	}
@@ -129,7 +126,6 @@ update_status ModuleSceneWelcome::Update()
 		alpha -= 5;
 		first_anim_finished = true;
 	}
-	// Make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_welcome, (Module*)App->scene_haohmaru, 2.5f);

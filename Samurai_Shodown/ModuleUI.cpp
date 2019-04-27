@@ -365,7 +365,7 @@ update_status ModuleUI::Update() {
 	if (en_garde_bool == true)
 	{
 		
-		App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 2 - 50, &en_garde.GetCurrentFrame());
+		App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 2 - 65, &en_garde.GetCurrentFrame());
 		if (en_garde.Finished())
 		{
 			en_garde.Reset();
