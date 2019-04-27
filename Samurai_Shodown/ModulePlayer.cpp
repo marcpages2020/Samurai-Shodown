@@ -596,6 +596,7 @@ update_status ModulePlayer::Update()
 {
 	lposition = position;
 	shadow_x = position.x;
+
 	if (!App->is_paused) {
 		switch (state)
 		{
