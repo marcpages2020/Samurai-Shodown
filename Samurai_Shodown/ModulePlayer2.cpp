@@ -572,6 +572,14 @@ update_status ModulePlayer2::PreUpdate()
 				win2.Reset();
 			}
 		}
+		if (state2 == EN_GARDE2)
+		{
+			if (current_animation->Finished())
+			{
+				state2 = IDLE2;
+				en_garde2.Reset();
+			}
+		}
 	}
 	
 	return UPDATE_CONTINUE;
