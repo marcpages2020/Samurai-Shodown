@@ -1042,8 +1042,10 @@ update_status ModulePlayer::Update()
 		App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else
-		App->render->Blit(graphics, shadow_x, initial_position.y-7, &shadow,flip);
 		App->render->Blit(graphics, position.x, position.y - r.h, &r, flip);
+
+
+	App->render->Blit(graphics, shadow_x, initial_position.y-7, &shadow,flip);	
 
 
 	return UPDATE_CONTINUE;
