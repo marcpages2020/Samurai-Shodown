@@ -570,6 +570,13 @@ update_status ModulePlayer::Update()
 				collider_player_down->SetPos(position.x + 10, position.y - 45);
 				collider_player_down->SetSize(40, 45);
 			}
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 10, position.y - 80);
+				collider_player_up->SetSize(30, 35);
+
+				collider_player_down->SetPos(position.x - 15, position.y - 45);
+				collider_player_down->SetSize(40, 45);
+			}
 			break;
 		case FORWARD:
 			current_animation = &forward;
