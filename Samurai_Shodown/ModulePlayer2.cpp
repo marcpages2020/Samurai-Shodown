@@ -643,9 +643,16 @@ update_status ModulePlayer2::Update()
 				collider_player_2_attack->SetSize(85, 15);
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
+					collider_player_2_up->SetPos(position.x + 10, position.y - 55);
+					collider_player_2_up->SetSize(40, 35);
 
-
-
+					collider_player_2_down->SetPos(position.x + 5, position.y - 20);
+					collider_player_2_down->SetSize(75, 25);
+				
+					if (collider_player_2_attack == nullptr) {
+						collider_player_2_attack = App->collision->AddCollider({ position.x + 15, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+						collider_player_2_attack->SetSize(85, 15);
+					}
 			}
 			break;
 		case CROUCH_PUNCH2:
