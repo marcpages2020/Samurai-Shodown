@@ -365,7 +365,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	position.x = initial_position.x = shadow_x = 280;
+	position.x = initial_position.x = shadow_x = 70;
 	position.y = initial_position.y =215;
 	lposition = position;
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
@@ -611,7 +611,7 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
 				collider_player_2_down->SetSize(40, 45);
-				shadow_x = position.x - shadow_w / 2;
+				shadow_x = position.x;
 			}
 			break;
 		case FORWARD2:
@@ -634,7 +634,6 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
 				collider_player_2_down->SetSize(35, 45);
-				//shadow_x += shadow_w / 2;
 			}
 			break;
 		case BACKWARD2:
@@ -655,7 +654,7 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 20, position.y - 45);
 				collider_player_2_down->SetSize(50, 45);
-				shadow_x -= shadow_w / 3 - 5;
+				shadow_x = position.x;
 			}
 			position.x += speed;
 			break;
@@ -692,7 +691,7 @@ update_status ModulePlayer2::Update()
 
 				collider_player_2_down->SetPos(position.x + 30, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
-				shadow_x -= shadow_w / 3;
+				shadow_x = position.x+shadow_w/3;
 			}
 			break;
 		case CROUCH_UP2:
@@ -1026,21 +1025,11 @@ update_status ModulePlayer2::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
-		if (shadow_blit) {
-			shadow_blit = false;
-			App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
-		}
-		else
-			shadow_blit = true;
+		App->render->Blit(App->player->graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
 		App->render->Blit(App->player->graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
-		if (shadow_blit) {
-			shadow_blit = false;
-			App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
-		}
-		else
-			shadow_blit = true;
+		App->render->Blit(App->player->graphics, shadow_x, initial_position.y - 7, &shadow, flip);
 		App->render->Blit(App->player->graphics, position.x, position.y - r.h, &r, flip);
 	}
 

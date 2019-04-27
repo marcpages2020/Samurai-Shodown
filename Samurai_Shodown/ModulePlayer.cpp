@@ -371,7 +371,7 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	initial_position.x = position.x = shadow_x = 70 ;
+	initial_position.x = position.x = shadow_x = 280;
 	position.y = initial_position.y = 215;
 	lposition = position;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
@@ -618,6 +618,7 @@ update_status ModulePlayer::Update()
 
 				collider_player_down->SetPos(position.x - 15, position.y - 45);
 				collider_player_down->SetSize(40, 45);
+				shadow_x = position.x;
 			}
 			break;
 		case FORWARD:
@@ -639,8 +640,6 @@ update_status ModulePlayer::Update()
 
 				collider_player_down->SetPos(position.x - 15, position.y - 45);
 				collider_player_down->SetSize(35, 45);
-				//shadow_x += shadow_w / 2;
-
 			}
 			break;
 		case BACKWARD:
