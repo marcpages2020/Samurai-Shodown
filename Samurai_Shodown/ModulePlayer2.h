@@ -29,9 +29,6 @@ enum States2 {
 	EN_GARDE2,
 	DEATH2,
 	WIN2
-
-
-
 };
 
 
@@ -100,6 +97,8 @@ public:
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	int attack_frames = 0;
+	int shadow_x;
+	int shadow_w = 70;
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 };
 

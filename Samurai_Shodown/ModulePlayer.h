@@ -104,6 +104,7 @@ public:
 	int attack_frames=0;
 	void PlayerCollidersCleanUp();
 	int shadow_x;
+	int shadow_w = 70;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
 

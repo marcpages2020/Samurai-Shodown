@@ -639,10 +639,12 @@ update_status ModulePlayer::Update()
 
 				collider_player_down->SetPos(position.x - 15, position.y - 45);
 				collider_player_down->SetSize(35, 45);
+
 			}
 			break;
 		case BACKWARD:
 			current_animation = &backward;
+			shadow_x = position.x + 10;
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x + 25, position.y - 85);
@@ -658,13 +660,15 @@ update_status ModulePlayer::Update()
 
 				collider_player_down->SetPos(position.x - 30, position.y - 45);
 				collider_player_down->SetSize(50, 45);
+				shadow_x -= shadow_w / 3 - 5;
+
 			}
 			position.x -= speed;
-			shadow_x = position.x + 10;
 			break;
 
 		case CROUCH_DOWN:
 			current_animation = &crouch_down;
+			shadow_x = position.x + 16;
 			if (collider_player_up != nullptr)
 			{
 				collider_player_up->SetPos(position.x+20, position.y - 65);
@@ -694,8 +698,8 @@ update_status ModulePlayer::Update()
 				
 				collider_player_down->SetPos(position.x - 40, position.y - 30);
 				collider_player_down->SetSize(50, 30);
+				shadow_x -= shadow_w / 3;
 			}
-			shadow_x = position.x + 16;
 			break;
 		case CROUCH_UP:
 			current_animation = &crouch_up;
@@ -740,7 +744,7 @@ update_status ModulePlayer::Update()
 			break;
 		case CROUCH_PUNCH:
 			current_animation = &crouch_punch;
-
+			shadow_x = position.x + 20;
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr) {
 					collider_player_up->SetPos(position.x - 40, position.y - 65);
@@ -757,6 +761,7 @@ update_status ModulePlayer::Update()
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x - 70, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 				}
+				shadow_x -= shadow_w / 3;
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -774,7 +779,7 @@ update_status ModulePlayer::Update()
 					collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 				}
 			}
-			shadow_x = position.x + 20;
+
 			break;
 		case JUMP_NEUTRAL:
 			current_animation = &jump_neutral;
@@ -1031,13 +1036,6 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	
-	if (shadow_blit) {
-		App->render->Blit(graphics, shadow_x, initial_position.y - 7, &shadow, flip);
-		shadow_blit = false;
-	}
-	else
-		shadow_blit = true;
-
 	if (position.x < App->player2->position.x) {
 		flip = SDL_FLIP_NONE;
 	}
@@ -1045,14 +1043,24 @@ update_status ModulePlayer::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
+		if (shadow_blit) {
+			App->render->Blit(graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+			shadow_blit = false;
+		}
+		else 
+			shadow_blit = true;
 		App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
-	else
+	else {
+		if (shadow_blit) {
+			App->render->Blit(graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+			shadow_blit = false;
+		}
+		else
+			shadow_blit = true;
 		App->render->Blit(graphics, position.x, position.y - r.h, &r, flip);
 
-	
-	
-
+	}
 
 	return UPDATE_CONTINUE;
 }
