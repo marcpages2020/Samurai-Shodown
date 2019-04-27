@@ -55,8 +55,11 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if (keyboard[SDL_SCANCODE_ESCAPE])
+	SDL_PollEvent(&Events);
+
+	if (keyboard[SDL_SCANCODE_ESCAPE] || Events.type == SDL_QUIT)
 		return update_status::UPDATE_STOP;
+
 
 	return update_status::UPDATE_CONTINUE;
 }
