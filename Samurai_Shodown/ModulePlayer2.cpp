@@ -608,7 +608,11 @@ update_status ModulePlayer2::Update()
 				collider_player_2_down->SetPos(position.x - 40, position.y - 30);
 				collider_player_2_down->SetSize(50, 30);
 			}
-			
+			if (flip != SDL_FLIP_HORIZONTAL) {
+				
+
+
+			}
 			break;
 		case CROUCH_UP2:
 			current_animation = &crouch_up2;
@@ -638,7 +642,11 @@ update_status ModulePlayer2::Update()
 				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y-15,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
 				collider_player_2_attack->SetSize(50, 15);
 			}
-			
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
+			}
 			break;
 		case CROUCH_PUNCH2:
 			current_animation = &crouch_punch2;
@@ -659,6 +667,11 @@ update_status ModulePlayer2::Update()
 			if (collider_player_2_attack == nullptr)
 			{
 				collider_player_2_attack = App->collision->AddCollider({ position.x, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
 			}
 			break;
 		case JUMP_NEUTRAL2:
@@ -684,6 +697,11 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
+			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
 			}
 			break;
 		case JUMP_FORWARD2:
@@ -718,6 +736,11 @@ update_status ModulePlayer2::Update()
 				jump_forward2.Reset();
 				state2 = IDLE2;
 			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
+			}
 			break;
 		case JUMP_BACKWARD2:
 			current_animation = &jump_backward2;
@@ -751,6 +774,11 @@ update_status ModulePlayer2::Update()
 				jump_backward2.Reset();
 				state2 = IDLE2;
 			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
+			}
 			break;
 		case PUNCH2:
 			current_animation = &punch2;
@@ -771,7 +799,11 @@ update_status ModulePlayer2::Update()
 			}
 			collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
 			collider_player_2_attack->SetSize(67, 30);
+			if (flip != SDL_FLIP_HORIZONTAL) {
 
+
+
+			}
 			break;
 		case KICK2:
 			current_animation = &kick2;
@@ -798,6 +830,11 @@ update_status ModulePlayer2::Update()
 				collider_player_2_attack->SetPos(position.x, position.y - 35);
 				collider_player_2_attack->SetSize(56, 30);
 			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
+			}
 			break;
 		case TWISTER2:
 			current_animation = &twister2;
@@ -815,6 +852,11 @@ update_status ModulePlayer2::Update()
 				App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
 				is_tornado_created2 = true;
 			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
+			}
 			break;
 		case HIT2:
 			current_animation = &hit2;			
@@ -822,6 +864,11 @@ update_status ModulePlayer2::Update()
 			{
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
 				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
+			}
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+
+
 			}
 			break;
 		case DEATH2:
