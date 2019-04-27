@@ -122,31 +122,31 @@ ModuleUI::ModuleUI() {
 	//en garde
 	{
 		en_garde.PushBack({ 805,0,194,32 }, 0.4f);
-		en_garde.PushBack({ 806,33,194,32 }, 0.4f);
-		en_garde.PushBack({ 806,66,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,99,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,132,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,165,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,198,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,231,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,264,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,297,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,330,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,363,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,395,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,429,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,461,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,493,194,32 }, 0.4f);
-		en_garde.PushBack({ 804,524,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,558,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,590,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,622,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,654,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,686,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,718,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,749,194,32 }, 0.4f);
-		en_garde.PushBack({ 806,781,194,32 }, 0.4f);
-		en_garde.PushBack({ 805,813,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,32,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,64,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,96,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,128,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,160,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,192,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,224,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,256,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,288,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,320,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,352,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,384,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,416,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,448,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,480,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,512,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,544,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,576,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,608,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,640,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,672,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,704,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,736,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,768,194,32 }, 0.4f);
+		en_garde.PushBack({ 805,800,194,32 }, 0.4f);
 		en_garde.loop = false;
 
 	}
@@ -157,11 +157,6 @@ ModuleUI::~ModuleUI() {}
 bool ModuleUI::Start() {
 	LOG("Loading UI\n");
 	ui_png = App->textures->Load("Assets/Textures/in_gameUI.png");
-	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
-	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
-	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
-	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
-	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	life_1 = { 8,32,128,9 };
 	life_2 = { 8,32,128,9 };
 	App->player->life = 100;
@@ -177,6 +172,11 @@ bool ModuleUI::Start() {
 	player2_wins = 0;
 	player2_point = 0;
 	animKO_active = false;
+	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
+	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
+	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
+	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
+	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	App->player->life = 100;
 	player1_win = false;
 	player2_win = false;
@@ -214,8 +214,6 @@ bool ModuleUI::Start() {
 	time_up_anim.Reset();
 	hit_percent_done = false;
 	App->player->state = EN_GARDE;
-	App->player2->state2 = EN_GARDE2;
-	en_garde_bool = true;
 	return true;
 }
 
@@ -253,17 +251,6 @@ update_status ModuleUI::Update() {
 	}
 	else {
 		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13 / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
-	}
-
-	if (en_garde_bool==true)
-	{
-		en_garde_rect = en_garde.GetCurrentFrame();
-		App->render->Blit(finish_round, SCREEN_WIDTH/2 - 90, SCREEN_HEIGHT/2 - 50,&en_garde_rect);
-		if (en_garde.Finished())
-		{
-			en_garde.Reset();
-			en_garde_bool = false;
-		}
 	}
 
 	SDL_Rect name{ 0,0,64,8 }; // haomaru name
@@ -789,8 +776,4 @@ void ModuleUI::DieScene()
 			die_scene = false;
 		}
 	}
-}
-
-void ModuleUI::en_garde_scene() {
-	
 }

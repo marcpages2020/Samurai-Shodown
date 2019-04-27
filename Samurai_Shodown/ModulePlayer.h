@@ -27,10 +27,8 @@ enum States
 	PUNCH,
 	TWISTER,
 	HIT,
-	EN_GARDE,
-	WIN,
+	EN_GARDE, 
 	DEATH
-
 };
 
 struct PlayerInput {
@@ -76,7 +74,6 @@ public:
 	Animation twister;
 	Animation twisterAlone;
 	Animation en_garde;
-	Animation win;
 	int hit_percent = 0;
 	int hit_done = 0;
 	Animation die;
