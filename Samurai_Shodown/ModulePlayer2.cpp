@@ -281,8 +281,29 @@ ModulePlayer2::ModulePlayer2()
 			//Twister animation (only the twister)
 			twisterAlone2.loop = false;
 		}
+		//die 2
 		{
 			die2.PushBack({ 852,0,108,54 });
+		}
+		//en garde 2
+		{
+			en_garde2.PushBack({ 14, 1921, 74,113 }, 0.15f);
+			en_garde2.PushBack({ 95, 1921, 78,113 }, 0.15f);
+			en_garde2.PushBack({ 182, 1921, 79,113 }, 0.15f);
+			en_garde2.PushBack({ 264, 1921, 79,113 }, 0.15f);
+			en_garde2.PushBack({ 346, 1921, 81,113 }, 0.15f);
+			en_garde2.PushBack({ 433, 1921, 78,113 }, 0.15f);
+			en_garde2.PushBack({ 517, 1921, 79,113 }, 0.15f);
+			en_garde2.PushBack({ 595, 1921, 74,113 }, 0.15f);
+			en_garde2.PushBack({ 677, 1921, 73,113 }, 0.15f);
+			en_garde2.PushBack({ 164, 235, 79, 127 }, 0.15f);
+			en_garde2.PushBack({ 243, 236, 79, 127 }, 0.15f);
+			//punch
+			en_garde2.PushBack({ 1721, 236,131, 127 }, 0.4f);
+			en_garde2.PushBack({ 1856, 236, 131, 127 }, 0.4f);
+			en_garde2.PushBack({ 1461, 236, 83, 127 }, 0.4f);
+			en_garde2.PushBack({ 1721, 236,131, 127 }, 0.4f);
+			en_garde2.loop = false;
 		}
 	}
 }
@@ -294,7 +315,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player textures\n");
-	position.x = initial_position.x = 230;
+	position.x = initial_position.x = 280;
 	position.y = initial_position.y =215;
 	lposition = position;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
@@ -481,6 +502,15 @@ update_status ModulePlayer2::PreUpdate()
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				hit2.Reset();
+			}
+		}
+		if (state2 == EN_GARDE2)
+		{
+			if (current_animation->Finished())
+			{
+				state2 = IDLE2;
+				en_garde2.Reset();
+				
 			}
 		}
 		if ((player_input2.pressing_F5) && (collider_player_2_up != nullptr)) {
@@ -887,6 +917,9 @@ update_status ModulePlayer2::Update()
 			break;
 		case DEATH2:
 			current_animation = &die2;
+			break;
+		case EN_GARDE2:
+			current_animation = &en_garde2;
 			break;
 		default:
 			LOG("No state found :(");

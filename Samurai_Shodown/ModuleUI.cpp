@@ -214,6 +214,7 @@ bool ModuleUI::Start() {
 	time_up_anim.Reset();
 	hit_percent_done = false;
 	App->player->state = EN_GARDE;
+	App->player2->state2 = EN_GARDE2;
 	return true;
 }
 
