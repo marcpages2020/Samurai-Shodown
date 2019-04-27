@@ -160,10 +160,10 @@ ModulePlayer2::ModulePlayer2()
 			punch2.PushBack({ 1213, 236, 120, 127 }, 0.5f);
 			punch2.PushBack({ 1337, 236, 120, 127 }, 0.5f);
 			punch2.PushBack({ 1461, 236, 83, 127 }, 0.8f);
-			punch2.PushBack({ 1548, 236, 83, 127 }, 0.8f);
-			punch2.PushBack({ 1635, 236, 83, 127 }, 0.8f); //16
-			punch2.PushBack({ 1721, 236,131, 127 }, 0.7f);
-			punch2.PushBack({ 1856, 236, 131, 127 }, 0.7f);
+			punch2.PushBack({ 1548, 236, 83, 127 }, 6.8f);
+			punch2.PushBack({ 1635, 236, 83, 127 }, 6.8f); //16
+			punch2.PushBack({ 1721, 236,131, 127 }, 6.7f);
+			punch2.PushBack({ 1856, 236, 131, 127 }, 6.7f);
 			punch2.loop = false;
 		}
 
@@ -189,9 +189,9 @@ ModulePlayer2::ModulePlayer2()
 			hit2.PushBack({ 282, 1616, 77, 94 }, 0.3f);
 			hit2.PushBack({ 367, 1616, 77, 94 }, 0.3f);
 			hit2.PushBack({ 452, 1616, 77, 94 }, 0.3f);
-			hit2.PushBack({ 14, 1616, 78, 100 }, 0.3f);
-			hit2.PushBack({ 105, 1616, 78, 100 }, 0.3f);
-			hit2.PushBack({ 195, 1616, 78, 100 }, 0.3f);
+			hit2.PushBack({ 14, 1616, 78, 100 }, 6.3f);
+			hit2.PushBack({ 105, 1616, 78, 100 }, 6.3f);
+			hit2.PushBack({ 195, 1616, 78, 100 }, 6.3f);
 			hit2.loop = false;
 		}
 

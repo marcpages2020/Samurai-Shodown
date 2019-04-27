@@ -158,10 +158,10 @@ ModulePlayer::ModulePlayer()
 			punch.PushBack({ 1213, 236, 120, 127 }, 0.5f);
 			punch.PushBack({ 1337, 236, 120, 127 }, 0.5f);
 			punch.PushBack({ 1461, 236, 83, 127 }, 0.8f);
-			punch.PushBack({ 1548, 236, 83, 127 }, 0.8f);
-			punch.PushBack({ 1635, 236, 83, 127 }, 0.8f); //16
-			punch.PushBack({ 1721, 236,131, 127 }, 0.7f);
-			punch.PushBack({ 1856, 236, 131, 127 }, 0.7f);
+			punch.PushBack({ 1548, 236, 83, 127 }, 6.8f);
+			punch.PushBack({ 1635, 236, 83, 127 }, 6.8f); //16
+			punch.PushBack({ 1721, 236,131, 127 }, 6.7f);
+			punch.PushBack({ 1856, 236, 131, 127 }, 6.7f);
 			punch.loop = false;
 		}
 
@@ -187,9 +187,9 @@ ModulePlayer::ModulePlayer()
 			hit.PushBack({282, 1616, 77, 94}, 0.3f);
 			hit.PushBack({367, 1616, 77, 94}, 0.3f);
 			hit.PushBack({452, 1616, 77, 94}, 0.3f);
-			hit.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit.PushBack({195, 1616, 78, 100}, 0.3f);
+			hit.PushBack({14, 1616, 78, 100}, 6.3f);
+			hit.PushBack({105, 1616, 78, 100}, 6.3f);
+			hit.PushBack({195, 1616, 78, 100}, 6.3f);
 			hit.loop = false;
 		}
 

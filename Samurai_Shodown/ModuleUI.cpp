@@ -134,6 +134,7 @@ bool ModuleUI::Start() {
 	total_points = 0;
 	points_done = false;
 	well_done.Reset();
+	time_count = false;
 	victory_anim.Reset();
 	ippon_time = 0;
 	points_first_wait = 0;
@@ -435,10 +436,16 @@ void ModuleUI::timer() {
 	}
 		
 	App->fonts->BlitText(177, 40, timer_font, time_text);
-	if (time_fight == 0) {
+	if (time_fight == 0 && !time_count) {
 		if (App->player->life > App->player2->life)
 		{
 		player1_wins++;
+		player1_win = true;
+		points_life_gain = (6400 * App->player->life) / 100;
+		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
+		float percent = ((float)(App->player->hit_percent * 100) / (float)(App->player->hit_done * 100));
+		points_hit = ((percent * 100) * 20000) / 100;
+		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 		round_end = true;
 		}
 		else if (App->player->life == App->player2->life)
@@ -448,9 +455,15 @@ void ModuleUI::timer() {
 		}
 		else {
 			player2_wins++;
+			points_life_gain = (6400 * App->player2->life) / 100;
+			sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
+			float percent = ((float)(App->player2->hit_percent * 100) / (float)(App->player2->hit_done * 100));
+			points_hit = ((percent * 100) * 20000) / 100;
+			sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
+			player2_win = true;
 			round_end = true;
 		}
-		die_scene = true;
+		time_count = true;
 	}
 }
 
@@ -472,6 +485,7 @@ void ModuleUI::ResetScene() {
 	App->player->hit_percent = 0;
 	App->player2->hit_done = 0;
 	App->player2->hit_percent = 0;
+	time_count = false;
 	haomaru_finished = false;
 	die_scene = false;
 	total_points = 0;

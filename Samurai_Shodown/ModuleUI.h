@@ -93,6 +93,7 @@ public:
 	float points_second_wait = 0;
 	bool player1_win = false;
 	bool player2_win = false;
+	bool time_count = false;
 	bool life_done = false;
 	bool time_done = false;
 	bool hit_percent_done = false;
