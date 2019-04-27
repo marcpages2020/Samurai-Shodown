@@ -368,7 +368,6 @@ bool ModulePlayer2::Start()
 	position.x = initial_position.x = 230;
 	position.y = initial_position.y =215;
 	lposition = position;
-	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
@@ -1020,17 +1019,17 @@ update_status ModulePlayer2::Update()
 		flip = SDL_FLIP_HORIZONTAL;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
-		App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
+		App->render->Blit(App->player->graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else
-		App->render->Blit(graphics, position.x, position.y - r.h, &r,flip);
+		App->render->Blit(App->player->graphics, position.x, position.y - r.h, &r,flip);
 
 	return UPDATE_CONTINUE;
 }
 
 bool ModulePlayer2::CleanUp() {
 	LOG("Unloading player");
-	App->textures->Unload(graphics);
+
 	App->audio->UnLoadFx(light_attack_fx);
 	App->audio->UnLoadFx(light_kick_fx);
 	App->audio->UnLoadFx(twister_fx);

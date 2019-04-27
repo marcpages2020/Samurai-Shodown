@@ -59,8 +59,6 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 public:
 
-	SDL_Texture* graphics = nullptr;
-	SDL_Texture* haohmaruSpreadsheet = nullptr;
 	Animation idle2;
 	Animation forward2;
 	Animation backward2;
