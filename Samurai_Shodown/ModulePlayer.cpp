@@ -590,7 +590,6 @@ update_status ModulePlayer::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-
 // Update: draw background
 update_status ModulePlayer::Update()
 {
@@ -1150,11 +1149,11 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 			life -= 10;
 			state = HIT;
 			App->player2->collider_player_2_attack->to_delete = true;
-			if (position.x < App->player2->position.x)
+			if ((position.x < App->player2->position.x) && (position.x > App->render->left->rect.x + 60))
 			{
-				position.x += -10;
+				position.x -= 10;
 			}
-			else
+			else if ((position.x > App->player->position.x) && (position.x > App->render->right->rect.x))
 			{
 				position.x += 10;
 			}

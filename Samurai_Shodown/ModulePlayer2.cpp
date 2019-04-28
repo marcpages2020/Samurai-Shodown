@@ -1167,11 +1167,11 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				life -= 10;
 				state2 = HIT2;
 				App->player->collider_player_attack->to_delete = true;
-				if (position.x < App->player->position.x)
+				if ((position.x < App->player->position.x)&&(position.x>App->render->left->rect.x+60))
 				{
-					position.x += -10;
+					position.x -= 10;
 				}
-				else
+				else if ((position.x > App->player->position.x) && (position.x > App->render->right->rect.x))
 				{
 					position.x += 10;
 				}
