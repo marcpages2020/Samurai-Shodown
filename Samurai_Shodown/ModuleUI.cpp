@@ -260,17 +260,15 @@ update_status ModuleUI::Update() {
 	{
 		App->audio->PlayFX(ipponme_fx);
 		play_ipponme = false;
-		animtime = 0;
-		play_begin = true;
 	}
-	animtime++;
-	if ((play_begin == true) && (animtime == 140))
-	{
-		App->audio->PlayFX(begin_fx);
-		play_begin = false;
-	}
+	
 	if (show_ui==true)
 	{
+		if (play_begin == true)
+		{
+			App->audio->PlayFX(begin_fx);
+			play_begin = false;
+		}
 
 	UpdateBars();
 	timer();
@@ -422,7 +420,7 @@ update_status ModuleUI::Update() {
 			App->player->BlockControls(false);
 			App->player2->BlockControls(false);
 			begin_finish = true;
-
+			play_begin = true;
 		}
 	}
 	return UPDATE_CONTINUE;
