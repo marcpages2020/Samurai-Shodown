@@ -208,7 +208,7 @@ void ModuleRender::MoveCamera()
 			camera.x += App->player->speed * SCREEN_SIZE;
 		}
 	}
-	if (camera.x+SCREEN_WIDTH > App->scene_haohmaru->right_wall->rect.x+100)
+	if (camera.x+SCREEN_WIDTH > App->scene_haohmaru->right_wall->rect.x+150)
 	{
 		camera.x--;
 		left->rect.x--;
