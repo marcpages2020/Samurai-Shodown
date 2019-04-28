@@ -92,6 +92,8 @@ public:
 	bool haomaru_finished = false;
 	Animation victory_anim;
 	Animation well_done;
+	Animation bar_anim1;
+	Animation bar_anim2;
 	Animation en_garde;
 	bool points_done = false;
 	int points_life_gain = 0;

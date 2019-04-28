@@ -162,7 +162,12 @@ ModuleUI::ModuleUI() {
 	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
 	begin.loop = false;
 
+	bar_anim1.PushBack({ 8,58,128,9 }, 0.3F);
+	bar_anim1.PushBack({ 8,44,128,9 }, 0.3F);
 
+	bar_anim2.PushBack({ 8,58,128,9 }, 0.3F);
+	bar_anim2.PushBack({ 8,44,128,9 }, 0.3F);
+	
 }
 
 ModuleUI::~ModuleUI() {}
@@ -301,12 +306,25 @@ update_status ModuleUI::Update() {
 	App->render->Blit(ui_png, 288, 32, &name, SDL_FLIP_NONE, 1.0F, false);
 	SDL_Rect rect{ 6,17,132,13 }; // bar
 	//player 1 bar
+	if (App->player->life <= 45) {
+		bar_anim1.SetWidth(life_1.w);
+		App->render->Blit(ui_png, 20, 19, &bar_anim1.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false); //
+	}
+	else
+		App->render->Blit(ui_png, 20, 19, &life_1, SDL_FLIP_NONE, 1.0F, false); //
+
 	App->render->Blit(ui_png, 18, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
-	App->render->Blit(ui_png, 20, 19, &life_1, SDL_FLIP_NONE, 1.0F, false); //
 
 	//player 2 bar
+	if (App->player2->life <= 45) {
+		bar_anim2.SetWidth(life_2.w);
+		App->render->Blit(ui_png, 235, 19, &bar_anim2.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false); //
+	}else
+		App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, 1.0F, false); //
+
 	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
-	App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, 1.0F, false); //
+
+
 
 	// player 1 dies
 	if (App->player->life <= 0)

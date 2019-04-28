@@ -37,6 +37,12 @@ public:
 		frames[i].speed = speed;
 	}
 
+	void SetWidth(const int & width) {
+		for (int i = 0; i < num_frames; ++i) {
+			frames[i].rect.w = width;
+		}
+	}
+
 	SDL_Rect& GetCurrentFrame()
 	{
 		if (!App->is_paused) {
