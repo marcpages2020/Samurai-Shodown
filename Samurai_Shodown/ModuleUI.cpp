@@ -232,6 +232,8 @@ bool ModuleUI::Start() {
 	begin_finish = false;
 	App->player->state = EN_GARDE;
 	App->player2->state2 = EN_GARDE2;
+	draw = 0;
+	show_ui = false;
 	return true;
 }
 
