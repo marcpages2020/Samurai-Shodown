@@ -54,6 +54,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	void BlockControls(bool block);
+
 public:
 
 	Animation idle2;
@@ -101,6 +103,7 @@ public:
 	int shadow_x;
 	int shadow_w = 70;
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+	bool controls = true;
 };
 
 #endif // !_ModulePlayer2_H
