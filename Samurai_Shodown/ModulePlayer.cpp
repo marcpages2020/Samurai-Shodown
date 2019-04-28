@@ -370,7 +370,7 @@ ModulePlayer::~ModulePlayer(){}
 bool ModulePlayer::Start()
 {
 	bool ret = true;
-	LOG("Loading player textures\n");
+	LOG("Loading player 1\n");
 	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
@@ -387,7 +387,6 @@ bool ModulePlayer::Start()
 		collider_player_up = App->collision->AddCollider({ position.x+15, position.y-85,30,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_down)
 		collider_player_down = App->collision->AddCollider({ position.x+10, position.y-45,40,45 }, COLLIDER_PLAYER, (Module*)App->player);
-	//test_collider = App->collision->AddCollider({ 150,160,30,30 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 	return ret;
 }
 
@@ -800,6 +799,11 @@ update_status ModulePlayer::Update()
 				jump_neutral.Reset();
 				state = IDLE;
 			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x, position.y - 90);
 				collider_player_up->SetSize(35, 35);
@@ -865,10 +869,11 @@ update_status ModulePlayer::Update()
 			if (position.y <= 105) {
 				mult = -1;
 			}
-			else if ((position.y == initial_position.y)||(position.y == initial_position.y+2))
+			else if (position.y > initial_position.y)
 			{
-				mult = 1;
+				position.y = initial_position.y;
 				jump_forward.Reset();
+				mult = 1;
 				state = IDLE;
 			}
 			break;
@@ -886,6 +891,13 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				jump_backward.Reset();
 				state = IDLE;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_backward.Reset();
+				state = IDLE;
+				mult = 1;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL)
 			{
@@ -1117,6 +1129,7 @@ bool ModulePlayer::CleanUp() {
 	collider_player_up = nullptr;
 	collider_player_mid = nullptr;
 	collider_player_down = nullptr;
+	collider_player_attack = nullptr;
 	return true;
 }
 

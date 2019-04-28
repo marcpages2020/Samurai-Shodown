@@ -364,7 +364,7 @@ ModulePlayer2::~ModulePlayer2() {}
 bool ModulePlayer2::Start()
 {
 	bool ret = true;
-	LOG("Loading player textures\n");
+	LOG("Loading player 2\n");
 	position.x = initial_position.x = shadow_x = 280;
 	position.y = initial_position.y =215;
 	lposition = position;
@@ -586,8 +586,6 @@ update_status ModulePlayer2::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-
-// Update: draw background
 update_status ModulePlayer2::Update()
 {
 	lposition = position;
@@ -1112,6 +1110,7 @@ bool ModulePlayer2::CleanUp() {
 	collider_player_2_up = nullptr;
 	collider_player_2_mid = nullptr;
 	collider_player_2_down = nullptr;
+	collider_player_2_attack = nullptr;
 	App->ui->Disable();
 	return true;
 }
