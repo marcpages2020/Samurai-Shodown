@@ -96,6 +96,7 @@ public:
 	bool points_done = false;
 	int points_life_gain = 0;
 	int time_points = 0;
+	Mix_Chunk* points_fx = nullptr;
 	int points_hit = 0;
 	float points_first_wait = 0;
 	float points_second_wait = 0;

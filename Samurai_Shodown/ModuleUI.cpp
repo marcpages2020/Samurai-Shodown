@@ -187,6 +187,7 @@ bool ModuleUI::Start() {
 	player2_wins = 0;
 	player2_point = 0;
 	animKO_active = false;
+	points_fx = App->audio->LoadFX("Assets/Audio/Fx/count_points.wav");
 	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
@@ -251,6 +252,7 @@ bool ModuleUI::CleanUp() {
 	App->fonts->UnLoad(timer_font);
 	App->audio->UnLoadFx(ippon_fx);
 	App->audio->UnLoadFx(victory_fx);
+	App->audio->UnLoadFx(points_fx);
 	return true;
 }
 
@@ -764,13 +766,14 @@ void ModuleUI::DieScene()
 					App->fonts->BlitText(193, 68, timer_font, point_gain_life);
 					sprintf_s(char_total, 10, "%7d", total_points);
 					App->fonts->BlitText(193, 174, timer_font, char_total);
+					App->audio->PlayFX(points_fx);
 				}
 				else {
 					life_done = true;
 					points_life_gain = 0;
 					sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
 				}
-					
+				
 				App->fonts->BlitText(193, 105, timer_font, char_time);
 				App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
 			}
@@ -786,13 +789,14 @@ void ModuleUI::DieScene()
 					App->fonts->BlitText(193, 105, timer_font, char_time);
 					sprintf_s(char_total, 10, "%7d", total_points);
 					App->fonts->BlitText(193, 174, timer_font, char_total);
+					App->audio->PlayFX(points_fx);
 				}
 				else {
 					time_points = 0;
 					sprintf_s(char_time, 10, "%7d", time_points);
 					time_done = true;
 				}
-					
+
 				App->fonts->BlitText(193, 68, timer_font, point_gain_life);
 				App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
 			}
@@ -808,6 +812,7 @@ void ModuleUI::DieScene()
 					App->fonts->BlitText(193, 140, timer_font, char_hit_percentatge);
 					sprintf_s(char_total, 10, "%7d", total_points);
 					App->fonts->BlitText(193, 174, timer_font, char_total);
+					App->audio->PlayFX(points_fx);
 				}
 				else {
 					points_hit = 0;
@@ -815,6 +820,7 @@ void ModuleUI::DieScene()
 					hit_percent_done = true;
 					points_second_wait = SDL_GetTicks();
 				}
+
 				App->fonts->BlitText(193, 105, timer_font, char_time);
 				App->fonts->BlitText(193, 68, timer_font, point_gain_life);
 			}
