@@ -261,13 +261,15 @@ update_status ModuleUI::Update() {
 		App->audio->PlayFX(ipponme_fx);
 		play_ipponme = false;
 	}
+	
 	if (show_ui==true)
 	{
-			if (play_begin == true)
-			{
-				App->audio->PlayFX(begin_fx);
-				play_begin = false;
-			}
+		if (play_begin == true)
+		{
+			App->audio->PlayFX(begin_fx);
+			play_begin = false;
+		}
+
 	UpdateBars();
 	timer();
 	DieScene();
@@ -655,6 +657,11 @@ void ModuleUI::DieScene()
 {
 
 	if (die_scene && (player1_win || player2_win) && !time_up) {
+		if (play_victory == true)
+		{
+			App->audio->PlayFX(victory_fx);
+			play_victory = false;
+		}
 		if (player1_wins != 2 && player2_wins != 2 && !points_done) {
 			if (!ippon_finished) {
 				if (ippon_time >= SDL_GetTicks() - 1000) {
