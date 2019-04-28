@@ -1040,6 +1040,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case DEATH2:
 			current_animation = &die2;
+			position.y = initial_position.y + 10;
 			break;
 		case EN_GARDE2:
 			current_animation = &en_garde2;
