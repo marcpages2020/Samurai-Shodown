@@ -402,6 +402,12 @@ update_status ModulePlayer::PreUpdate()
 			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
+
+			if (player_input.pressing_A && player_input.pressing_D) {
+				player_input.pressing_A = false;
+				player_input.pressing_D = false;
+			}
+
 		}
 
 		//states 
