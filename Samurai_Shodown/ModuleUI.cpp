@@ -290,10 +290,10 @@ update_status ModuleUI::Update() {
 
 	// KO image
 	if (!animKO_active) {
-		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
+		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - animKO.GetCurrentRect().w/2, 10, &animKO.frames[0].rect, SDL_FLIP_NONE, 1.0F, false);
 	}
 	else {
-		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 13 / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
+		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - animKO.GetCurrentRect().w / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 	}
 
 	SDL_Rect name{ 0,0,64,8 }; // haomaru name
