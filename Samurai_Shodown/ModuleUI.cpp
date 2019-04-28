@@ -260,17 +260,15 @@ update_status ModuleUI::Update() {
 	{
 		App->audio->PlayFX(ipponme_fx);
 		play_ipponme = false;
-		animtime = 0;
-		play_begin = true;
 	}
-	animtime++;
-	if ((play_begin == true) && (animtime == 140))
-	{
-		App->audio->PlayFX(begin_fx);
-		play_begin = false;
-	}
+	
 	if (show_ui==true)
 	{
+		if (play_begin == true)
+		{
+			App->audio->PlayFX(begin_fx);
+			play_begin = false;
+		}
 
 	UpdateBars();
 	timer();
@@ -422,7 +420,7 @@ update_status ModuleUI::Update() {
 			App->player->BlockControls(false);
 			App->player2->BlockControls(false);
 			begin_finish = true;
-
+			play_begin = true;
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -659,6 +657,11 @@ void ModuleUI::DieScene()
 {
 
 	if (die_scene && (player1_win || player2_win) && !time_up) {
+		if (play_victory == true)
+		{
+			App->audio->PlayFX(victory_fx);
+			play_victory = false;
+		}
 		if (player1_wins != 2 && player2_wins != 2 && !points_done) {
 			if (!ippon_finished) {
 				if (ippon_time >= SDL_GetTicks() - 1000) {
