@@ -1171,7 +1171,6 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				{
 					position.x += -10;
 				}
-
 				else
 				{
 					position.x += 10;
