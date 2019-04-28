@@ -364,7 +364,7 @@ ModulePlayer2::~ModulePlayer2() {}
 bool ModulePlayer2::Start()
 {
 	bool ret = true;
-	LOG("Loading player textures\n");
+	LOG("Loading player 2\n");
 	position.x = initial_position.x = shadow_x = 280;
 	position.y = initial_position.y =215;
 	lposition = position;
@@ -397,6 +397,11 @@ update_status ModulePlayer2::PreUpdate()
 			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
 			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN;
 			player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
+
+			if (player_input2.pressing_left && player_input2.pressing_right) {
+				player_input2.pressing_left = false;
+				player_input2.pressing_right = false;
+			}
 
 		}
 		
@@ -586,8 +591,6 @@ update_status ModulePlayer2::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-
-// Update: draw background
 update_status ModulePlayer2::Update()
 {
 	lposition = position;
@@ -1037,6 +1040,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case DEATH2:
 			current_animation = &die2;
+			position.y = initial_position.y + 10;
 			break;
 		case EN_GARDE2:
 			current_animation = &en_garde2;
@@ -1112,6 +1116,7 @@ bool ModulePlayer2::CleanUp() {
 	collider_player_2_up = nullptr;
 	collider_player_2_mid = nullptr;
 	collider_player_2_down = nullptr;
+	collider_player_2_attack = nullptr;
 	App->ui->Disable();
 	return true;
 }
