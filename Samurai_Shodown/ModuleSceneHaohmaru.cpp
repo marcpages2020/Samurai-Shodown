@@ -87,7 +87,7 @@ update_status ModuleSceneHaohmaru::Update()
 	App->render->Blit(graphics, -92, -100, &b, SDL_FLIP_NONE);
 	App->render->MoveCamera();
 
-	if(((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)||(App->ui->victory==true && !App->ui->die_scene))||(App->ui->draw>=3 && !App->ui->die_scene))
+	if(((App->input->keyboard[SDL_SCANCODE_3] == KEY_DOWN) || (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)||(App->ui->victory==true && !App->ui->die_scene))||(App->ui->draw>=3 && !App->ui->die_scene))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_haohmaru,(Module*)App->scene_congrats,1.5f);
 	}
