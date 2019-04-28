@@ -117,6 +117,7 @@ public:
 	bool en_garde_bool = false;
 	bool play_ipponme=true;
 	bool play_begin = false;
+	int animtime = 0;
 };
 
 #endif // !_MODULE_UI
