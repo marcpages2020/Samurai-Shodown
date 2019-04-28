@@ -192,6 +192,11 @@ bool ModuleUI::Start() {
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
 	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
+	begin_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Begin.wav");
+	iza_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Iza.wav");
+	ipponme_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon-me.wav");
+	jinjoni_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Begin_02.wav");
+	round_03_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Round_03.wav");
 	App->player->life = 100;
 	player1_win = false;
 	player2_win = false;
@@ -250,8 +255,19 @@ bool ModuleUI::CleanUp() {
 }
 
 update_status ModuleUI::Update() {
+
+	if (play_ipponme == true)
+	{
+		App->audio->PlayFX(ipponme_fx);
+		play_ipponme = false;
+	}
 	if (show_ui==true)
 	{
+			if (play_begin == true)
+			{
+				App->audio->PlayFX(begin_fx);
+				play_begin = false;
+			}
 	UpdateBars();
 	timer();
 	DieScene();
@@ -372,8 +388,7 @@ update_status ModuleUI::Update() {
 	{
 		if (App->ui->HorizontalTransition() == false)
 		{
-			htransition = false;
-			
+			htransition = false;	
 		}
 		else
 		{
@@ -403,6 +418,7 @@ update_status ModuleUI::Update() {
 			App->player->BlockControls(false);
 			App->player2->BlockControls(false);
 			begin_finish = true;
+			play_begin = true;
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -532,6 +548,7 @@ bool ModuleUI::HorizontalTransition() {
 	{
 		left_black_rect.w = SCREEN_WIDTH / 2;
 		right_black_rect.x = SCREEN_WIDTH / 2;
+		play_ipponme= true;
 		return false;
 	}
 	else

@@ -1045,7 +1045,7 @@ update_status ModulePlayer::Update()
 			break;
 		case HIT: 
 			current_animation = &hit;
-			
+			shadow_x = position.x;
 			if (flip == SDL_FLIP_HORIZONTAL) {
 			
 			}

@@ -1046,7 +1046,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case HIT2:
 			current_animation = &hit2;
-			
+			shadow_x = position.x;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				collider_player_2_up->SetPos(position.x + 15, position.y - 85);
 				collider_player_2_down->SetPos(position.x + 20, position.y - 45);

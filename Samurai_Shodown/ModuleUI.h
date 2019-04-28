@@ -56,6 +56,11 @@ public:
 	bool htransition = false;
 	Mix_Chunk *ippon_fx;
 	Mix_Chunk *victory_fx;
+	Mix_Chunk *begin_fx;
+	Mix_Chunk *iza_fx;
+	Mix_Chunk *ipponme_fx;
+	Mix_Chunk *jinjoni_fx;
+	Mix_Chunk *round_03_fx;
 	float start_time = 0.0f;
 	int font_point_numbers = 0;
 	int timer_font = 0;
@@ -109,9 +114,9 @@ public:
 	bool time_done = false;
 	bool hit_percent_done = false;
 	int total_points = 0;
-
 	bool en_garde_bool = false;
-
+	bool play_ipponme=true;
+	bool play_begin = false;
 };
 
 #endif // !_MODULE_UI
