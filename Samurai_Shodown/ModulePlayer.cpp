@@ -874,33 +874,35 @@ update_status ModulePlayer::Update()
 			break;
 		case JUMP_BACKWARD:
 			current_animation = &jump_backward;
-			
+
 			position.y -= speed * 1.75 * mult;
 			position.x -= 1.25*speed;
 
 			if (position.y <= 110) {
 				mult = -1;
 			}
-			else if ((position.y == initial_position.y)||(position.y == initial_position.y + 2))
+			else if (position.y == initial_position.y)
 			{
 				mult = 1;
 				jump_backward.Reset();
 				state = IDLE;
 			}
-			if (flip == SDL_FLIP_HORIZONTAL) {
-				collider_player_up->SetPos(position.x, position.y - 90);
-				collider_player_up->SetSize(35, 35);
-
-				collider_player_down->SetPos(position.x, position.y - 50);
-				collider_player_down->SetSize(40, 30);
-			}
-			if (current_animation->SeeCurrentFrame() > 4)
+			if (flip != SDL_FLIP_HORIZONTAL)
 			{
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x - 20, position.y - 45);
+					collider_player_up->SetPos(position.x, position.y - 90);
 					collider_player_up->SetSize(35, 35);
-				}			
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x, position.y - 50);
+					collider_player_down->SetSize(40, 30);
+				}
+				if (current_animation->SeeCurrentFrame() > 4) {
+					collider_player_up->SetPos(position.x + 20, position.y - 45);
+					collider_player_up->SetSize(35, 35);
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -917,11 +919,12 @@ update_status ModulePlayer::Update()
 				{
 					if (collider_player_up != nullptr)
 					{
-						collider_player_up->SetPos(position.x + 20, position.y - 45);
+						collider_player_up->SetPos(position.x - 20, position.y - 45);
 						collider_player_up->SetSize(35, 35);
 					}
 				}
 			}
+			shadow_x = position.x;
 			break;
 		case PUNCH:
 			current_animation = &punch;
