@@ -312,52 +312,52 @@ ModulePlayer::ModulePlayer()
 
 		//win animation
 		{
-			win.PushBack({45, 2072, 76, 177}, 0.15f);
-			win.PushBack({144, 2072, 76, 177}, 0.15f);
-			win.PushBack({233, 2079, 90, 170}, 0.15f);
-			win.PushBack({322, 2071, 90, 178}, 0.15f);
-			win.PushBack({436, 2038, 76, 209}, 0.15f);
-			win.PushBack({535, 2038, 76, 209 }, 0.15f);
-			win.PushBack({628, 2038, 74, 209 }, 0.15f);
-			win.PushBack({727 , 2038, 74, 209 }, 0.15f);
-			win.PushBack({823, 2038, 74, 209 }, 0.15f);
-			win.PushBack({920, 2038, 74, 209 }, 0.15f);
-			win.PushBack({1020, 2130, 74, 118}, 0.15f);
+			win.PushBack({48, 2072, 76, 177}, 0.15f);
+			win.PushBack({146, 2072, 76, 177}, 0.15f);
+			win.PushBack({248, 2079, 90, 170}, 0.15f);
+			win.PushBack({338, 2071, 90, 178}, 0.15f);
+			win.PushBack({436, 2040, 76, 209}, 0.15f);
+			win.PushBack({537, 2040, 76, 209 }, 0.15f);
+			win.PushBack({628, 2040, 74, 209 }, 0.15f);
+			win.PushBack({729 , 2040, 74, 209 }, 0.15f);
+			win.PushBack({825, 2040, 74, 209 }, 0.15f);
+			win.PushBack({921, 2040, 74, 209 }, 0.15f);
+			win.PushBack({1023, 2131, 74, 118}, 0.15f);
 			win.PushBack({1123, 2146, 49, 102}, 0.15f);
-			win.PushBack({1213, 2142, 63, 106}, 0.15f);
+			win.PushBack({1180, 2142, 96, 106}, 0.15f);
 			win.PushBack({1288, 2142, 96, 106}, 0.15f);
 			win.PushBack({1409, 2142, 96, 106}, 0.15f);
-			win.PushBack({1528, 2142, 83, 106}, 0.15f);
-			win.PushBack({1631, 2142, 79, 106}, 0.15f);
-			win.PushBack({1722, 2142, 98, 106}, 0.15f);
+			win.PushBack({1515, 2142, 96, 106}, 0.15f);
+			win.PushBack({1614, 2142, 96, 106}, 0.15f);
+			win.PushBack({1722, 2142, 96, 106}, 0.15f);
 			win.PushBack({1838, 2142, 97, 106}, 0.15f);
-			win.PushBack({42, 2357, 80, 106}, 0.15f);
-			win.PushBack({157, 2357, 79, 106}, 0.15f);
+			win.PushBack({26, 2357, 96, 106}, 0.15f);
+			win.PushBack({140, 2357, 96, 106}, 0.15f);
 			win.PushBack({258, 2357, 98, 106}, 0.15f);
 			win.PushBack({381, 2357, 96, 106}, 0.15f);
-			win.PushBack({495, 2357, 83, 106}, 0.15f);
-			win.PushBack({590, 2357, 80, 106}, 0.15f);
-			win.PushBack({704, 2357, 71, 106}, 0.15f);
-			win.PushBack({802, 2253, 98, 209}, 0.15f);
-			win.PushBack({908, 2253, 98, 209}, 0.15f);
-			win.PushBack({1024, 2253, 74, 209}, 0.15f);
-			win.PushBack({1123, 2253, 74, 209}, 0.15f);
-			win.PushBack({1213, 2253, 76, 209}, 0.15f);
-			win.PushBack({1302, 2253, 83, 209}, 0.15f);
-			win.PushBack({1405, 2253, 100, 209}, 0.15f);
-			win.PushBack({1521, 2253, 100, 209}, 0.15f);
-			win.PushBack({1635, 2253, 89, 209}, 0.15f);
-			win.PushBack({1751, 2253, 89, 209}, 0.15f);
-			win.PushBack({1862, 2253, 72, 209}, 0.15f);
-			win.PushBack({71, 2488, 72, 190}, 0.15f);
-			win.PushBack({180, 2498, 72, 180}, 0.15f);
-			win.PushBack({277, 2503, 72, 175}, 0.15f);
-			win.PushBack({380, 2513, 72, 165}, 0.15f);
-			win.PushBack({476, 2521, 72, 157}, 0.15f);
-			win.PushBack({577, 2530, 72, 148}, 0.15f);
-			win.PushBack({670, 2566, 72, 112}, 0.15f);
-			win.PushBack({765, 2566, 72, 112}, 0.15f);
-			win.PushBack({1052, 2566, 72, 112}, 0.15f);
+			win.PushBack({483, 2357, 96, 106}, 0.15f);
+			win.PushBack({575, 2357, 96, 106}, 0.15f);
+			win.PushBack({680, 2357, 96, 106}, 0.15f);
+			win.PushBack({804, 2254, 98, 209}, 0.15f);
+			win.PushBack({912, 2254, 98, 209}, 0.15f);
+			win.PushBack({1004, 2254, 96, 209}, 0.15f);
+			win.PushBack({1103, 2254, 96, 209}, 0.15f);
+			win.PushBack({1195, 2254, 96, 209}, 0.15f);
+			win.PushBack({1291, 2254, 96, 209}, 0.15f);
+			win.PushBack({1407, 2254, 100, 209}, 0.15f);
+			win.PushBack({1523, 2254, 100, 209}, 0.15f);
+			win.PushBack({1630, 2254, 96, 209}, 0.15f);
+			win.PushBack({1746, 2254, 96, 209}, 0.15f);
+			win.PushBack({1840, 2254, 96, 209}, 0.15f);
+			win.PushBack({49, 2488, 96, 190}, 0.15f);
+			win.PushBack({158, 2498, 96, 180}, 0.15f);
+			win.PushBack({255, 2503, 96, 175}, 0.15f);
+			win.PushBack({356, 2513, 96, 165}, 0.15f);
+			win.PushBack({452, 2521, 96, 157}, 0.15f);
+			win.PushBack({553, 2530, 96, 148}, 0.15f);
+			win.PushBack({646, 2566, 96, 112}, 0.15f);
+			win.PushBack({741, 2566, 96, 112}, 0.15f);
+			win.PushBack({1028, 2566, 96, 112}, 0.15f);
 			win.loop = false;
 		}
 
@@ -394,14 +394,16 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::PreUpdate()
 {
 	if (!App->is_paused) {
-		player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
-		player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
-		player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-		player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN;
-		player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;
-		player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
-		player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
-		player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
+		if (controls) {
+			player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
+			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
+			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN;
+			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;
+			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
+			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
+		}
 
 		//states 
 		{
@@ -1121,16 +1123,16 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	switch (c2->type)
 	{
 	case COLLIDER_WALL_LEFT:
-		if (!player_input.pressing_D)
+		if (!player_input.pressing_D && state != DEATH && state != WIN)
 			position.x += speed;
 
 		break;
 	case COLLIDER_WALL_RIGHT:
-		if (!player_input.pressing_A)
+		if (!player_input.pressing_A && state != DEATH && state != WIN)
 			position.x -= speed;
 		break;
 	case COLLIDER_PLAYER_2:
-		if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER))
+		if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN))
 		{
 			if (position.x < App->player2->position.x)
 			{
@@ -1188,6 +1190,11 @@ void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 	default:
 		break;
 	}
+}
+
+void ModulePlayer::BlockControls(bool block)
+{
+	controls = !block;
 }
 
 void ModulePlayer::PlayerCollidersCleanUp() {

@@ -150,6 +150,19 @@ ModuleUI::ModuleUI() {
 		en_garde.loop = false;
 
 	}
+	y = -48;
+	begin.PushBack({ 490,y += 48,102,48 }, 0.01F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.loop = false;
+
+
 }
 
 ModuleUI::~ModuleUI() {}
@@ -166,6 +179,8 @@ bool ModuleUI::Start() {
 	max_capacity = App->player->life;
 	currentW_player2 = life_2.w;
 	current_life2 = max_capacity;
+	begin.Reset();
+	show_ui = false;
 	current_life1 = max_capacity;
 	player1_point = 0;
 	player1_wins = 0;
@@ -214,6 +229,7 @@ bool ModuleUI::Start() {
 	time_done = false;
 	time_up_anim.Reset();
 	hit_percent_done = false;
+	begin_finish = false;
 	App->player->state = EN_GARDE;
 	App->player2->state2 = EN_GARDE2;
 	draw = 0;
@@ -357,6 +373,7 @@ update_status ModuleUI::Update() {
 		if (App->ui->HorizontalTransition() == false)
 		{
 			htransition = false;
+			
 		}
 		else
 		{
@@ -366,12 +383,26 @@ update_status ModuleUI::Update() {
 	}
 	if (en_garde_bool == true)
 	{
+		App->player->BlockControls(true);
+		App->player2->BlockControls(true);
 		App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 2 - 65, &en_garde.GetCurrentFrame());
 		if (en_garde.Finished())
 		{
 			en_garde.Reset();
 			en_garde_bool = false;
 			show_ui = true;
+		}
+	}
+	if (show_ui && !en_garde_bool && !begin_finish) {
+		if (!begin.Finished()) {
+			App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 51, SCREEN_HEIGHT / 2 - 24, &begin.GetCurrentFrame());
+			App->player->BlockControls(true);
+			App->player2->BlockControls(true);
+		}
+		else {
+			App->player->BlockControls(false);
+			App->player2->BlockControls(false);
+			begin_finish = true;
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -580,7 +611,9 @@ void ModuleUI::ResetScene() {
 	draw_anim.Reset();
 	App->player->hit_done = 0;
 	App->player->hit_percent = 0;
+	begin_finish = false;
 	App->player2->hit_done = 0;
+	begin.Reset();
 	App->player2->hit_percent = 0;
 	time_count = false;
 	haomaru_finished = false;

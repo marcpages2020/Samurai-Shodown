@@ -388,15 +388,18 @@ bool ModulePlayer2::Start()
 update_status ModulePlayer2::PreUpdate()
 {
 	if (!App->is_paused) {
-		player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT;
-		player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT;
-		player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT;
-		player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN;
-		player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
-		player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
-		player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN;
-		player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
+		if (controls) {
+			player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT;
+			player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT;
+			player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT;
+			player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN;
+			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN;
+			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
+			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN;
+			player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
+		}
+		
 
 		if (state2 == IDLE2) {
 			if (player_input2.pressing_left)
@@ -1119,16 +1122,16 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		switch (c2->type)
 		{
 		case COLLIDER_WALL_LEFT:
-			if (!player_input2.pressing_right)
+			if (!player_input2.pressing_right && state2 != DEATH2 && state2 != WIN2)
 				position.x += speed;
 
 			break;
 		case COLLIDER_WALL_RIGHT:
-			if (!player_input2.pressing_left)
+			if (!player_input2.pressing_left && state2 != DEATH2 && state2 != WIN2)
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER:
-			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2))
+			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DEATH2) && (state2 != WIN2))
 			{
 				if (position.x < App->player->position.x)
 				{
@@ -1188,4 +1191,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		}
 	}
 	
+}
+
+void ModulePlayer2::BlockControls(bool block)
+{
+	controls = !block;
 }
