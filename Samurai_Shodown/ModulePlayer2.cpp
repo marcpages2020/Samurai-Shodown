@@ -398,6 +398,11 @@ update_status ModulePlayer2::PreUpdate()
 			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN;
 			player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
+			if (player_input2.pressing_left && player_input2.pressing_right) {
+				player_input2.pressing_left = false;
+				player_input2.pressing_right = false;
+			}
+
 		}
 		
 
