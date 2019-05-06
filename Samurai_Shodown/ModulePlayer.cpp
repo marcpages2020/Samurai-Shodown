@@ -1103,7 +1103,10 @@ update_status ModulePlayer::Update()
 			break;
 		}
 	}
-	
+	if ((position.y < initial_position.y)&&((state != JUMP_BACKWARD)&&(state != JUMP_NEUTRAL)&&(state != JUMP_FORWARD)&&(state != HIT)))
+	{
+		state = JUMP_NEUTRAL;
+	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	SDL_Rect shadow = { 1348, 2627, 70, 17 };

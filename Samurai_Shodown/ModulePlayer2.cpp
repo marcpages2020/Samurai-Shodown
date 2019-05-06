@@ -1092,6 +1092,10 @@ update_status ModulePlayer2::Update()
 		}
 	}
 
+	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2)))
+	{
+		state2 = JUMP_NEUTRAL2;
+	}
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
