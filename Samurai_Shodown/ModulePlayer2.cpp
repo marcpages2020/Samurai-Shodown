@@ -845,6 +845,8 @@ update_status ModulePlayer2::Update()
 			{
 				position.y = initial_position.y;
 				mult = 1;
+				jump_forward2.Reset();
+				state2 = IDLE2;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				collider_player_2_up->SetPos(position.x + 15, position.y - 1000);
@@ -903,6 +905,8 @@ update_status ModulePlayer2::Update()
 			{
 				position.y = initial_position.y;
 				mult = 1;
+				jump_forward2.Reset();
+				state2 = IDLE2;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) 
 			{				
