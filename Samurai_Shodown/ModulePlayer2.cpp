@@ -556,7 +556,11 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		if (state2 == HIT2) {
-			if (current_animation->Finished()) {
+			if (position.y < initial_position.y)
+			{
+				position.y++;
+			}
+			else {
 				state2 = IDLE2;
 				hit2.Reset();
 			}
@@ -600,7 +604,7 @@ update_status ModulePlayer2::Update()
 		case IDLE2:
 			current_animation = &idle2;
 			position.y = lposition.y;
-			
+			shadow_x = position.x;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				collider_player_2_up->SetPos(position.x + 15, position.y - 80);
 				collider_player_2_up->SetSize(30, 35);
@@ -786,7 +790,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_neutral2;			
 			position.y -= speed * 2 * mult;
 
-			if (position.y <= 120) {
+			if (position.y <= 100) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -795,6 +799,11 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				collider_player_2_up->SetPos(position.x, position.y - 90);
@@ -823,7 +832,7 @@ update_status ModulePlayer2::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x -= 1.25*speed;
 
-			if (position.y <= 110) {
+			if (position.y <= 100) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -831,6 +840,11 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_forward2.Reset();
 				state2 = IDLE2;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				collider_player_2_up->SetPos(position.x + 15, position.y - 1000);
@@ -876,7 +890,7 @@ update_status ModulePlayer2::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed;
 
-			if (position.y <= 110) {
+			if (position.y <= 100) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -884,6 +898,11 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_backward2.Reset();
 				state2 = IDLE2;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) 
 			{				

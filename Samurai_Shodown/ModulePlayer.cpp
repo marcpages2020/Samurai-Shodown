@@ -560,11 +560,14 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == HIT) {
-				if (current_animation->Finished()) {
+				if (position.y < initial_position.y)
+				{
+					position.y++;
+				}
+				else if (current_animation->Finished()){
 					state = IDLE;
 					hit.Reset();
-
-				}
+				}	
 			}
 			if (state == EN_GARDE)
 			{
@@ -796,7 +799,7 @@ update_status ModulePlayer::Update()
 			
 			position.y -= speed * 2 * mult;
 
-			if (position.y <= 115) {
+			if (position.y <= 100) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -872,7 +875,7 @@ update_status ModulePlayer::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed;
 
-			if (position.y <= 105) {
+			if (position.y <= 100) {
 				mult = -1;
 			}
 			else if (position.y > initial_position.y)
@@ -882,6 +885,11 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				state = IDLE;
 			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
 			break;
 		case JUMP_BACKWARD:
 			current_animation = &jump_backward;
@@ -889,7 +897,7 @@ update_status ModulePlayer::Update()
 			position.y -= speed * 1.75 * mult;
 			position.x -= 1.25*speed;
 
-			if (position.y <= 110) {
+			if (position.y <= 100) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -903,6 +911,11 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				jump_backward.Reset();
 				state = IDLE;
+				mult = 1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
 				mult = 1;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL)
