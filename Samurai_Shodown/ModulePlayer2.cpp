@@ -851,7 +851,7 @@ update_status ModulePlayer2::Update()
 				collider_player_2_up->SetSize(40, 50);
 				
 				collider_player_2_down->SetPos(position.x + 10, position.y - 60);
-				collider_player_2_down->SetSize(30, 50);
+				collider_player_2_down->SetSize(30, 30);
 				
 				if (current_animation->SeeCurrentFrame() > 4)
 				{
@@ -871,7 +871,7 @@ update_status ModulePlayer2::Update()
 				if (collider_player_2_down != nullptr)
 				{
 					collider_player_2_down->SetPos(position.x, position.y - 50);
-					collider_player_2_down->SetSize(30, 50);
+					collider_player_2_down->SetSize(30, 30);
 				}
 				if (current_animation->SeeCurrentFrame() > 5)
 				{
