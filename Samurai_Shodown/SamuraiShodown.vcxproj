@@ -89,7 +89,7 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneCongrats.h" />
     <ClInclude Include="ModuleSceneHaohmaru.h" />
-    <ClInclude Include="ModuleSceneKyoshiro.h" />
+    <ClInclude Include="ModuleSceneWanFu.h" />
     <ClInclude Include="ModuleSceneWelcome.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleUI.h" />
@@ -112,7 +112,7 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneCongrats.cpp" />
     <ClCompile Include="ModuleSceneHaohmaru.cpp" />
-    <ClCompile Include="ModuleSceneKyoshiro.cpp" />
+    <ClCompile Include="ModuleSceneWanFu.cpp" />
     <ClCompile Include="ModuleSceneWelcome.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleUI.cpp" />

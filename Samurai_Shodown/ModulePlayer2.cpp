@@ -560,7 +560,7 @@ update_status ModulePlayer2::PreUpdate()
 			{
 				position.y++;
 			}
-			else {
+			else if(current_animation->Finished()){
 				state2 = IDLE2;
 				hit2.Reset();
 			}

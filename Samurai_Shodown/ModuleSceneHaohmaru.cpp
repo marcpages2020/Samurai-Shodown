@@ -93,7 +93,7 @@ update_status ModuleSceneHaohmaru::Update()
 	}
 	if ((App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN))
 	{
-		App->fade->FadeToBlack((Module*)App->scene_haohmaru, (Module*)App->scene_kyoshiro, 1.5f);
+		App->fade->FadeToBlack((Module*)App->scene_haohmaru, (Module*)App->scene_wanfu, 1.5f);
 	}
 	return UPDATE_CONTINUE;
 }

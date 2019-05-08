@@ -16,9 +16,6 @@
     <ClCompile Include="ModuleSceneHaohmaru.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneKyoshiro.cpp">
-      <Filter>Modules\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleSceneWelcome.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
@@ -61,6 +58,9 @@
     <ClCompile Include="ModuleUI.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleSceneWanFu.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -85,9 +85,6 @@
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="ModuleSceneHaohmaru.h">
-      <Filter>Modules\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneKyoshiro.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="ModuleNeoGeo.h">
@@ -131,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="ModuleUI.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneWanFu.h">
+      <Filter>Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

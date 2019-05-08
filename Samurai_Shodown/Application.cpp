@@ -8,7 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleSceneWelcome.h"
 #include "ModuleSceneHaohmaru.h"
-#include "ModuleSceneKyoshiro.h"
+#include "ModuleSceneWanFu.h"
 #include "ModuleParticles.h"
 #include "ModuleSceneCongrats.h"
 #include "ModuleNeoGeo.h"
@@ -28,7 +28,7 @@ Application::Application()
 	modules[i++] = scene_welcome = new ModuleSceneWelcome();
 	modules[i++] = neo_geo = new ModuleNeoGeo();
 	modules[i++] = scene_haohmaru = new ModuleSceneHaohmaru();
-	modules[i++] = scene_kyoshiro = new ModuleSceneKyoshiro();
+	modules[i++] = scene_wanfu = new ModuleSceneWanFu();
 	modules[i++] = scene_congrats = new ModuleSceneCongrats();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
@@ -57,7 +57,7 @@ bool Application::Init()
 	neo_geo->Disable();
 	scene_welcome->Disable();
 	//scene_haohmaru->Disable();
-	scene_kyoshiro->Disable();
+	scene_wanfu->Disable();
 	scene_congrats->Disable();
 	ui->Disable();
 

@@ -1,5 +1,5 @@
-#ifndef _MODULESCENEKYOSHIRO_H
-#define _MODULESCENEKYOSHIRO_H
+#ifndef _MODULESCENEWANFU_H
+#define _MODULESCENEWANFU_H
 
 #include "Module.h"
 #include "Animation.h"
@@ -16,11 +16,11 @@
 
 struct SDL_Texture;
 
-class ModuleSceneKyoshiro : public Module
+class ModuleSceneWanFu : public Module
 {
 public:
-	ModuleSceneKyoshiro();
-	~ModuleSceneKyoshiro();
+	ModuleSceneWanFu();
+	~ModuleSceneWanFu();
 
 	bool Start();
 	update_status Update();
@@ -31,5 +31,5 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation background;
 };
-#endif // !_MODULESCENEKYOSHIRO_H
+#endif // !_MODULESCENEWANFU_H
 

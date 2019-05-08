@@ -1,9 +1,9 @@
-#include "ModuleSceneKyoshiro.h"
+#include "ModuleSceneWanFu.h"
 #include "Application.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer2.h"
 
-ModuleSceneKyoshiro::ModuleSceneKyoshiro()
+ModuleSceneWanFu::ModuleSceneWanFu()
 {
 	//background animation
 	{
@@ -14,11 +14,11 @@ ModuleSceneKyoshiro::ModuleSceneKyoshiro()
 	}
 }
 
-ModuleSceneKyoshiro::~ModuleSceneKyoshiro()
+ModuleSceneWanFu::~ModuleSceneWanFu()
 {}
 
 // Load assets
-bool ModuleSceneKyoshiro::Start()
+bool ModuleSceneWanFu::Start()
 {
 	LOG("Loading Kyoshiro Scene");
 	bool ret = true;
@@ -36,7 +36,7 @@ bool ModuleSceneKyoshiro::Start()
 }
 
 // Load assets
-bool ModuleSceneKyoshiro::CleanUp()
+bool ModuleSceneWanFu::CleanUp()
 {
 	LOG("Unloading Kyoshiro stage");
 	App->player->Disable();
@@ -49,7 +49,7 @@ bool ModuleSceneKyoshiro::CleanUp()
 	return true;
 }
 
-update_status ModuleSceneKyoshiro::Update()
+update_status ModuleSceneWanFu::Update()
 {
 	SDL_Rect b;
 	// Draw everything --------------------------------------	
@@ -57,11 +57,11 @@ update_status ModuleSceneKyoshiro::Update()
 	App->render->Blit(graphics, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_congrats, 2.5);
+		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_congrats, 2.5);
 	}
 	if ((App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN))
 	{
-		App->fade->FadeToBlack((Module*)App->scene_kyoshiro, (Module*)App->scene_haohmaru, 1.5f);
+		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_haohmaru, 1.5f);
 	}
 
 	return UPDATE_CONTINUE;

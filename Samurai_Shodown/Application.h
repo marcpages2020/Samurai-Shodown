@@ -17,7 +17,7 @@ class ModuleFadeToBlack;
 class Module;
 class ModuleSceneWelcome;
 class ModuleSceneHaohmaru;
-class ModuleSceneKyoshiro;
+class ModuleSceneWanFu;
 class ModuleSceneCongrats;
 class ModuleParticles;
 class ModuleCollision;
@@ -40,7 +40,7 @@ public:
 	ModuleFadeToBlack*	fade = nullptr;
 	ModuleSceneWelcome* scene_welcome = nullptr;
 	ModuleSceneHaohmaru* scene_haohmaru = nullptr;
-	ModuleSceneKyoshiro* scene_kyoshiro = nullptr;
+	ModuleSceneWanFu* scene_wanfu = nullptr;
 	ModuleSceneCongrats* scene_congrats = nullptr;
 	ModuleParticles* particles = nullptr;
 	ModuleNeoGeo* neo_geo = nullptr;
