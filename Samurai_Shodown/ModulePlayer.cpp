@@ -10,10 +10,9 @@
 
 ModulePlayer::ModulePlayer()
 {
-	//animations
-	{
-		
-}
+	initial_position.x = position.x = shadow_x = 70;
+	position.y = initial_position.y = 215;
+	lposition = position;
 }
 
 ModulePlayer::~ModulePlayer(){}
@@ -23,9 +22,6 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player 1\n");
-	initial_position.x = position.x = shadow_x = 70;
-	position.y = initial_position.y = 215;
-	lposition = position;
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");

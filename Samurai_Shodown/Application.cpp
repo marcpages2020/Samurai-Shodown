@@ -62,6 +62,8 @@ bool Application::Init()
 	scene_haohmaru->Disable();
 	//scene_wanfu->Disable();
 	scene_congrats->Disable();
+	wanfu->Disable();
+	haohmaru->Disable();
 	ui->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

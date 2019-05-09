@@ -1,13 +1,18 @@
-#ifndef _MODULEWANFU_H
-#define _MODULEWANFU_H
-#include "ModulePlayer.h"
+#ifndef _MODULEWANFU_H_
+#define _MODULEWANFU_H_
+#include "ModulePlayer2.h"
 
-class ModuleWanFu:public ModulePlayer
+class ModuleWanFu :public ModulePlayer2
 {
 public:
-	
+	ModuleWanFu();
+	bool Start();
 private:
 
 };
-#endif // !_MODULEWANFU_H
+#endif // !_MODULEWANFU_H_
+
+
+
+
 

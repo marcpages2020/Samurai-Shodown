@@ -1,4 +1,5 @@
 #include "ModuleHaohmaru.h"
+#include "ModuleTextures.h"
 
 ModuleHaohmaru::ModuleHaohmaru() {
 	
@@ -354,4 +355,9 @@ ModuleHaohmaru::ModuleHaohmaru() {
 		}
 	}
 
+}
+
+bool ModuleHaohmaru::Start() {
+	player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	return true;
 }

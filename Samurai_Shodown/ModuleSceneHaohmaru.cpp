@@ -6,6 +6,8 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleUI.h"
+#include "ModuleHaohmaru.h"
+#include "ModuleWanFu.h"
 #include <iostream>
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
@@ -52,6 +54,8 @@ bool ModuleSceneHaohmaru::Start()
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	App->player2->Enable();
+	App->haohmaru->Enable();
+	App->wanfu->Enable();
 	App->ui->Enable();
 	left_wall = App->collision->AddCollider({ -121,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
 	right_wall= App->collision->AddCollider({ 390,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);

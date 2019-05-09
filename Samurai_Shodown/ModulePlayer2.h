@@ -69,15 +69,16 @@ public:
 	Animation jump_forward2;
 	Animation jump_backward2;
 	Animation crouch_down2;
-	bool shadow_blit = true;
 	Animation win2;
-	bool god = false;
 	Animation en_garde2;
 	Animation crouch_up2;
 	Animation crouch_punch2;
 	Animation crouch_kick2;
 	Animation twister2;
 	Animation twisterAlone2;
+	Animation* current_animation = nullptr;
+	bool shadow_blit = true;
+	bool god = false;
 	iPoint position;
 	iPoint lposition;
 	iPoint initial_position;
@@ -90,7 +91,9 @@ public:
 	int mult = 1;
 	int hit_percent = 0;
 	int hit_done = 0;
-	Animation* current_animation = nullptr;
+	int attack_frames = 0;
+	int shadow_x;
+	int shadow_w = 70;
 	PlayerInput2 player_input2;
 	States2 state2;
 	float speed = 2;
@@ -99,10 +102,8 @@ public:
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
-	int attack_frames = 0;
-	int shadow_x;
-	int shadow_w = 70;
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+	SDL_Texture* player2_textures;
 	bool controls = true;
 };
 
