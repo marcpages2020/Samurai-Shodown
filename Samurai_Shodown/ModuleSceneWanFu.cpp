@@ -5,10 +5,12 @@
 ModuleSceneWanFu::ModuleSceneWanFu(){
 	//background animation
 	{
-		background.PushBack({ 0,0,512,325 }, 0.04f);
-		background.PushBack({ 512,0,512,325 }, 0.04f);
-		background.PushBack({ 0,325,512,325 }, 0.08f);
-		background.PushBack({ 512,325,512,325 }, 0.04f);
+		//background.PushBack({ 0,0,512,325 }, 0.08f);//candle on
+		background.PushBack({ 512,0,512,325 }, 0.08f);//blue light
+		//background.PushBack({ 0,325,512,325 }, 0.08f);//candle on
+		background.PushBack({ 512,325,512,325 }, 0.08f);//candle off
+		background.PushBack({ 512,0,512,325 }, 0.08f);//blue light
+		background.PushBack({ 512,325,512,325 }, 0.01f);//candle off
 	}
 }
 
