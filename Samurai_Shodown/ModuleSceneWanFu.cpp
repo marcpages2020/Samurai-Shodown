@@ -60,7 +60,7 @@ update_status ModuleSceneWanFu::Update()
 	}
 	if ((App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN))
 	{
-		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_haohmaru, 1.5f);
+		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_wanfu, 1.5f);
 	}
 
 	return UPDATE_CONTINUE;
