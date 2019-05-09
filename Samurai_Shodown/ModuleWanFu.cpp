@@ -7,18 +7,15 @@ ModuleWanFu::ModuleWanFu() {
 		{
 			//idle animation
 			{
-				idle2.PushBack({ 16,22,71,109 }, 0.3f);
-				idle2.PushBack({ 92,22,72,109 }, 0.3f);
-				idle2.PushBack({ 168,22,71,109 }, 0.3f);
-				idle2.PushBack({ 245,20,72,111 }, 0.3f);
-				idle2.PushBack({ 322,18,72,113 }, 0.3f);
-				idle2.PushBack({ 399,19,72,112 }, 0.3f);
-				idle2.PushBack({ 476,19,74,112 }, 0.3f);
-				idle2.PushBack({ 554,19,74,112 }, 0.3f);
-				idle2.PushBack({ 630,19,73,112 }, 0.3f);
-				idle2.PushBack({ 245,20,72,111 }, 0.3f);
-				idle2.PushBack({ 322,18,72,113 }, 0.3f);
-				idle2.PushBack({ 399,19,72,112 }, 0.3f);
+				idle2.PushBack({ 27,26,118,126 }, 0.3f);
+				idle2.PushBack({ 147,26,118,126 }, 0.3f);
+				idle2.PushBack({ 266,26,118,126 }, 0.3f);
+				idle2.PushBack({ 386,26,118,126 }, 0.3f);
+				idle2.PushBack({ 505,26,118,126 }, 0.3f);
+				idle2.PushBack({ 623,26,118,126 }, 0.3f);
+				idle2.PushBack({ 741,40,118,110 }, 0.3f);
+				idle2.PushBack({ 857,40,118,110 }, 0.3f);
+				idle2.PushBack({ 973,40,118,110 }, 0.3f);
 			}
 
 			//forward animation

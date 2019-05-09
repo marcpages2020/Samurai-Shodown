@@ -37,7 +37,7 @@ struct Collider
 
 	void SetPos(int x, int y)
 	{
-		rect.x = x;
+w		rect.x = x;
 		rect.y = y;
 	}
 	void SetSize(int w, int h)
