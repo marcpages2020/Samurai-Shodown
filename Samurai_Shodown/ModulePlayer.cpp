@@ -312,52 +312,51 @@ ModulePlayer::ModulePlayer()
 
 		//win animation
 		{
-			win.PushBack({48, 2072, 76, 177}, 0.2f);
-			win.PushBack({146, 2072, 76, 177}, 0.2f);
-			win.PushBack({248, 2079, 90, 170}, 0.2f);
-			win.PushBack({338, 2071, 90, 178}, 0.2f);
-			win.PushBack({436, 2040, 76, 209}, 0.2f);
-			win.PushBack({537, 2040, 76, 209 }, 0.2f);
-			win.PushBack({628, 2040, 74, 209 }, 0.2f);
-			win.PushBack({729 , 2040, 74, 209 }, 0.2f);
-			win.PushBack({825, 2040, 74, 209 }, 0.2f);
-			win.PushBack({921, 2040, 74, 209 }, 0.2f);
-			win.PushBack({1023, 2131, 74, 118}, 0.2f);
-			win.PushBack({1123, 2146, 49, 102}, 0.2f);
-			win.PushBack({1180, 2142, 96, 106}, 0.2f);
-			win.PushBack({1288, 2142, 96, 106}, 0.2f);
-			win.PushBack({1409, 2142, 96, 106}, 0.2f);
-			win.PushBack({1515, 2142, 96, 106}, 0.2f);
-			win.PushBack({1614, 2142, 96, 106}, 0.2f);
-			win.PushBack({1722, 2142, 96, 106}, 0.2f);
-			win.PushBack({1838, 2142, 97, 106}, 0.2f);
-			win.PushBack({26, 2357, 96, 106}, 0.2f);
-			win.PushBack({140, 2357, 96, 106}, 0.2f);
-			win.PushBack({258, 2357, 98, 106}, 0.2f);
-			win.PushBack({381, 2357, 96, 106}, 0.2f);
-			win.PushBack({483, 2357, 96, 106}, 0.2f);
-			win.PushBack({575, 2357, 96, 106}, 0.2f);
-			win.PushBack({680, 2357, 96, 106}, 0.2f);
-			win.PushBack({804, 2254, 98, 209}, 0.2f);
-			win.PushBack({912, 2254, 98, 209}, 0.2f);
-			win.PushBack({1004, 2254, 96, 209}, 0.2f);
-			win.PushBack({1103, 2254, 96, 209}, 0.2f);
-			win.PushBack({1195, 2254, 96, 209}, 0.2f);
-			win.PushBack({1291, 2254, 96, 209}, 0.2f);
-			win.PushBack({1407, 2254, 100, 209}, 0.2f);
-			win.PushBack({1523, 2254, 100, 209}, 0.2f);
-			win.PushBack({1630, 2254, 96, 209}, 0.2f);
-			win.PushBack({1746, 2254, 96, 209}, 0.2f);
-			win.PushBack({1840, 2254, 96, 209}, 0.2f);
-			win.PushBack({49, 2488, 96, 190}, 0.2f);
-			win.PushBack({158, 2498, 96, 180}, 0.2f);
-			win.PushBack({255, 2503, 96, 175}, 0.2f);
-			win.PushBack({356, 2513, 96, 165}, 0.2f);
-			win.PushBack({452, 2521, 96, 157}, 0.2f);
-			win.PushBack({553, 2530, 96, 148}, 0.2f);
-			win.PushBack({646, 2566, 96, 112}, 0.2f);
-			win.PushBack({741, 2566, 96, 112}, 0.2f);
-			win.PushBack({1028, 2566, 96, 112}, 0.2f);
+			//in.PushBack({49, 2072, 76, 177}, 0.2f);
+			//win.PushBack({146, 2072, 76, 177}, 0.2f);
+			//win.PushBack({250, 2079, 90, 170}, 0.2f);
+			//win.PushBack({340, 2071, 90, 178}, 0.2f);
+			//win.PushBack({440, 2040, 76, 209}, 0.2f);
+			//win.PushBack({538, 2040, 76, 209 }, 0.2f);
+			//win.PushBack({631, 2040, 74, 209 }, 0.2f);
+			//win.PushBack({731 , 2040, 74, 209 }, 0.2f);
+			//win.PushBack({827, 2040, 74, 209 }, 0.2f);
+			//win.PushBack({923, 2040, 74, 209 }, 0.2f);
+			//win.PushBack({1025, 2131, 74, 118}, 0.2f);
+			//win.PushBack({1125, 2146, 49, 102}, 0.2f);
+			//win.PushBack({1182, 2143, 96, 106}, 0.2f);
+			//win.PushBack({1288, 2143, 96, 106}, 0.2f);
+			//win.PushBack({1409, 2144, 96, 106}, 0.2f);
+			//win.PushBack({1515, 2144, 96, 106}, 0.2f);
+			//win.PushBack({1614, 2143, 96, 106}, 0.2f);
+			//win.PushBack({1723, 2144, 96, 106}, 0.2f);
+			//win.PushBack({1838, 2143, 97, 106}, 0.2f);
+			//win.PushBack({28, 2359, 96, 106}, 0.2f);
+			//win.PushBack({140, 2359, 96, 106}, 0.2f);
+			//win.PushBack({260, 2359, 98, 106}, 0.2f);
+			//win.PushBack({380, 2359, 96, 106}, 0.2f);
+			//win.PushBack({482, 2359, 96, 106}, 0.2f);
+			//win.PushBack({1614, 2143, 96, 106}, 0.2f);
+			//win.PushBack({678, 2359, 96, 106}, 0.2f);
+			//win.PushBack({803, 2256, 98, 209}, 0.2f);
+			//win.PushBack({910, 2256, 98, 209}, 0.2f);
+			//win.PushBack({1001, 2256, 96, 209}, 0.2f);
+			//win.PushBack({1100, 2256, 96, 209}, 0.2f);
+			//win.PushBack({1289, 2256, 96, 209}, 0.2f);
+			//win.PushBack({1409, 2256, 100, 209}, 0.2f);
+			win.PushBack({1524, 2256, 100, 209}, 0.2f);
+			win.PushBack({1628, 2256, 96, 209}, 0.2f);
+			win.PushBack({1744, 2256, 96, 209}, 0.2f);
+			//win.PushBack({1840, 2256, 96, 209}, 0.2f);
+			//win.PushBack({49, 2488, 96, 190}, 0.2f);
+			//win.PushBack({158, 2498, 96, 180}, 0.2f);
+			//win.PushBack({255, 2503, 96, 175}, 0.2f);
+			//win.PushBack({356, 2513, 96, 165}, 0.2f);
+			//win.PushBack({452, 2521, 96, 157}, 0.2f);
+			//win.PushBack({553, 2530, 96, 148}, 0.2f);
+			//win.PushBack({646, 2566, 96, 112}, 0.2f);
+			//win.PushBack({741, 2566, 96, 112}, 0.2f);
+			//win.PushBack({1028, 2566, 96, 112}, 0.2f);
 			win.loop = false;
 		}
 
@@ -402,6 +401,7 @@ update_status ModulePlayer::PreUpdate()
 			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
 			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
+			player_input.pressing_Q = App->input->keyboard[SDL_SCANCODE_Q] == KEY_DOWN;
 
 			if (player_input.pressing_A && player_input.pressing_D) {
 				player_input.pressing_A = false;
@@ -413,6 +413,9 @@ update_status ModulePlayer::PreUpdate()
 		//states 
 		{
 			if (state == IDLE) {
+				if (player_input.pressing_Q) {
+					state = WIN;
+				}
 				if (player_input.pressing_A)
 					state = BACKWARD;
 				if (player_input.pressing_D)

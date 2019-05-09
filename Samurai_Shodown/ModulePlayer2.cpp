@@ -205,9 +205,9 @@ ModulePlayer2::ModulePlayer2()
 			crouch_down2.PushBack({ 557, 1273, 88, 76 }, 0.5f);
 			crouch_down2.loop = false;
 			
-			crouch_up2.PushBack({ 180, 1239, 68, 110 }, 0.5f);
-			crouch_up2.PushBack({ 94, 1239, 68, 110 }, 0.5f);
-			crouch_up2.PushBack({ 15, 1239, 68, 110 }, 0.5f);
+			crouch_up2.PushBack({ 180, 1239, 68, 110 }, 0.9f);
+			crouch_up2.PushBack({ 94, 1239, 68, 110 }, 0.9f);
+			crouch_up2.PushBack({ 15, 1239, 68, 110 }, 0.9f);
 			crouch_up2.loop = false;
 		}
 
