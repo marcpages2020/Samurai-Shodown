@@ -1148,7 +1148,6 @@ bool ModulePlayer2::CleanUp() {
 	return true;
 }
 
-
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	if (state2 != DEATH2) {
 		switch (c2->type)

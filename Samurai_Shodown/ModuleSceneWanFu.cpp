@@ -1,16 +1,14 @@
 #include "ModuleSceneWanFu.h"
 #include "Application.h"
-#include "ModuleCollision.h"
 #include "ModulePlayer2.h"
 
-ModuleSceneWanFu::ModuleSceneWanFu()
-{
+ModuleSceneWanFu::ModuleSceneWanFu(){
 	//background animation
 	{
-		background.PushBack({ 0,0,512,325 }, 0.08f);
-		background.PushBack({ 512,0,512,325 }, 0.08f);
+		background.PushBack({ 0,0,512,325 }, 0.04f);
+		background.PushBack({ 512,0,512,325 }, 0.04f);
 		background.PushBack({ 0,325,512,325 }, 0.08f);
-		background.PushBack({ 512,325,512,325 }, 0.08f);
+		background.PushBack({ 512,325,512,325 }, 0.04f);
 	}
 }
 
