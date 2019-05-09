@@ -4,60 +4,31 @@
 
 ModuleSceneWanFu::ModuleSceneWanFu(){
 	//background animation
-	{/*
+	{
 		background.PushBack({ 0,0,504,325 }, 0.08f);
-		background.PushBack({ 504,103,504,325 }, 0.08f);		
-		background.PushBack({ 1008,206,504,325 }, 0.08f);
-		background.PushBack({ 1512,309,504,325 }, 0.08f);
-		background.PushBack({ 325,325,504,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,325 }, 0.08f);
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);		
-		background.PushBack({ ,,,103 }, 0.08f);	*/	
-
-		/*
-		x	y	w	h
-0	0	504	325
-504	0	504	325
-1008	0	504	325
-1512	0	504	325
-325	325	504	325
-829	325	504	325
-1333	325	504	325
-1837	325	504	325
-650	650	504	325
-1154	650	504	325
-1658	650	504	325
-2162	650	504	325
-975	975	504	325
-1479	975	504	325
-1983	975	504	325
-2487	975	504	325
-1300	1300	504	325
-1804	1300	504	325
-2308	1300	504	325
-2812	1300	504	325
-1625	1625	504	325
-2129	1625	504	325
-2633	1625	504	325
-3137	1625	504	325
-
-		*/
+		background.PushBack({ 512,0,504,325 }, 0.08f);		
+		background.PushBack({ 1024,0,504,325 }, 0.08f);
+		background.PushBack({ 1536,0,504,325 }, 0.08f);
+		background.PushBack({ 0,325,504,325 }, 0.08f);
+		background.PushBack({ 512,325,504,325 }, 0.08f);
+		background.PushBack({ 1024,325,504,325 }, 0.08f);
+		background.PushBack({ 1536,325,504,325 }, 0.08f);
+		background.PushBack({ 0,650,504,325 }, 0.08f);
+		background.PushBack({ 512,650,504,325 }, 0.08f);
+		background.PushBack({ 1024,650,504,325 }, 0.08f);
+		background.PushBack({ 1536,650,504,325 }, 0.08f);
+		background.PushBack({ 0,975,504,325 }, 0.08f);
+		background.PushBack({ 512,975,504,325 }, 0.08f);
+		background.PushBack({ 1024,975,504,325 }, 0.08f);
+		background.PushBack({ 1536,975,504,325 }, 0.08f);
+		background.PushBack({ 0,1300,504,325 }, 0.08f);
+		background.PushBack({ 512,1300,504,325 }, 0.08f);
+		background.PushBack({ 1024,1300,504,325 }, 0.08f);
+		background.PushBack({ 1536,1300,504,325 }, 0.08f);
+		background.PushBack({ 0,1625,504,325 }, 0.08f);
+		background.PushBack({ 512,1625,504,325 }, 0.08f);
+		background.PushBack({ 1024,1625,504,325 }, 0.08f);
+		background.PushBack({ 1536,1625,504,325 }, 0.08f);
 	}
 }
 
