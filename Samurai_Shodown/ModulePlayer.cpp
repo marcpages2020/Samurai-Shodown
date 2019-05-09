@@ -1156,7 +1156,6 @@ bool ModulePlayer::CleanUp() {
 	return true;
 }
 
-
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
 	switch (c2->type)
