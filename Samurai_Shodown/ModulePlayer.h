@@ -64,12 +64,30 @@ public:
 	SDL_Texture* haohmaru_tex = nullptr;
 	SDL_Texture* wanfu_tex = nullptr;
 	SDL_Texture* player_textures = nullptr;
+	//Haohmaru Animations
 	Animation idle;
 	Animation forward;
 	Animation backward;
 	Animation punch;
 	Animation kick;
-	Animation hit;	
+	Animation hit;
+	Animation jump_neutral;
+	Animation jump_forward;
+	Animation jump_backward;
+	Animation crouch_up;
+	Animation crouch_down;
+	Animation crouch_punch;
+	Animation crouch_kick;
+	Animation twister;
+	Animation twisterAlone;
+	Animation en_garde;
+	//Wan-Fu Animations
+	Animation idle;
+	Animation forward;
+	Animation backward;
+	Animation punch;
+	Animation kick;
+	Animation hit;
 	Animation jump_neutral;
 	Animation jump_forward;
 	Animation jump_backward;
