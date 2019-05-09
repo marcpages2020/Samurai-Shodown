@@ -1,5 +1,6 @@
 #include "ModuleHaohmaru.h"
 #include "ModuleTextures.h"
+#include "ModuleUI.h"
 
 
 ModuleHaohmaru::ModuleHaohmaru() {
@@ -369,6 +370,7 @@ bool ModuleHaohmaru::Start() {
 		collider_player_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->haohmaru);
 	if (!collider_player_down)
 		collider_player_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER, (Module*)App->haohmaru);
+	App->ui->Enable();
 	return true;
 }
 
