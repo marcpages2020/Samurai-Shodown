@@ -13,7 +13,7 @@ ModuleSceneHaohmaru::ModuleSceneHaohmaru()
 	//background animation
 	{
 		background.PushBack({ 0,0,512,333 }, 0.08f); //0
-		background.PushBack({ 512,0,512,333 }, 0.08);
+		background.PushBack({ 512,0,512,333 }, 0.08f);
 		background.PushBack({ 1024,0,512,333 }, 0.08f);
 		background.PushBack({ 1536,0,512,333 }, 0.08f);
 		background.PushBack({ 0,333,512,333 }, 0.08f); //512

@@ -41,7 +41,6 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = ui = new ModuleUI();
 	modules[i++] = fade = new ModuleFadeToBlack();
-
 }	
 
 Application::~Application()

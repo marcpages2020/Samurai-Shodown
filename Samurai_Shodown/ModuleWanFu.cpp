@@ -1,11 +1,7 @@
+#ifndef _MODULEWANFU_H
+#define _MODULEWANFU_H
 #include "ModuleWanFu.h"
 
-ModuleWanfu::ModuleWanFu() {
-	//animations
-	{
-		//put animations here
-		//idle
 
-		//forward
-	}
-}
+
+#endif // !_MODULEWANFU_H

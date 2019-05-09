@@ -3,7 +3,6 @@
 
 #include "Globals.h"
 
-
 #define NUM_MODULES 19
 
 class ModuleWindow;
