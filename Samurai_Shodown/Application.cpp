@@ -16,6 +16,8 @@
 #include "ModuleFonts.h"
 #include "ModulePlayer2.h"
 #include "ModuleUI.h"
+#include "ModuleHaohmaru.h"
+#include "ModuleWanFu.h"
 
 Application::Application()
 {
@@ -31,6 +33,8 @@ Application::Application()
 	modules[i++] = scene_wanfu = new ModuleSceneWanFu();
 	modules[i++] = scene_congrats = new ModuleSceneCongrats();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = haohmaru = new ModuleHaohmaru();
+	modules[i++] = wanfu = new ModuleWanFu();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = fonts = new ModuleFonts();

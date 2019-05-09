@@ -81,6 +81,7 @@
     <ClInclude Include="ModuleCollision.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
+    <ClInclude Include="ModuleHaohmaru.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleNeoGeo.h" />
     <ClInclude Include="ModuleParticles.h" />
@@ -93,6 +94,7 @@
     <ClInclude Include="ModuleSceneWelcome.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleUI.h" />
+    <ClInclude Include="ModuleWanFu.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
   </ItemGroup>
@@ -104,6 +106,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
+    <ClCompile Include="ModuleHaohmaru.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleNeoGeo.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
@@ -116,6 +119,7 @@
     <ClCompile Include="ModuleSceneWelcome.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleUI.cpp" />
+    <ClCompile Include="ModuleWanFu.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

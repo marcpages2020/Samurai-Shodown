@@ -1111,23 +1111,23 @@ update_status ModulePlayer2::Update()
 		//player 2 can only be Haohmaru right now
 		// to be changed
 		if (shadow_blit) {
-			App->render->Blit(App->player->haohmaru_tex, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+			App->render->Blit(App->player->player_textures, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
-		App->render->Blit(App->player->haohmaru_tex, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
+		App->render->Blit(App->player->player_textures, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
 		if (shadow_blit) {
-			App->render->Blit(App->player->haohmaru_tex, shadow_x, initial_position.y - 7, &shadow, flip);
+			App->render->Blit(App->player->player_textures, shadow_x, initial_position.y - 7, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
-		App->render->Blit(App->player->haohmaru_tex, position.x, position.y - r.h, &r, flip);
+		App->render->Blit(App->player->player_textures, position.x, position.y - r.h, &r, flip);
 
 	}
 

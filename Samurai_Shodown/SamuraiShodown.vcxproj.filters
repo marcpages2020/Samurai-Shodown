@@ -61,6 +61,12 @@
     <ClCompile Include="ModuleSceneWanFu.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleHaohmaru.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWanFu.cpp">
+      <Filter>Modules\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -130,6 +136,12 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleSceneWanFu.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleHaohmaru.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWanFu.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
