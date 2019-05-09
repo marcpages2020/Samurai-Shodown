@@ -206,9 +206,9 @@ ModulePlayer::ModulePlayer()
 			crouch_down.loop = false;
 
 			//Crouch Up
-			crouch_up.PushBack({ 180, 12439, 68, 110 }, 0.5f);
-			crouch_up.PushBack({ 94, 12439, 68, 110 }, 0.5f);
-			crouch_up.PushBack({ 15, 1239, 68, 110 }, 0.5f);	
+			crouch_up.PushBack({ 180, 1239, 68, 110 }, 0.9f);
+			crouch_up.PushBack({ 94, 1239, 68, 110 }, 0.9f);
+			crouch_up.PushBack({ 15, 1239, 68, 110 }, 0.9f);	
 			crouch_up.loop = false;
 		}
 
