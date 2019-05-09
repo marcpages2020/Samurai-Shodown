@@ -45,8 +45,8 @@ bool ModuleSceneWanFu::Start()
 	graphics = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Kyoshiro.ogg");
 	App->audio->PlayMusic(music, NULL);
-	App->player->Enable();
-	App->player2->Enable();
+	//App->player->Enable();
+	//App->player2->Enable();
 	App->haohmaru->Enable();
 	App->wanfu->Enable();
 	left_wall = App->collision->AddCollider({ -100,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);

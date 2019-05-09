@@ -1,6 +1,7 @@
 #include "ModuleHaohmaru.h"
 #include "ModuleTextures.h"
 
+
 ModuleHaohmaru::ModuleHaohmaru() {
 	
 	//animations 
@@ -358,11 +359,21 @@ ModuleHaohmaru::ModuleHaohmaru() {
 }
 
 bool ModuleHaohmaru::Start() {
+	LOG("Loading Haohmaru\n");
 	player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
+	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
+	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
+	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
+	if (!collider_player_up)
+		collider_player_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->haohmaru);
+	if (!collider_player_down)
+		collider_player_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER, (Module*)App->haohmaru);
 	return true;
 }
 
 bool ModuleHaohmaru::CleanUp() {
+	LOG("Unloading Haohmaru\n");
 	App->textures->Unload(player_textures);
 	return true;
 }

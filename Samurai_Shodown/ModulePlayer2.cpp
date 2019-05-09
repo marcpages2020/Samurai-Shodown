@@ -23,10 +23,6 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player 2\n");
-	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
-	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
-	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
-	hit_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/Hit_1.wav");
 	state2 = IDLE2;
 	god = false;
 	life = 100;

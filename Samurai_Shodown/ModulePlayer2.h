@@ -49,12 +49,12 @@ public:
 	ModulePlayer2();
 	~ModulePlayer2();
 
-	bool Start();
+	virtual bool Start();
 	update_status PreUpdate();
 	update_status Update();
-	bool CleanUp();
-	void OnCollision(Collider* c1, Collider* c2);
-	void BlockControls(bool block);
+	virtual bool CleanUp();
+	virtual void OnCollision(Collider* c1, Collider* c2);
+	virtual void BlockControls(bool block);
 
 public:
 
@@ -103,7 +103,7 @@ public:
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
-	SDL_Texture* player2_textures;
+	SDL_Texture* player2_textures=nullptr;
 	bool controls = true;
 };
 

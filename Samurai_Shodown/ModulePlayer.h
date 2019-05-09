@@ -30,8 +30,6 @@ enum States
 	EN_GARDE,
 	WIN,
 	DEATH,
-
-
 };
 
 struct PlayerInput {
@@ -53,12 +51,12 @@ public:
 	ModulePlayer();
 	~ModulePlayer();
 
-	bool Start();
+	virtual bool Start();
 	update_status PreUpdate();
 	update_status Update();
-	bool CleanUp();
-	void OnCollision(Collider* c1, Collider* c2);
-	void BlockControls(bool block);
+	virtual bool CleanUp();
+	virtual void OnCollision(Collider* c1, Collider* c2);
+	virtual void BlockControls(bool block);
 public:
 	SDL_Texture* player_textures = nullptr;
 	Animation idle;
@@ -77,6 +75,7 @@ public:
 	Animation twister;
 	Animation twisterAlone;
 	Animation en_garde;
+	Animation win;
 	int hit_percent = 0;
 	int hit_done = 0;
 	Animation die;
@@ -100,7 +99,6 @@ public:
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
-	Animation win;
 	int attack_frames=0;
 	void PlayerCollidersCleanUp();
 	int shadow_x;

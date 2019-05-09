@@ -1,6 +1,7 @@
 #include "ModuleWanFu.h"
 #include "ModuleTextures.h"
 
+
 ModuleWanFu::ModuleWanFu() {
 	//animations
 	{
@@ -349,11 +350,21 @@ ModuleWanFu::ModuleWanFu() {
 }
 
 bool ModuleWanFu::Start() {
+	LOG("Loading Wan-Fu\n");
 	player2_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
+	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
+	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
+	hit_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/Hit_1.wav");
+	if (!collider_player_2_up)
+		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
+	if (!collider_player_2_down)
+		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	return true;
 }
 
 bool ModuleWanFu::CleanUp() {
+	LOG("Unloading Wan-Fu");
 	App->textures->Unload(player2_textures);
 	return true;
 }
