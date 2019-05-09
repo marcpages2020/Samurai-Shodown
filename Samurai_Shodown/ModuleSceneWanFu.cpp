@@ -7,10 +7,10 @@ ModuleSceneWanFu::ModuleSceneWanFu()
 {
 	//background animation
 	{
-		background.PushBack({ 0,0,512,324 }, 0.08f);
-		background.PushBack({ 512,0,512,324 }, 0.08f);
-		background.PushBack({ 0,324,512,324 }, 0.08f);
-		background.PushBack({ 512,324,512,324 }, 0.08f);
+		background.PushBack({ 0,0,512,325 }, 0.08f);
+		background.PushBack({ 512,0,512,325 }, 0.08f);
+		background.PushBack({ 0,325,512,325 }, 0.08f);
+		background.PushBack({ 512,325,512,325 }, 0.08f);
 	}
 }
 
