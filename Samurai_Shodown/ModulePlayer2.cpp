@@ -905,7 +905,7 @@ update_status ModulePlayer2::Update()
 			{
 				position.y = initial_position.y;
 				mult = 1;
-				jump_forward2.Reset();
+				jump_backward2.Reset();
 				state2 = IDLE2;
 			}
 			if (flip != SDL_FLIP_HORIZONTAL) 
