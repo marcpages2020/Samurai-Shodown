@@ -13,6 +13,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "SDL_mixer/include/SDL_mixer.h"
+#include "ModuleCollision.h"
 
 struct SDL_Texture;
 
@@ -30,6 +31,8 @@ public:
 	Mix_Music *music=nullptr;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
+	Collider* left_wall;
+	Collider* right_wall;
 };
 #endif // !_MODULESCENEWANFU_H
 

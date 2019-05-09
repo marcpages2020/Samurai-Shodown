@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleSceneHaohmaru.h"
+#include "ModuleSceneWanFu.h"
 
 ModuleRender::ModuleRender() : Module()
 {
@@ -208,16 +209,34 @@ void ModuleRender::MoveCamera()
 			camera.x += App->player->speed * SCREEN_SIZE;
 		}
 	}
-	if (camera.x+SCREEN_WIDTH > App->scene_haohmaru->right_wall->rect.x+150)
+	if (App->scene_haohmaru->IsEnabled()==true)
 	{
-		camera.x--;
-		left->rect.x--;
+		if (camera.x + SCREEN_WIDTH > App->scene_haohmaru->right_wall->rect.x + 150)
+		{
+			camera.x--;
+			left->rect.x--;
+		}
+		if (camera.x < App->scene_haohmaru->left_wall->rect.x - 150)
+		{
+			camera.x++;
+			right->rect.x++;
 	}
-	if (camera.x < App->scene_haohmaru->left_wall->rect.x-150)
+
+	}
+	else if (App->scene_wanfu->IsEnabled()==true)
 	{
-		camera.x++;
-		right->rect.x++;
+		if (camera.x + SCREEN_WIDTH > App->scene_wanfu->right_wall->rect.x + 150)
+		{
+			camera.x--;
+			left->rect.x--;
+		}
+		if (camera.x < App->scene_wanfu->left_wall->rect.x - 150)
+		{
+			camera.x++;
+			right->rect.x++;
+		}
 	}
+	
 }
 
 void ModuleRender::SetCamera()

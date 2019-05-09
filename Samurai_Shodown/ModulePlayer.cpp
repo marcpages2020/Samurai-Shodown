@@ -12,6 +12,8 @@ ModulePlayer::ModulePlayer()
 {
 	//animations
 	{
+		//Haohmaru 
+		{ 
 		//idle animation
 		{
 			idle.PushBack({ 16,22,71,109 }, 0.3f);
@@ -139,7 +141,7 @@ ModulePlayer::ModulePlayer()
 			jump_backward.PushBack({ 1509, 1492, 77, 85 }, 0.3f);
 			jump_backward.PushBack({ 1595, 1492, 77, 85 }, 0.3f);
 			jump_backward.PushBack({ 1686, 1492, 77, 85 }, 0.3f);
-			jump_backward.loop = false;			
+			jump_backward.loop = false;
 		}
 
 		//punch animation
@@ -182,101 +184,101 @@ ModulePlayer::ModulePlayer()
 
 		//get hit animation 2
 		{
-			hit.PushBack({14, 1616, 78, 100}, 0.3f);
-			hit.PushBack({105, 1616, 78, 100}, 0.3f);
-			hit.PushBack({195, 1616, 78, 100}, 0.3f);
-			hit.PushBack({282, 1616, 77, 94}, 0.3f);
-			hit.PushBack({367, 1616, 77, 94}, 0.3f);
-			hit.PushBack({452, 1616, 77, 94}, 0.3f);
-			hit.PushBack({14, 1616, 78, 100}, 6.3f);
-			hit.PushBack({105, 1616, 78, 100}, 6.3f);
-			hit.PushBack({195, 1616, 78, 100}, 6.3f);
+			hit.PushBack({ 14, 1616, 78, 100 }, 0.3f);
+			hit.PushBack({ 105, 1616, 78, 100 }, 0.3f);
+			hit.PushBack({ 195, 1616, 78, 100 }, 0.3f);
+			hit.PushBack({ 282, 1616, 77, 94 }, 0.3f);
+			hit.PushBack({ 367, 1616, 77, 94 }, 0.3f);
+			hit.PushBack({ 452, 1616, 77, 94 }, 0.3f);
+			hit.PushBack({ 14, 1616, 78, 100 }, 6.3f);
+			hit.PushBack({ 105, 1616, 78, 100 }, 6.3f);
+			hit.PushBack({ 195, 1616, 78, 100 }, 6.3f);
 			hit.loop = false;
 		}
 
 		//crouch animation
 		{
 			//Crouch Down
-			crouch_down.PushBack({ 15, 1239, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 94, 1239, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 180, 1239, 68, 110}, 0.5f);
-			crouch_down.PushBack({ 299, 1273, 88, 76}, 0.5f);
-			crouch_down.PushBack({ 431, 1273, 88, 76}, 0.5f);
+			crouch_down.PushBack({ 15, 1239, 68, 110 }, 0.5f);
+			crouch_down.PushBack({ 94, 1239, 68, 110 }, 0.5f);
+			crouch_down.PushBack({ 180, 1239, 68, 110 }, 0.5f);
+			crouch_down.PushBack({ 299, 1273, 88, 76 }, 0.5f);
+			crouch_down.PushBack({ 431, 1273, 88, 76 }, 0.5f);
 			crouch_down.PushBack({ 557, 1273, 88, 76 }, 0.5f);
 			crouch_down.loop = false;
 
 			//Crouch Up
 			crouch_up.PushBack({ 180, 1239, 68, 110 }, 0.9f);
 			crouch_up.PushBack({ 94, 1239, 68, 110 }, 0.9f);
-			crouch_up.PushBack({ 15, 1239, 68, 110 }, 0.9f);	
+			crouch_up.PushBack({ 15, 1239, 68, 110 }, 0.9f);
 			crouch_up.loop = false;
 		}
 
 		//crouch punch
 		{
-			crouch_punch.PushBack({15, 1718, 100, 93}, 0.6f);
-			crouch_punch.PushBack({102, 1718, 104, 93}, 0.6f);
-			crouch_punch.PushBack({210, 1718, 109, 93}, 0.6f);
-			crouch_punch.PushBack({324, 1718, 155, 90}, 0.6f);
-			crouch_punch.PushBack({476, 1718, 155, 90 }, 0.6f);
-			crouch_punch.PushBack({640, 1718, 155, 91 }, 0.6f);
-			crouch_punch.PushBack({792, 1718, 154, 92 }, 0.6f);
-			crouch_punch.PushBack({953, 1718, 150, 94 }, 0.6f);
-			crouch_punch.PushBack({1129, 1718, 150, 93 }, 0.6f);
-			crouch_punch.PushBack({1287, 1718, 111, 93 }, 0.6f);
-			crouch_punch.PushBack({1411, 1718, 111, 93 }, 0.6f);
-			crouch_punch.PushBack({1539, 1718, 111, 93 }, 0.6f);
-			crouch_punch.PushBack({1660, 1718, 111, 93 }, 0.6f);
-			crouch_punch.PushBack({1786, 1718, 111, 93 }, 0.6f);
-			crouch_punch.PushBack({1901, 1718, 109, 93 }, 0.6f);
+			crouch_punch.PushBack({ 15, 1718, 100, 93 }, 0.6f);
+			crouch_punch.PushBack({ 102, 1718, 104, 93 }, 0.6f);
+			crouch_punch.PushBack({ 210, 1718, 109, 93 }, 0.6f);
+			crouch_punch.PushBack({ 324, 1718, 155, 90 }, 0.6f);
+			crouch_punch.PushBack({ 476, 1718, 155, 90 }, 0.6f);
+			crouch_punch.PushBack({ 640, 1718, 155, 91 }, 0.6f);
+			crouch_punch.PushBack({ 792, 1718, 154, 92 }, 0.6f);
+			crouch_punch.PushBack({ 953, 1718, 150, 94 }, 0.6f);
+			crouch_punch.PushBack({ 1129, 1718, 150, 93 }, 0.6f);
+			crouch_punch.PushBack({ 1287, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({ 1411, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({ 1539, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({ 1660, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({ 1786, 1718, 111, 93 }, 0.6f);
+			crouch_punch.PushBack({ 1901, 1718, 109, 93 }, 0.6f);
 			crouch_punch.loop = false;
 		}
 
 		//crouch kick
 		{
-			crouch_kick.PushBack({12, 1830, 74, 77}, 0.3f);
-			crouch_kick.PushBack({106, 1828, 74, 77}, 0.3f);
-			crouch_kick.PushBack({203, 1826, 79, 81}, 0.3f);
-			crouch_kick.PushBack({300, 1826, 79, 81}, 0.3f);
-			crouch_kick.PushBack({395, 1835, 99, 73}, 0.3f);
-			crouch_kick.PushBack({513, 1835, 99, 73}, 0.3f);
-			crouch_kick.PushBack({643, 1825, 79, 80}, 0.6f);
-			crouch_kick.PushBack({751, 1825, 79, 80}, 0.6f);
+			crouch_kick.PushBack({ 12, 1830, 74, 77 }, 0.3f);
+			crouch_kick.PushBack({ 106, 1828, 74, 77 }, 0.3f);
+			crouch_kick.PushBack({ 203, 1826, 79, 81 }, 0.3f);
+			crouch_kick.PushBack({ 300, 1826, 79, 81 }, 0.3f);
+			crouch_kick.PushBack({ 395, 1835, 99, 73 }, 0.3f);
+			crouch_kick.PushBack({ 513, 1835, 99, 73 }, 0.3f);
+			crouch_kick.PushBack({ 643, 1825, 79, 80 }, 0.6f);
+			crouch_kick.PushBack({ 751, 1825, 79, 80 }, 0.6f);
 			crouch_kick.loop = false;
 		}
 
 		//twister animation
 		{
-			twister.PushBack({ 15, 798, 90, 90}, 0.6f);
-			twister.PushBack({ 106, 798, 90, 90}, 0.6f);
-			twister.PushBack({ 197, 798, 90, 90}, 0.6f);
-			twister.PushBack({ 289, 798, 71, 90}, 0.6f);
-			twister.PushBack({ 362, 798, 71, 90}, 0.6f);
-			twister.PushBack({ 435, 803, 74, 86}, 0.6f);
-			twister.PushBack({ 511, 803, 74, 86}, 0.6f);
-			twister.PushBack({ 586, 795, 59, 94}, 0.6f);
-			twister.PushBack({ 646, 795, 59, 94}, 0.6f);
-			twister.PushBack({ 709, 788, 93, 101}, 0.6f);
-			twister.PushBack({ 809, 788, 93, 101}, 0.6f);
-			twister.PushBack({ 909, 788, 93, 101}, 0.6f);
-			twister.PushBack({ 1006, 734, 62, 155}, 0.6f);
-			twister.PushBack({ 1071, 734, 62, 155}, 0.6f);
-			twister.PushBack({ 1138, 734, 62, 155}, 0.6f);
-			twister.PushBack({ 1203, 787, 100, 102}, 0.6f);
-			twister.PushBack({ 1313, 787, 100, 102}, 0.6f);
-			twister.PushBack({ 1429, 787, 100, 102}, 0.6f);
-			twister.PushBack({ 1543, 795, 98, 94}, 0.6f);
-			twister.PushBack({ 1646, 795, 98, 94}, 0.6f);
-			twister.PushBack({ 1749, 795, 98, 94}, 0.6f);
-			twister.PushBack({ 15, 923, 104, 93}, 0.6f);
-			twister.PushBack({ 121, 923, 104, 93}, 0.6f);
-			twister.PushBack({ 228, 923, 104, 93}, 0.6f);
-			twister.PushBack({ 337, 923, 84, 93}, 0.6f);
-			twister.PushBack({ 425, 923, 84, 93}, 0.6f);
-			twister.PushBack({ 512, 923, 84, 93}, 0.6f);
-			twister.PushBack({ 599, 896, 72, 120}, 0.6f);
-			twister.PushBack({ 673, 896, 72, 120}, 0.6f);
-			twister.PushBack({ 748, 896, 72, 120}, 0.6f);
+			twister.PushBack({ 15, 798, 90, 90 }, 0.6f);
+			twister.PushBack({ 106, 798, 90, 90 }, 0.6f);
+			twister.PushBack({ 197, 798, 90, 90 }, 0.6f);
+			twister.PushBack({ 289, 798, 71, 90 }, 0.6f);
+			twister.PushBack({ 362, 798, 71, 90 }, 0.6f);
+			twister.PushBack({ 435, 803, 74, 86 }, 0.6f);
+			twister.PushBack({ 511, 803, 74, 86 }, 0.6f);
+			twister.PushBack({ 586, 795, 59, 94 }, 0.6f);
+			twister.PushBack({ 646, 795, 59, 94 }, 0.6f);
+			twister.PushBack({ 709, 788, 93, 101 }, 0.6f);
+			twister.PushBack({ 809, 788, 93, 101 }, 0.6f);
+			twister.PushBack({ 909, 788, 93, 101 }, 0.6f);
+			twister.PushBack({ 1006, 734, 62, 155 }, 0.6f);
+			twister.PushBack({ 1071, 734, 62, 155 }, 0.6f);
+			twister.PushBack({ 1138, 734, 62, 155 }, 0.6f);
+			twister.PushBack({ 1203, 787, 100, 102 }, 0.6f);
+			twister.PushBack({ 1313, 787, 100, 102 }, 0.6f);
+			twister.PushBack({ 1429, 787, 100, 102 }, 0.6f);
+			twister.PushBack({ 1543, 795, 98, 94 }, 0.6f);
+			twister.PushBack({ 1646, 795, 98, 94 }, 0.6f);
+			twister.PushBack({ 1749, 795, 98, 94 }, 0.6f);
+			twister.PushBack({ 15, 923, 104, 93 }, 0.6f);
+			twister.PushBack({ 121, 923, 104, 93 }, 0.6f);
+			twister.PushBack({ 228, 923, 104, 93 }, 0.6f);
+			twister.PushBack({ 337, 923, 84, 93 }, 0.6f);
+			twister.PushBack({ 425, 923, 84, 93 }, 0.6f);
+			twister.PushBack({ 512, 923, 84, 93 }, 0.6f);
+			twister.PushBack({ 599, 896, 72, 120 }, 0.6f);
+			twister.PushBack({ 673, 896, 72, 120 }, 0.6f);
+			twister.PushBack({ 748, 896, 72, 120 }, 0.6f);
 			twister.loop = false;
 
 			//Twister animation (only the twister)
@@ -287,7 +289,7 @@ ModulePlayer::ModulePlayer()
 		{
 			die.PushBack({ 852,0,108,54 });
 		}
-	
+
 		//en garde
 		{
 			en_garde.PushBack({ 14, 1921, 74,113 }, 0.15f);
@@ -312,6 +314,7 @@ ModulePlayer::ModulePlayer()
 
 		//win animation
 		{
+<<<<<<< HEAD
 			//in.PushBack({49, 2072, 76, 177}, 0.2f);
 			//win.PushBack({146, 2072, 76, 177}, 0.2f);
 			//win.PushBack({250, 2079, 90, 170}, 0.2f);
@@ -357,9 +360,57 @@ ModulePlayer::ModulePlayer()
 			//win.PushBack({646, 2566, 96, 112}, 0.2f);
 			//win.PushBack({741, 2566, 96, 112}, 0.2f);
 			//win.PushBack({1028, 2566, 96, 112}, 0.2f);
+=======
+			win.PushBack({ 48, 2072, 76, 177 }, 0.2f);
+			win.PushBack({ 146, 2072, 76, 177 }, 0.2f);
+			win.PushBack({ 248, 2079, 90, 170 }, 0.2f);
+			win.PushBack({ 338, 2071, 90, 178 }, 0.2f);
+			win.PushBack({ 436, 2040, 76, 209 }, 0.2f);
+			win.PushBack({ 537, 2040, 76, 209 }, 0.2f);
+			win.PushBack({ 628, 2040, 74, 209 }, 0.2f);
+			win.PushBack({ 729 , 2040, 74, 209 }, 0.2f);
+			win.PushBack({ 825, 2040, 74, 209 }, 0.2f);
+			win.PushBack({ 921, 2040, 74, 209 }, 0.2f);
+			win.PushBack({ 1023, 2131, 74, 118 }, 0.2f);
+			win.PushBack({ 1123, 2146, 49, 102 }, 0.2f);
+			win.PushBack({ 1180, 2142, 96, 106 }, 0.2f);
+			win.PushBack({ 1288, 2142, 96, 106 }, 0.2f);
+			win.PushBack({ 1409, 2142, 96, 106 }, 0.2f);
+			win.PushBack({ 1515, 2142, 96, 106 }, 0.2f);
+			win.PushBack({ 1614, 2142, 96, 106 }, 0.2f);
+			win.PushBack({ 1722, 2142, 96, 106 }, 0.2f);
+			win.PushBack({ 1838, 2142, 97, 106 }, 0.2f);
+			win.PushBack({ 26, 2357, 96, 106 }, 0.2f);
+			win.PushBack({ 140, 2357, 96, 106 }, 0.2f);
+			win.PushBack({ 258, 2357, 98, 106 }, 0.2f);
+			win.PushBack({ 381, 2357, 96, 106 }, 0.2f);
+			win.PushBack({ 483, 2357, 96, 106 }, 0.2f);
+			win.PushBack({ 575, 2357, 96, 106 }, 0.2f);
+			win.PushBack({ 680, 2357, 96, 106 }, 0.2f);
+			win.PushBack({ 804, 2254, 98, 209 }, 0.2f);
+			win.PushBack({ 912, 2254, 98, 209 }, 0.2f);
+			win.PushBack({ 1004, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 1103, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 1195, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 1291, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 1407, 2254, 100, 209 }, 0.2f);
+			win.PushBack({ 1523, 2254, 100, 209 }, 0.2f);
+			win.PushBack({ 1630, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 1746, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 1840, 2254, 96, 209 }, 0.2f);
+			win.PushBack({ 49, 2488, 96, 190 }, 0.2f);
+			win.PushBack({ 158, 2498, 96, 180 }, 0.2f);
+			win.PushBack({ 255, 2503, 96, 175 }, 0.2f);
+			win.PushBack({ 356, 2513, 96, 165 }, 0.2f);
+			win.PushBack({ 452, 2521, 96, 157 }, 0.2f);
+			win.PushBack({ 553, 2530, 96, 148 }, 0.2f);
+			win.PushBack({ 646, 2566, 96, 112 }, 0.2f);
+			win.PushBack({ 741, 2566, 96, 112 }, 0.2f);
+			win.PushBack({ 1028, 2566, 96, 112 }, 0.2f);
+>>>>>>> 303142db42e1a0ea5ef621fd2d4e739c7a978dc9
 			win.loop = false;
 		}
-
+	}
 }
 }
 
@@ -1158,7 +1209,6 @@ bool ModulePlayer::CleanUp() {
 	collider_player_attack = nullptr;
 	return true;
 }
-
 
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
