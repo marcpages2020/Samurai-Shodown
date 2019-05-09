@@ -7,6 +7,7 @@ class ModuleWanFu :public ModulePlayer2
 public:
 	ModuleWanFu();
 	bool Start();
+	bool CleanUp();
 private:
 
 };

@@ -352,3 +352,8 @@ bool ModuleWanFu::Start() {
 	player2_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	return true;
 }
+
+bool ModuleWanFu::CleanUp() {
+	App->textures->Unload(player2_textures);
+	return true;
+}

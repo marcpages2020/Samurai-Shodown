@@ -7,6 +7,7 @@ class ModuleHaohmaru : public ModulePlayer
 public:
 	ModuleHaohmaru();
 	bool Start();
+	bool CleanUp();
 private:
 
 };

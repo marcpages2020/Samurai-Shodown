@@ -361,3 +361,8 @@ bool ModuleHaohmaru::Start() {
 	player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	return true;
 }
+
+bool ModuleHaohmaru::CleanUp() {
+	App->textures->Unload(player_textures);
+	return true;
+}
