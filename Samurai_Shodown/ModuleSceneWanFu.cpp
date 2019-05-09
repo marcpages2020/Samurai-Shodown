@@ -7,10 +7,10 @@ ModuleSceneWanFu::ModuleSceneWanFu()
 {
 	//background animation
 	{
-		background.PushBack({ 0,78,512,333 }, 0.08f);
-		background.PushBack({ 512,78,512,333 }, 0.08f);
-		background.PushBack({ 0,527,512,333 }, 0.08f);
-		background.PushBack({ 512,527,512,333 }, 0.08f);
+		background.PushBack({ 0,0,512,324 }, 0.08f);
+		background.PushBack({ 512,0,512,324 }, 0.08f);
+		background.PushBack({ 0,324,512,324 }, 0.08f);
+		background.PushBack({ 512,324,512,324 }, 0.08f);
 	}
 }
 
@@ -20,10 +20,10 @@ ModuleSceneWanFu::~ModuleSceneWanFu()
 // Load assets
 bool ModuleSceneWanFu::Start()
 {
-	LOG("Loading Kyoshiro Scene");
+	LOG("Loading Wan-Fu Scene");
 	bool ret = true;
 
-	graphics = App->textures->Load("Assets/Textures/KyoshiroScene.png");
+	graphics = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Kyoshiro.ogg");
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();
@@ -38,7 +38,7 @@ bool ModuleSceneWanFu::Start()
 // Load assets
 bool ModuleSceneWanFu::CleanUp()
 {
-	LOG("Unloading Kyoshiro stage");
+	LOG("Unloading Wan-Fu stage");
 	App->player->Disable();
 	App->player2->Disable();
 	App->textures->Unload(graphics);
