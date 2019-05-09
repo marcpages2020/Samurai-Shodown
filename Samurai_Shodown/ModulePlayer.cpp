@@ -363,6 +363,10 @@ ModulePlayer::ModulePlayer()
 			win.loop = false;
 		}
 	}
+		//Wan-Fu
+		{
+		//Put animations here
+		}
 }
 }
 
@@ -376,7 +380,8 @@ bool ModulePlayer::Start()
 	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
-	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	haohmaru_tex = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	wanfu_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
@@ -389,6 +394,7 @@ bool ModulePlayer::Start()
 		collider_player_up = App->collision->AddCollider({ position.x+15, position.y-85,30,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_down)
 		collider_player_down = App->collision->AddCollider({ position.x+10, position.y-45,40,45 }, COLLIDER_PLAYER, (Module*)App->player);
+	player_textures = wanfu_tex;
 	return ret;
 }
 
@@ -1125,23 +1131,23 @@ update_status ModulePlayer::Update()
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
 		if (shadow_blit) {
-			App->render->Blit(graphics, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+			App->render->Blit(player_textures, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
-			App->render->Blit(graphics, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
+			App->render->Blit(player_textures, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
 		if (shadow_blit) {
-			App->render->Blit(graphics, shadow_x, initial_position.y - 7, &shadow, flip);
+			App->render->Blit(player_textures, shadow_x, initial_position.y - 7, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
-			App->render->Blit(graphics, position.x, position.y - r.h, &r, flip);
+			App->render->Blit(player_textures, position.x, position.y - r.h, &r, flip);
 
 	}
 
@@ -1150,7 +1156,8 @@ update_status ModulePlayer::Update()
 
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player");
-	App->textures->Unload(graphics);
+	App->textures->Unload(haohmaru_tex);
+	App->textures->Unload(wanfu_tex);
 	App->audio->UnLoadFx(light_attack_fx);
 	App->audio->UnLoadFx(light_kick_fx);
 	App->audio->UnLoadFx(hit_fx);

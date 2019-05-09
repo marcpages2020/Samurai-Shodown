@@ -61,8 +61,9 @@ public:
 	void BlockControls(bool block);
 public:
 
-	SDL_Texture * graphics = nullptr;
-	SDL_Texture* haohmaruSpreadsheet = nullptr;
+	SDL_Texture* haohmaru_tex = nullptr;
+	SDL_Texture* wanfu_tex = nullptr;
+	SDL_Texture* player_textures = nullptr;
 	Animation idle;
 	Animation forward;
 	Animation backward;
