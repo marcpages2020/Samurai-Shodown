@@ -30,6 +30,8 @@ public:
 	Mix_Music *music=nullptr;
 	SDL_Texture* graphics = nullptr;
 	Animation background;
+	Collider left_wall;
+	Collider right_wall;
 };
 #endif // !_MODULESCENEWANFU_H
 
