@@ -28,8 +28,9 @@ bool ModuleSceneWanFu::Start()
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();
 	App->player2->Enable();
-	left_wall = App->collision->AddCollider({ -121,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
+	left_wall = App->collision->AddCollider({ -100,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
 	right_wall = App->collision->AddCollider({ 390,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
+	App->render->SetCamera();
 	return ret;
 }
 
@@ -50,8 +51,8 @@ bool ModuleSceneWanFu::CleanUp()
 update_status ModuleSceneWanFu::Update()
 {
 	SDL_Rect b;
-	// Draw everything --------------------------------------	
 	b = background.GetCurrentFrame();
+	App->render->MoveCamera();
 	App->render->Blit(graphics, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
 	{

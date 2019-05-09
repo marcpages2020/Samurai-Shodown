@@ -56,7 +56,7 @@ bool ModuleSceneCongrats::Start()
 {
 	LOG("Loading congrats stage assets");
 	bool ret = true;
-	background_t = App->textures->Load("Assets/Textures/HaohmaruScene.png"); 
+	background_t = App->textures->Load("Assets/Sprites/Scenes/HaohmaruScene.png"); 
 	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
 	judges_t = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
