@@ -1,3 +1,4 @@
+/*
 #include "ModuleWanFu.h"
 #include "ModuleTextures.h"
 
@@ -368,3 +369,4 @@ bool ModuleWanFu::CleanUp() {
 	App->textures->Unload(player2_textures);
 	return true;
 }
+*/

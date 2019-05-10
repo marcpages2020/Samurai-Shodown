@@ -1,3 +1,4 @@
+/*
 #include "ModuleHaohmaru.h"
 #include "ModuleTextures.h"
 #include "ModuleUI.h"
@@ -378,4 +379,6 @@ bool ModuleHaohmaru::CleanUp() {
 	LOG("Unloading Haohmaru\n");
 	App->textures->Unload(player_textures);
 	return true;
+	
 }
+*/
