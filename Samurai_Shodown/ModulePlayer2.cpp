@@ -53,7 +53,6 @@ update_status ModulePlayer2::PreUpdate()
 				player_input2.pressing_left = false;
 				player_input2.pressing_right = false;
 			}
-
 		}
 		
 
