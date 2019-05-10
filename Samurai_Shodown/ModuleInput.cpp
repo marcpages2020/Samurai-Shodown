@@ -102,6 +102,9 @@ update_status ModuleInput::PreUpdate()
 				controller_player_1 = SDL_GameControllerOpen(0);
 				controller_1_index = Events.cdevice.which;
 			}
+			if (controller_player_2 == nullptr) {
+				controller_player_2 = SDL_GameControllerOpen(0);
+			}
 			break;
 		case SDL_CONTROLLERDEVICEREMOVED:
 			if (Events.cdevice.which == controller_1_index) {

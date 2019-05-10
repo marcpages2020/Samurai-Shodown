@@ -34,6 +34,7 @@ public:
 	Uint8 game_pad[MAX_BUTTONS][2];
 
 	SDL_GameController* controller_player_1 = nullptr;
+	SDL_GameController* controller_player_2 = nullptr;
 
 private :
 
