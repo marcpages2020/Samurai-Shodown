@@ -31,7 +31,7 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event Events;
-	Uint8 game_pad[MAX_BUTTONS];
+	Uint8 game_pad[MAX_BUTTONS][2];
 
 	SDL_GameController* controller_player_1 = nullptr;
 
