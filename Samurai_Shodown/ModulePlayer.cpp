@@ -37,8 +37,8 @@ update_status ModulePlayer::PreUpdate()
 {
 	if (!App->is_paused) {
 		if (controls) {
-			player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
-			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
+			player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) <= -10000;
+			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
 			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
 			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN;
 			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;

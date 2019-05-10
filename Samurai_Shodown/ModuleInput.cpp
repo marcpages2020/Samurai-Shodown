@@ -26,7 +26,10 @@ bool ModuleInput::Init()
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
-
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+	if (controller_player_1 == nullptr) {
+		controller_player_1 = SDL_GameControllerOpen(0);
+	}
 	return ret;
 }
 
@@ -55,7 +58,19 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	SDL_PollEvent(&Events);
+	while (SDL_PollEvent(&Events) == 1) {
+
+		switch (Events.type) {
+		case SDL_CONTROLLERDEVICEADDED:
+			SDL_Init(SDL_INIT_GAMECONTROLLER);
+			if (controller_player_1 == nullptr) {
+				controller_player_1 = SDL_GameControllerOpen(2);
+			}
+			break;
+
+		}
+
+	}
 
 	if (keyboard[SDL_SCANCODE_ESCAPE] || Events.type == SDL_QUIT)
 		return update_status::UPDATE_STOP;
