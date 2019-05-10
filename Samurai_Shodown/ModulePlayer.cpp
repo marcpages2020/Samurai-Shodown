@@ -396,12 +396,12 @@ update_status ModulePlayer::PreUpdate()
 {
 	if (!App->is_paused) {
 		if (controls) {
-			player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT;
-			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT;
-			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
-			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN;
+			player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) <= -10000;
+			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
+			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
+			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][0] == KEY_DOWN;
 			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;
-			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
 			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 
