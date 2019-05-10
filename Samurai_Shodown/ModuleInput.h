@@ -7,6 +7,7 @@
 #include "SDL\include\SDL_scancode.h"
 
 #define MAX_KEYS 300
+#define MAX_BUTTONS 15
 
 enum KEY_STATE
 {
@@ -30,9 +31,13 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event Events;
-	KEY_STATE game_pad[MAX_KEYS];
+	Uint8 game_pad[MAX_BUTTONS];
 
 	SDL_GameController* controller_player_1 = nullptr;
+
+private :
+
+	int controller_1_index;
 };
 
 #endif // __ModuleInput_H__
