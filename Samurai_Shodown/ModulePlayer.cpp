@@ -14,7 +14,7 @@ ModulePlayer::ModulePlayer()
 	position.y = initial_position.y = 215;
 	lposition = position;
 	//animations
-	//
+	
 	//idle animation
 	{
 		idle.PushBack({ 27,26,118,126 }, 0.3f);

@@ -14,6 +14,19 @@ ModulePlayer2::ModulePlayer2()
 	position.x = initial_position.x = shadow_x = 280;
 	position.y = initial_position.y = 215;
 	lposition = position;
+	//animations
+	//idle animation
+	{
+		idle2.PushBack({ 27,26,118,126 }, 0.3f);
+		idle2.PushBack({ 147,26,118,126 }, 0.3f);
+		idle2.PushBack({ 266,26,118,126 }, 0.3f);
+		idle2.PushBack({ 386,26,118,126 }, 0.3f);
+		idle2.PushBack({ 505,26,118,126 }, 0.3f);
+		idle2.PushBack({ 623,26,118,126 }, 0.3f);
+		idle2.PushBack({ 741,40,118,110 }, 0.3f);
+		idle2.PushBack({ 857,40,118,110 }, 0.3f);
+		idle2.PushBack({ 973,40,118,110 }, 0.3f);
+	}
 }
 
 ModulePlayer2::~ModulePlayer2() {}
