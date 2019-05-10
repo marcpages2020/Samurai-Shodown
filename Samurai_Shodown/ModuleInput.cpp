@@ -67,9 +67,7 @@ update_status ModuleInput::PreUpdate()
 				controller_player_1 = SDL_GameControllerOpen(2);
 			}
 			break;
-
 		}
-
 	}
 
 	if (keyboard[SDL_SCANCODE_ESCAPE] || Events.type == SDL_QUIT)
