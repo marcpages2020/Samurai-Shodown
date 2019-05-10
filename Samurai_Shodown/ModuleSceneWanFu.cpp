@@ -43,14 +43,14 @@ bool ModuleSceneWanFu::Start()
 	LOG("Loading Wan-Fu Scene");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
-	music = App->audio->LoadMusic("Assets/Audio/Music/Kyoshiro.ogg");
+	music = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();
 	App->player2->Enable();
 	//App->haohmaru->Enable();
 	//App->wanfu->Enable();
 	left_wall = App->collision->AddCollider({ -100,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
-	right_wall = App->collision->AddCollider({ 390,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
+	right_wall = App->collision->AddCollider({ 430,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	App->render->SetCamera();
 	return ret;
 }
