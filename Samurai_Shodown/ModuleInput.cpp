@@ -104,7 +104,6 @@ update_status ModuleInput::PreUpdate()
 			}
 			break;
 		}
-
 	}
 
 	if (keyboard[SDL_SCANCODE_ESCAPE] || Events.type == SDL_QUIT)

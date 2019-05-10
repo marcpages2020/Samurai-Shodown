@@ -10,9 +10,20 @@
 
 ModulePlayer::ModulePlayer()
 {
-	initial_position.x = position.x = shadow_x = 70;
-	position.y = initial_position.y = 215;
-	lposition = position;
+	//animations
+	
+	//idle animation
+	{
+		idle.PushBack({ 27,26,118,126 }, 0.3f);
+		idle.PushBack({ 147,26,118,126 }, 0.3f);
+		idle.PushBack({ 266,26,118,126 }, 0.3f);
+		idle.PushBack({ 386,26,118,126 }, 0.3f);
+		idle.PushBack({ 505,26,118,126 }, 0.3f);
+		idle.PushBack({ 623,26,118,126 }, 0.3f);
+		idle.PushBack({ 741,40,118,110 }, 0.3f);
+		idle.PushBack({ 857,40,118,110 }, 0.3f);
+		idle.PushBack({ 973,40,118,110 }, 0.3f);
+	}
 }
 
 ModulePlayer::~ModulePlayer(){}
@@ -22,10 +33,14 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player 1\n");
+	player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	App->ui->player1_point = 0;
 	App->ui->player2_point = 0;
 	state = IDLE;
 	current_animation = &idle;
+	initial_position.x = position.x = shadow_x = 70;
+	position.y = initial_position.y = 215;
+	lposition = position;
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ position.x+15, position.y-85,30,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_down)
@@ -39,10 +54,10 @@ update_status ModulePlayer::PreUpdate()
 		if (controls) {
 			player_input.pressing_A = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) <= -10000;
 			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
-			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT;
 			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN;
+			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
 			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN;
-			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN;
+			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
 			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 			player_input.pressing_Q = App->input->keyboard[SDL_SCANCODE_Q] == KEY_DOWN;

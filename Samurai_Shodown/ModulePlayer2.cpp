@@ -11,9 +11,19 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x = initial_position.x = shadow_x = 280;
-	position.y = initial_position.y = 215;
-	lposition = position;
+	//animations
+	//idle animation
+	{
+		idle2.PushBack({ 27,26,118,126 }, 0.3f);
+		idle2.PushBack({ 147,26,118,126 }, 0.3f);
+		idle2.PushBack({ 266,26,118,126 }, 0.3f);
+		idle2.PushBack({ 386,26,118,126 }, 0.3f);
+		idle2.PushBack({ 505,26,118,126 }, 0.3f);
+		idle2.PushBack({ 623,26,118,126 }, 0.3f);
+		idle2.PushBack({ 741,40,118,110 }, 0.3f);
+		idle2.PushBack({ 857,40,118,110 }, 0.3f);
+		idle2.PushBack({ 973,40,118,110 }, 0.3f);
+	}
 }
 
 ModulePlayer2::~ModulePlayer2() {}
@@ -23,10 +33,14 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player 2\n");
+	player2_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	state2 = IDLE2;
 	god = false;
 	life = 100;
 	current_animation = &idle2;
+	position.x = initial_position.x = shadow_x = 280;
+	position.y = initial_position.y = 215;
+	lposition = position;
 	if (!collider_player_2_up)
 		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	if (!collider_player_2_down)
@@ -53,7 +67,6 @@ update_status ModulePlayer2::PreUpdate()
 				player_input2.pressing_left = false;
 				player_input2.pressing_right = false;
 			}
-
 		}
 		
 
