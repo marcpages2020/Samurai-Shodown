@@ -11,9 +11,6 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x = initial_position.x = shadow_x = 280;
-	position.y = initial_position.y = 215;
-	lposition = position;
 	//animations
 	//idle animation
 	{
@@ -41,6 +38,9 @@ bool ModulePlayer2::Start()
 	god = false;
 	life = 100;
 	current_animation = &idle2;
+	position.x = initial_position.x = shadow_x = 280;
+	position.y = initial_position.y = 215;
+	lposition = position;
 	if (!collider_player_2_up)
 		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	if (!collider_player_2_down)

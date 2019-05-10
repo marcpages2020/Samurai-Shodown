@@ -10,9 +10,6 @@
 
 ModulePlayer::ModulePlayer()
 {
-	initial_position.x = position.x = shadow_x = 70;
-	position.y = initial_position.y = 215;
-	lposition = position;
 	//animations
 	
 	//idle animation
@@ -41,6 +38,9 @@ bool ModulePlayer::Start()
 	App->ui->player2_point = 0;
 	state = IDLE;
 	current_animation = &idle;
+	initial_position.x = position.x = shadow_x = 70;
+	position.y = initial_position.y = 215;
+	lposition = position;
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ position.x+15, position.y-85,30,40 },COLLIDER_PLAYER,(Module*)App->player);
 	if (!collider_player_down)
