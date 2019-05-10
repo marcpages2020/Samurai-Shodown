@@ -33,8 +33,8 @@ Application::Application()
 	modules[i++] = scene_wanfu = new ModuleSceneWanFu();
 	modules[i++] = scene_congrats = new ModuleSceneCongrats();
 	modules[i++] = player = new ModulePlayer();
-	modules[i++] = haohmaru = new ModuleHaohmaru();
-	modules[i++] = wanfu = new ModuleWanFu();
+	//modules[i++] = haohmaru = new ModuleHaohmaru();
+	//modules[i++] = wanfu = new ModuleWanFu();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = fonts = new ModuleFonts();
@@ -62,8 +62,8 @@ bool Application::Init()
 	scene_haohmaru->Disable();
 	//scene_wanfu->Disable();
 	scene_congrats->Disable();
-	wanfu->Disable();
-	haohmaru->Disable();
+	//wanfu->Disable();
+	//haohmaru->Disable();
 	ui->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

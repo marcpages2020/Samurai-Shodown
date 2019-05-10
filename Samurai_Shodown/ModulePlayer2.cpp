@@ -23,6 +23,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player 2\n");
+	player2_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	state2 = IDLE2;
 	god = false;
 	life = 100;

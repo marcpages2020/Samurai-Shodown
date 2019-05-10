@@ -13,6 +13,20 @@ ModulePlayer::ModulePlayer()
 	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
+	//animations
+	//
+	//idle animation
+	{
+		idle.PushBack({ 27,26,118,126 }, 0.3f);
+		idle.PushBack({ 147,26,118,126 }, 0.3f);
+		idle.PushBack({ 266,26,118,126 }, 0.3f);
+		idle.PushBack({ 386,26,118,126 }, 0.3f);
+		idle.PushBack({ 505,26,118,126 }, 0.3f);
+		idle.PushBack({ 623,26,118,126 }, 0.3f);
+		idle.PushBack({ 741,40,118,110 }, 0.3f);
+		idle.PushBack({ 857,40,118,110 }, 0.3f);
+		idle.PushBack({ 973,40,118,110 }, 0.3f);
+	}
 }
 
 ModulePlayer::~ModulePlayer(){}
@@ -22,6 +36,7 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player 1\n");
+	player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	App->ui->player1_point = 0;
 	App->ui->player2_point = 0;
 	state = IDLE;
