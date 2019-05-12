@@ -1086,8 +1086,8 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(70, 30);
 				}
 				if (collider_player_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
-					collider_player_up->SetPos(position.x + 35, position.y - 65);
-					collider_player_up->SetSize(55, 35);
+					collider_player_up->SetPos(position.x + 35, position.y - 75);
+					collider_player_up->SetSize(55, 45);
 
 					collider_player_down->SetPos(position.x + 30, position.y - 30);
 					collider_player_down->SetSize(60, 30);
@@ -1265,7 +1265,7 @@ update_status ModulePlayer::Update()
 			break;
 		case JUMP_FORWARD:
 			current_animation = &jump_forward;
-
+			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x - 20, position.y - 90);
 				collider_player_up->SetSize(40, 50);
@@ -1299,6 +1299,48 @@ update_status ModulePlayer::Update()
 					{
 						collider_player_up->SetPos(position.x + 10, position.y - 55);
 						collider_player_up->SetSize(45, 35);
+					}
+				}
+			}
+			*/
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 20, position.y - 90);
+				collider_player_up->SetSize(40, 50);
+
+				collider_player_down->SetPos(position.x, position.y - 50);
+				collider_player_down->SetSize(30, 30);
+
+				if (current_animation->SeeCurrentFrame() > 5)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x - 20, position.y - 45);
+						collider_player_up->SetSize(45, 35);
+					}
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(50, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(60, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 4)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 40, position.y - 60);
+						collider_player_up->SetSize(65, 50);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 30, position.y-25);
+						collider_player_down->SetSize(55, 25);
 					}
 				}
 			}
