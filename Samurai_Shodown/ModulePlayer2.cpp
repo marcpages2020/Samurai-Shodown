@@ -362,15 +362,16 @@ ModulePlayer2::ModulePlayer2()
 		// Wanf-Fu
 		{
 		//idle
-		idle2.PushBack({ 27,26,118,126 }, 0.3f);
-		idle2.PushBack({ 147,26,118,126 }, 0.3f);
-		idle2.PushBack({ 266,26,118,126 }, 0.3f);
-		idle2.PushBack({ 386,26,118,126 }, 0.3f);
-		idle2.PushBack({ 505,26,118,126 }, 0.3f);
-		idle2.PushBack({ 623,26,118,126 }, 0.3f);
-		idle2.PushBack({ 741,40,118,110 }, 0.3f);
-		idle2.PushBack({ 857,40,118,110 }, 0.3f);
-		idle2.PushBack({ 973,40,118,110 }, 0.3f);
+		idle2.PushBack({ 28,26,118,126 }, 0.3f);
+		idle2.PushBack({ 149,26,118,126 }, 0.3f);
+		idle2.PushBack({ 271,26,118,126 }, 0.3f);
+		idle2.PushBack({ 393,26,118,126 }, 0.3f);
+		idle2.PushBack({ 514,26,118,126 }, 0.3f);
+		idle2.PushBack({ 634,26,118,126 }, 0.3f);
+		idle2.PushBack({ 755,40,118,110 }, 0.3f);
+		idle2.PushBack({ 875,40,118,110 }, 0.3f);
+		idle2.PushBack({ 993,40,118,110 }, 0.3f);
+		idle2.loop = true;
 		}
 	}
 }

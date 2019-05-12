@@ -380,12 +380,11 @@ ModulePlayer::ModulePlayer()
 		//idle
 		// /*
 		idle.PushBack({ 28,26,118,126 }, 0.3f);
-		idle.PushBack({ 150,26,118,126 }, 0.3f);
+		idle.PushBack({ 149,26,118,126 }, 0.3f);
 		idle.PushBack({ 271,26,118,126 }, 0.3f);
 		idle.PushBack({ 393,26,118,126 }, 0.3f);
 		idle.PushBack({ 514,26,118,126 }, 0.3f);
 		idle.PushBack({ 634,26,118,126 }, 0.3f);
-		idle.PushBack({ 741,40,118,110 }, 0.3f);
 		idle.PushBack({ 755,40,118,110 }, 0.3f);
 		idle.PushBack({ 875,40,118,110 }, 0.3f);
 		idle.PushBack({ 993,40,118,110 }, 0.3f);
