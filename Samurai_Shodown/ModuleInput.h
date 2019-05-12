@@ -9,6 +9,10 @@
 #define MAX_KEYS 300
 #define MAX_BUTTONS 15
 
+#define GAME_PAD_1 0
+#define GAME_PAD_2 1
+#define MAX_GAME_PAD 2
+
 enum KEY_STATE
 {
 	KEY_IDLE = 0,
@@ -31,7 +35,7 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event Events;
-	Uint8 game_pad[MAX_BUTTONS][2];
+	Uint8 game_pad[MAX_BUTTONS][MAX_GAME_PAD];
 
 	SDL_GameController* controller_player_1 = nullptr;
 	SDL_GameController* controller_player_2 = nullptr;
