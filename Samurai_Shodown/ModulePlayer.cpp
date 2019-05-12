@@ -496,7 +496,33 @@ ModulePlayer::ModulePlayer()
 			jump_backward.PushBack({ 248,305,106,139 }, 0.2f);
 			jump_backward.loop = false;
 			}
-		// */
+		//punch 
+
+		//kick
+			{
+				kick.PushBack({ 28,745,108,148 }, 0.5f);//1
+				kick.PushBack({ 139,745,108,148 }, 0.5f);
+				kick.PushBack({ 249,745,108,148 }, 0.5f);
+				kick.PushBack({ 358,745,99,148 }, 0.5f);//4
+				kick.PushBack({ 459,745,99,148 }, 0.5f);
+				kick.PushBack({ 560,745,99,148 }, 0.5f);
+				kick.PushBack({ 660,745,99,148 }, 0.5f);//7
+				kick.PushBack({ 762,745,99,148 }, 0.5f);
+				kick.PushBack({ 863,745,99,148 }, 0.5f);
+				kick.PushBack({ 964,745,99,148 }, 0.5f);//10
+				kick.PushBack({ 1067,745,99,148 }, 0.5f);
+				kick.PushBack({ 1168,745,99,148 }, 0.5f);
+				kick.PushBack({ 660,745,99,148 }, 0.5f);//7
+				kick.PushBack({ 762,745,99,148 }, 0.5f);
+				kick.PushBack({ 863,745,99,148 }, 0.5f);
+				kick.PushBack({ 358,745,99,148 }, 0.5f);//4
+				kick.PushBack({ 459,745,99,148 }, 0.5f);
+				kick.PushBack({ 560,745,99,148 }, 0.5f);
+				kick.PushBack({ 28,745,108,148 }, 0.5f);//1
+				kick.PushBack({ 139,745,108,148 }, 0.5f);
+				kick.PushBack({ 249,745,108,148 }, 0.5f);
+				kick.loop = false;
+			}
 		//en garde
 			{
 				en_garde.PushBack({ 28,901,119,126 }, 0.2f);
@@ -510,7 +536,8 @@ ModulePlayer::ModulePlayer()
 				en_garde.PushBack({ 1027,901,119,126 }, 0.2f);
 				en_garde.loop = false;
 			}
-		}
+		// */		
+}
 	}
 }
 

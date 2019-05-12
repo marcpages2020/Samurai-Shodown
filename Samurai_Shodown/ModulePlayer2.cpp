@@ -476,7 +476,31 @@ ModulePlayer2::ModulePlayer2()
 				jump_backward2.PushBack({ 248,305,106,139 }, 0.2f);
 				jump_backward2.loop = false;
 			}
-
+			//kick
+			{
+				kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
+				kick2.PushBack({ 139,745,108,148 }, 0.5f);
+				kick2.PushBack({ 249,745,108,148 }, 0.5f);
+				kick2.PushBack({ 358,745,99,148 }, 0.5f);//4
+				kick2.PushBack({ 459,745,99,148 }, 0.5f);
+				kick2.PushBack({ 560,745,99,148 }, 0.5f);
+				kick2.PushBack({ 660,745,99,148 }, 0.5f);//7
+				kick2.PushBack({ 762,745,99,148 }, 0.5f);
+				kick2.PushBack({ 863,745,99,148 }, 0.5f);
+				kick2.PushBack({ 964,745,99,148 }, 0.5f);//10
+				kick2.PushBack({ 1067,745,99,148 }, 0.5f);
+				kick2.PushBack({ 1168,745,99,148 }, 0.5f);
+				kick2.PushBack({ 660,745,99,148 }, 0.5f);//7
+				kick2.PushBack({ 762,745,99,148 }, 0.5f);
+				kick2.PushBack({ 863,745,99,148 }, 0.5f);
+				kick2.PushBack({ 358,745,99,148 }, 0.5f);//4
+				kick2.PushBack({ 459,745,99,148 }, 0.5f);
+				kick2.PushBack({ 560,745,99,148 }, 0.5f);
+				kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
+				kick2.PushBack({ 139,745,108,148 }, 0.5f);
+				kick2.PushBack({ 249,745,108,148 }, 0.5f);
+				kick.loop = false;
+			}
 			//en garde
 			{
 				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
@@ -493,7 +517,6 @@ ModulePlayer2::ModulePlayer2()
 		}
 	}
 }
-
 
 ModulePlayer2::~ModulePlayer2() {}
 
