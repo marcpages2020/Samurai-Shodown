@@ -439,7 +439,7 @@ ModulePlayer::ModulePlayer()
 			backward.PushBack({ 1926,162,114,126 }, 0.3f);
 			backward.loop = true;
 			}
-		// jump
+		// jump neutral
 			{
 			jump_neutral.PushBack({ 28,305,106,139 }, 0.2f); //1
 			jump_neutral.PushBack({ 138,305,106,139 }, 0.2f);

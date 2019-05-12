@@ -420,6 +420,25 @@ ModulePlayer2::ModulePlayer2()
 		backward2.PushBack({ 1926,162,114,126 }, 0.3f);
 		backward2.loop = true;
 		}
+		// jump neutral
+		{
+		jump_neutral2.PushBack({ 28,305,106,139 }, 0.2f); //1
+		jump_neutral2.PushBack({ 138,305,106,139 }, 0.2f);
+		jump_neutral2.PushBack({ 248,305,106,139 }, 0.2f);
+		jump_neutral2.PushBack({ 357,296,106,103 }, 0.2f); //4
+		jump_neutral2.PushBack({ 467,296,106,103 }, 0.2f);
+		jump_neutral2.PushBack({ 577,296,106,103 }, 0.2f);
+		jump_neutral2.PushBack({ 685,296,107,83 }, 0.2f); //7
+		jump_neutral2.PushBack({ 795,296,106,103 }, 0.2f);
+		jump_neutral2.PushBack({ 905,296,106,103 }, 0.2f);
+		jump_neutral2.PushBack({ 357,296,106,103 }, 0.2f); //4
+		jump_neutral2.PushBack({ 467,296,106,103 }, 0.2f);
+		jump_neutral2.PushBack({ 577,296,106,103 }, 0.2f);
+		jump_neutral2.PushBack({ 28,305,106,139 }, 0.2f); //1
+		jump_neutral2.PushBack({ 138,305,106,139 }, 0.2f);
+		jump_neutral2.PushBack({ 248,305,106,139 }, 0.2f);
+		jump_neutral2.loop = false;
+		}
 	}
 }
 
