@@ -397,24 +397,47 @@ ModulePlayer::ModulePlayer()
 			}
 		// forward
 			{
-			//forward.PushBack({ 28,162,106,126 }, 0.2f);
-			//forward.PushBack({ 137,162,106,126 }, 0.2f);
-			//forward.PushBack({ 245,162,106,126 }, 0.2f);
-			//forward.PushBack({ 353,162,106,126 }, 0.2f);
-			//forward.PushBack({ 461,162,106,126 }, 0.2f);
-			//forward.PushBack({ 569,162,106,126 }, 0.2f);
-			//forward.PushBack({ 678,162,106,126 }, 0.2f);
-			forward.PushBack({ 786,162,106,126 }, 0.2f);
-			forward.PushBack({ 895,162,109,126 }, 0.2f);
-			//forward.PushBack({ 1008,162,109,126 }, 0.2f);
-			//forward.PushBack({ 1121,162,109,126 }, 0.2f);
-			//forward.PushBack({ 1232,162,109,126 }, 0.2f);
-			//forward.PushBack({ 1347,162,109,126 }, 0.2f);
-			//forward.PushBack({ 1462,162,112,126 }, 0.2f);
-			//forward.PushBack({ 1578,162,112,126 }, 0.2f);
-			//forward.PushBack({ 1693,162,112,126 }, 0.2f);
-			//forward.PushBack({ 1810,162,113,126 }, 0.2f);
-			//forward.PushBack({ 1925,162,114,126 }, 0.2f);
+			forward.PushBack({ 28,162,106,126 }, 0.3f);
+			forward.PushBack({ 137,162,106,126 }, 0.3f);
+			forward.PushBack({ 245,162,106,126 }, 0.3f);
+			forward.PushBack({ 353,162,106,126 }, 0.3f);
+			forward.PushBack({ 461,162,106,126 }, 0.3f);
+			forward.PushBack({ 569,162,106,126 }, 0.3f);
+			forward.PushBack({ 678,162,106,126 }, 0.3f);
+			forward.PushBack({ 786,162,106,126 }, 0.3f);
+			forward.PushBack({ 895,162,109,126 }, 0.3f);
+			forward.PushBack({ 1008,162,109,126 }, 0.3f);
+			forward.PushBack({ 1121,162,109,126 }, 0.3f);
+			forward.PushBack({ 1232,162,112,126 }, 0.3f);
+			forward.PushBack({ 1347,162,112,126 }, 0.3f);
+			forward.PushBack({ 1462,162,112,126 }, 0.3f);
+			forward.PushBack({ 1578,162,112,126 }, 0.3f);
+			forward.PushBack({ 1693,162,113,126 }, 0.3f);
+			forward.PushBack({ 1810,162,113,126 }, 0.3f);
+			forward.PushBack({ 1926,162,114,126 }, 0.3f);
+			forward.loop = true;
+			}
+		// backward
+			{
+			backward.PushBack({ 28,162,106,126 }, 0.3f);
+			backward.PushBack({ 137,162,106,126 }, 0.3f);
+			backward.PushBack({ 245,162,106,126 }, 0.3f);
+			backward.PushBack({ 353,162,106,126 }, 0.3f);
+			backward.PushBack({ 461,162,106,126 }, 0.3f);
+			backward.PushBack({ 569,162,106,126 }, 0.3f);
+			backward.PushBack({ 678,162,106,126 }, 0.3f);
+			backward.PushBack({ 786,162,106,126 }, 0.3f);
+			backward.PushBack({ 895,162,109,126 }, 0.3f);
+			backward.PushBack({ 1008,162,109,126 }, 0.3f);
+			backward.PushBack({ 1121,162,109,126 }, 0.3f);
+			backward.PushBack({ 1232,162,112,126 }, 0.3f);
+			backward.PushBack({ 1347,162,112,126 }, 0.3f);
+			backward.PushBack({ 1462,162,112,126 }, 0.3f);
+			backward.PushBack({ 1578,162,112,126 }, 0.3f);
+			backward.PushBack({ 1693,162,113,126 }, 0.3f);
+			backward.PushBack({ 1810,162,113,126 }, 0.3f);
+			backward.PushBack({ 1926,162,114,126 }, 0.3f);
+			backward.loop = true;
 			}
 		// */
 		//en garde

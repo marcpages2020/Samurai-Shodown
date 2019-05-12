@@ -376,6 +376,50 @@ ModulePlayer2::ModulePlayer2()
 		idle2.PushBack({ 635,26,118,126 }, 0.2f);
 		idle2.loop = true;
 		}
+		// forward
+		{
+		forward2.PushBack({ 28,162,106,126 }, 0.3f);
+		forward2.PushBack({ 137,162,106,126 }, 0.3f);
+		forward2.PushBack({ 245,162,106,126 }, 0.3f);
+		forward2.PushBack({ 353,162,106,126 }, 0.3f);
+		forward2.PushBack({ 461,162,106,126 }, 0.3f);
+		forward2.PushBack({ 569,162,106,126 }, 0.3f);
+		forward2.PushBack({ 678,162,106,126 }, 0.3f);
+		forward2.PushBack({ 786,162,106,126 }, 0.3f);
+		forward2.PushBack({ 895,162,109,126 }, 0.3f);
+		forward2.PushBack({ 1008,162,109,126 }, 0.3f);
+		forward2.PushBack({ 1121,162,109,126 }, 0.3f);
+		forward2.PushBack({ 1232,162,112,126 }, 0.3f);
+		forward2.PushBack({ 1347,162,112,126 }, 0.3f);
+		forward2.PushBack({ 1462,162,112,126 }, 0.3f);
+		forward2.PushBack({ 1578,162,112,126 }, 0.3f);
+		forward2.PushBack({ 1693,162,113,126 }, 0.3f);
+		forward2.PushBack({ 1810,162,113,126 }, 0.3f);
+		forward2.PushBack({ 1926,162,114,126 }, 0.3f);
+		forward2.loop = true;
+		}
+		// backward
+		{
+		backward2.PushBack({ 28,162,106,126 }, 0.3f);
+		backward2.PushBack({ 137,162,106,126 }, 0.3f);
+		backward2.PushBack({ 245,162,106,126 }, 0.3f);
+		backward2.PushBack({ 353,162,106,126 }, 0.3f);
+		backward2.PushBack({ 461,162,106,126 }, 0.3f);
+		backward2.PushBack({ 569,162,106,126 }, 0.3f);
+		backward2.PushBack({ 678,162,106,126 }, 0.3f);
+		backward2.PushBack({ 786,162,106,126 }, 0.3f);
+		backward2.PushBack({ 895,162,109,126 }, 0.3f);
+		backward2.PushBack({ 1008,162,109,126 }, 0.3f);
+		backward2.PushBack({ 1121,162,109,126 }, 0.3f);
+		backward2.PushBack({ 1232,162,112,126 }, 0.3f);
+		backward2.PushBack({ 1347,162,112,126 }, 0.3f);
+		backward2.PushBack({ 1462,162,112,126 }, 0.3f);
+		backward2.PushBack({ 1578,162,112,126 }, 0.3f);
+		backward2.PushBack({ 1693,162,113,126 }, 0.3f);
+		backward2.PushBack({ 1810,162,113,126 }, 0.3f);
+		backward2.PushBack({ 1926,162,114,126 }, 0.3f);
+		backward2.loop = true;
+		}
 	}
 }
 
