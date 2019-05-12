@@ -379,15 +379,17 @@ ModulePlayer::ModulePlayer()
 		{
 		//idle
 		// /*
-		idle.PushBack({ 27,26,118,126 }, 0.3f);
-		idle.PushBack({ 147,26,118,126 }, 0.3f);
-		idle.PushBack({ 266,26,118,126 }, 0.3f);
-		idle.PushBack({ 386,26,118,126 }, 0.3f);
-		idle.PushBack({ 505,26,118,126 }, 0.3f);
-		idle.PushBack({ 623,26,118,126 }, 0.3f);
+		idle.PushBack({ 28,26,118,126 }, 0.3f);
+		idle.PushBack({ 150,26,118,126 }, 0.3f);
+		idle.PushBack({ 271,26,118,126 }, 0.3f);
+		idle.PushBack({ 393,26,118,126 }, 0.3f);
+		idle.PushBack({ 514,26,118,126 }, 0.3f);
+		idle.PushBack({ 634,26,118,126 }, 0.3f);
 		idle.PushBack({ 741,40,118,110 }, 0.3f);
-		idle.PushBack({ 857,40,118,110 }, 0.3f);
-		idle.PushBack({ 973,40,118,110 }, 0.3f);
+		idle.PushBack({ 755,40,118,110 }, 0.3f);
+		idle.PushBack({ 875,40,118,110 }, 0.3f);
+		idle.PushBack({ 993,40,118,110 }, 0.3f);
+		idle.loop = true;
 		// */
 		}
 	}
