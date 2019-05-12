@@ -498,7 +498,18 @@ ModulePlayer::ModulePlayer()
 			}
 		// */
 		//en garde
-
+			{
+				en_garde.PushBack({ 28,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 152,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 275,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 399,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 526,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 654,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 778,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 903,901,119,126 }, 0.2f);
+				en_garde.PushBack({ 1027,901,119,126 }, 0.2f);
+				en_garde.loop = false;
+			}
 		}
 	}
 }
@@ -510,7 +521,7 @@ bool ModulePlayer::Start()
 {
 	bool ret = true;
 	LOG("Loading player 1\n");
-	initial_position.x = position.x = shadow_x = 70;
+	initial_position.x = position.x = shadow_x = 25;
 	position.y = initial_position.y = 215;
 	lposition = position;
 	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");

@@ -357,8 +357,6 @@ ModulePlayer2::ModulePlayer2()
 			win2.loop = false;
 		}
 		*/
-		//hEnd
-
 		// Wanf-Fu
 		{
 			//idle
@@ -478,6 +476,20 @@ ModulePlayer2::ModulePlayer2()
 				jump_backward2.PushBack({ 248,305,106,139 }, 0.2f);
 				jump_backward2.loop = false;
 			}
+
+			//en garde
+			{
+				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 152,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 275,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 399,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 526,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 654,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 778,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 903,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 1027,901,119,126 }, 0.2f);
+				en_garde2.loop = false;
+			}
 		}
 	}
 }
@@ -490,7 +502,7 @@ bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player 2\n");
-	position.x = initial_position.x = shadow_x = 280;
+	position.x = initial_position.x = shadow_x = 305;
 	position.y = initial_position.y = 215;
 	lposition = position;
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
