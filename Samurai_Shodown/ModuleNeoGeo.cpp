@@ -211,7 +211,7 @@ update_status ModuleNeoGeo::Update()
 		App->render->Blit(intro, 307, 52, &(anim5->GetCurrentFrame()));
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN || time > 8000) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN || time > 8000 || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN) {
 		App->fade->FadeToBlack(this, (Module*)App->scene_welcome, 2.5f);
 	}
 

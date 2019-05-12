@@ -33,9 +33,7 @@ bool ModuleInput::Init()
 		ret = false;
 	}
 	SDL_Init(SDL_INIT_GAMECONTROLLER);
-	if (controller_player_1 == nullptr) {
-		controller_player_1 = SDL_GameControllerOpen(0);
-	}
+
 	return ret;
 }
 
@@ -65,14 +63,13 @@ update_status ModuleInput::PreUpdate()
 	}
 
 	for (int i = 0; i < MAX_BUTTONS; ++i) {
-		for (int j = 0; j < 2; ++j) {
-			game_pad[i][j] = SDL_GameControllerGetButton(controller_player_1, (SDL_GameControllerButton)i);
-		}
+		game_pad[i][GAME_PAD_1] = SDL_GameControllerGetButton(controller_player_1, (SDL_GameControllerButton)i);
+		game_pad[i][GAME_PAD_2] = SDL_GameControllerGetButton(controller_player_2, (SDL_GameControllerButton)i);
 	}
 
 	for (int i = 0; i < MAX_BUTTONS; ++i) {
 
-		for (int j = 0; j < 2; ++j) {
+		for (int j = 0; j < MAX_GAME_PAD; ++j) {
 			if (game_pad[i][j] == KEY_IDLE) {
 				game_pad[i][j] == KEY_DOWN;
 				break;
@@ -97,20 +94,23 @@ update_status ModuleInput::PreUpdate()
 
 		switch (Events.type) {
 		case SDL_CONTROLLERDEVICEADDED:
-			SDL_Init(SDL_INIT_GAMECONTROLLER);
 			if (controller_player_1 == nullptr) {
 				controller_player_1 = SDL_GameControllerOpen(0);
-				controller_1_index = Events.cdevice.which;
+				break;
 			}
 			if (controller_player_2 == nullptr) {
 				controller_player_2 = SDL_GameControllerOpen(0);
+				break;
 			}
 			break;
 		case SDL_CONTROLLERDEVICEREMOVED:
-			if (Events.cdevice.which == controller_1_index) {
+			if (SDL_GameControllerGetAttached(controller_player_1) == SDL_FALSE) {
 				SDL_GameControllerClose(controller_player_1);
 				controller_player_1 = nullptr;
-				controller_1_index = 0;
+			}
+			if (SDL_GameControllerGetAttached(controller_player_2) == SDL_FALSE) {
+				SDL_GameControllerClose(controller_player_2);
+				controller_player_2 = nullptr;
 			}
 			break;
 		}
