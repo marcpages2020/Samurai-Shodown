@@ -1023,7 +1023,8 @@ update_status ModulePlayer::Update()
 		case CROUCH_DOWN:
 			current_animation = &crouch_down;
 			shadow_x = position.x + 16;
-
+			//haohmaru
+			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x - 15, position.y - 80);
 				collider_player_up->SetSize(35, 50);
@@ -1055,6 +1056,40 @@ update_status ModulePlayer::Update()
 
 					collider_player_down->SetPos(position.x + 30, position.y - 30);
 					collider_player_down->SetSize(50, 30);
+				}
+			}*/
+			//wan-fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 15, position.y - 80);
+				collider_player_up->SetSize(35, 50);
+
+				collider_player_down->SetPos(position.x - 20, position.y - 30);
+				collider_player_down->SetSize(50, 30);
+
+				collider_player_up->SetPos(position.x - 40, position.y - 65);
+				collider_player_up->SetSize(35, 35);
+
+				collider_player_down->SetPos(position.x - 40, position.y - 30);
+				collider_player_down->SetSize(50, 30);
+				shadow_x -= shadow_w / 3;
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 40, position.y - 85);
+					collider_player_up->SetSize(35, 55);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 30);
+					collider_player_down->SetSize(70, 30);
+				}
+				if (collider_player_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
+					collider_player_up->SetPos(position.x + 35, position.y - 65);
+					collider_player_up->SetSize(55, 35);
+
+					collider_player_down->SetPos(position.x + 30, position.y - 30);
+					collider_player_down->SetSize(60, 30);
 				}
 			}
 			break;
