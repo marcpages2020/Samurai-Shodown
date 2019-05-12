@@ -458,6 +458,44 @@ ModulePlayer::ModulePlayer()
 			jump_neutral.PushBack({ 248,305,106,139 }, 0.2f);
 			jump_neutral.loop = false;
 			}
+		// jump forward
+			{
+			jump_forward.PushBack({ 28,305,106,139 }, 0.2f); //1
+			jump_forward.PushBack({ 138,305,106,139 }, 0.2f);
+			jump_forward.PushBack({ 248,305,106,139 }, 0.2f);
+			jump_forward.PushBack({ 357,296,106,103 }, 0.2f); //4
+			jump_forward.PushBack({ 467,296,106,103 }, 0.2f);
+			jump_forward.PushBack({ 577,296,106,103 }, 0.2f);
+			jump_forward.PushBack({ 685,296,107,83 }, 0.2f); //7
+			jump_forward.PushBack({ 795,296,106,103 }, 0.2f);
+			jump_forward.PushBack({ 905,296,106,103 }, 0.2f);
+			jump_forward.PushBack({ 357,296,106,103 }, 0.2f); //4
+			jump_forward.PushBack({ 467,296,106,103 }, 0.2f);
+			jump_forward.PushBack({ 577,296,106,103 }, 0.2f);
+			jump_forward.PushBack({ 28,305,106,139 }, 0.2f); //1
+			jump_forward.PushBack({ 138,305,106,139 }, 0.2f);
+			jump_forward.PushBack({ 248,305,106,139 }, 0.2f);
+			jump_forward.loop = false;
+			}
+			// jump backward
+			{
+			jump_backward.PushBack({ 28,305,106,139 }, 0.2f); //1
+			jump_backward.PushBack({ 138,305,106,139 }, 0.2f);
+			jump_backward.PushBack({ 248,305,106,139 }, 0.2f);
+			jump_backward.PushBack({ 357,296,106,103 }, 0.2f); //4
+			jump_backward.PushBack({ 467,296,106,103 }, 0.2f);
+			jump_backward.PushBack({ 577,296,106,103 }, 0.2f);
+			jump_backward.PushBack({ 685,296,107,83 }, 0.2f); //7
+			jump_backward.PushBack({ 795,296,106,103 }, 0.2f);
+			jump_backward.PushBack({ 905,296,106,103 }, 0.2f);
+			jump_backward.PushBack({ 357,296,106,103 }, 0.2f); //4
+			jump_backward.PushBack({ 467,296,106,103 }, 0.2f);
+			jump_backward.PushBack({ 577,296,106,103 }, 0.2f);
+			jump_backward.PushBack({ 28,305,106,139 }, 0.2f); //1
+			jump_backward.PushBack({ 138,305,106,139 }, 0.2f);
+			jump_backward.PushBack({ 248,305,106,139 }, 0.2f);
+			jump_backward.loop = false;
+			}
 		// */
 		//en garde
 

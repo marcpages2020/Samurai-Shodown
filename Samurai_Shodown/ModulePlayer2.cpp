@@ -60,7 +60,7 @@ ModulePlayer2::ModulePlayer2()
 			backward2.PushBack({ 884,608,82,121 }, 0.4f);//12
 			backward2.PushBack({ 15,614,74,114 }, 0.4f); //1
 			backward2.PushBack({ 94,614,74,114 }, 0.4f); //2
-			backward2.PushBack({ 173,614,74,114 }, 0.4f); //3 
+			backward2.PushBack({ 173,614,74,114 }, 0.4f); //3
 			backward2.PushBack({ 264,610,68,118 }, 0.4f); //4
 			backward2.PushBack({ 337,610,68,118 }, 0.4f); //5
 			backward2.PushBack({ 410,612,68,117 }, 0.4f); //6
@@ -361,86 +361,127 @@ ModulePlayer2::ModulePlayer2()
 
 		// Wanf-Fu
 		{
-		//idle
-		idle2.PushBack({ 28,26,118,126 }, 0.2f); //01
-		idle2.PushBack({ 150,26,118,126 }, 0.2f);
-		idle2.PushBack({ 272,26,118,126 }, 0.2f);
-		idle2.PushBack({ 394,26,118,126 }, 0.2f); //04
-		idle2.PushBack({ 514,26,118,126 }, 0.2f);
-		idle2.PushBack({ 635,26,118,126 }, 0.2f);
-		idle2.PushBack({ 754,40,118,112 }, 0.2f); //07
-		idle2.PushBack({ 873,40,118,112 }, 0.2f);
-		idle2.PushBack({ 991,40,118,112 }, 0.2f);
-		idle2.PushBack({ 394,26,118,126 }, 0.2f); //04
-		idle2.PushBack({ 514,26,118,126 }, 0.2f);
-		idle2.PushBack({ 635,26,118,126 }, 0.2f);
-		idle2.loop = true;
-		}
-		// forward
-		{
-		forward2.PushBack({ 28,162,106,126 }, 0.3f);
-		forward2.PushBack({ 137,162,106,126 }, 0.3f);
-		forward2.PushBack({ 245,162,106,126 }, 0.3f);
-		forward2.PushBack({ 353,162,106,126 }, 0.3f);
-		forward2.PushBack({ 461,162,106,126 }, 0.3f);
-		forward2.PushBack({ 569,162,106,126 }, 0.3f);
-		forward2.PushBack({ 678,162,106,126 }, 0.3f);
-		forward2.PushBack({ 786,162,106,126 }, 0.3f);
-		forward2.PushBack({ 895,162,109,126 }, 0.3f);
-		forward2.PushBack({ 1008,162,109,126 }, 0.3f);
-		forward2.PushBack({ 1121,162,109,126 }, 0.3f);
-		forward2.PushBack({ 1232,162,112,126 }, 0.3f);
-		forward2.PushBack({ 1347,162,112,126 }, 0.3f);
-		forward2.PushBack({ 1462,162,112,126 }, 0.3f);
-		forward2.PushBack({ 1578,162,112,126 }, 0.3f);
-		forward2.PushBack({ 1693,162,113,126 }, 0.3f);
-		forward2.PushBack({ 1810,162,113,126 }, 0.3f);
-		forward2.PushBack({ 1926,162,114,126 }, 0.3f);
-		forward2.loop = true;
-		}
-		// backward
-		{
-		backward2.PushBack({ 28,162,106,126 }, 0.3f);
-		backward2.PushBack({ 137,162,106,126 }, 0.3f);
-		backward2.PushBack({ 245,162,106,126 }, 0.3f);
-		backward2.PushBack({ 353,162,106,126 }, 0.3f);
-		backward2.PushBack({ 461,162,106,126 }, 0.3f);
-		backward2.PushBack({ 569,162,106,126 }, 0.3f);
-		backward2.PushBack({ 678,162,106,126 }, 0.3f);
-		backward2.PushBack({ 786,162,106,126 }, 0.3f);
-		backward2.PushBack({ 895,162,109,126 }, 0.3f);
-		backward2.PushBack({ 1008,162,109,126 }, 0.3f);
-		backward2.PushBack({ 1121,162,109,126 }, 0.3f);
-		backward2.PushBack({ 1232,162,112,126 }, 0.3f);
-		backward2.PushBack({ 1347,162,112,126 }, 0.3f);
-		backward2.PushBack({ 1462,162,112,126 }, 0.3f);
-		backward2.PushBack({ 1578,162,112,126 }, 0.3f);
-		backward2.PushBack({ 1693,162,113,126 }, 0.3f);
-		backward2.PushBack({ 1810,162,113,126 }, 0.3f);
-		backward2.PushBack({ 1926,162,114,126 }, 0.3f);
-		backward2.loop = true;
-		}
-		// jump neutral
-		{
-		jump_neutral2.PushBack({ 28,305,106,139 }, 0.2f); //1
-		jump_neutral2.PushBack({ 138,305,106,139 }, 0.2f);
-		jump_neutral2.PushBack({ 248,305,106,139 }, 0.2f);
-		jump_neutral2.PushBack({ 357,296,106,103 }, 0.2f); //4
-		jump_neutral2.PushBack({ 467,296,106,103 }, 0.2f);
-		jump_neutral2.PushBack({ 577,296,106,103 }, 0.2f);
-		jump_neutral2.PushBack({ 685,296,107,83 }, 0.2f); //7
-		jump_neutral2.PushBack({ 795,296,106,103 }, 0.2f);
-		jump_neutral2.PushBack({ 905,296,106,103 }, 0.2f);
-		jump_neutral2.PushBack({ 357,296,106,103 }, 0.2f); //4
-		jump_neutral2.PushBack({ 467,296,106,103 }, 0.2f);
-		jump_neutral2.PushBack({ 577,296,106,103 }, 0.2f);
-		jump_neutral2.PushBack({ 28,305,106,139 }, 0.2f); //1
-		jump_neutral2.PushBack({ 138,305,106,139 }, 0.2f);
-		jump_neutral2.PushBack({ 248,305,106,139 }, 0.2f);
-		jump_neutral2.loop = false;
+			//idle
+			{
+				idle2.PushBack({ 28,26,118,126 }, 0.2f); //01
+				idle2.PushBack({ 150,26,118,126 }, 0.2f);
+				idle2.PushBack({ 272,26,118,126 }, 0.2f);
+				idle2.PushBack({ 394,26,118,126 }, 0.2f); //04
+				idle2.PushBack({ 514,26,118,126 }, 0.2f);
+				idle2.PushBack({ 635,26,118,126 }, 0.2f);
+				idle2.PushBack({ 754,40,118,112 }, 0.2f); //07
+				idle2.PushBack({ 873,40,118,112 }, 0.2f);
+				idle2.PushBack({ 991,40,118,112 }, 0.2f);
+				idle2.PushBack({ 394,26,118,126 }, 0.2f); //04
+				idle2.PushBack({ 514,26,118,126 }, 0.2f);
+				idle2.PushBack({ 635,26,118,126 }, 0.2f);
+				idle2.loop = true;
+			}
+			// forward
+			{
+				forward2.PushBack({ 28,162,106,126 }, 0.3f);
+				forward2.PushBack({ 137,162,106,126 }, 0.3f);
+				forward2.PushBack({ 245,162,106,126 }, 0.3f);
+				forward2.PushBack({ 353,162,106,126 }, 0.3f);
+				forward2.PushBack({ 461,162,106,126 }, 0.3f);
+				forward2.PushBack({ 569,162,106,126 }, 0.3f);
+				forward2.PushBack({ 678,162,106,126 }, 0.3f);
+				forward2.PushBack({ 786,162,106,126 }, 0.3f);
+				forward2.PushBack({ 895,162,109,126 }, 0.3f);
+				forward2.PushBack({ 1008,162,109,126 }, 0.3f);
+				forward2.PushBack({ 1121,162,109,126 }, 0.3f);
+				forward2.PushBack({ 1232,162,112,126 }, 0.3f);
+				forward2.PushBack({ 1347,162,112,126 }, 0.3f);
+				forward2.PushBack({ 1462,162,112,126 }, 0.3f);
+				forward2.PushBack({ 1578,162,112,126 }, 0.3f);
+				forward2.PushBack({ 1693,162,113,126 }, 0.3f);
+				forward2.PushBack({ 1810,162,113,126 }, 0.3f);
+				forward2.PushBack({ 1926,162,114,126 }, 0.3f);
+				forward2.loop = true;
+			}
+			// backward
+			{
+				backward2.PushBack({ 28,162,106,126 }, 0.3f);
+				backward2.PushBack({ 137,162,106,126 }, 0.3f);
+				backward2.PushBack({ 245,162,106,126 }, 0.3f);
+				backward2.PushBack({ 353,162,106,126 }, 0.3f);
+				backward2.PushBack({ 461,162,106,126 }, 0.3f);
+				backward2.PushBack({ 569,162,106,126 }, 0.3f);
+				backward2.PushBack({ 678,162,106,126 }, 0.3f);
+				backward2.PushBack({ 786,162,106,126 }, 0.3f);
+				backward2.PushBack({ 895,162,109,126 }, 0.3f);
+				backward2.PushBack({ 1008,162,109,126 }, 0.3f);
+				backward2.PushBack({ 1121,162,109,126 }, 0.3f);
+				backward2.PushBack({ 1232,162,112,126 }, 0.3f);
+				backward2.PushBack({ 1347,162,112,126 }, 0.3f);
+				backward2.PushBack({ 1462,162,112,126 }, 0.3f);
+				backward2.PushBack({ 1578,162,112,126 }, 0.3f);
+				backward2.PushBack({ 1693,162,113,126 }, 0.3f);
+				backward2.PushBack({ 1810,162,113,126 }, 0.3f);
+				backward2.PushBack({ 1926,162,114,126 }, 0.3f);
+				backward2.loop = true;
+			}
+			// jump neutral
+			{
+				jump_neutral2.PushBack({ 28,305,106,139 }, 0.2f); //1
+				jump_neutral2.PushBack({ 138,305,106,139 }, 0.2f);
+				jump_neutral2.PushBack({ 248,305,106,139 }, 0.2f);
+				jump_neutral2.PushBack({ 357,296,106,103 }, 0.2f); //4
+				jump_neutral2.PushBack({ 467,296,106,103 }, 0.2f);
+				jump_neutral2.PushBack({ 577,296,106,103 }, 0.2f);
+				jump_neutral2.PushBack({ 685,296,107,83 }, 0.2f); //7
+				jump_neutral2.PushBack({ 795,296,106,103 }, 0.2f);
+				jump_neutral2.PushBack({ 905,296,106,103 }, 0.2f);
+				jump_neutral2.PushBack({ 357,296,106,103 }, 0.2f); //4
+				jump_neutral2.PushBack({ 467,296,106,103 }, 0.2f);
+				jump_neutral2.PushBack({ 577,296,106,103 }, 0.2f);
+				jump_neutral2.PushBack({ 28,305,106,139 }, 0.2f); //1
+				jump_neutral2.PushBack({ 138,305,106,139 }, 0.2f);
+				jump_neutral2.PushBack({ 248,305,106,139 }, 0.2f);
+				jump_neutral2.loop = false;
+			}
+			// jump forward
+			{
+				jump_forward2.PushBack({ 28,305,106,139 }, 0.2f); //1
+				jump_forward2.PushBack({ 138,305,106,139 }, 0.2f);
+				jump_forward2.PushBack({ 248,305,106,139 }, 0.2f);
+				jump_forward2.PushBack({ 357,296,106,103 }, 0.2f); //4
+				jump_forward2.PushBack({ 467,296,106,103 }, 0.2f);
+				jump_forward2.PushBack({ 577,296,106,103 }, 0.2f);
+				jump_forward2.PushBack({ 685,296,107,83 }, 0.2f); //7
+				jump_forward2.PushBack({ 795,296,106,103 }, 0.2f);
+				jump_forward2.PushBack({ 905,296,106,103 }, 0.2f);
+				jump_forward2.PushBack({ 357,296,106,103 }, 0.2f); //4
+				jump_forward2.PushBack({ 467,296,106,103 }, 0.2f);
+				jump_forward2.PushBack({ 577,296,106,103 }, 0.2f);
+				jump_forward2.PushBack({ 28,305,106,139 }, 0.2f); //1
+				jump_forward2.PushBack({ 138,305,106,139 }, 0.2f);
+				jump_forward2.PushBack({ 248,305,106,139 }, 0.2f);
+				jump_forward2.loop = false;
+			}
+			// jump backward
+			{
+				jump_backward2.PushBack({ 28,305,106,139 }, 0.2f); //1
+				jump_backward2.PushBack({ 138,305,106,139 }, 0.2f);
+				jump_backward2.PushBack({ 248,305,106,139 }, 0.2f);
+				jump_backward2.PushBack({ 357,296,106,103 }, 0.2f); //4
+				jump_backward2.PushBack({ 467,296,106,103 }, 0.2f);
+				jump_backward2.PushBack({ 577,296,106,103 }, 0.2f);
+				jump_backward2.PushBack({ 685,296,107,83 }, 0.2f); //7
+				jump_backward2.PushBack({ 795,296,106,103 }, 0.2f);
+				jump_backward2.PushBack({ 905,296,106,103 }, 0.2f);
+				jump_backward2.PushBack({ 357,296,106,103 }, 0.2f); //4
+				jump_backward2.PushBack({ 467,296,106,103 }, 0.2f);
+				jump_backward2.PushBack({ 577,296,106,103 }, 0.2f);
+				jump_backward2.PushBack({ 28,305,106,139 }, 0.2f); //1
+				jump_backward2.PushBack({ 138,305,106,139 }, 0.2f);
+				jump_backward2.PushBack({ 248,305,106,139 }, 0.2f);
+				jump_backward2.loop = false;
+			}
 		}
 	}
 }
+
 
 ModulePlayer2::~ModulePlayer2() {}
 
