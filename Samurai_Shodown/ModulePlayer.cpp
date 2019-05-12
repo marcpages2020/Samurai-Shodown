@@ -439,6 +439,25 @@ ModulePlayer::ModulePlayer()
 			backward.PushBack({ 1926,162,114,126 }, 0.3f);
 			backward.loop = true;
 			}
+		// jump
+			{
+			jump_neutral.PushBack({ 28,305,106,139 }, 0.2f); //1
+			jump_neutral.PushBack({ 138,305,106,139 }, 0.2f);
+			jump_neutral.PushBack({ 248,305,106,139 }, 0.2f);
+			jump_neutral.PushBack({ 357,296,106,103 }, 0.2f); //4
+			jump_neutral.PushBack({ 467,296,106,103 }, 0.2f);
+			jump_neutral.PushBack({ 577,296,106,103 }, 0.2f);
+			jump_neutral.PushBack({ 685,296,107,83 }, 0.2f); //7
+			jump_neutral.PushBack({ 795,296,106,103 }, 0.2f);
+			jump_neutral.PushBack({ 905,296,106,103 }, 0.2f);
+			jump_neutral.PushBack({ 357,296,106,103 }, 0.2f); //4
+			jump_neutral.PushBack({ 467,296,106,103 }, 0.2f);
+			jump_neutral.PushBack({ 577,296,106,103 }, 0.2f);
+			jump_neutral.PushBack({ 28,305,106,139 }, 0.2f); //1
+			jump_neutral.PushBack({ 138,305,106,139 }, 0.2f);
+			jump_neutral.PushBack({ 248,305,106,139 }, 0.2f);
+			jump_neutral.loop = false;
+			}
 		// */
 		//en garde
 
