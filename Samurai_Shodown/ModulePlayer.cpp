@@ -14,7 +14,7 @@ ModulePlayer::ModulePlayer()
 	{
 		//Haohmaru 
 		{
-			/*
+			 /*
 			//idle animation
 			{
 				idle.PushBack({ 16,22,71,109 }, 0.3f);
@@ -29,6 +29,7 @@ ModulePlayer::ModulePlayer()
 				idle.PushBack({ 245,20,72,111 }, 0.3f);
 				idle.PushBack({ 322,18,72,113 }, 0.3f);
 				idle.PushBack({ 399,19,72,112 }, 0.3f);
+				idle.loop = true;
 			}
 
 			//forward animation
@@ -371,25 +372,29 @@ ModulePlayer::ModulePlayer()
 				win.PushBack({ 741, 2566, 96, 112 }, 0.2f);
 				win.PushBack({ 1028, 2566, 96, 112 }, 0.2f);
 				win.loop = false;
-
-				 */
-				 //hEnd
+			}
+			 */
+			//hEnd
 		}
 		//Wan-Fu
 		{
 		//idle
 		// /*
-		idle.PushBack({ 28,26,118,126 }, 0.3f);
-		idle.PushBack({ 149,26,118,126 }, 0.3f);
-		idle.PushBack({ 271,26,118,126 }, 0.3f);
-		idle.PushBack({ 393,26,118,126 }, 0.3f);
-		idle.PushBack({ 514,26,118,126 }, 0.3f);
-		idle.PushBack({ 634,26,118,126 }, 0.3f);
-		idle.PushBack({ 755,40,118,110 }, 0.3f);
-		idle.PushBack({ 875,40,118,110 }, 0.3f);
-		idle.PushBack({ 993,40,118,110 }, 0.3f);
-		idle.loop = true;
+			{
+			idle.PushBack({ 28,26,118,126 }, 0.3f);
+			idle.PushBack({ 149,26,118,126 }, 0.3f);
+			idle.PushBack({ 271,26,118,126 }, 0.3f);
+			idle.PushBack({ 393,26,118,126 }, 0.3f);
+			idle.PushBack({ 514,26,118,126 }, 0.3f);
+			idle.PushBack({ 634,26,118,126 }, 0.3f);
+			idle.PushBack({ 755,40,118,110 }, 0.3f);
+			idle.PushBack({ 875,40,118,110 }, 0.3f);
+			idle.PushBack({ 993,40,118,110 }, 0.3f);
+			idle.loop = true;
+			}
 		// */
+		//en garde
+
 		}
 	}
 }
@@ -404,8 +409,8 @@ bool ModulePlayer::Start()
 	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
-	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	//player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
