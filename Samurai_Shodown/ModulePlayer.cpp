@@ -14,6 +14,7 @@ ModulePlayer::ModulePlayer()
 	{
 		//Haohmaru 
 		{
+			/*
 			//idle animation
 			{
 				idle.PushBack({ 16,22,71,109 }, 0.3f);
@@ -59,7 +60,7 @@ ModulePlayer::ModulePlayer()
 				backward.PushBack({ 884,608,82,121 }, 0.4f);//12
 				backward.PushBack({ 15,614,74,114 }, 0.4f); //1
 				backward.PushBack({ 94,614,74,114 }, 0.4f); //2
-				backward.PushBack({ 173,614,74,114 }, 0.4f); //3 
+				backward.PushBack({ 173,614,74,114 }, 0.4f); //3
 				backward.PushBack({ 264,610,68,118 }, 0.4f); //4
 				backward.PushBack({ 337,610,68,118 }, 0.4f); //5
 				backward.PushBack({ 410,612,68,117 }, 0.4f); //6
@@ -264,30 +265,30 @@ ModulePlayer::ModulePlayer()
 				twister.PushBack({ 1006, 734, 62, 155 }, 0.6f);
 				twister.PushBack({ 1071, 734, 62, 155 }, 0.6f);
 				twister.PushBack({ 1138, 734, 62, 155 }, 0.6f);
-twister.PushBack({ 1203, 787, 100, 102 }, 0.6f);
-twister.PushBack({ 1313, 787, 100, 102 }, 0.6f);
-twister.PushBack({ 1429, 787, 100, 102 }, 0.6f);
-twister.PushBack({ 1543, 795, 98, 94 }, 0.6f);
-twister.PushBack({ 1646, 795, 98, 94 }, 0.6f);
-twister.PushBack({ 1749, 795, 98, 94 }, 0.6f);
-twister.PushBack({ 15, 923, 104, 93 }, 0.6f);
-twister.PushBack({ 121, 923, 104, 93 }, 0.6f);
-twister.PushBack({ 228, 923, 104, 93 }, 0.6f);
-twister.PushBack({ 337, 923, 84, 93 }, 0.6f);
-twister.PushBack({ 425, 923, 84, 93 }, 0.6f);
-twister.PushBack({ 512, 923, 84, 93 }, 0.6f);
-twister.PushBack({ 599, 896, 72, 120 }, 0.6f);
-twister.PushBack({ 673, 896, 72, 120 }, 0.6f);
-twister.PushBack({ 748, 896, 72, 120 }, 0.6f);
-twister.loop = false;
+				twister.PushBack({ 1203, 787, 100, 102 }, 0.6f);
+				twister.PushBack({ 1313, 787, 100, 102 }, 0.6f);
+				twister.PushBack({ 1429, 787, 100, 102 }, 0.6f);
+				twister.PushBack({ 1543, 795, 98, 94 }, 0.6f);
+				twister.PushBack({ 1646, 795, 98, 94 }, 0.6f);
+				twister.PushBack({ 1749, 795, 98, 94 }, 0.6f);
+				twister.PushBack({ 15, 923, 104, 93 }, 0.6f);
+				twister.PushBack({ 121, 923, 104, 93 }, 0.6f);
+				twister.PushBack({ 228, 923, 104, 93 }, 0.6f);
+				twister.PushBack({ 337, 923, 84, 93 }, 0.6f);
+				twister.PushBack({ 425, 923, 84, 93 }, 0.6f);
+				twister.PushBack({ 512, 923, 84, 93 }, 0.6f);
+				twister.PushBack({ 599, 896, 72, 120 }, 0.6f);
+				twister.PushBack({ 673, 896, 72, 120 }, 0.6f);
+				twister.PushBack({ 748, 896, 72, 120 }, 0.6f);
+				twister.loop = false;
 
-//Twister animation (only the twister)
-twisterAlone.loop = false;
+				//Twister animation (only the twister)
+				twisterAlone.loop = false;
 			}
 
 			//die
 			{
-			die.PushBack({ 852,0,108,54 });
+				die.PushBack({ 852,0,108,54 });
 			}
 
 			//en garde
@@ -370,12 +371,14 @@ twisterAlone.loop = false;
 				win.PushBack({ 741, 2566, 96, 112 }, 0.2f);
 				win.PushBack({ 1028, 2566, 96, 112 }, 0.2f);
 				win.loop = false;
-			}
+
+				 */
+				 //hEnd
 		}
 		//Wan-Fu
 		{
 		//idle
-		/*
+		// /*
 		idle.PushBack({ 27,26,118,126 }, 0.3f);
 		idle.PushBack({ 147,26,118,126 }, 0.3f);
 		idle.PushBack({ 266,26,118,126 }, 0.3f);
@@ -385,7 +388,7 @@ twisterAlone.loop = false;
 		idle.PushBack({ 741,40,118,110 }, 0.3f);
 		idle.PushBack({ 857,40,118,110 }, 0.3f);
 		idle.PushBack({ 973,40,118,110 }, 0.3f);
-		*/
+		// */
 		}
 	}
 }
@@ -400,8 +403,8 @@ bool ModulePlayer::Start()
 	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
-	player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	//player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");

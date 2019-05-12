@@ -13,6 +13,8 @@ ModulePlayer2::ModulePlayer2()
 {
 	//animations
 	{
+		//Haohmaru  
+		/*
 		//idle animation
 		{
 			idle2.PushBack({ 16,22,71,109 }, 0.3f);
@@ -354,7 +356,22 @@ ModulePlayer2::ModulePlayer2()
 			win2.PushBack({ 1028, 2566, 96, 112 }, 0.15f);
 			win2.loop = false;
 		}
+		*/
+		//hEnd
 
+		// Wanf-Fu
+		{
+		//idle
+		idle2.PushBack({ 27,26,118,126 }, 0.3f);
+		idle2.PushBack({ 147,26,118,126 }, 0.3f);
+		idle2.PushBack({ 266,26,118,126 }, 0.3f);
+		idle2.PushBack({ 386,26,118,126 }, 0.3f);
+		idle2.PushBack({ 505,26,118,126 }, 0.3f);
+		idle2.PushBack({ 623,26,118,126 }, 0.3f);
+		idle2.PushBack({ 741,40,118,110 }, 0.3f);
+		idle2.PushBack({ 857,40,118,110 }, 0.3f);
+		idle2.PushBack({ 973,40,118,110 }, 0.3f);
+		}
 	}
 }
 
