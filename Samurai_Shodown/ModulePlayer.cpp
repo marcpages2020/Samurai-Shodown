@@ -1076,6 +1076,8 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
+			//haohmaru
+			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x, position.y - 90);
 				collider_player_up->SetSize(35, 35);
@@ -1093,6 +1095,27 @@ update_status ModulePlayer::Update()
 				{
 					collider_player_down->SetPos(position.x, position.y - 50);
 					collider_player_down->SetSize(50, 30);
+				}
+			}
+			*/
+			//wan-fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x, position.y - 90);
+				collider_player_up->SetSize(35, 35);
+
+				collider_player_down->SetPos(position.x - 12, position.y - 50);
+				collider_player_down->SetSize(50, 30);
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x+30, position.y - 90);
+					collider_player_up->SetSize(45, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x+25, position.y - 50);
+					collider_player_down->SetSize(55, 35);
 				}
 			}
 			break;
