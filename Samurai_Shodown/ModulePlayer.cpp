@@ -381,16 +381,40 @@ ModulePlayer::ModulePlayer()
 		//idle
 		// /*
 			{
-			idle.PushBack({ 28,26,118,126 }, 0.3f);
-			idle.PushBack({ 149,26,118,126 }, 0.3f);
-			idle.PushBack({ 271,26,118,126 }, 0.3f);
-			idle.PushBack({ 393,26,118,126 }, 0.3f);
-			idle.PushBack({ 514,26,118,126 }, 0.3f);
-			idle.PushBack({ 634,26,118,126 }, 0.3f);
-			idle.PushBack({ 755,40,118,110 }, 0.3f);
-			idle.PushBack({ 875,40,118,110 }, 0.3f);
-			idle.PushBack({ 993,40,118,110 }, 0.3f);
+			idle.PushBack({ 28,26,118,126 }, 0.2f); //01
+			idle.PushBack({ 150,26,118,126 }, 0.2f);
+			idle.PushBack({ 272,26,118,126 }, 0.2f);
+			idle.PushBack({ 394,26,118,126 }, 0.2f); //04
+			idle.PushBack({ 514,26,118,126 }, 0.2f);
+			idle.PushBack({ 635,26,118,126 }, 0.2f);
+			idle.PushBack({ 754,40,118,112 }, 0.2f); //07
+			idle.PushBack({ 873,40,118,112 }, 0.2f);
+			idle.PushBack({ 991,40,118,112 }, 0.2f);
+			idle.PushBack({ 394,26,118,126 }, 0.2f); //04
+			idle.PushBack({ 514,26,118,126 }, 0.2f);
+			idle.PushBack({ 635,26,118,126 }, 0.2f);
 			idle.loop = true;
+			}
+		// forward
+			{
+			//forward.PushBack({ 28,162,106,126 }, 0.2f);
+			//forward.PushBack({ 137,162,106,126 }, 0.2f);
+			//forward.PushBack({ 245,162,106,126 }, 0.2f);
+			//forward.PushBack({ 353,162,106,126 }, 0.2f);
+			//forward.PushBack({ 461,162,106,126 }, 0.2f);
+			//forward.PushBack({ 569,162,106,126 }, 0.2f);
+			//forward.PushBack({ 678,162,106,126 }, 0.2f);
+			forward.PushBack({ 786,162,106,126 }, 0.2f);
+			forward.PushBack({ 895,162,109,126 }, 0.2f);
+			//forward.PushBack({ 1008,162,109,126 }, 0.2f);
+			//forward.PushBack({ 1121,162,109,126 }, 0.2f);
+			//forward.PushBack({ 1232,162,109,126 }, 0.2f);
+			//forward.PushBack({ 1347,162,109,126 }, 0.2f);
+			//forward.PushBack({ 1462,162,112,126 }, 0.2f);
+			//forward.PushBack({ 1578,162,112,126 }, 0.2f);
+			//forward.PushBack({ 1693,162,112,126 }, 0.2f);
+			//forward.PushBack({ 1810,162,113,126 }, 0.2f);
+			//forward.PushBack({ 1925,162,114,126 }, 0.2f);
 			}
 		// */
 		//en garde
@@ -409,8 +433,8 @@ bool ModulePlayer::Start()
 	initial_position.x = position.x = shadow_x = 70;
 	position.y = initial_position.y = 215;
 	lposition = position;
-	player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	//player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
