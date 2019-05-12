@@ -499,7 +499,7 @@ ModulePlayer2::ModulePlayer2()
 				kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
 				kick2.PushBack({ 139,745,108,148 }, 0.5f);
 				kick2.PushBack({ 249,745,108,148 }, 0.5f);
-				kick.loop = false;
+				kick2.loop = false;
 			}
 			//en garde
 			{
