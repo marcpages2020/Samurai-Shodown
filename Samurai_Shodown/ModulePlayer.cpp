@@ -642,6 +642,12 @@ update_status ModulePlayer::PreUpdate()
 			}
 		}
 	}
+	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN) {
+		state = States::IDLE;
+		current_animation = &idle;
+		App->player2->state2 = States2::IDLE2;
+		App->player2->current_animation = &App->player2->idle2;
+	}
 	return UPDATE_CONTINUE;
 }
 
