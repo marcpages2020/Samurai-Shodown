@@ -885,6 +885,7 @@ update_status ModulePlayer::Update()
 		case IDLE:
 			current_animation = &idle;
 			position.y = initial_position.y;
+			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x - 10, position.y - 80);
@@ -906,6 +907,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(40, 45);
 				}
 			}*/
+			//wan-fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x - 10, position.y - 80);
 				collider_player_up->SetSize(30, 35);
@@ -930,7 +932,8 @@ update_status ModulePlayer::Update()
 		case FORWARD:
 			current_animation = &forward;
 			position.x += speed;
-
+			//haohmaru
+			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x - 10, position.y - 85);
 				collider_player_up->SetSize(30, 40);
@@ -949,12 +952,33 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x + 10, position.y - 45);
 					collider_player_down->SetSize(35, 45);
 				}
+			}*/
+			//wan-fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 10, position.y - 85);
+				collider_player_up->SetSize(30, 40);
+
+				collider_player_down->SetPos(position.x - 15, position.y - 45);
+				collider_player_down->SetSize(35, 45);
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 30, position.y - 85);
+					collider_player_up->SetSize(40, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(55, 45);
+				}
 			}
 			break;
 		case BACKWARD:
 			current_animation = &backward;
 			shadow_x = position.x + 10;
-
+			//haohmaru
+			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				collider_player_up->SetPos(position.x - 25, position.y - 85);
 				collider_player_up->SetSize(35, 40);
@@ -967,6 +991,26 @@ update_status ModulePlayer::Update()
 				{
 					collider_player_up->SetPos(position.x + 25, position.y - 85);
 					collider_player_up->SetSize(35, 40);
+				}
+				if (collider_player_down != nullptr) {
+					collider_player_down->SetPos(position.x + 20, position.y - 45);
+					collider_player_down->SetSize(50, 45);
+				}
+			}
+			*/
+			//wan-fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 25, position.y - 85);
+				collider_player_up->SetSize(35, 40);
+				collider_player_down->SetPos(position.x - 30, position.y - 45);
+				collider_player_down->SetSize(50, 45);
+				shadow_x = position.x;
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 25, position.y - 85);
+					collider_player_up->SetSize(40, 40);
 				}
 				if (collider_player_down != nullptr) {
 					collider_player_down->SetPos(position.x + 20, position.y - 45);
