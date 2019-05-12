@@ -501,6 +501,81 @@ ModulePlayer2::ModulePlayer2()
 				kick2.PushBack({ 249,745,108,148 }, 0.5f);
 				kick2.loop = false;
 			}
+			//punch
+			{
+				punch2.PushBack({ 27, 451, 87, 168 }, 0.5f);
+				punch2.PushBack({ 116, 451, 87, 168 }, 0.5f);
+				punch2.PushBack({ 207, 492, 134, 127 }, 0.5f);
+				punch2.PushBack({ 342, 492, 134, 127 }, 0.5f);
+				punch2.PushBack({ 477, 474, 134, 143 }, 0.5f);
+				punch2.PushBack({ 614, 474, 134, 143 }, 0.5f);
+				punch2.PushBack({ 751, 490, 132, 128 }, 0.5f);
+				punch2.PushBack({ 891, 490, 132, 128 }, 0.5f);
+				punch2.PushBack({ 1031, 530, 136, 89 }, 0.5f);
+				punch2.PushBack({ 1172, 530, 136, 89 }, 0.5f);
+				punch2.PushBack({ 1313, 542, 133, 75 }, 0.5f);
+				punch2.PushBack({ 1449, 542, 133, 75 }, 0.5f);
+				punch2.PushBack({ 1587, 542, 133, 75 }, 0.5f);
+				punch2.PushBack({ 1724, 542, 133, 75 }, 0.5f);
+				punch2.PushBack({ 1861, 542, 133, 75 }, 0.5f);
+				punch2.PushBack({ 27, 620, 103, 125 }, 0.5f);
+				punch2.PushBack({ 133, 620, 103, 125 }, 0.5f);
+				punch2.PushBack({ 237, 620, 103, 125 }, 0.5f);
+				punch2.PushBack({ 341, 620, 103, 125 }, 0.5f);
+				punch2.PushBack({ 447, 620, 103, 125 }, 0.5f);
+				punch2.loop = false;
+			}
+
+			//crouch down
+			{
+				crouch_down2.PushBack({ 1355, 28, 107, 124 }, 0.5f);
+				crouch_down2.PushBack({ 1466, 28, 107, 124 }, 0.5f);
+				crouch_down2.PushBack({ 1578, 28, 107, 124 }, 0.5f);
+				crouch_down2.PushBack({ 1691, 58, 107, 93 }, 0.5f);
+				crouch_down2.PushBack({ 1803, 58, 107, 93 }, 0.5f);
+				crouch_down2.PushBack({ 1914, 58, 107, 93 }, 0.5f);
+				crouch_down2.loop = false;
+			}
+
+			//crouch up
+			{
+				crouch_up2.PushBack({ 1355, 28, 107, 124 }, 0.5f);
+				crouch_up2.PushBack({ 1466, 28, 107, 124 }, 0.5f);
+				crouch_up2.PushBack({ 1578, 28, 107, 124 }, 0.5f);
+				crouch_up2.loop = false;
+			}
+
+			//crouch kick
+			{
+				crouch_kick2.PushBack({ 1190, 332, 107, 112 }, 0.5f);
+				crouch_kick2.PushBack({ 1303, 332, 107, 112 }, 0.5f);
+				crouch_kick2.PushBack({ 1414, 340, 112, 104 }, 0.5f);
+				crouch_kick2.PushBack({ 1532, 334, 130, 110 }, 0.5f);
+				crouch_kick2.PushBack({ 1667, 334, 130, 110 }, 0.5f);
+				crouch_kick2.PushBack({ 1803, 339, 112, 105 }, 0.5f);
+				crouch_kick2.PushBack({ 1921, 339, 112, 105 }, 0.5f);
+				crouch_kick2.loop = false;
+			}
+
+			//crouch punch
+			{
+				crouch_punch2.PushBack({ 28, 1082, 119, 128 }, 0.5f);
+				crouch_punch2.PushBack({ 146, 1082, 119, 128 }, 0.5f);
+				crouch_punch2.PushBack({ 264, 1075, 117, 135 }, 0.5f);
+				crouch_punch2.PushBack({ 381, 1075, 117, 135 }, 0.5f);
+				crouch_punch2.PushBack({ 497, 1075, 117, 135 }, 0.5f);
+				crouch_punch2.PushBack({ 614, 1044, 138, 167 }, 0.5f);
+				crouch_punch2.PushBack({ 752, 1047, 138, 164 }, 0.5f);
+				crouch_punch2.PushBack({ 891, 1047, 138, 164 }, 0.5f);
+				crouch_punch2.PushBack({ 1046, 1172, 157, 129 }, 0.5f);
+				crouch_punch2.PushBack({ 1203, 1123, 138, 88 }, 0.5f);
+				crouch_punch2.PushBack({ 1340, 1123, 138, 88 }, 0.5f);
+				crouch_punch2.PushBack({ 1480, 1084, 102, 126 }, 0.5f);
+				crouch_punch2.PushBack({ 1593, 1084, 102, 126 }, 0.5f);
+				crouch_punch2.PushBack({ 1701, 1084, 102, 126 }, 0.5f);
+				crouch_punch2.loop = false;
+
+			}
 			//en garde
 			{
 				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
@@ -549,13 +624,13 @@ update_status ModulePlayer2::PreUpdate()
 {
 	if (!App->is_paused) {
 		if (controls) {
-			player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTX) <= -10000;
-			player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
-			player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
-			player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
-			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_2] == KEY_DOWN;
+			player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT;
+			player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT;
+			player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT;
+			player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN;
+			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][1] == KEY_DOWN;
+			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN;
+			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN;
 			player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 
 			if (player_input2.pressing_left && player_input2.pressing_right) {

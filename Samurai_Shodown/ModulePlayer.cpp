@@ -595,8 +595,9 @@ ModulePlayer::ModulePlayer()
 				crouch_punch.PushBack({ 1340, 1123, 138, 88}, 0.5f);
 				crouch_punch.PushBack({ 1480, 1084, 102, 126}, 0.5f);
 				crouch_punch.PushBack({ 1593, 1084, 102, 126}, 0.5f);
-				crouch_punch.PushBack({ 1701, 1084, 102, 126}, 0.5f);			
+				crouch_punch.PushBack({ 1701, 1084, 102, 126}, 0.5f);		
 				crouch_punch.loop = false;
+				
 			}
 		//en garde
 			{
