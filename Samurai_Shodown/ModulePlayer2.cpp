@@ -919,18 +919,26 @@ update_status ModulePlayer2::Update()
 			break;
 			*/
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 30, position.y - 85);
+					collider_player_2_up->SetSize(40, 40);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_2_down->SetSize(55, 45);
+				}
 			}
 			else {
 				if (collider_player_2_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 10, position.y - 85);
+					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
 					collider_player_2_up->SetSize(30, 40);
 				}
 				if (collider_player_2_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 15, position.y - 45);
+					collider_player_2_down->SetPos(position.x - 25, position.y - 45);
 					collider_player_2_down->SetSize(35, 45);
 				}
 			}

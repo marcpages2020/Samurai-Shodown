@@ -962,9 +962,16 @@ update_status ModulePlayer::Update()
 			}*/
 			//wan-fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				
-
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetSize(30, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(35, 45);
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
