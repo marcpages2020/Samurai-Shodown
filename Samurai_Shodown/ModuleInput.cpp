@@ -93,16 +93,20 @@ update_status ModuleInput::PreUpdate()
 	while (SDL_PollEvent(&Events) == 1) {
 
 		switch (Events.type) {
-		case SDL_CONTROLLERDEVICEADDED:
-			if (controller_player_1 == nullptr) {
-				controller_player_1 = SDL_GameControllerOpen(0);
-				break;
+		case SDL_CONTROLLERDEVICEADDED: {
+			int num_joystincks = SDL_NumJoysticks();
+			for (int i = 0; i < num_joystincks; ++i) {
+				if (SDL_GameControllerGetAttached(controller_player_1) == SDL_FALSE) {
+					controller_player_1 = SDL_GameControllerOpen(i);
+					break;
+				}
+				if (SDL_GameControllerGetAttached(controller_player_2) == SDL_FALSE) {
+					controller_player_2 = SDL_GameControllerOpen(i);
+					break;
+				}
 			}
-			if (controller_player_2 == nullptr) {
-				controller_player_2 = SDL_GameControllerOpen(0);
-				break;
-			}
-			break;
+
+			break; }
 		case SDL_CONTROLLERDEVICEREMOVED:
 			if (SDL_GameControllerGetAttached(controller_player_1) == SDL_FALSE) {
 				SDL_GameControllerClose(controller_player_1);
