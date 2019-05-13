@@ -978,11 +978,11 @@ update_status ModulePlayer2::Update()
 			else {
 				if (collider_player_2_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 25, position.y - 85);
+					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
 					collider_player_2_up->SetSize(35, 40);
 				}
 				if (collider_player_2_down != nullptr) {
-					collider_player_2_down->SetPos(position.x - 30, position.y - 45);
+					collider_player_2_down->SetPos(position.x - 20, position.y - 45);
 					collider_player_2_down->SetSize(50, 45);
 				}
 			}
