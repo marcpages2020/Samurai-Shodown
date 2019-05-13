@@ -1038,8 +1038,23 @@ update_status ModulePlayer2::Update()
 			break;
 			*/
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 40, position.y - 85);
+					collider_player_2_up->SetSize(35, 55);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 20, position.y - 30);
+					collider_player_2_down->SetSize(70, 30);
+				}
+				if (collider_player_2_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
+					collider_player_2_up->SetPos(position.x + 35, position.y - 75);
+					collider_player_2_up->SetSize(55, 45);
 
+					collider_player_2_down->SetPos(position.x + 30, position.y - 30);
+					collider_player_2_down->SetSize(60, 30);
+				}
 
 				shadow_x = position.x + shadow_w / 3;
 			}
