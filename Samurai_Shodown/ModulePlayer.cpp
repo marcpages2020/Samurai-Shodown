@@ -1346,6 +1346,47 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
+			//haohmaru
+			/*
+			if (flip != SDL_FLIP_HORIZONTAL)
+			{
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x, position.y - 90);
+			collider_player_up->SetSize(35, 35);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x, position.y - 50);
+			collider_player_down->SetSize(40, 30);
+			}
+			if (current_animation->SeeCurrentFrame() > 4) {
+			collider_player_up->SetPos(position.x + 20, position.y - 45);
+			collider_player_up->SetSize(35, 35);
+			}
+			}
+			else {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x, position.y - 90);
+			collider_player_up->SetSize(35, 35);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x, position.y - 50);
+			collider_player_down->SetSize(40, 30);
+			}
+			if (current_animation->SeeCurrentFrame() > 4)
+			{
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x - 20, position.y - 45);
+			collider_player_up->SetSize(35, 35);
+			}
+			}
+			}
+			*/
+			//Wan-Fu
 			if (flip != SDL_FLIP_HORIZONTAL)
 			{
 				if (collider_player_up != nullptr)
@@ -1387,7 +1428,48 @@ update_status ModulePlayer::Update()
 			break;
 		case PUNCH:
 			current_animation = &punch;
-
+			//haohmaru
+			/*
+			if (flip == SDL_FLIP_HORIZONTAL) {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x - 20, position.y - 60);
+			collider_player_up->SetSize(50, 47);
+			}
+			if (collider_player_up != nullptr)
+			{
+			collider_player_down->SetPos(position.x - 18, position.y - 10);
+			collider_player_down->SetSize(70, 15);
+			}
+			if (collider_player_attack == nullptr)
+			{
+			collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+			collider_player_attack->to_delete = false;
+			collider_player_attack->SetPos(position.x - 60, position.y - 50);
+			collider_player_attack->SetSize(67, 30);
+			}
+			}
+			else {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x + 35, position.y - 60);
+			collider_player_up->SetSize(50, 47);
+			}
+			if (collider_player_up != nullptr)
+			{
+			collider_player_down->SetPos(position.x + 5, position.y - 10);
+			collider_player_down->SetSize(70, 15);
+			}
+			if (collider_player_attack == nullptr)
+			{
+			collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+			collider_player_attack->to_delete = false;
+			collider_player_attack->SetPos(position.x + 60, position.y - 50);
+			collider_player_attack->SetSize(67, 30);
+			}
+			}
+			*/
+			//Wan-Fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1469,17 +1551,9 @@ update_status ModulePlayer::Update()
 			*/
 			//Wan-Fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				collider_player_up->SetPos(position.x - 20, position.y - 70);
-				collider_player_up->SetSize(50, 30);
+				
 
-				collider_player_down->SetPos(position.x, position.y - 80);
-				collider_player_down->SetSize(25, 85);
 
-				if (collider_player_attack == nullptr)
-				{
-					collider_player_attack = App->collision->AddCollider({ position.x - 43, position.y - 35,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
-					collider_player_attack->SetSize(56, 30);
-				}
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -1502,23 +1576,47 @@ update_status ModulePlayer::Update()
 			break;
 		case TWISTER:
 			current_animation = &twister;
-
+			//haohmaru
+			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				if (collider_player_up != nullptr)
-				{
-					collider_player_up->SetPos(position.x - 20, position.y - 75);
-					collider_player_up->SetSize(40, 45);
-				}
-				if (collider_player_down != nullptr)
-				{
-					collider_player_down->SetPos(position.x - 35, position.y - 35);
-					collider_player_down->SetSize(60, 40);
-				}
-				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
-					Particle* p = App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
-					is_tornado_created = true;
-					p->speed = { -2,0 };
-				}
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x - 20, position.y - 75);
+			collider_player_up->SetSize(40, 45);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x - 35, position.y - 35);
+			collider_player_down->SetSize(60, 40);
+			}
+			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+			Particle* p = App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+			is_tornado_created = true;
+			p->speed = { -2,0 };
+			}
+			}
+			else {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x + 15, position.y - 75);
+			collider_player_up->SetSize(40, 45);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x + 10, position.y - 35);
+			collider_player_down->SetSize(60, 40);
+			}
+			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+			is_tornado_created = true;
+			}
+			}
+			*/
+			//Wan-Fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				
+
+
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -1543,6 +1641,24 @@ update_status ModulePlayer::Update()
 		case HIT:
 			current_animation = &hit;
 			shadow_x = position.x;
+			//haohmaru
+			/*
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+			}
+			else {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x + 15, position.y - 85);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x + 10, position.y - 45);
+			}
+			}
+			break;
+			*/
+			//Wan-Fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
 
 			}
