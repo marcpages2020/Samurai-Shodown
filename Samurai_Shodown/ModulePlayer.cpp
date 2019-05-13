@@ -1078,8 +1078,23 @@ update_status ModulePlayer::Update()
 			}*/
 			//wan-fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 23, position.y - 80);
+					collider_player_up->SetSize(35, 60);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 40, position.y - 30);
+					collider_player_down->SetSize(50, 30);
+				}
+				if (collider_player_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
+					collider_player_up->SetPos(position.x - 35, position.y - 75);
+					collider_player_up->SetSize(35, 35);
 
+					collider_player_down->SetPos(position.x - 35, position.y - 30);
+					collider_player_down->SetSize(50, 30);
+				}
 
 				shadow_x -= shadow_w / 3;
 			}
