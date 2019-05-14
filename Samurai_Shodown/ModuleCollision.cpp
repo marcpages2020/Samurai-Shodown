@@ -139,7 +139,7 @@ void ModuleCollision::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
 		case COLLIDER_PLAYER_2: //orange
-			App->render->DrawQuad(colliders[i]->rect, 255, 165, 0, alpha);
+			App->render->DrawQuad(colliders[i]->rect, 255, 165, 0, 150);
 			break;
 		case COLLIDER_PLAYER_PARTICLES: //yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
