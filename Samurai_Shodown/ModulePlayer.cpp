@@ -1358,24 +1358,24 @@ update_status ModulePlayer::Update()
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 35, position.y - 100);
-					collider_player_up->SetSize(50, 50);
+					collider_player_up->SetSize(60, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
 					collider_player_down->SetPos(position.x + 20, position.y - 50);
-					collider_player_down->SetSize(60, 40);
+					collider_player_down->SetSize(50, 40);
 				}
 				if (current_animation->SeeCurrentFrame() > 1)
 				{
 					if (collider_player_up != nullptr)
 					{
-						collider_player_up->SetPos(position.x + 40, position.y - 90);
-						collider_player_up->SetSize(60, 60);
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
 					}
 					if (collider_player_down != nullptr)
 					{
 						collider_player_down->SetPos(position.x + 20, position.y-45);
-						collider_player_down->SetSize(75, 40);
+						collider_player_down->SetSize(75, 30);
 					}
 				}
 			}
@@ -1493,24 +1493,24 @@ update_status ModulePlayer::Update()
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 35, position.y - 100);
-					collider_player_up->SetSize(50, 50);
+					collider_player_up->SetSize(60, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
 					collider_player_down->SetPos(position.x + 20, position.y - 50);
-					collider_player_down->SetSize(60, 40);
+					collider_player_down->SetSize(50, 40);
 				}
 				if (current_animation->SeeCurrentFrame() > 1)
 				{
 					if (collider_player_up != nullptr)
 					{
-						collider_player_up->SetPos(position.x + 40, position.y - 90);
-						collider_player_up->SetSize(60, 60);
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
 					}
 					if (collider_player_down != nullptr)
 					{
 						collider_player_down->SetPos(position.x + 20, position.y - 45);
-						collider_player_down->SetSize(75, 40);
+						collider_player_down->SetSize(75, 30);
 					}
 				}
 			}
