@@ -1070,10 +1070,10 @@ update_status ModulePlayer2::Update()
 				}
 				if (collider_player_2_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
 					collider_player_2_up->SetPos(position.x - 35, position.y - 75);
-					collider_player_2_up->SetSize(35, 35);
+					collider_player_2_up->SetSize(55, 50);
 
 					collider_player_2_down->SetPos(position.x - 35, position.y - 30);
-					collider_player_2_down->SetSize(50, 30);
+					collider_player_2_down->SetSize(58, 30);
 				}
 			}
 			break;
