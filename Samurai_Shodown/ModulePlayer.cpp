@@ -612,6 +612,7 @@ ModulePlayer::ModulePlayer()
 				en_garde.PushBack({ 1027,901,119,126 }, 0.2f);
 				en_garde.loop = false;
 			}
+
 		// */		
 }
 	}
@@ -1749,7 +1750,10 @@ update_status ModulePlayer::Update()
 	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	//haohmaru shadow
+	// SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	//wan-fu shadow
+	SDL_Rect shadow = { 1190,138,70,17 };
 
 	if (position.x < App->player2->position.x) {
 		flip = SDL_FLIP_NONE;
