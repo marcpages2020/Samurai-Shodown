@@ -1243,8 +1243,16 @@ update_status ModulePlayer2::Update()
 			break;
 			*/
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 30, position.y - 90);
+					collider_player_2_up->SetSize(45, 35);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 25, position.y - 50);
+					collider_player_2_down->SetSize(55, 35);
+				}
 
 				shadow_x = position.x;
 			}
@@ -1323,9 +1331,29 @@ update_status ModulePlayer2::Update()
 			}
 			*/
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
-
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_2_up->SetSize(50, 50);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_2_down->SetSize(60, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 1)
+				{
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_up->SetPos(position.x + 40, position.y - 90);
+						collider_player_2_up->SetSize(60, 60);
+					}
+					if (collider_player_2_down != nullptr)
+					{
+						collider_player_2_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_2_down->SetSize(75, 40);
+					}
+				}
 			}
 			else {
 				if (collider_player_2_up != nullptr)
