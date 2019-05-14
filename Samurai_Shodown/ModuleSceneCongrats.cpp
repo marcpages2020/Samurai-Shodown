@@ -13,6 +13,8 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 {
 	//background
 	{
+		//haohmaru scene
+		/*
 		background.PushBack({ 0,0,512,333 }, 0.08f); //0
 		background.PushBack({ 512,0,512,333 }, 0.08);
 		background.PushBack({ 1024,0,512,333 }, 0.08f);
@@ -37,6 +39,56 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 		background.PushBack({ 512,1665,512,333 }, 0.08f);
 		background.PushBack({ 1024,1665,512,333 }, 0.08f);
 		background.PushBack({ 1536,1665,512,333 }, 0.08f);
+		*/
+		
+		//wanfu scene
+		{
+			background.PushBack({ 0,0,504,325 }, 0.18f); //beginning
+			background.PushBack({ 512,0,504,325 }, 0.18f);
+			background.PushBack({ 1024,0,504,325 }, 0.18f);
+			background.PushBack({ 1536,0,504,325 }, 0.18f);
+			background.PushBack({ 0,325,504,325 }, 0.18f);
+			background.PushBack({ 512,325,504,325 }, 0.18f);
+			background.PushBack({ 1024,325,504,325 }, 0.18f);
+			background.PushBack({ 1536,325,504,325 }, 0.18f);
+			background.PushBack({ 0,650,504,325 }, 0.18f);
+			background.PushBack({ 512,650,504,325 }, 0.18f);
+			background.PushBack({ 1024,650,504,325 }, 0.18f);
+			background.PushBack({ 1536,650,504,325 }, 0.18f);
+			background.PushBack({ 0,975,504,325 }, 0.18f);
+			background.PushBack({ 512,975,504,325 }, 0.18f);
+			background.PushBack({ 1024,975,504,325 }, 0.18f);
+			background.PushBack({ 1536,975,504,325 }, 0.18f);
+			background.PushBack({ 0,1300,504,325 }, 0.18f);
+			background.PushBack({ 512,1300,504,325 }, 0.18f);
+			background.PushBack({ 1024,1300,504,325 }, 0.18f);
+			background.PushBack({ 1536,1300,504,325 }, 0.18f);
+			background.PushBack({ 0,1625,504,325 }, 0.18f);
+			background.PushBack({ 0,0,504,325 }, 0.18f); //beginning
+			background.PushBack({ 512,0,504,325 }, 0.18f);
+			background.PushBack({ 1024,0,504,325 }, 0.18f);
+			background.PushBack({ 1536,0,504,325 }, 0.18f);
+			background.PushBack({ 0,325,504,325 }, 0.18f);
+			background.PushBack({ 512,325,504,325 }, 0.18f);
+			background.PushBack({ 1024,325,504,325 }, 0.18f);
+			background.PushBack({ 1536,325,504,325 }, 0.18f);
+			background.PushBack({ 0,650,504,325 }, 0.18f);
+			background.PushBack({ 512,650,504,325 }, 0.18f);
+			background.PushBack({ 1024,650,504,325 }, 0.18f);
+			background.PushBack({ 1536,650,504,325 }, 0.18f);
+			background.PushBack({ 0,975,504,325 }, 0.18f);
+			background.PushBack({ 512,975,504,325 }, 0.18f);
+			background.PushBack({ 1024,975,504,325 }, 0.18f);
+			background.PushBack({ 1536,975,504,325 }, 0.18f);
+			background.PushBack({ 0,1300,504,325 }, 0.18f);
+			background.PushBack({ 512,1300,504,325 }, 0.18f);
+			background.PushBack({ 1024,1300,504,325 }, 0.18f);
+			background.PushBack({ 1536,1300,504,325 }, 0.18f);
+			background.PushBack({ 0,1625,504,325 }, 0.18f);
+			background.PushBack({ 512,1625,504,325 }, 0.18f); //lightning
+			background.PushBack({ 1024,1625,504,325 }, 0.18f);
+			background.PushBack({ 1536,1625,504,325 }, 0.18f); //lightning
+		}
 	}
 
 	//judges
@@ -56,16 +108,18 @@ bool ModuleSceneCongrats::Start()
 {
 	LOG("Loading congrats stage assets");
 	bool ret = true;
-	background_t = App->textures->Load("Assets/Sprites/Scenes/HaohmaruScene.png"); 
-	haohmaru = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/Haohmaru2.png");
-	judges_t = App->textures->Load("Assets/Textures/Scenes/Congrats_Scene/judges.png");
+	//background_t = App->textures->Load("Assets/Sprites/Scenes/HaohmaruScene.png"); 
+	background_t = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
+	haohmaru = App->textures->Load("Assets/Sprites/Scenes/Haohmaru2.png");
+	wanfu = App->textures->Load("Assets/Sprites/Scenes/wan-fu.png");
+	judges_t = App->textures->Load("Assets/Sprites/Scenes/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
 	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-! ", 1);
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
 	sentence = rand() % 2;
 	App->render->camera.x = App->render->camera.y = 0;
-	hao_position = SCREEN_WIDTH + 100;
+	winner_position_x =SCREEN_WIDTH + 100;
 	judges_position = -150;
 	background_position = -250;
 	return ret;
@@ -78,11 +132,10 @@ update_status ModuleSceneCongrats::Update()
 	judges_r = judges.GetCurrentFrame();
 	App->render->Blit(background_t, background_position, -140, &background_r);
 	App->render->Blit(judges_t, judges_position, 80, &judges_r);
-	if (hao_position > 50)
+	if (winner_position_x > 50)
 	{
-		hao_position -= 5;
+		winner_position_x -= 5;
 	}
-
 	if (judges_position < SCREEN_WIDTH+20)
 	{
 		judges_position +=3;
@@ -95,7 +148,8 @@ update_status ModuleSceneCongrats::Update()
 	{
 
 		App->render->DrawQuad(up_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
-		App->render->Blit(haohmaru, hao_position, 23, NULL);
+		//App->render->Blit(haohmaru, winner_position_x, 23, NULL);
+		App->render->Blit(wanfu, winner_position_x, 40, NULL);
 		App->render->DrawQuad(left_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(right_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
