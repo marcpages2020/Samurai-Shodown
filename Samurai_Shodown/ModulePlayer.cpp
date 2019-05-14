@@ -613,6 +613,20 @@ ModulePlayer::ModulePlayer()
 				en_garde.loop = false;
 			}
 
+		//hit 
+			{
+				hit.PushBack({ 28,1227,127,156 }, 0.3f);//1
+				hit.PushBack({ 162,1227,127,156 }, 0.3f);
+				hit.PushBack({ 296,1227,127,156 }, 0.3f);
+				hit.PushBack({ 429,1227,173,156 }, 0.3f);//4
+				hit.PushBack({ 609,1227,127,156 }, 0.3f);
+				hit.PushBack({ 788,1227,127,156 }, 0.3f);
+				hit.PushBack({ 28,1227,127,156 }, 0.3f);//1
+				hit.PushBack({ 162,1227,127,156 }, 0.3f);
+				hit.PushBack({ 296,1227,127,156 }, 0.3f);
+				hit.loop = false;
+			}
+
 		// */		
 }
 	}
@@ -935,6 +949,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x + 30, position.y - 45);
 					collider_player_down->SetSize(60, 45);
 				}
+				shadow_x = position.x + 23;
 			}
 			break;
 		case FORWARD:
@@ -1179,6 +1194,7 @@ update_status ModulePlayer::Update()
 					collider_player_attack = App->collision->AddCollider({ position.x + 25, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->SetSize(85, 15);
 				}
+				shadow_x = position.x + 30;
 			}
 			break;
 		case CROUCH_PUNCH:
@@ -1753,7 +1769,7 @@ update_status ModulePlayer::Update()
 	//haohmaru shadow
 	// SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	//wan-fu shadow
-	SDL_Rect shadow = { 1190,138,70,17 };
+	SDL_Rect shadow = { 1181,138,91,17 };
 
 	if (position.x < App->player2->position.x) {
 		flip = SDL_FLIP_NONE;

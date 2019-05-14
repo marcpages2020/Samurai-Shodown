@@ -1718,7 +1718,8 @@ update_status ModulePlayer2::Update()
 
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	//SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	SDL_Rect shadow = { 1181,138,80,17 };
 
 	if (position.x < App->player->position.x) {
 		flip = SDL_FLIP_NONE;
