@@ -1323,17 +1323,17 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x + 20, position.y - 50);
 					collider_player_down->SetSize(60, 40);
 				}
-				if (current_animation->SeeCurrentFrame() > 4)
+				if (current_animation->SeeCurrentFrame() > 1)
 				{
 					if (collider_player_up != nullptr)
 					{
-						collider_player_up->SetPos(position.x + 40, position.y - 60);
-						collider_player_up->SetSize(65, 50);
+						collider_player_up->SetPos(position.x + 40, position.y - 90);
+						collider_player_up->SetSize(60, 60);
 					}
 					if (collider_player_down != nullptr)
 					{
-						collider_player_down->SetPos(position.x + 30, position.y-25);
-						collider_player_down->SetSize(55, 25);
+						collider_player_down->SetPos(position.x + 20, position.y-45);
+						collider_player_down->SetSize(75, 40);
 					}
 				}
 			}
