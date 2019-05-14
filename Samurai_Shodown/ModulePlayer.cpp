@@ -970,7 +970,7 @@ update_status ModulePlayer::Update()
 				if (collider_player_down != nullptr)
 				{
 					collider_player_down->SetPos(position.x - 25, position.y - 45);
-					collider_player_down->SetSize(35, 45);
+					collider_player_down->SetSize(50, 45);
 				}
 			}
 			else {
