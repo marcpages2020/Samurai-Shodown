@@ -117,7 +117,7 @@ bool ModuleSceneCongrats::Start()
 	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-!:'(), ", 1);
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
-	sentence = rand() % 3;
+	sentence = rand() % 4;
 	App->render->camera.x = App->render->camera.y = 0;
 	winner_position_x =SCREEN_WIDTH + 100;
 	judges_position = -150;
@@ -165,12 +165,26 @@ update_status ModuleSceneCongrats::Update()
 			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
 		}
 		*/
-		if (1)
+		if (sentence == 0)
 		{
 			App->fonts->BlitText(SCREEN_WIDTH / 4 - 20, (SCREEN_HEIGHT / 5) * 4, font, "FOR EVERYONE TO REMEMBER:");
 			App->fonts->BlitText(SCREEN_WIDTH / 4 - 20, (SCREEN_HEIGHT / 5) * 4 + 20, font, "I AM WAN-FU, HEAR ME ROAR");
 		}
-		//SDL_RenderPresent(App->render->renderer);
+		if (sentence == 1)
+		{
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 30, (SCREEN_HEIGHT / 5) * 4, font, "GOODBYE, BROTHERS. FORGET");
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 30, (SCREEN_HEIGHT / 5) * 4 + 20, font, "ME NOT IN THAT ETERNAL SLEEP");
+		}
+		if (sentence == 2)
+		{
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 20, (SCREEN_HEIGHT / 5) * 4, font, "I THOUGHT I WAS DEAD. BUT");
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 20, (SCREEN_HEIGHT / 5) * 4 + 20, font, "I THINK I'M CLEOPATRA, TOO");
+		}
+		if (sentence == 3)
+		{
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 40, (SCREEN_HEIGHT / 5) * 4, font, "THINK OF THE GLORY, CUT ME");
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 40, (SCREEN_HEIGHT / 5) * 4 + 20, font, "DOWN AND LIVE FOREVER IN LEGEND");
+		}
 
 		if (right_black_square.w > 0)
 		{
