@@ -60,8 +60,8 @@ bool Application::Init()
 	neo_geo->Disable();
 	scene_welcome->Disable();
 	scene_haohmaru->Disable();
-	scene_wanfu->Disable();
-	//scene_congrats->Disable();
+	//scene_wanfu->Disable();
+	scene_congrats->Disable();
 	//wanfu->Disable();
 	//haohmaru->Disable();
 	ui->Disable();

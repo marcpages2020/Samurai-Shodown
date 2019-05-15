@@ -1790,7 +1790,7 @@ update_status ModulePlayer::Update()
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
 		if (shadow_blit) {
-			App->render->Blit(player_textures, shadow_x - shadow.w / 2, initial_position.y - 7, &shadow, flip);
+			App->render->Blit(player_textures, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
@@ -1800,7 +1800,7 @@ update_status ModulePlayer::Update()
 	}
 	else {
 		if (shadow_blit) {
-			App->render->Blit(player_textures, shadow_x, initial_position.y - 7, &shadow, flip);
+			App->render->Blit(player_textures, shadow_x, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
