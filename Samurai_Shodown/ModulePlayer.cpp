@@ -1477,17 +1477,6 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x - 35, position.y - 45);
 					collider_player_down->SetSize(50, 35);
 				}
-				if (current_animation->SeeCurrentFrame() > 5)
-				{
-					if (collider_player_up != nullptr)
-					{
-						collider_player_up->SetPos(position.x - 40, position.y - 75);
-						collider_player_up->SetSize(45, 35);
-
-						collider_player_down->SetPos(position.x - 35, position.y - 45);
-						collider_player_down->SetSize(50, 35);
-					}
-				}
 			}
 			else {
 				if (collider_player_up != nullptr)
