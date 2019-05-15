@@ -114,10 +114,10 @@ bool ModuleSceneCongrats::Start()
 	wanfu = App->textures->Load("Assets/Sprites/Scenes/wan-fu.png");
 	judges_t = App->textures->Load("Assets/Sprites/Scenes/judges.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/winning_demo.ogg"); 
-	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-! ", 1);
+	font = App->fonts->Load("Assets/Sprites/UI/white_text.png", "ABCDEFGHIKLMNOPQRSTUVWYZ?/-!:'(), ", 1);
 	App->audio->PlayMusic(music,1);
 	srand(time(NULL));
-	sentence = rand() % 2;
+	sentence = rand() % 3;
 	App->render->camera.x = App->render->camera.y = 0;
 	winner_position_x =SCREEN_WIDTH + 100;
 	judges_position = -150;
@@ -153,6 +153,7 @@ update_status ModuleSceneCongrats::Update()
 		App->render->DrawQuad(left_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(right_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
 		App->render->DrawQuad(down_black_square, 0, 0, 0, SDL_ALPHA_OPAQUE, false);
+		/*
 		if ( sentence == 1)
 		{
 			App->fonts->BlitText(SCREEN_WIDTH / 4-20, (SCREEN_HEIGHT / 5) * 4 , font, "FOR WIMPS LIKE YOU USING");
@@ -163,7 +164,12 @@ update_status ModuleSceneCongrats::Update()
 			App->fonts->BlitText(SCREEN_WIDTH/4+5, (SCREEN_HEIGHT / 5) * 4, font, "TO CALL ME 'AWESOME'");
 			App->fonts->BlitText(SCREEN_WIDTH / 4, (SCREEN_HEIGHT / 5) * 4+20, font, "IS AN UNDERSTATEMENT");
 		}
-
+		*/
+		if (1)
+		{
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 20, (SCREEN_HEIGHT / 5) * 4, font, "FOR EVERYONE TO REMEMBER:");
+			App->fonts->BlitText(SCREEN_WIDTH / 4 - 20, (SCREEN_HEIGHT / 5) * 4 + 20, font, "I AM WAN-FU, HEAR ME ROAR");
+		}
 		//SDL_RenderPresent(App->render->renderer);
 
 		if (right_black_square.w > 0)
