@@ -576,6 +576,19 @@ ModulePlayer2::ModulePlayer2()
 				crouch_punch2.loop = false;
 
 			}
+			//hit
+			{
+				hit2.PushBack({ 28,1227,127,156 }, 0.3f);//1
+				hit2.PushBack({ 162,1227,127,156 }, 0.3f);
+				hit2.PushBack({ 296,1227,127,156 }, 0.3f);
+				hit2.PushBack({ 429,1227,173,156 }, 0.3f);//4
+				hit2.PushBack({ 609,1227,127,156 }, 0.3f);
+				hit2.PushBack({ 788,1227,127,156 }, 0.3f);
+				hit2.PushBack({ 28,1227,127,156 }, 0.3f);//1
+				hit2.PushBack({ 162,1227,127,156 }, 0.3f);
+				hit2.PushBack({ 296,1227,127,156 }, 0.3f);
+				hit2.loop = false;
+			}
 			//en garde
 			{
 				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
