@@ -70,8 +70,8 @@ bool ModuleSceneWanFu::Start()
 	App->player2->Enable();
 	//App->haohmaru->Enable();
 	//App->wanfu->Enable();
-	left_wall = App->collision->AddCollider({ -100,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
-	right_wall = App->collision->AddCollider({ 430,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
+	left_wall = App->collision->AddCollider({ -90,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
+	right_wall = App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	App->render->SetCamera();
 	return ret;
 }
