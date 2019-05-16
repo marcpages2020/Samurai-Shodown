@@ -524,7 +524,7 @@ ModulePlayer::ModulePlayer()
 				kick.loop = false;
 			}
 
-			//punch
+		//punch
 			{
 				punch.PushBack({ 27, 451, 87, 168}, 0.5f);
 				punch.PushBack({ 116, 451, 87, 168}, 0.5f);
@@ -628,55 +628,55 @@ ModulePlayer::ModulePlayer()
 			}
 
 		//special attack
-			/*
 			{
 				
-				specialattack.PushBack({ 34, 1395, 73, 170}, 0.3f);
-				specialattack.PushBack({ 160, 1395, 73, 170}, 0.3f);
-				specialattack.PushBack({ 272, 1395, 73, 170}, 0.3f);
-				specialattack.PushBack({ 380, 1395, 117, 92}, 0.3f);
-				specialattack.PushBack({ 527, 1395, 116, 85}, 0.3f);
-				specialattack.PushBack({ 674, 1395, 113, 78}, 0.3f);
-				specialattack.PushBack({ 791, 1395, 100, 55}, 0.3f);
-				specialattack.PushBack({ 913, 1395, 99, 52}, 0.3f);
-				specialattack.PushBack({ 1045, 1395, 96, 49}, 0.3f);
-				specialattack.PushBack({ 1165, 1395, 69, 45}, 0.3f);
-				specialattack.PushBack({ 1271, 1395, 69, 45}, 0.3f);
-				specialattack.PushBack({ 1379, 1395, 69, 45}, 0.3f);
-				specialattack.PushBack({ 1488, 1395, 63, 46}, 0.3f);
-				specialattack.PushBack({ 1583, 1395, 63, 47}, 0.3f);
-				specialattack.PushBack({ 1667, 1395, 63, 50}, 0.3f);
-				specialattack.PushBack({ 1757, 1395, 63, 52}, 0.3f);
-				specialattack.PushBack({ 1847, 1395, 63, 57}, 0.3f);
-				specialattack.PushBack({ 1930, 1395, 103, 55}, 0.3f);
-				specialattack.PushBack({ 29, 1574, 103, 58}, 0.3f);
-				specialattack.PushBack({ 168, 1574, 128, 62}, 0.3f);
-				specialattack.PushBack({ 310, 1574, 91, 68}, 0.3f);
-				specialattack.PushBack({ 429, 1574, 91, 73}, 0.3f);
-				specialattack.PushBack({ 548, 1574, 91, 79}, 0.3f);
-				specialattack.PushBack({ 679, 1574, 62, 94}, 0.3f);
-				specialattack.PushBack({ 795, 1574, 88, 121}, 0.3f);
+				specialattack.PushBack({ 34, 1395, 73, 170}, 0.1f);//1
+				specialattack.PushBack({ 160, 1395, 73, 170}, 0.1f);
+				specialattack.PushBack({ 272, 1395, 73, 170}, 0.1f);
+				specialattack.PushBack({ 380, 1395, 117, 92}, 0.25f);//4
+				specialattack.PushBack({ 527, 1395, 116, 85}, 0.25f);
+				specialattack.PushBack({ 674, 1395, 113, 78}, 0.25f);
+				specialattack.PushBack({ 791, 1395, 100, 55}, 0.35f);//7
+				specialattack.PushBack({ 913, 1395, 99, 52}, 0.35f);
+				specialattack.PushBack({ 1045, 1395, 96, 49}, 0.35f);
+				specialattack.PushBack({ 1165, 1395, 69, 45}, 0.8f);//10
+				specialattack.PushBack({ 1271, 1395, 69, 45}, 0.8f);//11
+				specialattack.PushBack({ 1379, 1395, 69, 45}, 0.8f);
+				specialattack.PushBack({ 1488, 1395, 63, 46}, 0.8f);
+				specialattack.PushBack({ 1583, 1395, 63, 47}, 0.8f);
+				specialattack.PushBack({ 1667, 1395, 63, 50}, 0.8f);//15
+				specialattack.PushBack({ 1757, 1395, 63, 52}, 0.8f);//16
+				specialattack.PushBack({ 1847, 1395, 63, 57}, 0.7f);
+				specialattack.PushBack({ 1930, 1395, 103, 55}, 0.7f);
+				specialattack.PushBack({ 29, 1574, 103, 58}, 0.7f);//19
+				specialattack.PushBack({ 168, 1574, 128, 62}, 0.7f);
+				specialattack.PushBack({ 310, 1574, 91, 68}, 0.7f);
+				specialattack.PushBack({ 429, 1574, 91, 73}, 0.7f);//22
+				specialattack.PushBack({ 548, 1574, 91, 79}, 0.7f);
+				specialattack.PushBack({ 679, 1574, 62, 94}, 0.05f);//24
+				specialattack.PushBack({ 679, 1574, 62, 94 }, 0.05f);//24
+				specialattack.PushBack({ 795, 1574, 88, 121}, 0.01f);//25
+				specialattack.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
+				specialattack.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
 				specialattack.loop = false;
 
 			}
-			*/
 
 		//win animation
 			{
-				win.PushBack({ 39, 1711, 111, 117}, 0.1f);
-				win.PushBack({ 180, 1711, 111, 117}, 0.1f);
-				win.PushBack({ 331, 1711, 111, 117}, 0.1f);
-				win.PushBack({ 478, 1711, 111, 118}, 0.1f);
-				win.PushBack({ 618, 1711, 111, 118}, 0.1f);
-				win.PushBack({ 757, 1711, 111, 118}, 0.1f);
-				win.PushBack({ 895, 1711, 111, 116}, 0.1f);
-				win.PushBack({ 1031, 1711, 111, 116}, 0.1f);
-				win.PushBack({ 1171, 1711, 111, 116}, 0.1f);
-				win.PushBack({ 1302, 1711, 111, 120}, 0.1f);
-				win.PushBack({ 1432, 1711, 111, 120}, 0.1f);
-				win.PushBack({ 1556, 1711, 111, 120}, 0.1f);
-				win.loop = false;
-
+			win.PushBack({ 39, 1711, 111, 117}, 0.1f);
+			win.PushBack({ 180, 1711, 111, 117}, 0.1f);
+			win.PushBack({ 331, 1711, 111, 117}, 0.1f);
+			win.PushBack({ 478, 1711, 111, 118}, 0.1f);
+			win.PushBack({ 618, 1711, 111, 118}, 0.1f);
+			win.PushBack({ 757, 1711, 111, 118}, 0.1f);
+			win.PushBack({ 895, 1711, 111, 116}, 0.1f);
+			win.PushBack({ 1031, 1711, 111, 116}, 0.1f);
+			win.PushBack({ 1171, 1711, 111, 116}, 0.1f);
+			win.PushBack({ 1302, 1711, 111, 120}, 0.1f);
+			win.PushBack({ 1432, 1711, 111, 120}, 0.1f);
+			win.PushBack({ 1556, 1711, 111, 120}, 0.1f);
+			win.loop = false;
 			}
 
 		// */		
@@ -767,9 +767,10 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_S)
 					state = CROUCH_DOWN;
 				if (player_input.pressing_B) {
-					App->audio->PlayFX(twister_fx);
+					//App->audio->PlayFX(twister_fx);
 					hit_done++;
-					state = TWISTER;
+					//state = TWISTER;
+					state = SPECIAL_ATTACK;
 				}
 			}
 			if (state == BACKWARD) {
@@ -918,6 +919,14 @@ update_status ModulePlayer::PreUpdate()
 				{
 					state = IDLE;
 					win.Reset();
+				}
+			}
+			if (state == SPECIAL_ATTACK)
+			{
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					specialattack.Reset();
 				}
 			}
 
@@ -1705,8 +1714,9 @@ update_status ModulePlayer::Update()
 				}
 			}
 			break;
-		case TWISTER:
-			current_animation = &twister;
+		case SPECIAL_ATTACK:
+			//current_animation = &twister;
+			current_animation = &specialattack;
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -1744,7 +1754,7 @@ update_status ModulePlayer::Update()
 			}
 			*/
 			//Wan-Fu
-			if (flip == SDL_FLIP_HORIZONTAL) {
+			/*if (flip == SDL_FLIP_HORIZONTAL) {
 				
 
 
@@ -1764,6 +1774,30 @@ update_status ModulePlayer::Update()
 					App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
 					is_tornado_created = true;
 				}
+			}*/
+			position.y -= speed * 2 * mult;
+			position.x -= 1 * speed;
+
+			if (position.y <= 30) {
+				mult = -1;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				specialattack.Reset();
+				state = IDLE;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				specialattack.Reset();
+				state = IDLE;
+				mult = 1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			break;
 		case WIN:
@@ -1812,7 +1846,7 @@ update_status ModulePlayer::Update()
 			break;
 		}
 	}
-	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT)))
+	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)))
 	{
 		state = JUMP_NEUTRAL;
 	}

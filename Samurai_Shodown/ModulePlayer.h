@@ -30,6 +30,7 @@ enum States
 	EN_GARDE,
 	WIN,
 	DEATH,
+	SPECIAL_ATTACK,
 };
 
 struct PlayerInput {
@@ -74,7 +75,9 @@ public:
 	Animation crouch_kick;
 	Animation twister;
 	Animation twisterAlone;
+	Animation fire_sword;
 	Animation en_garde;
+	Animation specialattack;
 	Animation win;
 	int hit_percent = 0;
 	int hit_done = 0;
