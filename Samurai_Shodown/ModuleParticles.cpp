@@ -53,14 +53,14 @@ ModuleParticles::ModuleParticles()
 	tornado.anim.loop = false;
 
 	//fire sword
-	fire_sword.PushBack({ 1240, 1575, 89, 80 }, 0.3f);
-	fire_sword.PushBack({ 1344, 1575, 89, 80 }, 0.3f);
-	fire_sword.PushBack({ 1453, 1575, 96, 69 }, 0.3f);
-	fire_sword.PushBack({ 1568, 1575, 89, 76 }, 0.3f);
-	fire_sword.PushBack({ 1679, 1575, 87, 80 }, 0.3f);
+	fire_sword.anim.PushBack({ 1240, 1575, 89, 80 }, 0.3f);
+	fire_sword.anim.PushBack({ 1344, 1575, 89, 80 }, 0.3f);
+	fire_sword.anim.PushBack({ 1453, 1575, 96, 69 }, 0.3f);
+	fire_sword.anim.PushBack({ 1568, 1575, 89, 76 }, 0.3f);
+	fire_sword.anim.PushBack({ 1679, 1575, 87, 80 }, 0.3f);
 	fire_sword.life = 5000;
 	fire_sword.speed = { 2,0 };
-	fire_sword.loop = false;
+	fire_sword.anim.loop = true;
 
 }
 

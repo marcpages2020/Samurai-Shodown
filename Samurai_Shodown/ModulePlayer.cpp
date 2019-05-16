@@ -654,10 +654,7 @@ ModulePlayer::ModulePlayer()
 				specialattack.PushBack({ 429, 1574, 91, 73}, 0.7f);//22
 				specialattack.PushBack({ 548, 1574, 91, 79}, 0.7f);
 				specialattack.PushBack({ 679, 1574, 62, 94}, 0.05f);//24
-				specialattack.PushBack({ 679, 1574, 62, 94 }, 0.05f);//24
 				specialattack.PushBack({ 795, 1574, 88, 121}, 0.01f);//25
-				specialattack.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
-				specialattack.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
 				specialattack.loop = false;
 
 			}
@@ -880,7 +877,7 @@ update_status ModulePlayer::PreUpdate()
 				{
 					state = IDLE;
 					twister.Reset();
-					is_tornado_created = false;
+					are_particles_created = false;
 				}
 			}
 			if (state == CROUCH_KICK) {
@@ -925,8 +922,9 @@ update_status ModulePlayer::PreUpdate()
 			{
 				if (current_animation->Finished())
 				{
-					state = IDLE;
 					specialattack.Reset();
+					are_particles_created = false;
+					state = IDLE;
 				}
 			}
 
@@ -1754,7 +1752,7 @@ update_status ModulePlayer::Update()
 			}
 			*/
 			//Wan-Fu
-			/*if (flip == SDL_FLIP_HORIZONTAL) {
+			if (flip == SDL_FLIP_HORIZONTAL) {
 				
 
 
@@ -1770,11 +1768,11 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x + 10, position.y - 35);
 					collider_player_down->SetSize(60, 40);
 				}
-				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
-					App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
-					is_tornado_created = true;
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
+					are_particles_created = true;
 				}
-			}*/
+			}
 			position.y -= speed * 2 * mult;
 			position.x -= 1 * speed;
 
@@ -1786,12 +1784,14 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				specialattack.Reset();
 				state = IDLE;
+				are_particles_created = false;
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
 				specialattack.Reset();
 				state = IDLE;
+				are_particles_created = false;
 				mult = 1;
 			}
 			else if (position.y > initial_position.y)
