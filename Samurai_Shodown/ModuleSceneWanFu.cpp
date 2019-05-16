@@ -70,8 +70,8 @@ bool ModuleSceneWanFu::Start()
 	App->player2->Enable();
 	//App->haohmaru->Enable();
 	//App->wanfu->Enable();
-	left_wall = App->collision->AddCollider({ -100,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
-	right_wall = App->collision->AddCollider({ 430,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
+	left_wall = App->collision->AddCollider({ -90,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
+	right_wall = App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	App->render->SetCamera();
 	return ret;
 }
@@ -102,7 +102,7 @@ update_status ModuleSceneWanFu::Update()
 	}
 	if ((App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN))
 	{
-		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_wanfu, 1.5f);
+		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_haohmaru, 1.5f);
 	}
 
 	return UPDATE_CONTINUE;

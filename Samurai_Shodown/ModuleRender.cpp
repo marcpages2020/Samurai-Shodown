@@ -232,7 +232,7 @@ void ModuleRender::MoveCamera()
 			camera.x--;
 			left->rect.x--;
 		}
-		if (camera.x < App->scene_wanfu->left_wall->rect.x - 150)
+		if (camera.x < App->scene_wanfu->left_wall->rect.x - 140)
 		{
 			camera.x++;
 			right->rect.x++;
