@@ -59,7 +59,7 @@ ModuleParticles::ModuleParticles()
 	fire_sword.anim.PushBack({ 1568, 1575, 89, 76 }, 0.3f);
 	fire_sword.anim.PushBack({ 1679, 1575, 87, 80 }, 0.3f);
 	fire_sword.life = 5000;
-	fire_sword.speed = { 2,0 };
+	fire_sword.speed = { 2,2 };
 	fire_sword.anim.loop = true;
 
 }
@@ -205,20 +205,23 @@ bool Particle::Update()
 	
 	if (!App->is_paused)
 	{
+			position.y += speed.y;
+		
 		if (coll->type == COLLIDER_PLAYER_PARTICLES)
 		{
 			position.x += speed.x;
-			position.y += speed.y;
 		}
 		else if (coll->type == COLLIDER_PLAYER_2_PARTICLES)
 		{
 			position.x -= speed.x;
-			position.y += speed.y;
 		}
 	}
 
 	if (coll != nullptr)
 		coll->SetPos(position.x, position.y);
+
+	if (position.y > 160)
+	ret = false;
 
 	return ret;
 }

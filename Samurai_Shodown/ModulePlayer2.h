@@ -28,7 +28,8 @@ enum States2 {
 	HIT2,
 	EN_GARDE2,
 	DEATH2,
-	WIN2
+	WIN2,
+	SPECIAL_ATTACK_2
 };
 
 
@@ -76,6 +77,7 @@ public:
 	Animation crouch_kick2;
 	Animation twister2;
 	Animation twisterAlone2;
+	Animation specialattack2;
 	Animation* current_animation = nullptr;
 	bool shadow_blit = true;
 	bool god = false;
@@ -97,7 +99,7 @@ public:
 	PlayerInput2 player_input2;
 	States2 state2;
 	float speed = 2;
-	bool is_tornado_created2 = false;
+	bool are_particles_created2 = false;
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;

@@ -589,6 +589,37 @@ ModulePlayer2::ModulePlayer2()
 				hit2.PushBack({ 296,1227,127,156 }, 0.3f);
 				hit2.loop = false;
 			}
+			//special attack
+			{
+				specialattack2.PushBack({ 34, 1395, 73, 170 }, 0.1f);//1
+				specialattack2.PushBack({ 160, 1395, 73, 170 }, 0.1f);
+				specialattack2.PushBack({ 272, 1395, 73, 170 }, 0.1f);
+				specialattack2.PushBack({ 380, 1395, 117, 92 }, 0.25f);//4
+				specialattack2.PushBack({ 527, 1395, 116, 85 }, 0.25f);
+				specialattack2.PushBack({ 674, 1395, 113, 78 }, 0.25f);
+				specialattack2.PushBack({ 791, 1395, 100, 55 }, 0.35f);//7
+				specialattack2.PushBack({ 913, 1395, 99, 52 }, 0.35f);
+				specialattack2.PushBack({ 1045, 1395, 96, 49 }, 0.35f);
+				specialattack2.PushBack({ 1165, 1395, 69, 45 }, 0.8f);//10
+				specialattack2.PushBack({ 1271, 1395, 69, 45 }, 0.8f);//11
+				specialattack2.PushBack({ 1379, 1395, 69, 45 }, 0.8f);
+				specialattack2.PushBack({ 1488, 1395, 63, 46 }, 0.8f);
+				specialattack2.PushBack({ 1583, 1395, 63, 47 }, 0.8f);
+				specialattack2.PushBack({ 1667, 1395, 63, 50 }, 0.8f);//15
+				specialattack2.PushBack({ 1757, 1395, 63, 52 }, 0.8f);//16
+				specialattack2.PushBack({ 1847, 1395, 63, 57 }, 0.7f);
+				specialattack2.PushBack({ 1930, 1395, 103, 55 }, 0.7f);
+				specialattack2.PushBack({ 29, 1574, 103, 58 }, 0.7f);//19
+				specialattack2.PushBack({ 168, 1574, 128, 62 }, 0.7f);
+				specialattack2.PushBack({ 310, 1574, 91, 68 }, 0.7f);
+				specialattack2.PushBack({ 429, 1574, 91, 73 }, 0.7f);//22
+				specialattack2.PushBack({ 548, 1574, 91, 79 }, 0.7f);
+				specialattack2.PushBack({ 679, 1574, 62, 94 }, 0.05f);//24
+				specialattack2.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
+				specialattack2.loop = false;
+
+			}
+
 			//en garde
 			{
 				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
@@ -675,7 +706,8 @@ update_status ModulePlayer2::PreUpdate()
 			if (player_input2.pressing_L) {
 				hit_done++;
 				App->audio->PlayFX(twister_fx);
-				state2 = TWISTER2;
+				//state2 = TWISTER2;
+				state2 = SPECIAL_ATTACK_2;
 			}
 		}
 		if (state2 == BACKWARD2) {
@@ -786,7 +818,7 @@ update_status ModulePlayer2::PreUpdate()
 				hit_done++;
 				state2 = IDLE2;
 				twister2.Reset();
-				is_tornado_created2 = false;
+				are_particles_created2 = false;
 			}
 		}
 		if (state2 == CROUCH_KICK2)
@@ -827,6 +859,15 @@ update_status ModulePlayer2::PreUpdate()
 			{
 				state2 = IDLE2;
 				win2.Reset();
+			}
+		}
+		if (state2 == SPECIAL_ATTACK_2)
+		{
+			if (current_animation->Finished())
+			{
+				specialattack2.Reset();
+				are_particles_created2 = false;
+				state2 = IDLE2;
 			}
 		}
 		if (state2 == EN_GARDE2)
@@ -1690,10 +1731,111 @@ update_status ModulePlayer2::Update()
 					collider_player_2_down->SetPos(position.x - 30, position.y - 35);
 					collider_player_2_down->SetSize(60, 40);
 				}
-				if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
+				if (current_animation->SeeCurrentFrame() == 10 && !are_particles_created2) {
 					App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
-					is_tornado_created2 = true;
+					are_particles_created2 = true;
 				}
+			}
+			break;
+		case SPECIAL_ATTACK_2:
+			//current_animation = &twister;
+			current_animation = &specialattack2;
+			//haohmaru
+			/*
+			if (flip == SDL_FLIP_HORIZONTAL) {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x - 20, position.y - 75);
+			collider_player_up->SetSize(40, 45);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x - 35, position.y - 35);
+			collider_player_down->SetSize(60, 40);
+			}
+			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+			Particle* p = App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+			is_tornado_created = true;
+			p->speed = { -2,0 };
+			}
+			}
+			else {
+			if (collider_player_up != nullptr)
+			{
+			collider_player_up->SetPos(position.x + 15, position.y - 75);
+			collider_player_up->SetSize(40, 45);
+			}
+			if (collider_player_down != nullptr)
+			{
+			collider_player_down->SetPos(position.x + 10, position.y - 35);
+			collider_player_down->SetSize(60, 40);
+			}
+			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created) {
+			App->particles->AddParticle(App->particles->tornado, position.x + 50, position.y - 205, COLLIDER_PLAYER_PARTICLES);
+			is_tornado_created = true;
+			}
+			}
+			*/
+			//Wan-Fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 15, position.y - 75);
+					collider_player_2_up->SetSize(40, 45);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 10, position.y - 35);
+					collider_player_2_down->SetSize(60, 40);
+				}
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created2) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y, COLLIDER_PLAYER_2_PARTICLES);
+					are_particles_created2 = true;
+				}
+				position.x += 1 * speed;
+			}
+			else {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 15, position.y - 75);
+					collider_player_2_up->SetSize(40, 45);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 10, position.y - 35);
+					collider_player_2_down->SetSize(60, 40);
+				}
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created2) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_2_PARTICLES);
+					are_particles_created2 = true;
+				}
+				position.x -= 1 * speed;
+			}
+	
+			position.y -= speed * 2 * mult;
+
+			if (position.y <= 30) {
+				mult = -1;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				specialattack2.Reset();
+				state2 = IDLE2;
+				are_particles_created2 = false;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				specialattack2.Reset();
+				state2 = IDLE2;
+				are_particles_created2 = false;
+				mult = 1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			break;
 		case DEATH2:
@@ -1747,7 +1889,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 
-	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2)))
+	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2)&&(state2 != SPECIAL_ATTACK_2)))
 	{
 		state2 = JUMP_NEUTRAL2;
 	}

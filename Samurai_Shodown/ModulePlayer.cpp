@@ -1755,7 +1755,7 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				
 
-
+				position.x += 1 * speed;
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -1772,9 +1772,9 @@ update_status ModulePlayer::Update()
 					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
 					are_particles_created = true;
 				}
+				position.x -= 1 * speed;
 			}
 			position.y -= speed * 2 * mult;
-			position.x -= 1 * speed;
 
 			if (position.y <= 30) {
 				mult = -1;
