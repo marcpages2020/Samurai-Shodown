@@ -679,8 +679,6 @@ ModulePlayer::ModulePlayer()
 			win.loop = false;
 			}
 
-			//fire sword
-			//fire_sword.PushBack({1,1,1,1}1);
 		// */		
 }
 	}

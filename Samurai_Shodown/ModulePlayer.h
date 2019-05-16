@@ -79,9 +79,9 @@ public:
 	Animation en_garde;
 	Animation specialattack;
 	Animation win;
+	Animation die;
 	int hit_percent = 0;
 	int hit_done = 0;
-	Animation die;
 	iPoint position;
 	iPoint lposition;
 	bool god = false;

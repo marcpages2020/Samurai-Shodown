@@ -15,6 +15,7 @@ ModuleParticles::ModuleParticles()
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	active[i] = nullptr;
 
+	//tornado
 	tornado.anim.PushBack({ 15,1026,20,207 }, 0.3f);
 	tornado.anim.PushBack({ 40,1026,22,207 }, 0.3f);
 	tornado.anim.PushBack({ 67,1026,29,207 }, 0.3f);
@@ -51,6 +52,8 @@ ModuleParticles::ModuleParticles()
 	tornado.speed = { 2,0 };
 	tornado.anim.loop = false;
 
+	//fire sword
+	//fire_sword.PushBack({1,1,1,1}1);
 
 }
 
@@ -61,7 +64,9 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	//tornado_tex = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
+	fire_sword_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	particle_tex = fire_sword_tex;
 	return true;
 }
 
@@ -69,7 +74,8 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(graphics);
+	//App->textures->Unload(tornado_tex);
+	App->textures->Unload(fire_sword_tex);
 	// Unload fx
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -103,11 +109,11 @@ update_status ModuleParticles::Update()
 		{
 			if (p->coll->type==COLLIDER_PLAYER_PARTICLES)
 			{
-				App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			}
 			else if (p->coll->type == COLLIDER_PLAYER_2_PARTICLES)
 			{
-				App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
+				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
 			}
 
 			if (p->fx_played == false)
@@ -189,7 +195,7 @@ bool Particle::Update()
 	else
 		if (anim.Finished())
 			ret = false;
-
+	
 	if (!App->is_paused)
 	{
 		if (coll->type == COLLIDER_PLAYER_PARTICLES)
