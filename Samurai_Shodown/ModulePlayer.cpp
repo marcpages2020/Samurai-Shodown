@@ -768,7 +768,8 @@ update_status ModulePlayer::PreUpdate()
 					hit_done++;
 					//state = TWISTER;
 					state = SPECIAL_ATTACK;
-					App->render->StartCameraShake(1500, 20);
+					//App->render->StartCameraShake(1500, 20);
+					App->render->StartSlowdown(1000, 30);
 				}
 			}
 			if (state == BACKWARD) {
