@@ -291,10 +291,15 @@ void ModuleRender::StartCameraShake(int duration, float magnitude)
 
 void ModuleRender::UpdateCameraShake()
 {
+	int lowest = -shake_magnitude / 2;
+	int highest = shake_magnitude / 2;
+
 	if (shake_timer > SDL_GetTicks()-shake_duration)
 	{
-		camera_offset.x = rand() % (int)shake_magnitude;
-		camera_offset.y = rand() % (int)shake_magnitude;
+		int range = (highest - lowest) + 1;
+
+		camera_offset.x = lowest + int(range*rand() / (RAND_MAX));
+		camera_offset.y = lowest + int(range*rand() / (RAND_MAX + 1.0));
 	}
 	else
 	{
