@@ -619,8 +619,8 @@ ModulePlayer::ModulePlayer()
 				hit.PushBack({ 162,1227,127,156 }, 0.3f);
 				hit.PushBack({ 296,1227,127,156 }, 0.3f);
 				hit.PushBack({ 429,1227,173,156 }, 0.3f);//4
-				hit.PushBack({ 609,1227,127,156 }, 0.3f);
-				hit.PushBack({ 788,1227,127,156 }, 0.3f);
+				hit.PushBack({ 609,1227,173,156 }, 0.3f);
+				hit.PushBack({ 788,1227,173,156 }, 0.3f);
 				hit.PushBack({ 28,1227,127,156 }, 0.3f);//1
 				hit.PushBack({ 162,1227,127,156 }, 0.3f);
 				hit.PushBack({ 296,1227,127,156 }, 0.3f);
