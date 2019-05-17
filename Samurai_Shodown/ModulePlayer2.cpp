@@ -669,6 +669,7 @@ bool ModulePlayer2::Start()
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	//hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Wan-Fu/Hit_1.wav");
+	special_attack_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Wan-Fu/special_attack.wav");
 	state2 = IDLE2;
 	god = false;
 	life = 100;
@@ -677,7 +678,6 @@ bool ModulePlayer2::Start()
 		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	if (!collider_player_2_down)
 		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER_2, (Module*)App->player2);
-
 	App->ui->Enable();
 	return ret;
 }
@@ -723,7 +723,8 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = CROUCH_DOWN2;
 			if (player_input2.pressing_L) {
 				hit_done++;
-				App->audio->PlayFX(twister_fx);
+				//App->audio->PlayFX(twister_fx);
+				App->audio->PlayFX(special_attack_fx);
 				//state2 = TWISTER2;
 				state2 = SPECIAL_ATTACK_2;
 			}
@@ -865,7 +866,7 @@ update_status ModulePlayer2::PreUpdate()
 					position.x -= speed;
 				}
 			}
-			else if ((current_animation->Finished()) || (position.y == initial_position.y)) {
+			else if ((current_animation->Finished()) || (position.y == initial_position.y+1)) {
 				state2 = IDLE2;
 				hit2.Reset();
 			}

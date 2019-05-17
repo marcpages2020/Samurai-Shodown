@@ -104,6 +104,7 @@ public:
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
+	Mix_Chunk* special_attack_fx;
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 	SDL_Texture* player2_textures=nullptr;
 	bool controls = true;
