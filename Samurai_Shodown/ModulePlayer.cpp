@@ -698,6 +698,7 @@ bool ModulePlayer::Start()
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	//hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Wan-Fu/Hit_1.wav");
+	special_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Wan-Fu/special_attack.wav");
 	App->ui->player1_point = 0;
 	App->ui->player2_point = 0;
 	state = IDLE;
@@ -766,6 +767,7 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_DOWN;
 				if (player_input.pressing_B) {
 					//App->audio->PlayFX(twister_fx);
+					App->audio->PlayFX(special_attack_fx);
 					hit_done++;
 					//state = TWISTER;
 					state = SPECIAL_ATTACK;
@@ -908,7 +910,7 @@ update_status ModulePlayer::PreUpdate()
 						position.x -= speed;
 					}
 				}
-				else if ((current_animation->Finished())||(position.y == initial_position.y)) {
+				else if ((current_animation->Finished())||(position.y == initial_position.y+1)) {
 					state = IDLE;
 					hit.Reset();
 				}

@@ -853,11 +853,19 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		if (state2 == HIT2) {
-			if (position.y < initial_position.y)
+			if (position.y <= initial_position.y)
 			{
 				position.y++;
+				if (flip == SDL_FLIP_HORIZONTAL)
+				{
+					position.x += speed;
+				}
+				else
+				{
+					position.x -= speed;
+				}
 			}
-			else if (current_animation->Finished()) {
+			else if ((current_animation->Finished()) || (position.y == initial_position.y)) {
 				state2 = IDLE2;
 				hit2.Reset();
 			}
