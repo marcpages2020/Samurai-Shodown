@@ -91,7 +91,6 @@ bool ModuleSceneWanFu::CleanUp()
 	right_wall = nullptr;
 	App->render->left = nullptr;
 	App->render->right = nullptr;
-	//App->audio->Cle
 	return true;
 }
 

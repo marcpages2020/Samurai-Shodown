@@ -1774,13 +1774,13 @@ update_status ModulePlayer::Update()
 			else {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 15, position.y - 75);
-					collider_player_up->SetSize(40, 45);
+					collider_player_up->SetPos(position.x + 15, position.y - 90);
+					collider_player_up->SetSize(45, 45);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 10, position.y - 35);
-					collider_player_down->SetSize(60, 40);
+					collider_player_down->SetPos(position.x+5, position.y - 50);
+					collider_player_down->SetSize(60, 30);
 				}
 				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
 					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
