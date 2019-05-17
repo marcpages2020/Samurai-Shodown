@@ -76,6 +76,11 @@ update_status ModuleRender::Update()
 
 	if (shaking)
 		UpdateCameraShake();
+	if (slowing_down)
+	{
+		UpdateSlowdown();
+	}
+
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -177,10 +182,28 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	if (SDL_RenderFillRect(renderer, &rec) != 0)
 	{
 		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
+
+
 		ret = false;
 	}
 
 	return ret;
+}
+
+void ModuleRender::StartSlowdown(int duration, int magnitude)
+{
+	slowing_down = true;
+	slowdown_duration = duration;
+	slowdown_magnitude = magnitude;
+	slowdown_timer = SDL_GetTicks();
+}
+void ModuleRender::UpdateSlowdown()
+{
+	if (slowdown_timer > SDL_GetTicks() - slowdown_duration) {
+		SDL_Delay(slowdown_magnitude);
+	}
+	else
+		slowing_down = false;
 }
 
 void ModuleRender::MoveCamera()

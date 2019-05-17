@@ -28,6 +28,10 @@ public:
 	void StartCameraShake(int duration, float magnitude);
 	void UpdateCameraShake();
 
+	void StartSlowdown(int duration, int magnitude);
+	void UpdateSlowdown();
+
+
 	void MoveCamera();
 	void SetCamera();
 	
@@ -42,6 +46,14 @@ private:
 	int shake_timer = 0.0f;
 	float shake_magnitude = 0.0f;
 	SDL_Point camera_offset;
+
+	bool slowing_down = false;
+
+	int slowdown_duration = 0;
+	int slowdown_timer = 0;
+
+	int slowdown_magnitude = 0;
+
 };
 
 #endif //__ModuleRenderer_H__
