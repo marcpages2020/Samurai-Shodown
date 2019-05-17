@@ -2032,6 +2032,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			life -= 20;
 			state2 = HIT2;
 			position.x += 5;
+			App->render->StartCameraShake(400, 4);
 			break;
 		default:
 			break;
