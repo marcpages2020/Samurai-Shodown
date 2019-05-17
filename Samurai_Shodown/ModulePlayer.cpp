@@ -768,8 +768,8 @@ update_status ModulePlayer::PreUpdate()
 					hit_done++;
 					//state = TWISTER;
 					state = SPECIAL_ATTACK;
-					//App->render->StartCameraShake(1500, 20);
-					App->render->StartSlowdown(1000, 30);
+					App->render->StartCameraShake(1600, 10);
+					App->render->StartSlowdown(750, 20);
 				}
 			}
 			if (state == BACKWARD) {
@@ -1958,7 +1958,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 				break;
 			}
 		}
-
+		App->render->StartCameraShake(400, 10);
 		break;
 	case COLLIDER_PLAYER_2_PARTICLES:
 		App->audio->PlayFX(hit_fx);
