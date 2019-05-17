@@ -1986,6 +1986,7 @@ bool ModulePlayer2::CleanUp() {
 
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
+	
 	if (state2 != DEATH2) {
 		switch (c2->type)
 		{
@@ -2001,14 +2002,29 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		case COLLIDER_PLAYER:
 			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DEATH2) && (state2 != WIN2))
 			{
-				if (position.x < App->player->position.x)
+				if (App->player->position.y > current_animation->GetCurrentFrame().h*(1/2))
 				{
-					position.x = lposition.x - speed;
+					if (position.x < App->player->position.x)
+					{
+						position.x = lposition.x - speed;
+					}
+					else
+					{
+						position.x = lposition.x + speed;
+					}
 				}
 				else
 				{
-					position.x = lposition.x + speed;
+					if (App->player->position.x < position.x)
+					{
+						position.x = position.x - speed;
+					}
+					else
+					{
+						position.x = position.x + speed;
+					}
 				}
+					
 			}
 			break;
 		case COLLIDER_PLAYER_1_ATTACK:
