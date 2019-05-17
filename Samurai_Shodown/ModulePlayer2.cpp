@@ -620,6 +620,23 @@ ModulePlayer2::ModulePlayer2()
 
 			}
 
+			//win animation
+			{
+				win2.PushBack({ 39, 1711, 111, 117 }, 0.1f);
+				win2.PushBack({ 180, 1711, 111, 117 }, 0.1f);
+				win2.PushBack({ 331, 1711, 111, 117 }, 0.1f);
+				win2.PushBack({ 478, 1711, 111, 118 }, 0.1f);
+				win2.PushBack({ 618, 1711, 111, 118 }, 0.1f);
+				win2.PushBack({ 757, 1711, 111, 118 }, 0.1f);
+				win2.PushBack({ 895, 1711, 111, 116 }, 0.1f);
+				win2.PushBack({ 1031, 1711, 111, 116 }, 0.1f);
+				win2.PushBack({ 1171, 1711, 111, 116 }, 0.1f);
+				win2.PushBack({ 1302, 1711, 111, 120 }, 0.1f);
+				win2.PushBack({ 1432, 1711, 111, 120 }, 0.1f);
+				win2.PushBack({ 1556, 1711, 111, 120 }, 0.1f);
+				win2.loop = true;
+			}
+
 			//en garde
 			{
 				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);

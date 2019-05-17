@@ -896,6 +896,14 @@ update_status ModulePlayer::PreUpdate()
 				if (position.y < initial_position.y)
 				{
 					position.y++;
+					if (flip == SDL_FLIP_HORIZONTAL)
+					{
+						position.x += speed;
+					}
+					else
+					{
+						position.x -= speed;
+					}
 				}
 				else if (current_animation->Finished()) {
 					state = IDLE;
