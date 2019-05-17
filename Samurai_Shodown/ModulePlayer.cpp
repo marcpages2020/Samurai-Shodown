@@ -1963,12 +1963,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			}
 		}
 		App->render->StartCameraShake(400, 10);
+		App->render->StartSlowdown(800, 30);
 		break;
 	case COLLIDER_PLAYER_2_PARTICLES:
 		App->audio->PlayFX(hit_fx);
 		life -= 20;
 		state = HIT;
 		position.x -= 5;
+		App->render->StartCameraShake(400, 3);
+		App->render->StartSlowdown(800, 30);
 		break;
 	default:
 		break;
