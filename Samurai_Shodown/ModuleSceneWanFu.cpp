@@ -87,12 +87,11 @@ bool ModuleSceneWanFu::CleanUp()
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
-	//App->collision->CleanUp();
 	left_wall = nullptr;
 	right_wall = nullptr;
 	App->render->left = nullptr;
 	App->render->right = nullptr;
-	//App->audio->CleanUp();
+	//App->audio->Cle
 	return true;
 }
 
