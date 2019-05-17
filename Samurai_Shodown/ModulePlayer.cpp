@@ -768,6 +768,7 @@ update_status ModulePlayer::PreUpdate()
 					hit_done++;
 					//state = TWISTER;
 					state = SPECIAL_ATTACK;
+					App->render->StartCameraShake(1500, 20);
 				}
 			}
 			if (state == BACKWARD) {
@@ -1892,7 +1893,6 @@ update_status ModulePlayer::Update()
 		App->render->Blit(player_textures, position.x, position.y - r.h, &r, flip);
 
 	}
-
 	return UPDATE_CONTINUE;
 }
 

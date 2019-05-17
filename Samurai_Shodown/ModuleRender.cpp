@@ -9,12 +9,15 @@
 #include "ModulePlayer2.h"
 #include "ModuleSceneHaohmaru.h"
 #include "ModuleSceneWanFu.h"
+#include <cstdlib>
+#include <time.h>
 
 ModuleRender::ModuleRender() : Module()
 {
 	camera.x = camera.y = 0;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
+	srand(time(NULL));
 }
 
 // Destructor
@@ -71,6 +74,9 @@ update_status ModuleRender::Update()
 	if (App->input->keyboard[SDL_SCANCODE_KP_1] == KEY_REPEAT)
 		camera.x -= speed * 0.7f;
 
+	if (shaking)
+		UpdateCameraShake();
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -103,8 +109,8 @@ bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect * se
 	SDL_Rect rect;
 	if (use_camera)
 	{
-		rect.x = (int)(-camera.x * speed) + x * scale;
-		rect.y = (int)(-camera.y * speed) + y * scale;
+		rect.x = (int)(-(camera.x + camera_offset.x) * speed) + x * SCREEN_SIZE;
+		rect.y = (int)(-(camera.y + camera_offset.y) * speed) + y * SCREEN_SIZE;
 	}
 	else
 	{
@@ -156,8 +162,8 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	SDL_Rect rec(rect);
 	if (use_camera)
 	{
-		rec.x = (int)(-camera.x + rect.x * SCREEN_SIZE);
-		rec.y = (int)(-camera.y + rect.y * SCREEN_SIZE);
+		rec.x = (int)(-(camera.x + camera_offset.x) + rect.x * SCREEN_SIZE);
+		rec.y = (int)(-(camera.y + camera_offset.y) + rect.y * SCREEN_SIZE);
 	}
 	else
 	{
@@ -250,4 +256,27 @@ void ModuleRender::SetCamera()
 	}
 	left->SetPos(-50, 0);
 	right->SetPos(camera.w, 0);
+}
+
+void ModuleRender::StartCameraShake(int duration, float magnitude)
+{
+	shake_duration = duration;
+	shake_magnitude = magnitude;
+	shake_timer = SDL_GetTicks();
+	shaking =  true;
+}
+
+void ModuleRender::UpdateCameraShake()
+{
+	if (shake_timer > SDL_GetTicks()-shake_duration)
+	{
+		camera_offset.x = rand() % (int)shake_magnitude;
+		camera_offset.y = rand() % (int)shake_magnitude;
+	}
+	else
+	{
+		camera_offset.x = 0;
+		camera_offset.y = 0;
+		shaking = false;
+	}
 }

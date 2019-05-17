@@ -1943,7 +1943,6 @@ update_status ModulePlayer2::Update()
 		App->render->Blit(App->player->player_textures, position.x, position.y - r.h, &r, flip);
 
 	}
-
 	return UPDATE_CONTINUE;
 }
 
