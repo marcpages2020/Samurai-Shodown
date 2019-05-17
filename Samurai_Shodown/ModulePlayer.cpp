@@ -673,7 +673,7 @@ ModulePlayer::ModulePlayer()
 			win.PushBack({ 1302, 1711, 111, 120}, 0.1f);
 			win.PushBack({ 1432, 1711, 111, 120}, 0.1f);
 			win.PushBack({ 1556, 1711, 111, 120}, 0.1f);
-			win.loop = false;
+			win.loop = true;
 			}
 
 		// */		
