@@ -73,6 +73,7 @@ bool ModuleSceneHaohmaru::CleanUp()
 	Mix_FadeOutMusic(1250);
 	App->player->Disable();
 	App->player2->Disable();
+	App->audio->UnLoadMusic(music);
 	App->ui->Disable();
 	left_wall = nullptr;
 	right_wall = nullptr;

@@ -101,8 +101,7 @@ ModuleSceneCongrats::ModuleSceneCongrats()
 }
 
 ModuleSceneCongrats::~ModuleSceneCongrats()
-{
-}
+{}
 
 bool ModuleSceneCongrats::Start()
 {
