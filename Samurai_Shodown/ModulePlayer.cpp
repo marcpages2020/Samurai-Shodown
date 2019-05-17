@@ -1306,6 +1306,7 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				jump_neutral.Reset();
 				state = IDLE;
+				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1460,6 +1461,7 @@ update_status ModulePlayer::Update()
 				jump_forward.Reset();
 				mult = 1;
 				state = IDLE;
+				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1481,12 +1483,14 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				jump_backward.Reset();
 				state = IDLE;
+				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
 				jump_backward.Reset();
 				state = IDLE;
+				App->render->StartCameraShake(400, 3);
 				mult = 1;
 			}
 			else if (position.y > initial_position.y)

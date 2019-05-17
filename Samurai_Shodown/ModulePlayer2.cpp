@@ -1283,6 +1283,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
+				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1354,6 +1355,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_forward2.Reset();
 				state2 = IDLE2;
+				App->render->StartCameraShake(500,3);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1361,6 +1363,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_forward2.Reset();
 				state2 = IDLE2;
+				App->render->StartCameraShake(500,3);
 			}
 			//haohmaru
 			/*
@@ -1465,13 +1468,22 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_backward2.Reset();
 				state2 = IDLE2;
+				App->render->StartCameraShake(500, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_backward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(400, 3);
+				mult = 1;
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
 				mult = 1;
 				jump_forward2.Reset();
-				state2 = IDLE2;
+				App->render->StartCameraShake(500, 3);
 			}
 			//haohmaru
 			/*
