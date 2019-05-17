@@ -582,8 +582,8 @@ ModulePlayer2::ModulePlayer2()
 				hit2.PushBack({ 162,1227,127,156 }, 0.3f);
 				hit2.PushBack({ 296,1227,127,156 }, 0.3f);
 				hit2.PushBack({ 429,1227,173,156 }, 0.3f);//4
-				hit2.PushBack({ 609,1227,127,156 }, 0.3f);
-				hit2.PushBack({ 788,1227,127,156 }, 0.3f);
+				hit2.PushBack({ 609,1227,173,156 }, 0.3f);
+				hit2.PushBack({ 788,1227,173,156 }, 0.3f);
 				hit2.PushBack({ 28,1227,127,156 }, 0.3f);//1
 				hit2.PushBack({ 162,1227,127,156 }, 0.3f);
 				hit2.PushBack({ 296,1227,127,156 }, 0.3f);
