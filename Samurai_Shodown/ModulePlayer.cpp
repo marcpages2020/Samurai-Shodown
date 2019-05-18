@@ -1770,8 +1770,20 @@ update_status ModulePlayer::Update()
 			*/
 			//Wan-Fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 23, position.y - 90);
+					collider_player_up->SetSize(40, 45);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 28, position.y - 45);
+					collider_player_down->SetSize(60, 30);
+				}
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y, COLLIDER_PLAYER_PARTICLES);
+					are_particles_created = true;
+				}
 				position.x += 1 * speed;
 			}
 			else {
