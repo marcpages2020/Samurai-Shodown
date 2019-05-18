@@ -1273,8 +1273,20 @@ update_status ModulePlayer::Update()
 			current_animation = &crouch_punch;
 			shadow_x = position.x + 20;
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 20, position.y - 80);
+					collider_player_up->SetSize(35, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 30);
+					collider_player_down->SetSize(70, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x - 50, position.y - 50,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				}
 
 				shadow_x -= shadow_w / 3;
 			}

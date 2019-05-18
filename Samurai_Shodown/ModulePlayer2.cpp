@@ -1258,8 +1258,20 @@ update_status ModulePlayer2::Update()
 			break;
 			*/
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_2_up->SetSize(35, 50);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 5, position.y - 30);
+					collider_player_2_down->SetSize(70, 35);
+				}
+				if (collider_player_2_attack == nullptr)
+				{
+					collider_player_2_attack = App->collision->AddCollider({ position.x + 55, position.y - 50,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+				}
 
 				shadow_x = position.x + shadow_w / 3;
 			}
