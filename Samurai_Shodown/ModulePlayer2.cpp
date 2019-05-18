@@ -779,6 +779,14 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_NEUTRAL2)
 		{
+			if (player_input2.pressing_J) {
+				state2 = JUMP_KICK2;
+				//hit_done++;
+			}
+			if (player_input2.pressing_K) {
+				//hit_done++;
+				state2 = JUMP_PUNCH2;
+			}
 			if (player_input2.pressing_right && mult == 1)
 				state2 = JUMP_BACKWARD2;
 			if (player_input2.pressing_left && mult == 1)
@@ -791,6 +799,14 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_FORWARD2)
 		{
+			if (player_input2.pressing_J) {
+				state2 = JUMP_KICK2;
+				//hit_done++;
+			}
+			if (player_input2.pressing_K) {
+				//hit_done++;
+				state2 = JUMP_PUNCH2;
+			}
 			if (current_animation->Finished())
 			{
 				state2 = IDLE2;
@@ -799,10 +815,33 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_BACKWARD2)
 		{
+			if (player_input2.pressing_J) {
+				state2 = JUMP_KICK2;
+				//hit_done++;
+			}
+			if (player_input2.pressing_K) {
+				//hit_done++;
+				state2 = JUMP_PUNCH2;
+				//App->audio->PlayFX(light_attack_fx);
+			}
 			if (current_animation->Finished())
 			{
 				state2 = IDLE2;
 				jump_backward2.Reset();
+			}
+		}
+		if (state2 == JUMP_PUNCH2) {
+			if (current_animation->Finished())
+			{
+				state2 = IDLE2;
+				jump_punch2.Reset();
+			}
+		}
+		if (state2 == JUMP_KICK2) {
+			if (current_animation->Finished())
+			{
+				state2 = IDLE2;
+				jump_kick2.Reset();
 			}
 		}
 		if (state2 == CROUCH_DOWN2)
@@ -1598,6 +1637,36 @@ update_status ModulePlayer2::Update()
 			}
 			shadow_x = position.x;
 			break;
+			case JUMP_PUNCH2:
+				current_animation = &jump_punch2;
+				//Wan-Fu
+				if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+
+				}
+				else {
+
+
+
+				}
+				shadow_x = position.x;
+				break;
+			case JUMP_KICK2:
+				current_animation = &jump_kick2;
+				//Wan-Fu
+				if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+
+				}
+				else {
+
+
+
+				}
+				shadow_x = position.x;
+				break;
 		case PUNCH2:
 			current_animation = &punch2;
 			//haohmaru

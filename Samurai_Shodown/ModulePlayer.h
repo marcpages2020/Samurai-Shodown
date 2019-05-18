@@ -21,6 +21,8 @@ enum States
 	JUMP_NEUTRAL,
 	JUMP_FORWARD,
 	JUMP_BACKWARD,
+	JUMP_PUNCH,
+	JUMP_KICK,
 	FORWARD,
 	IDLE,
 	KICK,
@@ -69,6 +71,8 @@ public:
 	Animation jump_neutral;
 	Animation jump_forward;
 	Animation jump_backward;
+	Animation jump_punch;
+	Animation jump_kick;
 	Animation crouch_up;
 	Animation crouch_down;
 	Animation crouch_punch;

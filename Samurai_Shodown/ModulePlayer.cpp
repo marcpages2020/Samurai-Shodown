@@ -825,6 +825,15 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_NEUTRAL)
 			{
+				if (player_input.pressing_C) {
+					state = JUMP_KICK;
+					//hit_done++;
+				}
+				if (player_input.pressing_V) {
+					//hit_done++;
+					state = JUMP_PUNCH;
+					//App->audio->PlayFX(light_attack_fx);
+				}
 				if (player_input.pressing_A && mult == 1)
 					state = JUMP_BACKWARD;
 				if (player_input.pressing_D && mult == 1)
@@ -837,6 +846,15 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_FORWARD)
 			{
+				if (player_input.pressing_C) {
+					state = JUMP_KICK;
+					//hit_done++;
+				}
+				if (player_input.pressing_V) {
+					//hit_done++;
+					state = JUMP_PUNCH;
+					//App->audio->PlayFX(light_attack_fx);
+				}
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -845,10 +863,35 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_BACKWARD)
 			{
+				if (player_input.pressing_C) {
+					state = JUMP_KICK;
+					//hit_done++;
+				}
+				if (player_input.pressing_V) {
+					//hit_done++;
+					state = JUMP_PUNCH;
+					//App->audio->PlayFX(light_attack_fx);
+				}
 				if (current_animation->Finished())
 				{
 					state = IDLE;
 					jump_backward.Reset();
+				}
+			}
+			if (state == JUMP_PUNCH) {
+
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					jump_punch.Reset();
+				}
+			}
+			if (state == JUMP_KICK) {
+
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					jump_kick.Reset();
 				}
 			}
 			if (state == CROUCH_DOWN)
@@ -1590,6 +1633,36 @@ update_status ModulePlayer::Update()
 						collider_player_down->SetSize(75, 30);
 					}
 				}
+			}
+			shadow_x = position.x;
+			break;
+		case JUMP_PUNCH:
+			current_animation = &jump_punch;
+			//Wan-Fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				
+
+
+			}
+			else {
+				
+
+
+			}
+			shadow_x = position.x;
+			break;
+		case JUMP_KICK:
+			current_animation = &jump_kick;
+			//Wan-Fu
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+
+			}
+			else {
+
+
+
 			}
 			shadow_x = position.x;
 			break;

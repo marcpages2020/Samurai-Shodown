@@ -20,6 +20,8 @@ enum States2 {
 	JUMP_NEUTRAL2,
 	JUMP_FORWARD2,
 	JUMP_BACKWARD2,
+	JUMP_PUNCH2,
+	JUMP_KICK2,
 	FORWARD2,
 	IDLE2,
 	KICK2,
@@ -69,6 +71,8 @@ public:
 	Animation jump_neutral2;
 	Animation jump_forward2;
 	Animation jump_backward2;
+	Animation jump_punch2;
+	Animation jump_kick2;
 	Animation crouch_down2;
 	Animation win2;
 	Animation en_garde2;
