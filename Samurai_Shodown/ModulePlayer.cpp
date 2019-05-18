@@ -1281,17 +1281,17 @@ update_status ModulePlayer::Update()
 			else {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 55, position.y - 45);
-					collider_player_up->SetSize(38, 35);
+					collider_player_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_up->SetSize(35, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 15, position.y - 15);
-					collider_player_down->SetSize(60, 15);
+					collider_player_down->SetPos(position.x +5, position.y - 30);
+					collider_player_down->SetSize(70, 35);
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 50,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 				}
 			}
 
