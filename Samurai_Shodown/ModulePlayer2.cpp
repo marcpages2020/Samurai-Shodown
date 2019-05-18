@@ -866,7 +866,7 @@ update_status ModulePlayer2::PreUpdate()
 					position.x -= speed;
 				}
 			}
-			else if ((current_animation->Finished()) || (position.y == initial_position.y+1)) {
+			else if ((current_animation->Finished())&&(position.y == initial_position.y+1)) {
 				state2 = IDLE2;
 				hit2.Reset();
 			}
@@ -1926,11 +1926,21 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 		}
-	}
-
-	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2)&&(state2 != SPECIAL_ATTACK_2)))
-	{
-		state2 = JUMP_NEUTRAL2;
+		/*if (App->player->position.y < position.y -30)
+		{
+			if (App->player->position.x +10 > position.x)
+			{
+				position.x += speed;
+			}
+			else //if (App->player->position.x > position.x)
+			{
+				position.x -= speed;
+			}
+		}*/
+		if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2)))
+		{
+			state2 = JUMP_NEUTRAL2;
+		}
 	}
 
 	//Draw everything
@@ -1987,7 +1997,7 @@ bool ModulePlayer2::CleanUp() {
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	
-	if (state2 != DEATH2) {
+	if ((state2 != DEATH2)&&(!App->is_paused)) {
 		switch (c2->type)
 		{
 		case COLLIDER_WALL_LEFT:
@@ -2001,10 +2011,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			break;
 		case COLLIDER_PLAYER:
 			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DEATH2) && (state2 != WIN2))
-			{
-				if (App->player->position.y > current_animation->GetCurrentFrame().h*(1/2))
 				{
-					if (position.x < App->player->position.x)
+					if (App->player->position.x > position.x)
 					{
 						position.x = lposition.x - speed;
 					}
@@ -2013,19 +2021,6 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 						position.x = lposition.x + speed;
 					}
 				}
-				else
-				{
-					if (App->player->position.x < position.x)
-					{
-						position.x = position.x - speed;
-					}
-					else
-					{
-						position.x = position.x + speed;
-					}
-				}
-					
-			}
 			break;
 		case COLLIDER_PLAYER_1_ATTACK:
 			if (!App->player->collider_player_attack->to_delete && !god) {

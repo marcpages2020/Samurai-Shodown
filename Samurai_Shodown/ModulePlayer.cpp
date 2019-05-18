@@ -910,7 +910,7 @@ update_status ModulePlayer::PreUpdate()
 						position.x -= speed;
 					}
 				}
-				else if ((current_animation->Finished())||(position.y == initial_position.y+1)) {
+				else if ((current_animation->Finished())&&(position.y == initial_position.y+1)) {
 					state = IDLE;
 					hit.Reset();
 				}
@@ -1906,78 +1906,80 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 
-	switch (c2->type)
-	{
-	case COLLIDER_WALL_LEFT:
-		if (!player_input.pressing_D && state != DEATH && state != WIN)
-			position.x += speed;
-
-		break;
-	case COLLIDER_WALL_RIGHT:
-		if (!player_input.pressing_A && state != DEATH && state != WIN)
-			position.x -= speed;
-		break;
-	case COLLIDER_PLAYER_2:
-		if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN))
+	if ((state != DEATH) && (!App->is_paused)) {
+		switch (c2->type)
 		{
-			if (position.x < App->player2->position.x)
+		case COLLIDER_WALL_LEFT:
+			if (!player_input.pressing_D && state != DEATH && state != WIN)
+				position.x += speed;
+
+			break;
+		case COLLIDER_WALL_RIGHT:
+			if (!player_input.pressing_A && state != DEATH && state != WIN)
+				position.x -= speed;
+			break;
+		case COLLIDER_PLAYER_2:
+			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN))
 			{
-				position.x = lposition.x - speed;
+				if (position.x < App->player2->position.x)
+				{
+					position.x = lposition.x - speed;
+				}
+				else
+				{
+					position.x = lposition.x + speed;
+				}
 			}
-			else
-			{
-				position.x = lposition.x + speed;
+			break;
+		case COLLIDER_PLAYER_2_ATTACK:
+			if (!App->player2->collider_player_2_attack->to_delete && !god) {
+				App->player2->hit_percent++;
+				App->audio->PlayFX(hit_fx);
+				life -= 10;
+				state = HIT;
+				App->player2->collider_player_2_attack->to_delete = true;
+				if ((position.x < App->player2->position.x) && (position.x > App->render->left->rect.x + 60))
+				{
+					position.x -= 10;
+				}
+				else if ((position.x > App->player->position.x) && (position.x > App->render->right->rect.x))
+				{
+					position.x += 10;
+				}
+				switch (App->player2->state2)
+				{
+				case States2::KICK2:
+					App->ui->player2_point += 50;
+					break;
+				case States2::PUNCH2:
+					App->ui->player2_point += 50;
+					break;
+				case States2::CROUCH_PUNCH2:
+					App->ui->player2_point += 200;
+					break;
+				case States2::CROUCH_KICK2:
+					App->ui->player2_point += 200;
+					break;
+				case States2::TWISTER2:
+					App->ui->player2_point += 400;
+				default:
+					break;
+				}
 			}
-		}
-		break;
-	case COLLIDER_PLAYER_2_ATTACK:
-		if (!App->player2->collider_player_2_attack->to_delete && !god) {
-			App->player2->hit_percent++;
+			App->render->StartCameraShake(400, 10);
+			App->render->StartSlowdown(800, 30);
+			break;
+		case COLLIDER_PLAYER_2_PARTICLES:
 			App->audio->PlayFX(hit_fx);
-			life -= 10;
+			life -= 20;
 			state = HIT;
-			App->player2->collider_player_2_attack->to_delete = true;
-			if ((position.x < App->player2->position.x) && (position.x > App->render->left->rect.x + 60))
-			{
-				position.x -= 10;
-			}
-			else if ((position.x > App->player->position.x) && (position.x > App->render->right->rect.x))
-			{
-				position.x += 10;
-			}
-			switch (App->player2->state2)
-			{
-			case States2::KICK2:
-				App->ui->player2_point += 50;
-				break;
-			case States2::PUNCH2:
-				App->ui->player2_point += 50;
-				break;
-			case States2::CROUCH_PUNCH2:
-				App->ui->player2_point += 200;
-				break;
-			case States2::CROUCH_KICK2:
-				App->ui->player2_point += 200;
-				break;
-			case States2::TWISTER2:
-				App->ui->player2_point += 400;
-			default:
-				break;
-			}
+			position.x -= 5;
+			App->render->StartCameraShake(400, 3);
+			App->render->StartSlowdown(800, 30);
+			break;
+		default:
+			break;
 		}
-		App->render->StartCameraShake(400, 10);
-		App->render->StartSlowdown(800, 30);
-		break;
-	case COLLIDER_PLAYER_2_PARTICLES:
-		App->audio->PlayFX(hit_fx);
-		life -= 20;
-		state = HIT;
-		position.x -= 5;
-		App->render->StartCameraShake(400, 3);
-		App->render->StartSlowdown(800, 30);
-		break;
-	default:
-		break;
 	}
 }
 
