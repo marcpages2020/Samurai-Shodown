@@ -1883,6 +1883,32 @@ update_status ModulePlayer2::Update()
 			break;
 		case EN_GARDE2:
 			current_animation = &en_garde2;
+			if (flip != SDL_FLIP_HORIZONTAL) {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 43, position.y - 80);
+					collider_player_2_up->SetSize(38, 35);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 30, position.y - 45);
+					collider_player_2_down->SetSize(60, 45);
+				}
+
+				shadow_x = position.x;
+			}
+			else {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x - 22, position.y - 80);
+					collider_player_2_up->SetSize(35, 35);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x - 30, position.y - 45);
+					collider_player_2_down->SetSize(60, 45);
+				}
+			}
 			break;
 		case WIN2:
 			current_animation = &win2;

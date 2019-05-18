@@ -1869,6 +1869,33 @@ update_status ModulePlayer::Update()
 			break;
 		case EN_GARDE:
 			current_animation = &en_garde;
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 22, position.y - 80);
+					collider_player_up->SetSize(30, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 30, position.y - 45);
+					collider_player_down->SetSize(40, 45);
+				}
+
+				shadow_x = position.x;
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 43, position.y - 80);
+					collider_player_up->SetSize(38, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 30, position.y - 45);
+					collider_player_down->SetSize(60, 45);
+				}
+				shadow_x = position.x + 23;
+			}
 			break;
 		default:
 			LOG("No state found :(");
