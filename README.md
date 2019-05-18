@@ -85,3 +85,8 @@ Adittions:
 - Improved UI
 - Player 2 gameplay improved
 - New debug functionality
+
+* 0.6
+- New character: Wan-Fu
+- New Stage: China Seian Wan-Fu
+- Gamepad control now available 
