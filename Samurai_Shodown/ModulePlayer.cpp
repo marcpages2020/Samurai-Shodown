@@ -1921,15 +1921,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		case COLLIDER_PLAYER_2:
 			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN))
 			{
-				if (position.x < App->player2->position.x)
-				{
-					position.x = lposition.x - speed;
+				//if (App->player2->position.y == position.y)
+				//{
+					if (App->player2->position.x > position.x)
+					{
+						position.x = lposition.x - speed;
+					}
+					else
+					{
+						position.x = lposition.x + speed;
+					}
 				}
-				else
-				{
-					position.x = lposition.x + speed;
-				}
-			}
+			//}
 			break;
 		case COLLIDER_PLAYER_2_ATTACK:
 			if (!App->player2->collider_player_2_attack->to_delete && !god) {
