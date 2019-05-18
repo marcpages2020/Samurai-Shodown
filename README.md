@@ -6,7 +6,7 @@ We are four students from CITM in Terrassa and in our Project 1 subject we are m
 
 ## Controls
 
-* Sapce to pass/skip screens(intros and ending).
+* Space to pass/skip screens(intros and ending).
 * F1 to show colliders
 * F2 change between the two stages
 * F3 Go to win screen
