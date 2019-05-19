@@ -881,6 +881,7 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_V) {
 					//hit_done++;
 					state = JUMP_PUNCH;
+					direction_x = 0;
 					//App->audio->PlayFX(light_attack_fx);
 				}
 				if (player_input.pressing_A && mult == 1)
@@ -909,6 +910,7 @@ update_status ModulePlayer::PreUpdate()
 					state = IDLE;
 					jump_forward.Reset();
 				}
+				direction_x = 1;
 			}
 			if (state == JUMP_BACKWARD)
 			{
@@ -926,6 +928,7 @@ update_status ModulePlayer::PreUpdate()
 					state = IDLE;
 					jump_backward.Reset();
 				}
+				direction_x = -1;
 			}
 			if (state == JUMP_PUNCH) {
 
@@ -1700,7 +1703,7 @@ update_status ModulePlayer::Update()
 			}
 
 			position.y -= speed * 1.75 * mult;
-			position.x += 1.25*speed;
+			position.x += 1.25*speed*direction_x;
 
 			if (position.y <= 100) {
 				mult = -1;
@@ -1708,11 +1711,7 @@ update_status ModulePlayer::Update()
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-<<<<<<< HEAD
 				jump_punch.Reset();
-=======
-				jump_forward.Reset();
->>>>>>> daac989e0caadfaf51f041a5864bc66bab3682a2
 				mult = 1;
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);

@@ -96,6 +96,7 @@ public:
 	Collider *collider_player_attack = nullptr;
 	int life=100;
 	int mult = 1;
+	int direction_x = 1;
 	Animation* current_animation = nullptr;
 	PlayerInput player_input;
 	States state;
