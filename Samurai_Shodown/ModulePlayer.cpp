@@ -1709,22 +1709,9 @@ update_status ModulePlayer::Update()
 
 			}
 			else {
-				if (collider_player_up != nullptr)
-				{
-					collider_player_up->SetPos(position.x + 40, position.y - 100);
-					collider_player_up->SetSize(40, 75);
-				}
-				if (collider_player_down != nullptr)
-				{
-					collider_player_down->SetPos(position.x + 40, position.y - 100);
-					collider_player_down->SetSize(1, 1);
-				}
-				if (collider_player_attack == nullptr)
-				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-					collider_player_attack->SetPos(position.x + 50, position.y - 70);
-					collider_player_attack->SetSize(45, 50);
-				}
+				
+
+
 
 
 			}
@@ -1855,9 +1842,22 @@ update_status ModulePlayer::Update()
 			*/
 			//Wan-Fu
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				
-
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 25, position.y - 100);
+					collider_player_up->SetSize(40, 75);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 100);
+					collider_player_down->SetSize(1, 1);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x - 50, position.y - 70);
+					collider_player_attack->SetSize(45, 50);
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -1873,7 +1873,7 @@ update_status ModulePlayer::Update()
 				if (collider_player_attack == nullptr)
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-					collider_player_attack->SetPos(position.x + 50, position.y - 70);
+					collider_player_attack->SetPos(position.x + 55, position.y - 70);
 					collider_player_attack->SetSize(45, 50);
 				}
 			}
