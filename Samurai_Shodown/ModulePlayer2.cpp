@@ -1739,6 +1739,27 @@ update_status ModulePlayer2::Update()
 
 
 				}
+				position.y -= speed * 1.75 * mult;
+				position.x -= 1.25*speed*direction_x;
+
+				if (position.y <= 100) {
+					mult = -1;
+				}
+				else if (position.y == initial_position.y)
+				{
+					mult = 1;
+					jump_forward2.Reset();
+					state2 = IDLE2;
+					App->render->StartCameraShake(500, 3);
+				}
+				else if (position.y > initial_position.y)
+				{
+					position.y = initial_position.y;
+					mult = 1;
+					jump_forward2.Reset();
+					state2 = IDLE2;
+					App->render->StartCameraShake(500, 3);
+				}
 				shadow_x = position.x;
 				break;
 		case PUNCH2:
