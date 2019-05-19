@@ -2051,7 +2051,7 @@ update_status ModulePlayer::Update()
 			break;
 		}
 	}
-	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)))
+	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)))
 	{
 		state = JUMP_NEUTRAL;
 	}
