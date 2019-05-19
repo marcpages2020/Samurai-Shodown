@@ -1698,11 +1698,25 @@ update_status ModulePlayer::Update()
 
 
 			}
+
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed;
 
 			if (position.y <= 100) {
 				mult = -1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_punch.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			shadow_x = position.x;
 			break;
