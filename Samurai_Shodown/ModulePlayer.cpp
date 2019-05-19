@@ -496,7 +496,6 @@ ModulePlayer::ModulePlayer()
 			jump_backward.PushBack({ 248,305,106,139 }, 0.2f);
 			jump_backward.loop = false;
 			}
-		//punch 
 
 		//kick
 			{
@@ -675,6 +674,56 @@ ModulePlayer::ModulePlayer()
 			win.PushBack({ 1556, 1711, 111, 120}, 0.1f);
 			win.loop = true;
 			}
+			//jump_kick
+			{
+				jump_kick.PushBack({ 28,745,108,148 }, 0.5f);//1
+				jump_kick.PushBack({ 139,745,108,148 }, 0.5f);
+				jump_kick.PushBack({ 249,745,108,148 }, 0.5f);
+				jump_kick.PushBack({ 358,745,99,148 }, 0.5f);//4
+				jump_kick.PushBack({ 459,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 560,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 660,745,99,148 }, 0.5f);//7
+				jump_kick.PushBack({ 762,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 863,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 964,745,99,148 }, 0.5f);//10
+				jump_kick.PushBack({ 1067,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 1168,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 660,745,99,148 }, 0.5f);//7
+				jump_kick.PushBack({ 762,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 863,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 358,745,99,148 }, 0.5f);//4
+				jump_kick.PushBack({ 459,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 560,745,99,148 }, 0.5f);
+				jump_kick.PushBack({ 28,745,108,148 }, 0.5f);//1
+				jump_kick.PushBack({ 139,745,108,148 }, 0.5f);
+				jump_kick.PushBack({ 249,745,108,148 }, 0.5f);
+				jump_kick.loop = false;
+			}
+
+			//jump_punch
+			{
+				jump_punch.PushBack({ 27, 451, 87, 168 }, 0.5f);
+				jump_punch.PushBack({ 116, 451, 87, 168 }, 0.5f);
+				jump_punch.PushBack({ 207, 492, 134, 127 }, 0.5f);
+				jump_punch.PushBack({ 342, 492, 134, 127 }, 0.5f);
+				jump_punch.PushBack({ 477, 474, 134, 143 }, 0.5f);
+				jump_punch.PushBack({ 614, 474, 134, 143 }, 0.5f);
+				jump_punch.PushBack({ 751, 490, 132, 128 }, 0.5f);
+				jump_punch.PushBack({ 891, 490, 132, 128 }, 0.5f);
+				jump_punch.PushBack({ 1031, 530, 136, 89 }, 0.5f);
+				jump_punch.PushBack({ 1172, 530, 136, 89 }, 0.5f);
+				jump_punch.PushBack({ 1313, 542, 133, 75 }, 0.5f);
+				jump_punch.PushBack({ 1449, 542, 133, 75 }, 0.5f);
+				jump_punch.PushBack({ 1587, 542, 133, 75 }, 0.5f);
+				jump_punch.PushBack({ 1724, 542, 133, 75 }, 0.5f);
+				jump_punch.PushBack({ 1861, 542, 133, 75 }, 0.5f);
+				jump_punch.PushBack({ 27, 620, 103, 125 }, 0.5f);
+				jump_punch.PushBack({ 133, 620, 103, 125 }, 0.5f);
+				jump_punch.PushBack({ 237, 620, 103, 125 }, 0.5f);
+				jump_punch.PushBack({ 341, 620, 103, 125 }, 0.5f);
+				jump_punch.PushBack({ 447, 620, 103, 125 }, 0.5f);
+				jump_punch.loop = false;
+			}
 
 		// */		
 }
@@ -848,12 +897,12 @@ update_status ModulePlayer::PreUpdate()
 			{
 				if (player_input.pressing_C) {
 					state = JUMP_KICK;
-					//hit_done++;
+					hit_done++;
 				}
 				if (player_input.pressing_V) {
-					//hit_done++;
+					hit_done++;
 					state = JUMP_PUNCH;
-					//App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(light_attack_fx);
 				}
 				if (current_animation->Finished())
 				{
@@ -1660,7 +1709,22 @@ update_status ModulePlayer::Update()
 
 			}
 			else {
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 40, position.y - 100);
+					collider_player_up->SetSize(40, 75);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 40, position.y - 100);
+					collider_player_down->SetSize(1, 1);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 50, position.y - 70);
+					collider_player_attack->SetSize(45, 50);
+				}
 
 
 			}
