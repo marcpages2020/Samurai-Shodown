@@ -836,6 +836,7 @@ update_status ModulePlayer2::PreUpdate()
 			if (player_input2.pressing_K) {
 				//hit_done++;
 				state2 = JUMP_PUNCH2;
+				direction_x = 0;
 			}
 			if (player_input2.pressing_right && mult == 1)
 				state2 = JUMP_BACKWARD2;
@@ -862,6 +863,7 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = IDLE2;
 				jump_forward2.Reset();
 			}
+			direction_x = 1;
 		}
 		if (state2 == JUMP_BACKWARD2)
 		{
@@ -879,6 +881,7 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = IDLE2;
 				jump_backward2.Reset();
 			}
+			direction_x = -1;
 		}
 		if (state2 == JUMP_PUNCH2) {
 			if (current_animation->Finished())
@@ -1701,7 +1704,7 @@ update_status ModulePlayer2::Update()
 
 				}
 				position.y -= speed * 1.75 * mult;
-				position.x -= 1.25*speed;
+				position.x -= 1.25*speed*direction_x;
 
 				if (position.y <= 100) {
 					mult = -1;

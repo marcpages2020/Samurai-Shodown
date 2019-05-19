@@ -95,6 +95,7 @@ public:
 	Collider *test_collider = nullptr;
 	int life = 100;
 	int mult = 1;
+	int direction_x =1;
 	int hit_percent = 0;
 	int hit_done = 0;
 	int attack_frames = 0;
