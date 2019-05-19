@@ -1698,6 +1698,12 @@ update_status ModulePlayer::Update()
 
 
 			}
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed;
+
+			if (position.y <= 100) {
+				mult = -1;
+			}
 			shadow_x = position.x;
 			break;
 		case JUMP_KICK:
