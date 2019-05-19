@@ -1704,6 +1704,19 @@ update_status ModulePlayer::Update()
 			if (position.y <= 100) {
 				mult = -1;
 			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_forward.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
 			shadow_x = position.x;
 			break;
 		case JUMP_KICK:
