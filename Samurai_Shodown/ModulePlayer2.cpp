@@ -617,7 +617,57 @@ ModulePlayer2::ModulePlayer2()
 				specialattack2.PushBack({ 679, 1574, 62, 94 }, 0.05f);//24
 				specialattack2.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
 				specialattack2.loop = false;
+			}
 
+			//jump_kick
+			{
+				jump_kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
+				jump_kick2.PushBack({ 139,745,108,148 }, 0.5f);
+				jump_kick2.PushBack({ 249,745,108,148 }, 0.5f);
+				jump_kick2.PushBack({ 358,745,99,148 }, 0.5f);//4
+				jump_kick2.PushBack({ 459,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 560,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 660,745,99,148 }, 0.5f);//7
+				jump_kick2.PushBack({ 762,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 863,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 964,745,99,148 }, 0.5f);//10
+				jump_kick2.PushBack({ 1067,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 1168,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 660,745,99,148 }, 0.5f);//7
+				jump_kick2.PushBack({ 762,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 863,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 358,745,99,148 }, 0.5f);//4
+				jump_kick2.PushBack({ 459,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 560,745,99,148 }, 0.5f);
+				jump_kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
+				jump_kick2.PushBack({ 139,745,108,148 }, 0.5f);
+				jump_kick2.PushBack({ 249,745,108,148 }, 0.5f);
+				jump_kick2.loop = false;
+			}
+
+			//jump_punch
+			{
+				jump_punch2.PushBack({ 27, 451, 87, 168 }, 0.5f);
+				jump_punch2.PushBack({ 116, 451, 87, 168 }, 0.5f);
+				jump_punch2.PushBack({ 207, 492, 134, 127 }, 0.5f);
+				jump_punch2.PushBack({ 342, 492, 134, 127 }, 0.5f);
+				jump_punch2.PushBack({ 477, 474, 134, 143 }, 0.5f);
+				jump_punch2.PushBack({ 614, 474, 134, 143 }, 0.5f);
+				jump_punch2.PushBack({ 751, 490, 132, 128 }, 0.5f);
+				jump_punch2.PushBack({ 891, 490, 132, 128 }, 0.5f);
+				jump_punch2.PushBack({ 1031, 530, 136, 89 }, 0.5f);
+				jump_punch2.PushBack({ 1172, 530, 136, 89 }, 0.5f);
+				jump_punch2.PushBack({ 1313, 542, 133, 75 }, 0.5f);
+				jump_punch2.PushBack({ 1449, 542, 133, 75 }, 0.5f);
+				jump_punch2.PushBack({ 1587, 542, 133, 75 }, 0.5f);
+				jump_punch2.PushBack({ 1724, 542, 133, 75 }, 0.5f);
+				jump_punch2.PushBack({ 1861, 542, 133, 75 }, 0.5f);
+				jump_punch2.PushBack({ 27, 620, 103, 125 }, 0.5f);
+				jump_punch2.PushBack({ 133, 620, 103, 125 }, 0.5f);
+				jump_punch2.PushBack({ 237, 620, 103, 125 }, 0.5f);
+				jump_punch2.PushBack({ 341, 620, 103, 125 }, 0.5f);
+				jump_punch2.PushBack({ 447, 620, 103, 125 }, 0.5f);
+				jump_punch2.loop = false;
 			}
 
 			//win animation
@@ -1649,6 +1699,27 @@ update_status ModulePlayer2::Update()
 
 
 
+				}
+				position.y -= speed * 1.75 * mult;
+				position.x -= 1.25*speed;
+
+				if (position.y <= 100) {
+					mult = -1;
+				}
+				else if (position.y == initial_position.y)
+				{
+					mult = 1;
+					jump_forward2.Reset();
+					state2 = IDLE2;
+					App->render->StartCameraShake(500, 3);
+				}
+				else if (position.y > initial_position.y)
+				{
+					position.y = initial_position.y;
+					mult = 1;
+					jump_forward2.Reset();
+					state2 = IDLE2;
+					App->render->StartCameraShake(500, 3);
 				}
 				shadow_x = position.x;
 				break;

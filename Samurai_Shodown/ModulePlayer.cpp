@@ -1708,7 +1708,11 @@ update_status ModulePlayer::Update()
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
+<<<<<<< HEAD
 				jump_punch.Reset();
+=======
+				jump_forward.Reset();
+>>>>>>> daac989e0caadfaf51f041a5864bc66bab3682a2
 				mult = 1;
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
