@@ -2306,6 +2306,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		case COLLIDER_PLAYER_1_ATTACK:
 			if (!App->player->collider_player_attack->to_delete && !god) {
 				App->player->hit_percent++;
+				App->audio->PlayFX(hit_fx);
+				life -= 10;
+				state2 = HIT2;
 				switch (App->player->state)
 				{
 				case States::KICK:
@@ -2323,12 +2326,15 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				case States::TWISTER:
 					App->ui->player1_point += 400;
 					break;
+				case States::JUMP_PUNCH:
+					App->ui->player1_point += 50;
+					break;
+				case States::JUMP_KICK:
+					App->ui->player1_point += 50;
+					break;
 				default:
 					break;
 				}
-				App->audio->PlayFX(hit_fx);
-				life -= 10;
-				state2 = HIT2;
 				App->player->collider_player_attack->to_delete = true;
 				if ((position.x < App->player->position.x) && (position.x > App->render->left->rect.x + 60))
 				{

@@ -2248,6 +2248,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 					break;
 				case States2::TWISTER2:
 					App->ui->player2_point += 400;
+				case States2::JUMP_PUNCH2:
+					App->ui->player2_point += 50;
+					break;
+				case States2::JUMP_KICK2:
+					App->ui->player2_point += 50;
+					break;
 				default:
 					break;
 				}
