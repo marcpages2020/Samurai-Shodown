@@ -1701,13 +1701,19 @@ update_status ModulePlayer2::Update()
 				else {
 					if (collider_player_2_up != nullptr)
 					{
-						collider_player_2_up->SetPos(position.x - 25, position.y - 90);
-						collider_player_2_up->SetSize(40, 50);
+						collider_player_2_up->SetPos(position.x - 20, position.y - 60);
+						collider_player_2_up->SetSize(50, 47);
 					}
-					if (collider_player_2_down != nullptr)
+					if (collider_player_2_up != nullptr)
 					{
-						collider_player_2_down->SetPos(position.x - 35, position.y - 45);
-						collider_player_2_down->SetSize(50, 35);
+						collider_player_2_down->SetPos(position.x - 10, position.y - 10);
+						collider_player_2_down->SetSize(70, 15);
+					}
+					if (collider_player_2_attack == nullptr)
+					{
+						collider_player_2_attack = App->collision->AddCollider({ position.x - 500, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+						collider_player_2_attack->SetPos(position.x - 60, position.y - 50);
+						collider_player_2_attack->SetSize(67, 30);
 					}
 				}
 				position.y -= speed * 1.75 * mult;
@@ -1737,20 +1743,39 @@ update_status ModulePlayer2::Update()
 				current_animation = &jump_kick2;
 				//Wan-Fu
 				if (flip != SDL_FLIP_HORIZONTAL) {
-
-
-
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_up->SetPos(position.x + 40, position.y - 100);
+						collider_player_2_up->SetSize(40, 75);
+					}
+					if (collider_player_2_down != nullptr)
+					{
+						collider_player_2_down->SetPos(position.x + 40, position.y - 100);
+						collider_player_2_down->SetSize(1, 1);
+					}
+					if (collider_player_2_attack == nullptr)
+					{
+						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+						collider_player_2_attack->SetPos(position.x + 50, position.y - 70);
+						collider_player_2_attack->SetSize(50, 50);
+					}
 				}
 				else {
 					if (collider_player_2_up != nullptr)
 					{
-						collider_player_2_up->SetPos(position.x - 25, position.y - 90);
-						collider_player_2_up->SetSize(40, 50);
+						collider_player_2_up->SetPos(position.x - 25, position.y - 100);
+						collider_player_2_up->SetSize(40, 75);
 					}
 					if (collider_player_2_down != nullptr)
 					{
-						collider_player_2_down->SetPos(position.x - 35, position.y - 45);
-						collider_player_2_down->SetSize(50, 35);
+						collider_player_2_down->SetPos(position.x - 25, position.y - 100);
+						collider_player_2_down->SetSize(1, 1);
+					}
+					if (collider_player_2_attack == nullptr)
+					{
+						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+						collider_player_2_attack->SetPos(position.x - 50, position.y - 70);
+						collider_player_2_attack->SetSize(45, 50);
 					}
 				}
 				position.y -= speed * 1.75 * mult;
