@@ -1697,9 +1697,16 @@ update_status ModulePlayer::Update()
 
 			}
 			else {
-				
-
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
+				}
 			}
 
 			position.y -= speed * 1.75 * mult;
@@ -1732,11 +1739,16 @@ update_status ModulePlayer::Update()
 
 			}
 			else {
-				
-
-
-
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
+				}
 			}
 
 			position.y -= speed * 1.75 * mult;

@@ -1693,15 +1693,22 @@ update_status ModulePlayer2::Update()
 			case JUMP_PUNCH2:
 				current_animation = &jump_punch2;
 				//Wan-Fu
-				if (flip == SDL_FLIP_HORIZONTAL) {
+				if (flip != SDL_FLIP_HORIZONTAL) {
 
 
 
 				}
 				else {
-
-
-
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_up->SetPos(position.x - 25, position.y - 90);
+						collider_player_2_up->SetSize(40, 50);
+					}
+					if (collider_player_2_down != nullptr)
+					{
+						collider_player_2_down->SetPos(position.x - 35, position.y - 45);
+						collider_player_2_down->SetSize(50, 35);
+					}
 				}
 				position.y -= speed * 1.75 * mult;
 				position.x -= 1.25*speed*direction_x;
@@ -1729,15 +1736,22 @@ update_status ModulePlayer2::Update()
 			case JUMP_KICK2:
 				current_animation = &jump_kick2;
 				//Wan-Fu
-				if (flip == SDL_FLIP_HORIZONTAL) {
+				if (flip != SDL_FLIP_HORIZONTAL) {
 
 
 
 				}
 				else {
-
-
-
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_up->SetPos(position.x - 25, position.y - 90);
+						collider_player_2_up->SetSize(40, 50);
+					}
+					if (collider_player_2_down != nullptr)
+					{
+						collider_player_2_down->SetPos(position.x - 35, position.y - 45);
+						collider_player_2_down->SetSize(50, 35);
+					}
 				}
 				position.y -= speed * 1.75 * mult;
 				position.x -= 1.25*speed*direction_x;
