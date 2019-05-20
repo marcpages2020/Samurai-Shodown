@@ -1560,9 +1560,9 @@ update_status ModulePlayer::Update()
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x += 1.25*speed;
+			position.x += 1.75*speed;
 
-			if (position.y <= 100) {
+			if (position.y <= 85) {
 				mult = -1;
 			}
 			else if (position.y > initial_position.y)
@@ -1583,9 +1583,9 @@ update_status ModulePlayer::Update()
 			current_animation = &jump_backward;
 
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed;
+			position.x -= 1.75*speed;
 
-			if (position.y <= 100) {
+			if (position.y <= 85) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
