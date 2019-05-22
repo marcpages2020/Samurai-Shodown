@@ -138,3 +138,28 @@ bool ModuleInput::CleanUp()
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
 }
+
+bool CommandSpecialAttack::Check(uint frames_past)const {
+	int count = 0;
+	uint frame = 0u;
+
+	for (uint i = 1u; i < frames_past; ++i)
+	{
+		if (count > 0 && (i - frame) > MAX_COMMAND_FRAMES)
+			return false;
+
+		/*const History* history = App->input->GetPrevious(i);
+		if (!history)
+			break;
+		const GamePad* pad = &(history->pads[0]);
+
+		switch (count){
+		case 0: { if (pad->a){ ++count; frame = i;}} break;
+		case 1: { if (pad->right && !pad->down) { ++count; frame = i; }} break;
+		case 2: { if (pad->right && pad->down) { ++count; frame = i; }} break;
+		case 3: {if (pad->down) return true; } break;
+		}
+		*/
+	}
+	return false;
+}
