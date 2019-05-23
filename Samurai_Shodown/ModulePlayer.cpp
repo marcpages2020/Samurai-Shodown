@@ -674,7 +674,7 @@ ModulePlayer::ModulePlayer()
 			win.PushBack({ 1556, 1711, 111, 120}, 0.1f);
 			win.loop = true;
 			}
-			//jump_kick
+			//jump_kick  
 			//jump_kick
 			
 			{
