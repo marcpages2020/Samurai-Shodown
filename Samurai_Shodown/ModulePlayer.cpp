@@ -678,33 +678,33 @@ ModulePlayer::ModulePlayer()
 			//jump_kick
 			
 			{
-			jump_punch.PushBack({ 820, 635, 115, 112}, 0.5f);//1
-			jump_punch.PushBack({ 956, 635, 115, 112}, 0.5f);
-			jump_punch.PushBack({ 1089, 635, 115, 112}, 0.5f);
-			jump_punch.PushBack({ 1227, 619, 108, 136}, 0.5f);
-			jump_punch.PushBack({ 1255, 619, 108, 136}, 0.5f);
-			jump_punch.PushBack({ 1487, 619, 108, 136}, 0.5f);
-			jump_punch.PushBack({ 1619, 621, 125, 130}, 0.5f);
-			jump_punch.PushBack({ 1766, 619, 125, 130}, 0.5f);
-			jump_punch.PushBack({ 1914, 619, 125, 130}, 0.5f);
-			jump_punch.PushBack({ 1443, 764, 119, 130}, 0.5f);
-			jump_punch.PushBack({ 1586, 764, 119, 130}, 0.5f);
-			jump_punch.PushBack({ 1750, 764, 119, 130}, 0.5f);
+			jump_punch.PushBack({ 820, 635, 115, 112}, 0.3f);//1
+			jump_punch.PushBack({ 956, 635, 115, 112}, 0.3f);
+			jump_punch.PushBack({ 1089, 635, 115, 112}, 0.3f);
+			jump_punch.PushBack({ 1227, 619, 108, 136}, 0.3f);
+			jump_punch.PushBack({ 1255, 619, 108, 136}, 0.3f);
+			jump_punch.PushBack({ 1487, 619, 108, 136}, 0.3f);
+			jump_punch.PushBack({ 1619, 621, 125, 130}, 0.3f);
+			jump_punch.PushBack({ 1766, 619, 125, 130}, 0.3f);
+			jump_punch.PushBack({ 1914, 619, 125, 130}, 0.3f);
+			jump_punch.PushBack({ 1443, 764, 119, 130}, 0.3f);
+			jump_punch.PushBack({ 1586, 764, 119, 130}, 0.3f);
+			jump_punch.PushBack({ 1750, 764, 119, 130}, 0.3f);
 			jump_punch.loop = false;
 			}
 			
 
 			//jump_punch
 			{
-				jump_kick.PushBack({ 30, 1831, 111, 104 }, 0.5f);
-				jump_kick.PushBack({ 164, 1831, 111, 104 }, 0.5f);
-				jump_kick.PushBack({ 313, 1831, 111, 104 }, 0.5f);
-				jump_kick.PushBack({ 466, 1831, 132, 110 }, 0.5f);
-				jump_kick.PushBack({ 625, 1831, 132, 110 }, 0.5f);
-				jump_kick.PushBack({ 1271, 1831, 132, 110 }, 0.5f);
-				jump_kick.PushBack({ 790, 1831, 133, 125 }, 0.5f);
-				jump_kick.PushBack({ 949, 1831, 133, 125 }, 0.5f);
-				jump_kick.PushBack({ 1112, 1831, 133, 125 }, 0.5f);
+				jump_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
+				jump_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
+				jump_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
+				jump_kick.PushBack({ 466, 1831, 132, 110 }, 0.3f);
+				jump_kick.PushBack({ 625, 1831, 132, 110 }, 0.3f);
+				jump_kick.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
+				jump_kick.PushBack({ 790, 1831, 133, 125 }, 0.3f);
+				jump_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
+				jump_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
 				jump_kick.loop = false;
 			}
 
@@ -1741,6 +1741,7 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
+				direction_x = 0;
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1802,6 +1803,7 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
+				direction_x = 0;
 			}
 			else if (position.y > initial_position.y)
 			{
