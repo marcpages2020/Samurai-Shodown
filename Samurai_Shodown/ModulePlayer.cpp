@@ -990,7 +990,7 @@ update_status ModulePlayer::PreUpdate()
 						position.x -= speed;
 					}
 				}
-				else if ((current_animation->Finished())&&(position.y == initial_position.y+1)) {
+				else if ((current_animation->Finished()) && ((position.y == initial_position.y + 1) || (position.y == initial_position.y))) {
 					state = IDLE;
 					hit.Reset();
 				}
