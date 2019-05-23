@@ -1496,6 +1496,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			*/
+			//Wan-Fu Jump forward
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1633,7 +1634,7 @@ update_status ModulePlayer::Update()
 			}
 			}
 			*/
-			//Wan-Fu
+			//Wan-Fu Jump Backward
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1675,7 +1676,7 @@ update_status ModulePlayer::Update()
 			break;
 		case JUMP_PUNCH:
 			current_animation = &jump_punch;
-			//Wan-Fu
+			//Wan-Fu Jump Punch
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1738,7 +1739,7 @@ update_status ModulePlayer::Update()
 			break;
 		case JUMP_KICK:
 			current_animation = &jump_kick;
-			//Wan-Fu
+			//Wan-Fu Jump Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1840,7 +1841,7 @@ update_status ModulePlayer::Update()
 			}
 			}
 			*/
-			//Wan-Fu
+			//Wan-Fu Punch
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1920,7 +1921,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			*/
-			//Wan-Fu
+			//Wan-Fu Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -1997,7 +1998,7 @@ update_status ModulePlayer::Update()
 			}
 			}
 			*/
-			//Wan-Fu
+			//Wan-Fu Special Attack
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -2081,9 +2082,16 @@ update_status ModulePlayer::Update()
 			}
 			break;
 			*/
-			//Wan-Fu
+			//Wan-Fu Hit
 			if (flip == SDL_FLIP_HORIZONTAL) {
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 30, position.y - 45);
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
