@@ -958,7 +958,7 @@ update_status ModulePlayer2::PreUpdate()
 					position.x -= speed;
 				}
 			}
-			else if ((current_animation->Finished())&&(position.y == initial_position.y+1)) {
+			else if ((current_animation->Finished())&&((position.y == initial_position.y+1)||(position.y == initial_position.y))) {
 				state2 = IDLE2;
 				hit2.Reset();
 			}
@@ -1036,6 +1036,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//wan-fu idle
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1090,6 +1091,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//wan-fu forward
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1142,6 +1144,7 @@ update_status ModulePlayer2::Update()
 			position.x += speed;
 			break;
 			*/
+			//wan-fu backward
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1209,6 +1212,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//Wan-fu crouch down
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1291,10 +1295,22 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//Wan-fu crouch kick
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
-
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 30, position.y - 70);
+					collider_player_2_up->SetSize(40, 50);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 30, position.y - 20);
+					collider_player_2_down->SetSize(40, 25);
+				}
+				if (collider_player_2_attack == nullptr) {
+					collider_player_2_attack = App->collision->AddCollider({ position.x + 25, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+					collider_player_2_attack->SetSize(85, 15);
+				}
 			}
 			else {
 				if (collider_player_2_up != nullptr)
@@ -1349,6 +1365,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//wan-fu crouch punch 
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1428,6 +1445,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//wan-fu jump neutral
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1518,6 +1536,7 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
+			//wan-fu jump forward
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1639,6 +1658,7 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
+			//wan-fu jump backward
 			if (flip != SDL_FLIP_HORIZONTAL)
 			{
 				if (collider_player_2_up != nullptr)
@@ -1692,11 +1712,25 @@ update_status ModulePlayer2::Update()
 			break;
 			case JUMP_PUNCH2:
 				current_animation = &jump_punch2;
-				//Wan-Fu
+				//Wan-Fu jump punch
 				if (flip != SDL_FLIP_HORIZONTAL) {
-
-
-
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_up->SetPos(position.x + 35, position.y - 60);
+						collider_player_2_up->SetSize(50, 47);
+					}
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_down->SetPos(position.x + 5, position.y - 10);
+						collider_player_2_down->SetSize(70, 15);
+					}
+					if (collider_player_2_attack == nullptr)
+					{
+						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+						collider_player_2_attack->to_delete = false;
+						collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
+						collider_player_2_attack->SetSize(67, 30);
+					}
 				}
 				else {
 					if (collider_player_2_up != nullptr)
@@ -1741,7 +1775,7 @@ update_status ModulePlayer2::Update()
 				break;
 			case JUMP_KICK2:
 				current_animation = &jump_kick2;
-				//Wan-Fu
+				//Wan-Fu jump_kick
 				if (flip != SDL_FLIP_HORIZONTAL) {
 					if (collider_player_2_up != nullptr)
 					{
@@ -1842,6 +1876,7 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
+			//Wan-Fu punch
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1919,6 +1954,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//Wan-Fu kick
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -2056,7 +2092,7 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
-			//Wan-Fu
+			//Wan-Fu special attack
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -2124,6 +2160,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case EN_GARDE2:
 			current_animation = &en_garde2;
+			//Wan-Fu en garde
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -2176,6 +2213,7 @@ update_status ModulePlayer2::Update()
 			break;
 			}
 			*/
+			//Wan-Fu hit
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
