@@ -129,6 +129,7 @@ bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect * se
 		rect.w = section->w;
 		rect.h = section->h;
 	}
+
 	else
 	{
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
