@@ -1775,7 +1775,7 @@ update_status ModulePlayer2::Update()
 				break;
 			case JUMP_KICK2:
 				current_animation = &jump_kick2;
-				//Wan-Fu
+				//Wan-Fu jump_kick
 				if (flip != SDL_FLIP_HORIZONTAL) {
 					if (collider_player_2_up != nullptr)
 					{
@@ -1876,6 +1876,7 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
+			//Wan-Fu punch
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -1953,6 +1954,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 			*/
+			//Wan-Fu kick
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -2090,7 +2092,7 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
-			//Wan-Fu
+			//Wan-Fu special attack
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -2158,6 +2160,7 @@ update_status ModulePlayer2::Update()
 			break;
 		case EN_GARDE2:
 			current_animation = &en_garde2;
+			//Wan-Fu en garde
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
@@ -2210,6 +2213,7 @@ update_status ModulePlayer2::Update()
 			break;
 			}
 			*/
+			//Wan-Fu hit
 			if (flip != SDL_FLIP_HORIZONTAL) {
 				if (collider_player_2_up != nullptr)
 				{
