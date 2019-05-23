@@ -30,6 +30,7 @@ enum States
 	TWISTER,
 	HIT,
 	EN_GARDE,
+	GRAB,
 	WIN,
 	DEATH,
 	SPECIAL_ATTACK,
@@ -82,6 +83,7 @@ public:
 	Animation fire_sword;
 	Animation en_garde;
 	Animation specialattack;
+	Animation grab;
 	Animation win;
 	Animation die;
 	int hit_percent = 0;

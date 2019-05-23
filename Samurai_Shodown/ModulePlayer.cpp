@@ -528,23 +528,23 @@ ModulePlayer::ModulePlayer()
 				punch.PushBack({ 27, 451, 87, 168}, 0.5f);
 				punch.PushBack({ 116, 451, 87, 168}, 0.5f);
 				punch.PushBack({ 207, 492, 134, 127}, 0.5f);
-				punch.PushBack({ 342, 492, 134, 127}, 0.5f);
-				punch.PushBack({ 477, 474, 134, 143}, 0.5f);
-				punch.PushBack({ 614, 474, 134, 143}, 0.5f);
-				punch.PushBack({ 751, 490, 132, 128}, 0.5f);
-				punch.PushBack({ 891, 490, 132, 128}, 0.5f);
-				punch.PushBack({ 1031, 530, 136, 89}, 0.5f);
-				punch.PushBack({ 1172, 530, 136, 89}, 0.5f);
-				punch.PushBack({ 1313, 542, 133, 75}, 0.5f);
-				punch.PushBack({ 1449, 542, 133, 75}, 0.5f);
-				punch.PushBack({ 1587, 542, 133, 75}, 0.5f);
-				punch.PushBack({ 1724, 542, 133, 75}, 0.5f);
-				punch.PushBack({ 1861, 542, 133, 75}, 0.5f);
-				punch.PushBack({ 27, 620, 103, 125}, 0.5f);
-				punch.PushBack({ 133, 620, 103, 125}, 0.5f);
-				punch.PushBack({ 237, 620, 103, 125}, 0.5f);
-				punch.PushBack({ 341, 620, 103, 125}, 0.5f);
-				punch.PushBack({ 447, 620, 103, 125}, 0.5f);
+				//punch.PushBack({ 342, 492, 134, 127}, 0.5f);
+				//punch.PushBack({ 477, 474, 134, 143}, 0.5f);
+				//punch.PushBack({ 614, 474, 134, 143}, 0.5f);
+				//punch.PushBack({ 751, 490, 132, 128}, 0.5f);
+				//punch.PushBack({ 891, 490, 132, 128}, 0.5f);
+				//punch.PushBack({ 1031, 530, 136, 89}, 0.5f);
+				//punch.PushBack({ 1172, 530, 136, 89}, 0.5f);
+				//punch.PushBack({ 1313, 542, 133, 75}, 0.5f);
+				//punch.PushBack({ 1449, 542, 133, 75}, 0.5f);
+				//punch.PushBack({ 1587, 542, 133, 75}, 0.5f);
+				//punch.PushBack({ 1724, 542, 133, 75}, 0.5f);
+				//punch.PushBack({ 1861, 542, 133, 75}, 0.5f);
+				//punch.PushBack({ 27, 620, 103, 125}, 0.5f);
+				//punch.PushBack({ 133, 620, 103, 125}, 0.5f);
+				//punch.PushBack({ 237, 620, 103, 125}, 0.5f);
+				//punch.PushBack({ 341, 620, 103, 125}, 0.5f);
+				//punch.PushBack({ 447, 620, 103, 125}, 0.5f);
 				punch.loop = false;
 			}
 
@@ -589,7 +589,7 @@ ModulePlayer::ModulePlayer()
 				crouch_punch.PushBack({ 614, 1044, 138, 167}, 0.5f);
 				crouch_punch.PushBack({ 752, 1047, 138, 164}, 0.5f);
 				crouch_punch.PushBack({ 891, 1047, 138, 164}, 0.5f);
-				crouch_punch.PushBack({ 1046, 1172, 157, 129}, 0.5f);
+				crouch_punch.PushBack({ 1046, 1082, 127, 129}, 0.5f);
 				crouch_punch.PushBack({ 1203, 1123, 138, 88}, 0.5f);
 				crouch_punch.PushBack({ 1340, 1123, 138, 88}, 0.5f);
 				crouch_punch.PushBack({ 1480, 1084, 102, 126}, 0.5f);
@@ -707,6 +707,13 @@ ModulePlayer::ModulePlayer()
 				jump_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
 				jump_kick.loop = false;
 			}
+
+			//grab animation
+			/*
+			{
+				grab.PushBack({ , , , })
+			}
+			*/
 
 
 
