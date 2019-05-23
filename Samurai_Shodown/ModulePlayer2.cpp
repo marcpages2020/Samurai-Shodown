@@ -2177,9 +2177,14 @@ update_status ModulePlayer2::Update()
 			}
 			*/
 			if (flip != SDL_FLIP_HORIZONTAL) {
-				
-
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 15, position.y - 85);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 10, position.y - 45);
+				}
 			}
 			else {
 				if (collider_player_2_up != nullptr)
