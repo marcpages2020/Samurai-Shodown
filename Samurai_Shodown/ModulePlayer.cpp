@@ -806,7 +806,7 @@ update_status ModulePlayer::PreUpdate()
 					//state = TWISTER;
 					state = SPECIAL_ATTACK;
 					App->render->StartCameraShake(1200, 2);
-					App->render->StartSlowdown(750, 20);
+					//App->render->StartSlowdown(750, 20);
 				}
 			}
 			if (state == BACKWARD) {
@@ -2300,3 +2300,5 @@ void ModulePlayer::PlayerCollidersCleanUp() {
 		collider_player_down->to_delete = true;
 	}
 }
+
+//player
