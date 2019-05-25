@@ -2404,6 +2404,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			position.x += 5;
 			App->render->StartCameraShake(400, 3);
 			App->render->StartSlowdown(800, 30);
+			App->ui->player1_point += 400;
 			break;
 		default:
 			break;
