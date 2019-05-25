@@ -71,7 +71,9 @@ public:
 	Animation forward;
 	Animation backward;
 	Animation punch;
+	Animation heavy_punch;
 	Animation kick;
+	Animation heavy_kick;
 	Animation hit;
 	Animation jump_neutral;
 	Animation jump_forward;

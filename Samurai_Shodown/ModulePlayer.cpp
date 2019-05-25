@@ -674,7 +674,7 @@ ModulePlayer::ModulePlayer()
 			win.PushBack({ 1556, 1711, 111, 120}, 0.1f);
 			win.loop = true;
 			}
-			//jump_kick  
+
 			//jump_kick
 			
 			{
@@ -693,7 +693,6 @@ ModulePlayer::ModulePlayer()
 			jump_punch.loop = false;
 			}
 			
-
 			//jump_punch
 			{
 				jump_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
@@ -714,9 +713,13 @@ ModulePlayer::ModulePlayer()
 				grab.PushBack({ , , , })
 			}
 			*/
+			//heavy punch
+			heavy_punch.PushBack({ 27, 451, 87, 168 }, 0.5f);
+			heavy_punch.loop = false;
 
-
-
+			//heavy kick
+			heavy_kick.PushBack({ 28,745,108,148 }, 0.5f);//1
+			heavy_kick.loop = false;
 		// */		
 }
 	}
@@ -927,10 +930,11 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_KICK;
 					//hit_done++;
 				}
-				if (player_input.pressing_A && mult == 1)
+				/*if (player_input.pressing_A && mult == 1)
 					state = JUMP_BACKWARD;
 				if (player_input.pressing_D && mult == 1)
 					state = JUMP_FORWARD;
+					*/
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1078,7 +1082,22 @@ update_status ModulePlayer::PreUpdate()
 					state = IDLE;
 				}
 			}
-
+			if (state == HEAVY_PUNCH)
+			{
+				if (current_animation->Finished())
+				{
+					heavy_punch.Reset();
+					state = IDLE;
+				}
+			}
+			if (state == HEAVY_KICK)
+			{
+				if (current_animation->Finished())
+				{
+					heavy_kick.Reset();
+					state = IDLE;
+				}
+			}
 			if ((player_input.pressing_F4)) {
 				god = !god;
 			}
@@ -2206,6 +2225,11 @@ update_status ModulePlayer::Update()
 				}
 				shadow_x = position.x + 23;
 			}
+		case HEAVY_PUNCH:
+			current_animation = &heavy_punch;
+			break;
+		case HEAVY_KICK:
+			current_animation = &heavy_kick;
 			break;
 		default:
 			LOG("No state found :(");
@@ -2268,7 +2292,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER_2:
-			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN))
+			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK))
 			{
 				//if (App->player2->position.y == position.y)
 				//{

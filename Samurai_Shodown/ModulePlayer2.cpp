@@ -2375,6 +2375,12 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				case States::JUMP_KICK:
 					App->ui->player1_point += 50;
 					break;
+				case States::HEAVY_PUNCH:
+					App->ui->player1_point += 200;
+					break;
+				case States::HEAVY_KICK:
+					App->ui->player1_point += 200;
+					break;
 				default:
 					break;
 				}
