@@ -24,6 +24,8 @@ enum States
 	JUMP_PUNCH,
 	JUMP_KICK,
 	FORWARD,
+	HEAVY_PUNCH,
+	HEAVY_KICK,
 	IDLE,
 	KICK,
 	PUNCH,
@@ -46,6 +48,8 @@ struct PlayerInput {
 	bool pressing_S;
 	bool pressing_V;
 	bool pressing_Q;
+	bool pressing_N;
+	bool pressing_M;
 	bool pressing_F4;
 };
 

@@ -773,9 +773,11 @@ update_status ModulePlayer::PreUpdate()
 			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
 			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
 			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
-			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN;
-			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_1] == KEY_DOWN;
-			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
+			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
+			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN;
+			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_1] == KEY_DOWN;
+			player_input.pressing_N = App->input->keyboard[SDL_SCANCODE_N] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_1] == KEY_DOWN;
+			player_input.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN; // || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 
 			if (player_input.pressing_A && player_input.pressing_D) {
@@ -793,20 +795,26 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_D)
 					state = FORWARD;
 				if (player_input.pressing_C) {
-					state = KICK;
-					hit_done++;
-					App->audio->PlayFX(light_kick_fx);
-				}
-				if (player_input.pressing_V) {
 					state = PUNCH;
 					hit_done++;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_W)
-					state = JUMP_NEUTRAL;
-				if (player_input.pressing_S)
-					state = CROUCH_DOWN;
+				if (player_input.pressing_V) {
+					state = HEAVY_PUNCH;
+					hit_done++;
+					App->audio->PlayFX(light_attack_fx);
+				}
 				if (player_input.pressing_B) {
+					state = KICK;
+					hit_done++;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_N) {
+					state = HEAVY_KICK;
+					hit_done++;
+					App->audio->PlayFX(light_kick_fx);
+				}
+				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
 					App->audio->PlayFX(special_attack_fx);
 					hit_done++;
@@ -815,19 +823,42 @@ update_status ModulePlayer::PreUpdate()
 					App->render->StartCameraShake(1200, 2);
 					//App->render->StartSlowdown(750, 20);
 				}
+				if (player_input.pressing_W)
+					state = JUMP_NEUTRAL;
+				if (player_input.pressing_S)
+					state = CROUCH_DOWN;
 			}
 			if (state == BACKWARD) {
 				if (!player_input.pressing_A)
 					state = IDLE;
-				if (player_input.pressing_V)
-				{
-					hit_done++;
+				if (player_input.pressing_C) {
 					state = PUNCH;
+					hit_done++;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_C) {
+				if (player_input.pressing_V) {
+					state = HEAVY_PUNCH;
 					hit_done++;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_B) {
 					state = KICK;
+					hit_done++;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_N) {
+					state = HEAVY_KICK;
+					hit_done++;
+					App->audio->PlayFX(light_kick_fx);
+				}
+				if (player_input.pressing_M) {
+					//App->audio->PlayFX(twister_fx);
+					App->audio->PlayFX(special_attack_fx);
+					hit_done++;
+					//state = TWISTER;
+					state = SPECIAL_ATTACK;
+					App->render->StartCameraShake(1200, 2);
+					//App->render->StartSlowdown(750, 20);
 				}
 				if (player_input.pressing_W)
 					state = JUMP_BACKWARD;
@@ -835,14 +866,34 @@ update_status ModulePlayer::PreUpdate()
 			if (state == FORWARD) {
 				if (!player_input.pressing_D)
 					state = IDLE;
-				if (player_input.pressing_V) {
-					hit_done++;
+				if (player_input.pressing_C) {
 					state = PUNCH;
+					hit_done++;
 					App->audio->PlayFX(light_attack_fx);
 				}
-				if (player_input.pressing_C) {
+				if (player_input.pressing_V) {
+					state = HEAVY_PUNCH;
+					hit_done++;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_B) {
 					state = KICK;
 					hit_done++;
+					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_N) {
+					state = HEAVY_KICK;
+					hit_done++;
+					App->audio->PlayFX(light_kick_fx);
+				}
+				if (player_input.pressing_M) {
+					//App->audio->PlayFX(twister_fx);
+					App->audio->PlayFX(special_attack_fx);
+					hit_done++;
+					//state = TWISTER;
+					state = SPECIAL_ATTACK;
+					App->render->StartCameraShake(1200, 2);
+					//App->render->StartSlowdown(750, 20);
 				}
 				if (player_input.pressing_W)
 					state = JUMP_FORWARD;
@@ -867,14 +918,14 @@ update_status ModulePlayer::PreUpdate()
 			if (state == JUMP_NEUTRAL)
 			{
 				if (player_input.pressing_C) {
-					state = JUMP_KICK;
-					//hit_done++;
-				}
-				if (player_input.pressing_V) {
 					//hit_done++;
 					state = JUMP_PUNCH;
 					direction_x = 0;
 					//App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_B) {
+					state = JUMP_KICK;
+					//hit_done++;
 				}
 				if (player_input.pressing_A && mult == 1)
 					state = JUMP_BACKWARD;
@@ -889,13 +940,13 @@ update_status ModulePlayer::PreUpdate()
 			if (state == JUMP_FORWARD)
 			{
 				if (player_input.pressing_C) {
-					state = JUMP_KICK;
-					hit_done++;
-				}
-				if (player_input.pressing_V) {
 					hit_done++;
 					state = JUMP_PUNCH;
 					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_B) {
+					state = JUMP_KICK;
+					hit_done++;
 				}
 				if (current_animation->Finished())
 				{
@@ -907,13 +958,13 @@ update_status ModulePlayer::PreUpdate()
 			if (state == JUMP_BACKWARD)
 			{
 				if (player_input.pressing_C) {
-					state = JUMP_KICK;
-					//hit_done++;
-				}
-				if (player_input.pressing_V) {
 					//hit_done++;
 					state = JUMP_PUNCH;
 					//App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_B) {
+					state = JUMP_KICK;
+					//hit_done++;
 				}
 				if (current_animation->Finished())
 				{
@@ -947,13 +998,13 @@ update_status ModulePlayer::PreUpdate()
 				}
 				if (player_input.pressing_C) {
 					hit_done++;
-					state = CROUCH_KICK;
-					App->audio->PlayFX(light_kick_fx);
-				}
-				if (player_input.pressing_V) {
-					hit_done++;
 					state = CROUCH_PUNCH;
 					App->audio->PlayFX(light_attack_fx);
+				}
+				if (player_input.pressing_B) {
+					hit_done++;
+					state = CROUCH_KICK;
+					App->audio->PlayFX(light_kick_fx);
 				}
 			}
 			if (state == CROUCH_UP)
