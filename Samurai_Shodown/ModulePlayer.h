@@ -23,6 +23,7 @@ enum States
 	JUMP_BACKWARD,
 	JUMP_PUNCH,
 	JUMP_KICK,
+	JUMP_HEAVY_PUNCH,
 	FORWARD,
 	HEAVY_PUNCH,
 	HEAVY_KICK,
@@ -80,6 +81,7 @@ public:
 	Animation jump_backward;
 	Animation jump_punch;
 	Animation jump_kick;
+	Animation jump_heavy_punch;
 	Animation crouch_up;
 	Animation crouch_down;
 	Animation crouch_punch;
