@@ -740,10 +740,26 @@ ModulePlayer::ModulePlayer()
 			heavy_punch.loop = false;
 
 			//heavy kick
-			/*
-			heavy_kick.PushBack({ 28,745,108,148 }, 0.5f);//1
+			
+			heavy_kick.PushBack({ 1198, 917, 107, 111}, 0.5f);//1
+			heavy_kick.PushBack({ 1305, 917, 107, 111}, 0.5f);
+			heavy_kick.PushBack({ 1412, 917, 107, 111}, 0.5f);
+			heavy_kick.PushBack({ 1536, 917, 119, 111}, 0.5f);
+			heavy_kick.PushBack({ 1664, 917, 119, 111}, 0.5f);
+			heavy_kick.PushBack({ 1798, 917, 119, 111}, 0.5f);
+			heavy_kick.PushBack({ 1932, 910, 114, 117}, 0.5f);
+			heavy_kick.PushBack({ 999, 1266, 114, 117}, 0.5f);
+			heavy_kick.PushBack({ 1113, 1266, 114, 117}, 0.5f);
+			heavy_kick.PushBack({ 1226, 1258, 114, 125}, 0.5f);
+			heavy_kick.PushBack({ 1341, 1258, 114, 125}, 0.5f);
+			heavy_kick.PushBack({ 1455, 1258, 114, 125}, 0.5f);
+			heavy_kick.PushBack({ 1536, 917, 119, 111 }, 0.5f);
+			heavy_kick.PushBack({ 1664, 917, 119, 111 }, 0.5f);
+			heavy_kick.PushBack({ 1798, 917, 119, 111 }, 0.5f);
+			heavy_kick.PushBack({ 1305, 917, 107, 111 }, 0.5f);
+			heavy_kick.PushBack({ 1412, 917, 107, 111 }, 0.5f);
 			heavy_kick.loop = false;
-			*/
+			
 		// */		
 }
 	}
