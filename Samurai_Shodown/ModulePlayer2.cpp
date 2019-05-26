@@ -2234,8 +2234,47 @@ update_status ModulePlayer2::Update()
 					collider_player_2_down->SetPos(position.x - 30, position.y - 45);
 				}
 			}
+			break;		
+		case HEAVY_PUNCH2:
+			current_animation = &heavy_punch2;
+			//Wan-Fu Heavy Punch
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+			}
+			else {
+
+
+			}
+			shadow_x = position.x;
 			break;
-		}
+		case HEAVY_KICK2:
+			current_animation = &heavy_kick2;
+			//Wan-Fu Heavy Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+			}
+			else {
+
+
+			}
+			shadow_x = position.x;
+			break;
+		case JUMP_HEAVY_PUNCH2:
+			current_animation = &jump_heavy_punch2;
+			//Wan-Fu Jump Heavy Punch
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+			}
+			else {
+
+
+			}
+			shadow_x = position.x;
+			break;
+			}
 		/*if (App->player->position.y < position.y -30)
 		{
 			if (App->player->position.x +10 > position.x)

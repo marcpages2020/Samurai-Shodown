@@ -2267,9 +2267,42 @@ update_status ModulePlayer::Update()
 			}
 		case HEAVY_PUNCH:
 			current_animation = &heavy_punch;
+			//Wan-Fu Heavy Punch
+			if (flip == SDL_FLIP_HORIZONTAL) {
+			
+
+			}
+			else {
+				
+
+			}
+			shadow_x = position.x;
 			break;
 		case HEAVY_KICK:
 			current_animation = &heavy_kick;
+			//Wan-Fu Heavy Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+			}
+			else {
+
+
+			}
+			shadow_x = position.x;
+			break;
+		case JUMP_HEAVY_PUNCH:
+			current_animation = &heavy_kick;
+			//Wan-Fu Jump Heavy Punch
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
+
+			}
+			else {
+
+
+			}
+			shadow_x = position.x;
 			break;
 		default:
 			LOG("No state found :(");
