@@ -762,7 +762,7 @@ ModulePlayer::ModulePlayer()
 			heavy_kick.loop = false;
 			
 		// */		
-}
+		}
 	}
 }
 
@@ -2275,7 +2275,22 @@ update_status ModulePlayer::Update()
 
 			}
 			else {
-				
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 20, position.y - 85);
+					collider_player_up->SetSize(45, 45);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 15, position.y - 50);
+					collider_player_down->SetSize(60, 50);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 35, position.y - 50);
+					collider_player_attack->SetSize(70, 30);
+				}
 
 			}
 			shadow_x = position.x;
