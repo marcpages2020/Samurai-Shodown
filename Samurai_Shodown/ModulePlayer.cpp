@@ -714,31 +714,32 @@ ModulePlayer::ModulePlayer()
 			}
 			*/
 			//heavy punch
-			heavy_punch.PushBack({ 34, 1948, 105, 95}, 0.5f);
-			heavy_punch.PushBack({ 156, 1948, 105, 95}, 0.5f);
-			heavy_punch.PushBack({ 275, 1948, 105, 95}, 0.5f);
-			heavy_punch.PushBack({ 399, 1946, 92, 97}, 0.5f);
-			heavy_punch.PushBack({ 515, 1946, 92, 97}, 0.5f);
-			heavy_punch.PushBack({ 626, 1946, 92, 97}, 0.5f);
-			heavy_punch.PushBack({ 739, 1950, 107, 93}, 0.5f);
-			heavy_punch.PushBack({ 848, 1950, 107, 93}, 0.5f);
-			heavy_punch.PushBack({ 958, 1950, 107, 93}, 0.5f);
-			heavy_punch.PushBack({ 1068, 1951, 162, 92}, 0.5f);
-			heavy_punch.PushBack({ 1230, 1951, 162, 92}, 0.5f);
-			heavy_punch.PushBack({ 1392, 1951, 162, 92}, 0.5f);
-			heavy_punch.PushBack({ 1552, 1946, 162, 97}, 0.5f);
-			heavy_punch.PushBack({ 1714, 1946, 162, 97}, 0.5f);
-			heavy_punch.PushBack({ 1879, 1946, 162, 97}, 0.5f);
-			heavy_punch.PushBack({ 547, 1479, 162, 95}, 0.5f);
-			heavy_punch.PushBack({ 708, 1479, 162, 95}, 0.5f);
-			heavy_punch.PushBack({ 868, 1481, 162, 93}, 0.5f);
-			heavy_punch.PushBack({ 1029, 1481, 162, 93}, 0.5f);
-			heavy_punch.PushBack({ 1191, 1481, 162, 93}, 0.5f);
-			heavy_punch.PushBack({ 34, 1948, 105, 95 }, 0.5f);
-			heavy_punch.PushBack({ 156, 1948, 105, 95 }, 0.5f);
-			heavy_punch.PushBack({ 275, 1948, 105, 95 }, 0.5f);
-			heavy_punch.loop = false;
-
+			{
+				heavy_punch.PushBack({ 34, 1948, 105, 95 }, 0.5f);
+				heavy_punch.PushBack({ 156, 1948, 105, 95 }, 0.5f);
+				heavy_punch.PushBack({ 275, 1948, 105, 95 }, 0.5f);
+				heavy_punch.PushBack({ 399, 1946, 92, 97 }, 0.5f);
+				heavy_punch.PushBack({ 515, 1946, 92, 97 }, 0.5f);
+				heavy_punch.PushBack({ 626, 1946, 92, 97 }, 0.5f);
+				heavy_punch.PushBack({ 739, 1950, 107, 93 }, 0.5f);
+				heavy_punch.PushBack({ 848, 1950, 107, 93 }, 0.5f);
+				heavy_punch.PushBack({ 958, 1950, 107, 93 }, 0.5f);
+				heavy_punch.PushBack({ 1068, 1951, 162, 92 }, 0.5f);
+				heavy_punch.PushBack({ 1230, 1951, 162, 92 }, 0.5f);
+				heavy_punch.PushBack({ 1392, 1951, 162, 92 }, 0.5f);
+				heavy_punch.PushBack({ 1552, 1946, 162, 97 }, 0.5f);
+				heavy_punch.PushBack({ 1714, 1946, 162, 97 }, 0.5f);
+				heavy_punch.PushBack({ 1879, 1946, 162, 97 }, 0.5f);
+				heavy_punch.PushBack({ 547, 1479, 162, 95 }, 0.5f);
+				heavy_punch.PushBack({ 708, 1479, 162, 95 }, 0.5f);
+				heavy_punch.PushBack({ 868, 1481, 162, 93 }, 0.5f);
+				heavy_punch.PushBack({ 1029, 1481, 162, 93 }, 0.5f);
+				heavy_punch.PushBack({ 1191, 1481, 162, 93 }, 0.5f);
+				heavy_punch.PushBack({ 34, 1948, 105, 95 }, 0.5f);
+				heavy_punch.PushBack({ 156, 1948, 105, 95 }, 0.5f);
+				heavy_punch.PushBack({ 275, 1948, 105, 95 }, 0.5f);
+				heavy_punch.loop = false;
+			}
 			//heavy kick
 			
 			heavy_kick.PushBack({ 1198, 917, 107, 111}, 0.5f);//1
@@ -2265,6 +2266,7 @@ update_status ModulePlayer::Update()
 				}
 				shadow_x = position.x + 23;
 			}
+			break;
 		case HEAVY_PUNCH:
 			current_animation = &heavy_punch;
 			break;
