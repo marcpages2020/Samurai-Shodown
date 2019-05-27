@@ -2008,7 +2008,7 @@ update_status ModulePlayer::Update()
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
 					collider_player_attack->to_delete = false;
-					collider_player_attack->SetPos(position.x + 60, position.y - 50);
+					collider_player_attack->SetPos(position.x + 60, position.y - 30);
 					collider_player_attack->SetSize(67, 30);
 				}
 			}
