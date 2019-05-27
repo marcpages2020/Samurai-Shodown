@@ -2291,7 +2291,24 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x + 35, position.y - 50);
 					collider_player_attack->SetSize(70, 30);
 				}
-
+				if (current_animation->SeeCurrentFrame() > 7)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 50, position.y - 75);
+						collider_player_up->SetSize(45, 45);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 15, position.y - 35);
+						collider_player_down->SetSize(60, 35);
+					}
+					if (collider_player_attack != nullptr)
+					{
+						collider_player_attack->SetPos(position.x + 90, position.y - 55);
+						collider_player_attack->SetSize(65, 30);
+					}
+				}
 			}
 			shadow_x = position.x;
 			break;
