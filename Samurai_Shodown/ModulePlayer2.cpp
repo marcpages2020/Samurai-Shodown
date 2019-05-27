@@ -743,6 +743,7 @@ update_status ModulePlayer2::PreUpdate()
 			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN;
 			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_2] == KEY_DOWN;
 			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_2] == KEY_DOWN;
+			player_input2.pressing_Ñ = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_2] == KEY_DOWN;
 
 			if (player_input2.pressing_left && player_input2.pressing_right) {
 				player_input2.pressing_left = false;
@@ -778,6 +779,16 @@ update_status ModulePlayer2::PreUpdate()
 				//state2 = TWISTER2;
 				state2 = SPECIAL_ATTACK_2;
 			}
+			if (player_input2.pressing_Ñ) {
+				state2 = HEAVY_PUNCH2;
+				hit_done++;
+				App->audio->PlayFX(light_attack_fx);
+			}
+			if (player_input2.pressing_H) {
+				state2 = HEAVY_KICK2;
+				hit_done++;
+				App->audio->PlayFX(light_kick_fx);
+			}
 		}
 		if (state2 == BACKWARD2) {
 			if (!player_input2.pressing_right)
@@ -791,7 +802,16 @@ update_status ModulePlayer2::PreUpdate()
 				hit_done++;
 				state2 = KICK2;
 			}
-
+			if (player_input2.pressing_Ñ) {
+				state2 = HEAVY_PUNCH2;
+				hit_done++;
+				App->audio->PlayFX(light_attack_fx);
+			}
+			if (player_input2.pressing_H) {
+				state2 = HEAVY_KICK2;
+				hit_done++;
+				App->audio->PlayFX(light_kick_fx);
+			}
 			if (player_input2.pressing_up)
 				state2 = JUMP_BACKWARD2;
 		}
@@ -802,7 +822,16 @@ update_status ModulePlayer2::PreUpdate()
 				hit_done++;
 				state2 = PUNCH2;
 			}
-
+			if (player_input2.pressing_Ñ) {
+				state2 = HEAVY_PUNCH2;
+				hit_done++;
+				App->audio->PlayFX(light_attack_fx);
+			}
+			if (player_input2.pressing_H) {
+				state2 = HEAVY_KICK2;
+				hit_done++;
+				App->audio->PlayFX(light_kick_fx);
+			}
 			if (player_input2.pressing_J) {
 				hit_done++;
 				state2 = KICK2;

@@ -46,6 +46,8 @@ struct PlayerInput2 {
 	bool pressing_J;
 	bool pressing_K;
 	bool pressing_L;
+	bool pressing_Ñ;
+	bool pressing_H;
 	bool pressing_F5;
 };
 
