@@ -798,7 +798,6 @@ update_status ModulePlayer2::PreUpdate()
 				player_input2.pressing_left = false;
 				player_input2.pressing_right = false;
 			}
-
 		}
 
 
@@ -1064,6 +1063,22 @@ update_status ModulePlayer2::PreUpdate()
 			{
 				specialattack2.Reset();
 				are_particles_created2 = false;
+				state2 = IDLE2;
+			}
+		}
+		if (state2 == HEAVY_PUNCH2)
+		{
+			if (current_animation->Finished())
+			{
+				heavy_punch2.Reset();
+				state2 = IDLE2;
+			}
+		}
+		if (state2 == HEAVY_KICK2)
+		{
+			if (current_animation->Finished())
+			{
+				heavy_kick2.Reset();
 				state2 = IDLE2;
 			}
 		}
