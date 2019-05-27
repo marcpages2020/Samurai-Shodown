@@ -700,6 +700,54 @@ ModulePlayer2::ModulePlayer2()
 				en_garde2.PushBack({ 1027,901,119,126 }, 0.2f);
 				en_garde2.loop = false;
 			}
+			//heavy punch
+			{
+				heavy_punch2.PushBack({ 34, 1948, 105, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 156, 1948, 105, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 275, 1948, 105, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 399, 1946, 92, 97 }, 0.5f);
+				heavy_punch2.PushBack({ 515, 1946, 92, 97 }, 0.5f);
+				heavy_punch2.PushBack({ 626, 1946, 92, 97 }, 0.5f);
+				heavy_punch2.PushBack({ 739, 1950, 107, 93 }, 0.5f);
+				heavy_punch2.PushBack({ 848, 1950, 107, 93 }, 0.5f);
+				heavy_punch2.PushBack({ 958, 1950, 107, 93 }, 0.5f);
+				heavy_punch2.PushBack({ 1068, 1951, 162, 92 }, 0.5f);
+				heavy_punch2.PushBack({ 1230, 1951, 162, 92 }, 0.5f);
+				heavy_punch2.PushBack({ 1392, 1951, 162, 92 }, 0.5f);
+				heavy_punch2.PushBack({ 1552, 1946, 162, 97 }, 0.5f);
+				heavy_punch2.PushBack({ 1714, 1946, 162, 97 }, 0.5f);
+				heavy_punch2.PushBack({ 1879, 1946, 162, 97 }, 0.5f);
+				heavy_punch2.PushBack({ 547, 1479, 162, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 708, 1479, 162, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 868, 1481, 162, 93 }, 0.5f);
+				heavy_punch2.PushBack({ 1029, 1481, 162, 93 }, 0.5f);
+				heavy_punch2.PushBack({ 1191, 1481, 162, 93 }, 0.5f);
+				heavy_punch2.PushBack({ 34, 1948, 105, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 156, 1948, 105, 95 }, 0.5f);
+				heavy_punch2.PushBack({ 275, 1948, 105, 95 }, 0.5f);
+				heavy_punch2.loop = false;
+			}
+			//heavy kick
+			{
+				heavy_kick2.PushBack({ 1198, 917, 107, 111 }, 0.5f);//1
+				heavy_kick2.PushBack({ 1305, 917, 107, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1412, 917, 107, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1536, 917, 119, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1664, 917, 119, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1798, 917, 119, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1932, 910, 114, 117 }, 0.5f);
+				heavy_kick2.PushBack({ 999, 1266, 114, 117 }, 0.5f);
+				heavy_kick2.PushBack({ 1113, 1266, 114, 117 }, 0.5f);
+				heavy_kick2.PushBack({ 1226, 1258, 114, 125 }, 0.5f);
+				heavy_kick2.PushBack({ 1341, 1258, 114, 125 }, 0.5f);
+				heavy_kick2.PushBack({ 1455, 1258, 114, 125 }, 0.5f);
+				heavy_kick2.PushBack({ 1536, 917, 119, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1664, 917, 119, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1798, 917, 119, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1305, 917, 107, 111 }, 0.5f);
+				heavy_kick2.PushBack({ 1412, 917, 107, 111 }, 0.5f);
+				heavy_kick2.loop = false;
+			}
 		}
 	}
 }
