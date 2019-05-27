@@ -2406,8 +2406,22 @@ update_status ModulePlayer::Update()
 			current_animation = &heavy_kick;
 			//Wan-Fu Heavy Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
-
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 15, position.y - 95);
+					collider_player_up->SetSize(35, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 15, position.y - 45);
+					collider_player_down->SetSize(35, 45);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack->SetPos(position.x - 60, position.y - 78);
+					collider_player_attack->SetSize(55, 35);
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -2423,7 +2437,7 @@ update_status ModulePlayer::Update()
 				if (collider_player_attack == nullptr)
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
-					collider_player_attack->SetPos(position.x + 60, position.y - 78);
+					collider_player_attack->SetPos(position.x + 63, position.y - 78);
 					collider_player_attack->SetSize(55, 35);
 				}
 			}
