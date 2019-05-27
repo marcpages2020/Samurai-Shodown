@@ -710,7 +710,42 @@ ModulePlayer::ModulePlayer()
 			//grab animation
 			/*
 			{
-				grab.PushBack({ , , , })
+				grab.PushBack({ 31, 8, 133, 128}, 0.5f);
+				grab.PushBack({ 164, 8, 133, 128}, 0.5f);
+				grab.PushBack({ 298, 8, 133, 128}, 0.5f);
+				grab.PushBack({ 432, 10, 135, 126}, 0.5f);
+				grab.PushBack({ 568, 10, 135, 126}, 0.5f);
+				grab.PushBack({ 705, 10, 135, 126}, 0.5f);
+				grab.PushBack({ 840, 0, 172, 136}, 0.5f);
+				grab.PushBack({ 1014, 0, 172, 136}, 0.5f);
+				grab.PushBack({ 1187, 0, 172, 136}, 0.5f);
+				grab.PushBack({ 1358, 30, 157, 106}, 0.5f);
+				grab.PushBack({ 1515, 30, 157, 106}, 0.5f);
+				grab.PushBack({ 1670, 30, 157, 106}, 0.5f);
+				grab.PushBack({ 1805, 7, 81, 129}, 0.5f);//red
+				grab.PushBack({ 1886, 7, 81, 129}, 0.5f);
+				grab.PushBack({ 31, 135, 81, 129}, 0.5f);
+				grab.PushBack({ 111, 135, 81, 129}, 0.5f);
+				grab.PushBack({ 349, 155, 118, 87}, 0.5f);
+				grab.PushBack({ 467, 155, 118, 87}, 0.5f);
+				grab.PushBack({ 585, 155, 188, 87}, 0.5f);
+				grab.PushBack({ 704, 144, 86, 120}, 0.5f);
+				grab.PushBack({ 790, 144, 86, 120}, 0.5f);
+				grab.PushBack({ 876, 144, 86, 120}, 0.5f);
+				grab.PushBack({ 964, 164, 129, 100}, 0.5f);
+				grab.PushBack({ 1093, 164, 129, 100}, 0.5f);
+				grab.PushBack({ 1222, 164, 129, 100}, 0.5f);
+				grab.PushBack({ 1351, 164, 107, 100}, 0.5f);
+				grab.PushBack({ 1458, 164, 107, 100}, 0.5f);
+				grab.PushBack({ 1566, 164, 107, 100}, 0.5f);
+				grab.PushBack({ 1673, 182, 106, 82}, 0.5f);
+				grab.PushBack({ 1779, 182, 106, 82}, 0.5f);
+				grab.PushBack({ 1885, 182, 106, 82}, 0.5f);
+				grab.PushBack({ 30, 264, 107, 103}, 0.5f);
+				grab.PushBack({ 138, 264, 107, 103}, 0.5f);
+				grab.PushBack({ 246, 264, 107, 103}, 0.5f);
+				grab.PushBack({ 352, 264, 106, 139}, 0.5f);
+				grab.loop = false;
 			}
 			*/
 			//heavy punch
