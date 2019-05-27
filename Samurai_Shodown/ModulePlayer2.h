@@ -34,6 +34,7 @@ enum States2 {
 	EN_GARDE2,
 	DEATH2,
 	WIN2,
+	GRAB2,
 	SPECIAL_ATTACK_2
 };
 
@@ -120,6 +121,10 @@ public:
 	Mix_Chunk* special_attack_fx;
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 	SDL_Texture* player2_textures=nullptr;
+	/*
+	SDL_Texture* spritesheet1 = nullptr;
+	SDL_Texture* spritesheet2 = nullptr;
+	*/
 	bool controls = true;
 };
 
