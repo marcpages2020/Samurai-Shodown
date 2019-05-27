@@ -788,10 +788,11 @@ update_status ModulePlayer2::PreUpdate()
 			player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
 			player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
 			player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
+			player_input2.pressing_H = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_2] == KEY_DOWN;
 			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_Ñ = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_2] == KEY_DOWN;
+			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_2] == KEY_DOWN;
+			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_2] == KEY_DOWN;
+			player_input2.pressing_P = App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN;
 
 			if (player_input2.pressing_left && player_input2.pressing_right) {
 				player_input2.pressing_left = false;
@@ -806,12 +807,12 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = FORWARD2;
 			if (player_input2.pressing_right)
 				state2 = BACKWARD2;
-			if (player_input2.pressing_J) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = KICK2;
 				App->audio->PlayFX(light_kick_fx);
 			}
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				hit_done++;
 				state2 = PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
@@ -820,19 +821,19 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_NEUTRAL2;
 			if (player_input2.pressing_down)
 				state2 = CROUCH_DOWN2;
-			if (player_input2.pressing_L) {
+			if (player_input2.pressing_P) {
 				hit_done++;
 				//App->audio->PlayFX(twister_fx);
 				App->audio->PlayFX(special_attack_fx);
 				//state2 = TWISTER2;
 				state2 = SPECIAL_ATTACK_2;
 			}
-			if (player_input2.pressing_Ñ) {
+			if (player_input2.pressing_J) {
 				state2 = HEAVY_PUNCH2;
 				hit_done++;
 				App->audio->PlayFX(light_attack_fx);
 			}
-			if (player_input2.pressing_H) {
+			if (player_input2.pressing_L) {
 				state2 = HEAVY_KICK2;
 				hit_done++;
 				App->audio->PlayFX(light_kick_fx);
@@ -841,21 +842,21 @@ update_status ModulePlayer2::PreUpdate()
 		if (state2 == BACKWARD2) {
 			if (!player_input2.pressing_right)
 				state2 = IDLE2;
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				hit_done++;
 				state2 = PUNCH2;
 			}
 
-			if (player_input2.pressing_J) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = KICK2;
 			}
-			if (player_input2.pressing_Ñ) {
+			if (player_input2.pressing_J) {
 				state2 = HEAVY_PUNCH2;
 				hit_done++;
 				App->audio->PlayFX(light_attack_fx);
 			}
-			if (player_input2.pressing_H) {
+			if (player_input2.pressing_L) {
 				state2 = HEAVY_KICK2;
 				hit_done++;
 				App->audio->PlayFX(light_kick_fx);
@@ -866,21 +867,21 @@ update_status ModulePlayer2::PreUpdate()
 		if (state2 == FORWARD2) {
 			if (!player_input2.pressing_left)
 				state2 = IDLE2;
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				hit_done++;
 				state2 = PUNCH2;
 			}
-			if (player_input2.pressing_Ñ) {
+			if (player_input2.pressing_J) {
 				state2 = HEAVY_PUNCH2;
 				hit_done++;
 				App->audio->PlayFX(light_attack_fx);
 			}
-			if (player_input2.pressing_H) {
+			if (player_input2.pressing_L) {
 				state2 = HEAVY_KICK2;
 				hit_done++;
 				App->audio->PlayFX(light_kick_fx);
 			}
-			if (player_input2.pressing_J) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = KICK2;
 			}
@@ -927,11 +928,11 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_FORWARD2)
 		{
-			if (player_input2.pressing_J) {
+			if (player_input2.pressing_K) {
 				state2 = JUMP_KICK2;
 				//hit_done++;
 			}
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				//hit_done++;
 				state2 = JUMP_PUNCH2;
 			}
@@ -944,11 +945,11 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_BACKWARD2)
 		{
-			if (player_input2.pressing_J) {
+			if (player_input2.pressing_K) {
 				state2 = JUMP_KICK2;
 				//hit_done++;
 			}
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				//hit_done++;
 				state2 = JUMP_PUNCH2;
 				//App->audio->PlayFX(light_attack_fx);
@@ -981,12 +982,12 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = CROUCH_UP2;
 				crouch_down2.Reset();
 			}
-			if (player_input2.pressing_J) {
+			if (player_input2.pressing_K) {
 				hit_done++;
 				state2 = CROUCH_KICK2;
 				App->audio->PlayFX(light_kick_fx);
 			}
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				hit_done++;
 				state2 = CROUCH_PUNCH2;
 				App->audio->PlayFX(light_attack_fx);
