@@ -708,7 +708,7 @@ ModulePlayer::ModulePlayer()
 			}
 
 			//grab animation
-			/*
+			
 			{
 				grab.PushBack({ 31, 8, 133, 128}, 0.5f);
 				grab.PushBack({ 164, 8, 133, 128}, 0.5f);
@@ -747,7 +747,7 @@ ModulePlayer::ModulePlayer()
 				grab.PushBack({ 352, 264, 106, 139}, 0.5f);
 				grab.loop = false;
 			}
-			*/
+			
 			//heavy punch
 			{
 				heavy_punch.PushBack({ 34, 1948, 105, 95 }, 0.5f);
@@ -812,7 +812,8 @@ bool ModulePlayer::Start()
 	position.y = initial_position.y = 215;
 	lposition = position;
 	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	player_textures = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	spritesheet1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	spritesheet2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
@@ -852,6 +853,7 @@ update_status ModulePlayer::PreUpdate()
 			player_input.pressing_D = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
 			player_input.pressing_S = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
 			player_input.pressing_W = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
+			player_input.pressing_E = App->input->keyboard[SDL_SCANCODE_E] == KEY_DOWN;//App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_REPEAT;
 			player_input.pressing_C = App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
 			player_input.pressing_V = App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN;
 			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_1] == KEY_DOWN;
@@ -893,6 +895,10 @@ update_status ModulePlayer::PreUpdate()
 					hit_done++;
 					App->audio->PlayFX(light_kick_fx);
 				}
+				if (player_input.pressing_E)
+				{
+					state = GRAB;
+				}
 				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
 					App->audio->PlayFX(special_attack_fx);
@@ -929,6 +935,10 @@ update_status ModulePlayer::PreUpdate()
 					state = HEAVY_KICK;
 					hit_done++;
 					App->audio->PlayFX(light_kick_fx);
+				}
+				if (player_input.pressing_E)
+				{
+					state = GRAB;
 				}
 				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
@@ -973,6 +983,10 @@ update_status ModulePlayer::PreUpdate()
 					state = SPECIAL_ATTACK;
 					App->render->StartCameraShake(1200, 2);
 					//App->render->StartSlowdown(750, 20);
+				}
+				if (player_input.pressing_E)
+				{
+					state = GRAB;
 				}
 				if (player_input.pressing_W)
 					state = JUMP_FORWARD;
@@ -1177,12 +1191,19 @@ update_status ModulePlayer::PreUpdate()
 			if ((player_input.pressing_F4)) {
 				god = !god;
 			}
-
+			if (state == GRAB)
+			{
+				if (current_animation->Finished()) {
+					grab.Reset();
+					state = IDLE;
+				}
+			}
 			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (collider_player_attack != nullptr))
 			{
 				collider_player_attack->to_delete = true;
 				collider_player_attack = nullptr;
 			}
+			
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN) {
@@ -2388,6 +2409,9 @@ update_status ModulePlayer::Update()
 			}
 			shadow_x = position.x;
 			break;
+		case GRAB:
+			current_animation = &grab;
+			break;
 		default:
 			LOG("No state found :(");
 			break;
@@ -2403,7 +2427,14 @@ update_status ModulePlayer::Update()
 	// SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	//wan-fu shadow
 	SDL_Rect shadow = { 1181,138,91,17 };
-
+	if (state == GRAB)
+	{
+		player_textures = spritesheet2;
+	}
+	else
+	{
+		player_textures = spritesheet1;
+	}
 	if (position.x < App->player2->position.x) {
 		flip = SDL_FLIP_NONE;
 	}

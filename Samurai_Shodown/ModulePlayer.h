@@ -51,6 +51,7 @@ struct PlayerInput {
 	bool pressing_Q;
 	bool pressing_N;
 	bool pressing_M;
+	bool pressing_E;
 	bool pressing_F4;
 };
 
@@ -68,6 +69,8 @@ public:
 	virtual void BlockControls(bool block);
 public:
 	SDL_Texture* player_textures = nullptr;
+	SDL_Texture* spritesheet1 = nullptr;
+	SDL_Texture* spritesheet2 = nullptr;
 	Animation idle;
 	Animation forward;
 	Animation backward;
