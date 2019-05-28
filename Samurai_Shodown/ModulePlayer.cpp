@@ -2647,33 +2647,33 @@ void ModulePlayer::PlayerCollidersCleanUp() {
 }
 
 bool ModulePlayer::checkSpecialAttack() {
-	//Input button combination for special attack
-	
+
+	//Input button combination for special attack	
 	int i = 0;
 	int j = lastInput;
-	int done = 0; //If done = 4. Special attack = true 
+	int done = 0; //If done = 3. Special attack = true 
+
 	while (i < 100) {
 		switch (done) {
 		case 0:
-			if (inputs[j] == player_input.pressing_C)
+			if (inputs[j] == 'c')//punch
 				done++;
 			break;
 		case 1:
-			if (inputs[j] == player_input.pressing_D)
+			if (inputs[j] == 'd')//forward
 				done++;
 			break;
 		case 2:
-			if (inputs[j] == player_input.pressing_D && inputs[j] == player_input.pressing_S)
+			if (inputs[j] == 'd' && 's')//down and forward
 				done++;
 			break;
 		case 3:
-			if (inputs[j] == player_input.pressing_S)
+			if (inputs[j] == 's') //down
 				return true;			
 		default:
 			//Special attack is false
 			return false;
-		}		
-		
+		}			
 
 		if (j >0)
 			j--;
