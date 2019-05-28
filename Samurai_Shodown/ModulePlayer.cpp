@@ -835,7 +835,7 @@ bool ModulePlayer::Start()
 }
 
 bool ModulePlayer::CleanUp() {
-	LOG("Unloading player");
+	LOG("Unloading player\n");
 	App->textures->Unload(player_textures);
 	App->audio->UnLoadFx(light_attack_fx);
 	App->audio->UnLoadFx(light_kick_fx);

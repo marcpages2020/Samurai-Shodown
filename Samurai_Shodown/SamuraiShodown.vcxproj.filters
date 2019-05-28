@@ -67,6 +67,9 @@
     <ClCompile Include="ModuleHaohmaru.cpp">
       <Filter>Modules\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleJudge.cpp">
+      <Filter>Modules\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -142,6 +145,9 @@
       <Filter>Modules\Characters</Filter>
     </ClInclude>
     <ClInclude Include="ModuleHaohmaru.h">
+      <Filter>Modules\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleJudge.h">
       <Filter>Modules\Characters</Filter>
     </ClInclude>
   </ItemGroup>

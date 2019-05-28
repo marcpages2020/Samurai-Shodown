@@ -18,6 +18,7 @@
 #include "ModuleUI.h"
 #include "ModuleHaohmaru.h"
 #include "ModuleWanFu.h"
+#include "ModuleJudge.h"
 
 Application::Application()
 {
@@ -34,6 +35,7 @@ Application::Application()
 	modules[i++] = scene_congrats = new ModuleSceneCongrats();
 	//modules[i++] = haohmaru = new ModuleHaohmaru();
 	//modules[i++] = wanfu = new ModuleWanFu();
+	modules[i++] = judge = new ModuleJudge();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
