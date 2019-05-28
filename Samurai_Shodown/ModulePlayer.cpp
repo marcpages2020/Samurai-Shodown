@@ -7,6 +7,7 @@
 #include "ModuleUI.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer2.h"
+#include "ModuleJudge.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -2571,6 +2572,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			if (!App->player2->collider_player_2_attack->to_delete && !god) {
 				App->player2->hit_percent++;
 				App->audio->PlayFX(hit_fx);
+				App->judge->state_j = HIT2_J;
 				life -= 10;
 				state = HIT;
 				App->player2->collider_player_2_attack->to_delete = true;
@@ -2613,6 +2615,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			break;
 		case COLLIDER_PLAYER_2_PARTICLES:
 			App->audio->PlayFX(hit_fx);
+			App->judge->state_j = HIT2_J;
 			life -= 20;
 			state = HIT;
 			position.x -= 5;

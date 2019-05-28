@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleSceneHaohmaru.h"
 #include "ModuleUI.h"
+#include "ModuleJudge.h"
 
 ModulePlayer2::ModulePlayer2()
 {
@@ -2583,6 +2584,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			if (!App->player->collider_player_attack->to_delete && !god) {
 				App->player->hit_percent++;
 				App->audio->PlayFX(hit_fx);
+				App->judge->state_j = HIT1_J;
 				life -= 10;
 				state2 = HIT2;
 				switch (App->player->state)
@@ -2634,6 +2636,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			App->audio->PlayFX(hit_fx);
 			life -= 20;
 			state2 = HIT2;
+			App->judge->state_j = HIT1_J;
 			position.x += 5;
 			App->render->StartCameraShake(400, 3);
 			App->render->StartSlowdown(800, 30);

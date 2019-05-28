@@ -158,6 +158,14 @@ update_status ModuleJudge::PreUpdate() {
 				hit1.Reset();
 			}
 		}
+		if (state_j == HIT2_J)
+		{
+			if (current_animation->Finished())
+			{
+				state_j = IDLE_J;
+				hit2.Reset();
+			}
+		}
 		if ((state_j != BEGIN_J)&&(state_j != HIT1_J) && (state_j != HIT2_J))
 		{
 			Move();
@@ -183,6 +191,12 @@ update_status ModuleJudge::Update() {
 		case BEGIN_J:
 			current_animation = &begin_j;
 			break;
+		case HIT1_J:
+			current_animation = &hit1;
+			break;
+		case HIT2_J:
+			current_animation = &hit2;
+			break;
 		default:
 			break;
 		}
@@ -192,11 +206,14 @@ update_status ModuleJudge::Update() {
 }
 
 void ModuleJudge::Move() {
+
 	int player_1_position;
 	int player_2_position;
 	int middle;
+
 	player_1_position = App->player->position.x;
 	player_2_position = App->player2->position.x;
+
 	if (player_1_position < player_2_position)
 	{
 		middle = player_1_position + (player_2_position - player_1_position) / 2;
