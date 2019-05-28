@@ -150,7 +150,15 @@ update_status ModuleJudge::PreUpdate() {
 				begin_j.Reset();
 			}
 		}
-		if (state_j != BEGIN_J)
+		if (state_j == HIT1_J)
+		{
+			if (current_animation->Finished())
+			{
+				state_j = IDLE_J;
+				hit1.Reset();
+			}
+		}
+		if ((state_j != BEGIN_J)&&(state_j != HIT1_J) && (state_j != HIT2_J))
 		{
 			Move();
 		}
@@ -211,13 +219,13 @@ void ModuleJudge::Move() {
 	{
 		if (position_x < middle)
 		{
-			position_x++;
+			position_x += speed;
 		}
 		else if (position_x > middle)
 		{
-			position_x--;
+			position_x -= speed;
 		}
-		else if (position_x == middle)
+		else if ((position_x == middle)||(position_x == middle+1))
 		{
 			moving = false;
 			state_j = IDLE_J;
