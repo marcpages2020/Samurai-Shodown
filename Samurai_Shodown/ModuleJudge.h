@@ -9,10 +9,10 @@
 
 struct SDL_Texture;
 
-enum States
+enum States_J
 {
-	IDLE,
-	MOVE,
+	IDLE_J,
+	MOVE_J,
 };
 
 class ModuleJudge : public Module
@@ -35,12 +35,14 @@ public:
 	Animation move;
 	Animation* current_animation = nullptr;
 
-	States state;
+	States_J state_j;
 
 	float speed = 2;
 	bool shadow_blit = true;
 	int position_x;
 	int position_y;
+	int* player_1_position;
+	int* player_2_position;
 	SDL_Texture* judge_tex;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
