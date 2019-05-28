@@ -1241,7 +1241,6 @@ update_status ModulePlayer::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-// Update: draw background
 update_status ModulePlayer::Update()
 {
 	lposition = position;

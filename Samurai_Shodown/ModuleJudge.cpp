@@ -40,6 +40,15 @@ update_status ModuleJudge::PreUpdate() {
 			}
 		}
 		*/
+
+		if (player_1_position < player_2_position)
+		{
+			position_x = (int) player_1_position + (player_2_position - player_2_position) / 2;
+		}
+		else
+		{
+			position_x = (int)player_2_position + (player_2_position - player_2_position) / 2;
+		}
 	}
 	return UPDATE_CONTINUE;
 }
