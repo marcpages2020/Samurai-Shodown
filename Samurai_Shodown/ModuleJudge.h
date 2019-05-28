@@ -25,6 +25,7 @@ public:
 	update_status PreUpdate();
 	update_status Update();
 	virtual bool CleanUp();
+	bool Move();
 
 public:
 	SDL_Texture* player_textures = nullptr;
@@ -38,11 +39,13 @@ public:
 	States_J state_j;
 
 	float speed = 2;
-	bool shadow_blit = true;
+
 	int position_x;
 	int position_y;
-	int* player_1_position;
-	int* player_2_position;
+
+	bool shadow_blit = true;
+	bool moving = false;
+
 	SDL_Texture* judge_tex;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
