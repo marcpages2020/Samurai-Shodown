@@ -2620,24 +2620,43 @@ void ModulePlayer::PlayerCollidersCleanUp() {
 	}
 }
 
-bool ModulePlayer::checkSpecialAttack(bool* inputs) {
+bool ModulePlayer::checkSpecialAttack() {
 	//Input button combination for special attack
 	
-	for (int i = *first; i < *last; i++) {
+	int i = 0;
+	int j = lastInput;
+	int done = 0; //If done = 4. Special attack = true 
+	while (i < 100) {
+		switch (done) {
+		case 0:
+			if (inputs[j] == player_input.pressing_C)
+				done++;
+			break;
+		case 1:
+			if (inputs[j] == player_input.pressing_D)
+				done++;
+			break;
+		case 2:
+			if (inputs[j] == player_input.pressing_D && inputs[j] == player_input.pressing_S)
+				done++;
+			break;
+		case 3:
+			if (inputs[j] == player_input.pressing_S)
+				return true;			
+		default:
+			//Special attack is false
+			return false;
+		}		
+		
 
-	}
-
-	if (player_input.pressing_S) {
-		if (player_input.pressing_S || player_input.pressing_D) {
-			if (player_input.pressing_D) {
-				if (player_input.pressing_C) {
-					state = SPECIAL_ATTACK;
-				}
-			}
-		}
+		if (j >0)
+			j--;
+		else
+			j = 99;
+		i++;
 	}
 	
-	return true;
+	return false;
 }
 
 void ModulePlayer::newInput(bool *newInput) {

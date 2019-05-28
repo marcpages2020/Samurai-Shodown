@@ -129,7 +129,7 @@ public:
 	bool shadow_blit = true;
 	bool god = false;
 	//Special attack 
-	bool checkSpecialAttack(bool* inputs); //return true if special attack input has been introduced
+	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	bool inputs[100];
 	bool* first;
 	bool* last;
