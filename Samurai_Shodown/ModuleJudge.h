@@ -12,7 +12,12 @@ struct SDL_Texture;
 enum States_J
 {
 	IDLE_J,
-	MOVE_J,
+	MOVELEFT_J,
+	MOVERIGHT_J,
+	START_J,
+	HIT1_J,
+	HIT2_J,
+	FINISH_J,
 };
 
 class ModuleJudge : public Module
@@ -33,9 +38,13 @@ public:
 	SDL_Texture* spritesheet2 = nullptr;
 
 	Animation idle;
-	Animation move;
+	Animation moveright;
+	Animation moveleft;
+	Animation start;
+	Animation hit1;
+	Animation hit2;
+	Animation finish;
 	Animation* current_animation = nullptr;
-
 	States_J state_j;
 
 	float speed = 2;
