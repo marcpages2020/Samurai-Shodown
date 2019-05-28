@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleFonts.h"
 #include "ModuleSceneHaohmaru.h"
+#include "ModuleJudge.h"
 #include <iostream>
 
 ModuleUI::ModuleUI() {
@@ -243,6 +244,7 @@ bool ModuleUI::Start() {
 	begin_finish = false;
 	App->player->state = EN_GARDE;
 	App->player2->state2 = EN_GARDE2;
+	App->judge->state_j = BEGIN_J;
 	draw = 0;
 	show_ui = false;
 	return true;

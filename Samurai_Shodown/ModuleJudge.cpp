@@ -36,37 +36,38 @@ ModuleJudge::ModuleJudge() {
 		}
 
 
-		//start
+		//begin
 		{
-			start.PushBack({ 45, 125, 40, 76 }, 0.5f);
-			start.PushBack({ 106, 128, 38, 73 }, 0.5f);
-			start.PushBack({ 161, 137, 38, 64 }, 0.5f);
-			start.PushBack({ 221, 143, 36, 58 }, 0.5f);
-			start.PushBack({ 286, 143, 34, 58 }, 0.5f);
-			start.PushBack({ 221, 143, 36, 58 }, 0.5f);
-			start.PushBack({ 161, 137, 38, 64 }, 0.5f);
-			start.PushBack({ 106, 128, 38, 73 }, 0.5f);
-			start.PushBack({ 45, 125, 40, 76 }, 0.5f);
-			start.PushBack({ 579, 125, 45, 75 }, 0.5f);
-			start.PushBack({ 455, 267, 58, 70 }, 0.5f);
-			start.PushBack({ 710, 130, 58, 70 }, 0.5f);
-			start.PushBack({ 782, 130, 58, 70 }, 0.5f);
-			start.PushBack({ 710, 130, 58, 70 }, 0.5f);
-			start.PushBack({ 455, 267, 58, 70 }, 0.5f);
-			start.PushBack({ 924, 130, 58, 70 }, 0.5f);
-			start.PushBack({ 991, 130, 58, 70 }, 0.5f);
-			start.PushBack({ 924, 130, 58, 70 }, 0.5f);
-			start.PushBack({ 455, 267, 58, 70 }, 0.5f);
-			start.PushBack({ 1059, 114, 72, 86 }, 0.5f);
-			start.PushBack({ 1154, 87, 36, 113 }, 0.5f);
-			start.PushBack({ 1213, 80, 36, 120 }, 0.5f);
-			start.PushBack({ 1270, 78, 36, 122 }, 0.5f);
-			start.PushBack({ 1213, 80, 36, 120 }, 0.5f);
-			start.PushBack({ 1154, 87, 36, 113 }, 0.5f);
-			start.PushBack({ 1441, 156, 78, 44 }, 0.5f);
-			start.PushBack({ 1532, 139, 64, 61 }, 0.5f);
-			start.PushBack({ 455, 267, 58, 70 }, 0.5f);
-			start.loop = false;
+			begin_j.PushBack({ 45, 125, 40, 76 }, 0.2f);
+			begin_j.PushBack({ 106, 128, 38, 73 }, 0.2f);
+			begin_j.PushBack({ 161, 137, 38, 64 }, 0.2f);
+			begin_j.PushBack({ 221, 143, 36, 58 }, 0.2f);
+			begin_j.PushBack({ 286, 143, 34, 58 }, 0.2f);
+			begin_j.PushBack({ 221, 143, 36, 58 }, 0.2f);
+			begin_j.PushBack({ 161, 137, 38, 64 }, 0.2f);
+			begin_j.PushBack({ 106, 128, 38, 73 }, 0.2f);
+			begin_j.PushBack({ 45, 125, 40, 76 }, 0.2f);
+			begin_j.PushBack({ 579, 125, 45, 75 }, 0.2f);
+			begin_j.PushBack({ 455, 267, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 710, 130, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 782, 130, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 710, 130, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 455, 267, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 924, 130, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 991, 130, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 924, 130, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 455, 267, 58, 70 }, 0.2f);
+			begin_j.PushBack({ 1059, 114, 72, 86 }, 0.2f);
+			begin_j.PushBack({ 1154, 87, 36, 113 }, 0.2f);
+			begin_j.PushBack({ 1213, 80, 36, 120 }, 0.2f);
+			begin_j.PushBack({ 1270, 78, 36, 122 }, 0.2f);
+			begin_j.PushBack({ 1213, 80, 36, 120 }, 0.2f);
+			begin_j.PushBack({ 1154, 87, 36, 113 }, 0.2f);
+			begin_j.PushBack({ 1441, 156, 78, 44 }, 0.2f);
+			begin_j.PushBack({ 1532, 139, 64, 61 }, 0.2f);
+			begin_j.PushBack({ 455, 267, 58, 70 }, 0.2f);
+			begin_j.loop = false;
+			
 		}
 
 
@@ -128,6 +129,7 @@ bool ModuleJudge::Start() {
 	position_y = 110;
 	judge_tex = App->textures->Load("Assets/Sprites/Characters/Judge/Judge.png");
 	state_j = IDLE_J;
+	current_animation = &idle;
 	return ret;
 }
 
@@ -140,7 +142,18 @@ bool ModuleJudge::CleanUp() {
 update_status ModuleJudge::PreUpdate() {
 	if (!App->is_paused)
 	{
-		Move();
+		if (state_j == BEGIN_J)
+		{
+			if (current_animation->Finished())
+			{
+				state_j = IDLE_J;
+				begin_j.Reset();
+			}
+		}
+		if (state_j != BEGIN_J)
+		{
+			Move();
+		}
 	}
 	return UPDATE_CONTINUE;
 }
@@ -158,6 +171,9 @@ update_status ModuleJudge::Update() {
 			break;
 		case MOVE_RIGHT_J:
 			current_animation = &move_right;
+			break;
+		case BEGIN_J:
+			current_animation = &begin_j;
 			break;
 		default:
 			break;

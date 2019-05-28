@@ -14,7 +14,7 @@ enum States_J
 	IDLE_J,
 	MOVE_LEFT_J,
 	MOVE_RIGHT_J,
-	START_J,
+	BEGIN_J,
 	HIT1_J,
 	HIT2_J,
 	FINISH_J,
@@ -40,7 +40,7 @@ public:
 	Animation idle;
 	Animation move_right;
 	Animation move_left;
-	Animation start;
+	Animation begin_j;
 	Animation hit1;
 	Animation hit2;
 	Animation finish;
@@ -52,7 +52,6 @@ public:
 	int position_x;
 	int position_y;
 
-	bool shadow_blit = true;
 	bool moving = false;
 
 	SDL_Texture* judge_tex;
