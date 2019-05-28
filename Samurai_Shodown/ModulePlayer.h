@@ -71,6 +71,7 @@ public:
 	SDL_Texture* player_textures = nullptr;
 	SDL_Texture* spritesheet1 = nullptr;
 	SDL_Texture* spritesheet2 = nullptr;
+
 	Animation idle;
 	Animation forward;
 	Animation backward;
@@ -97,36 +98,48 @@ public:
 	Animation grab;
 	Animation win;
 	Animation die;
-	int hit_percent = 0;
-	int hit_done = 0;
+	Animation* current_animation = nullptr;
+	
 	iPoint position;
-	iPoint lposition;
-	bool god = false;
+	iPoint lposition;	
 	iPoint initial_position;
+
 	Collider *collider_player_up = nullptr;
 	Collider *collider_player_mid = nullptr;
 	Collider *collider_player_down = nullptr;
 	Collider *collider_player_attack = nullptr;
-	int life=100;
-	int mult = 1;
-	int direction_x = 0;
-	Animation* current_animation = nullptr;
+	
 	PlayerInput player_input;
+
 	States state;
+
 	float speed = 2;
-	bool are_particles_created = false;
-	bool shadow_blit = true;
+	
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
-	Mix_Chunk* special_attack_fx;
-	int attack_frames=0;
+	Mix_Chunk* special_attack_fx;	
+
 	void PlayerCollidersCleanUp();
+	void newInput(bool *array);
+
+	bool checkSpecialAttack(); //return true if special attack input has been introduced
+	bool controls = true;
+	bool are_particles_created = false;
+	bool shadow_blit = true;
+	bool god = false;
+
+	int attack_frames = 0;
 	int shadow_x;
 	int shadow_w = 70;
-	SDL_RendererFlip flip = SDL_FLIP_NONE;
-	bool controls = true;
+	int life = 100;
+	int mult = 1;
+	int direction_x = 0;
+	int hit_percent = 0;
+	int hit_done = 0;
+
+	SDL_RendererFlip flip = SDL_FLIP_NONE;	
 };
 
 #endif // __ModulePlayer_H__

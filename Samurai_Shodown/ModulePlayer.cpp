@@ -868,6 +868,21 @@ update_status ModulePlayer::PreUpdate()
 
 		}
 
+		bool inputs[100];
+		bool *first;
+		bool *last;
+
+		//Input button combination for special attack
+		if (player_input.pressing_S) {
+			if (player_input.pressing_S || player_input.pressing_D) {
+				if (player_input.pressing_D) {
+					if (player_input.pressing_C) {
+						state = SPECIAL_ATTACK;
+					}
+				}
+			}
+		}
+		
 		//states 
 		{
 			if (state == IDLE) {
@@ -2620,4 +2635,6 @@ void ModulePlayer::PlayerCollidersCleanUp() {
 	}
 }
 
-//player
+/*bool ModulePlayer::checkSpecialAttack() {
+
+*/

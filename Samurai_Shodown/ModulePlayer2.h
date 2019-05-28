@@ -92,16 +92,17 @@ public:
 	Animation twisterAlone2;
 	Animation specialattack2;
 	Animation* current_animation = nullptr;
-	bool shadow_blit = true;
-	bool god = false;
+		
 	iPoint position;
 	iPoint lposition;
 	iPoint initial_position;
+
 	Collider *collider_player_2_up = nullptr;
 	Collider *collider_player_2_mid = nullptr;
 	Collider *collider_player_2_down = nullptr;
 	Collider *collider_player_2_attack = nullptr;
 	Collider *test_collider = nullptr;
+
 	int life = 100;
 	int mult = 1;
 	int direction_x =1;
@@ -110,22 +111,32 @@ public:
 	int attack_frames = 0;
 	int shadow_x;
 	int shadow_w = 70;
+
 	PlayerInput2 player_input2;
+
 	States2 state2;
+
 	float speed = 2;
+
 	bool are_particles_created2 = false;
+	bool shadow_blit = true;
+	bool god = false;
+	bool controls = true;
+
 	Mix_Chunk* light_attack_fx;
 	Mix_Chunk* light_kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	Mix_Chunk* special_attack_fx;
+
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+
 	SDL_Texture* player2_textures=nullptr;
 	/*
 	SDL_Texture* spritesheet1 = nullptr;
 	SDL_Texture* spritesheet2 = nullptr;
 	*/
-	bool controls = true;
+	
 };
 
 #endif // !_ModulePlayer2_H
