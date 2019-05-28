@@ -868,9 +868,8 @@ update_status ModulePlayer::PreUpdate()
 
 		}
 
-		bool inputs[100];
-		bool *first;
-		bool *last;
+		
+		
 
 		//Input button combination for special attack
 		if (player_input.pressing_S) {
@@ -2635,6 +2634,23 @@ void ModulePlayer::PlayerCollidersCleanUp() {
 	}
 }
 
-/*bool ModulePlayer::checkSpecialAttack() {
+bool ModulePlayer::checkSpecialAttack(bool* inputs) {
+	
+	
+	return true;
+}
 
-*/
+void ModulePlayer::newInput(bool *inputs, bool *newInput, int *first, int *last) {
+	inputs[*last] = *newInput; //We add the newInput to the last inputs array
+
+	if (*last < 99) //We change last pointer's position 
+		(*last)++;	
+	else
+		*last = 0;
+	
+	//We change first pointer's position 
+	if (*first == *last && *first < 99)
+		(*first)++;
+	else if (*first == *last && *first >= 99)
+		* first = 0;
+}

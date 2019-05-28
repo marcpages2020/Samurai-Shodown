@@ -122,14 +122,20 @@ public:
 	Mix_Chunk* special_attack_fx;	
 
 	void PlayerCollidersCleanUp();
-	void newInput(bool *array);
+	void newInput(bool* inputs, bool* newInput, int *first, int *last); //It adds a new input into the last inputs array
 
-	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	bool controls = true;
 	bool are_particles_created = false;
 	bool shadow_blit = true;
 	bool god = false;
+	//Special attack 
+	bool checkSpecialAttack(bool* inputs); //return true if special attack input has been introduced
+	bool inputs[100];
+	bool* first;
+	bool* last;
 
+	int firstInput = 0;
+	int lastInput = 0;
 	int attack_frames = 0;
 	int shadow_x;
 	int shadow_w = 70;
@@ -137,7 +143,7 @@ public:
 	int mult = 1;
 	int direction_x = 0;
 	int hit_percent = 0;
-	int hit_done = 0;
+	int hit_done = 0;		
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;	
 };
