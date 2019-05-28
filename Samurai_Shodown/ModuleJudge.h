@@ -12,8 +12,8 @@ struct SDL_Texture;
 enum States_J
 {
 	IDLE_J,
-	MOVELEFT_J,
-	MOVERIGHT_J,
+	MOVE_LEFT_J,
+	MOVE_RIGHT_J,
 	START_J,
 	HIT1_J,
 	HIT2_J,
@@ -30,7 +30,7 @@ public:
 	update_status PreUpdate();
 	update_status Update();
 	virtual bool CleanUp();
-	bool Move();
+	void Move();
 
 public:
 	SDL_Texture* player_textures = nullptr;
@@ -38,8 +38,8 @@ public:
 	SDL_Texture* spritesheet2 = nullptr;
 
 	Animation idle;
-	Animation moveright;
-	Animation moveleft;
+	Animation move_right;
+	Animation move_left;
 	Animation start;
 	Animation hit1;
 	Animation hit2;
