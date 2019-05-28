@@ -866,21 +866,7 @@ update_status ModulePlayer::PreUpdate()
 				player_input.pressing_D = false;
 			}
 
-		}
-
-		
-		
-
-		//Input button combination for special attack
-		if (player_input.pressing_S) {
-			if (player_input.pressing_S || player_input.pressing_D) {
-				if (player_input.pressing_D) {
-					if (player_input.pressing_C) {
-						state = SPECIAL_ATTACK;
-					}
-				}
-			}
-		}
+		}	
 		
 		//states 
 		{
@@ -2635,12 +2621,26 @@ void ModulePlayer::PlayerCollidersCleanUp() {
 }
 
 bool ModulePlayer::checkSpecialAttack(bool* inputs) {
+	//Input button combination for special attack
 	
+	for (int i = *first; i < *last; i++) {
+
+	}
+
+	if (player_input.pressing_S) {
+		if (player_input.pressing_S || player_input.pressing_D) {
+			if (player_input.pressing_D) {
+				if (player_input.pressing_C) {
+					state = SPECIAL_ATTACK;
+				}
+			}
+		}
+	}
 	
 	return true;
 }
 
-void ModulePlayer::newInput(bool *inputs, bool *newInput, int *first, int *last) {
+void ModulePlayer::newInput(bool *newInput) {
 	inputs[*last] = *newInput; //We add the newInput to the last inputs array
 
 	if (*last < 99) //We change last pointer's position 
