@@ -824,6 +824,9 @@ bool ModulePlayer::Start()
 	App->ui->player2_point = 0;
 	state = IDLE;
 	current_animation = &idle;
+	inputs[0] = ' ';
+	*first = inputs[0];
+	*last = inputs[0];
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->player);
 	if (!collider_player_down)
@@ -1087,7 +1090,8 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == JUMP_KICK) {
-
+				newInput('w');
+				newInput('b');
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1096,6 +1100,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == CROUCH_DOWN)
 			{
+				newInput('s');
 				if (!player_input.pressing_S)
 				{
 					state = CROUCH_UP;
@@ -1129,18 +1134,23 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == CROUCH_KICK) {
+				newInput('s');
+				newInput('b');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_kick.Reset();
 				}
 			}
 			if (state == CROUCH_PUNCH) {
+				newInput('s');
+				newInput('c');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_punch.Reset();
 				}
 			}
 			if (state == HIT) {
+				newInput(' ');
 				if (position.y <= initial_position.y)
 				{
 					position.y++;
@@ -1160,6 +1170,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == EN_GARDE)
 			{
+				newInput(' ');
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1168,6 +1179,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == WIN)
 			{
+				newInput(' ');
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1176,6 +1188,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == SPECIAL_ATTACK)
 			{
+				newInput(' ');
 				if (current_animation->Finished())
 				{
 					specialattack.Reset();
@@ -1185,6 +1198,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == HEAVY_PUNCH)
 			{
+				newInput('v');
 				if (current_animation->Finished())
 				{
 					heavy_punch.Reset();
@@ -1193,6 +1207,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == HEAVY_KICK)
 			{
+				newInput('n');
 				if (current_animation->Finished())
 				{
 					heavy_kick.Reset();
