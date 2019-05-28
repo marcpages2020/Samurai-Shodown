@@ -871,6 +871,7 @@ update_status ModulePlayer::PreUpdate()
 		//states 
 		{
 			if (state == IDLE) {
+				newInput(' ');
 				if (player_input.pressing_A)
 					state = BACKWARD;
 				if (player_input.pressing_D)
@@ -914,6 +915,7 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_DOWN;
 			}
 			if (state == BACKWARD) {
+				newInput('a');
 				if (!player_input.pressing_A)
 					state = IDLE;
 				if (player_input.pressing_C) {
@@ -953,6 +955,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_BACKWARD;
 			}
 			if (state == FORWARD) {
+				newInput('d');
 				if (!player_input.pressing_D)
 					state = IDLE;
 				if (player_input.pressing_C) {
@@ -992,6 +995,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_FORWARD;
 			}
 			if (state == KICK) {
+				newInput('b');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					kick.Reset();
@@ -1003,6 +1007,7 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == PUNCH) {
+				newInput('c');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					punch.Reset();
@@ -1010,6 +1015,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_NEUTRAL)
 			{
+				newInput('w');
 				if (player_input.pressing_C) {
 					//hit_done++;
 					state = JUMP_PUNCH;
@@ -1033,6 +1039,8 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_FORWARD)
 			{
+				newInput('w');
+				newInput('d');
 				if (player_input.pressing_C) {
 					hit_done++;
 					state = JUMP_PUNCH;
@@ -1051,6 +1059,8 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_BACKWARD)
 			{
+				newInput('w');
+				newInput('a');
 				if (player_input.pressing_C) {
 					//hit_done++;
 					state = JUMP_PUNCH;
@@ -1068,7 +1078,8 @@ update_status ModulePlayer::PreUpdate()
 				direction_x = -1;
 			}
 			if (state == JUMP_PUNCH) {
-
+				newInput('w');
+				newInput('c');
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -2659,8 +2670,8 @@ bool ModulePlayer::checkSpecialAttack() {
 	return false;
 }
 
-void ModulePlayer::newInput(bool *newInput) {
-	inputs[*last] = *newInput; //We add the newInput to the last inputs array
+void ModulePlayer::newInput(char newInput) {
+	inputs[*last] = newInput; //We add the newInput to the last inputs array
 
 	if (*last < 99) //We change last pointer's position 
 		(*last)++;	

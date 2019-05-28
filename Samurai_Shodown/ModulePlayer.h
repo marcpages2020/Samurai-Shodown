@@ -122,7 +122,7 @@ public:
 	Mix_Chunk* special_attack_fx;	
 
 	void PlayerCollidersCleanUp();
-	void newInput(bool* newInput); //It adds a new input into the last inputs array
+	void newInput(char newInput); //It adds a new input into the last inputs array
 
 	bool controls = true;
 	bool are_particles_created = false;
@@ -130,9 +130,9 @@ public:
 	bool god = false;
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
-	bool inputs[100];
-	bool* first;
-	bool* last;
+	char inputs[100];
+	char* first;
+	char* last;
 
 	int firstInput = 0;
 	int lastInput = 0;
