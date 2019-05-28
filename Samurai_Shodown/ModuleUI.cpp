@@ -277,6 +277,7 @@ update_status ModuleUI::Update() {
 		{
 			App->audio->PlayFX(begin_fx);
 			play_begin = false;
+			App->judge->state_j = BEGIN_J;
 		}
 
 	UpdateBars();
@@ -643,6 +644,8 @@ void ModuleUI::ResetScene() {
 	App->player2->life = 100;
 	App->player2->position = App->player2->initial_position;
 	App->player2->state2 = IDLE2;
+	App->judge->position_x = SCREEN_WIDTH / 2 - 35;
+	App->judge->state_j = IDLE_J;
 	time_fight = 96;
 	animKO_active = false;
 	App->render->camera.x = App->render->camera.y = 0;

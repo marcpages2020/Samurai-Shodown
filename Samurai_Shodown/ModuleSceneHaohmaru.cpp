@@ -8,6 +8,7 @@
 #include "ModuleUI.h"
 #include "ModuleHaohmaru.h"
 #include "ModuleWanFu.h"
+#include "ModuleJudge.h"
 #include <iostream>
 
 ModuleSceneHaohmaru::ModuleSceneHaohmaru()
@@ -54,6 +55,7 @@ bool ModuleSceneHaohmaru::Start()
 	App->audio->PlayMusic(music,NULL);
 	App->player->Enable();
 	App->player2->Enable();
+	App->judge->Enable();
 	//App->haohmaru->Enable();
 	//App->wanfu->Enable();
 	App->ui->Enable();
@@ -73,6 +75,7 @@ bool ModuleSceneHaohmaru::CleanUp()
 	Mix_FadeOutMusic(1250);
 	App->player->Disable();
 	App->player2->Disable();
+	App->judge->Disable();
 	App->audio->UnLoadMusic(music);
 	App->ui->Disable();
 	left_wall = nullptr;

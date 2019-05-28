@@ -4,6 +4,7 @@
 #include "ModuleHaohmaru.h"
 #include "ModuleWanFu.h"
 #include "ModuleUI.h"
+#include "ModuleJudge.h"
 
 ModuleSceneWanFu::ModuleSceneWanFu(){
 	//background animation
@@ -69,6 +70,7 @@ bool ModuleSceneWanFu::Start()
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();
 	App->player2->Enable();
+	App->judge->Enable();
 	//App->haohmaru->Enable();
 	//App->wanfu->Enable();
 	left_wall = App->collision->AddCollider({ -90,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
@@ -83,6 +85,7 @@ bool ModuleSceneWanFu::CleanUp()
 	LOG("Unloading Wan-Fu stage");
 	App->player->Disable();
 	App->player2->Disable();
+	App->judge->Disable();
 	App->ui->Disable();
 	App->textures->Unload(graphics);
 	Mix_FadeOutMusic(1250);

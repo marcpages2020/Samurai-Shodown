@@ -58,6 +58,7 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	player2->Disable();
+	judge->Disable();
 	// Disable the map that you do not start with
 	neo_geo->Disable();
 	scene_welcome->Disable();
