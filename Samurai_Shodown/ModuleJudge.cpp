@@ -234,18 +234,18 @@ void ModuleJudge::Move() {
 	}
 	if (moving == true)
 	{
-		if (position_x < middle)
+		if ((position_x == middle) || (position_x == middle + 1))
+		{
+			moving = false;
+			state_j = IDLE_J;
+		}
+		else if (position_x < middle)
 		{
 			position_x += speed;
 		}
 		else if (position_x > middle)
 		{
 			position_x -= speed;
-		}
-		else if ((position_x == middle)||(position_x == middle+1))
-		{
-			moving = false;
-			state_j = IDLE_J;
 		}
 	}
 
