@@ -871,7 +871,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 
 		}	
-		
 		//states 
 		{
 			if (state == IDLE) {
@@ -1224,6 +1223,10 @@ update_status ModulePlayer::PreUpdate()
 					grab.Reset();
 					state = IDLE;
 				}
+			}
+			if (!controls)
+			{
+				state = IDLE;
 			}
 			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (collider_player_attack != nullptr))
 			{

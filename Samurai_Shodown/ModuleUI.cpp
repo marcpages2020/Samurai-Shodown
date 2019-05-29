@@ -152,15 +152,15 @@ ModuleUI::ModuleUI() {
 
 	}
 	y = -48;
-	begin.PushBack({ 490,y += 48,102,48 }, 0.01F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
-	begin.PushBack({ 490,y += 48,102,48 }, 0.5F);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.03f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
+	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
 	begin.loop = false;
 
 	bar_anim1.PushBack({ 8,58,128,9 }, 0.3F);
@@ -193,11 +193,11 @@ bool ModuleUI::Start() {
 	player2_wins = 0;
 	player2_point = 0;
 	animKO_active = false;
-	points_fx = App->audio->LoadFX("Assets/Audio/Fx/count_points.wav");
 	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
+	points_fx = App->audio->LoadFX("Assets/Audio/Fx/count_points.wav");
 	victory_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Victory.wav");
 	begin_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Begin.wav");
 	iza_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Iza.wav");
@@ -264,13 +264,11 @@ bool ModuleUI::CleanUp() {
 }
 
 update_status ModuleUI::Update() {
-
-	if (play_ipponme == true)
+	if (play_jinjoni == true)
 	{
-		App->audio->PlayFX(ipponme_fx);
-		play_ipponme = false;
+		App->audio->PlayFX(jinjoni_fx);
+		play_jinjoni = false;
 	}
-	
 	if (show_ui==true)
 	{
 		if (play_begin == true)
@@ -279,7 +277,13 @@ update_status ModuleUI::Update() {
 			play_begin = false;
 			App->judge->state_j = BEGIN_J;
 		}
-
+		/*
+		if (play_ipponme == true)
+		{
+			App->audio->PlayFX(ipponme_fx);
+			play_ipponme = false;
+		}
+		*/
 	UpdateBars();
 	timer();
 	DieScene();
@@ -431,6 +435,7 @@ update_status ModuleUI::Update() {
 		{
 			en_garde.Reset();
 			en_garde_bool = false;
+			play_begin = true;
 			show_ui = true;
 		}
 	}
@@ -444,8 +449,11 @@ update_status ModuleUI::Update() {
 			App->player->BlockControls(false);
 			App->player2->BlockControls(false);
 			begin_finish = true;
-			play_begin = true;
 		}
+	}
+	if (begin.Finished())
+	{
+
 	}
 	return UPDATE_CONTINUE;
 }
@@ -884,3 +892,4 @@ void ModuleUI::DieScene()
 		}
 	}
 }
+

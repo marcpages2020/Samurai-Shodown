@@ -1091,6 +1091,10 @@ update_status ModulePlayer2::PreUpdate()
 				en_garde2.Reset();
 			}
 		}
+		if (!controls)
+		{
+			state2 = IDLE2;
+		}
 	}
 
 	return UPDATE_CONTINUE;
