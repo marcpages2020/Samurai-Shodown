@@ -763,6 +763,8 @@ bool ModulePlayer2::Start()
 	position.x = initial_position.x = shadow_x = 305;
 	position.y = initial_position.y = 215;
 	lposition = position;
+	spritesheet1_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu-color2.png");
+	spritesheet2_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2-color2.png");
 	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_attack.wav");
 	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
@@ -2501,11 +2503,11 @@ update_status ModulePlayer2::Update()
 	SDL_Rect shadow = { 1181,138,91,17 };
 	if (state2 == GRAB2)
 	{
-		player2_textures = App->player->spritesheet2;
+		player2_textures = App->player2->spritesheet2_2;
 	}
 	else
 	{
-		player2_textures = App->player->spritesheet1;
+		player2_textures = App->player2->spritesheet1_2;
 	}
 	if (position.x < App->player->position.x) {
 		flip = SDL_FLIP_NONE;

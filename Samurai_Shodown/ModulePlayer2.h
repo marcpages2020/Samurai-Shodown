@@ -132,6 +132,8 @@ public:
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 
 	SDL_Texture* player2_textures=nullptr;
+	SDL_Texture* spritesheet1_2 = nullptr;
+	SDL_Texture* spritesheet2_2 = nullptr;
 	/*
 	SDL_Texture* spritesheet1 = nullptr;
 	SDL_Texture* spritesheet2 = nullptr;
