@@ -2501,6 +2501,8 @@ update_status ModulePlayer2::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	//SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	SDL_Rect shadow = { 1181,138,91,17 };
+	SDL_RendererFlip lflip;
+	lflip = flip;
 	if (state2 == GRAB2)
 	{
 		player2_textures = App->player2->spritesheet2_2;
@@ -2515,7 +2517,19 @@ update_status ModulePlayer2::Update()
 	else {
 		flip = SDL_FLIP_HORIZONTAL;
 	}
+	if (flip != lflip)
+	{
+		if (flip == SDL_FLIP_NONE)
+		{
+			position.x -= current_animation->GetCurrentFrame().w / 2;
+		}
+		else
+		{
+			position.x += current_animation->GetCurrentFrame().w / 2;
+		}
+	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
+		//shadow 
 		if (shadow_blit) {
 			App->render->Blit(player2_textures, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
@@ -2523,9 +2537,11 @@ update_status ModulePlayer2::Update()
 		else {
 			shadow_blit = true;
 		}
+		//player
 		App->render->Blit(player2_textures, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
+		//shadow
 		if (shadow_blit) {
 			App->render->Blit(player2_textures, shadow_x, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
@@ -2533,6 +2549,7 @@ update_status ModulePlayer2::Update()
 		else {
 			shadow_blit = true;
 		}
+		//player
 		App->render->Blit(player2_textures, position.x, position.y - r.h, &r, flip);
 
 	}

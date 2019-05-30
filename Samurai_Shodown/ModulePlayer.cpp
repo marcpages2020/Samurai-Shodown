@@ -2503,6 +2503,8 @@ update_status ModulePlayer::Update()
 	// SDL_Rect shadow = { 1348, 2627, 70, 17 };
 	//wan-fu shadow
 	SDL_Rect shadow = { 1181,138,91,17 };
+	SDL_RendererFlip lflip;
+	lflip = flip;
 	if (state == GRAB)
 	{
 		player_textures = spritesheet2;
@@ -2517,27 +2519,43 @@ update_status ModulePlayer::Update()
 	else {
 		flip = SDL_FLIP_HORIZONTAL;
 	}
+	if (flip != lflip)
+	{
+		if (flip == SDL_FLIP_NONE)
+		{
+			position.x -= current_animation->GetCurrentFrame().w / 2;
+		}
+		else
+		{
+			position.x += current_animation->GetCurrentFrame().w / 2;
+		}
+	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
 		if (shadow_blit) {
+			//shadow
 			App->render->Blit(player_textures, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
+		//player
 		App->render->Blit(player_textures, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
 		if (shadow_blit) {
+			//shadow
 			App->render->Blit(player_textures, shadow_x, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
+		//player
 		App->render->Blit(player_textures, position.x, position.y - r.h, &r, flip);
 
 	}
+
 	return UPDATE_CONTINUE;
 }
 
