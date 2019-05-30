@@ -2511,7 +2511,7 @@ update_status ModulePlayer::Update()
 	{
 		player_textures = spritesheet1;
 	}
-	if (position.x < App->player2->position.x) {
+	if (position.x < App->player2->position.x+App->player2->current_animation->GetCurrentFrame().w/2) {
 		flip = SDL_FLIP_NONE;
 	}
 	else {

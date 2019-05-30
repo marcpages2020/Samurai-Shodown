@@ -2509,7 +2509,7 @@ update_status ModulePlayer2::Update()
 	{
 		player2_textures = App->player2->spritesheet1_2;
 	}
-	if (position.x < App->player->position.x) {
+	if (position.x < App->player->position.x+App->player->current_animation->GetCurrentFrame().w/2) {
 		flip = SDL_FLIP_NONE;
 	}
 	else {
