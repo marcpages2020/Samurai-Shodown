@@ -3,14 +3,12 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 18
+#define NUM_MODULES 19
 
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
-//class ModuleHaohmaru;
-//class ModuleWanFu;
 class ModuleJudge;
 class ModulePlayer2;
 class ModulePlayer;
@@ -20,6 +18,7 @@ class Module;
 class ModuleSceneWelcome;
 class ModuleSceneHaohmaru;
 class ModuleSceneWanFu;
+class ModuleCharacterSelection;
 class ModuleSceneCongrats;
 class ModuleParticles;
 class ModuleCollision;
@@ -36,8 +35,6 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
-	//ModuleHaohmaru* haohmaru = nullptr;
-	//ModuleWanFu* wanfu = nullptr;
 	ModuleJudge* judge = nullptr;
 	ModulePlayer2* player2 = nullptr;
 	ModulePlayer* player = nullptr;
@@ -47,6 +44,7 @@ public:
 	ModuleSceneHaohmaru* scene_haohmaru = nullptr;
 	ModuleSceneWanFu* scene_wanfu = nullptr;
 	ModuleSceneCongrats* scene_congrats = nullptr;
+	ModuleCharacterSelection* character_selection = nullptr;
 	ModuleParticles* particles = nullptr;
 	ModuleNeoGeo* neo_geo = nullptr;
 	ModuleCollision* collision = nullptr;

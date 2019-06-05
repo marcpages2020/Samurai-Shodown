@@ -382,18 +382,18 @@ ModulePlayer::ModulePlayer()
 			//idle
 			// /*
 			{
-				idle.PushBack({ 28,26,118,126 }, 0.2f); //01
-				idle.PushBack({ 150,26,118,126 }, 0.2f);
-				idle.PushBack({ 272,26,118,126 }, 0.2f);
-				idle.PushBack({ 394,26,118,126 }, 0.2f); //04
-				idle.PushBack({ 514,26,118,126 }, 0.2f);
-				idle.PushBack({ 635,26,118,126 }, 0.2f);
-				idle.PushBack({ 754,40,118,112 }, 0.2f); //07
-				idle.PushBack({ 873,40,118,112 }, 0.2f);
-				idle.PushBack({ 991,40,118,112 }, 0.2f);
-				idle.PushBack({ 394,26,118,126 }, 0.2f); //04
-				idle.PushBack({ 514,26,118,126 }, 0.2f);
-				idle.PushBack({ 635,26,118,126 }, 0.2f);
+				idle.PushBack({ 28,26,118,126 }, 0.15f); //01
+				idle.PushBack({ 150,26,118,126 }, 0.15f);
+				idle.PushBack({ 272,26,118,126 }, 0.15f);
+				idle.PushBack({ 394,26,118,126 }, 0.15f); //04
+				idle.PushBack({ 514,26,118,126 }, 0.15f);
+				idle.PushBack({ 635,26,118,126 }, 0.15f);
+				idle.PushBack({ 754,40,118,112 }, 0.15f); //07
+				idle.PushBack({ 873,40,118,112 }, 0.15f);
+				idle.PushBack({ 991,40,118,112 }, 0.15f);
+				idle.PushBack({ 394,26,118,126 }, 0.15f); //04
+				idle.PushBack({ 514,26,118,126 }, 0.15f);
+				idle.PushBack({ 635,26,118,126 }, 0.15f);
 				idle.loop = true;
 			}
 			// forward

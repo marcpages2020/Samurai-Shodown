@@ -6,8 +6,6 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleUI.h"
-#include "ModuleHaohmaru.h"
-#include "ModuleWanFu.h"
 #include "ModuleJudge.h"
 #include <iostream>
 
