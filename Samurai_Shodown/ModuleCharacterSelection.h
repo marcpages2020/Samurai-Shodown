@@ -13,6 +13,7 @@ public:
 
 public:
 	SDL_Texture* background;
+	SDL_Texture* character;
 };
 #endif // !_MODULECHARACTERSELECTION_H
 

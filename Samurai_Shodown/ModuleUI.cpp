@@ -193,7 +193,7 @@ bool ModuleUI::Start() {
 	player2_wins = 0;
 	player2_point = 0;
 	animKO_active = false;
-	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
+	finish_round = App->textures->Load("Assets/Sprites/UI/finish_round.png");
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
