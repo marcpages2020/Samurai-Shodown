@@ -61,12 +61,12 @@ public:
 	ModulePlayer();
 	~ModulePlayer();
 
-	virtual bool Start();
+	bool Start();
 	update_status PreUpdate();
 	update_status Update();
-	virtual bool CleanUp();
-	virtual void OnCollision(Collider* c1, Collider* c2);
-	virtual void BlockControls(bool block);
+	bool CleanUp();
+	void OnCollision(Collider* c1, Collider* c2);
+	void BlockControls(bool block);
 public:
 	SDL_Texture* player_textures = nullptr;
 	SDL_Texture* spritesheet1 = nullptr;
