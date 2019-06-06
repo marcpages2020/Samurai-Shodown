@@ -2590,8 +2590,6 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		case COLLIDER_PLAYER:
 			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DEATH2) && (state2 != WIN2))
 			{
-			//	if (App->player->position.y > position.y - 1)
-			//	{
 					if (App->player->position.x > position.x)
 					{
 						position.x = lposition.x - speed;
@@ -2600,8 +2598,11 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					{
 						position.x = lposition.x + speed;
 					}
-				}
-		//	}
+			}
+			if (App->player->player_input.holding_V)
+			{
+				App->player->state = GRAB;
+			}
 			break;
 		case COLLIDER_PLAYER_1_ATTACK:
 			if (!App->player->collider_player_attack->to_delete && !god) {
