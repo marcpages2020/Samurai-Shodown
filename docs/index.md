@@ -14,3 +14,4 @@ Silvino: https://github.com/silvino00
 
 Oriol Capdevila: https://github.com/OriolCS2
 
+![](https://github.com/marcpages2020/Samurai-Shodown/raw/master/Assets/Images/Wiki/Home/20190311_122730.jpg?raw=true)
