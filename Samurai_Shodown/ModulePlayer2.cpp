@@ -1110,7 +1110,7 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (!controls)
 		{
-			state2 = IDLE2;
+			//state2 = IDLE2;
 		}
 	}
 
