@@ -193,7 +193,7 @@ bool ModuleUI::Start() {
 	player2_wins = 0;
 	player2_point = 0;
 	animKO_active = false;
-	finish_round = App->textures->Load("Assets/Textures/finish_round.png");
+	finish_round = App->textures->Load("Assets/Sprites/UI/finish_round.png");
 	font_point_numbers = App->fonts->Load("Assets/Textures/PointNumbers.png", "0123456789", 1);
 	timer_font = App->fonts->Load("Assets/Textures/UI.png", "9876543210", 1);
 	ippon_fx = App->audio->LoadFX("Assets/Audio/Fx/Judge/Ippon.wav");
@@ -277,6 +277,11 @@ update_status ModuleUI::Update() {
 			play_begin = false;
 			App->judge->state_j = BEGIN_J;
 		}
+		if (play_ippon==true)
+		{
+			App->audio->PlayFX(ippon_fx);
+			play_ippon = false;
+		}
 		/*
 		if (play_ipponme == true)
 		{
@@ -345,7 +350,6 @@ update_status ModuleUI::Update() {
 		points_hit = ((percent * 100) * 20000) / 100;
 		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 		App->player->state = States::DEATH;
-
 		App->player2->state2 = WIN2;
 	}
 	// player 2 dies
@@ -384,7 +388,6 @@ update_status ModuleUI::Update() {
 		{
 			vtransition = true;
 		}
-		App->audio->PlayFX(ippon_fx);
 		round_end = false;
 		die_scene = true;
 		ippon_time = SDL_GetTicks();
@@ -693,7 +696,7 @@ void ModuleUI::DieScene()
 	if (die_scene && (player1_win || player2_win) && !time_up) {
 		if (play_victory == true)
 		{
-			App->audio->PlayFX(victory_fx);
+			App->audio->PlayFX(ippon_fx);
 			play_victory = false;
 		}
 		if (player1_wins != 2 && player2_wins != 2 && !points_done) {

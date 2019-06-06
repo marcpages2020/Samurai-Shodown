@@ -122,6 +122,7 @@ public:
 	bool play_begin = false;
 	bool play_jinjoni = true;
 	bool play_victory = true;
+	bool play_ippon = false;
 	int animtime = 0;
 };
 

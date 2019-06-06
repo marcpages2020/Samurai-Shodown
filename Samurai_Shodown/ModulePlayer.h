@@ -53,6 +53,7 @@ struct PlayerInput {
 	bool pressing_M;
 	bool pressing_E;
 	bool pressing_F4;
+	bool holding_V;
 };
 
 class ModulePlayer : public Module
@@ -61,12 +62,12 @@ public:
 	ModulePlayer();
 	~ModulePlayer();
 
-	virtual bool Start();
+	bool Start();
 	update_status PreUpdate();
 	update_status Update();
-	virtual bool CleanUp();
-	virtual void OnCollision(Collider* c1, Collider* c2);
-	virtual void BlockControls(bool block);
+	bool CleanUp();
+	void OnCollision(Collider* c1, Collider* c2);
+	void BlockControls(bool block);
 public:
 	SDL_Texture* player_textures = nullptr;
 	SDL_Texture* spritesheet1 = nullptr;
@@ -115,8 +116,8 @@ public:
 
 	float speed = 2;
 	
-	Mix_Chunk* light_attack_fx;
-	Mix_Chunk* light_kick_fx;
+	Mix_Chunk* attack_fx;
+	Mix_Chunk* kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	Mix_Chunk* special_attack_fx;	
@@ -128,6 +129,7 @@ public:
 	bool are_particles_created = false;
 	bool shadow_blit = true;
 	bool god = false;
+	bool grab_right = false;
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	char inputs[100];

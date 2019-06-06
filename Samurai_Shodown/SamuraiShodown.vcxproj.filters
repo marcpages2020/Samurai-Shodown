@@ -61,14 +61,11 @@
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleWanFu.cpp">
-      <Filter>Modules\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleHaohmaru.cpp">
-      <Filter>Modules\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleJudge.cpp">
       <Filter>Modules\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCharacterSelection.cpp">
+      <Filter>Modules\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,14 +138,11 @@
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Modules\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleWanFu.h">
-      <Filter>Modules\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleHaohmaru.h">
-      <Filter>Modules\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleJudge.h">
       <Filter>Modules\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCharacterSelection.h">
+      <Filter>Modules\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

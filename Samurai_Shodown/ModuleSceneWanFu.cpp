@@ -1,8 +1,6 @@
 #include "ModuleSceneWanFu.h"
 #include "Application.h"
 #include "ModulePlayer2.h"
-#include "ModuleHaohmaru.h"
-#include "ModuleWanFu.h"
 #include "ModuleUI.h"
 #include "ModuleJudge.h"
 
