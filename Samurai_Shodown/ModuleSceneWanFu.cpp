@@ -64,7 +64,7 @@ bool ModuleSceneWanFu::Start()
 	LOG("Loading Wan-Fu Scene");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
-	column = App->textures->Load("Assets/Sprites/Scenes/column.png");
+	//column = App->textures->Load("Assets/Sprites/Scenes/column.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();

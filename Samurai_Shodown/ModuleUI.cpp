@@ -7,6 +7,7 @@
 #include "ModuleFonts.h"
 #include "ModuleSceneHaohmaru.h"
 #include "ModuleJudge.h"
+#include "ModuleSceneWanFu.h"
 #include <iostream>
 
 ModuleUI::ModuleUI() {
@@ -176,6 +177,7 @@ ModuleUI::~ModuleUI() {}
 bool ModuleUI::Start() {
 	LOG("Loading UI\n");
 	ui_png = App->textures->Load("Assets/Textures/in_gameUI.png");
+	column = App->textures->Load("Assets/Sprites/Scenes/column.png");
 	life_1 = { 8,32,128,9 };
 	life_2 = { 8,32,128,9 };
 	App->player->life = 100;
@@ -268,6 +270,11 @@ update_status ModuleUI::Update() {
 	{
 		App->audio->PlayFX(jinjoni_fx);
 		play_jinjoni = false;
+	}
+	if (App->scene_wanfu->IsEnabled() == true)
+	{
+		App->render->Blit(column, 63, 193, NULL, SDL_FLIP_NONE, 0.75f);
+		App->render->Blit(column, 295, 193, NULL, SDL_FLIP_HORIZONTAL, 0.75f);
 	}
 	if (show_ui==true)
 	{

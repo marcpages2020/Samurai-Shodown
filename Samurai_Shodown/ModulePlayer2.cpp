@@ -1108,9 +1108,9 @@ update_status ModulePlayer2::PreUpdate()
 				en_garde2.Reset();
 			}
 		}
-		if (!controls)
+		if ((!controls) && (state2 != EN_GARDE2))
 		{
-			//state2 = IDLE2;
+			state2 = IDLE2;
 		}
 	}
 

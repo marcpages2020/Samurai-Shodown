@@ -22,6 +22,7 @@ public:
 
 public:
 	SDL_Texture * ui_png = nullptr;
+	SDL_Texture* column = nullptr;
 
 	Animation animKO;
 	bool animKO_active = false;

@@ -1235,9 +1235,9 @@ update_status ModulePlayer::PreUpdate()
 					state = IDLE;
 				}
 			}
-			if (!controls)
+			if ((!controls)&&(state != EN_GARDE))
 			{
-				//state = IDLE;
+				state = IDLE;
 			}
 			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != JUMP_PUNCH) && (state != JUMP_KICK) && (collider_player_attack != nullptr))
 			{
