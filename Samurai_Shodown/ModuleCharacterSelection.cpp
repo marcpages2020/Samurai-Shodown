@@ -11,12 +11,12 @@
 
 ModuleCharacterSelection::ModuleCharacterSelection() {
 	//p1 shining square
-	p1.PushBack({17,589,40,49},0.2f);
-	p1.PushBack({302,590,40,48},0.2f);
+	p1.PushBack({692,259,40,49},0.2f);
+	p1.PushBack({750,259,40,48},0.2f);
 	p1.loop = true;
 	//p2 shining square
-	p2.PushBack({74,589,40,49},0.2f);
-	p2.PushBack({359,591,40,48},0.2f);
+	p2.PushBack({692,323,40,49},0.2f);
+	p2.PushBack({749,323,40,48},0.2f);
 	p2.loop = true;
 	//player 1 idle
 	idle.PushBack({ 28,26,118,126 }, 0.15f); 
@@ -63,14 +63,14 @@ bool ModuleCharacterSelection::CleanUp() {
 update_status ModuleCharacterSelection::Update() {
 	SDL_Rect back, face,name,origin;
 	back = { 0,0,SCREEN_WIDTH, SCREEN_HEIGHT};
-	face = { 415,591,42,48 };
-	name = { 531,600,95,30 };
-	origin = { 473,608,42,15 };
+	face = { 749,207,42,48 };
+	name = { 686,144,95,30 };
+	origin = { 713,181,42,15 };
 	//face, p1 and p2
 	App->render->Blit(background, 0, 0, &back);
 	App->render->Blit(character, (SCREEN_WIDTH-face.w)/2, (SCREEN_HEIGHT-face.h)/2-40, &face);
 	App->render->Blit(character, (SCREEN_WIDTH - face.w) / 2, (SCREEN_HEIGHT - face.h) / 2-40,  &p2.GetCurrentFrame());
-	App->render->Blit(character, (SCREEN_WIDTH - face.w) / 2, (SCREEN_HEIGHT - face.h) / 2-40,  &p1.GetCurrentFrame());
+	App->render->Blit(character, (SCREEN_WIDTH - face.w) / 2, (SCREEN_HEIGHT - face.h) / 2-42,  &p1.GetCurrentFrame());
 	//players
 	App->render->Blit(player1, (SCREEN_WIDTH) / 16, (SCREEN_HEIGHT) * 3/ 8, &idle.GetCurrentFrame());
 	App->render->Blit(player2, (SCREEN_WIDTH) *12/18, (SCREEN_HEIGHT) * 3 / 8, &idle.GetCurrentFrame(),SDL_FLIP_HORIZONTAL);
