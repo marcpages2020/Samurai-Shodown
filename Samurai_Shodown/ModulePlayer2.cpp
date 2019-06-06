@@ -1045,15 +1045,15 @@ update_status ModulePlayer2::PreUpdate()
 				{
 					if (flip == SDL_FLIP_HORIZONTAL)
 					{
-						position.x += speed;
+						position.x += speed/4;
 					}
 					else
 					{
-						position.x -= speed;
+						position.x -= speed/4;
 					}
 				}
 			}
-			else if ((current_animation->Finished())&&((position.y == initial_position.y+1)||(position.y == initial_position.y))) {
+			if (position.y == initial_position.y) {
 				state2 = IDLE2;
 				hit2.Reset();
 			}
