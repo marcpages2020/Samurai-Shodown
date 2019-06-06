@@ -1094,7 +1094,7 @@ update_status ModulePlayer::PreUpdate()
 			if (state == JUMP_PUNCH) {
 				newInput('w');
 				newInput('c');
-				if (current_animation->Finished())
+				if ((current_animation->Finished())&&(position.y == initial_position.y))
 				{
 					state = IDLE;
 					jump_punch.Reset();
@@ -1103,7 +1103,7 @@ update_status ModulePlayer::PreUpdate()
 			if (state == JUMP_KICK) {
 				newInput('w');
 				newInput('b');
-				if (current_animation->Finished())
+				if ((current_animation->Finished())&&(position.y == initial_position.y))
 				{
 					state = IDLE;
 					jump_kick.Reset();
@@ -1174,7 +1174,7 @@ update_status ModulePlayer::PreUpdate()
 						position.x -= speed/4;
 					}
 				}
-				if (position.y == initial_position.y) {
+				else if (current_animation->Finished()) {
 					state = IDLE;
 					hit.Reset();
 				}
@@ -1627,7 +1627,7 @@ update_status ModulePlayer::Update()
 				mult = 1;
 				jump_neutral.Reset();
 				state = IDLE;
-				App->render->StartCameraShake(400, 3);
+				App->render->StartCameraShake(400, 2);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1783,7 +1783,7 @@ update_status ModulePlayer::Update()
 				jump_forward.Reset();
 				mult = 1;
 				state = IDLE;
-				App->render->StartCameraShake(400, 3);
+				App->render->StartCameraShake(400, 2);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1954,7 +1954,7 @@ update_status ModulePlayer::Update()
 				jump_punch.Reset();
 				mult = 1;
 				state = IDLE;
-				App->render->StartCameraShake(400, 3);
+				App->render->StartCameraShake(400, 2);
 				direction_x = 0;
 			}
 			else if (position.y > initial_position.y)
@@ -2016,7 +2016,7 @@ update_status ModulePlayer::Update()
 				jump_kick.Reset();
 				mult = 1;
 				state = IDLE;
-				App->render->StartCameraShake(400, 3);
+				App->render->StartCameraShake(400, 2);
 				direction_x = 0;
 			}
 			else if (position.y > initial_position.y)
@@ -2642,7 +2642,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 					break;
 				}
 			}
-			App->render->StartCameraShake(400, 10);
+			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			break;
 		case COLLIDER_PLAYER_2_PARTICLES:
@@ -2651,7 +2651,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			life -= 20;
 			state = HIT;
 			position.x -= 5;
-			App->render->StartCameraShake(400, 3);
+			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			break;
 		default:

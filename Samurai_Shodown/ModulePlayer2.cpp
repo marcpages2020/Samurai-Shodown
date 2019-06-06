@@ -836,9 +836,7 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = CROUCH_DOWN2;
 			if (player_input2.pressing_P) {
 				hit_done++;
-				//App->audio->PlayFX(twister_fx);
 				App->audio->PlayFX(special_attack_fx);
-				//state2 = TWISTER2;
 				state2 = SPECIAL_ATTACK_2;
 			}
 			if (player_input2.pressing_J) {
@@ -976,14 +974,14 @@ update_status ModulePlayer2::PreUpdate()
 			direction_x = -1;
 		}
 		if (state2 == JUMP_PUNCH2) {
-			if (current_animation->Finished())
+			if ((current_animation->Finished())&&(position.y == initial_position.y))
 			{
 				state2 = IDLE2;
 				jump_punch2.Reset();
 			}
 		}
 		if (state2 == JUMP_KICK2) {
-			if (current_animation->Finished())
+			if((current_animation->Finished()) && (position.y == initial_position.y))
 			{
 				state2 = IDLE2;
 				jump_kick2.Reset();
@@ -1529,7 +1527,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(400, 3);
+				App->render->StartCameraShake(400, 2);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1602,7 +1600,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_forward2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(500,3);
+				App->render->StartCameraShake(500,2);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1610,7 +1608,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_forward2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(500,3);
+				App->render->StartCameraShake(500,2);
 			}
 			//haohmaru
 			/*
@@ -1716,14 +1714,14 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 				jump_backward2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(500, 3);
+				App->render->StartCameraShake(500, 2);
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
 				jump_backward2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(400, 3);
+				App->render->StartCameraShake(400, 2);
 				mult = 1;
 			}
 			else if (position.y > initial_position.y)
@@ -1731,7 +1729,7 @@ update_status ModulePlayer2::Update()
 				position.y = initial_position.y;
 				mult = 1;
 				jump_forward2.Reset();
-				App->render->StartCameraShake(500, 3);
+				App->render->StartCameraShake(500, 2);
 			}
 			//haohmaru
 			/*
@@ -1876,7 +1874,7 @@ update_status ModulePlayer2::Update()
 					mult = 1;
 					jump_forward2.Reset();
 					state2 = IDLE2;
-					App->render->StartCameraShake(500, 3);
+					App->render->StartCameraShake(500, 2);
 				}
 				else if (position.y > initial_position.y)
 				{
@@ -1884,7 +1882,7 @@ update_status ModulePlayer2::Update()
 					mult = 1;
 					jump_forward2.Reset();
 					state2 = IDLE2;
-					App->render->StartCameraShake(500, 3);
+					App->render->StartCameraShake(500, 2);
 				}
 				shadow_x = position.x;
 				break;
@@ -1938,7 +1936,7 @@ update_status ModulePlayer2::Update()
 					mult = 1;
 					jump_forward2.Reset();
 					state2 = IDLE2;
-					App->render->StartCameraShake(500, 3);
+					App->render->StartCameraShake(500, 2);
 				}
 				else if (position.y > initial_position.y)
 				{
@@ -1946,7 +1944,7 @@ update_status ModulePlayer2::Update()
 					mult = 1;
 					jump_forward2.Reset();
 					state2 = IDLE2;
-					App->render->StartCameraShake(500, 3);
+					App->render->StartCameraShake(500, 2);
 				}
 				shadow_x = position.x;
 				break;
@@ -2675,7 +2673,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					position.x += 10;
 				}
 			}
-			App->render->StartCameraShake(400, 3);
+			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			break;
 		case COLLIDER_PLAYER_PARTICLES:
@@ -2684,7 +2682,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			state2 = HIT2;
 			App->judge->state_j = HIT1_J;
 			position.x += 5;
-			App->render->StartCameraShake(400, 3);
+			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			App->ui->player1_point += 400;
 			break;
