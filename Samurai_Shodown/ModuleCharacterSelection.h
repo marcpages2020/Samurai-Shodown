@@ -20,9 +20,11 @@ public:
 	SDL_Texture* player1;
 	SDL_Texture* player2;
 	Mix_Music* music;
+	Mix_Chunk* character_selected;
 	Animation p1;
 	Animation p2;
 	Animation idle;
+	bool ring_played = false;
 
 };
 #endif // !_MODULECHARACTERSELECTION_H

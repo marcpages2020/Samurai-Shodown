@@ -53,6 +53,7 @@ struct PlayerInput {
 	bool pressing_M;
 	bool pressing_E;
 	bool pressing_F4;
+	bool holding_V;
 };
 
 class ModulePlayer : public Module
@@ -128,6 +129,7 @@ public:
 	bool are_particles_created = false;
 	bool shadow_blit = true;
 	bool god = false;
+	bool grab = false;
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	char inputs[100];

@@ -4,6 +4,8 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleUI.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 
 
 
@@ -43,6 +45,7 @@ bool ModuleCharacterSelection::Init() {
 	player1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	player2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu-color2.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/character_selection.ogg");
+	character_selected = App->audio->LoadFX("Assets/Audio/Fx/character_selected.wav");
 	App->audio->PlayMusic(music, 1);
 	return true;
 }
@@ -66,6 +69,17 @@ update_status ModuleCharacterSelection::Update() {
 	App->render->Blit(character, (SCREEN_WIDTH - origin.w)/ 8 +14, (SCREEN_HEIGHT - origin.h) * 9/ 10 +5, &origin);
 	App->render->Blit(character, (SCREEN_WIDTH - name.w)*7/8, (SCREEN_HEIGHT - face.h) * 9 / 10, &name);
 	App->render->Blit(character, (SCREEN_WIDTH - origin.w)*7/ 8-14, (SCREEN_HEIGHT - origin.h) * 9 / 10 + 7, &origin);
+
+	if ((SDL_GetTicks() > 9000)&&(ring_played==false))
+	{
+		App->audio->PlayFX(character_selected);
+		ring_played = true;
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)||SDL_GetTicks()>10000)
+	{
+		App->fade->FadeToBlack((Module*)App->character_selection, (Module*)App->scene_wanfu, 1.5f);
+	}
 
 	return UPDATE_CONTINUE;
 }
