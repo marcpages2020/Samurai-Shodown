@@ -52,6 +52,11 @@ bool ModuleCharacterSelection::Init() {
 
 bool ModuleCharacterSelection::CleanUp() {
 	App->textures->Unload(background);
+	App->textures->Unload(character);
+	App->textures->Unload(player1);
+	App->textures->Unload(player2);
+	App->audio->UnLoadMusic(music);
+	App->audio->UnLoadFx(character_selected);
 	return true;
 }
 
