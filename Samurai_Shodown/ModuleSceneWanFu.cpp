@@ -64,6 +64,7 @@ bool ModuleSceneWanFu::Start()
 	LOG("Loading Wan-Fu Scene");
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
+	column = App->textures->Load("Assets/Sprites/Scenes/column.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
 	App->audio->PlayMusic(music, NULL);
 	App->player->Enable();
@@ -102,6 +103,8 @@ update_status ModuleSceneWanFu::Update()
 	App->render->MoveCamera();
 
 	App->render->Blit(graphics, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
+	App->render->Blit(column, 40, 100);
+
 	if (((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->ui->victory == true && !App->ui->die_scene)) || (App->ui->draw >= 3 && !App->ui->die_scene))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_congrats, 1.5f);
@@ -110,6 +113,5 @@ update_status ModuleSceneWanFu::Update()
 	{
 		App->fade->FadeToBlack((Module*)App->scene_wanfu, (Module*)App->scene_haohmaru, 1.5f);
 	}
-
 	return UPDATE_CONTINUE;
 }

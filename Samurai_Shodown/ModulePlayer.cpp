@@ -1239,7 +1239,7 @@ update_status ModulePlayer::PreUpdate()
 			{
 				//state = IDLE;
 			}
-			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (collider_player_attack != nullptr))
+			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != JUMP_PUNCH) && (state != JUMP_KICK) && (collider_player_attack != nullptr))
 			{
 				collider_player_attack->to_delete = true;
 				collider_player_attack = nullptr;
