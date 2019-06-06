@@ -123,8 +123,8 @@ public:
 	bool god = false;
 	bool controls = true;
 
-	Mix_Chunk* light_attack_fx;
-	Mix_Chunk* light_kick_fx;
+	Mix_Chunk* attack_fx;
+	Mix_Chunk* kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	Mix_Chunk* special_attack_fx;

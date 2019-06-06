@@ -116,8 +116,8 @@ public:
 
 	float speed = 2;
 	
-	Mix_Chunk* light_attack_fx;
-	Mix_Chunk* light_kick_fx;
+	Mix_Chunk* attack_fx;
+	Mix_Chunk* kick_fx;
 	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	Mix_Chunk* special_attack_fx;	
@@ -129,7 +129,7 @@ public:
 	bool are_particles_created = false;
 	bool shadow_blit = true;
 	bool god = false;
-//	bool grab = false;
+	bool grab_right = false;
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	char inputs[100];

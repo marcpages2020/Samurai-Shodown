@@ -797,6 +797,19 @@ ModulePlayer::ModulePlayer()
 				heavy_kick.PushBack({ 1412, 917, 107, 111 }, 0.5f);
 				heavy_kick.loop = false;
 			}
+			//die
+			{
+				die.PushBack({ 28,1227,127,156 }, 0.3f);//1
+				die.PushBack({ 162,1227,127,156 }, 0.3f);
+				die.PushBack({ 296,1227,127,156 }, 0.3f);
+				die.PushBack({ 429,1227,173,156 }, 0.3f);//4
+				die.PushBack({ 609,1227,173,156 }, 0.3f);
+				die.PushBack({ 788,1227,173,156 }, 0.3f);
+				die.PushBack({ 28,1227,127,156 }, 0.3f);//1
+				die.PushBack({ 162,1227,127,156 }, 0.3f);
+				die.PushBack({ 296,1227,127,156 }, 0.3f);
+				die.loop = false;
+			}
 		// */		
 		}
 	}
@@ -815,8 +828,8 @@ bool ModulePlayer::Start()
 	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	spritesheet1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	spritesheet2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2.png");
-	light_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_attack.wav");
-	light_kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_kick.wav");
+	attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_attack.wav");
+	kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
 	//hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Wan-Fu/Hit_1.wav");
@@ -838,8 +851,8 @@ bool ModulePlayer::Start()
 bool ModulePlayer::CleanUp() {
 	LOG("Unloading player\n");
 	App->textures->Unload(player_textures);
-	App->audio->UnLoadFx(light_attack_fx);
-	App->audio->UnLoadFx(light_kick_fx);
+	App->audio->UnLoadFx(attack_fx);
+	App->audio->UnLoadFx(kick_fx);
 	App->audio->UnLoadFx(hit_fx);
 	App->audio->UnLoadFx(twister_fx);
 	collider_player_up = nullptr;
@@ -864,6 +877,7 @@ update_status ModulePlayer::PreUpdate()
 			player_input.pressing_B = App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_1] == KEY_DOWN;
 			player_input.pressing_N = App->input->keyboard[SDL_SCANCODE_N] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_1] == KEY_DOWN;
 			player_input.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN; // || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
+			player_input.pressing_Q = App->input->keyboard[SDL_SCANCODE_Q] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
 
 			if (player_input.pressing_A && player_input.pressing_D) {
@@ -883,26 +897,22 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_C) {
 					state = PUNCH;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_V) {
 					state = HEAVY_PUNCH;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					state = KICK;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_N) {
 					state = HEAVY_KICK;
 					hit_done++;
-					App->audio->PlayFX(light_kick_fx);
-				}
-				if (player_input.pressing_E)
-				{
-					state = GRAB;
+					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
@@ -925,22 +935,22 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_C) {
 					state = PUNCH;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_V) {
 					state = HEAVY_PUNCH;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					state = KICK;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_N) {
 					state = HEAVY_KICK;
 					hit_done++;
-					App->audio->PlayFX(light_kick_fx);
+					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_E)
 				{
@@ -965,22 +975,22 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_C) {
 					state = PUNCH;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_V) {
 					state = HEAVY_PUNCH;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					state = KICK;
 					hit_done++;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_N) {
 					state = HEAVY_KICK;
 					hit_done++;
-					App->audio->PlayFX(light_kick_fx);
+					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
@@ -1048,7 +1058,7 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_C) {
 					hit_done++;
 					state = JUMP_PUNCH;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					state = JUMP_KICK;
@@ -1110,12 +1120,12 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_C) {
 					hit_done++;
 					state = CROUCH_PUNCH;
-					App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					hit_done++;
 					state = CROUCH_KICK;
-					App->audio->PlayFX(light_kick_fx);
+					App->audio->PlayFX(kick_fx);
 				}
 			}
 			if (state == CROUCH_UP)
@@ -2494,7 +2504,7 @@ update_status ModulePlayer::Update()
 			break;
 		}
 	}
-	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)))
+	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)&&(state != GRAB)))
 	{
 		state = JUMP_NEUTRAL;
 	}
@@ -2575,7 +2585,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER_2:
-			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK))
+			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != GRAB))
 			{
 				//if (App->player2->position.y == position.y)
 				//{
