@@ -50,6 +50,11 @@ bool ModuleCharacterSelection::Init() {
 	return true;
 }
 
+bool ModuleCharacterSelection::CleanUp() {
+	App->textures->Unload(background);
+	return true;
+}
+
 update_status ModuleCharacterSelection::Update() {
 	SDL_Rect back, face,name,origin;
 	back = { 0,0,SCREEN_WIDTH, SCREEN_HEIGHT};
@@ -82,8 +87,4 @@ update_status ModuleCharacterSelection::Update() {
 	}
 
 	return UPDATE_CONTINUE;
-}
-
-bool ModuleCharacterSelection::CleanUp() {
-	return true;
 }
