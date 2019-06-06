@@ -6,6 +6,7 @@
 #include "ModuleUI.h"
 
 
+
 ModuleCharacterSelection::ModuleCharacterSelection() {
 	//p1 shining square
 	p1.PushBack({17,589,40,49},0.2f);
@@ -41,6 +42,8 @@ bool ModuleCharacterSelection::Init() {
 	character = App->textures->Load("Assets/Sprites/UI/finish_round.png");
 	player1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
 	player2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu-color2.png");
+	music = App->audio->LoadMusic("Assets/Audio/Music/character_selection.ogg");
+	App->audio->PlayMusic(music, 1);
 	return true;
 }
 
@@ -63,6 +66,7 @@ update_status ModuleCharacterSelection::Update() {
 	App->render->Blit(character, (SCREEN_WIDTH - origin.w)/ 8 +14, (SCREEN_HEIGHT - origin.h) * 9/ 10 +5, &origin);
 	App->render->Blit(character, (SCREEN_WIDTH - name.w)*7/8, (SCREEN_HEIGHT - face.h) * 9 / 10, &name);
 	App->render->Blit(character, (SCREEN_WIDTH - origin.w)*7/ 8-14, (SCREEN_HEIGHT - origin.h) * 9 / 10 + 7, &origin);
+
 	return UPDATE_CONTINUE;
 }
 

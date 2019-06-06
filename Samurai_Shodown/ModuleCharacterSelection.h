@@ -3,6 +3,7 @@
 #include "Module.h"
 #include "ModuleTextures.h"
 #include "Animation.h"
+#include "ModuleAudio.h"
 
 class ModuleCharacterSelection :public Module {
 public:
@@ -18,9 +19,11 @@ public:
 	SDL_Texture* character;
 	SDL_Texture* player1;
 	SDL_Texture* player2;
+	Mix_Music* music;
 	Animation p1;
 	Animation p2;
 	Animation idle;
+
 };
 #endif // !_MODULECHARACTERSELECTION_H
 
