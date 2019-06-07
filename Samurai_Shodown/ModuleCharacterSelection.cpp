@@ -80,7 +80,7 @@ update_status ModuleCharacterSelection::Update() {
 	App->render->Blit(character, (SCREEN_WIDTH - name.w)*7/8, 160, &name);
 	App->render->Blit(character, (SCREEN_WIDTH - origin.w)*7/ 8-14, 195, &origin);
 
-	/*if ((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->input->keyboard[SDL_SCANCODE_C])|| (App->input->keyboard[SDL_SCANCODE_H]) || SDL_GetTicks()>10000)
+	if ((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->input->keyboard[SDL_SCANCODE_C])|| (App->input->keyboard[SDL_SCANCODE_H]) || SDL_GetTicks()>10000)
 	{
 		if (ring_played == false)
 		{
@@ -89,7 +89,6 @@ update_status ModuleCharacterSelection::Update() {
 		}
 		App->fade->FadeToBlack((Module*)App->character_selection, (Module*)App->scene_wanfu, 1.5f);
 	}
-	*/
 
 	return UPDATE_CONTINUE;
 }
