@@ -2732,7 +2732,7 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = 0;
+	int j = 0;//<- Change this
 	int done = 0; //If done = 3. Special attack = true 
 	
 	while (i < 100) {
@@ -2769,7 +2769,11 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
-
+	
+	
+	
+	
+	/*
 	if (*last < 99) //We change last pointer's position 
 		(*last)++;	
 	else
@@ -2782,4 +2786,5 @@ void ModulePlayer::newInput(char newInput) {
 		* first = 0;
 
 	inputs[*last] = newInput; //We add the newInput to the last inputs array
+	*/
 }
