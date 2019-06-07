@@ -914,8 +914,8 @@ update_status ModulePlayer::PreUpdate()
 				player_input.pressing_A = false;
 				player_input.pressing_D = false;
 			}
-
 		}	
+		introduceInputs(); //For special attack
 		//states 
 		{
 			if (state == IDLE) {				
@@ -1265,19 +1265,7 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 	lposition = position;
-	shadow_x = position.x;
-
-	if (player_input.pressing_S) {
-		newInput('s');
-		if(checkSpecialAttack())
-			state=SPECIAL_ATTACK;
-	}
-	if (player_input.pressing_D) {
-		newInput('d');
-	}
-	if (player_input.pressing_C) {
-		newInput('c');
-	}
+	shadow_x = position.x;	
 
 	if (!App->is_paused) {		
 
@@ -2766,4 +2754,17 @@ void ModulePlayer::newInput(char newInput) {
 	
 	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
 	
+}
+void ModulePlayer::introduceInputs() {
+	if (player_input.pressing_S) {
+		newInput('s');
+		if (checkSpecialAttack())
+			state = SPECIAL_ATTACK;
+	}
+	if (player_input.pressing_D) {
+		newInput('d');
+	}
+	if (player_input.pressing_C) {
+		newInput('c');
+	}
 }
