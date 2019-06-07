@@ -928,6 +928,7 @@ update_status ModulePlayer::PreUpdate()
 					state = FORWARD;
 				if (player_input.pressing_C) {
 					state = PUNCH;
+					checkSpecialAttack();
 					hit_done++;
 					App->audio->PlayFX(attack_fx);
 				}
@@ -1293,7 +1294,8 @@ update_status ModulePlayer::Update()
 	lposition = position;
 	shadow_x = position.x;
 
-	if (!App->is_paused) {
+	if (!App->is_paused) {		
+
 		switch (state)
 		{
 		case IDLE:
@@ -2726,23 +2728,24 @@ bool ModulePlayer::checkSpecialAttack() {
 	int i = 0;
 	int j = lastInput;
 	int done = 0; //If done = 3. Special attack = true 
-
+	
 	while (i < 100) {
 		switch (done) {
 		case 0:
 			if (inputs[j] == 'c')//punch
-				done++;
+				done++;				
 			break;
 		case 1:
 			if (inputs[j] == 'd')//forward
-				done++;
+				done++;				
 			break;
 		case 2:
-			if (inputs[j] == 'd' && 's')//down and forward
+			if (inputs[j] == 'd' || 's')//down and forward
 				done++;
 			break;
 		case 3:
 			if (inputs[j] == 's') //down
+				state = SPECIAL_ATTACK;
 				return true;			
 		default:
 			//Special attack is false
