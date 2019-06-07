@@ -2718,7 +2718,7 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = lastInput;
+	int j = 0;
 	int done = 0; //If done = 3. Special attack = true 
 	
 	while (i < 100) {
@@ -2738,7 +2738,7 @@ bool ModulePlayer::checkSpecialAttack() {
 		case 3:
 			if (inputs[j] == 's') //down
 				state = SPECIAL_ATTACK;
-				return true;			
+			return true;			
 		default:
 			//Special attack is false
 			return false;
