@@ -12,7 +12,7 @@
 ModuleCharacterSelection::ModuleCharacterSelection() {
 	//p1 shining square
 	p1.PushBack({692,259,40,49},0.2f);
-	p1.PushBack({750,259,40,48},0.2f);
+	p1.PushBack({749,259,40,48},0.2f);
 	p1.loop = true;
 	//p2 shining square
 	p2.PushBack({692,323,40,49},0.2f);
@@ -63,22 +63,22 @@ bool ModuleCharacterSelection::CleanUp() {
 update_status ModuleCharacterSelection::Update() {
 	SDL_Rect back, face,name,origin;
 	back = { 0,0,SCREEN_WIDTH, SCREEN_HEIGHT};
-	face = { 749,207,42,48 };
+	face = { 741,890,240,95 };
 	name = { 686,144,95,30 };
 	origin = { 713,181,42,15 };
 	//face, p1 and p2
 	App->render->Blit(background, 0, 0, &back);
-	App->render->Blit(character, (SCREEN_WIDTH-face.w)/2, (SCREEN_HEIGHT-face.h)/2-40, &face);
-	App->render->Blit(character, (SCREEN_WIDTH - face.w) / 2, (SCREEN_HEIGHT - face.h) / 2-40,  &p2.GetCurrentFrame());
-	App->render->Blit(character, (SCREEN_WIDTH - face.w) / 2, (SCREEN_HEIGHT - face.h) / 2-42,  &p1.GetCurrentFrame());
+	App->render->Blit(character, (SCREEN_WIDTH-face.w)/2, (SCREEN_HEIGHT-face.h)/2-50, &face);
+	App->render->Blit(character, SCREEN_WIDTH/ 2-40, SCREEN_HEIGHT/ 2-49,  &p2.GetCurrentFrame());
+	App->render->Blit(character, SCREEN_WIDTH/ 2-40, SCREEN_HEIGHT/ 2-51,  &p1.GetCurrentFrame());
 	//players
 	App->render->Blit(player1, (SCREEN_WIDTH) / 16, (SCREEN_HEIGHT) * 3/ 8, &idle.GetCurrentFrame());
 	App->render->Blit(player2, (SCREEN_WIDTH) *12/18, (SCREEN_HEIGHT) * 3 / 8, &idle.GetCurrentFrame(),SDL_FLIP_HORIZONTAL);
 	//name and origin
-	App->render->Blit(character, (SCREEN_WIDTH - name.w) / 8, (SCREEN_HEIGHT - face.h)*9/10, &name);
-	App->render->Blit(character, (SCREEN_WIDTH - origin.w)/ 8 +14, (SCREEN_HEIGHT - origin.h) * 9/ 10 +5, &origin);
-	App->render->Blit(character, (SCREEN_WIDTH - name.w)*7/8, (SCREEN_HEIGHT - face.h) * 9 / 10, &name);
-	App->render->Blit(character, (SCREEN_WIDTH - origin.w)*7/ 8-14, (SCREEN_HEIGHT - origin.h) * 9 / 10 + 7, &origin);
+	App->render->Blit(character, (SCREEN_WIDTH - name.w) / 8, 160, &name);
+	App->render->Blit(character, (SCREEN_WIDTH - origin.w)/ 8 +14, 195, &origin);
+	App->render->Blit(character, (SCREEN_WIDTH - name.w)*7/8, 160, &name);
+	App->render->Blit(character, (SCREEN_WIDTH - origin.w)*7/ 8-14, 195, &origin);
 
 	if ((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->input->keyboard[SDL_SCANCODE_C])|| (App->input->keyboard[SDL_SCANCODE_H]) || SDL_GetTicks()>10000)
 	{
