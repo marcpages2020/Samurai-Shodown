@@ -1825,6 +1825,10 @@ update_status ModulePlayer2::Update()
 						collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
 						collider_player_2_attack->SetSize(67, 30);
 					}
+					else
+					{
+						collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
+					}
 				}
 				else {
 					if (collider_player_2_up != nullptr)
@@ -1842,6 +1846,10 @@ update_status ModulePlayer2::Update()
 						collider_player_2_attack = App->collision->AddCollider({ position.x - 500, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 						collider_player_2_attack->SetPos(position.x - 60, position.y - 50);
 						collider_player_2_attack->SetSize(67, 30);
+					}
+					else
+					{
+						collider_player_2_attack->SetPos(position.x - 60, position.y - 50);
 					}
 				}
 				position.y -= speed * 1.75 * mult;
