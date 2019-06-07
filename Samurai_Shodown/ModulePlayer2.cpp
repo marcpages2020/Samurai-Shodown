@@ -2719,19 +2719,19 @@ bool ModulePlayer2::checkSpecialAttack() {
 	while (i < 100) {
 		switch (done) {
 		case 0:
-			if (inputs[j] == 's')//down/crouch
+			if (inputs[j] == 'i')//down/crouch
 				done++;
 			break;
 		case 1:
-			if (inputs[j] == 'd' || 's')//down and forward
+			if (inputs[j] == 'i' || 'u')//down and forward
 				done++;
 			break;
 		case 2:
-			if (inputs[j] == 'd')//forward
+			if (inputs[j] == 'u')//forward
 				done++;
 			break;
 		case 3:
-			if (inputs[j] == 'c') //punch				
+			if (inputs[j] == 'h') //punch				
 				return true;
 		default:
 			//Special attack is false
@@ -2766,21 +2766,21 @@ void ModulePlayer2::introduceInputs() {
 	bool isPressingAnything = false;
 
 	if (player_input2.pressing_left) {
-		newInput('s');
+		newInput('y');
 		isPressingAnything = true;
 		if (checkSpecialAttack())
 			state2 = SPECIAL_ATTACK_2;
 	}
 	if (player_input2.pressing_right) {
-		newInput('d');
+		newInput('u');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_down) {
-		newInput('c');
+		newInput('i');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_up) {
-		newInput('a');
+		newInput('o');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_H) {
