@@ -1036,7 +1036,7 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		if (state2 == HIT2) {
-			if (position.y <= initial_position.y)
+			if (position.y < initial_position.y)
 			{
 				position.y++;
 				if (App->player->state != GRAB)
@@ -1051,7 +1051,7 @@ update_status ModulePlayer2::PreUpdate()
 					}
 				}
 			}
-			if (position.y == initial_position.y) {
+			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				hit2.Reset();
 			}

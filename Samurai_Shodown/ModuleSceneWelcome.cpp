@@ -128,7 +128,7 @@ update_status ModuleSceneWelcome::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_welcome, (Module*)App->scene_haohmaru, 2.5f);
+		App->fade->FadeToBlack((Module*)App->scene_welcome, (Module*)App->character_selection, 2.5f);
 	}
 	return UPDATE_CONTINUE;
 }

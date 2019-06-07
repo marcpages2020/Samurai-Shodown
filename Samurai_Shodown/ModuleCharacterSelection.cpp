@@ -80,7 +80,7 @@ update_status ModuleCharacterSelection::Update() {
 	App->render->Blit(character, (SCREEN_WIDTH - name.w)*7/8, (SCREEN_HEIGHT - face.h) * 9 / 10, &name);
 	App->render->Blit(character, (SCREEN_WIDTH - origin.w)*7/ 8-14, (SCREEN_HEIGHT - origin.h) * 9 / 10 + 7, &origin);
 
-	if ((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->input->keyboard[SDL_SCANCODE_X])|| (App->input->keyboard[SDL_SCANCODE_H]) || SDL_GetTicks()>10000)
+	if ((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->input->keyboard[SDL_SCANCODE_C])|| (App->input->keyboard[SDL_SCANCODE_H]) || SDL_GetTicks()>10000)
 	{
 		if (ring_played == false)
 		{

@@ -1162,7 +1162,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == HIT) {
 				newInput(' ');
-				if (position.y < initial_position.y)
+				if ((position.y < initial_position.y))
 				{
 					position.y++;
 					if (flip == SDL_FLIP_HORIZONTAL)
@@ -1174,7 +1174,7 @@ update_status ModulePlayer::PreUpdate()
 						position.x -= speed/4;
 					}
 				}
-				else if (current_animation->Finished()) {
+				else if (current_animation->Finished()){
 					state = IDLE;
 					hit.Reset();
 				}
