@@ -1455,6 +1455,7 @@ update_status ModulePlayer::Update()
 
 		case CROUCH_DOWN:
 			current_animation = &crouch_down;
+			checkSpecialAttack();
 			shadow_x = position.x + 16;
 			//haohmaru
 			/*
@@ -2073,7 +2074,7 @@ update_status ModulePlayer::Update()
 			break;
 		case PUNCH:
 			current_animation = &punch;
-			checkSpecialAttack();
+			
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -2730,7 +2731,7 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = 0;//<- Change this
+	int j = firstInput;//<- Change this
 	int done = 0; //If done = 3. Special attack = true 
 	
 	while (i < 100) {
@@ -2756,13 +2757,13 @@ bool ModulePlayer::checkSpecialAttack() {
 			return false;
 		}			
 
-		if (j >0)
-			j--;
+		if (j <99)
+			j++;
 		else
-			j = 99;
+			j = 0;
+		
 		i++;
-	}
-	
+	}	
 	return false;
 }
 
