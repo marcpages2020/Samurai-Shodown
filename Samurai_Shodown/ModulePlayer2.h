@@ -111,6 +111,7 @@ public:
 	int attack_frames = 0;
 	int shadow_x;
 	int shadow_w = 70;
+	void PlayerCollidersCleanUp();
 
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced

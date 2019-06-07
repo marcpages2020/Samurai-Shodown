@@ -2695,3 +2695,17 @@ void ModulePlayer2::BlockControls(bool block)
 {
 	controls = !block;
 }
+void ModulePlayer2::PlayerCollidersCleanUp() {
+	if (collider_player_2_up != nullptr)
+	{
+		collider_player_2_up->to_delete = true;
+	}
+	if (collider_player_2_mid != nullptr)
+	{
+		collider_player_2_mid->to_delete = true;
+	}
+	if (collider_player_2_down != nullptr)
+	{
+		collider_player_2_down->to_delete = true;
+	}
+}
