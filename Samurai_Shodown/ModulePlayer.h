@@ -36,6 +36,8 @@ enum States
 	GRAB,
 	WIN,
 	DEATH,
+	DASH_FORWARD,
+	DASH_BACKWARD,
 	SPECIAL_ATTACK,
 };
 
@@ -99,6 +101,8 @@ public:
 	Animation grab;
 	Animation win;
 	Animation die;
+	Animation dash_forward;
+	Animation dash_backward;
 	Animation* current_animation = nullptr;
 	
 	iPoint position;
@@ -135,7 +139,6 @@ public:
 	char inputs[100];
 	char* first = new char();
 	char* last = new char();
-
 	int firstInput = 0;
 	int lastInput = 0;
 	int attack_frames = 0;
