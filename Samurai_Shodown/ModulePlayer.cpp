@@ -831,6 +831,7 @@ ModulePlayer::ModulePlayer()
 
 
 			//dash backward
+			/*
 			{
 				dash_backward.PushBack({  }, 0.5f);
 				dash_backward.PushBack({  }, 0.5f);
@@ -847,6 +848,7 @@ ModulePlayer::ModulePlayer()
 				dash_backward.PushBack({  }, 0.5f);
 				dash_backward.PushBack({  }, 0.5f);
 			}
+			*/
 		// */		
 		}
 	}
