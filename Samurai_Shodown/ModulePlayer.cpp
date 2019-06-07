@@ -2756,15 +2756,56 @@ void ModulePlayer::newInput(char newInput) {
 	
 }
 void ModulePlayer::introduceInputs() {
+	bool isPressingAnything = false;
+
 	if (player_input.pressing_S) {
 		newInput('s');
+		isPressingAnything = true;
 		if (checkSpecialAttack())
 			state = SPECIAL_ATTACK;
 	}
 	if (player_input.pressing_D) {
 		newInput('d');
+		isPressingAnything = true;
 	}
 	if (player_input.pressing_C) {
 		newInput('c');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_A) {
+		newInput('a');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_S) {
+		newInput('s');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_W) {
+		newInput('w');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_V) {
+		newInput('v');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_E) {
+		newInput('e');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_B) {
+		newInput('b');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_N) {
+		newInput('n');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_M) {
+		newInput('m');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_Q) {
+		newInput('q');
+		isPressingAnything = true;
 	}
 }
