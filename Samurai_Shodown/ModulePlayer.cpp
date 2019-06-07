@@ -1952,7 +1952,7 @@ update_status ModulePlayer::Update()
 					collider_player_up->SetPos(position.x + 35, position.y - 80);
 					collider_player_up->SetSize(80, 35);
 				}
-				if (collider_player_up != nullptr)
+				if (collider_player_down != nullptr)
 				{
 					collider_player_down->SetPos(position.x + 25, position.y - 45);
 					collider_player_down->SetSize(60, 47);

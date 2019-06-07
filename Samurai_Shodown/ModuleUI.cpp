@@ -461,7 +461,6 @@ update_status ModuleUI::Update() {
 
 void ModuleUI::UpdateBars()
 {
-
 	if (App->player->life < 45 || App->player2->life < 45)
 		animKO_active = true;
 
