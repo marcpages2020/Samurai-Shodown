@@ -2767,7 +2767,18 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
+	if (lastInput < 99)
+		lastInput++;
+	else
+		lastInput = 0;
+
+	//We change first's position 
+	if (firstInput == lastInput && firstInput < 99)
+		firstInput++;
+	else if (firstInput == lastInput && firstInput >= 99)
+		firstInput = 0;	
 	
+	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
 	
 	
 	
