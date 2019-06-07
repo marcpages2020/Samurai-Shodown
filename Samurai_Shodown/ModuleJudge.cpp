@@ -163,7 +163,15 @@ update_status ModuleJudge::PreUpdate() {
 				hit2.Reset();
 			}
 		}
-		if ((state_j != BEGIN_J)&&(state_j != HIT1_J) && (state_j != HIT2_J))
+		if (state_j == FINISH_J)
+		{
+			if (current_animation->Finished())
+			{
+				state_j = IDLE_J;
+				finish.Reset();
+			}
+		}
+		if ((state_j != BEGIN_J)&&(state_j != HIT1_J) && (state_j != HIT2_J)&&(state_j != FINISH_J))
 		{
 			Move();
 		}
@@ -193,6 +201,9 @@ update_status ModuleJudge::Update() {
 			break;
 		case HIT2_J:
 			current_animation = &hit2;
+			break;
+		case FINISH_J:
+			current_animation = &finish;
 			break;
 		default:
 			break;

@@ -389,6 +389,7 @@ update_status ModuleUI::Update() {
 		{
 			victory = true;
 			App->audio->PlayFX(victory_fx);
+			App->judge->state_j = FINISH_J;
 		}
 		//the battle continues
 		else
