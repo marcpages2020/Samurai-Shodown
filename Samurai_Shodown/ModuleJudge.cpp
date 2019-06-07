@@ -198,7 +198,14 @@ update_status ModuleJudge::Update() {
 			break;
 		}
 	}
-	App->render->Blit(judge_tex, position_x, position_y, &current_animation->GetCurrentFrame());
+	if (current_animation == &begin_j)
+	{
+		App->render->Blit(judge_tex, position_x-6.5, position_y-53, &current_animation->GetCurrentFrame());
+	}
+	else
+	{
+		App->render->Blit(judge_tex, position_x, position_y, &current_animation->GetCurrentFrame());
+	}
 	return UPDATE_CONTINUE;
 }
 
