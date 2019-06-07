@@ -289,13 +289,6 @@ update_status ModuleUI::Update() {
 			App->audio->PlayFX(ippon_fx);
 			play_ippon = false;
 		}
-		/*
-		if (play_ipponme == true)
-		{
-			App->audio->PlayFX(ipponme_fx);
-			play_ipponme = false;
-		}
-		*/
 	UpdateBars();
 	timer();
 	DieScene();
@@ -342,8 +335,6 @@ update_status ModuleUI::Update() {
 		App->render->Blit(ui_png, 235, 19, &life_2, SDL_FLIP_NONE, 1.0F, false); //
 
 	App->render->Blit(ui_png, 233, 17, &rect, SDL_FLIP_NONE, 1.0F, false); //
-
-
 
 	// player 1 dies
 	if (App->player->life <= 0)
@@ -404,12 +395,11 @@ update_status ModuleUI::Update() {
 	{
 		round_end = true;
 		draw++;
-		//victory = true;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
 	{
-		time_fight = 0;
-		//victory = true;
+		player1_wins = 2;
+		die_scene = true;
 	}
 	if (vtransition == true && !die_scene)
 	{
@@ -555,6 +545,7 @@ void ModuleUI::VictorySprite()
 	else if (player1_wins == 2) {
 		App->render->Blit(ui_png, 5, 43, &win, SDL_FLIP_NONE, 1.0F, false);
 		App->render->Blit(ui_png, 33, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+		App->judge->state_j = FINISH_J;
 	}
 
 	if (player2_wins == 1) {
@@ -563,6 +554,7 @@ void ModuleUI::VictorySprite()
 	else if (player2_wins == 2) {
 		App->render->Blit(ui_png, 325, 43, &win, SDL_FLIP_NONE, 1.0F, false);
 		App->render->Blit(ui_png, 353, 43, &win, SDL_FLIP_NONE, 1.0F, false);
+		App->judge->state_j = FINISH_J;
 	}
 
 }
