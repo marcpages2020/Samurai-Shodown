@@ -871,9 +871,7 @@ bool ModulePlayer::Start()
 	App->ui->player2_point = 0;
 	state = IDLE;
 	current_animation = &idle;
-	inputs[0] = ' ';
-	*first = inputs[0];
-	*last = inputs[0];
+	inputs[0] = ' ';	
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->player);
 	if (!collider_player_down)
