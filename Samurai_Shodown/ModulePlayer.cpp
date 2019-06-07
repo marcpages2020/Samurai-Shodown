@@ -914,8 +914,8 @@ update_status ModulePlayer::PreUpdate()
 				player_input.pressing_A = false;
 				player_input.pressing_D = false;
 			}
-
 		}	
+		introduceInputs(); //For special attack
 		//states 
 		{
 			if (state == IDLE) {				
@@ -1265,19 +1265,7 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 	lposition = position;
-	shadow_x = position.x;
-
-	if (player_input.pressing_S) {
-		newInput('s');
-		if(checkSpecialAttack())
-			state=SPECIAL_ATTACK;
-	}
-	if (player_input.pressing_D) {
-		newInput('d');
-	}
-	if (player_input.pressing_C) {
-		newInput('c');
-	}
+	shadow_x = position.x;	
 
 	if (!App->is_paused) {		
 
@@ -2723,19 +2711,19 @@ bool ModulePlayer::checkSpecialAttack() {
 	while (i < 100) {
 		switch (done) {
 		case 0:
-			if (inputs[j] == 's')//punch
+			if (inputs[j] == 's')//down/crouch
 				done++;				
 			break;
 		case 1:
-			if (inputs[j] == 'd' || 's')//forward
+			if (inputs[j] == 'd' || 's')//down and forward
 				done++;				
 			break;
 		case 2:
-			if (inputs[j] == 'd')//down and forward
+			if (inputs[j] == 'd')//forward
 				done++;
 			break;
 		case 3:
-			if (inputs[j] == 'c') //down				
+			if (inputs[j] == 'c') //punch				
 			return true;			
 		default:
 			//Special attack is false
@@ -2766,4 +2754,61 @@ void ModulePlayer::newInput(char newInput) {
 	
 	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
 	
+}
+void ModulePlayer::introduceInputs() {
+	bool isPressingAnything = false;
+
+	if (player_input.pressing_S) {
+		newInput('s');
+		isPressingAnything = true;
+		if (checkSpecialAttack())
+			state = SPECIAL_ATTACK;
+	}
+	if (player_input.pressing_D) {
+		newInput('d');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_C) {
+		newInput('c');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_A) {
+		newInput('a');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_S) {
+		newInput('s');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_W) {
+		newInput('w');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_V) {
+		newInput('v');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_E) {
+		newInput('e');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_B) {
+		newInput('b');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_N) {
+		newInput('n');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_M) {
+		newInput('m');
+		isPressingAnything = true;
+	}
+	if (player_input.pressing_Q) {
+		newInput('q');
+		isPressingAnything = true;
+	}
+
+	if (isPressingAnything == false)
+		newInput(' ');
 }

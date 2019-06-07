@@ -136,6 +136,7 @@ public:
 	bool grab_right = false;
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
+	void introduceInputs();
 	char inputs[100];
 	int firstInput = 0;
 	int lastInput = 0;
