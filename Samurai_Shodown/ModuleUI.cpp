@@ -320,7 +320,7 @@ update_status ModuleUI::Update() {
 		App->render->Blit(ui_png, SCREEN_WIDTH / 2 - animKO.GetCurrentRect().w / 2, 10, &animKO.GetCurrentFrame(), SDL_FLIP_NONE, 1.0F, false);
 	}
 
-	SDL_Rect name{ 0,0,64,8 }; // haomaru name
+	SDL_Rect name{ 0,8,64,8 }; // haomaru name
 	App->render->Blit(ui_png, 27, 32, &name, SDL_FLIP_NONE, 1.0F, false); //
 	App->render->Blit(ui_png, 288, 32, &name, SDL_FLIP_NONE, 1.0F, false);
 	SDL_Rect rect{ 6,17,132,13 }; // bar
