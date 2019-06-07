@@ -620,55 +620,35 @@ ModulePlayer2::ModulePlayer2()
 				specialattack2.loop = false;
 			}
 
-			//jump_kick
-			{
-				jump_kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
-				jump_kick2.PushBack({ 139,745,108,148 }, 0.5f);
-				jump_kick2.PushBack({ 249,745,108,148 }, 0.5f);
-				jump_kick2.PushBack({ 358,745,99,148 }, 0.5f);//4
-				jump_kick2.PushBack({ 459,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 560,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 660,745,99,148 }, 0.5f);//7
-				jump_kick2.PushBack({ 762,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 863,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 964,745,99,148 }, 0.5f);//10
-				jump_kick2.PushBack({ 1067,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 1168,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 660,745,99,148 }, 0.5f);//7
-				jump_kick2.PushBack({ 762,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 863,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 358,745,99,148 }, 0.5f);//4
-				jump_kick2.PushBack({ 459,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 560,745,99,148 }, 0.5f);
-				jump_kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
-				jump_kick2.PushBack({ 139,745,108,148 }, 0.5f);
-				jump_kick2.PushBack({ 249,745,108,148 }, 0.5f);
-				jump_kick2.loop = false;
-			}
-
 			//jump_punch
 			{
-				jump_punch2.PushBack({ 27, 451, 87, 168 }, 0.5f);
-				jump_punch2.PushBack({ 116, 451, 87, 168 }, 0.5f);
-				jump_punch2.PushBack({ 207, 492, 134, 127 }, 0.5f);
-				jump_punch2.PushBack({ 342, 492, 134, 127 }, 0.5f);
-				jump_punch2.PushBack({ 477, 474, 134, 143 }, 0.5f);
-				jump_punch2.PushBack({ 614, 474, 134, 143 }, 0.5f);
-				jump_punch2.PushBack({ 751, 490, 132, 128 }, 0.5f);
-				jump_punch2.PushBack({ 891, 490, 132, 128 }, 0.5f);
-				jump_punch2.PushBack({ 1031, 530, 136, 89 }, 0.5f);
-				jump_punch2.PushBack({ 1172, 530, 136, 89 }, 0.5f);
-				jump_punch2.PushBack({ 1313, 542, 133, 75 }, 0.5f);
-				jump_punch2.PushBack({ 1449, 542, 133, 75 }, 0.5f);
-				jump_punch2.PushBack({ 1587, 542, 133, 75 }, 0.5f);
-				jump_punch2.PushBack({ 1724, 542, 133, 75 }, 0.5f);
-				jump_punch2.PushBack({ 1861, 542, 133, 75 }, 0.5f);
-				jump_punch2.PushBack({ 27, 620, 103, 125 }, 0.5f);
-				jump_punch2.PushBack({ 133, 620, 103, 125 }, 0.5f);
-				jump_punch2.PushBack({ 237, 620, 103, 125 }, 0.5f);
-				jump_punch2.PushBack({ 341, 620, 103, 125 }, 0.5f);
-				jump_punch2.PushBack({ 447, 620, 103, 125 }, 0.5f);
+				jump_punch2.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
+				jump_punch2.PushBack({ 956, 635, 115, 112 }, 0.3f);
+				jump_punch2.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_punch2.PushBack({ 1227, 619, 108, 136 }, 0.3f);
+				jump_punch2.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_punch2.PushBack({ 1487, 619, 108, 136 }, 0.3f);
+				jump_punch2.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_punch2.PushBack({ 1766, 619, 125, 130 }, 0.3f);
+				jump_punch2.PushBack({ 1914, 619, 125, 130 }, 0.3f);
+				jump_punch2.PushBack({ 1443, 764, 119, 130 }, 0.3f);
+				jump_punch2.PushBack({ 1586, 764, 119, 130 }, 0.3f);
+				jump_punch2.PushBack({ 1750, 764, 119, 130 }, 0.3f);
 				jump_punch2.loop = false;
+			}
+
+			//jump_kick
+			{
+				jump_kick2.PushBack({ 30, 1831, 111, 104 }, 0.3f);
+				jump_kick2.PushBack({ 164, 1831, 111, 104 }, 0.3f);
+				jump_kick2.PushBack({ 313, 1831, 111, 104 }, 0.3f);
+				jump_kick2.PushBack({ 466, 1831, 132, 110 }, 0.3f);
+				jump_kick2.PushBack({ 625, 1831, 132, 110 }, 0.3f);
+				jump_kick2.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
+				jump_kick2.PushBack({ 790, 1831, 133, 125 }, 0.3f);
+				jump_kick2.PushBack({ 949, 1831, 133, 125 }, 0.3f);
+				jump_kick2.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_kick2.loop = false;
 			}
 
 			//win animation
@@ -919,14 +899,15 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_NEUTRAL2)
 		{
-			if (player_input2.pressing_J) {
-				state2 = JUMP_KICK2;
-				//hit_done++;
-			}
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				//hit_done++;
 				state2 = JUMP_PUNCH2;
 				direction_x = 0;
+			}
+			if (player_input2.pressing_K) {
+				state2 = JUMP_KICK2;
+				direction_x = 0;
+				//hit_done++;
 			}
 			if (player_input2.pressing_right && mult == 1)
 				state2 = JUMP_BACKWARD2;
@@ -940,13 +921,13 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_FORWARD2)
 		{
-			if (player_input2.pressing_K) {
-				state2 = JUMP_KICK2;
-				//hit_done++;
-			}
 			if (player_input2.pressing_H) {
 				//hit_done++;
 				state2 = JUMP_PUNCH2;
+			}
+			if (player_input2.pressing_K) {
+				state2 = JUMP_KICK2;
+				//hit_done++;
 			}
 			if (current_animation->Finished())
 			{
@@ -957,11 +938,11 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_BACKWARD2)
 		{
-			if (player_input2.pressing_K) {
+			if (player_input2.pressing_H) {
 				state2 = JUMP_KICK2;
 				//hit_done++;
 			}
-			if (player_input2.pressing_H) {
+			if (player_input2.pressing_K) {
 				//hit_done++;
 				state2 = JUMP_PUNCH2;
 				//App->audio->PlayFX(light_attack_fx);

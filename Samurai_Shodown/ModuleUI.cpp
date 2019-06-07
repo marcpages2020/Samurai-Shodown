@@ -322,7 +322,7 @@ update_status ModuleUI::Update() {
 
 	SDL_Rect name{ 0,8,64,8 }; // haomaru name
 	App->render->Blit(ui_png, 27, 32, &name, SDL_FLIP_NONE, 1.0F, false); //
-	App->render->Blit(ui_png, 288, 32, &name, SDL_FLIP_NONE, 1.0F, false);
+	App->render->Blit(ui_png, 310, 32, &name, SDL_FLIP_NONE, 1.0F, false);
 	SDL_Rect rect{ 6,17,132,13 }; // bar
 	//player 1 bar
 	if (App->player->life <= 45) {
