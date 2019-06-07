@@ -661,18 +661,18 @@ ModulePlayer::ModulePlayer()
 
 			//win animation
 			{
-				win.PushBack({ 39, 1711, 111, 117 }, 0.1f);
-				win.PushBack({ 180, 1711, 111, 117 }, 0.1f);
-				win.PushBack({ 331, 1711, 111, 117 }, 0.1f);
-				win.PushBack({ 478, 1711, 111, 118 }, 0.1f);
-				win.PushBack({ 618, 1711, 111, 118 }, 0.1f);
-				win.PushBack({ 757, 1711, 111, 118 }, 0.1f);
-				win.PushBack({ 895, 1711, 111, 116 }, 0.1f);
-				win.PushBack({ 1031, 1711, 111, 116 }, 0.1f);
-				win.PushBack({ 1171, 1711, 111, 116 }, 0.1f);
-				win.PushBack({ 1302, 1711, 111, 120 }, 0.1f);
-				win.PushBack({ 1432, 1711, 111, 120 }, 0.1f);
-				win.PushBack({ 1556, 1711, 111, 120 }, 0.1f);
+				win.PushBack({ 40, 1711, 110, 117 }, 0.1f);
+				win.PushBack({ 181, 1711, 110, 117 }, 0.1f);
+				win.PushBack({ 332, 1711, 110, 117 }, 0.1f);
+				win.PushBack({ 479, 1711, 110, 118 }, 0.1f);
+				win.PushBack({ 619, 1711, 110, 118 }, 0.1f);
+				win.PushBack({ 759, 1711, 110, 118 }, 0.1f);
+				win.PushBack({ 896, 1711, 110, 116 }, 0.1f);
+				win.PushBack({ 1032, 1711, 110, 116 }, 0.1f);
+				win.PushBack({ 1170, 1711, 110, 116 }, 0.1f);
+				win.PushBack({ 1303, 1711, 110, 120 }, 0.1f);
+				win.PushBack({ 1433, 1711, 110, 120 }, 0.1f);
+				win.PushBack({ 1557, 1711, 110, 120 }, 0.1f);
 				win.loop = true;
 			}
 
@@ -810,6 +810,43 @@ ModulePlayer::ModulePlayer()
 				die.PushBack({ 296,1227,127,156 }, 0.3f);
 				die.loop = false;
 			}
+
+			//dash forward
+			{
+				dash_forward.PushBack({ 45, 417, 116, 115}, 0.5f);
+				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.5f);
+				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.5f);
+				dash_forward.PushBack({ 393, 404, 122, 129}, 0.5f);
+				dash_forward.PushBack({ 515, 404, 122, 129}, 0.5f);
+				dash_forward.PushBack({ 638, 404, 122, 129}, 0.5f);
+				dash_forward.PushBack({ 761, 403, 117, 130}, 0.5f);
+				dash_forward.PushBack({ 877, 403, 117, 130}, 0.5f);
+				dash_forward.PushBack({ 393, 404, 122, 129}, 0.5f);
+				dash_forward.PushBack({ 515, 404, 122, 129}, 0.5f);
+				dash_forward.PushBack({ 638, 404, 122, 129}, 0.5f);
+				dash_forward.PushBack({ 45, 417, 116, 115 }, 0.5f);
+				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.5f);
+				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.5f);
+			}
+
+
+			//dash backward
+			{
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({  }, 0.5f);
+			}
 		// */		
 		}
 	}
@@ -879,7 +916,6 @@ update_status ModulePlayer::PreUpdate()
 			player_input.pressing_M = App->input->keyboard[SDL_SCANCODE_M] == KEY_DOWN; // || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
 			player_input.pressing_Q = App->input->keyboard[SDL_SCANCODE_Q] == KEY_DOWN;
 			player_input.pressing_F4 = App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN;
-
 			if (player_input.pressing_A && player_input.pressing_D) {
 				player_input.pressing_A = false;
 				player_input.pressing_D = false;
