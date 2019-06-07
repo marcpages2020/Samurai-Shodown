@@ -1293,6 +1293,18 @@ update_status ModulePlayer::Update()
 	lposition = position;
 	shadow_x = position.x;
 
+	if (player_input.pressing_S) {
+		newInput('s');
+		if (checkSpecialAttack())
+			state = SPECIAL_ATTACK;
+	}
+	if (player_input.pressing_D) {
+		newInput('d');
+	}
+	if (player_input.pressing_C) {
+		newInput('c');
+	}
+
 	if (!App->is_paused) {		
 
 		switch (state)
@@ -1455,7 +1467,7 @@ update_status ModulePlayer::Update()
 
 		case CROUCH_DOWN:
 			current_animation = &crouch_down;
-			checkSpecialAttack();
+			
 			shadow_x = position.x + 16;
 			//haohmaru
 			/*
@@ -2731,11 +2743,33 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = firstInput;//<- Change this
+	int j = lastInput;//<- Change this
 	int done = 0; //If done = 3. Special attack = true 
 	
 	while (i < 100) {
 		switch (done) {
+		case 0:
+			if (inputs[j] == 's')//punch
+				done++;				
+			break;
+		case 1:
+			if (inputs[j] == 'd' || 's')//forward
+				done++;				
+			break;
+		case 2:
+			if (inputs[j] == 'd')//down and forward
+				done++;
+			break;
+		case 3:
+			if (inputs[j] == 'c') //down				
+			return true;			
+		default:
+			//Special attack is false
+			return false;
+		}		
+
+
+		/*
 		case 0:
 			if (inputs[j] == 'c')//punch
 				done++;				
@@ -2749,13 +2783,13 @@ bool ModulePlayer::checkSpecialAttack() {
 				done++;
 			break;
 		case 3:
-			if (inputs[j] == 's') //down
-				state = SPECIAL_ATTACK;
+			if (inputs[j] == 's') //down				
 			return true;			
 		default:
 			//Special attack is false
 			return false;
 		}			
+		*/
 
 		if (j <99)
 			j++;
@@ -2768,10 +2802,10 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
-	if (lastInput < 99)
-		lastInput++;
+	if (lastInput >0)
+		lastInput--;
 	else
-		lastInput = 0;
+		lastInput = 99;
 
 	//We change first's position 
 	if (firstInput == lastInput && firstInput < 99)
