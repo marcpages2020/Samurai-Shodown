@@ -793,7 +793,7 @@ update_status ModulePlayer2::PreUpdate()
 				player_input2.pressing_right = false;
 			}
 		}
-
+		introduceInputs(); //For special attack
 
 		if (state2 == IDLE2) {
 			if (player_input2.pressing_left)
@@ -892,6 +892,7 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		if (state2 == PUNCH2) {
+			newInput('h'); //If I delete this, special attack doesn't work
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
 				punch2.Reset();
@@ -2719,15 +2720,15 @@ bool ModulePlayer2::checkSpecialAttack() {
 	while (i < 100) {
 		switch (done) {
 		case 0:
-			if (inputs[j] == 'i')//down/crouch
+			if (inputs[j] == 's')//down/crouch
 				done++;
 			break;
 		case 1:
-			if (inputs[j] == 'i' || 'u')//down and forward
+			if (inputs[j] == 'd' || 's')//down and forward
 				done++;
 			break;
 		case 2:
-			if (inputs[j] == 'u')//forward
+			if (inputs[j] == 'd')//forward
 				done++;
 			break;
 		case 3:
@@ -2766,21 +2767,21 @@ void ModulePlayer2::introduceInputs() {
 	bool isPressingAnything = false;
 
 	if (player_input2.pressing_left) {
-		newInput('y');
+		newInput('d');
 		isPressingAnything = true;
 		if (checkSpecialAttack())
 			state2 = SPECIAL_ATTACK_2;
 	}
 	if (player_input2.pressing_right) {
-		newInput('u');
+		newInput('a');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_down) {
-		newInput('i');
+		newInput('s');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_up) {
-		newInput('o');
+		newInput('w');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_H) {
