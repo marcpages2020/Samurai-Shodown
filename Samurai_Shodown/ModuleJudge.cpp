@@ -38,34 +38,31 @@ ModuleJudge::ModuleJudge() {
 
 		//begin
 		{
-			begin_j.PushBack({ 45, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 106, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 161, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 221, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 286, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 221, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 161, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 106, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 45, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 579, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 455, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 710, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 782, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 710, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 455, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 924, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 991, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 924, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 455, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1059, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1154, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1213, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1270, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1213, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1154, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1441, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 1532, 78, 73, 123 }, 0.2f);
-			begin_j.PushBack({ 455, 78, 73, 123 }, 0.2f);
+			begin_j.PushBack({ 29, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 102, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 175, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 247, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 337, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 247, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 175, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 102, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 29, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 664, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 750, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 843, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 942, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 750, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1128, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1218, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1309, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1399, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1474, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1548, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1630, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1711, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1801, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1886, 78, 72, 123 }, 0.2f);
+			begin_j.PushBack({ 1958, 78, 72, 123 }, 0.2f);
 			begin_j.loop = false;
 			
 		}
