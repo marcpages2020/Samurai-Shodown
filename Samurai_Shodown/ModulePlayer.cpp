@@ -2808,4 +2808,7 @@ void ModulePlayer::introduceInputs() {
 		newInput('q');
 		isPressingAnything = true;
 	}
+
+	if (isPressingAnything == false)
+		newInput(' ');
 }
