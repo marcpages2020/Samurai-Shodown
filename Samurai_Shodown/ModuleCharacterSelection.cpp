@@ -63,7 +63,7 @@ bool ModuleCharacterSelection::CleanUp() {
 update_status ModuleCharacterSelection::Update() {
 	SDL_Rect back, face,name,origin;
 	back = { 0,0,SCREEN_WIDTH, SCREEN_HEIGHT};
-	face = { 741,812,240,95 };
+	face = { 741,890,240,95 };
 	name = { 686,144,95,30 };
 	origin = { 713,181,42,15 };
 	//face, p1 and p2
