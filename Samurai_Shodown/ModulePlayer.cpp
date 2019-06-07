@@ -827,29 +827,23 @@ ModulePlayer::ModulePlayer()
 				dash_forward.PushBack({ 45, 417, 116, 115 }, 0.5f);
 				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.5f);
 				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.5f);
+				dash_forward.loop = false;
 			}
 
 
 			//dash backward
-			/*
+			
 			{
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
-				dash_backward.PushBack({  }, 0.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156}, 0.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.5f);
+				dash_backward.PushBack({ 46, 579, 107, 156 }, 0.5f);
+				dash_backward.PushBack({ 154, 579, 107, 156 }, 0.5f);
+				dash_backward.PushBack({ 261, 579, 107, 156 }, 0.5f);
+				dash_backward.loop = false;
 			}
-			*/
-		// */		
+			
+		// */
 		}
 	}
 }
