@@ -918,8 +918,7 @@ update_status ModulePlayer::PreUpdate()
 		}	
 		//states 
 		{
-			if (state == IDLE) {
-				newInput(' ');
+			if (state == IDLE) {				
 				if (player_input.pressing_A)
 					state = BACKWARD;
 				if (player_input.pressing_D)
@@ -959,7 +958,6 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_DOWN;
 			}
 			if (state == BACKWARD) {
-				newInput('a');
 				if (!player_input.pressing_A)
 					state = IDLE;
 				if (player_input.pressing_C) {
@@ -999,7 +997,6 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_BACKWARD;
 			}
 			if (state == FORWARD) {
-				newInput('d');
 				if (!player_input.pressing_D)
 					state = IDLE;
 				if (player_input.pressing_C) {
@@ -1039,7 +1036,6 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_FORWARD;
 			}
 			if (state == KICK) {
-				newInput('b');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					kick.Reset();
@@ -1051,7 +1047,7 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == PUNCH) {
-				newInput('c');
+				newInput('c'); //If I delete this, special attack doesn't work
 				if (current_animation->Finished()) {
 					state = IDLE;
 					punch.Reset();
@@ -1059,7 +1055,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_NEUTRAL)
 			{
-				newInput('w');
 				if (player_input.pressing_C) {
 					//hit_done++;
 					state = JUMP_PUNCH;
@@ -1083,8 +1078,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_FORWARD)
 			{
-				newInput('w');
-				newInput('d');
 				if (player_input.pressing_C) {
 					hit_done++;
 					state = JUMP_PUNCH;
@@ -1103,8 +1096,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_BACKWARD)
 			{
-				newInput('w');
-				newInput('a');
 				if (player_input.pressing_C) {
 					//hit_done++;
 					state = JUMP_PUNCH;
@@ -1122,8 +1113,6 @@ update_status ModulePlayer::PreUpdate()
 				direction_x = -1;
 			}
 			if (state == JUMP_PUNCH) {
-				newInput('w');
-				newInput('c');
 				if ((current_animation->Finished())&&(position.y == initial_position.y))
 				{
 					state = IDLE;
@@ -1131,8 +1120,6 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == JUMP_KICK) {
-				newInput('w');
-				newInput('b');
 				if ((current_animation->Finished())&&(position.y == initial_position.y))
 				{
 					state = IDLE;
@@ -1141,7 +1128,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == CROUCH_DOWN)
 			{
-				newInput('s');
 				if (!player_input.pressing_S)
 				{
 					state = CROUCH_UP;
@@ -1160,7 +1146,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == CROUCH_UP)
 			{
-				newInput(' ');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_up.Reset();
@@ -1176,23 +1161,18 @@ update_status ModulePlayer::PreUpdate()
 				}
 			}
 			if (state == CROUCH_KICK) {
-				newInput('s');
-				newInput('b');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_kick.Reset();
 				}
 			}
 			if (state == CROUCH_PUNCH) {
-				newInput('s');
-				newInput('c');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_punch.Reset();
 				}
 			}
 			if (state == HIT) {
-				newInput(' ');
 				if ((position.y < initial_position.y))
 				{
 					position.y++;
@@ -1212,7 +1192,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == EN_GARDE)
 			{
-				newInput(' ');
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1221,7 +1200,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == WIN)
 			{
-				newInput(' ');
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1230,7 +1208,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == SPECIAL_ATTACK)
 			{
-				newInput(' ');
 				if (current_animation->Finished())
 				{
 					specialattack.Reset();
@@ -1240,7 +1217,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == HEAVY_PUNCH)
 			{
-				newInput('v');
 				if (current_animation->Finished())
 				{
 					heavy_punch.Reset();
@@ -1249,7 +1225,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == HEAVY_KICK)
 			{
-				newInput('n');
 				if (current_animation->Finished())
 				{
 					heavy_kick.Reset();
@@ -1261,7 +1236,6 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == GRAB)
 			{
-				newInput(' ');
 				if (current_animation->Finished()) {
 					grab.Reset();
 					state = IDLE;
@@ -1292,6 +1266,18 @@ update_status ModulePlayer::Update()
 {
 	lposition = position;
 	shadow_x = position.x;
+
+	if (player_input.pressing_S) {
+		newInput('s');
+		if(checkSpecialAttack())
+			state=SPECIAL_ATTACK;
+	}
+	if (player_input.pressing_D) {
+		newInput('d');
+	}
+	if (player_input.pressing_C) {
+		newInput('c');
+	}
 
 	if (!App->is_paused) {		
 
@@ -1455,7 +1441,7 @@ update_status ModulePlayer::Update()
 
 		case CROUCH_DOWN:
 			current_animation = &crouch_down;
-			checkSpecialAttack();
+			
 			shadow_x = position.x + 16;
 			//haohmaru
 			/*
@@ -2731,31 +2717,30 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = firstInput;//<- Change this
+	int j = lastInput;//<- Change this
 	int done = 0; //If done = 3. Special attack = true 
 	
 	while (i < 100) {
 		switch (done) {
 		case 0:
-			if (inputs[j] == 'c')//punch
+			if (inputs[j] == 's')//punch
 				done++;				
 			break;
 		case 1:
-			if (inputs[j] == 'd')//forward
+			if (inputs[j] == 'd' || 's')//forward
 				done++;				
 			break;
 		case 2:
-			if (inputs[j] == 'd' || 's')//down and forward
+			if (inputs[j] == 'd')//down and forward
 				done++;
 			break;
 		case 3:
-			if (inputs[j] == 's') //down
-				state = SPECIAL_ATTACK;
+			if (inputs[j] == 'c') //down				
 			return true;			
 		default:
 			//Special attack is false
 			return false;
-		}			
+		}		
 
 		if (j <99)
 			j++;
@@ -2768,10 +2753,10 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
-	if (lastInput < 99)
-		lastInput++;
+	if (lastInput >0)
+		lastInput--;
 	else
-		lastInput = 0;
+		lastInput = 99;
 
 	//We change first's position 
 	if (firstInput == lastInput && firstInput < 99)
@@ -2781,20 +2766,4 @@ void ModulePlayer::newInput(char newInput) {
 	
 	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
 	
-	
-	
-	/*
-	if (*last < 99) //We change last pointer's position 
-		(*last)++;	
-	else
-		*last = 0;
-	
-	//We change first pointer's position 
-	if (*first == *last && *first < 99)
-		(*first)++;
-	else if (*first == *last && *first >= 99)
-		* first = 0;
-
-	inputs[*last] = newInput; //We add the newInput to the last inputs array
-	*/
 }
