@@ -927,8 +927,7 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_D)
 					state = FORWARD;
 				if (player_input.pressing_C) {
-					state = PUNCH;
-					checkSpecialAttack();
+					state = PUNCH;					
 					hit_done++;
 					App->audio->PlayFX(attack_fx);
 				}
@@ -2074,6 +2073,7 @@ update_status ModulePlayer::Update()
 			break;
 		case PUNCH:
 			current_animation = &punch;
+			checkSpecialAttack();
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
