@@ -1295,8 +1295,8 @@ update_status ModulePlayer::Update()
 
 	if (player_input.pressing_S) {
 		newInput('s');
-		if (checkSpecialAttack())
-			state = SPECIAL_ATTACK;
+		if(checkSpecialAttack())
+			state=SPECIAL_ATTACK;
 	}
 	if (player_input.pressing_D) {
 		newInput('d');
@@ -2768,29 +2768,6 @@ bool ModulePlayer::checkSpecialAttack() {
 			return false;
 		}		
 
-
-		/*
-		case 0:
-			if (inputs[j] == 'c')//punch
-				done++;				
-			break;
-		case 1:
-			if (inputs[j] == 'd')//forward
-				done++;				
-			break;
-		case 2:
-			if (inputs[j] == 'd' || 's')//down and forward
-				done++;
-			break;
-		case 3:
-			if (inputs[j] == 's') //down				
-			return true;			
-		default:
-			//Special attack is false
-			return false;
-		}			
-		*/
-
 		if (j <99)
 			j++;
 		else
@@ -2815,20 +2792,4 @@ void ModulePlayer::newInput(char newInput) {
 	
 	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
 	
-	
-	
-	/*
-	if (*last < 99) //We change last pointer's position 
-		(*last)++;	
-	else
-		*last = 0;
-	
-	//We change first pointer's position 
-	if (*first == *last && *first < 99)
-		(*first)++;
-	else if (*first == *last && *first >= 99)
-		* first = 0;
-
-	inputs[*last] = newInput; //We add the newInput to the last inputs array
-	*/
 }
