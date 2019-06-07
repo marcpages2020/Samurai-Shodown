@@ -1072,11 +1072,11 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_KICK;
 					//hit_done++;
 				}
-				/*if (player_input.pressing_A && mult == 1)
+				if (player_input.pressing_A && mult == 1)
 					state = JUMP_BACKWARD;
 				if (player_input.pressing_D && mult == 1)
 					state = JUMP_FORWARD;
-					*/
+					
 				if (current_animation->Finished())
 				{
 					state = IDLE;
