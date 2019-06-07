@@ -871,9 +871,7 @@ bool ModulePlayer::Start()
 	App->ui->player2_point = 0;
 	state = IDLE;
 	current_animation = &idle;
-	inputs[0] = ' ';
-	*first = inputs[0];
-	*last = inputs[0];
+	inputs[0] = ' ';	
 	if (!collider_player_up)
 		collider_player_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->player);
 	if (!collider_player_down)
@@ -927,7 +925,7 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_D)
 					state = FORWARD;
 				if (player_input.pressing_C) {
-					state = PUNCH;
+					state = PUNCH;					
 					hit_done++;
 					App->audio->PlayFX(attack_fx);
 				}
@@ -1162,6 +1160,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == CROUCH_UP)
 			{
+				newInput(' ');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_up.Reset();
@@ -1262,6 +1261,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == GRAB)
 			{
+				newInput(' ');
 				if (current_animation->Finished()) {
 					grab.Reset();
 					state = IDLE;
@@ -1293,7 +1293,8 @@ update_status ModulePlayer::Update()
 	lposition = position;
 	shadow_x = position.x;
 
-	if (!App->is_paused) {
+	if (!App->is_paused) {		
+
 		switch (state)
 		{
 		case IDLE:
@@ -1953,24 +1954,32 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x - 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
 				}
+				else
+				{
+					collider_player_attack->SetPos(position.x - 60, position.y - 50);
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 35, position.y - 60);
-					collider_player_up->SetSize(50, 47);
+					collider_player_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_up->SetSize(80, 35);
 				}
 				if (collider_player_up != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 5, position.y - 10);
-					collider_player_down->SetSize(70, 15);
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
 				}
 				if (collider_player_attack == nullptr)
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
 					collider_player_attack->to_delete = false;
-					collider_player_attack->SetPos(position.x + 60, position.y - 50);
-					collider_player_attack->SetSize(67, 30);
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 60, position.y - 70);
 				}
 			}
 
@@ -2020,19 +2029,23 @@ update_status ModulePlayer::Update()
 			else {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 40, position.y - 100);
-					collider_player_up->SetSize(40, 75);
+					collider_player_up->SetPos(position.x + 40, position.y - 75);
+					collider_player_up->SetSize(40, 55);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 40, position.y - 100);
-					collider_player_down->SetSize(1, 1);
+					collider_player_down->SetPos(position.x + 40, position.y - 50);
+					collider_player_down->SetSize(60, 35);
 				}
 				if (collider_player_attack == nullptr)
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-					collider_player_attack->SetPos(position.x + 55, position.y - 70);
-					collider_player_attack->SetSize(45, 50);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 75, position.y - 30);
 				}
 			}
 
@@ -2060,6 +2073,7 @@ update_status ModulePlayer::Update()
 			break;
 		case PUNCH:
 			current_animation = &punch;
+			checkSpecialAttack();
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -2716,26 +2730,27 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = lastInput;
+	int j = 0;//<- Change this
 	int done = 0; //If done = 3. Special attack = true 
-
+	
 	while (i < 100) {
 		switch (done) {
 		case 0:
 			if (inputs[j] == 'c')//punch
-				done++;
+				done++;				
 			break;
 		case 1:
 			if (inputs[j] == 'd')//forward
-				done++;
+				done++;				
 			break;
 		case 2:
-			if (inputs[j] == 'd' && 's')//down and forward
+			if (inputs[j] == 'd' || 's')//down and forward
 				done++;
 			break;
 		case 3:
 			if (inputs[j] == 's') //down
-				return true;			
+				state = SPECIAL_ATTACK;
+			return true;			
 		default:
 			//Special attack is false
 			return false;
@@ -2752,8 +2767,22 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
-	inputs[*last] = newInput; //We add the newInput to the last inputs array
+	if (lastInput < 99)
+		lastInput++;
+	else
+		lastInput = 0;
 
+	//We change first's position 
+	if (firstInput == lastInput && firstInput < 99)
+		firstInput++;
+	else if (firstInput == lastInput && firstInput >= 99)
+		firstInput = 0;	
+	
+	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
+	
+	
+	
+	/*
 	if (*last < 99) //We change last pointer's position 
 		(*last)++;	
 	else
@@ -2764,4 +2793,7 @@ void ModulePlayer::newInput(char newInput) {
 		(*first)++;
 	else if (*first == *last && *first >= 99)
 		* first = 0;
+
+	inputs[*last] = newInput; //We add the newInput to the last inputs array
+	*/
 }

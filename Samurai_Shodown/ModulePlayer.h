@@ -137,8 +137,6 @@ public:
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	char inputs[100];
-	char* first = new char();
-	char* last = new char();
 	int firstInput = 0;
 	int lastInput = 0;
 	int attack_frames = 0;
