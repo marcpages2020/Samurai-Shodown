@@ -2030,19 +2030,23 @@ update_status ModulePlayer::Update()
 			else {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x + 40, position.y - 100);
-					collider_player_up->SetSize(40, 75);
+					collider_player_up->SetPos(position.x + 40, position.y - 75);
+					collider_player_up->SetSize(40, 55);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x + 40, position.y - 100);
-					collider_player_down->SetSize(1, 1);
+					collider_player_down->SetPos(position.x + 40, position.y - 50);
+					collider_player_down->SetSize(60, 35);
 				}
 				if (collider_player_attack == nullptr)
 				{
 					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
-					collider_player_attack->SetPos(position.x + 55, position.y - 70);
-					collider_player_attack->SetSize(45, 50);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 75, position.y - 30);
 				}
 			}
 
