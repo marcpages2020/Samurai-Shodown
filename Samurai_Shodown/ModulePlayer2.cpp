@@ -2709,3 +2709,41 @@ void ModulePlayer2::PlayerCollidersCleanUp() {
 		collider_player_2_down->to_delete = true;
 	}
 }
+bool ModulePlayer2::checkSpecialAttack() {
+
+	//Input button combination for special attack	
+	int i = 0;
+	int j = lastInput;//<- Change this
+	int done = 0; //If done = 3. Special attack = true 
+
+	while (i < 100) {
+		switch (done) {
+		case 0:
+			if (inputs[j] == 's')//down/crouch
+				done++;
+			break;
+		case 1:
+			if (inputs[j] == 'd' || 's')//down and forward
+				done++;
+			break;
+		case 2:
+			if (inputs[j] == 'd')//forward
+				done++;
+			break;
+		case 3:
+			if (inputs[j] == 'c') //punch				
+				return true;
+		default:
+			//Special attack is false
+			return false;
+		}
+
+		if (j < 99)
+			j++;
+		else
+			j = 0;
+
+		i++;
+	}
+	return false;
+}
