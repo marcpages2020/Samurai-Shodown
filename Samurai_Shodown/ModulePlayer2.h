@@ -112,6 +112,14 @@ public:
 	int shadow_x;
 	int shadow_w = 70;
 
+	//Special attack 
+	bool checkSpecialAttack(); //return true if special attack input has been introduced
+	void introduceInputs();
+	void newInput(char newInput); //It adds a new input into the last inputs array
+	char inputs[100];
+	int firstInput = 0;
+	int lastInput = 0;
+
 	PlayerInput2 player_input2;
 
 	States2 state2;
@@ -134,11 +142,6 @@ public:
 	SDL_Texture* player2_textures=nullptr;
 	SDL_Texture* spritesheet1_2 = nullptr;
 	SDL_Texture* spritesheet2_2 = nullptr;
-	/*
-	SDL_Texture* spritesheet1 = nullptr;
-	SDL_Texture* spritesheet2 = nullptr;
-	*/
-	
 };
 
 #endif // !_ModulePlayer2_H
