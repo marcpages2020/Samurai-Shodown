@@ -2747,3 +2747,63 @@ bool ModulePlayer2::checkSpecialAttack() {
 	}
 	return false;
 }
+void ModulePlayer2::newInput(char newInput) {
+	if (lastInput > 0)
+		lastInput--;
+	else
+		lastInput = 99;
+
+	//We change first's position 
+	if (firstInput == lastInput && firstInput < 99)
+		firstInput++;
+	else if (firstInput == lastInput && firstInput >= 99)
+		firstInput = 0;
+
+	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
+
+}
+void ModulePlayer2::introduceInputs() {
+	bool isPressingAnything = false;
+
+	if (player_input2.pressing_left) {
+		newInput('s');
+		isPressingAnything = true;
+		if (checkSpecialAttack())
+			state2 = SPECIAL_ATTACK_2;
+	}
+	if (player_input2.pressing_right) {
+		newInput('d');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_down) {
+		newInput('c');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_up) {
+		newInput('a');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_H) {
+		newInput('h');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_J) {
+		newInput('j');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_K) {
+		newInput('k');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_L) {
+		newInput('l');
+		isPressingAnything = true;
+	}
+	if (player_input2.pressing_P) {
+		newInput('p');
+		isPressingAnything = true;
+	}
+
+	if (isPressingAnything == false)
+		newInput(' ');
+}
