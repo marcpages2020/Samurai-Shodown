@@ -139,8 +139,6 @@ public:
 	char inputs[100];
 	char* first = new char();
 	char* last = new char();
-	int firstInput = 0;
-	int lastInput = 0;
 	int attack_frames = 0;
 	int shadow_x;
 	int shadow_w = 70;

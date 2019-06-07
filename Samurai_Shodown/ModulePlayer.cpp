@@ -927,8 +927,7 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_D)
 					state = FORWARD;
 				if (player_input.pressing_C) {
-					state = PUNCH;
-					checkSpecialAttack();
+					state = PUNCH;					
 					hit_done++;
 					App->audio->PlayFX(attack_fx);
 				}
@@ -1163,6 +1162,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == CROUCH_UP)
 			{
+				newInput(' ');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_up.Reset();
@@ -1263,6 +1263,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == GRAB)
 			{
+				newInput(' ');
 				if (current_animation->Finished()) {
 					grab.Reset();
 					state = IDLE;
@@ -2074,6 +2075,7 @@ update_status ModulePlayer::Update()
 			break;
 		case PUNCH:
 			current_animation = &punch;
+			checkSpecialAttack();
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -2730,7 +2732,7 @@ bool ModulePlayer::checkSpecialAttack() {
 
 	//Input button combination for special attack	
 	int i = 0;
-	int j = lastInput;
+	int j = 0;
 	int done = 0; //If done = 3. Special attack = true 
 	
 	while (i < 100) {
@@ -2750,7 +2752,7 @@ bool ModulePlayer::checkSpecialAttack() {
 		case 3:
 			if (inputs[j] == 's') //down
 				state = SPECIAL_ATTACK;
-				return true;			
+			return true;			
 		default:
 			//Special attack is false
 			return false;
@@ -2767,7 +2769,6 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
-	inputs[*last] = newInput; //We add the newInput to the last inputs array
 
 	if (*last < 99) //We change last pointer's position 
 		(*last)++;	
@@ -2779,4 +2780,6 @@ void ModulePlayer::newInput(char newInput) {
 		(*first)++;
 	else if (*first == *last && *first >= 99)
 		* first = 0;
+
+	inputs[*last] = newInput; //We add the newInput to the last inputs array
 }
