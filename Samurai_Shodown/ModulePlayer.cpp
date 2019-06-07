@@ -1162,6 +1162,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == CROUCH_UP)
 			{
+				newInput(' ');
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_up.Reset();
@@ -1262,6 +1263,7 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == GRAB)
 			{
+				newInput(' ');
 				if (current_animation->Finished()) {
 					grab.Reset();
 					state = IDLE;
@@ -2767,7 +2769,6 @@ bool ModulePlayer::checkSpecialAttack() {
 }
 
 void ModulePlayer::newInput(char newInput) {
-	inputs[*last] = newInput; //We add the newInput to the last inputs array
 
 	if (*last < 99) //We change last pointer's position 
 		(*last)++;	
@@ -2779,4 +2780,6 @@ void ModulePlayer::newInput(char newInput) {
 		(*first)++;
 	else if (*first == *last && *first >= 99)
 		* first = 0;
+
+	inputs[*last] = newInput; //We add the newInput to the last inputs array
 }
