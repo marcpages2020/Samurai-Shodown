@@ -2373,6 +2373,16 @@ update_status ModulePlayer2::Update()
 			break;
 		case DIE2:
 			current_animation = &die2;
+			if ((show_fx == true) && (current_animation->SeeCurrentFrame() == 7))
+			{
+				if (flip == SDL_FLIP_NONE)
+				{
+					App->particles->AddParticle(App->particles->dust, position.x + 10, position.y - 40);
+					App->particles->AddParticle(App->particles->dust, position.x + 50, position.y - 30);
+					App->particles->AddParticle(App->particles->dust, position.x + 80, position.y - 40);
+					show_fx = false;
+				}
+			}
 			position.y = initial_position.y + 10;
 			break;
 		case EN_GARDE2:
@@ -2714,7 +2724,7 @@ update_status ModulePlayer2::Update()
 	SDL_Rect shadow = { 1181,138,91,17 };
 	SDL_RendererFlip lflip;
 	lflip = flip;
-	if ((state2 == GRAB2)||(state2 == DIE2))
+	if ((state2 == GRAB2)||(state2 == DIE2)||(state2 == GRABBED2))
 	{
 		player2_textures = App->player2->spritesheet2_2;
 	}
@@ -2742,7 +2752,7 @@ update_status ModulePlayer2::Update()
 	if (flip == SDL_FLIP_HORIZONTAL) {
 		//shadow 
 		if (shadow_blit) {
-			App->render->Blit(player2_textures, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
+			App->render->Blit(spritesheet1_2, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
@@ -2754,7 +2764,7 @@ update_status ModulePlayer2::Update()
 	else {
 		//shadow
 		if (shadow_blit) {
-			App->render->Blit(player2_textures, shadow_x, initial_position.y - 10, &shadow, flip);
+			App->render->Blit(spritesheet1_2, shadow_x, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
