@@ -62,6 +62,7 @@ public:
 	Particle fire_sword;
 	Particle blood;
 	Particle flash;
+	Particle dust;
 
 };
 
