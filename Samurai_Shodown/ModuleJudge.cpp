@@ -70,24 +70,24 @@ ModuleJudge::ModuleJudge() {
 
 		//player1 hit
 		{
-			hit1.PushBack({ 1013, 267, 51, 70 }, 0.5f);
-			hit1.PushBack({ 1083, 267, 51, 70 }, 0.5f);
-			hit1.PushBack({ 1146, 246, 81, 92 }, 0.5f);
-			hit1.PushBack({ 1232, 246, 78, 91 }, 0.5f);
-			hit1.PushBack({ 1316, 246, 73, 91 }, 0.5f);
-			hit1.PushBack({ 1394, 257, 70, 80 }, 0.5f);
+			hit1.PushBack({ 1013, 245, 51, 94 }, 0.5f);
+			hit1.PushBack({ 1083, 245, 51, 94 }, 0.5f);
+			hit1.PushBack({ 1146, 245, 81, 94 }, 0.5f);
+			hit1.PushBack({ 1232, 245, 78, 94 }, 0.5f);
+			hit1.PushBack({ 1316, 245, 73, 94 }, 0.5f);
+			hit1.PushBack({ 1394, 245, 70, 94 }, 0.5f);
 			hit1.loop = false;
 		}
 
 
 		//player2 hit
 		{
-			hit2.PushBack({ 1530, 267, 51, 70 }, 0.5f);
-			hit2.PushBack({ 1594, 267, 51, 70 }, 0.5f);
-			hit2.PushBack({ 1661, 245, 81, 91 }, 0.5f);
-			hit2.PushBack({ 1749, 246, 78, 91 }, 0.5f);
-			hit2.PushBack({ 1833, 246, 73, 91 }, 0.5f);
-			hit2.PushBack({ 1920, 257, 70, 80 }, 0.5f);
+			hit2.PushBack({ 1530, 245, 51, 94 }, 0.5f);
+			hit2.PushBack({ 1594, 245, 51, 94 }, 0.5f);
+			hit2.PushBack({ 1661, 245, 81, 94 }, 0.5f);
+			hit2.PushBack({ 1749, 245, 78, 94 }, 0.5f);
+			hit2.PushBack({ 1833, 245, 73, 94 }, 0.5f);
+			hit2.PushBack({ 1920, 245, 70, 94 }, 0.5f);
 			hit2.loop = false;
 		}
 
@@ -215,7 +215,7 @@ update_status ModuleJudge::Update() {
 	}
 	else
 	{
-		App->render->Blit(judge_tex, position_x, position_y, &current_animation->GetCurrentFrame());
+		App->render->Blit(judge_tex, position_x, position_y , &current_animation->GetCurrentFrame());
 	}
 	return UPDATE_CONTINUE;
 }

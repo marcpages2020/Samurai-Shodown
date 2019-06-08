@@ -955,7 +955,11 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			App->player2->life = 1;
+			App->judge->state_j = HIT1_J;
+		}
+		if (player_input.pressing_E)
+		{
+			//debug
 		}
 		introduceInputs(); //For special attack
 		//states 
