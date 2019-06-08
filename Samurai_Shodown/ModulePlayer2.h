@@ -50,6 +50,7 @@ struct PlayerInput2 {
 	bool pressing_L;
 	bool pressing_P;
 	bool pressing_H;
+	bool holding_J;
 	bool pressing_F5;
 };
 

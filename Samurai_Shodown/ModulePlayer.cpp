@@ -1022,10 +1022,6 @@ update_status ModulePlayer::PreUpdate()
 					hit_done++;
 					App->audio->PlayFX(kick_fx);
 				}
-				if (player_input.pressing_E)
-				{
-					state = GRAB;
-				}
 				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
 					App->audio->PlayFX(special_attack_fx);
@@ -2854,8 +2850,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 					{
 						position.x = lposition.x + speed;
 					}
+			}
+			if ((player_input.holding_V) && (state == FORWARD))
+			{
+				state = GRAB;
+				if (App->player->flip == SDL_FLIP_NONE)
+				{
+					App->player->grab_right = false;
 				}
-			//}
+				else
+				{
+					App->player->grab_right = true;
+				}
+			}
 			break;
 		case COLLIDER_PLAYER_2_ATTACK:
 			if (!App->player2->collider_player_2_attack->to_delete && !god) {
