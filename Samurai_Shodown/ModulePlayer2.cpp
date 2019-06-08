@@ -1984,6 +1984,8 @@ update_status ModulePlayer2::Update()
 				current_animation = &jump_kick2;
 				//Wan-Fu jump_kick
 				if (flip == SDL_FLIP_HORIZONTAL) {
+					shadow_x = position.x;
+					shadow_x = position.x;
 					if (collider_player_2_up != nullptr)
 					{
 						collider_player_2_up->SetPos(position.x - 10, position.y - 75);
@@ -2006,6 +2008,7 @@ update_status ModulePlayer2::Update()
 					}
 				}
 				else {
+					shadow_x = position.x + 20;
 					if (collider_player_2_up != nullptr)
 					{
 						collider_player_2_up->SetPos(position.x + 40, position.y - 75);
@@ -2047,7 +2050,6 @@ update_status ModulePlayer2::Update()
 					position.y = initial_position.y;
 					mult = 1;
 				}
-				shadow_x = position.x;
 				break;
 		case PUNCH2:
 			current_animation = &punch2;
@@ -2639,6 +2641,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_heavy_kick2;
 			//Wan-Fu Jump Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
+				shadow_x = position.x;
 				if (collider_player_2_up != nullptr)
 				{
 					collider_player_2_up->SetPos(position.x - 10, position.y - 75);
@@ -2661,6 +2664,7 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			else {
+				shadow_x = position.x + 20;
 				if (collider_player_2_up != nullptr)
 				{
 					collider_player_2_up->SetPos(position.x + 40, position.y - 75);
@@ -2697,7 +2701,6 @@ update_status ModulePlayer2::Update()
 				App->render->StartCameraShake(400, 2);
 				direction_x = 0;
 			}
-			shadow_x = position.x;
 			break;
 	}
 	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2)))

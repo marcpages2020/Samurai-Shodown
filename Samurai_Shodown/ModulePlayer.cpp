@@ -2107,8 +2107,10 @@ update_status ModulePlayer::Update()
 				{
 					collider_player_attack->SetPos(position.x - 65, position.y - 30);
 				}
+				shadow_x = position.x;
 			}
 			else {
+				shadow_x = position.x + 20;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 40, position.y - 75);
@@ -2151,7 +2153,6 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
-			shadow_x = position.x;
 			break;
 		case PUNCH:
 			current_animation = &punch;
@@ -2682,6 +2683,7 @@ update_status ModulePlayer::Update()
 			current_animation = &jump_heavy_kick;
 			//Wan-Fu Jump Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
+				shadow_x = position.x;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x - 10, position.y - 75);
@@ -2704,6 +2706,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else {
+				shadow_x = position.x + 20;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 40, position.y - 75);
@@ -2746,7 +2749,6 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
-			shadow_x = position.x;
 			break;
 		case GRAB:
 			current_animation = &grab;
