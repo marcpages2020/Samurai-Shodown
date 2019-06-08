@@ -955,11 +955,11 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			App->judge->state_j = HIT1_J;
+			state = GRAB;
 		}
 		if (player_input.pressing_E)
 		{
-			//debug
+			state = GRABBED;
 		}
 		introduceInputs(); //For special attack
 		//states 
@@ -1279,6 +1279,14 @@ update_status ModulePlayer::PreUpdate()
 			{
 				if (current_animation->Finished()) {
 					grab.Reset();
+					state = IDLE;
+				}
+			}
+			if (state == GRABBED)
+			{
+				if (current_animation->Finished())
+				{
+					grabbed.Reset();
 					state = IDLE;
 				}
 			}
@@ -2746,6 +2754,9 @@ update_status ModulePlayer::Update()
 			break;
 		case GRAB:
 			current_animation = &grab;
+			break;
+		case GRABBED:
+			current_animation = &grabbed;
 			break;
 		default:
 			LOG("No state found :(");

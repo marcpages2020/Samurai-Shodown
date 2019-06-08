@@ -36,6 +36,7 @@ enum States2 {
 	DIE2,
 	WIN2,
 	GRAB2,
+	GRABBED2,
 	SPECIAL_ATTACK_2
 };
 
@@ -92,7 +93,10 @@ public:
 	Animation twister2;
 	Animation twisterAlone2;
 	Animation specialattack2;
+	Animation grab2;
+	Animation grabbed2;
 	Animation* current_animation = nullptr;
+
 		
 	iPoint position;
 	iPoint lposition;
