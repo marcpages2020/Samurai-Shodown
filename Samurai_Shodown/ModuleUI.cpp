@@ -405,6 +405,7 @@ update_status ModuleUI::Update() {
 		points_hit = ((percent * 100) * 20000) / 100;
 		sprintf_s(char_hit_percentatge, 10, "%7d", points_hit);
 		App->player->state = States::DIE;
+		App->player->show_fx = true;
 		App->player2->state2 = WIN2;
 	}
 	// player 2 dies
@@ -413,6 +414,7 @@ update_status ModuleUI::Update() {
 		player1_win = true;
 		player1_wins++;
 		App->player2->state2 = States2::DIE2;
+		App->player2;
 		App->player->state = WIN;
 		points_life_gain = (6400 * App->player->life) / 100;
 		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);

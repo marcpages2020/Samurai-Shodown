@@ -137,6 +137,7 @@ public:
 	bool shadow_blit = true;
 	bool god = false;
 	bool controls = true;
+	bool show_fx = false;
 
 	Mix_Chunk* attack_fx;
 	Mix_Chunk* kick_fx;
