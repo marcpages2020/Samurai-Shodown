@@ -2384,8 +2384,8 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x+5, position.y - 50);
 					collider_player_down->SetSize(60, 30);
 				}
-				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
+				if (current_animation->SeeCurrentFrame() == 6 && !are_particles_created) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x , position.y-100, COLLIDER_PLAYER_PARTICLES);
 					are_particles_created = true;
 				}
 				position.x -= 1 * speed;

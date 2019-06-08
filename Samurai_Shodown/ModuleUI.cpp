@@ -455,6 +455,7 @@ update_status ModuleUI::Update() {
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
 	{
+		//time_fight = 0;
 		player1_wins = 2;
 		die_scene = true;
 	}
