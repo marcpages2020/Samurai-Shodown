@@ -636,7 +636,22 @@ ModulePlayer2::ModulePlayer2()
 				jump_punch2.PushBack({ 1750, 764, 119, 130 }, 0.3f);
 				jump_punch2.loop = false;
 			}
-
+			//jump heavy punch
+			{
+				jump_heavy_punch2.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
+				jump_heavy_punch2.PushBack({ 956, 635, 115, 112 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1227, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1487, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1766, 619, 125, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1914, 619, 125, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1443, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1586, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1750, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch2.loop = false;
+			}
 			//jump_kick
 			{
 				jump_kick2.PushBack({ 30, 1831, 111, 104 }, 0.3f);
@@ -649,6 +664,19 @@ ModulePlayer2::ModulePlayer2()
 				jump_kick2.PushBack({ 949, 1831, 133, 125 }, 0.3f);
 				jump_kick2.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
 				jump_kick2.loop = false;
+			}
+			//jump heavy kick
+			{
+				jump_heavy_kick2.PushBack({ 30, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 164, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 313, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 466, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 625, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 790, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 949, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick2.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick2.loop = false;
 			}
 
 			//win animation
@@ -900,15 +928,24 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_NEUTRAL2)
 		{
+			direction_x = 0;
 			if (player_input2.pressing_H) {
-				//hit_done++;
 				state2 = JUMP_PUNCH2;
-				direction_x = 0;
+				App->audio->PlayFX(attack_fx);
+			}
+			if (player_input2.pressing_J)
+			{
+				state2 = JUMP_HEAVY_PUNCH2;
+				App->audio->PlayFX(attack_fx);
 			}
 			if (player_input2.pressing_K) {
 				state2 = JUMP_KICK2;
-				direction_x = 0;
-				//hit_done++;
+				App->audio->PlayFX(kick_fx);
+			}
+			if (player_input2.pressing_L)
+			{
+				state2 = JUMP_HEAVY_KICK2;
+				App->audio->PlayFX(kick_fx);
 			}
 			if (player_input2.pressing_right && mult == 1)
 				state2 = JUMP_BACKWARD2;
@@ -922,38 +959,57 @@ update_status ModulePlayer2::PreUpdate()
 		}
 		if (state2 == JUMP_FORWARD2)
 		{
+			direction_x = 1;
 			if (player_input2.pressing_H) {
-				//hit_done++;
 				state2 = JUMP_PUNCH2;
+				App->audio->PlayFX(attack_fx);
+			}
+			if (player_input2.pressing_J)
+			{
+				state2 = JUMP_HEAVY_PUNCH2;
+				App->audio->PlayFX(attack_fx);
 			}
 			if (player_input2.pressing_K) {
 				state2 = JUMP_KICK2;
-				//hit_done++;
+				App->audio->PlayFX(kick_fx);
+			}
+			if (player_input2.pressing_L)
+			{
+				state2 = JUMP_HEAVY_KICK2;
+				App->audio->PlayFX(kick_fx);
 			}
 			if (current_animation->Finished())
 			{
 				state2 = IDLE2;
 				jump_forward2.Reset();
 			}
-			direction_x = 1;
 		}
 		if (state2 == JUMP_BACKWARD2)
 		{
+			direction_x = -1;
 			if (player_input2.pressing_H) {
-				state2 = JUMP_KICK2;
-				//hit_done++;
+				state2 = JUMP_PUNCH2;
+				App->audio->PlayFX(attack_fx);
+			}
+			if (player_input2.pressing_J)
+			{
+				state2 = JUMP_HEAVY_PUNCH2;
+				App->audio->PlayFX(attack_fx);
 			}
 			if (player_input2.pressing_K) {
-				//hit_done++;
-				state2 = JUMP_PUNCH2;
-				//App->audio->PlayFX(light_attack_fx);
+				state2 = JUMP_KICK2;
+				App->audio->PlayFX(kick_fx);
+			}
+			if (player_input2.pressing_L)
+			{
+				state2 = JUMP_HEAVY_KICK2;
+				App->audio->PlayFX(kick_fx);
 			}
 			if (current_animation->Finished())
 			{
 				state2 = IDLE2;
 				jump_backward2.Reset();
 			}
-			direction_x = -1;
 		}
 		if (state2 == JUMP_PUNCH2) {
 			if ((current_animation->Finished())&&(position.y == initial_position.y))
@@ -962,11 +1018,25 @@ update_status ModulePlayer2::PreUpdate()
 				jump_punch2.Reset();
 			}
 		}
+		if (state2 == JUMP_HEAVY_PUNCH2) {
+			if ((current_animation->Finished()) && (position.y == initial_position.y))
+			{
+				state2 = IDLE2;
+				jump_heavy_punch2.Reset();
+			}
+		}
 		if (state2 == JUMP_KICK2) {
 			if((current_animation->Finished()) && (position.y == initial_position.y))
 			{
 				state2 = IDLE2;
 				jump_kick2.Reset();
+			}
+		}
+		if (state2 == JUMP_HEAVY_KICK2) {
+			if ((current_animation->Finished()) && (position.y == initial_position.y))
+			{
+				state2 = IDLE2;
+				jump_heavy_kick2.Reset();
 			}
 		}
 		if (state2 == CROUCH_DOWN2)
@@ -1042,7 +1112,7 @@ update_status ModulePlayer2::PreUpdate()
 			god = !god;
 		}
 
-		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (collider_player_2_attack != nullptr))
+		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2)&&(state2 != JUMP_HEAVY_PUNCH2)&&(state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
 		{
 			collider_player_2_attack->to_delete = true;
 			collider_player_2_attack = nullptr;
@@ -2471,42 +2541,149 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_heavy_punch2;
 			//Wan-Fu Jump Heavy Punch
 			if (flip == SDL_FLIP_HORIZONTAL) {
-
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x - 65, position.y - 80);
+					collider_player_2_up->SetSize(80, 35);
+				}
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_2_down->SetSize(60, 47);
+				}
+				if (collider_player_2_attack == nullptr)
+				{
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+					collider_player_2_attack->to_delete = false;
+					collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_2_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_2_attack->SetPos(position.x - 60, position.y - 70);
+				}
 			}
 			else {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_2_up->SetSize(80, 35);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_2_down->SetSize(60, 47);
+				}
+				if (collider_player_2_attack == nullptr)
+				{
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_2_attack->to_delete = false;
+					collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_2_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_2_attack->SetPos(position.x + 60, position.y - 70);
+				}
+			}
+			position.y -= speed * 1.75 * mult;
+			position.x -= 1.25*speed*direction_x;
 
-
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				jump_forward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(500, 2);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+				jump_forward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(500, 2);
 			}
 			shadow_x = position.x;
 			break;
+		case JUMP_HEAVY_KICK2:
+			current_animation = &jump_heavy_kick2;
+			//Wan-Fu Jump Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x - 10, position.y - 75);
+					collider_player_2_up->SetSize(40, 55);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x - 30, position.y - 50);
+					collider_player_2_down->SetSize(60, 35);
+				}
+				if (collider_player_2_attack == nullptr)
+				{
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+					collider_player_2_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_2_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_2_attack->SetPos(position.x - 65, position.y - 30);
+				}
 			}
-		/*if (App->player->position.y < position.y -30)
-		{
-			if (App->player->position.x +10 > position.x)
+			else {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 40, position.y - 75);
+					collider_player_2_up->SetSize(40, 55);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 40, position.y - 50);
+					collider_player_2_down->SetSize(60, 35);
+				}
+				if (collider_player_2_attack == nullptr)
+				{
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+					collider_player_2_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_2_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_2_attack->SetPos(position.x + 75, position.y - 30);
+				}
+			}
+			position.y -= speed * 1.75 * mult;
+			position.x -= 1.25*speed*direction_x;
+
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y == initial_position.y)
 			{
-				position.x += speed;
+				mult = 1;
+				jump_forward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(500, 2);
 			}
-			else //if (App->player->position.x > position.x)
+			else if (position.y > initial_position.y)
 			{
-				position.x -= speed;
+				position.y = initial_position.y;
+				mult = 1;
+				jump_forward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(500, 2);
 			}
-		}*/
-		if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2)))
+			shadow_x = position.x;
+			break;
+		if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2)&&(state2 != JUMP_HEAVY_PUNCH2)&&(JUMP_HEAVY_KICK2)))
 		{
 			state2 = JUMP_NEUTRAL2;
 		}
-		/*
-		if (App->player->position.y < position.y - 40) {
-			if (App->player->position.x + 10 < position.x)
-			{
-				position.x = lposition.x - speed;
-			}
-			else
-			{
-				position.x = lposition.x + speed;
-			}
-		}*/
+
 	}
 
 	//Draw everything
@@ -2566,6 +2743,7 @@ update_status ModulePlayer2::Update()
 
 	}
 	return UPDATE_CONTINUE;
+}
 }
 
 bool ModulePlayer2::CleanUp() {

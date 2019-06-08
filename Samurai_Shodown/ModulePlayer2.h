@@ -83,6 +83,7 @@ public:
 	Animation jump_punch2;
 	Animation jump_kick2;
 	Animation jump_heavy_punch2;
+	Animation jump_heavy_kick2;
 	Animation crouch_down2;
 	Animation win2;
 	Animation en_garde2;

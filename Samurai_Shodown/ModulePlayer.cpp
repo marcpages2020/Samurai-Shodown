@@ -814,7 +814,7 @@ ModulePlayer::ModulePlayer()
 				heavy_kick.loop = false;
 			}
 
-			//
+			//jump heavy kick
 			{
 				jump_heavy_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
 				jump_heavy_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
