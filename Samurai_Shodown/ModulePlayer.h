@@ -138,6 +138,8 @@ public:
 	bool shadow_blit = true;
 	bool god = false;
 	bool grab_right = false;
+	bool show_fx = false;
+
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	void introduceInputs();

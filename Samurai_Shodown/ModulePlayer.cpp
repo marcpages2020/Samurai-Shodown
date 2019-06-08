@@ -955,7 +955,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_E)
 		{
-			App->player2->state2 = DIE2;
+			state = DIE;
 		}
 		introduceInputs(); //For special attack
 		//states 
@@ -2236,6 +2236,14 @@ update_status ModulePlayer::Update()
 			break;
 		case DIE:
 			current_animation = &die;
+			{
+				if (flip == SDL_FLIP_NONE)
+				{
+					App->particles->AddParticle(App->particles->dust, position.x, position.y);
+					App->particles->AddParticle(App->particles->dust, position.x+10, position.y);
+					App->particles->AddParticle(App->particles->dust, position.x+20, position.y);
+				}
+			}
 			position.y = initial_position.y + 10;
 			break;
 		case KICK:
