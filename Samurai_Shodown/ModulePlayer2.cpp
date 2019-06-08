@@ -2810,7 +2810,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 						position.x = lposition.x + speed;
 					}
 			}
-			if ((player_input2.holding_J)&&(state2 == FORWARD2))
+			if (player_input2.holding_J)
 			{
 				state2 = GRAB2;
 				if (App->player->flip == SDL_FLIP_NONE)

@@ -1767,12 +1767,12 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x - 30, position.y - 100);
+					collider_player_up->SetPos(position.x - 15, position.y - 100);
 					collider_player_up->SetSize(35, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x - 40, position.y - 50);
+					collider_player_down->SetPos(position.x - 20, position.y - 50);
 					collider_player_down->SetSize(50, 30);
 				}
 			}
@@ -1838,17 +1838,17 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetPos(position.x - 15, position.y - 45);
 					collider_player_down->SetSize(50, 35);
 				}
 				if (current_animation->SeeCurrentFrame() > 5)
 				{
 					if (collider_player_up != nullptr)
 					{
-						collider_player_up->SetPos(position.x - 40, position.y - 75);
-						collider_player_up->SetSize(45, 35);
+						collider_player_up->SetPos(position.x - 20, position.y - 95);
+						collider_player_up->SetSize(45, 55);
 
-						collider_player_down->SetPos(position.x - 35, position.y - 45);
+						collider_player_down->SetPos(position.x - 25, position.y - 45);
 						collider_player_down->SetSize(50, 35);
 					}
 				}
@@ -1971,13 +1971,13 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_up->SetPos(position.x - 25, position.y - 100);
 					collider_player_up->SetSize(40, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x - 35, position.y - 45);
-					collider_player_down->SetSize(50, 35);
+					collider_player_down->SetPos(position.x - 25, position.y - 55);
+					collider_player_down->SetSize(50, 45);
 				}
 			}
 			else {
@@ -2851,7 +2851,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 						position.x = lposition.x + speed;
 					}
 			}
-			if ((player_input.holding_V) && (state == FORWARD))
+			if (player_input.holding_V)
 			{
 				state = GRAB;
 				if (App->player->flip == SDL_FLIP_NONE)
