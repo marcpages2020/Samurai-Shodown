@@ -164,6 +164,59 @@ ModuleUI::ModuleUI() {
 	begin.PushBack({ 490,y += 48,102,48 }, 0.8f);
 	begin.loop = false;
 
+
+	y = -30;
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.02f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.PushBack({ 636,y += 30,87,30 }, 0.8f);
+	duel_1.loop = false;
+
+	y = -30;
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.02f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.PushBack({ 799,y += 30,87,30 }, 0.8f);
+	duel_2.loop = false;
+
+
+	y = -30;
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.02f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.PushBack({ 984,y += 30,87,30 }, 0.8f);
+	duel_3.loop = false;
+
 	bar_anim1.PushBack({ 8,58,128,9 }, 0.3F);
 	bar_anim1.PushBack({ 8,44,128,9 }, 0.3F);
 
@@ -193,6 +246,10 @@ bool ModuleUI::Start() {
 	player1_point = 0;
 	player1_wins = 0;
 	player2_wins = 0;
+	duel_1.Reset();
+	duel_2.Reset();
+	duel_3.Reset();
+	duel = true;
 	player2_point = 0;
 	animKO_active = false;
 	finish_round = App->textures->Load("Assets/Sprites/UI/finish_round.png");
@@ -441,16 +498,53 @@ update_status ModuleUI::Update() {
 		}
 	}
 	if (show_ui && !en_garde_bool && !begin_finish) {
-		if (!begin.Finished()) {
-			App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 51, SCREEN_HEIGHT / 2 - 24, &begin.GetCurrentFrame());
-			App->player->BlockControls(true);
-			App->player2->BlockControls(true);
+		if (duel) {
+			if (player1_wins + player2_wins + draw == 0) {
+				if (!duel_1.Finished()) {
+					App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 43, SCREEN_HEIGHT / 2 - 15, &duel_1.GetCurrentFrame());
+					App->player->BlockControls(true);
+					App->player2->BlockControls(true);
+				}
+				else {
+					duel = false;
+				}
+			}
+			else if (player1_wins + player2_wins + draw == 1) {
+				if (!duel_2.Finished()) {
+					App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 43, SCREEN_HEIGHT / 2 - 15, &duel_2.GetCurrentFrame());
+					App->player->BlockControls(true);
+					App->player2->BlockControls(true);
+				}
+				else {
+					duel = false;
+				}
+			}
+			else if (player1_wins + player2_wins + draw == 2) {
+				if (!duel_3.Finished()) {
+					App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 43, SCREEN_HEIGHT / 2 - 15, &duel_3.GetCurrentFrame());
+					App->player->BlockControls(true);
+					App->player2->BlockControls(true);
+				}
+				else {
+					duel = false;
+				}
+			}
+			else
+				duel = false;
 		}
 		else {
-			App->player->BlockControls(false);
-			App->player2->BlockControls(false);
-			begin_finish = true;
+			if (!begin.Finished()) {
+				App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 51, SCREEN_HEIGHT / 2 - 24, &begin.GetCurrentFrame());
+				App->player->BlockControls(true);
+				App->player2->BlockControls(true);
+			}
+			else {
+				App->player->BlockControls(false);
+				App->player2->BlockControls(false);
+				begin_finish = true;
+			}
 		}
+		
 	}
 	if (begin.Finished())
 	{
@@ -682,6 +776,10 @@ void ModuleUI::ResetScene() {
 	time_up_anim.Reset();
 	ippon_time = 0;
 	points_first_wait = 0;
+	duel_1.Reset();
+	duel_2.Reset();
+	duel_3.Reset();
+	duel = true;
 	points_second_wait = 0;
 	life_done = false;
 	is_draw = false;
