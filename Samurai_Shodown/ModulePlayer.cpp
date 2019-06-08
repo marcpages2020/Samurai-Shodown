@@ -2393,11 +2393,6 @@ update_status ModulePlayer::Update()
 				are_particles_created = false;
 				mult = 1;
 			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				mult = 1;
-			}
 			break;
 		case WIN:
 			current_animation = &win;
