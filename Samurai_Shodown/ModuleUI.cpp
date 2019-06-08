@@ -414,7 +414,7 @@ update_status ModuleUI::Update() {
 		player1_win = true;
 		player1_wins++;
 		App->player2->state2 = States2::DIE2;
-		App->player2;
+		App->player2->show_fx = true;
 		App->player->state = WIN;
 		points_life_gain = (6400 * App->player->life) / 100;
 		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);

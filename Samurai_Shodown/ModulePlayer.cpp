@@ -929,8 +929,8 @@ bool ModulePlayer::Start()
 	position.y = initial_position.y = 215;
 	lposition = position;
 	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	spritesheet1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
-	spritesheet2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2.png");
+	spritesheet1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu1_1.png");
+	spritesheet2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu1_2.png");
 	attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_attack.wav");
 	kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
@@ -2276,12 +2276,14 @@ update_status ModulePlayer::Update()
 			break;
 		case DIE:
 			current_animation = &die;
+			if (show_fx == true)
 			{
 				if (flip == SDL_FLIP_NONE)
 				{
 					App->particles->AddParticle(App->particles->dust, position.x, position.y);
 					App->particles->AddParticle(App->particles->dust, position.x+10, position.y);
 					App->particles->AddParticle(App->particles->dust, position.x+20, position.y);
+					show_fx = false;
 				}
 			}
 			position.y = initial_position.y + 10;
