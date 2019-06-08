@@ -709,41 +709,37 @@ ModulePlayer::ModulePlayer()
 			//grab animation
 			
 			{
-				grab.PushBack({ 31, 8, 133, 128}, 0.5f);
-				grab.PushBack({ 164, 8, 133, 128}, 0.5f);
-				grab.PushBack({ 298, 8, 133, 128}, 0.5f);
-				grab.PushBack({ 432, 10, 135, 126}, 0.5f);
-				grab.PushBack({ 568, 10, 135, 126}, 0.5f);
-				grab.PushBack({ 705, 10, 135, 126}, 0.5f);
-				grab.PushBack({ 840, 0, 172, 136}, 0.5f);
-				grab.PushBack({ 1014, 0, 172, 136}, 0.5f);
-				grab.PushBack({ 1187, 0, 172, 136}, 0.5f);
-				grab.PushBack({ 1358, 30, 157, 106}, 0.5f);
-				grab.PushBack({ 1515, 30, 157, 106}, 0.5f);
-				grab.PushBack({ 1670, 30, 157, 106}, 0.5f);
-				grab.PushBack({ 1805, 7, 81, 129}, 0.5f);//red
-				grab.PushBack({ 1886, 7, 81, 129}, 0.5f);
-				grab.PushBack({ 31, 135, 81, 129}, 0.5f);
-				grab.PushBack({ 111, 135, 81, 129}, 0.5f);
-				grab.PushBack({ 349, 155, 118, 87}, 0.5f);
-				grab.PushBack({ 467, 155, 118, 87}, 0.5f);
-				grab.PushBack({ 585, 155, 188, 87}, 0.5f);
-				grab.PushBack({ 704, 144, 86, 120}, 0.5f);
-				grab.PushBack({ 790, 144, 86, 120}, 0.5f);
-				grab.PushBack({ 876, 144, 86, 120}, 0.5f);
-				grab.PushBack({ 964, 164, 129, 100}, 0.5f);
-				grab.PushBack({ 1093, 164, 129, 100}, 0.5f);
-				grab.PushBack({ 1222, 164, 129, 100}, 0.5f);
-				grab.PushBack({ 1351, 164, 107, 100}, 0.5f);
-				grab.PushBack({ 1458, 164, 107, 100}, 0.5f);
-				grab.PushBack({ 1566, 164, 107, 100}, 0.5f);
-				grab.PushBack({ 1673, 182, 106, 82}, 0.5f);
-				grab.PushBack({ 1779, 182, 106, 82}, 0.5f);
-				grab.PushBack({ 1885, 182, 106, 82}, 0.5f);
-				grab.PushBack({ 30, 264, 107, 103}, 0.5f);
-				grab.PushBack({ 138, 264, 107, 103}, 0.5f);
-				grab.PushBack({ 246, 264, 107, 103}, 0.5f);
-				grab.PushBack({ 352, 264, 106, 139}, 0.5f);
+				grab.PushBack({ 46, 1517, 133, 225}, 0.5f);
+				grab.PushBack({ 179, 1517, 133, 225 }, 0.5f);
+				grab.PushBack({ 314, 1517, 133, 225 }, 0.5f);
+				grab.PushBack({ 448, 1517, 135, 225 }, 0.5f);
+				grab.PushBack({ 583, 1517, 135, 225 }, 0.5f);
+				grab.PushBack({ 719, 1517, 135, 225 }, 0.5f);
+				grab.PushBack({ 855, 1517, 172, 225 }, 0.5f);
+				grab.PushBack({ 1029, 1517, 172, 225 }, 0.5f);
+				grab.PushBack({ 1201, 1517, 172, 225 }, 0.5f);
+				grab.PushBack({ 1374, 1517, 157, 225 }, 0.5f);
+				grab.PushBack({ 1530, 1517, 157, 225 }, 0.5f);
+				grab.PushBack({ 1685, 1517, 157, 225 }, 0.5f);
+				grab.PushBack({ 1820, 1517, 81, 225 }, 0.5f);//red
+				grab.PushBack({ 1910, 1517, 81, 225 }, 0.5f);
+				grab.PushBack({ 1910, 1517, 81, 225 }, 0.5f);
+				grab.PushBack({ 1910, 1517, 81, 225 }, 0.5f);
+				grab.PushBack({ 364, 1750, 118, 225 }, 0.5f);
+				grab.PushBack({ 482, 1750, 118, 225 }, 0.5f);
+				grab.PushBack({ 600, 1750, 118, 225 }, 0.5f);
+				grab.PushBack({ 718, 1750, 86, 225 }, 0.5f);
+				grab.PushBack({ 806, 1750, 86, 225 }, 0.5f);
+				grab.PushBack({ 893, 1750, 86, 225 }, 0.5f);
+				grab.PushBack({ 979, 1750, 129, 225 }, 0.5f);
+				grab.PushBack({ 1108, 1750, 129, 225 }, 0.5f);
+				grab.PushBack({ 1237, 1750, 129, 225 }, 0.5f);
+				grab.PushBack({ 1367, 1750, 107, 225 }, 0.5f);
+				grab.PushBack({ 1473, 1750, 107, 225 }, 0.5f);
+				grab.PushBack({ 1581, 1750, 107, 225 }, 0.5f);
+				grab.PushBack({ 1688, 1750, 106, 225 }, 0.5f);
+				grab.PushBack({ 1795, 1750, 106, 225 }, 0.5f);
+				grab.PushBack({ 1901, 1750, 106, 225 }, 0.5f);
 				grab.loop = false;
 			}
 			
