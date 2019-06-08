@@ -2672,7 +2672,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					position.x += 10;
 				}
 				//blood
-				if ((App->player->state == PUNCH) || (App->player->state == HEAVY_PUNCH) || (App->player->state == CROUCH_PUNCH))
+				if ((App->player->state == PUNCH) || (App->player->state == HEAVY_PUNCH) || (App->player->state == CROUCH_PUNCH)||(App->player->state == JUMP_HEAVY_PUNCH))
 				{
 					if (flip == SDL_FLIP_NONE)
 					{
@@ -2684,7 +2684,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					}
 				}
 				//flash 
-				else if ((App->player->state == KICK) || (App->player->state == HEAVY_KICK) || (App->player->state == CROUCH_KICK))
+				else if ((App->player->state == KICK) || (App->player->state == HEAVY_KICK) || (App->player->state == CROUCH_KICK)||(App->player->state == JUMP_HEAVY_KICK))
 				{
 					if (flip == SDL_FLIP_NONE)
 					{

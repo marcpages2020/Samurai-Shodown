@@ -676,7 +676,7 @@ ModulePlayer::ModulePlayer()
 				win.loop = true;
 			}
 
-			//jump_kick
+			//jump punch
 
 			{
 				jump_punch.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
@@ -693,21 +693,7 @@ ModulePlayer::ModulePlayer()
 				jump_punch.PushBack({ 1750, 764, 119, 130 }, 0.3f);
 				jump_punch.loop = false;
 			}
-
-			//jump_punch
-			{
-				jump_heavy_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
-				jump_heavy_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
-				jump_heavy_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
-				jump_heavy_kick.PushBack({ 466, 1831, 132, 110 }, 0.3f);
-				jump_heavy_kick.PushBack({ 625, 1831, 132, 110 }, 0.3f);
-				jump_heavy_kick.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
-				jump_heavy_kick.PushBack({ 790, 1831, 133, 125 }, 0.3f);
-				jump_heavy_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
-				jump_heavy_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
-				jump_heavy_kick.loop = false;
-			}
-			//jump heavy kick
+			//jump kick
 			{
 				jump_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
 				jump_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
@@ -788,6 +774,24 @@ ModulePlayer::ModulePlayer()
 				heavy_punch.PushBack({ 275, 1948, 105, 95 }, 0.5f);
 				heavy_punch.loop = false;
 			}
+
+			//jump heavy punch
+			{
+				jump_heavy_punch.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
+				jump_heavy_punch.PushBack({ 956, 635, 115, 112 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1227, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1487, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1766, 619, 125, 130 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1914, 619, 125, 130 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1443, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1586, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch.PushBack({ 1750, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch.loop = false;
+			}
+
 			//heavy kick
 			{
 				heavy_kick.PushBack({ 1198, 917, 107, 111 }, 0.5f);//1
@@ -808,6 +812,20 @@ ModulePlayer::ModulePlayer()
 				heavy_kick.PushBack({ 1305, 917, 107, 111 }, 0.5f);
 				heavy_kick.PushBack({ 1412, 917, 107, 111 }, 0.5f);
 				heavy_kick.loop = false;
+			}
+
+			//
+			{
+				jump_heavy_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 466, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 625, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 790, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.loop = false;
 			}
 			//die
 			{
@@ -1201,15 +1219,6 @@ update_status ModulePlayer::PreUpdate()
 					crouch_up.Reset();
 				}
 			}
-			if (state == TWISTER)
-			{
-				if (current_animation->Finished())
-				{
-					state = IDLE;
-					twister.Reset();
-					are_particles_created = false;
-				}
-			}
 			if (state == CROUCH_KICK) {
 				if (current_animation->Finished()) {
 					state = IDLE;
@@ -1220,6 +1229,45 @@ update_status ModulePlayer::PreUpdate()
 				if (current_animation->Finished()) {
 					state = IDLE;
 					crouch_punch.Reset();
+				}
+			}
+			if (state == HEAVY_PUNCH)
+			{
+				if (current_animation->Finished())
+				{
+					heavy_punch.Reset();
+					state = IDLE;
+				}
+			}
+			if (state == JUMP_HEAVY_PUNCH)
+			{
+				if ((current_animation->Finished()) && (position.y == initial_position.y))
+				{
+					state = IDLE;
+					jump_heavy_punch.Reset();
+				}
+			}
+			if (state == HEAVY_KICK)
+			{
+				if (current_animation->Finished())
+				{
+					heavy_kick.Reset();
+					state = IDLE;
+				}
+			}
+			if (state == JUMP_HEAVY_KICK)
+			{
+				if ((current_animation->Finished()) && (position.y == initial_position.y))
+				{
+					state = IDLE;
+					jump_heavy_kick.Reset();
+				}
+			}
+			if (state == GRAB)
+			{
+				if (current_animation->Finished()) {
+					grab.Reset();
+					state = IDLE;
 				}
 			}
 			if (state == HIT) {
@@ -1243,6 +1291,24 @@ update_status ModulePlayer::PreUpdate()
 					hit.Reset();
 				}
 			}
+			if (state == SPECIAL_ATTACK)
+			{
+				if (current_animation->Finished())
+				{
+					specialattack.Reset();
+					are_particles_created = false;
+					state = IDLE;
+				}
+			}
+			if (state == TWISTER)
+			{
+				if (current_animation->Finished())
+				{
+					state = IDLE;
+					twister.Reset();
+					are_particles_created = false;
+				}
+			}
 			if (state == EN_GARDE)
 			{
 				if (current_animation->Finished())
@@ -1259,49 +1325,17 @@ update_status ModulePlayer::PreUpdate()
 					win.Reset();
 				}
 			}
-			if (state == SPECIAL_ATTACK)
+			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH)&&(state != JUMP_HEAVY_KICK)&&(collider_player_attack != nullptr))
 			{
-				if (current_animation->Finished())
-				{
-					specialattack.Reset();
-					are_particles_created = false;
-					state = IDLE;
-				}
-			}
-			if (state == HEAVY_PUNCH)
-			{
-				if (current_animation->Finished())
-				{
-					heavy_punch.Reset();
-					state = IDLE;
-				}
-			}
-			if (state == HEAVY_KICK)
-			{
-				if (current_animation->Finished())
-				{
-					heavy_kick.Reset();
-					state = IDLE;
-				}
+				collider_player_attack->to_delete = true;
+				collider_player_attack = nullptr;
 			}
 			if ((player_input.pressing_F4)) {
 				god = !god;
 			}
-			if (state == GRAB)
-			{
-				if (current_animation->Finished()) {
-					grab.Reset();
-					state = IDLE;
-				}
-			}
-			if ((!controls)&&(state != EN_GARDE))
+			if ((!controls) && (state != EN_GARDE))
 			{
 				state = IDLE;
-			}
-			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != JUMP_PUNCH) && (state != JUMP_KICK) && (collider_player_attack != nullptr))
-			{
-				collider_player_attack->to_delete = true;
-				collider_player_attack = nullptr;
 			}
 			
 		}
@@ -2562,15 +2596,144 @@ update_status ModulePlayer::Update()
 			shadow_x = position.x;
 			break;
 		case JUMP_HEAVY_PUNCH:
-			current_animation = &heavy_kick;
-			//Wan-Fu Jump Heavy Punch
+			current_animation = &jump_heavy_punch;
+			//Wan-Fu Jump Punch
 			if (flip == SDL_FLIP_HORIZONTAL) {
-
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 65, position.y - 80);
+					collider_player_up->SetSize(80, 35);
+				}
+				if (collider_player_up != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x - 60, position.y - 70);
+				}
 			}
 			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_up->SetSize(80, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 60, position.y - 70);
+				}
+			}
 
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed*direction_x;
 
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_heavy_punch.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			shadow_x = position.x;
+			break;
+		case JUMP_HEAVY_KICK:
+			current_animation = &jump_heavy_kick;
+			//Wan-Fu Jump Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 10, position.y - 75);
+					collider_player_up->SetSize(40, 55);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 30, position.y - 50);
+					collider_player_down->SetSize(60, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x - 65, position.y - 30);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 40, position.y - 75);
+					collider_player_up->SetSize(40, 55);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 40, position.y - 50);
+					collider_player_down->SetSize(60, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 75, position.y - 30);
+				}
+			}
+
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed*direction_x;
+
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_heavy_kick.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
 			}
 			shadow_x = position.x;
 			break;
@@ -2582,7 +2745,7 @@ update_status ModulePlayer::Update()
 			break;
 		}
 	}
-	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)&&(state != GRAB)))
+	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)&&(state != JUMP_HEAVY_PUNCH)&&(state != JUMP_HEAVY_KICK)&&(state != GRAB)))
 	{
 		state = JUMP_NEUTRAL;
 	}
@@ -2694,7 +2857,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 				{
 					position.x += 10;
 				}
-				if ((App->player2->state2 == PUNCH2)||(App->player2->state2 == HEAVY_PUNCH2)||(App->player2->state2 == CROUCH_PUNCH2))
+				if ((App->player2->state2 == PUNCH2)||(App->player2->state2 == HEAVY_PUNCH2)||(App->player2->state2 == CROUCH_PUNCH2)||(App->player2->state2 == JUMP_HEAVY_PUNCH2))
 				{
 					if (flip == SDL_FLIP_NONE)
 					{
@@ -2705,7 +2868,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 						App->particles->AddParticle(App->particles->blood, position.x - 40, position.y - 67.5);
 					}
 				}
-				else if ((App->player2->state2 == KICK2) || (App->player2->state2 == HEAVY_KICK2)|| (App->player2->state2 == CROUCH_KICK2))
+				else if ((App->player2->state2 == KICK2) || (App->player2->state2 == HEAVY_KICK2)|| (App->player2->state2 == CROUCH_KICK2)||(App->player2->state2 == JUMP_HEAVY_KICK2))
 				{
 					if (flip == SDL_FLIP_NONE)
 					{
