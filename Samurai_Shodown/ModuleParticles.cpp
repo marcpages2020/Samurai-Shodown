@@ -81,6 +81,7 @@ ModuleParticles::ModuleParticles()
 		blood.anim.PushBack({ 159,84,60,42 }, 0.3f);
 		blood.anim.PushBack({ 0,128,75,42 }, 0.3f);
 		blood.anim.PushBack({ 68,128,44,42 }, 0.3f);
+		blood.anim.loop = false;
 	}
 }
 
@@ -93,7 +94,8 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	//tornado_tex = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	fire_sword_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
-	particle_tex = fire_sword_tex;
+	fx_particles = App->textures->Load("Assets/Sprites/Other/fx_particles.png");
+	particle_tex;
 	return true;
 }
 
@@ -103,6 +105,7 @@ bool ModuleParticles::CleanUp()
 	LOG("Unloading particles");
 	//App->textures->Unload(tornado_tex);
 	App->textures->Unload(fire_sword_tex);
+	App->textures->Unload(fx_particles);
 	// Unload fx
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -134,16 +137,14 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			/*
-			if (((p->coll->type==COLLIDER_PLAYER_PARTICLES)&&(App->player->flip == SDL_FLIP_NONE))||((p->coll->type == COLLIDER_PLAYER_2_PARTICLES)&&(App->player2->flip == SDL_FLIP_NONE)))
+			if ((p->coll->type == COLLIDER_PLAYER_PARTICLES)||(p->coll->type == COLLIDER_PLAYER_2_PARTICLES))
 			{
-				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				particle_tex = fire_sword_tex;
 			}
-			else if (((p->coll->type == COLLIDER_PLAYER_PARTICLES) && (App->player->flip == SDL_FLIP_HORIZONTAL)) || ((p->coll->type == COLLIDER_PLAYER_2_PARTICLES) && (App->player2->flip == SDL_FLIP_HORIZONTAL)))
+			else if (p->coll->type == COLLIDER_FX_PARTICLES)
 			{
-				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
+				particle_tex = fx_particles;
 			}
-			*/
 			if (p->flip == SDL_FLIP_NONE)
 			{
 				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
@@ -232,28 +233,29 @@ bool Particle::Update()
 	else
 		if (anim.Finished())
 			ret = false;
-	
+
 	if (!App->is_paused)
 	{
-		
-		if (((coll->type == COLLIDER_PLAYER_PARTICLES)&&(App->player->flip == SDL_FLIP_NONE))||((coll->type == COLLIDER_PLAYER_2_PARTICLES)&&(App->player2->flip == SDL_FLIP_NONE)))
-		{
-			position.x += speed.x;
-			position.y += speed.y;
+		if ((coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES)) {
+			if (flip == SDL_FLIP_NONE)
+			{
+				position.x += speed.x;
+				position.y += speed.y;
+			}
+			else if (flip == SDL_FLIP_HORIZONTAL)
+			{
+				position.x -= speed.x;
+				position.y += speed.y;
+			}
 		}
-		else if (((coll->type == COLLIDER_PLAYER_PARTICLES) && (App->player->flip == SDL_FLIP_HORIZONTAL)) || ((coll->type == COLLIDER_PLAYER_2_PARTICLES) && (App->player2->flip == SDL_FLIP_HORIZONTAL)))
-		{
-			position.x -= speed.x;
-			position.y += speed.y;
-		}
+
+		if (coll != nullptr)
+			coll->SetPos(position.x, position.y);
+
+		if ((position.y > 160)&& (coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES))
+			ret = false;
+
+		return ret;
 	}
-
-	if (coll != nullptr)
-		coll->SetPos(position.x, position.y);
-
-	if (position.y > 160)
-	ret = false;
-
-	return ret;
 }
 

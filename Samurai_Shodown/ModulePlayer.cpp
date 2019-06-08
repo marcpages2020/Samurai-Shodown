@@ -914,7 +914,11 @@ update_status ModulePlayer::PreUpdate()
 				player_input.pressing_A = false;
 				player_input.pressing_D = false;
 			}
-		}	
+		}
+		if (player_input.pressing_Q)
+		{
+			App->particles->AddParticle(App->particles->blood, position.x, position.y-60,COLLIDER_FX_PARTICLES);
+		}
 		introduceInputs(); //For special attack
 		//states 
 		{
@@ -2644,6 +2648,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 				{
 					position.x += 10;
 				}
+				if (flip == SDL_FLIP_NONE)
+				{
+					App->particles->AddParticle(App->particles->blood, position.x - 50, position.y,COLLIDER_PLAYER_PARTICLES);
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->blood, position.x - 50, position.y, COLLIDER_PLAYER_PARTICLES, 0, SDL_FLIP_HORIZONTAL);
+				}
 				switch (App->player2->state2)
 				{
 				case States2::KICK2:
@@ -2762,6 +2774,7 @@ void ModulePlayer::newInput(char newInput) {
 	inputs[lastInput] = newInput; //We add the newInput to the last inputs array
 	
 }
+
 void ModulePlayer::introduceInputs() {
 	bool isPressingAnything = false;
 
