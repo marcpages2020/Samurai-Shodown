@@ -696,6 +696,19 @@ ModulePlayer::ModulePlayer()
 
 			//jump_punch
 			{
+				jump_heavy_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 466, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 625, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 790, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.loop = false;
+			}
+			//jump heavy kick
+			{
 				jump_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
 				jump_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
 				jump_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
@@ -707,7 +720,6 @@ ModulePlayer::ModulePlayer()
 				jump_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
 				jump_kick.loop = false;
 			}
-
 			//grab animation
 			
 			{
@@ -1059,21 +1071,32 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_NEUTRAL)
 			{
+				direction_x = 0;
 				if (player_input.pressing_C) {
 					//hit_done++;
 					state = JUMP_PUNCH;
-					direction_x = 0;
-					//App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input.pressing_V)
+				{
+					state = JUMP_HEAVY_PUNCH;
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					state = JUMP_KICK;
+					App->audio->PlayFX(kick_fx);
 					//hit_done++;
+				}
+				if (player_input.pressing_N)
+				{
+					state = JUMP_HEAVY_KICK;
+					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_A && mult == 1)
 					state = JUMP_BACKWARD;
 				if (player_input.pressing_D && mult == 1)
 					state = JUMP_FORWARD;
-					
+				
 				if (current_animation->Finished())
 				{
 					state = IDLE;
@@ -1082,39 +1105,62 @@ update_status ModulePlayer::PreUpdate()
 			}
 			if (state == JUMP_FORWARD)
 			{
+				direction_x = 1;
 				if (player_input.pressing_C) {
-					hit_done++;
 					state = JUMP_PUNCH;
 					App->audio->PlayFX(attack_fx);
+					hit_done++;
+				}
+				if (player_input.pressing_V)
+				{
+					state = JUMP_HEAVY_PUNCH;
+					App->audio->PlayFX(attack_fx);
+					hit_done++;
 				}
 				if (player_input.pressing_B) {
 					state = JUMP_KICK;
+					App->audio->PlayFX(kick_fx);
 					hit_done++;
+				}
+				if (player_input.pressing_N)
+				{
+					state = JUMP_HEAVY_KICK;
+					App->audio->PlayFX(kick_fx);
 				}
 				if (current_animation->Finished())
 				{
 					state = IDLE;
 					jump_forward.Reset();
 				}
-				direction_x = 1;
 			}
 			if (state == JUMP_BACKWARD)
 			{
+				direction_x = -1;
 				if (player_input.pressing_C) {
 					//hit_done++;
 					state = JUMP_PUNCH;
-					//App->audio->PlayFX(light_attack_fx);
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input.pressing_V)
+				{
+					state = JUMP_HEAVY_PUNCH;
+					App->audio->PlayFX(attack_fx);
 				}
 				if (player_input.pressing_B) {
 					state = JUMP_KICK;
+					App->audio->PlayFX(kick_fx);
 					//hit_done++;
+				}
+				if (player_input.pressing_N)
+				{
+					state = JUMP_HEAVY_KICK;
+					App->audio->PlayFX(kick_fx);
 				}
 				if (current_animation->Finished())
 				{
 					state = IDLE;
 					jump_backward.Reset();
 				}
-				direction_x = -1;
 			}
 			if (state == JUMP_PUNCH) {
 				if ((current_animation->Finished())&&(position.y == initial_position.y))
