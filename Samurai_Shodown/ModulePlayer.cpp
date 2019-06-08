@@ -747,36 +747,36 @@ ModulePlayer::ModulePlayer()
 			//grabbed animation
 
 			{
-				grabbed.PushBack({ 108, 0, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 250, 0, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 382, 0, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 518, 0, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 663, 0, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 799, 0, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 928, 0, 128, 157 }, 0.3f);
-				grabbed.PushBack({ 1082, 0, 128, 157 }, 0.3f);
-				grabbed.PushBack({ 1220, 0, 128, 157 }, 0.3f);
-				grabbed.PushBack({ 1355, 0, 173, 157 }, 0.3f);
-				grabbed.PushBack({ 1538, 0, 173, 157 }, 0.3f);
-				grabbed.PushBack({ 1724, 0, 173, 157 }, 0.3f);
-				grabbed.PushBack({ 86, 205, 131, 157 }, 0.3f);
-				grabbed.PushBack({ 242, 205, 131, 157 }, 0.3f);
-				grabbed.PushBack({ 390, 205, 131, 157 }, 0.3f);
-				grabbed.PushBack({ 559, 205, 117, 157 }, 0.3f);
-				grabbed.PushBack({ 709, 205, 117, 157 }, 0.3f);
-				grabbed.PushBack({ 850, 205, 117, 157 }, 0.3f);
-				grabbed.PushBack({ 1007, 205, 160, 157 }, 0.3f);
-				grabbed.PushBack({ 1211, 205, 160, 157 }, 0.3f);
-				grabbed.PushBack({ 1416, 205, 160, 157 }, 0.3f);
-				grabbed.PushBack({ 1591, 205, 117, 157 }, 0.3f);
-				grabbed.PushBack({ 1733, 205, 117, 157 }, 0.3f);
-				grabbed.PushBack({ 1879, 205, 117, 157 }, 0.3f);
-				grabbed.PushBack({ 734, 582, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 866, 582, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 1011, 582, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 1173, 582, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 1313, 582, 107, 157 }, 0.3f);
-				grabbed.PushBack({ 1456, 582, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 108, 0, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 250, 0, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 382, 0, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 518, 0, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 663, 0, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 799, 0, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 928, 0, 128, 157 }, 0.2f);
+				grabbed.PushBack({ 1082, 0, 128, 157 }, 0.2f);
+				grabbed.PushBack({ 1220, 0, 128, 157 }, 0.2f);
+				grabbed.PushBack({ 1355, 0, 173, 157 }, 0.2f);
+				grabbed.PushBack({ 1538, 0, 173, 157 }, 0.2f);
+				grabbed.PushBack({ 1724, 0, 173, 157 }, 0.2f);
+				grabbed.PushBack({ 86, 205, 131, 157 }, 0.2f);
+				grabbed.PushBack({ 242, 205, 131, 157 }, 0.2f);
+				grabbed.PushBack({ 390, 205, 131, 157 }, 0.2f);
+				grabbed.PushBack({ 559, 205, 117, 157 }, 0.2f);
+				grabbed.PushBack({ 709, 205, 117, 157 }, 0.2f);
+				grabbed.PushBack({ 850, 205, 117, 157 }, 0.2f);
+				grabbed.PushBack({ 1007, 205, 160, 157 }, 0.2f);
+				grabbed.PushBack({ 1211, 205, 160, 157 }, 0.2f);
+				grabbed.PushBack({ 1416, 205, 160, 157 }, 0.2f);
+				grabbed.PushBack({ 1591, 205, 117, 157 }, 0.2f);
+				grabbed.PushBack({ 1733, 205, 117, 157 }, 0.2f);
+				grabbed.PushBack({ 1879, 205, 117, 157 }, 0.2f);
+				grabbed.PushBack({ 734, 582, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 866, 582, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 1011, 582, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 1173, 582, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 1313, 582, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 1456, 582, 107, 157 }, 0.2f);
 				grabbed.loop = false;
 			}
 			
