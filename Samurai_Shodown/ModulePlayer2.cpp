@@ -2354,7 +2354,7 @@ update_status ModulePlayer2::Update()
 				mult = 1;
 			}
 			break;
-		case DEATH2:
+		case DIE2:
 			current_animation = &die2;
 			position.y = initial_position.y + 10;
 			break;
@@ -2696,7 +2696,7 @@ update_status ModulePlayer2::Update()
 	SDL_Rect shadow = { 1181,138,91,17 };
 	SDL_RendererFlip lflip;
 	lflip = flip;
-	if (state2 == GRAB2)
+	if ((state2 == GRAB2)||(state2 == DIE2))
 	{
 		player2_textures = App->player2->spritesheet2_2;
 	}
@@ -2747,7 +2747,7 @@ update_status ModulePlayer2::Update()
 
 	}
 	return UPDATE_CONTINUE;
-}
+	}
 }
 
 bool ModulePlayer2::CleanUp() {
@@ -2768,20 +2768,20 @@ bool ModulePlayer2::CleanUp() {
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 	
-	if ((state2 != DEATH2)&&(!App->is_paused)) {
+	if ((state2 != DIE2)&&(!App->is_paused)) {
 		switch (c2->type)
 		{
 		case COLLIDER_WALL_LEFT:
-			if (!player_input2.pressing_right && state2 != DEATH2 && state2 != WIN2)
+			if (!player_input2.pressing_right && state2 != DIE2 && state2 != WIN2)
 				position.x += speed;
 
 			break;
 		case COLLIDER_WALL_RIGHT:
-			if (!player_input2.pressing_left && state2 != DEATH2 && state2 != WIN2)
+			if (!player_input2.pressing_left && state2 != DIE2 && state2 != WIN2)
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER:
-			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DEATH2) && (state2 != WIN2)&&(state2 != HIT2))
+			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DIE2) && (state2 != WIN2)&&(state2 != HIT2))
 			{
 					if (App->player->position.x > position.x)
 					{

@@ -829,21 +829,21 @@ ModulePlayer::ModulePlayer()
 			}
 			//die
 			{
-				die.PushBack({ 45,746,127,156 }, 0.2f);//1
-				die.PushBack({ 172,746,127,156 }, 0.2f);
-				die.PushBack({ 300,746,127,156 }, 0.2f);
-				die.PushBack({ 433,779,131,123 }, 0.2f);//4
-				die.PushBack({ 566,779,131,123 }, 0.2f);
-				die.PushBack({ 695,779,131,123 }, 0.2f);
-				die.PushBack({ 824,826,120,76 }, 0.2f);//1
-				die.PushBack({ 945,826,120,76 }, 0.2f);
-				die.PushBack({ 1068,826,120,76 }, 0.2f);
-				die.PushBack({ 433,779,131,123 }, 0.2f);//4
-				die.PushBack({ 566,779,131,123 }, 0.2f);
-				die.PushBack({ 695,779,131,123 }, 0.2f);
-				die.PushBack({ 1586,846,160,56 }, 0.2f);//1
-				die.PushBack({ 1751,846,160,56 }, 0.2f);
-				die.PushBack({ 1877,909,160,56 }, 0.2f);
+				die.PushBack({ 45,746,127,156 }, 0.1f);//1
+				die.PushBack({ 172,746,127,156 }, 0.1f);
+				die.PushBack({ 300,746,127,156 }, 0.1f);
+				die.PushBack({ 433,779,131,123 }, 0.1f);//4
+				die.PushBack({ 566,779,131,123 }, 0.1f);
+				die.PushBack({ 695,779,131,123 }, 0.1f);
+				die.PushBack({ 824,826,120,76 }, 0.1f);//1
+				die.PushBack({ 945,826,120,76 }, 0.1f);
+				die.PushBack({ 1068,826,120,76 }, 0.1f);
+				die.PushBack({ 433,779,131,123 }, 0.1f);//4
+				die.PushBack({ 566,779,131,123 }, 0.1f);
+				die.PushBack({ 695,779,131,123 }, 0.1f);
+				die.PushBack({ 1586,846,160,56 }, 0.1f);//1
+				die.PushBack({ 1751,846,160,56 }, 0.1f);
+				die.PushBack({ 1877,909,160,56 }, 0.1f);
 				die.loop = false;
 			}
 
@@ -955,7 +955,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			life = 1;
+			App->player2->life = 1;
 		}
 		introduceInputs(); //For special attack
 		//states 

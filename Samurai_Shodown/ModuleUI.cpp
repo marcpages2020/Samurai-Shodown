@@ -412,7 +412,7 @@ update_status ModuleUI::Update() {
 	{
 		player1_win = true;
 		player1_wins++;
-		App->player2->state2 = States2::DEATH2;
+		App->player2->state2 = States2::DIE2;
 		App->player->state = WIN;
 		points_life_gain = (6400 * App->player->life) / 100;
 		sprintf_s(point_gain_life, 10, "%7d", points_life_gain);
@@ -785,6 +785,8 @@ void ModuleUI::ResetScene() {
 	is_draw = false;
 	time_done = false;
 	hit_percent_done = false;
+	App->player->die.Reset();
+	App->player2->die2.Reset();
 }
 
 void ModuleUI::DieScene()

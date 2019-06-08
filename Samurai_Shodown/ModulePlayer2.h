@@ -33,12 +33,11 @@ enum States2 {
 	TWISTER2,
 	HIT2,
 	EN_GARDE2,
-	DEATH2,
+	DIE2,
 	WIN2,
 	GRAB2,
 	SPECIAL_ATTACK_2
 };
-
 
 struct PlayerInput2 {
 	bool pressing_left;
