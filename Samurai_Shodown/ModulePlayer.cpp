@@ -828,36 +828,22 @@ ModulePlayer::ModulePlayer()
 				jump_heavy_kick.loop = false;
 			}
 			//die
-			/*
 			{
-				die.PushBack({ 28,1227,127,156 }, 0.3f);//1
-				die.PushBack({ 162,1227,127,156 }, 0.3f);
-				die.PushBack({ 296,1227,127,156 }, 0.3f);
-				die.PushBack({ 429,1227,173,156 }, 0.3f);//4
-				die.PushBack({ 609,1227,173,156 }, 0.3f);
-				die.PushBack({ 788,1227,173,156 }, 0.3f);
-				die.PushBack({ 28,1227,127,156 }, 0.3f);//1
-				die.PushBack({ 162,1227,127,156 }, 0.3f);
-				die.PushBack({ 296,1227,127,156 }, 0.3f);
-				die.loop = false;
-			}
-			*/
-			{
-				die.PushBack({ 45,746,127,156 }, 0.3f);//1
-				die.PushBack({ 172,746,127,156 }, 0.3f);
-				die.PushBack({ 300,746,127,156 }, 0.3f);
-				die.PushBack({ 433,779,131,123 }, 0.3f);//4
-				die.PushBack({ 566,779,131,123 }, 0.3f);
-				die.PushBack({ 695,779,131,123 }, 0.3f);
-				die.PushBack({ 824,826,120,76 }, 0.3f);//1
-				die.PushBack({ 945,826,120,76 }, 0.3f);
-				die.PushBack({ 1068,826,120,76 }, 0.3f);
-				die.PushBack({ 433,779,131,123 }, 0.3f);//4
-				die.PushBack({ 566,779,131,123 }, 0.3f);
-				die.PushBack({ 695,779,131,123 }, 0.3f);
-				die.PushBack({ 1586,846,160,56 }, 0.3f);//1
-				die.PushBack({ 1751,846,160,56 }, 0.3f);
-				die.PushBack({ 1877,909,160,56 }, 0.3f);
+				die.PushBack({ 45,746,127,156 }, 0.2f);//1
+				die.PushBack({ 172,746,127,156 }, 0.2f);
+				die.PushBack({ 300,746,127,156 }, 0.2f);
+				die.PushBack({ 433,779,131,123 }, 0.2f);//4
+				die.PushBack({ 566,779,131,123 }, 0.2f);
+				die.PushBack({ 695,779,131,123 }, 0.2f);
+				die.PushBack({ 824,826,120,76 }, 0.2f);//1
+				die.PushBack({ 945,826,120,76 }, 0.2f);
+				die.PushBack({ 1068,826,120,76 }, 0.2f);
+				die.PushBack({ 433,779,131,123 }, 0.2f);//4
+				die.PushBack({ 566,779,131,123 }, 0.2f);
+				die.PushBack({ 695,779,131,123 }, 0.2f);
+				die.PushBack({ 1586,846,160,56 }, 0.2f);//1
+				die.PushBack({ 1751,846,160,56 }, 0.2f);
+				die.PushBack({ 1877,909,160,56 }, 0.2f);
 				die.loop = false;
 			}
 
@@ -974,7 +960,8 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_Q)
 		{
-			App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
+			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
+			life = 1;
 		}
 		introduceInputs(); //For special attack
 		//states 
@@ -2248,7 +2235,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			break;
-		case DEATH:
+		case DIE:
 			current_animation = &die;
 			position.y = initial_position.y + 10;
 			break;
@@ -2779,7 +2766,7 @@ update_status ModulePlayer::Update()
 	SDL_Rect shadow = { 1181,138,91,17 };
 	SDL_RendererFlip lflip;
 	lflip = flip;
-	if (state == GRAB)
+	if ((state == GRAB)||(state == DIE))
 	{
 		player_textures = spritesheet2;
 	}
@@ -2835,20 +2822,20 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 
-	if ((state != DEATH) && (!App->is_paused)) {
+	if ((state != DIE) && (!App->is_paused)) {
 		switch (c2->type)
 		{
 		case COLLIDER_WALL_LEFT:
-			if (!player_input.pressing_D && state != DEATH && state != WIN)
+			if (!player_input.pressing_D && state != DIE && state != WIN)
 				position.x += speed;
 
 			break;
 		case COLLIDER_WALL_RIGHT:
-			if (!player_input.pressing_A && state != DEATH && state != WIN)
+			if (!player_input.pressing_A && state != DIE && state != WIN)
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER_2:
-			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DEATH) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != GRAB))
+			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DIE) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != GRAB))
 			{
 				//if (App->player2->position.y == position.y)
 				//{
