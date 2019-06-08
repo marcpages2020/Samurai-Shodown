@@ -1925,25 +1925,24 @@ update_status ModulePlayer2::Update()
 					}
 				}
 				position.y -= speed * 1.75 * mult;
-				position.x -= 1.25*speed*direction_x;
+				position.x += 1.25*speed*direction_x;
 
 				if (position.y <= 100) {
 					mult = -1;
 				}
-				else if (position.y == initial_position.y)
+				else if (position.y > initial_position.y)
 				{
+					position.y = initial_position.y;
+					jump_punch2.Reset();
 					mult = 1;
-					jump_forward2.Reset();
 					state2 = IDLE2;
-					App->render->StartCameraShake(500, 2);
+					App->render->StartCameraShake(400, 2);
+					direction_x = 0;
 				}
 				else if (position.y > initial_position.y)
 				{
 					position.y = initial_position.y;
 					mult = 1;
-					jump_forward2.Reset();
-					state2 = IDLE2;
-					App->render->StartCameraShake(500, 2);
 				}
 				shadow_x = position.x;
 				break;
@@ -1995,25 +1994,24 @@ update_status ModulePlayer2::Update()
 					}
 				}
 				position.y -= speed * 1.75 * mult;
-				position.x -= 1.25*speed*direction_x;
+				position.x += 1.25*speed*direction_x;
 
 				if (position.y <= 100) {
 					mult = -1;
 				}
-				else if (position.y == initial_position.y)
+				else if (position.y > initial_position.y)
 				{
+					position.y = initial_position.y;
+					jump_kick2.Reset();
 					mult = 1;
-					jump_forward2.Reset();
 					state2 = IDLE2;
-					App->render->StartCameraShake(500, 2);
+					App->render->StartCameraShake(400, 2);
+					direction_x = 0;
 				}
 				else if (position.y > initial_position.y)
 				{
 					position.y = initial_position.y;
 					mult = 1;
-					jump_forward2.Reset();
-					state2 = IDLE2;
-					App->render->StartCameraShake(500, 2);
 				}
 				shadow_x = position.x;
 				break;
@@ -2587,25 +2585,24 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed*direction_x;
+			position.x += 1.25*speed*direction_x;
 
 			if (position.y <= 100) {
 				mult = -1;
 			}
-			else if (position.y == initial_position.y)
+			else if (position.y > initial_position.y)
 			{
+				position.y = initial_position.y;
+				jump_kick2.Reset();
 				mult = 1;
-				jump_forward2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(500, 2);
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
 				mult = 1;
-				jump_forward2.Reset();
-				state2 = IDLE2;
-				App->render->StartCameraShake(500, 2);
 			}
 			shadow_x = position.x;
 			break;
@@ -2657,29 +2654,28 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed*direction_x;
+			position.x += 1.25*speed*direction_x;
 
 			if (position.y <= 100) {
 				mult = -1;
 			}
-			else if (position.y == initial_position.y)
+			else if (position.y > initial_position.y)
 			{
+				position.y = initial_position.y;
+				jump_kick2.Reset();
 				mult = 1;
-				jump_forward2.Reset();
 				state2 = IDLE2;
-				App->render->StartCameraShake(500, 2);
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
 				mult = 1;
-				jump_forward2.Reset();
-				state2 = IDLE2;
-				App->render->StartCameraShake(500, 2);
 			}
 			shadow_x = position.x;
 			break;
-		if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2)&&(state2 != JUMP_HEAVY_PUNCH2)&&(JUMP_HEAVY_KICK2)))
+		if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2)&&(state2 != JUMP_HEAVY_PUNCH2)&&(state2 != JUMP_HEAVY_KICK2)))
 		{
 			state2 = JUMP_NEUTRAL2;
 		}
