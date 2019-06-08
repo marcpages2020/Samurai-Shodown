@@ -7,6 +7,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -114,11 +115,11 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			if (p->coll->type==COLLIDER_PLAYER_PARTICLES)
+			if (((p->coll->type==COLLIDER_PLAYER_PARTICLES)&&(App->player->flip == SDL_FLIP_NONE))||((p->coll->type == COLLIDER_PLAYER_2_PARTICLES)&&(App->player2->flip == SDL_FLIP_NONE)))
 			{
 				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			}
-			else if (p->coll->type == COLLIDER_PLAYER_2_PARTICLES)
+			else if (((p->coll->type == COLLIDER_PLAYER_PARTICLES) && (App->player->flip == SDL_FLIP_HORIZONTAL)) || ((p->coll->type == COLLIDER_PLAYER_2_PARTICLES) && (App->player2->flip == SDL_FLIP_HORIZONTAL)))
 			{
 				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
 			}
@@ -206,12 +207,12 @@ bool Particle::Update()
 	if (!App->is_paused)
 	{
 		
-		if (coll->type == COLLIDER_PLAYER_PARTICLES)
+		if (((coll->type == COLLIDER_PLAYER_PARTICLES)&&(App->player->flip == SDL_FLIP_NONE))||((coll->type == COLLIDER_PLAYER_2_PARTICLES)&&(App->player2->flip == SDL_FLIP_NONE)))
 		{
 			position.x += speed.x;
 			position.y += speed.y;
 		}
-		else if (coll->type == COLLIDER_PLAYER_2_PARTICLES)
+		else if (((coll->type == COLLIDER_PLAYER_PARTICLES) && (App->player->flip == SDL_FLIP_HORIZONTAL)) || ((coll->type == COLLIDER_PLAYER_2_PARTICLES) && (App->player2->flip == SDL_FLIP_HORIZONTAL)))
 		{
 			position.x -= speed.x;
 			position.y += speed.y;

@@ -1844,7 +1844,7 @@ update_status ModulePlayer2::Update()
 					}
 					if (collider_player_2_attack == nullptr)
 					{
-						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 						collider_player_2_attack->to_delete = false;
 						collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
 						collider_player_2_attack->SetSize(60, 20);
