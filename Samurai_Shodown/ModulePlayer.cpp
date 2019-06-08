@@ -955,7 +955,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_E)
 		{
-			state = GRABBED;
+			App->player2->state2 = DIE2;
 		}
 		introduceInputs(); //For special attack
 		//states 
