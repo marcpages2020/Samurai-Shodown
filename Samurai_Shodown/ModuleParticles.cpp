@@ -96,14 +96,14 @@ ModuleParticles::ModuleParticles()
 
 	//dust
 	{
-		dust.anim.PushBack({ 0,187,19,33 }, 0.5f);
-		dust.anim.PushBack({ 25,187,22,33 }, 0.5f);
-		dust.anim.PushBack({ 53,187,24,33 }, 0.5f);
-		dust.anim.PushBack({ 83,187,27,33 }, 0.5f);
-		dust.anim.PushBack({ 115,187,28,33 }, 0.5f);
-		dust.anim.PushBack({ 149,187,30,33 }, 0.5f);
-		dust.anim.PushBack({ 185,187,31,33 }, 0.5f);
-		dust.anim.PushBack({ 220,187,34,33 }, 0.5f);
+		dust.anim.PushBack({ 0,187,19,33 }, 0.3f);
+		dust.anim.PushBack({ 25,187,22,33 }, 0.3f);
+		dust.anim.PushBack({ 53,187,24,33 }, 0.3f);
+		dust.anim.PushBack({ 83,187,27,33 }, 0.3f);
+		dust.anim.PushBack({ 115,187,28,33 }, 0.3f);
+		dust.anim.PushBack({ 149,187,30,33 }, 0.3f);
+		dust.anim.PushBack({ 185,187,31,33 }, 0.3f);
+		dust.anim.PushBack({ 220,187,34,33 }, 0.3f);
 		dust.anim.loop = false;
 	}
 }
