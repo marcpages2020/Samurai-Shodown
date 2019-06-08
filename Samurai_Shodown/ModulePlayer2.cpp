@@ -759,34 +759,25 @@ ModulePlayer2::ModulePlayer2()
 			}
 			//die
 			{
-				/*
-				die2.PushBack({ 28,1227,127,156 }, 0.3f);//1
-				die2.PushBack({ 162,1227,127,156 }, 0.3f);
-				die2.PushBack({ 296,1227,127,156 }, 0.3f);
-				die2.PushBack({ 429,1227,173,156 }, 0.3f);//4
-				die2.PushBack({ 609,1227,173,156 }, 0.3f);
-				die2.PushBack({ 788,1227,173,156 }, 0.3f);
-				die2.PushBack({ 28,1227,127,156 }, 0.3f);//1
-				die2.PushBack({ 162,1227,127,156 }, 0.3f);
-				die2.PushBack({ 296,1227,127,156 }, 0.3f);
-				die2.loop = false;
-				*/
-				die2.PushBack({ 45,746,127,156 }, 0.3f);//1
-				die2.PushBack({ 172,746,127,156 }, 0.3f);
-				die2.PushBack({ 300,746,127,156 }, 0.3f);
-				die2.PushBack({ 433,779,131,123 }, 0.3f);//4
-				die2.PushBack({ 566,779,131,123 }, 0.3f);
-				die2.PushBack({ 695,779,131,123 }, 0.3f);
-				die2.PushBack({ 824,826,120,76 }, 0.3f);//1
-				die2.PushBack({ 945,826,120,76 }, 0.3f);
-				die2.PushBack({ 1068,826,120,76 }, 0.3f);
-				die2.PushBack({ 433,779,131,123 }, 0.3f);//4
-				die2.PushBack({ 566,779,131,123 }, 0.3f);
-				die2.PushBack({ 695,779,131,123 }, 0.3f);
-				die2.PushBack({ 1586,846,160,56 }, 0.3f);//1
-				die2.PushBack({ 1751,846,160,56 }, 0.3f);
-				die2.PushBack({ 1877,909,160,56 }, 0.3f);
-				die2.loop = false;
+				//die
+				{
+					die2.PushBack({ 45,746,127,156 }, 0.1f);//1
+					die2.PushBack({ 172,746,127,156 }, 0.1f);
+					die2.PushBack({ 300,746,127,156 }, 0.1f);
+					die2.PushBack({ 433,779,131,123 }, 0.1f);//4
+					die2.PushBack({ 566,779,131,123 }, 0.1f);
+					die2.PushBack({ 695,779,131,123 }, 0.1f);
+					die2.PushBack({ 824,826,120,76 }, 0.1f);//1
+					die2.PushBack({ 945,826,120,76 }, 0.1f);
+					die2.PushBack({ 1068,826,120,76 }, 0.1f);
+					die2.PushBack({ 433,779,131,123 }, 0.1f);//4
+					die2.PushBack({ 566,779,131,123 }, 0.1f);
+					die2.PushBack({ 695,779,131,123 }, 0.1f);
+					die2.PushBack({ 1586,846,160,56 }, 0.1f);//1
+					die2.PushBack({ 1751,846,160,56 }, 0.1f);
+					die2.PushBack({ 1877,909,160,56 }, 0.1f);
+					die2.loop = false;
+				}
 			}
 
 
@@ -804,7 +795,7 @@ bool ModulePlayer2::Start()
 	position.y = initial_position.y = 215;
 	lposition = position;
 	spritesheet1_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu_color2_1.png");
-	spritesheet2_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2-color2_2.png");
+	spritesheet2_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu_color2_2.png");
 	attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_attack.wav");
 	kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
@@ -2380,6 +2371,13 @@ update_status ModulePlayer2::Update()
 					App->particles->AddParticle(App->particles->dust, position.x + 10, position.y - 40);
 					App->particles->AddParticle(App->particles->dust, position.x + 50, position.y - 30);
 					App->particles->AddParticle(App->particles->dust, position.x + 80, position.y - 40);
+					show_fx = false;
+				}
+				else 
+				{
+					App->particles->AddParticle(App->particles->dust, position.x-40, position.y - 40);
+					App->particles->AddParticle(App->particles->dust, position.x, position.y - 30);
+					App->particles->AddParticle(App->particles->dust, position.x + 30, position.y - 40);
 					show_fx = false;
 				}
 			}

@@ -912,7 +912,6 @@ ModulePlayer::ModulePlayer()
 				dash_backward.loop = false;
 			}
 
-	
 		// */
 		}
 	}
@@ -2277,13 +2276,20 @@ update_status ModulePlayer::Update()
 			break;
 		case DIE:
 			current_animation = &die;
-			if ((show_fx == true)&&(current_animation->SeeCurrentFrame() == 7))
+			if ((show_fx == true) && (current_animation->SeeCurrentFrame() == 7))
 			{
 				if (flip == SDL_FLIP_NONE)
 				{
-					App->particles->AddParticle(App->particles->dust, position.x+10, position.y-40);
-					App->particles->AddParticle(App->particles->dust, position.x+50, position.y-30);
-					App->particles->AddParticle(App->particles->dust, position.x+80, position.y-40);
+					App->particles->AddParticle(App->particles->dust, position.x + 10, position.y - 40);
+					App->particles->AddParticle(App->particles->dust, position.x + 50, position.y - 30);
+					App->particles->AddParticle(App->particles->dust, position.x + 80, position.y - 40);
+					show_fx = false;
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->dust, position.x - 40, position.y - 40);
+					App->particles->AddParticle(App->particles->dust, position.x, position.y - 30);
+					App->particles->AddParticle(App->particles->dust, position.x + 30, position.y - 40);
 					show_fx = false;
 				}
 			}
