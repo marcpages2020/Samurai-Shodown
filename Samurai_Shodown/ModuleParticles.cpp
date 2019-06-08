@@ -17,52 +17,71 @@ ModuleParticles::ModuleParticles()
 	active[i] = nullptr;
 
 	//tornado
-	tornado.anim.PushBack({ 15,1026,20,207 }, 0.3f);
-	tornado.anim.PushBack({ 40,1026,22,207 }, 0.3f);
-	tornado.anim.PushBack({ 67,1026,29,207 }, 0.3f);
-	tornado.anim.PushBack({ 102,1026,42,207 }, 0.3f);
-	tornado.anim.PushBack({ 150,1026,29,207 }, 0.3f);
-	tornado.anim.PushBack({ 183,1026,42,207 }, 0.3f);
-	tornado.anim.PushBack({ 234,1026,74,207 }, 0.3f);
-	tornado.anim.PushBack({ 313,1026,74,207 }, 0.3f);
-	tornado.anim.PushBack({ 392,1026,81,207 }, 0.3f);
-	tornado.anim.PushBack({ 480,1026,80,207 }, 0.3f);
-	tornado.anim.PushBack({ 575,1026,82,207 }, 0.3f);
-	tornado.anim.PushBack({ 662,1026,81,207 }, 0.3f);
-	tornado.anim.PushBack({ 749,1026,83,207 }, 0.3f);
-	tornado.anim.PushBack({ 837,1026,83,207 }, 0.3f);
-	tornado.anim.PushBack({ 925,1026,82,207 }, 0.3f);
-	tornado.anim.PushBack({ 1012,1026,78,207 }, 0.3f);
-	tornado.anim.PushBack({ 1096,1026,75,207 }, 0.3f);
-	tornado.anim.PushBack({ 1178,1026,72,207 }, 0.3f);
-	tornado.anim.PushBack({ 1255,1026,66,207 }, 0.3f);
-	tornado.anim.PushBack({ 1332,1026,51,207 }, 0.3f);
-	tornado.anim.PushBack({ 1388,1026,51,207 }, 0.3f);//small
-	tornado.anim.PushBack({ 1444,1026,40,207 }, 0.3f);
-	tornado.anim.PushBack({ 1492,1026,43,207 }, 0.3f);
-	tornado.anim.PushBack({ 1540,1026,61,207 }, 0.3f);
-	tornado.anim.PushBack({ 1606,1026,45,207 }, 0.3f);
-	tornado.anim.PushBack({ 1656,1026,45,207 }, 0.3f);
-	tornado.anim.PushBack({ 1704,1026,44,207 }, 0.3f);
-	tornado.anim.PushBack({ 1757,1026,44,207 }, 0.3f);
-	tornado.anim.PushBack({ 1805,1026,56,207 }, 0.3f);
-	tornado.anim.PushBack({ 1866,1026,44,207 }, 0.3f);
-	tornado.anim.PushBack({ 1917,1026,56,207 }, 0.3f);
-	tornado.anim.PushBack({ 1978,1026,44,207 }, 0.3f);
-	tornado.life = 5000;
-	tornado.speed = { 2,0 };
-	tornado.anim.loop = false;
+	{
+		tornado.anim.PushBack({ 15,1026,20,207 }, 0.3f);
+		tornado.anim.PushBack({ 40,1026,22,207 }, 0.3f);
+		tornado.anim.PushBack({ 67,1026,29,207 }, 0.3f);
+		tornado.anim.PushBack({ 102,1026,42,207 }, 0.3f);
+		tornado.anim.PushBack({ 150,1026,29,207 }, 0.3f);
+		tornado.anim.PushBack({ 183,1026,42,207 }, 0.3f);
+		tornado.anim.PushBack({ 234,1026,74,207 }, 0.3f);
+		tornado.anim.PushBack({ 313,1026,74,207 }, 0.3f);
+		tornado.anim.PushBack({ 392,1026,81,207 }, 0.3f);
+		tornado.anim.PushBack({ 480,1026,80,207 }, 0.3f);
+		tornado.anim.PushBack({ 575,1026,82,207 }, 0.3f);
+		tornado.anim.PushBack({ 662,1026,81,207 }, 0.3f);
+		tornado.anim.PushBack({ 749,1026,83,207 }, 0.3f);
+		tornado.anim.PushBack({ 837,1026,83,207 }, 0.3f);
+		tornado.anim.PushBack({ 925,1026,82,207 }, 0.3f);
+		tornado.anim.PushBack({ 1012,1026,78,207 }, 0.3f);
+		tornado.anim.PushBack({ 1096,1026,75,207 }, 0.3f);
+		tornado.anim.PushBack({ 1178,1026,72,207 }, 0.3f);
+		tornado.anim.PushBack({ 1255,1026,66,207 }, 0.3f);
+		tornado.anim.PushBack({ 1332,1026,51,207 }, 0.3f);
+		tornado.anim.PushBack({ 1388,1026,51,207 }, 0.3f);//small
+		tornado.anim.PushBack({ 1444,1026,40,207 }, 0.3f);
+		tornado.anim.PushBack({ 1492,1026,43,207 }, 0.3f);
+		tornado.anim.PushBack({ 1540,1026,61,207 }, 0.3f);
+		tornado.anim.PushBack({ 1606,1026,45,207 }, 0.3f);
+		tornado.anim.PushBack({ 1656,1026,45,207 }, 0.3f);
+		tornado.anim.PushBack({ 1704,1026,44,207 }, 0.3f);
+		tornado.anim.PushBack({ 1757,1026,44,207 }, 0.3f);
+		tornado.anim.PushBack({ 1805,1026,56,207 }, 0.3f);
+		tornado.anim.PushBack({ 1866,1026,44,207 }, 0.3f);
+		tornado.anim.PushBack({ 1917,1026,56,207 }, 0.3f);
+		tornado.anim.PushBack({ 1978,1026,44,207 }, 0.3f);
+		tornado.life = 5000;
+		tornado.speed = { 2,0 };
+		tornado.anim.loop = false;
+	}
 
 	//fire sword
-	fire_sword.anim.PushBack({ 1240, 1575, 89, 80 }, 0.3f);
-	fire_sword.anim.PushBack({ 1344, 1575, 89, 80 }, 0.3f);
-	fire_sword.anim.PushBack({ 1453, 1575, 96, 69 }, 0.3f);
-	fire_sword.anim.PushBack({ 1568, 1575, 89, 76 }, 0.3f);
-	fire_sword.anim.PushBack({ 1679, 1575, 87, 80 }, 0.3f);
-	fire_sword.life = 5000;
-	fire_sword.speed = { 2,2 };
-	fire_sword.anim.loop = true;
+	{
+		fire_sword.anim.PushBack({ 1240, 1575, 89, 80 }, 0.3f);
+		fire_sword.anim.PushBack({ 1344, 1575, 89, 80 }, 0.3f);
+		fire_sword.anim.PushBack({ 1453, 1575, 96, 69 }, 0.3f);
+		fire_sword.anim.PushBack({ 1568, 1575, 89, 76 }, 0.3f);
+		fire_sword.anim.PushBack({ 1679, 1575, 87, 80 }, 0.3f);
+		fire_sword.life = 5000;
+		fire_sword.speed = { 2,2 };
+		fire_sword.anim.loop = true;
+	}
 
+	//blood
+	{
+		blood.anim.PushBack({58,0,31,42}, 0.3f); //1
+		blood.anim.PushBack({ 93,0,31,42 }, 0.3f);
+		blood.anim.PushBack({ 128,0,48,42 }, 0.3f);
+		blood.anim.PushBack({ 180,0,48,42 }, 0.3f);
+		blood.anim.PushBack({ 0,41,73,42 }, 0.3f);//5
+		blood.anim.PushBack({ 81,41,73,42 }, 0.3f);
+		blood.anim.PushBack({ 155,41,75,42 }, 0.3f);
+		blood.anim.PushBack({ 0,84,75,42 }, 0.3f);//8
+		blood.anim.PushBack({ 79,84,75,42 }, 0.3f);
+		blood.anim.PushBack({ 159,84,60,42 }, 0.3f);
+		blood.anim.PushBack({ 0,128,75,42 }, 0.3f);
+		blood.anim.PushBack({ 68,128,44,42 }, 0.3f);
+	}
 }
 
 ModuleParticles::~ModuleParticles()
@@ -115,6 +134,7 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
+			/*
 			if (((p->coll->type==COLLIDER_PLAYER_PARTICLES)&&(App->player->flip == SDL_FLIP_NONE))||((p->coll->type == COLLIDER_PLAYER_2_PARTICLES)&&(App->player2->flip == SDL_FLIP_NONE)))
 			{
 				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
@@ -123,7 +143,15 @@ update_status ModuleParticles::Update()
 			{
 				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
 			}
-
+			*/
+			if (p->flip == SDL_FLIP_NONE)
+			{
+				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			}
+			else
+			{
+				App->render->Blit(particle_tex, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()), SDL_FLIP_HORIZONTAL);
+			}
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -136,7 +164,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, SDL_RendererFlip flip)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -149,6 +177,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, C
 			if (collider_type != COLLIDER_NONE)
 				p->coll = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
+			p->flip = flip;
 			return p;
 		}
 	}

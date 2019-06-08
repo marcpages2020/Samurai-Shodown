@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleCollision.h"
+#include "SDL/include/SDL_render.h"
 
 #define BULLET_LIFE 500
 #define BULLET_ENEMY_LIFE 2000
@@ -28,6 +29,7 @@ struct Particle
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
+	SDL_RendererFlip flip;
 
 	Particle();
 	Particle(const Particle& p);
