@@ -203,7 +203,7 @@ update_status ModuleSceneCongrats::Update()
 		App->fonts->BlitText(100, 20, font, "IT LOOKS LIKE A DRAW");
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN ||(App->input->keyboard[SDL_SCANCODE_C])||(App->input->keyboard[SDL_SCANCODE_H]))
 	{
 		App->fade->FadeToBlack((Module*)App->scene_congrats, (Module*)App->neo_geo,2.5f);
 	}
