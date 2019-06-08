@@ -759,6 +759,7 @@ ModulePlayer2::ModulePlayer2()
 			}
 			//die
 			{
+				/*
 				die2.PushBack({ 28,1227,127,156 }, 0.3f);//1
 				die2.PushBack({ 162,1227,127,156 }, 0.3f);
 				die2.PushBack({ 296,1227,127,156 }, 0.3f);
@@ -769,7 +770,26 @@ ModulePlayer2::ModulePlayer2()
 				die2.PushBack({ 162,1227,127,156 }, 0.3f);
 				die2.PushBack({ 296,1227,127,156 }, 0.3f);
 				die2.loop = false;
+				*/
+				die2.PushBack({ 45,746,127,156 }, 0.3f);//1
+				die2.PushBack({ 172,746,127,156 }, 0.3f);
+				die2.PushBack({ 300,746,127,156 }, 0.3f);
+				die2.PushBack({ 433,779,131,123 }, 0.3f);//4
+				die2.PushBack({ 566,779,131,123 }, 0.3f);
+				die2.PushBack({ 695,779,131,123 }, 0.3f);
+				die2.PushBack({ 824,826,120,76 }, 0.3f);//1
+				die2.PushBack({ 945,826,120,76 }, 0.3f);
+				die2.PushBack({ 1068,826,120,76 }, 0.3f);
+				die2.PushBack({ 433,779,131,123 }, 0.3f);//4
+				die2.PushBack({ 566,779,131,123 }, 0.3f);
+				die2.PushBack({ 695,779,131,123 }, 0.3f);
+				die2.PushBack({ 1586,846,160,56 }, 0.3f);//1
+				die2.PushBack({ 1751,846,160,56 }, 0.3f);
+				die2.PushBack({ 1877,909,160,56 }, 0.3f);
+				die2.loop = false;
 			}
+
+
 		}
 	}
 }

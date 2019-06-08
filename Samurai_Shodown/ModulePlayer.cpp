@@ -893,13 +893,7 @@ ModulePlayer::ModulePlayer()
 				dash_backward.loop = false;
 			}
 
-
-			//die animation
-
-			{
-				
-			}
-			
+	
 		// */
 		}
 	}
