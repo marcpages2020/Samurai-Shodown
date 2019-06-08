@@ -828,6 +828,7 @@ ModulePlayer::ModulePlayer()
 				jump_heavy_kick.loop = false;
 			}
 			//die
+			/*
 			{
 				die.PushBack({ 28,1227,127,156 }, 0.3f);//1
 				die.PushBack({ 162,1227,127,156 }, 0.3f);
@@ -838,6 +839,25 @@ ModulePlayer::ModulePlayer()
 				die.PushBack({ 28,1227,127,156 }, 0.3f);//1
 				die.PushBack({ 162,1227,127,156 }, 0.3f);
 				die.PushBack({ 296,1227,127,156 }, 0.3f);
+				die.loop = false;
+			}
+			*/
+			{
+				die.PushBack({ 45,746,127,156 }, 0.3f);//1
+				die.PushBack({ 172,746,127,156 }, 0.3f);
+				die.PushBack({ 300,746,127,156 }, 0.3f);
+				die.PushBack({ 433,779,131,123 }, 0.3f);//4
+				die.PushBack({ 566,779,131,123 }, 0.3f);
+				die.PushBack({ 695,779,131,123 }, 0.3f);
+				die.PushBack({ 824,826,120,76 }, 0.3f);//1
+				die.PushBack({ 945,826,120,76 }, 0.3f);
+				die.PushBack({ 1068,826,120,76 }, 0.3f);
+				die.PushBack({ 433,779,131,123 }, 0.3f);//4
+				die.PushBack({ 566,779,131,123 }, 0.3f);
+				die.PushBack({ 695,779,131,123 }, 0.3f);
+				die.PushBack({ 1586,846,160,56 }, 0.3f);//1
+				die.PushBack({ 1751,846,160,56 }, 0.3f);
+				die.PushBack({ 1877,909,160,56 }, 0.3f);
 				die.loop = false;
 			}
 
@@ -871,6 +891,13 @@ ModulePlayer::ModulePlayer()
 				dash_backward.PushBack({ 154, 579, 107, 156 }, 0.5f);
 				dash_backward.PushBack({ 261, 579, 107, 156 }, 0.5f);
 				dash_backward.loop = false;
+			}
+
+
+			//die animation
+
+			{
+				
 			}
 			
 		// */
