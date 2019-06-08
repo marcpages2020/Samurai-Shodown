@@ -35,6 +35,7 @@ enum States
 	HIT,
 	EN_GARDE,
 	GRAB,
+	GRABBED,
 	WIN,
 	DIE,
 	DASH_FORWARD,
@@ -105,6 +106,7 @@ public:
 	Animation die;
 	Animation dash_forward;
 	Animation dash_backward;
+	Animation grabbed;
 	Animation* current_animation = nullptr;
 	
 	iPoint position;

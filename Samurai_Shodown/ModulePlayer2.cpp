@@ -1131,12 +1131,6 @@ update_status ModulePlayer2::PreUpdate()
 		if ((player_input2.pressing_F5)) {
 			god = !god;
 		}
-
-		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2)&&(state2 != JUMP_HEAVY_PUNCH2)&&(state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
-		{
-			collider_player_2_attack->to_delete = true;
-			collider_player_2_attack = nullptr;
-		}
 		if (state2 == WIN2)
 		{
 			if (current_animation->Finished())
@@ -1178,12 +1172,32 @@ update_status ModulePlayer2::PreUpdate()
 				en_garde2.Reset();
 			}
 		}
-		if ((!controls) && (state2 != EN_GARDE2))
+		if (state2 == GRAB2)
 		{
-			state2 = IDLE2;
+			if (current_animation->Finished())
+			{
+				state2 = IDLE2;
+				grab2.Reset();
+			}
+		}
+		if (state2 == GRABBED2)
+		{
+			if (current_animation->Finished())
+			{
+				state2 = IDLE2;
+				grabbed2.Reset();
+			}
 		}
 	}
-
+	if ((!controls) && (state2 != EN_GARDE2))
+	{
+		state2 = IDLE2;
+	}
+	if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
+	{
+		collider_player_2_attack->to_delete = true;
+		collider_player_2_attack = nullptr;
+	}
 	return UPDATE_CONTINUE;
 }
 

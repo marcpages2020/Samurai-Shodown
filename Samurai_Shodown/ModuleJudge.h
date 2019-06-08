@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_render.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -48,11 +49,11 @@ public:
 	States_J state_j;
 
 	float speed = 2;
-
 	int position_x;
 	int position_y;
 
 	bool moving = false;
+	iPoint position;
 
 	SDL_Texture* judge_tex;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;

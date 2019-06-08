@@ -9,29 +9,29 @@ ModuleJudge::ModuleJudge() {
 	{
 		//idle
 		{
-			idle.PushBack({ 455, 267, 58, 70 }, 0.5f);
+			idle.PushBack({ 455, 245, 58, 94 }, 0.5f);
 			idle.loop = true;
 		}
 
 
 		//move right
 		{
-			move_right.PushBack({ 44, 268, 58, 69 }, 0.3f);
-			move_right.PushBack({ 122, 267, 58, 70 }, 0.3f);
-			move_right.PushBack({ 201, 267, 58, 70 }, 0.3f);
-			move_right.PushBack({ 286, 271, 66, 66 }, 0.3f);
-			move_right.PushBack({ 369, 270, 60, 67 }, 0.3f);
-			move_right.PushBack({ 455, 267, 58, 70 }, 0.3f);
+			move_right.PushBack({ 44, 245, 58, 94 }, 0.3f);
+			move_right.PushBack({ 122, 245, 58, 94 }, 0.3f);
+			move_right.PushBack({ 201, 245, 58, 94 }, 0.3f);
+			move_right.PushBack({ 286, 245, 66, 94 }, 0.3f);
+			move_right.PushBack({ 369, 245, 60, 94 }, 0.3f);
+			move_right.PushBack({ 455, 245, 58, 94 }, 0.3f);
 			move_right.loop = true;
 		}
 
 
 		//move left
 		{
-			move_left.PushBack({ 44, 268, 58, 69 }, 0.3f);
-			move_left.PushBack({ 723, 267, 58, 70 }, 0.3f);
-			move_left.PushBack({ 798, 267, 58, 70 }, 0.3f);
-			move_left.PushBack({ 455, 267, 58, 70 }, 0.3f);
+			move_left.PushBack({ 44, 245, 58, 94 }, 0.3f);
+			move_left.PushBack({ 723, 245, 58, 94 }, 0.3f);
+			move_left.PushBack({ 798, 245, 58, 94 }, 0.3f);
+			move_left.PushBack({ 455, 245, 58, 94 }, 0.3f);
 			move_left.loop = true;
 		}
 
@@ -73,7 +73,7 @@ ModuleJudge::ModuleJudge() {
 			hit1.PushBack({ 1013, 245, 51, 94 }, 0.5f);
 			hit1.PushBack({ 1083, 245, 51, 94 }, 0.5f);
 			hit1.PushBack({ 1146, 245, 81, 94 }, 0.5f);
-			hit1.PushBack({ 1232, 245, 78, 94 }, 0.5f);
+			hit1.PushBack({ 1232,245, 78, 94 }, 0.5f);
 			hit1.PushBack({ 1316, 245, 73, 94 }, 0.5f);
 			hit1.PushBack({ 1394, 245, 70, 94 }, 0.5f);
 			hit1.loop = false;
@@ -215,7 +215,7 @@ update_status ModuleJudge::Update() {
 	}
 	else
 	{
-		App->render->Blit(judge_tex, position_x, position_y , &current_animation->GetCurrentFrame());
+		App->render->Blit(judge_tex, position_x, position_y-22, &current_animation->GetCurrentFrame());
 	}
 	return UPDATE_CONTINUE;
 }
