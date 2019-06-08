@@ -742,6 +742,43 @@ ModulePlayer::ModulePlayer()
 				grab.PushBack({ 1901, 1750, 106, 225 }, 0.3f);
 				grab.loop = false;
 			}
+
+
+			//grabbed animation
+
+			{
+				grabbed.PushBack({ 108, 0, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 250, 0, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 382, 0, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 518, 0, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 663, 0, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 799, 0, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 928, 0, 128, 157 }, 0.3f);
+				grabbed.PushBack({ 1082, 0, 128, 157 }, 0.3f);
+				grabbed.PushBack({ 1220, 0, 128, 157 }, 0.3f);
+				grabbed.PushBack({ 1355, 0, 173, 157 }, 0.3f);
+				grabbed.PushBack({ 1538, 0, 173, 157 }, 0.3f);
+				grabbed.PushBack({ 1724, 0, 173, 157 }, 0.3f);
+				grabbed.PushBack({ 86, 205, 131, 157 }, 0.3f);
+				grabbed.PushBack({ 242, 205, 131, 157 }, 0.3f);
+				grabbed.PushBack({ 390, 205, 131, 157 }, 0.3f);
+				grabbed.PushBack({ 559, 205, 117, 157 }, 0.3f);
+				grabbed.PushBack({ 709, 205, 117, 157 }, 0.3f);
+				grabbed.PushBack({ 850, 205, 117, 157 }, 0.3f);
+				grabbed.PushBack({ 1007, 205, 160, 157 }, 0.3f);
+				grabbed.PushBack({ 1211, 205, 160, 157 }, 0.3f);
+				grabbed.PushBack({ 1416, 205, 160, 157 }, 0.3f);
+				grabbed.PushBack({ 1591, 205, 117, 157 }, 0.3f);
+				grabbed.PushBack({ 1733, 205, 117, 157 }, 0.3f);
+				grabbed.PushBack({ 1879, 205, 117, 157 }, 0.3f);
+				grabbed.PushBack({ 734, 582, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 866, 582, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 1011, 582, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 1173, 582, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 1313, 582, 107, 157 }, 0.3f);
+				grabbed.PushBack({ 1456, 582, 107, 157 }, 0.3f);
+				grabbed.loop = false;
+			}
 			
 			//heavy punch
 			{
@@ -951,7 +988,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			App->particles->AddParticle(App->particles->dust, position.x +55, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+			state = GRAB;
 		}
 		if (player_input.pressing_E)
 		{
@@ -1021,6 +1058,10 @@ update_status ModulePlayer::PreUpdate()
 					state = HEAVY_KICK;
 					hit_done++;
 					App->audio->PlayFX(kick_fx);
+				}
+				if (player_input.pressing_E)
+				{
+					state = GRAB;
 				}
 				if (player_input.pressing_M) {
 					//App->audio->PlayFX(twister_fx);
@@ -1767,12 +1808,12 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x - 15, position.y - 100);
+					collider_player_up->SetPos(position.x - 30, position.y - 100);
 					collider_player_up->SetSize(35, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x - 20, position.y - 50);
+					collider_player_down->SetPos(position.x - 40, position.y - 50);
 					collider_player_down->SetSize(50, 30);
 				}
 			}
@@ -1838,17 +1879,17 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x - 15, position.y - 45);
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
 					collider_player_down->SetSize(50, 35);
 				}
 				if (current_animation->SeeCurrentFrame() > 5)
 				{
 					if (collider_player_up != nullptr)
 					{
-						collider_player_up->SetPos(position.x - 20, position.y - 95);
-						collider_player_up->SetSize(45, 55);
+						collider_player_up->SetPos(position.x - 40, position.y - 75);
+						collider_player_up->SetSize(45, 35);
 
-						collider_player_down->SetPos(position.x - 25, position.y - 45);
+						collider_player_down->SetPos(position.x - 35, position.y - 45);
 						collider_player_down->SetSize(50, 35);
 					}
 				}
@@ -1971,13 +2012,13 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x - 25, position.y - 100);
+					collider_player_up->SetPos(position.x - 25, position.y - 90);
 					collider_player_up->SetSize(40, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
-					collider_player_down->SetPos(position.x - 25, position.y - 55);
-					collider_player_down->SetSize(50, 45);
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetSize(50, 35);
 				}
 			}
 			else {
@@ -2103,10 +2144,8 @@ update_status ModulePlayer::Update()
 				{
 					collider_player_attack->SetPos(position.x - 65, position.y - 30);
 				}
-				shadow_x = position.x;
 			}
 			else {
-				shadow_x = position.x + 20;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 40, position.y - 75);
@@ -2149,6 +2188,7 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
+			shadow_x = position.x;
 			break;
 		case PUNCH:
 			current_animation = &punch;
@@ -2380,8 +2420,8 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x+5, position.y - 50);
 					collider_player_down->SetSize(60, 30);
 				}
-				if (current_animation->SeeCurrentFrame() == 6 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x , position.y-100, COLLIDER_PLAYER_PARTICLES);
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
 					are_particles_created = true;
 				}
 				position.x -= 1 * speed;
@@ -2679,7 +2719,6 @@ update_status ModulePlayer::Update()
 			current_animation = &jump_heavy_kick;
 			//Wan-Fu Jump Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				shadow_x = position.x;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x - 10, position.y - 75);
@@ -2702,7 +2741,6 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else {
-				shadow_x = position.x + 20;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 40, position.y - 75);
@@ -2745,6 +2783,7 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
+			shadow_x = position.x;
 			break;
 		case GRAB:
 			current_animation = &grab;
@@ -2850,19 +2889,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 					{
 						position.x = lposition.x + speed;
 					}
-			}
-			if (player_input.holding_V)
-			{
-				state = GRAB;
-				if (App->player->flip == SDL_FLIP_NONE)
-				{
-					App->player->grab_right = false;
 				}
-				else
-				{
-					App->player->grab_right = true;
-				}
-			}
+			//}
 			break;
 		case COLLIDER_PLAYER_2_ATTACK:
 			if (!App->player2->collider_player_2_attack->to_delete && !god) {
