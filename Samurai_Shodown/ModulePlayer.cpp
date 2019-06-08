@@ -917,7 +917,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_Q)
 		{
-			App->particles->AddParticle(App->particles->blood, position.x, position.y-60,COLLIDER_FX_PARTICLES);
+			App->particles->AddParticle(App->particles->blood, position.x+20, position.y-60);
 		}
 		introduceInputs(); //For special attack
 		//states 

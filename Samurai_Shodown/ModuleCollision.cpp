@@ -49,8 +49,6 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_2_PARTICLES][COLLIDER_PLAYER_2] = false;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER_2_PARTICLES] = false;
 
-	matrix[COLLIDER_FX_PARTICLES][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER][COLLIDER_FX_PARTICLES] = false;
 }
 
 // Destructor

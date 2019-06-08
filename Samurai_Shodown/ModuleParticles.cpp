@@ -69,18 +69,18 @@ ModuleParticles::ModuleParticles()
 
 	//blood
 	{
-		blood.anim.PushBack({58,0,31,42}, 0.3f); //1
-		blood.anim.PushBack({ 93,0,31,42 }, 0.3f);
-		blood.anim.PushBack({ 128,0,48,42 }, 0.3f);
-		blood.anim.PushBack({ 180,0,48,42 }, 0.3f);
-		blood.anim.PushBack({ 0,41,73,42 }, 0.3f);//5
-		blood.anim.PushBack({ 81,41,73,42 }, 0.3f);
-		blood.anim.PushBack({ 155,41,75,42 }, 0.3f);
-		blood.anim.PushBack({ 0,84,75,42 }, 0.3f);//8
-		blood.anim.PushBack({ 79,84,75,42 }, 0.3f);
-		blood.anim.PushBack({ 159,84,60,42 }, 0.3f);
-		blood.anim.PushBack({ 0,128,75,42 }, 0.3f);
-		blood.anim.PushBack({ 68,128,44,42 }, 0.3f);
+		blood.anim.PushBack({58,0,31,42}, 0.5f); //1
+		blood.anim.PushBack({ 93,0,31,42 }, 0.5f);
+		blood.anim.PushBack({ 128,0,48,42 }, 0.5f);
+		blood.anim.PushBack({ 180,0,48,42 }, 0.5f);
+		blood.anim.PushBack({ 0,41,73,42 }, 0.5f);//5
+		blood.anim.PushBack({ 81,41,73,42 }, 0.5f);
+		blood.anim.PushBack({ 155,41,75,42 }, 0.5f);
+		blood.anim.PushBack({ 0,84,75,42 }, 0.5f);//8
+		blood.anim.PushBack({ 79,84,75,42 }, 0.5f);
+		blood.anim.PushBack({ 159,84,60,42 }, 0.5f);
+		blood.anim.PushBack({ 0,128,75,42 }, 0.5f);
+		blood.anim.PushBack({ 68,128,44,42 }, 0.5f);
 		blood.anim.loop = false;
 	}
 }
@@ -94,7 +94,7 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	//tornado_tex = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	fire_sword_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
-	fx_particles = App->textures->Load("Assets/Sprites/Other/fx_particles.png");
+	fx_particles = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/blood.png");
 	particle_tex;
 	return true;
 }
@@ -137,11 +137,14 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			if ((p->coll->type == COLLIDER_PLAYER_PARTICLES)||(p->coll->type == COLLIDER_PLAYER_2_PARTICLES))
+			if (p->coll != nullptr)
 			{
-				particle_tex = fire_sword_tex;
+				if ((p->coll->type == COLLIDER_PLAYER_PARTICLES) || (p->coll->type == COLLIDER_PLAYER_2_PARTICLES))
+				{
+					particle_tex = fire_sword_tex;
+				}
 			}
-			else if (p->coll->type == COLLIDER_FX_PARTICLES)
+			else 
 			{
 				particle_tex = fx_particles;
 			}
@@ -236,25 +239,28 @@ bool Particle::Update()
 
 	if (!App->is_paused)
 	{
-		if ((coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES)) {
-			if (flip == SDL_FLIP_NONE)
-			{
-				position.x += speed.x;
-				position.y += speed.y;
-			}
-			else if (flip == SDL_FLIP_HORIZONTAL)
-			{
-				position.x -= speed.x;
-				position.y += speed.y;
-			}
-		}
-
 		if (coll != nullptr)
-			coll->SetPos(position.x, position.y);
+		{
+			if ((coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES)) {
+				if (flip == SDL_FLIP_NONE)
+				{
+					position.x += speed.x;
+					position.y += speed.y;
+				}
+				else if (flip == SDL_FLIP_HORIZONTAL)
+				{
+					position.x -= speed.x;
+					position.y += speed.y;
+				}
+			}
 
-		if ((position.y > 160)&& (coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES))
-			ret = false;
 
+			if (coll != nullptr)
+				coll->SetPos(position.x, position.y);
+
+			if ((position.y > 160) && (coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES))
+				ret = false;
+		}
 		return ret;
 	}
 }
