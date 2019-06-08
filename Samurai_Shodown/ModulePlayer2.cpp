@@ -2671,13 +2671,27 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				{
 					position.x += 10;
 				}
-				if (flip == SDL_FLIP_NONE)
+				if ((App->player->state == PUNCH) || (App->player->state == HEAVY_PUNCH) || (App->player->state == CROUCH_PUNCH))
 				{
-					App->particles->AddParticle(App->particles->blood, position.x + 35, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+					if (flip == SDL_FLIP_NONE)
+					{
+						App->particles->AddParticle(App->particles->blood, position.x + 35, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+					}
+					else
+					{
+						App->particles->AddParticle(App->particles->blood, position.x-40, position.y - 67.5);
+					}
 				}
-				else
+				else if ((App->player->state == KICK) || (App->player->state == HEAVY_KICK) || (App->player->state == CROUCH_KICK))
 				{
-					App->particles->AddParticle(App->particles->blood, position.x-35, position.y - 67.5);
+					if (flip == SDL_FLIP_NONE)
+					{
+						App->particles->AddParticle(App->particles->flash, position.x + 55, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+					}
+					else
+					{
+						App->particles->AddParticle(App->particles->flash, position.x -20, position.y - 67.5);
+					}
 				}
 			}
 			App->render->StartCameraShake(400, 2);

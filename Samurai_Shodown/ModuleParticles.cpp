@@ -83,6 +83,16 @@ ModuleParticles::ModuleParticles()
 		blood.anim.PushBack({ 68,128,44,42 }, 0.5f);
 		blood.anim.loop = false;
 	}
+
+	//flash
+	{
+		flash.anim.PushBack({ 0,170,16,19 }, 0.5f);
+		flash.anim.PushBack({ 19,170,16,19 }, 0.5f);
+		flash.anim.PushBack({ 40,170,16,19 }, 0.5f);
+		flash.anim.PushBack({ 61,170,19,19 }, 0.5f);
+		flash.anim.PushBack({ 86,170,19,19 }, 0.5f);
+		flash.anim.loop = false;
+	}
 }
 
 ModuleParticles::~ModuleParticles()
@@ -94,7 +104,7 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	//tornado_tex = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	fire_sword_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
-	fx_particles = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/blood.png");
+	fx_particles = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/fx_particles.png");
 	particle_tex;
 	return true;
 }

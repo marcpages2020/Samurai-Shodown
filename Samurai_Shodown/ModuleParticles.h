@@ -61,6 +61,7 @@ public:
 	Particle tornado;
 	Particle fire_sword;
 	Particle blood;
+	Particle flash;
 
 };
 

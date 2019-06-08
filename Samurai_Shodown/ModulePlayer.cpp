@@ -917,7 +917,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_Q)
 		{
-			App->particles->AddParticle(App->particles->blood, position.x+35, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
+			App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
 		}
 		introduceInputs(); //For special attack
 		//states 
@@ -2648,14 +2648,29 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 				{
 					position.x += 10;
 				}
-				if (flip == SDL_FLIP_NONE)
+				if ((App->player2->state2 == PUNCH2)||(App->player2->state2 == HEAVY_PUNCH2)||(App->player2->state2 == CROUCH_PUNCH2))
 				{
-					App->particles->AddParticle(App->particles->blood, position.x + 35, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+					if (flip == SDL_FLIP_NONE)
+					{
+						App->particles->AddParticle(App->particles->blood, position.x + 35, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+					}
+					else
+					{
+						App->particles->AddParticle(App->particles->blood, position.x - 40, position.y - 67.5);
+					}
 				}
-				else
+				else if ((App->player2->state2 == KICK2) || (App->player2->state2 == HEAVY_KICK2)|| (App->player2->state2 == CROUCH_KICK2))
 				{
-					App->particles->AddParticle(App->particles->blood, position.x + 35, position.y - 67.5);
+					if (flip == SDL_FLIP_NONE)
+					{
+						App->particles->AddParticle(App->particles->flash, position.x + 55, position.y - 67.5, COLLIDER_NONE, 0, SDL_FLIP_HORIZONTAL);
+					}
+					else
+					{
+						App->particles->AddParticle(App->particles->flash, position.x + 35, position.y - 67.5);
+					}
 				}
+			
 				switch (App->player2->state2)
 				{
 				case States2::KICK2:
