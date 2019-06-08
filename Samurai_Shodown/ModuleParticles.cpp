@@ -258,7 +258,7 @@ bool Particle::Update()
 			if (coll != nullptr)
 				coll->SetPos(position.x, position.y);
 
-			if ((position.y > 160) && (coll->type == COLLIDER_PLAYER_PARTICLES) || (coll->type == COLLIDER_PLAYER_2_PARTICLES))
+			if (position.y > 160) 
 				ret = false;
 		}
 		return ret;
