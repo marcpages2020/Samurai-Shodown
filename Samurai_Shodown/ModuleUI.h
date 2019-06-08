@@ -125,6 +125,11 @@ public:
 	bool play_victory = true;
 	bool play_ippon = false;
 	int animtime = 0;
+	Animation* current_duel_anim = nullptr;
+	Animation duel_1;
+	Animation duel_2;
+	Animation duel_3;
+	bool duel = true;
 };
 
 #endif // !_MODULE_UI
