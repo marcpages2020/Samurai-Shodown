@@ -1555,16 +1555,16 @@ update_status ModulePlayer::Update()
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
-					collider_player_up->SetPos(position.x - 10, position.y - 55);
-					collider_player_up->SetSize(40, 35);
+					collider_player_up->SetPos(position.x - 30, position.y - 70);
+					collider_player_up->SetSize(40, 50);
 				}
 				if (collider_player_down != nullptr)
 				{
 					collider_player_down->SetPos(position.x - 30, position.y - 20);
-					collider_player_down->SetSize(75, 25);
+					collider_player_down->SetSize(40, 25);
 				}
 				if (collider_player_attack == nullptr) {
-					collider_player_attack = App->collision->AddCollider({ position.x - 50, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack = App->collision->AddCollider({ position.x - 55, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->SetSize(85, 15);
 				}
 			}

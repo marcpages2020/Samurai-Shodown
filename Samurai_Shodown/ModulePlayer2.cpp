@@ -1475,7 +1475,7 @@ update_status ModulePlayer2::Update()
 					collider_player_2_down->SetSize(40, 25);
 				}
 				if (collider_player_2_attack == nullptr) {
-					collider_player_2_attack = App->collision->AddCollider({ position.x + 25, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+					collider_player_2_attack = App->collision->AddCollider({ position.x + 25, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 					collider_player_2_attack->SetSize(85, 15);
 				}
 			}
@@ -1491,7 +1491,7 @@ update_status ModulePlayer2::Update()
 					collider_player_2_down->SetSize(40, 25);
 				}
 				if (collider_player_2_attack == nullptr) {
-					collider_player_2_attack = App->collision->AddCollider({ position.x - 55, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+					collider_player_2_attack = App->collision->AddCollider({ position.x - 55, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 					collider_player_2_attack->SetSize(85, 15);
 				}
 			}
