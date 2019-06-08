@@ -988,7 +988,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			state = GRAB;
+			state = GRABBED;
 		}
 		if (player_input.pressing_E)
 		{
