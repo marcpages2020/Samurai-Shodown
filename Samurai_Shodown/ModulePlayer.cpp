@@ -1117,8 +1117,9 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_FORWARD;
 			}
 			if (state == DASH_BACKWARD) {
-				if (position.y == initial_position.y) {
+				if (position.y > initial_position.y) {
 					state = IDLE;
+					position.y = initial_position.y;
 					dash_backward.Reset();
 				}
 			}
