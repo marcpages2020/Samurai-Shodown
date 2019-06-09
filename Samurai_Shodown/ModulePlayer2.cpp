@@ -14,353 +14,374 @@ ModulePlayer2::ModulePlayer2()
 {
 	//animations
 	{
-		//Haohmaru  
-		/*
-		//idle animation
+		//Haohmaru 
 		{
-			idle2.PushBack({ 16,22,71,109 }, 0.3f);
-			idle2.PushBack({ 92,22,72,109 }, 0.3f);
-			idle2.PushBack({ 168,22,71,109 }, 0.3f);
-			idle2.PushBack({ 245,20,72,111 }, 0.3f);
-			idle2.PushBack({ 322,18,72,113 }, 0.3f);
-			idle2.PushBack({ 399,19,72,112 }, 0.3f);
-			idle2.PushBack({ 476,19,74,112 }, 0.3f);
-			idle2.PushBack({ 554,19,74,112 }, 0.3f);
-			idle2.PushBack({ 630,19,73,112 }, 0.3f);
-			idle2.PushBack({ 245,20,72,111 }, 0.3f);
-			idle2.PushBack({ 322,18,72,113 }, 0.3f);
-			idle2.PushBack({ 399,19,72,112 }, 0.3f);
-		}
+			/*
+		   //idle animation
+		   {
+			   idle.PushBack({ 16,22,71,109 }, 0.3f);
+			   idle.PushBack({ 92,22,72,109 }, 0.3f);
+			   idle.PushBack({ 168,22,71,109 }, 0.3f);
+			   idle.PushBack({ 245,20,72,111 }, 0.3f);
+			   idle.PushBack({ 322,18,72,113 }, 0.3f);
+			   idle.PushBack({ 399,19,72,112 }, 0.3f);
+			   idle.PushBack({ 476,19,74,112 }, 0.3f);
+			   idle.PushBack({ 554,19,74,112 }, 0.3f);
+			   idle.PushBack({ 630,19,73,112 }, 0.3f);
+			   idle.PushBack({ 245,20,72,111 }, 0.3f);
+			   idle.PushBack({ 322,18,72,113 }, 0.3f);
+			   idle.PushBack({ 399,19,72,112 }, 0.3f);
+			   idle.loop = true;
+		   }
 
-		//forward animation
-		{
-			forward2.PushBack({ 15,496,70,112 }, 0.4f);
-			forward2.PushBack({ 89,496,70,112 }, 0.4f);
-			forward2.PushBack({ 163,499,76,109 }, 0.4f);
-			forward2.PushBack({ 243,499,76,109 }, 0.4f);
-			forward2.PushBack({ 322,499,76,109 }, 0.4f);
-			forward2.PushBack({ 402,496,69,112 }, 0.4f);
-			forward2.PushBack({ 475,496,69,112 }, 0.4f);
-			forward2.PushBack({ 548,496,69,112 }, 0.4f);
-			forward2.PushBack({ 621,492,59,116 }, 0.4f);
-			forward2.PushBack({ 684,492,59,116 }, 0.4f);
-			forward2.PushBack({ 747,492,59,116 }, 0.4f);
-			forward2.PushBack({ 810,492,57,116 }, 0.4f);
-			forward2.PushBack({ 871,490,57,118 }, 0.4f);
-			forward2.PushBack({ 933,490,56,118 }, 0.4f);
-			forward2.PushBack({ 994,490,61,118 }, 0.4f);
-			forward2.PushBack({ 1060,492,61,116 }, 0.4f);
-			forward2.PushBack({ 1126,492,61,116 }, 0.4f);
-		}
+		   //forward animation
+		   {
+			   forward.PushBack({ 15,496,70,112 }, 0.4f);
+			   forward.PushBack({ 89,496,70,112 }, 0.4f);
+			   forward.PushBack({ 163,499,76,109 }, 0.4f);
+			   forward.PushBack({ 243,499,76,109 }, 0.4f);
+			   forward.PushBack({ 322,499,76,109 }, 0.4f);
+			   forward.PushBack({ 402,496,69,112 }, 0.4f);
+			   forward.PushBack({ 475,496,69,112 }, 0.4f);
+			   forward.PushBack({ 548,496,69,112 }, 0.4f);
+			   forward.PushBack({ 621,492,59,116 }, 0.4f);
+			   forward.PushBack({ 684,492,59,116 }, 0.4f);
+			   forward.PushBack({ 747,492,59,116 }, 0.4f);
+			   forward.PushBack({ 810,492,57,116 }, 0.4f);
+			   forward.PushBack({ 871,490,57,118 }, 0.4f);
+			   forward.PushBack({ 933,490,56,118 }, 0.4f);
+			   forward.PushBack({ 994,490,61,118 }, 0.4f);
+			   forward.PushBack({ 1060,492,61,116 }, 0.4f);
+			   forward.PushBack({ 1126,492,61,116 }, 0.4f);
+		   }
 
-		//backward animation
-		{
-			backward2.PushBack({ 624,608,82,121 }, 0.4f);//9
-			backward2.PushBack({ 711,608,82,121 }, 0.4f);//10
-			backward2.PushBack({ 798,608,82,121 }, 0.4f);//11
-			backward2.PushBack({ 884,608,82,121 }, 0.4f);//12
-			backward2.PushBack({ 15,614,74,114 }, 0.4f); //1
-			backward2.PushBack({ 94,614,74,114 }, 0.4f); //2
-			backward2.PushBack({ 173,614,74,114 }, 0.4f); //3
-			backward2.PushBack({ 264,610,68,118 }, 0.4f); //4
-			backward2.PushBack({ 337,610,68,118 }, 0.4f); //5
-			backward2.PushBack({ 410,612,68,117 }, 0.4f); //6
-			backward2.PushBack({ 482,609,67,121 }, 0.4f);//7
-			backward2.PushBack({ 553,608,67,121 }, 0.4f);//8
-			backward2.PushBack({ 971,608,69,122 }, 0.4f);//13
-			backward2.PushBack({ 1045,608,69,121 }, 0.4f);//14
-			backward2.PushBack({ 1119,608,69,120 }, 0.4f);//15
-			backward2.PushBack({ 1193,614,74,114 }, 0.4f);//16
-			backward2.PushBack({ 1272,614,74,114 }, 0.4f);//17
-			backward2.PushBack({ 1351,614,74,114 }, 0.4f);//18
-		}
+		   //backward animation
+		   {
+			   backward.PushBack({ 624,608,82,121 }, 0.4f);//9
+			   backward.PushBack({ 711,608,82,121 }, 0.4f);//10
+			   backward.PushBack({ 798,608,82,121 }, 0.4f);//11
+			   backward.PushBack({ 884,608,82,121 }, 0.4f);//12
+			   backward.PushBack({ 15,614,74,114 }, 0.4f); //1
+			   backward.PushBack({ 94,614,74,114 }, 0.4f); //2
+			   backward.PushBack({ 173,614,74,114 }, 0.4f); //3
+			   backward.PushBack({ 264,610,68,118 }, 0.4f); //4
+			   backward.PushBack({ 337,610,68,118 }, 0.4f); //5
+			   backward.PushBack({ 410,612,68,117 }, 0.4f); //6
+			   backward.PushBack({ 482,609,67,121 }, 0.4f);//7
+			   backward.PushBack({ 553,608,67,121 }, 0.4f);//8
+			   backward.PushBack({ 971,608,69,122 }, 0.4f);//13
+			   backward.PushBack({ 1045,608,69,121 }, 0.4f);//14
+			   backward.PushBack({ 1119,608,69,120 }, 0.4f);//15
+			   backward.PushBack({ 1193,614,74,114 }, 0.4f);//16
+			   backward.PushBack({ 1272,614,74,114 }, 0.4f);//17
+			   backward.PushBack({ 1351,614,74,114 }, 0.4f);//18
+		   }
 
-		//jump animation
-		{
-			jump_neutral2.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
-			jump_neutral2.PushBack({ 80, 371, 60, 112 }, 0.2f); //2
-			jump_neutral2.PushBack({ 145, 371, 60, 112 }, 0.2f); //3
-			jump_neutral2.PushBack({ 209, 371, 75, 92 }, 0.2f);
-			jump_neutral2.PushBack({ 288, 371, 75, 92 }, 0.2f);
-			jump_neutral2.PushBack({ 367, 371, 75, 92 }, 0.2f);
-			jump_neutral2.PushBack({ 446, 371, 78, 83 }, 0.2f);
-			jump_neutral2.PushBack({ 209, 371, 75, 92 }, 0.2f);
-			jump_neutral2.PushBack({ 288, 371, 75, 92 }, 0.2f);
-			jump_neutral2.PushBack({ 367, 371, 75, 92 }, 0.2f);
-			jump_neutral2.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
-			jump_neutral2.PushBack({ 80, 371, 60, 112 }, 0.2f);
-			jump_neutral2.PushBack({ 145, 371, 60, 112 }, 0.2f);
-			jump_neutral2.PushBack({ 527, 371, 68, 112 }, 0.2f); //8
-			jump_neutral2.PushBack({ 601, 371, 68, 112 }, 0.2f); //9
-			jump_neutral2.PushBack({ 674, 371, 68, 112 }, 0.2f); //10
-		}
+		   //jump neutral animation
+		   {
+			   jump_neutral.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
+			   jump_neutral.PushBack({ 80, 371, 60, 112 }, 0.2f); //2
+			   jump_neutral.PushBack({ 145, 371, 60, 112 }, 0.2f); //3
+			   jump_neutral.PushBack({ 209, 371, 75, 92 }, 0.2f);
+			   jump_neutral.PushBack({ 288, 371, 75, 92 }, 0.2f);
+			   jump_neutral.PushBack({ 367, 371, 75, 92 }, 0.2f);
+			   jump_neutral.PushBack({ 446, 371, 78, 83 }, 0.2f);
+			   jump_neutral.PushBack({ 209, 371, 75, 92 }, 0.2f);
+			   jump_neutral.PushBack({ 288, 371, 75, 92 }, 0.2f);
+			   jump_neutral.PushBack({ 367, 371, 75, 92 }, 0.2f);
+			   jump_neutral.PushBack({ 15, 371, 60, 112 }, 0.2f); //1
+			   jump_neutral.PushBack({ 80, 371, 60, 112 }, 0.2f);
+			   jump_neutral.PushBack({ 145, 371, 60, 112 }, 0.2f);
+			   jump_neutral.PushBack({ 527, 371, 68, 112 }, 0.2f); //8
+			   jump_neutral.PushBack({ 601, 371, 68, 112 }, 0.2f); //9
+			   jump_neutral.PushBack({ 674, 371, 68, 112 }, 0.2f); //10
+		   }
 
-		//jump forward animation
-		{
-			jump_forward2.PushBack({ 15, 1362, 63, 130 }, 0.3f);
-			jump_forward2.PushBack({ 83, 1362, 63, 130 }, 0.3f);
-			jump_forward2.PushBack({ 151, 1362, 63, 130 }, 0.3f);
-			jump_forward2.PushBack({ 224, 1362, 74, 93 }, 0.3f);
-			jump_forward2.PushBack({ 307, 1362, 74, 93 }, 0.3f);
-			jump_forward2.PushBack({ 391, 1362, 74, 93 }, 0.3f);
-			jump_forward2.PushBack({ 478, 1362, 62, 81 }, 0.3f);
-			jump_forward2.PushBack({ 559, 1362, 62, 81 }, 0.3f);
-			jump_forward2.PushBack({ 631, 1362, 62, 81 }, 0.3f);
-			jump_forward2.PushBack({ 706, 1362, 80, 62 }, 0.3f);
-			jump_forward2.PushBack({ 799, 1362, 80, 62 }, 0.3f);
-			jump_forward2.PushBack({ 888, 1362, 80, 62 }, 0.3f);
-			jump_forward2.PushBack({ 981, 1362, 62, 81 }, 0.3f);
-			jump_forward2.PushBack({ 1066, 1362, 62, 81 }, 0.3f);
-			jump_forward2.PushBack({ 1152, 1362, 62, 81 }, 0.3f);
-			jump_forward2.PushBack({ 1226, 1362, 80, 62 }, 0.3f);
-			jump_forward2.PushBack({ 1312, 1362, 80, 62 }, 0.3f);
-			jump_forward2.PushBack({ 1407, 1362, 80, 62 }, 0.3f);
-			jump_forward2.PushBack({ 1509, 1362, 77, 85 }, 0.3f);
-			jump_forward2.PushBack({ 1595, 1362, 77, 85 }, 0.3f);
-			jump_forward2.PushBack({ 1686, 1362, 77, 85 }, 0.3f);
-			jump_forward2.loop = false;
-		}
+		   //jump forward animation
+		   {
+			   jump_forward.PushBack({ 15, 1362, 63, 130 }, 0.3f);
+			   jump_forward.PushBack({ 83, 1362, 63, 130 }, 0.3f);
+			   jump_forward.PushBack({ 151, 1362, 63, 130 }, 0.3f);
+			   jump_forward.PushBack({ 224, 1362, 74, 93 }, 0.3f);
+			   jump_forward.PushBack({ 307, 1362, 74, 93 }, 0.3f);
+			   jump_forward.PushBack({ 391, 1362, 74, 93 }, 0.3f);
+			   jump_forward.PushBack({ 478, 1362, 62, 81 }, 0.3f);
+			   jump_forward.PushBack({ 559, 1362, 62, 81 }, 0.3f);
+			   jump_forward.PushBack({ 631, 1362, 62, 81 }, 0.3f);
+			   jump_forward.PushBack({ 706, 1362, 80, 62 }, 0.3f);
+			   jump_forward.PushBack({ 799, 1362, 80, 62 }, 0.3f);
+			   jump_forward.PushBack({ 981, 1362, 62, 81 }, 0.3f);
+			   jump_forward.PushBack({ 1066, 1362, 62, 81 }, 0.3f);
+			   jump_forward.PushBack({ 1152, 1362, 62, 81 }, 0.3f);
+			   jump_forward.PushBack({ 1226, 1362, 80, 62 }, 0.3f);
+			   jump_forward.PushBack({ 1312, 1362, 80, 62 }, 0.3f);
+			   jump_forward.PushBack({ 1407, 1362, 80, 62 }, 0.3f);
+			   jump_forward.PushBack({ 1509, 1362, 77, 85 }, 0.3f);
+			   jump_forward.PushBack({ 1595, 1362, 77, 85 }, 0.3f);
+			   jump_forward.PushBack({ 1686, 1362, 77, 85 }, 0.3f);
+			   jump_forward.loop = false;
+		   }
 
-		//jump backward animation
-		{
-			jump_backward2.PushBack({ 15, 1492, 63, 112 }, 0.3f);
-			jump_backward2.PushBack({ 83, 1492, 63, 112 }, 0.3f);
-			jump_backward2.PushBack({ 151, 1492, 63, 112 }, 0.3f);
-			jump_backward2.PushBack({ 224, 1492, 74, 93 }, 0.3f);
-			jump_backward2.PushBack({ 307, 1492, 74, 93 }, 0.3f);
-			jump_backward2.PushBack({ 391, 1492, 74, 93 }, 0.3f);
-			jump_backward2.PushBack({ 478, 1492, 80, 61 }, 0.3f);
-			jump_backward2.PushBack({ 566, 1492, 80, 61 }, 0.3f);
-			jump_backward2.PushBack({ 661, 1492, 80, 61 }, 0.3f);
-			jump_backward2.PushBack({ 757, 1492, 62, 80 }, 0.3f);
-			jump_backward2.PushBack({ 842, 1492, 62, 80 }, 0.3f);
-			jump_backward2.PushBack({ 927, 1492, 62, 80 }, 0.3f);
-			jump_backward2.PushBack({ 1013, 1492, 80, 61 }, 0.3f);
-			jump_backward2.PushBack({ 1105, 1492, 80, 61 }, 0.3f);
-			jump_backward2.PushBack({ 1195, 1492, 80, 61 }, 0.3f);
-			jump_backward2.PushBack({ 1286, 1492, 62, 80 }, 0.3f);
-			jump_backward2.PushBack({ 1367, 1492, 62, 80 }, 0.3f);
-			jump_backward2.PushBack({ 1436, 1492, 62, 80 }, 0.3f);
-			jump_backward2.PushBack({ 1509, 1492, 77, 85 }, 0.3f);
-			jump_backward2.PushBack({ 1595, 1492, 77, 85 }, 0.3f);
-			jump_backward2.PushBack({ 1686, 1492, 77, 85 }, 0.3f);
-			jump_backward2.loop = false;
-		}
+		   //jump backward animation
+		   {
+			   jump_backward.PushBack({ 15, 1492, 63, 112 }, 0.3f);
+			   jump_backward.PushBack({ 83, 1492, 63, 112 }, 0.3f);
+			   jump_backward.PushBack({ 151, 1492, 63, 112 }, 0.3f);
+			   jump_backward.PushBack({ 224, 1492, 74, 93 }, 0.3f);
+			   jump_backward.PushBack({ 307, 1492, 74, 93 }, 0.3f);
+			   jump_backward.PushBack({ 391, 1492, 74, 93 }, 0.3f);
+			   jump_backward.PushBack({ 478, 1492, 80, 61 }, 0.3f);
+			   jump_backward.PushBack({ 566, 1492, 80, 61 }, 0.3f);
+			   jump_backward.PushBack({ 661, 1492, 80, 61 }, 0.3f);
+			   jump_backward.PushBack({ 757, 1492, 62, 80 }, 0.3f);
+			   jump_backward.PushBack({ 842, 1492, 62, 80 }, 0.3f);
+			   jump_backward.PushBack({ 927, 1492, 62, 80 }, 0.3f);
+			   jump_backward.PushBack({ 1013, 1492, 80, 61 }, 0.3f);
+			   jump_backward.PushBack({ 1105, 1492, 80, 61 }, 0.3f);
+			   jump_backward.PushBack({ 1195, 1492, 80, 61 }, 0.3f);
+			   jump_backward.PushBack({ 1286, 1492, 62, 80 }, 0.3f);
+			   jump_backward.PushBack({ 1367, 1492, 62, 80 }, 0.3f);
+			   jump_backward.PushBack({ 1436, 1492, 62, 80 }, 0.3f);
+			   jump_backward.PushBack({ 1509, 1492, 77, 85 }, 0.3f);
+			   jump_backward.PushBack({ 1595, 1492, 77, 85 }, 0.3f);
+			   jump_backward.PushBack({ 1686, 1492, 77, 85 }, 0.3f);
+			   jump_backward.loop = false;
+		   }
 
-		//punch animation
-		{
-			punch2.PushBack({ 14, 236, 69, 130 }, 0.5f);
-			punch2.PushBack({ 87, 236, 69, 130 }, 0.3f);
-			punch2.PushBack({ 164, 235, 79, 127 }, 0.3f);
-			punch2.PushBack({ 243, 236, 79, 127 }, 0.5f);
-			punch2.PushBack({ 331, 236, 79, 127 }, 0.5f);
-			punch2.PushBack({ 410, 236, 129, 127 }, 0.5f);
-			punch2.PushBack({ 545, 236, 130, 127 }, 0.5f);
-			punch2.PushBack({ 679, 236, 130, 127 }, 0.5f);
-			punch2.PushBack({ 814, 236, 129, 127 }, 0.5f); //9
-			punch2.PushBack({ 946, 236, 130, 127 }, 0.5f);
-			punch2.PushBack({ 1081, 236, 130, 127 }, 0.5f);
-			punch2.PushBack({ 1213, 236, 120, 127 }, 0.5f);
-			punch2.PushBack({ 1337, 236, 120, 127 }, 0.5f);
-			punch2.PushBack({ 1461, 236, 83, 127 }, 0.8f);
-			punch2.PushBack({ 1548, 236, 83, 127 }, 6.8f);
-			punch2.PushBack({ 1635, 236, 83, 127 }, 6.8f); //16
-			punch2.PushBack({ 1721, 236,131, 127 }, 6.7f);
-			punch2.PushBack({ 1856, 236, 131, 127 }, 6.7f);
-			punch2.loop = false;
-		}
+		   //punch animation
+		   {
+			   punch.PushBack({ 14, 236, 69, 130 }, 0.5f);
+			   punch.PushBack({ 87, 236, 69, 130 }, 0.3f);
+			   punch.PushBack({ 164, 235, 79, 127 }, 0.3f);
+			   punch.PushBack({ 243, 236, 79, 127 }, 0.5f);
+			   punch.PushBack({ 331, 236, 79, 127 }, 0.5f);
+			   punch.PushBack({ 410, 236, 129, 127 }, 0.5f);
+			   punch.PushBack({ 545, 236, 130, 127 }, 0.5f);
+			   punch.PushBack({ 679, 236, 130, 127 }, 0.5f);
+			   punch.PushBack({ 814, 236, 129, 127 }, 0.5f); //9
+			   punch.PushBack({ 946, 236, 130, 127 }, 0.5f);
+			   punch.PushBack({ 1081, 236, 130, 127 }, 0.5f);
+			   punch.PushBack({ 1213, 236, 120, 127 }, 0.5f);
+			   punch.PushBack({ 1337, 236, 120, 127 }, 0.5f);
+			   punch.PushBack({ 1461, 236, 83, 127 }, 0.8f);
+			   punch.PushBack({ 1548, 236, 83, 127 }, 6.8f);
+			   punch.PushBack({ 1635, 236, 83, 127 }, 6.8f); //16
+			   punch.PushBack({ 1721, 236,131, 127 }, 6.7f);
+			   punch.PushBack({ 1856, 236, 131, 127 }, 6.7f);
+			   punch.loop = false;
+		   }
 
-		//kick animation
-		{
-			kick2.PushBack({ 16,137,66,95 }, 0.8f); //initial kick frames
-			kick2.PushBack({ 87,137,66,95 }, 0.8f);
-			kick2.PushBack({ 158,137,66,95 }, 0.8f);
-			kick2.PushBack({ 229,134,86,98 }, 0.6f); //final kick frames
-			kick2.PushBack({ 320,134,86,98 }, 0.6f);
-			kick2.PushBack({ 411,134,86,98 }, 0.6f);
-			kick2.PushBack({ 16,137,66,95 }, 0.7f); //initial kick frames
-			kick2.PushBack({ 87,137,66,95 }, 0.7f);
-			kick2.PushBack({ 158,137,66,95 }, 0.7f);
-			kick2.loop = false;
-		}
 
-		//get hit animation 2
-		{
-			hit2.PushBack({ 14, 1616, 78, 100 }, 0.3f);
-			hit2.PushBack({ 105, 1616, 78, 100 }, 0.3f);
-			hit2.PushBack({ 195, 1616, 78, 100 }, 0.3f);
-			hit2.PushBack({ 282, 1616, 77, 94 }, 0.3f);
-			hit2.PushBack({ 367, 1616, 77, 94 }, 0.3f);
-			hit2.PushBack({ 452, 1616, 77, 94 }, 0.3f);
-			hit2.PushBack({ 14, 1616, 78, 100 }, 6.3f);
-			hit2.PushBack({ 105, 1616, 78, 100 }, 6.3f);
-			hit2.PushBack({ 195, 1616, 78, 100 }, 6.3f);
-			hit2.loop = false;
-		}
+		   //kick animation
+		   {
+			   kick.PushBack({ 16,137,66,95 }, 0.8f); //initial kick frames
+			   kick.PushBack({ 87,137,66,95 }, 0.8f);
+			   kick.PushBack({ 158,137,66,95 }, 0.8f);
+			   kick.PushBack({ 229,134,86,98 }, 0.6f); //final kick frames
+			   kick.PushBack({ 320,134,86,98 }, 0.6f);
+			   kick.PushBack({ 411,134,86,98 }, 0.6f);
+			   kick.PushBack({ 16,137,66,95 }, 0.7f); //initial kick frames
+			   kick.PushBack({ 87,137,66,95 }, 0.7f);
+			   kick.PushBack({ 158,137,66,95 }, 0.7f);
+			   kick.loop = false;
+		   }
 
-		//crouch animation
-		{
-			crouch_down2.PushBack({ 15, 1239, 68, 110 }, 0.5f);
-			crouch_down2.PushBack({ 94, 1239, 68, 110 }, 0.5f);
-			crouch_down2.PushBack({ 180, 1239, 68, 110 }, 0.5f);
-			crouch_down2.PushBack({ 299, 1273, 88, 76 }, 0.5f);
-			crouch_down2.PushBack({ 431, 1273, 88, 76 }, 0.5f);
-			crouch_down2.PushBack({ 557, 1273, 88, 76 }, 0.5f);
-			crouch_down2.loop = false;
+		   //get hit animation 2
+		   {
+			   hit.PushBack({ 14, 1616, 78, 100 }, 0.3f);
+			   hit.PushBack({ 105, 1616, 78, 100 }, 0.3f);
+			   hit.PushBack({ 195, 1616, 78, 100 }, 0.3f);
+			   hit.PushBack({ 282, 1616, 77, 94 }, 0.3f);
+			   hit.PushBack({ 367, 1616, 77, 94 }, 0.3f);
+			   hit.PushBack({ 452, 1616, 77, 94 }, 0.3f);
+			   hit.PushBack({ 14, 1616, 78, 100 }, 6.3f);
+			   hit.PushBack({ 105, 1616, 78, 100 }, 6.3f);
+			   hit.PushBack({ 195, 1616, 78, 100 }, 6.3f);
+			   hit.loop = false;
+		   }
 
-			crouch_up2.PushBack({ 180, 12439, 68, 110 }, 0.5f);
-			crouch_up2.PushBack({ 94, 12439, 68, 110 }, 0.5f);
-			crouch_up2.PushBack({ 15, 1239, 68, 110 }, 0.5f);
-			crouch_up2.loop = false;
-		}
+		   //crouch animation
+		   {
+			   //Crouch Down
+			   crouch_down.PushBack({ 15, 1239, 68, 110 }, 0.5f);
+			   crouch_down.PushBack({ 94, 1239, 68, 110 }, 0.5f);
+			   crouch_down.PushBack({ 180, 1239, 68, 110 }, 0.5f);
+			   crouch_down.PushBack({ 299, 1273, 88, 76 }, 0.5f);
+			   crouch_down.PushBack({ 431, 1273, 88, 76 }, 0.5f);
+			   crouch_down.PushBack({ 557, 1273, 88, 76 }, 0.5f);
+			   crouch_down.loop = false;
 
-		//crouch punch
-		{
-			crouch_punch2.PushBack({ 15, 1718, 100, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 102, 1718, 104, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 210, 1718, 109, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 324, 1718, 155, 90 }, 0.6f);
-			crouch_punch2.PushBack({ 476, 1718, 155, 90 }, 0.6f);
-			crouch_punch2.PushBack({ 640, 1718, 155, 91 }, 0.6f);
-			crouch_punch2.PushBack({ 792, 1718, 154, 92 }, 0.6f);
-			crouch_punch2.PushBack({ 953, 1718, 150, 94 }, 0.6f);
-			crouch_punch2.PushBack({ 1129, 1718, 150, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1287, 1718, 111, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1411, 1718, 111, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1539, 1718, 111, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1660, 1718, 111, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1786, 1718, 111, 93 }, 0.6f);
-			crouch_punch2.PushBack({ 1901, 1718, 109, 93 }, 0.6f);
-			crouch_punch2.loop = false;
-		}
+			   //Crouch Up
+			   crouch_up.PushBack({ 180, 1239, 68, 110 }, 0.9f);
+			   crouch_up.PushBack({ 94, 1239, 68, 110 }, 0.9f);
+			   crouch_up.PushBack({ 15, 1239, 68, 110 }, 0.9f);
+			   crouch_up.loop = false;
+		   }
 
-		//crouch kick
-		{
-			crouch_kick2.PushBack({ 12, 1830, 74, 77 }, 0.3f);
-			crouch_kick2.PushBack({ 106, 1828, 74, 77 }, 0.3f);
-			crouch_kick2.PushBack({ 203, 1826, 79, 81 }, 0.3f);
-			crouch_kick2.PushBack({ 300, 1826, 79, 81 }, 0.3f);
-			crouch_kick2.PushBack({ 395, 1835, 99, 73 }, 0.3f);
-			crouch_kick2.PushBack({ 513, 1835, 99, 73 }, 0.3f);
-			crouch_kick2.PushBack({ 643, 1825, 79, 80 }, 0.6f);
-			crouch_kick2.PushBack({ 751, 1825, 79, 80 }, 0.6f);
-			crouch_kick2.loop = false;
-		}
+		   //crouch punch
+		   {
+			   crouch_punch.PushBack({ 15, 1718, 100, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 102, 1718, 104, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 210, 1718, 109, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 324, 1718, 155, 90 }, 0.6f);
+			   crouch_punch.PushBack({ 476, 1718, 155, 90 }, 0.6f);
+			   crouch_punch.PushBack({ 640, 1718, 155, 91 }, 0.6f);
+			   crouch_punch.PushBack({ 792, 1718, 154, 92 }, 0.6f);
+			   crouch_punch.PushBack({ 953, 1718, 150, 94 }, 0.6f);
+			   crouch_punch.PushBack({ 1129, 1718, 150, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 1287, 1718, 111, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 1411, 1718, 111, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 1539, 1718, 111, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 1660, 1718, 111, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 1786, 1718, 111, 93 }, 0.6f);
+			   crouch_punch.PushBack({ 1901, 1718, 109, 93 }, 0.6f);
+			   crouch_punch.loop = false;
+		   }
 
-		//twister animation
-		{
-			twister2.PushBack({ 15, 798, 90, 90 }, 0.6f);
-			twister2.PushBack({ 106, 798, 90, 90 }, 0.6f);
-			twister2.PushBack({ 197, 798, 90, 90 }, 0.6f);
-			twister2.PushBack({ 289, 798, 71, 90 }, 0.6f);
-			twister2.PushBack({ 362, 798, 71, 90 }, 0.6f);
-			twister2.PushBack({ 435, 803, 74, 86 }, 0.6f);
-			twister2.PushBack({ 511, 803, 74, 86 }, 0.6f);
-			twister2.PushBack({ 586, 795, 59, 94 }, 0.6f);
-			twister2.PushBack({ 646, 795, 59, 94 }, 0.6f);
-			twister2.PushBack({ 709, 788, 93, 101 }, 0.6f);
-			twister2.PushBack({ 809, 788, 93, 101 }, 0.6f);
-			twister2.PushBack({ 909, 788, 93, 101 }, 0.6f);
-			twister2.PushBack({ 1006, 734, 62, 155 }, 0.6f);
-			twister2.PushBack({ 1071, 734, 62, 155 }, 0.6f);
-			twister2.PushBack({ 1138, 734, 62, 155 }, 0.6f);
-			twister2.PushBack({ 1203, 787, 100, 102 }, 0.6f);
-			twister2.PushBack({ 1313, 787, 100, 102 }, 0.6f);
-			twister2.PushBack({ 1429, 787, 100, 102 }, 0.6f);
-			twister2.PushBack({ 1543, 795, 98, 94 }, 0.6f);
-			twister2.PushBack({ 1646, 795, 98, 94 }, 0.6f);
-			twister2.PushBack({ 1749, 795, 98, 94 }, 0.6f);
-			twister2.PushBack({ 15, 923, 104, 93 }, 0.6f);
-			twister2.PushBack({ 121, 923, 104, 93 }, 0.6f);
-			twister2.PushBack({ 228, 923, 104, 93 }, 0.6f);
-			twister2.PushBack({ 337, 923, 84, 93 }, 0.6f);
-			twister2.PushBack({ 425, 923, 84, 93 }, 0.6f);
-			twister2.PushBack({ 512, 923, 84, 93 }, 0.6f);
-			twister2.PushBack({ 599, 896, 72, 120 }, 0.6f);
-			twister2.PushBack({ 673, 896, 72, 120 }, 0.6f);
-			twister2.PushBack({ 748, 896, 72, 120 }, 0.6f);
-			twister2.loop = false;
+		   //crouch kick
+		   {
+			   crouch_kick.PushBack({ 12, 1830, 74, 77 }, 0.3f);
+			   crouch_kick.PushBack({ 106, 1828, 74, 77 }, 0.3f);
+			   crouch_kick.PushBack({ 203, 1826, 79, 81 }, 0.3f);
+			   crouch_kick.PushBack({ 300, 1826, 79, 81 }, 0.3f);
+			   crouch_kick.PushBack({ 395, 1835, 99, 73 }, 0.3f);
+			   crouch_kick.PushBack({ 513, 1835, 99, 73 }, 0.3f);
+			   crouch_kick.PushBack({ 643, 1825, 79, 80 }, 0.6f);
+			   crouch_kick.PushBack({ 751, 1825, 79, 80 }, 0.6f);
+			   crouch_kick.loop = false;
+		   }
 
-			//Twister animation (only the twister)
-			twisterAlone2.loop = false;
+		   //twister animation
+		   {
+			   twister.PushBack({ 15, 798, 90, 90 }, 0.6f);
+			   twister.PushBack({ 106, 798, 90, 90 }, 0.6f);
+			   twister.PushBack({ 197, 798, 90, 90 }, 0.6f);
+			   twister.PushBack({ 289, 798, 71, 90 }, 0.6f);
+			   twister.PushBack({ 362, 798, 71, 90 }, 0.6f);
+			   twister.PushBack({ 435, 803, 74, 86 }, 0.6f);
+			   twister.PushBack({ 511, 803, 74, 86 }, 0.6f);
+			   twister.PushBack({ 586, 795, 59, 94 }, 0.6f);
+			   twister.PushBack({ 646, 795, 59, 94 }, 0.6f);
+			   twister.PushBack({ 709, 788, 93, 101 }, 0.6f);
+			   twister.PushBack({ 809, 788, 93, 101 }, 0.6f);
+			   twister.PushBack({ 909, 788, 93, 101 }, 0.6f);
+			   twister.PushBack({ 1006, 734, 62, 155 }, 0.6f);
+			   twister.PushBack({ 1071, 734, 62, 155 }, 0.6f);
+			   twister.PushBack({ 1138, 734, 62, 155 }, 0.6f);
+			   twister.PushBack({ 1203, 787, 100, 102 }, 0.6f);
+			   twister.PushBack({ 1313, 787, 100, 102 }, 0.6f);
+			   twister.PushBack({ 1429, 787, 100, 102 }, 0.6f);
+			   twister.PushBack({ 1543, 795, 98, 94 }, 0.6f);
+			   twister.PushBack({ 1646, 795, 98, 94 }, 0.6f);
+			   twister.PushBack({ 1749, 795, 98, 94 }, 0.6f);
+			   twister.PushBack({ 15, 923, 104, 93 }, 0.6f);
+			   twister.PushBack({ 121, 923, 104, 93 }, 0.6f);
+			   twister.PushBack({ 228, 923, 104, 93 }, 0.6f);
+			   twister.PushBack({ 337, 923, 84, 93 }, 0.6f);
+			   twister.PushBack({ 425, 923, 84, 93 }, 0.6f);
+			   twister.PushBack({ 512, 923, 84, 93 }, 0.6f);
+			   twister.PushBack({ 599, 896, 72, 120 }, 0.6f);
+			   twister.PushBack({ 673, 896, 72, 120 }, 0.6f);
+			   twister.PushBack({ 748, 896, 72, 120 }, 0.6f);
+			   twister.loop = false;
+
+			   //Twister animation (only the twister)
+			   twisterAlone.loop = false;
+		   }
+
+		   //die
+		   {
+			   die.PushBack({ 852,0,108,54 });
+		   }
+
+		   //en garde
+		   {
+			   en_garde.PushBack({ 14, 1921, 74,113 }, 0.15f);
+			   en_garde.PushBack({ 95, 1921, 78,113 }, 0.15f);
+			   en_garde.PushBack({ 182, 1921, 79,113 }, 0.15f);
+			   en_garde.PushBack({ 264, 1921, 79,113 }, 0.15f);
+			   en_garde.PushBack({ 346, 1921, 81,113 }, 0.15f);
+			   en_garde.PushBack({ 433, 1921, 78,113 }, 0.15f);
+			   en_garde.PushBack({ 517, 1921, 79,113 }, 0.15f);
+			   en_garde.PushBack({ 595, 1921, 74,113 }, 0.15f);
+			   en_garde.PushBack({ 677, 1921, 73,113 }, 0.15f);
+			   en_garde.PushBack({ 164, 235, 79, 127 }, 0.15f);
+			   en_garde.PushBack({ 243, 236, 79, 127 }, 0.15f);
+			   //punch
+			   en_garde.PushBack({ 1721, 236,131, 127 }, 0.4f);
+			   en_garde.PushBack({ 1856, 236, 131, 127 }, 0.4f);
+			   en_garde.PushBack({ 1461, 236, 83, 127 }, 0.4f);
+			   en_garde.PushBack({ 1721, 236,131, 127 }, 0.4f);
+			   en_garde.loop = false;
+		   }
+
+
+		   //win animation
+		   {
+			   win.PushBack({ 49, 2072, 76, 177 }, 0.2f);
+			   win.PushBack({ 146, 2072, 76, 177 }, 0.2f);
+			   win.PushBack({ 250, 2079, 90, 170 }, 0.2f);
+			   win.PushBack({ 340, 2071, 90, 178 }, 0.2f);
+			   win.PushBack({ 440, 2040, 76, 209 }, 0.2f);
+			   win.PushBack({ 538, 2040, 76, 209 }, 0.2f);
+			   win.PushBack({ 631, 2040, 74, 209 }, 0.2f);
+			   win.PushBack({ 731 , 2040, 74, 209 }, 0.2f);
+			   win.PushBack({ 827, 2040, 74, 209 }, 0.2f);
+			   win.PushBack({ 923, 2040, 74, 209 }, 0.2f);
+			   win.PushBack({ 1025, 2131, 74, 118 }, 0.2f);
+			   win.PushBack({ 1125, 2146, 49, 102 }, 0.2f);
+			   win.PushBack({ 1182, 2143, 96, 106 }, 0.2f);
+			   win.PushBack({ 1288, 2143, 96, 106 }, 0.2f);
+			   win.PushBack({ 1409, 2144, 96, 106 }, 0.2f);
+			   win.PushBack({ 1515, 2144, 96, 106 }, 0.2f);
+			   win.PushBack({ 1614, 2143, 96, 106 }, 0.2f);
+			   win.PushBack({ 1723, 2144, 96, 106 }, 0.2f);
+			   win.PushBack({ 1838, 2143, 97, 106 }, 0.2f);
+			   win.PushBack({ 28, 2359, 96, 106 }, 0.2f);
+			   win.PushBack({ 140, 2359, 96, 106 }, 0.2f);
+			   win.PushBack({ 260, 2359, 98, 106 }, 0.2f);
+			   win.PushBack({ 380, 2359, 96, 106 }, 0.2f);
+			   win.PushBack({ 482, 2359, 96, 106 }, 0.2f);
+			   win.PushBack({ 1614, 2143, 96, 106 }, 0.2f);
+			   win.PushBack({ 678, 2359, 96, 106 }, 0.2f);
+			   win.PushBack({ 803, 2256, 98, 209 }, 0.2f);
+			   win.PushBack({ 910, 2256, 98, 209 }, 0.2f);
+			   win.PushBack({ 1001, 2256, 96, 209 }, 0.2f);
+			   win.PushBack({ 1100, 2256, 96, 209 }, 0.2f);
+			   win.PushBack({ 1289, 2256, 96, 209 }, 0.2f);
+			   win.PushBack({ 1409, 2256, 100, 209 }, 0.2f);
+			   win.PushBack({ 1524, 2256, 100, 209 }, 0.2f);
+			   win.PushBack({ 1628, 2256, 96, 209 }, 0.2f);
+			   win.PushBack({ 1744, 2256, 96, 209 }, 0.2f);
+			   //win.PushBack({1840, 2256, 96, 209}, 0.2f);
+			   //win.PushBack({49, 2488, 96, 190}, 0.2f);
+			   //win.PushBack({158, 2498, 96, 180}, 0.2f);
+			   //win.PushBack({255, 2503, 96, 175}, 0.2f);
+			   //win.PushBack({356, 2513, 96, 165}, 0.2f);
+			   //win.PushBack({452, 2521, 96, 157}, 0.2f);
+			   //win.PushBack({553, 2530, 96, 148}, 0.2f);
+			   //win.PushBack({646, 2566, 96, 112}, 0.2f);
+			   //win.PushBack({741, 2566, 96, 112}, 0.2f);
+			   //win.PushBack({1028, 2566, 96, 112}, 0.2f);
+			   win.PushBack({ 1840, 2256, 96, 209 }, 0.2f);
+			   win.PushBack({ 49, 2488, 96, 190 }, 0.2f);
+			   win.PushBack({ 158, 2498, 96, 180 }, 0.2f);
+			   win.PushBack({ 255, 2503, 96, 175 }, 0.2f);
+			   win.PushBack({ 356, 2513, 96, 165 }, 0.2f);
+			   win.PushBack({ 452, 2521, 96, 157 }, 0.2f);
+			   win.PushBack({ 553, 2530, 96, 148 }, 0.2f);
+			   win.PushBack({ 646, 2566, 96, 112 }, 0.2f);
+			   win.PushBack({ 741, 2566, 96, 112 }, 0.2f);
+			   win.PushBack({ 1028, 2566, 96, 112 }, 0.2f);
+			   win.loop = false;
+		   }
+			*/
+			//hEnd
 		}
-		{
-			die2.PushBack({ 852,0,108,54 });
-		}
-		//en garde 2
-		{
-			en_garde2.PushBack({ 14, 1921, 74,113 }, 0.15f);
-			en_garde2.PushBack({ 95, 1921, 78,113 }, 0.15f);
-			en_garde2.PushBack({ 182, 1921, 79,113 }, 0.15f);
-			en_garde2.PushBack({ 264, 1921, 79,113 }, 0.15f);
-			en_garde2.PushBack({ 346, 1921, 81,113 }, 0.15f);
-			en_garde2.PushBack({ 433, 1921, 78,113 }, 0.15f);
-			en_garde2.PushBack({ 517, 1921, 79,113 }, 0.15f);
-			en_garde2.PushBack({ 595, 1921, 74,113 }, 0.15f);
-			en_garde2.PushBack({ 677, 1921, 73,113 }, 0.15f);
-			en_garde2.PushBack({ 164, 235, 79, 127 }, 0.15f);
-			en_garde2.PushBack({ 243, 236, 79, 127 }, 0.15f);
-			//punch
-			en_garde2.PushBack({ 1721, 236,131, 127 }, 0.4f);
-			en_garde2.PushBack({ 1856, 236, 131, 127 }, 0.4f);
-			en_garde2.PushBack({ 1461, 236, 83, 127 }, 0.4f);
-			en_garde2.PushBack({ 1721, 236,131, 127 }, 0.4f);
-			en_garde2.loop = false;
-		}
-		//win 2
-		{
-			win2.PushBack({ 48, 2072, 76, 177 }, 0.15f);
-			win2.PushBack({ 146, 2072, 76, 177 }, 0.15f);
-			win2.PushBack({ 248, 2079, 90, 170 }, 0.15f);
-			win2.PushBack({ 338, 2071, 90, 178 }, 0.15f);
-			win2.PushBack({ 436, 2040, 76, 209 }, 0.15f);
-			win2.PushBack({ 537, 2040, 76, 209 }, 0.15f);
-			win2.PushBack({ 628, 2040, 74, 209 }, 0.15f);
-			win2.PushBack({ 729 , 2040, 74, 209 }, 0.15f);
-			win2.PushBack({ 825, 2040, 74, 209 }, 0.15f);
-			win2.PushBack({ 921, 2040, 74, 209 }, 0.15f);
-			win2.PushBack({ 1023, 2131, 74, 118 }, 0.15f);
-			win2.PushBack({ 1123, 2146, 49, 102 }, 0.15f);
-			win2.PushBack({ 1180, 2142, 96, 106 }, 0.15f);
-			win2.PushBack({ 1288, 2142, 96, 106 }, 0.15f);
-			win2.PushBack({ 1409, 2142, 96, 106 }, 0.15f);
-			win2.PushBack({ 1515, 2142, 96, 106 }, 0.15f);
-			win2.PushBack({ 1614, 2142, 96, 106 }, 0.15f);
-			win2.PushBack({ 1722, 2142, 96, 106 }, 0.15f);
-			win2.PushBack({ 1838, 2142, 97, 106 }, 0.15f);
-			win2.PushBack({ 26, 2357, 96, 106 }, 0.15f);
-			win2.PushBack({ 140, 2357, 96, 106 }, 0.15f);
-			win2.PushBack({ 258, 2357, 98, 106 }, 0.15f);
-			win2.PushBack({ 381, 2357, 96, 106 }, 0.15f);
-			win2.PushBack({ 483, 2357, 96, 106 }, 0.15f);
-			win2.PushBack({ 575, 2357, 96, 106 }, 0.15f);
-			win2.PushBack({ 680, 2357, 96, 106 }, 0.15f);
-			win2.PushBack({ 804, 2254, 98, 209 }, 0.15f);
-			win2.PushBack({ 912, 2254, 98, 209 }, 0.15f);
-			win2.PushBack({ 1004, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 1103, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 1195, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 1291, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 1407, 2254, 100, 209 }, 0.15f);
-			win2.PushBack({ 1523, 2254, 100, 209 }, 0.15f);
-			win2.PushBack({ 1630, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 1746, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 1840, 2254, 96, 209 }, 0.15f);
-			win2.PushBack({ 49, 2488, 96, 190 }, 0.15f);
-			win2.PushBack({ 158, 2498, 96, 180 }, 0.15f);
-			win2.PushBack({ 255, 2503, 96, 175 }, 0.15f);
-			win2.PushBack({ 356, 2513, 96, 165 }, 0.15f);
-			win2.PushBack({ 452, 2521, 96, 157 }, 0.15f);
-			win2.PushBack({ 553, 2530, 96, 148 }, 0.15f);
-			win2.PushBack({ 646, 2566, 96, 112 }, 0.15f);
-			win2.PushBack({ 741, 2566, 96, 112 }, 0.15f);
-			win2.PushBack({ 1028, 2566, 96, 112 }, 0.15f);
-			win2.loop = false;
-		}
-		*/
-		// Wanf-Fu
+		//Wan-Fu
 		{
 			//idle
+			// /*
 			{
 				idle2.PushBack({ 28,26,118,126 }, 0.15f); //01
 				idle2.PushBack({ 150,26,118,126 }, 0.15f);
@@ -477,6 +498,7 @@ ModulePlayer2::ModulePlayer2()
 				jump_backward2.PushBack({ 248,305,106,139 }, 0.2f);
 				jump_backward2.loop = false;
 			}
+
 			//kick
 			{
 				kick2.PushBack({ 28,745,108,148 }, 0.5f);//1
@@ -502,6 +524,7 @@ ModulePlayer2::ModulePlayer2()
 				kick2.PushBack({ 249,745,108,148 }, 0.5f);
 				kick2.loop = false;
 			}
+
 			//punch
 			{
 				punch2.PushBack({ 27, 451, 87, 168 }, 0.5f);
@@ -577,7 +600,21 @@ ModulePlayer2::ModulePlayer2()
 				crouch_punch2.loop = false;
 
 			}
-			//hit
+			//en garde
+			{
+				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 152,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 275,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 399,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 526,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 654,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 778,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 903,901,119,126 }, 0.2f);
+				en_garde2.PushBack({ 1027,901,119,126 }, 0.2f);
+				en_garde2.loop = false;
+			}
+
+			//hit 
 			{
 				hit2.PushBack({ 28,1227,127,156 }, 0.3f);//1
 				hit2.PushBack({ 162,1227,127,156 }, 0.3f);
@@ -590,8 +627,10 @@ ModulePlayer2::ModulePlayer2()
 				hit2.PushBack({ 296,1227,127,156 }, 0.3f);
 				hit2.loop = false;
 			}
+
 			//special attack
 			{
+
 				specialattack2.PushBack({ 34, 1395, 73, 170 }, 0.1f);//1
 				specialattack2.PushBack({ 160, 1395, 73, 170 }, 0.1f);
 				specialattack2.PushBack({ 272, 1395, 73, 170 }, 0.1f);
@@ -618,17 +657,36 @@ ModulePlayer2::ModulePlayer2()
 				specialattack2.PushBack({ 679, 1574, 62, 94 }, 0.05f);//24
 				specialattack2.PushBack({ 795, 1574, 88, 121 }, 0.01f);//25
 				specialattack2.loop = false;
+
 			}
 
-			//jump_punch
+			//win animation
+			{
+				win2.PushBack({ 40, 1711, 110, 117 }, 0.1f);
+				win2.PushBack({ 181, 1711, 110, 117 }, 0.1f);
+				win2.PushBack({ 332, 1711, 110, 117 }, 0.1f);
+				win2.PushBack({ 479, 1711, 110, 118 }, 0.1f);
+				win2.PushBack({ 620, 1711, 110, 118 }, 0.1f);
+				win2.PushBack({ 759, 1711, 110, 118 }, 0.1f);
+				win2.PushBack({ 896, 1711, 110, 116 }, 0.1f);
+				win2.PushBack({ 1032, 1711, 110, 116 }, 0.1f);
+				win2.PushBack({ 1170, 1711, 110, 116 }, 0.1f);
+				win2.PushBack({ 1303, 1711, 110, 120 }, 0.1f);
+				win2.PushBack({ 1433, 1711, 110, 120 }, 0.1f);
+				win2.PushBack({ 1558, 1711, 110, 120 }, 0.1f);
+				win2.loop = true;
+			}
+
+			//jump punch
+
 			{
 				jump_punch2.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
 				jump_punch2.PushBack({ 956, 635, 115, 112 }, 0.3f);
-				jump_punch2.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_punch2.PushBack({ 1087, 635, 115, 112 }, 0.3f);
 				jump_punch2.PushBack({ 1227, 619, 108, 136 }, 0.3f);
-				jump_punch2.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_punch2.PushBack({ 1355, 619, 108, 136 }, 0.3f);
 				jump_punch2.PushBack({ 1487, 619, 108, 136 }, 0.3f);
-				jump_punch2.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_punch2.PushBack({ 1611, 621, 125, 130 }, 0.3f);
 				jump_punch2.PushBack({ 1766, 619, 125, 130 }, 0.3f);
 				jump_punch2.PushBack({ 1914, 619, 125, 130 }, 0.3f);
 				jump_punch2.PushBack({ 1443, 764, 119, 130 }, 0.3f);
@@ -636,23 +694,7 @@ ModulePlayer2::ModulePlayer2()
 				jump_punch2.PushBack({ 1750, 764, 119, 130 }, 0.3f);
 				jump_punch2.loop = false;
 			}
-			//jump heavy punch
-			{
-				jump_heavy_punch2.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
-				jump_heavy_punch2.PushBack({ 956, 635, 115, 112 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1089, 635, 115, 112 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1227, 619, 108, 136 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1255, 619, 108, 136 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1487, 619, 108, 136 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1619, 621, 125, 130 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1766, 619, 125, 130 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1914, 619, 125, 130 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1443, 764, 119, 130 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1586, 764, 119, 130 }, 0.3f);
-				jump_heavy_punch2.PushBack({ 1750, 764, 119, 130 }, 0.3f);
-				jump_heavy_punch2.loop = false;
-			}
-			//jump_kick
+			//jump kick
 			{
 				jump_kick2.PushBack({ 30, 1831, 111, 104 }, 0.3f);
 				jump_kick2.PushBack({ 164, 1831, 111, 104 }, 0.3f);
@@ -665,50 +707,7 @@ ModulePlayer2::ModulePlayer2()
 				jump_kick2.PushBack({ 1112, 1827, 133, 124 }, 0.3f);
 				jump_kick2.loop = false;
 			}
-			//jump heavy kick
-			/*{
-				jump_heavy_kick2.PushBack({ 30, 1831, 111, 104 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 164, 1831, 111, 104 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 313, 1831, 111, 104 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 466, 1831, 132, 110 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 625, 1831, 132, 110 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 790, 1831, 133, 125 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 949, 1831, 133, 125 }, 0.3f);
-				jump_heavy_kick2.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
-				jump_heavy_kick2.loop = false;
-			}*/
-
-			//win animation
-			{
-				win2.PushBack({ 39, 1711, 111, 117 }, 0.1f);
-				win2.PushBack({ 180, 1711, 111, 117 }, 0.1f);
-				win2.PushBack({ 331, 1711, 111, 117 }, 0.1f);
-				win2.PushBack({ 478, 1711, 111, 118 }, 0.1f);
-				win2.PushBack({ 618, 1711, 111, 118 }, 0.1f);
-				win2.PushBack({ 757, 1711, 111, 118 }, 0.1f);
-				win2.PushBack({ 895, 1711, 111, 116 }, 0.1f);
-				win2.PushBack({ 1031, 1711, 111, 116 }, 0.1f);
-				win2.PushBack({ 1171, 1711, 111, 116 }, 0.1f);
-				win2.PushBack({ 1302, 1711, 111, 120 }, 0.1f);
-				win2.PushBack({ 1432, 1711, 111, 120 }, 0.1f);
-				win2.PushBack({ 1556, 1711, 111, 120 }, 0.1f);
-				win2.loop = true;
-			}
-
-			//en garde
-			{
-				en_garde2.PushBack({ 28,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 152,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 275,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 399,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 526,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 654,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 778,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 903,901,119,126 }, 0.2f);
-				en_garde2.PushBack({ 1027,901,119,126 }, 0.2f);
-				en_garde2.loop = false;
-			}
+			
 			//heavy punch
 			{
 				heavy_punch2.PushBack({ 34, 1948, 105, 95 }, 0.5f);
@@ -736,6 +735,24 @@ ModulePlayer2::ModulePlayer2()
 				heavy_punch2.PushBack({ 275, 1948, 105, 95 }, 0.5f);
 				heavy_punch2.loop = false;
 			}
+
+			//jump heavy punch
+			{
+				jump_heavy_punch2.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
+				jump_heavy_punch2.PushBack({ 956, 635, 115, 112 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1227, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1487, 619, 108, 136 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1766, 619, 125, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1914, 619, 125, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1443, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1586, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch2.PushBack({ 1750, 764, 119, 130 }, 0.3f);
+				jump_heavy_punch2.loop = false;
+			}
+
 			//heavy kick
 			{
 				heavy_kick2.PushBack({ 1198, 917, 107, 111 }, 0.5f);//1
@@ -757,182 +774,145 @@ ModulePlayer2::ModulePlayer2()
 				heavy_kick2.PushBack({ 1412, 917, 107, 111 }, 0.5f);
 				heavy_kick2.loop = false;
 			}
+
+			//jump heavy kick
+			/*{
+				jump_heavy_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
+				jump_heavy_kick.PushBack({ 466, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 625, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
+				jump_heavy_kick.PushBack({ 790, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_heavy_kick.loop = false;
+			}*/
 			//die
 			{
-					die2.PushBack({ 45,746,127,156 }, 0.1f);//1
-					die2.PushBack({ 172,746,127,156 }, 0.1f);
-					die2.PushBack({ 300,746,127,156 }, 0.1f);
-					die2.PushBack({ 433,779,131,123 }, 0.1f);//4
-					die2.PushBack({ 566,779,131,123 }, 0.1f);
-					die2.PushBack({ 695,779,131,123 }, 0.1f);
-					die2.PushBack({ 824,826,120,76 }, 0.1f);//1
-					die2.PushBack({ 945,826,120,76 }, 0.1f);
-					die2.PushBack({ 1068,826,120,76 }, 0.1f);
-					die2.PushBack({ 433,779,131,123 }, 0.1f);//4
-					die2.PushBack({ 566,779,131,123 }, 0.1f);
-					die2.PushBack({ 695,779,131,123 }, 0.1f);
-					die2.PushBack({ 1586,846,160,56 }, 0.1f);//1
-					die2.PushBack({ 1751,846,160,56 }, 0.1f);
-					die2.PushBack({ 1877,909,160,56 }, 0.1f);
-					die2.loop = false;
+				die2.PushBack({ 45,746,127,156 }, 0.1f);//1
+				die2.PushBack({ 172,746,127,156 }, 0.1f);
+				die2.PushBack({ 300,746,127,156 }, 0.1f);
+				die2.PushBack({ 433,779,131,123 }, 0.1f);//4
+				die2.PushBack({ 566,779,131,123 }, 0.1f);
+				die2.PushBack({ 695,779,131,123 }, 0.1f);
+				die2.PushBack({ 824,826,120,76 }, 0.1f);//1
+				die2.PushBack({ 945,826,120,76 }, 0.1f);
+				die2.PushBack({ 1068,826,120,76 }, 0.1f);
+				die2.PushBack({ 433,779,131,123 }, 0.1f);//4
+				die2.PushBack({ 566,779,131,123 }, 0.1f);
+				die2.PushBack({ 695,779,131,123 }, 0.1f);
+				die2.PushBack({ 1586,846,160,56 }, 0.1f);//1
+				die2.PushBack({ 1751,846,160,56 }, 0.1f);
+				die2.PushBack({ 1877,909,160,56 }, 0.1f);
+				die2.loop = false;
 			}
 
 			//dash forward
 			{
-				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.2f);
-				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.2f);
-				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.2f);
-				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.2f);
-				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.2f);
-				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.2f);
-				dash_forward2.PushBack({ 761, 403, 117, 130 }, 0.2f);
-				dash_forward2.PushBack({ 877, 403, 117, 130 }, 0.2f);
-				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.2f);
-				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.2f);
-				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.2f);
-				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.2f);
-				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.2f);
-				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.2f);
+				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.3f);
+				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.3f);
+				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.3f);
+				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.3f);
+				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.3f);
+				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.3f);
+				dash_forward2.PushBack({ 761, 403, 117, 130 }, 0.3f);
+				dash_forward2.PushBack({ 877, 403, 117, 130 }, 0.3f);
+				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.3f);
+				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.3f);
+				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.3f);
+				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.3f);
+				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.3f);
+				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.3f);
 				dash_forward2.loop = false;
 			}
 
 
 			//dash backward
+
 			{
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
-				dash_backward2.PushBack({ 46, 579, 107, 156 }, 0.2f);
-				dash_backward2.PushBack({ 154, 579, 107, 156 }, 0.2f);
-				dash_backward2.PushBack({ 261, 579, 107, 156 }, 0.2f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.3f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.3f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.3f);
+				dash_backward2.PushBack({ 46, 579, 107, 156 }, 0.3f);
+				dash_backward2.PushBack({ 154, 579, 107, 156 }, 0.3f);
+				dash_backward2.PushBack({ 261, 579, 107, 156 }, 0.3f);
 				dash_backward2.loop = false;
 			}
 
-			//grab animation
-			{
-				grab2.PushBack({ 46, 1517, 133, 225 }, 0.3f);
-				grab2.PushBack({ 179, 1517, 133, 225 }, 0.3f);
-				grab2.PushBack({ 314, 1517, 133, 225 }, 0.3f);
-				grab2.PushBack({ 448, 1517, 135, 225 }, 0.3f);
-				grab2.PushBack({ 583, 1517, 135, 225 }, 0.3f);
-				grab2.PushBack({ 719, 1517, 135, 225 }, 0.3f);
-				grab2.PushBack({ 855, 1517, 172, 225 }, 0.3f);
-				grab2.PushBack({ 1029, 1517, 172, 225 }, 0.3f);
-				grab2.PushBack({ 1201, 1517, 172, 225 }, 0.3f);
-				grab2.PushBack({ 1374, 1517, 157, 225 }, 0.3f);
-				grab2.PushBack({ 1530, 1517, 157, 225 }, 0.3f);
-				grab2.PushBack({ 1685, 1517, 157, 225 }, 0.3f);
-				grab2.PushBack({ 1820, 1517, 81, 225 }, 0.3f);//red
-				grab2.PushBack({ 1910, 1517, 81, 225 }, 0.3f);
-				grab2.PushBack({ 1910, 1517, 81, 225 }, 0.3f);
-				grab2.PushBack({ 1910, 1517, 81, 225 }, 0.3f);
-				grab2.PushBack({ 364, 1750, 118, 225 }, 0.3f);
-				grab2.PushBack({ 482, 1750, 118, 225 }, 0.3f);
-				grab2.PushBack({ 600, 1750, 118, 225 }, 0.3f);
-				grab2.PushBack({ 718, 1750, 86, 225 }, 0.3f);
-				grab2.PushBack({ 806, 1750, 86, 225 }, 0.3f);
-				grab2.PushBack({ 893, 1750, 86, 225 }, 0.3f);
-				grab2.PushBack({ 979, 1750, 129, 225 }, 0.3f);
-				grab2.PushBack({ 1108, 1750, 129, 225 }, 0.3f);
-				grab2.PushBack({ 1237, 1750, 129, 225 }, 0.3f);
-				grab2.PushBack({ 1367, 1750, 107, 225 }, 0.3f);
-				grab2.PushBack({ 1473, 1750, 107, 225 }, 0.3f);
-				grab2.PushBack({ 1581, 1750, 107, 225 }, 0.3f);
-				grab2.PushBack({ 1688, 1750, 106, 225 }, 0.3f);
-				grab2.PushBack({ 1795, 1750, 106, 225 }, 0.3f);
-				grab2.PushBack({ 1901, 1750, 106, 225 }, 0.3f);
-				grab2.loop = false;
-			}
-
-
-			//grabbed animation
-
-			{
-				grabbed2.PushBack({ 108, 0, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 250, 0, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 382, 0, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 518, 0, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 663, 0, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 799, 0, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 928, 0, 128, 157 }, 0.15f);
-				grabbed2.PushBack({ 1082, 0, 128, 157 }, 0.15f);
-				grabbed2.PushBack({ 1220, 0, 128, 157 }, 0.15f);
-				grabbed2.PushBack({ 1355, 0, 173, 157 }, 0.15f);
-				grabbed2.PushBack({ 1538, 0, 173, 157 }, 0.15f);
-				grabbed2.PushBack({ 1724, 0, 173, 157 }, 0.15f);
-				grabbed2.PushBack({ 86, 205, 131, 157 }, 0.15f);
-				grabbed2.PushBack({ 242, 205, 131, 157 }, 0.15f);
-				grabbed2.PushBack({ 390, 205, 131, 157 }, 0.15f);
-				grabbed2.PushBack({ 559, 205, 117, 157 }, 0.15f);
-				grabbed2.PushBack({ 709, 205, 117, 157 }, 0.15f);
-				grabbed2.PushBack({ 850, 205, 117, 157 }, 0.15f);
-				grabbed2.PushBack({ 1007, 205, 160, 157 }, 0.15f);
-				grabbed2.PushBack({ 1211, 205, 160, 157 }, 0.15f);
-				grabbed2.PushBack({ 1416, 205, 160, 157 }, 0.15f);
-				grabbed2.PushBack({ 1591, 205, 117, 157 }, 0.15f);
-				grabbed2.PushBack({ 1733, 205, 117, 157 }, 0.15f);
-				grabbed2.PushBack({ 1879, 205, 117, 157 }, 0.15f);
-				grabbed2.PushBack({ 734, 582, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 866, 582, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 1011, 582, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 1173, 582, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 1313, 582, 107, 157 }, 0.15f);
-				grabbed2.PushBack({ 1456, 582, 107, 157 }, 0.15f);
-				grabbed2.loop = false;
-			}
+			// */
 		}
 	}
 }
 
-ModulePlayer2::~ModulePlayer2() {}
+ModulePlayer::~ModulePlayer() {}
 
+// Load assets
 bool ModulePlayer2::Start()
 {
 	bool ret = true;
-	LOG("Loading player 2\n");
-	position.x = initial_position.x = shadow_x = 305;
+	LOG("Loading player 12\n");
+	initial_position.x = position.x = shadow_x = 25;
 	position.y = initial_position.y = 215;
 	lposition = position;
+	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
 	spritesheet1_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2_1.png");
 	spritesheet2_2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2_2.png");
 	attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_attack.wav");
 	kick_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/common/light_kick.wav");
 	twister_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Haohmaru/twister.wav");
+	//hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Haohmaru/Hit_1.wav");
 	hit_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Wan-Fu/Hit_1.wav");
-	special_attack_fx = App->audio->LoadFX("Assets/Audio/FX/Characters/Wan-Fu/special_attack.wav");
+	special_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Wan-Fu/special_attack.wav");
+	App->ui->player1_point = 0;
+	App->ui->player2_point = 0;
 	state2 = IDLE2;
-	god = false;
-	life = 100;
 	current_animation = &idle2;
+	inputs[0] = ' ';
 	if (!collider_player_2_up)
-		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
+		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->player);
 	if (!collider_player_2_down)
-		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER_2, (Module*)App->player2);
-	App->ui->Enable();
+		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER, (Module*)App->player);
 	return ret;
+}
+
+bool ModulePlayer2::CleanUp() {
+	LOG("Unloading player\n");
+	App->textures->Unload(player2_textures);
+	App->audio->UnLoadFx(attack_fx);
+	App->audio->UnLoadFx(kick_fx);
+	App->audio->UnLoadFx(hit_fx);
+	App->audio->UnLoadFx(twister_fx);
+	collider_player_2_up = nullptr;
+	collider_player_2_mid = nullptr;
+	collider_player_2_down = nullptr;
+	collider_player_2_attack = nullptr;
+	return true;
 }
 
 update_status ModulePlayer2::PreUpdate()
 {
 	if (!App->is_paused) {
 		if (controls) {
-			player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTX) <= -10000;
-			player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
-			player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
-			player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_UP] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_2, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
-			player_input2.pressing_H = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_2] == KEY_DOWN;
-			player_input2.pressing_P = App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN;
-			player_input2.holding_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_REPEAT || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_REPEAT;
-
+			player_input2.pressing_left = App->input->keyboard[SDL_SCANCODE_A] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) <= -10000;
+			player_input2.pressing_right = App->input->keyboard[SDL_SCANCODE_D] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTX) >= 10000;
+			player_input2.pressing_down = App->input->keyboard[SDL_SCANCODE_S] == KEY_REPEAT || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) >= 10000;
+			player_input2.pressing_up = App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller_player_1, SDL_CONTROLLER_AXIS_LEFTY) <= -10000;
+			player_input2.pressing_H = App->input->keyboard[SDL_SCANCODE_H] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
+			player_input2.pressing_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_1] == KEY_DOWN;
+			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_1] == KEY_DOWN;
+			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_1] == KEY_DOWN;
+			player_input2.pressing_P = App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN; // || App->input->game_pad[SDL_CONTROLLER_BUTTON_X][GAME_PAD_1] == KEY_DOWN;
 			if (player_input2.pressing_left && player_input2.pressing_right) {
 				player_input2.pressing_left = false;
 				player_input2.pressing_right = false;
 			}
 		}
-		introduceInputs(); //For special attack
+		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK) && (collider_player_2_attack != nullptr))
+		{
+			collider_player_2_attack->to_delete = true;
+			collider_player_2_attack = nullptr;
+		}
 		if ((!controls) && (state2 != EN_GARDE2))
 		{
 			state2 = IDLE2;
@@ -941,783 +921,747 @@ update_status ModulePlayer2::PreUpdate()
 		{
 			state2 = JUMP_NEUTRAL2;
 		}
-		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
-		{
-			collider_player_2_attack->to_delete = true;
-			collider_player_2_attack = nullptr;
-		}
 		if (life <= 1)
 		{
 			state2 = DIE2;
 		}
-		if (state2 == IDLE2) {
-			if (player_input2.pressing_left)
-				state2 = FORWARD2;
-			if (player_input2.pressing_right)
-				state2 = BACKWARD2;
-			if (player_input2.pressing_K) {
-				hit_done++;
-				state2 = KICK2;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_H) {
-				hit_done++;
-				state2 = PUNCH2;
-				App->audio->PlayFX(attack_fx);
-			}
-			if (player_input2.pressing_up)
-				state2 = JUMP_NEUTRAL2;
-			if (player_input2.pressing_down)
-				state2 = CROUCH_DOWN2;
-			if (player_input2.pressing_P) {
-				//This should only be enabled for development
+		introduceInputs(); //For special attack
+		//states 
+		{
+			if (state2 == IDLE2) {
+				if (player_input2.pressing_left)
+					state2 = BACKWARD2;
+				if (player_input2.pressing_right)
+					state2 = FORWARD2;
+				if (player_input2.pressing_H) {
+					state2 = PUNCH2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_J) {
+					state2 = HEAVY_PUNCH2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_K) {
+					state2 = KICK2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_L) {
+					state2 = HEAVY_KICK2;
+					hit_done++;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (player_input2.pressing_P) {
+					//This should only be enabled for development
 
-				//hit_done++;
-				//App->audio->PlayFX(special_attack_fx);
-				//state2 = SPECIAL_ATTACK_2;
+					//App->audio->PlayFX(twister_fx);
+					//App->audio->PlayFX(special_attack_fx);
+					//hit_done++;
+					//state = TWISTER;
+					//state = SPECIAL_ATTACK; 
+					//App->render->StartCameraShake(1200, 2);
+					//App->render->StartSlowdown(750, 20);
+				}
+				if (player_input2.pressing_up)
+					state2 = JUMP_NEUTRAL2;
+				if (player_input2.pressing_down)
+					state2 = CROUCH_DOWN2;
 			}
-			if (player_input2.pressing_J) {
-				state2 = HEAVY_PUNCH2;
-				hit_done++;
-				App->audio->PlayFX(attack_fx);
+			if (state2 == BACKWARD2) {
+				if (!player_input2.pressing_left)
+					state2 = IDLE2;
+				if (player_input2.pressing_H) {
+					state2 = PUNCH2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_J) {
+					state2 = HEAVY_PUNCH2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_K) {
+					state2 = KICK2;
+					hit_done++;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (player_input2.pressing_L) {
+					state2 = HEAVY_KICK2;
+					hit_done++;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (player_input2.pressing_up)
+					state2 = JUMP_BACKWARD2;
 			}
-			if (player_input2.pressing_L) {
-				state2 = HEAVY_KICK2;
-				hit_done++;
-				App->audio->PlayFX(kick_fx);
-			}
-		}
-		if (state2 == BACKWARD2) {
-			if (!player_input2.pressing_right)
-				state2 = IDLE2;
-			if (player_input2.pressing_H) {
-				hit_done++;
-				state2 = PUNCH2;
-			}
-
-			if (player_input2.pressing_K) {
-				hit_done++;
-				state2 = KICK2;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_J) {
-				state2 = HEAVY_PUNCH2;
-				hit_done++;
-				App->audio->PlayFX(attack_fx);
-			}
-			if (player_input2.pressing_L) {
-				state2 = HEAVY_KICK2;
-				hit_done++;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_up)
-				state2 = JUMP_BACKWARD2;
-		}
-		if (state2 == FORWARD2) {
-			if (!player_input2.pressing_left)
-				state2 = IDLE2;
-			if (player_input2.pressing_H) {
-				hit_done++;
-				state2 = PUNCH2;
-			}
-			if (player_input2.pressing_J) {
-				state2 = HEAVY_PUNCH2;
-				hit_done++;
-				App->audio->PlayFX(attack_fx);
-			}
-			if (player_input2.pressing_L) {
-				state2 = HEAVY_KICK2;
-				hit_done++;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_K) {
-				hit_done++;
-				state2 = KICK2;
-			}
-
-			if (player_input2.pressing_up)
-				state2 = JUMP_FORWARD2;
-		}
-		if (state2 == DASH_BACKWARD2) {
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				dash_backward2.Reset();
-			}
-		}
-		if (state2 == DASH_FORWARD2) {
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				dash_forward2.Reset();
-			}
-		}
-		if (state2 == KICK2) {
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				kick2.Reset();
-				if (collider_player_2_mid != nullptr)
-				{
-					collider_player_2_mid->to_delete = true;
+			if (state2 == FORWARD2) {
+				if (!player_input2.pressing_right)
+					state2 = IDLE2;
+				if (player_input2.pressing_H) {
+					state2 = PUNCH2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_J) {
+					state2 = HEAVY_PUNCH2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_K) {
+					state2 = KICK2;
+					hit_done++;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_L) {
+					state2 = HEAVY_KICK2;
+					hit_done++;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (player_input2.pressing_up)
+					state2 = JUMP_FORWARD2;
+				}
+			if (state2 == DASH_BACKWARD2) {
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					dash_backward2.Reset();
 				}
 			}
-		}
-		if (state2 == PUNCH2) {
-			newInput('h'); //If I delete this, special attack doesn't work
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				punch2.Reset();
+			if (state2 == DASH_FORWARD) {
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					dash_forward2.Reset();
+				}
 			}
-		}
-		if (state2 == JUMP_NEUTRAL2)
-		{
-			direction_x = 0;
-			if (player_input2.pressing_H) {
-				state2 = JUMP_PUNCH2;
-				App->audio->PlayFX(attack_fx);
+			if (state2 == KICK2) {
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					kick2.Reset();
+					if (collider_player_2_mid != nullptr)
+					{
+						collider_player_2_mid->to_delete = true;
+						collider_player_2_mid = nullptr;
+					}
+				}
 			}
-			if (player_input2.pressing_J)
+			if (state2 == PUNCH2) {
+				newInput('c'); //If I delete this, special attack doesn't work
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					punch2.Reset();
+				}
+			}
+			if (state2 == JUMP_NEUTRAL2)
 			{
-				state2 = JUMP_HEAVY_PUNCH2;
-				App->audio->PlayFX(attack_fx);
+				direction_x = 0;
+				if (player_input2.pressing_H) {
+					//hit_done++;
+					state2 = JUMP_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_J)
+				{
+					state2 = JUMP_HEAVY_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_K) {
+					state2 = JUMP_KICK2;
+					App->audio->PlayFX(kick_fx);
+					//hit_done++;
+				}
+				if (player_input2.pressing_L)
+				{
+					state2 = JUMP_HEAVY_KICK2;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (player_input2.pressing_left && mult == 1)
+					state2 = JUMP_BACKWARD2;
+				if (player_input2.pressing_right && mult == 1)
+					state2 = JUMP_FORWARD2;
+
+				if (current_animation->Finished())
+				{
+					state2 = IDLE2;
+					jump_neutral2.Reset();
+				}
 			}
-			if (player_input2.pressing_K) {
-				state2 = JUMP_KICK2;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_L)
+			if (state2 == JUMP_FORWARD2)
 			{
-				state2 = JUMP_HEAVY_KICK2;
-				App->audio->PlayFX(kick_fx);
+				direction_x = 1;
+				if (player_input2.pressing_H) {
+					state2 = JUMP_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+					hit_done++;
+				}
+				if (player_input2.pressing_J)
+				{
+					state2 = JUMP_HEAVY_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+					hit_done++;
+				}
+				if (player_input2.pressing_K) {
+					state2 = JUMP_KICK2;
+					App->audio->PlayFX(kick_fx);
+					hit_done++;
+				}
+				if (player_input2.pressing_L)
+				{
+					state2 = JUMP_HEAVY_KICK2;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (current_animation->Finished())
+				{
+					state2 = IDLE2;
+					jump_forward2.Reset();
+				}
 			}
-			if (player_input2.pressing_right && mult == 1)
-				state2 = JUMP_BACKWARD2;
-			if (player_input2.pressing_left && mult == 1)
-				state2 = JUMP_FORWARD2;
-			if (current_animation->Finished())
+			if (state2 == JUMP_BACKWARD2)
 			{
-				state2 = IDLE2;
-				jump_neutral2.Reset();
+				direction_x = -1;
+				if (player_input2.pressing_H) {
+					//hit_done++;
+					state2 = JUMP_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_J)
+				{
+					state2 = JUMP_HEAVY_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_K) {
+					state2 = JUMP_KICK2;
+					App->audio->PlayFX(kick_fx);
+					//hit_done++;
+				}
+				if (player_input2.pressing_L)
+				{
+					state2 = JUMP_HEAVY_KICK2;
+					App->audio->PlayFX(kick_fx);
+				}
+				if (current_animation->Finished())
+				{
+					state2 = IDLE2;
+					jump_backward2.Reset();
+				}
 			}
-		}
-		if (state2 == JUMP_FORWARD2)
-		{
-			direction_x = 1;
-			if (player_input2.pressing_H) {
-				state2 = JUMP_PUNCH2;
-				App->audio->PlayFX(attack_fx);
+			if (state2 == JUMP_PUNCH2) {
+				if ((current_animation->Finished()) && (position.y == initial_position.y))
+				{
+					state2 = IDLE2;
+					jump_punch2.Reset();
+				}
 			}
-			if (player_input2.pressing_J)
+			if (state2 == JUMP_KICK2) {
+				if ((current_animation->Finished()) && (position.y == initial_position.y))
+				{
+					state2 = IDLE2;
+					jump_kick2.Reset();
+				}
+			}
+			if (state2 == CROUCH_DOWN2)
 			{
-				state2 = JUMP_HEAVY_PUNCH2;
-				App->audio->PlayFX(attack_fx);
+				if (!player_input2.pressing_down)
+				{
+					state2 = CROUCH_UP2;
+					crouch_down2.Reset();
+				}
+				if (player_input2.pressing_H) {
+					hit_done++;
+					state2 = CROUCH_PUNCH2;
+					App->audio->PlayFX(attack_fx);
+				}
+				if (player_input2.pressing_K) {
+					hit_done++;
+					state2 = CROUCH_KICK2;
+					App->audio->PlayFX(kick_fx);
+				}
 			}
-			if (player_input2.pressing_K) {
-				state2 = JUMP_KICK2;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_L)
+			if (state2 == CROUCH_UP2)
 			{
-				state2 = JUMP_HEAVY_KICK2;
-				App->audio->PlayFX(kick_fx);
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					crouch_up2.Reset();
+				}
 			}
-			if (current_animation->Finished())
+			if (state2 == CROUCH_KICK2) {
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					crouch_kick2.Reset();
+				}
+			}
+			if (state2 == CROUCH_PUNCH2) {
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					crouch_punch2.Reset();
+				}
+			}
+			if (state2 == HEAVY_PUNCH2)
 			{
-				state2 = IDLE2;
-				jump_forward2.Reset();
+				if (current_animation->Finished())
+				{
+					heavy_punch2.Reset();
+					state2 = IDLE2;
+				}
 			}
-		}
-		if (state2 == JUMP_BACKWARD2)
-		{
-			direction_x = -1;
-			if (player_input2.pressing_H) {
-				state2 = JUMP_PUNCH2;
-				App->audio->PlayFX(attack_fx);
-			}
-			if (player_input2.pressing_J)
+			if (state2 == JUMP_HEAVY_PUNCH)
 			{
-				state2 = JUMP_HEAVY_PUNCH2;
-				App->audio->PlayFX(attack_fx);
+				if ((current_animation->Finished()) && (position.y == initial_position.y))
+				{
+					state2 = IDLE2;
+					jump_heavy_punch2.Reset();
+				}
 			}
-			if (player_input2.pressing_K) {
-				state2 = JUMP_KICK2;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_L)
+			if (state2 == HEAVY_KICK)
 			{
-				state2 = JUMP_HEAVY_KICK2;
-				App->audio->PlayFX(kick_fx);
+				if (current_animation->Finished())
+				{
+					heavy_kick2.Reset();
+					state2 = IDLE2;
+				}
 			}
-			if (current_animation->Finished())
+			if (state2 == JUMP_HEAVY_KICK2)
 			{
-				state2 = IDLE2;
-				jump_backward2.Reset();
+				if ((current_animation->Finished()) && (position.y == initial_position.y))
+				{
+					state2 = IDLE2;
+					jump_heavy_kick2.Reset();
+				}
 			}
-		}
-		if (state2 == JUMP_PUNCH2) {
-			if ((current_animation->Finished())&&(position.y == initial_position.y))
-			{
-				state2 = IDLE2;
-				jump_punch2.Reset();
-			}
-		}
-		if (state2 == JUMP_HEAVY_PUNCH2) {
-			if ((current_animation->Finished()) && (position.y == initial_position.y))
-			{
-				state2 = IDLE2;
-				jump_heavy_punch2.Reset();
-			}
-		}
-		if (state2 == JUMP_KICK2) {
-			if((current_animation->Finished()) && (position.y == initial_position.y))
-			{
-				state2 = IDLE2;
-				jump_kick2.Reset();
-			}
-		}
-		if (state2 == JUMP_HEAVY_KICK2) {
-			if ((current_animation->Finished()) && (position.y == initial_position.y))
-			{
-				state2 = IDLE2;
-				jump_heavy_kick2.Reset();
-			}
-		}
-		if (state2 == CROUCH_DOWN2)
-		{
-			if (!player_input2.pressing_down)
-			{
-				state2 = CROUCH_UP2;
-				crouch_down2.Reset();
-			}
-			if (player_input2.pressing_K) {
-				hit_done++;
-				state2 = CROUCH_KICK2;
-				App->audio->PlayFX(kick_fx);
-			}
-			if (player_input2.pressing_H) {
-				hit_done++;
-				state2 = CROUCH_PUNCH2;
-				App->audio->PlayFX(attack_fx);
-			}
-		}
-		if (state2 == CROUCH_UP2)
-		{
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				crouch_up2.Reset();
-			}
-		}
-		if (state2 == TWISTER2)
-		{
-			if (current_animation->Finished())
-			{
-				hit_done++;
-				state2 = IDLE2;
-				twister2.Reset();
-				are_particles_created2 = false;
-			}
-		}
-		if (state2 == CROUCH_KICK2)
-		{
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				crouch_kick2.Reset();
-			}
-		}
-		if (state2 == CROUCH_PUNCH2) {
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				crouch_punch2.Reset();
-			}
-		}
-		if (state2 == HIT2) {
-			if (position.y < initial_position.y)
-			{
-				position.y++;
+			if (state2 == HIT2) {
+				if (position.y < initial_position.y)
+				{
+					position.y++;
 					if (flip == SDL_FLIP_HORIZONTAL)
 					{
-						position.x += speed/4;
+						position.x += speed / 4;
 					}
 					else
 					{
-						position.x -= speed/4;
+						position.x -= speed / 4;
 					}
+				}
+				if (current_animation->Finished()) {
+					state2 = IDLE2;
+					hit2.Reset();
+				}
+				if ((position.y == initial_position.y) && (lposition.y < initial_position.y))
+				{
+					state2 = IDLE2;
+					hit2.Reset();
+				}
 			}
-			if (current_animation->Finished()) {
-				state2 = IDLE2;
-				hit2.Reset();
-			}
-			if ((position.y == initial_position.y) && (lposition.y < initial_position.y))
+			if (state2 == SPECIAL_ATTACK)
 			{
-				state2 = IDLE2;
-				hit2.Reset();
+				if (current_animation->Finished())
+				{
+					specialattack2.Reset();
+					are_particles_created2 = false;
+					state2 = IDLE2;
+				}
 			}
-		}
-		if ((player_input2.pressing_F5)) {
-			god = !god;
-		}
-		if (state2 == WIN2)
-		{
-			if (current_animation->Finished())
+			if (state2 == TWISTER2)
 			{
-				state2 = IDLE2;
-				win2.Reset();
+				if (current_animation->Finished())
+				{
+					state2 = IDLE2;
+					twister2.Reset();
+					are_particles_created2 = false;
+				}
 			}
-		}
-		if (state2 == SPECIAL_ATTACK_2)
-		{
-			if (current_animation->Finished())
+			if (state2 == EN_GARDE2)
 			{
-				specialattack2.Reset();
-				are_particles_created2 = false;
-				state2 = IDLE2;
+				if (current_animation->Finished())
+				{
+					state2 = IDLE2;
+					en_garde2.Reset();
+				}
 			}
-		}
-		if (state2 == HEAVY_PUNCH2)
-		{
-			if (current_animation->Finished())
+			if (state2 == WIN2)
 			{
-				heavy_punch2.Reset();
-				state2 = IDLE2;
-			}
-		}
-		if (state2 == HEAVY_KICK2)
-		{
-			if (current_animation->Finished())
-			{
-				heavy_kick2.Reset();
-				state2 = IDLE2;
-			}
-		}
-		if (state2 == EN_GARDE2)
-		{
-			if (current_animation->Finished())
-			{
-				state2 = IDLE2;
-				en_garde2.Reset();
-			}
-		}
-		if (state2 == GRAB2)
-		{
-			if (current_animation->Finished())
-			{
-				state2 = IDLE2;
-				grab2.Reset();
-			}
-		}
-		if (state2 == GRABBED2)
-		{
-			if (current_animation->Finished())
-			{
-				state2 = IDLE2;
-				grabbed2.Reset();
+				if (current_animation->Finished())
+				{
+					state2 = IDLE2;
+					win2.Reset();
+				}
 			}
 		}
 	}
+	/*
+	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN) {
+		state = States::IDLE;
+		current_animation = &idle;
+		App->player2->state2 = States2::IDLE2;
+		App->player2->current_animation = &App->player2->idle2;
+	}
+	*/
 	return UPDATE_CONTINUE;
 }
+
 
 update_status ModulePlayer2::Update()
 {
 	lposition = position;
+	shadow_x = position.x;
+
 	if (!App->is_paused) {
-		switch (state2)
+
+		switch (state)
 		{
-		case IDLE2:
-			current_animation = &idle2;
-			position.y = lposition.y;
-			shadow_x = position.x;
+		case IDLE:
+			current_animation = &idle;
+			position.y = initial_position.y;
 			//haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				collider_player_2_up->SetPos(position.x + 15, position.y - 80);
-				collider_player_2_up->SetSize(30, 35);
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 10, position.y - 80);
+				collider_player_up->SetSize(30, 35);
 
-				collider_player_2_down->SetPos(position.x + 10, position.y - 45);
-				collider_player_2_down->SetSize(40, 45);
+				collider_player_down->SetPos(position.x - 15, position.y - 45);
+				collider_player_down->SetSize(40, 45);
 				shadow_x = position.x;
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 10, position.y - 80);
-					collider_player_2_up->SetSize(30, 35);
+					collider_player_up->SetPos(position.x + 15, position.y - 80);
+					collider_player_up->SetSize(30, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 15, position.y - 45);
-					collider_player_2_down->SetSize(40, 45);
+					collider_player_down->SetPos(position.x + 10, position.y - 45);
+					collider_player_down->SetSize(40, 45);
 				}
-			}
-			break;
-			*/
-			//wan-fu idle
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+			}*/
+			//Wan-fu Idle
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 43, position.y - 80);
-					collider_player_2_up->SetSize(38, 35);
+					collider_player_up->SetPos(position.x - 22, position.y - 80);
+					collider_player_up->SetSize(30, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 30, position.y - 45);
-					collider_player_2_down->SetSize(60, 45);
+					collider_player_down->SetPos(position.x - 30, position.y - 45);
+					collider_player_down->SetSize(40, 45);
 				}
 
 				shadow_x = position.x;
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 22, position.y - 80);
-					collider_player_2_up->SetSize(35, 35);
+					collider_player_up->SetPos(position.x + 43, position.y - 80);
+					collider_player_up->SetSize(38, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 30, position.y - 45);
-					collider_player_2_down->SetSize(60, 45);
+					collider_player_down->SetPos(position.x + 30, position.y - 45);
+					collider_player_down->SetSize(60, 45);
 				}
+				shadow_x = position.x + 23;
 			}
 			break;
-		case FORWARD2:
-			current_animation = &forward2;
-			position.x -= speed;
-			shadow_x = position.x;
-			checkDash();
-			//haohmaru
-			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x + 15, position.y - 85);
-			collider_player_2_up->SetSize(30, 40);
-
-			collider_player_2_down->SetPos(position.x + 10, position.y - 45);
-			collider_player_2_down->SetSize(35, 45);
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 10, position.y - 85);
-			collider_player_2_up->SetSize(30, 40);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x - 15, position.y - 45);
-			collider_player_2_down->SetSize(35, 45);
-			}
-			}
-			break;
-			*/
-			//wan-fu forward
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 30, position.y - 85);
-					collider_player_2_up->SetSize(40, 40);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 25, position.y - 45);
-					collider_player_2_down->SetSize(55, 45);
-				}
-			}
-			else {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
-					collider_player_2_up->SetSize(30, 40);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x - 25, position.y - 45);
-					collider_player_2_down->SetSize(50, 45);
-				}
-			}
-			break;
-		case BACKWARD2:
-			current_animation = &backward2;
-			shadow_x = position.x;
-			checkDash();
-			//haohmaru
-			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x + 25, position.y - 85);
-			collider_player_2_up->SetSize(35, 40);
-
-			collider_player_2_down->SetPos(position.x + 20, position.y - 45);
-			collider_player_2_down->SetSize(50, 45);
-			shadow_x = position.x;
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 25, position.y - 85);
-			collider_player_2_up->SetSize(35, 40);
-			}
-			if (collider_player_2_down != nullptr) {
-			collider_player_2_down->SetPos(position.x - 30, position.y - 45);
-			collider_player_2_down->SetSize(50, 45);
-			}
-			}
+		case FORWARD:
+			current_animation = &forward;
 			position.x += speed;
+			checkDash(1);
+			//haohmaru
+			/*
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 10, position.y - 85);
+				collider_player_up->SetSize(30, 40);
+
+				collider_player_down->SetPos(position.x - 15, position.y - 45);
+				collider_player_down->SetSize(35, 45);
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 15, position.y - 85);
+					collider_player_up->SetSize(30, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 10, position.y - 45);
+					collider_player_down->SetSize(35, 45);
+				}
+			}*/
+			//wan-fu Forward
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetSize(30, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(50, 45);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 30, position.y - 85);
+					collider_player_up->SetSize(40, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(55, 45);
+				}
+			}
 			break;
+		case BACKWARD:
+			current_animation = &backward;
+			shadow_x = position.x + 10;
+			checkDash(2);
+			//haohmaru
+			/*
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 25, position.y - 85);
+				collider_player_up->SetSize(35, 40);
+				collider_player_down->SetPos(position.x - 30, position.y - 45);
+				collider_player_down->SetSize(50, 45);
+				shadow_x = position.x;
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 25, position.y - 85);
+					collider_player_up->SetSize(35, 40);
+				}
+				if (collider_player_down != nullptr) {
+					collider_player_down->SetPos(position.x + 20, position.y - 45);
+					collider_player_down->SetSize(50, 45);
+				}
+			}
 			*/
 			//wan-fu backward
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 25, position.y - 85);
-					collider_player_2_up->SetSize(40, 40);
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetSize(35, 40);
 				}
-				if (collider_player_2_down != nullptr) {
-					collider_player_2_down->SetPos(position.x + 20, position.y - 45);
-					collider_player_2_down->SetSize(50, 45);
+				if (collider_player_down != nullptr) {
+					collider_player_down->SetPos(position.x - 20, position.y - 45);
+					collider_player_down->SetSize(50, 45);
 				}
 
 				shadow_x = position.x;
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
-					collider_player_2_up->SetSize(35, 40);
+					collider_player_up->SetPos(position.x + 25, position.y - 85);
+					collider_player_up->SetSize(40, 40);
 				}
-				if (collider_player_2_down != nullptr) {
-					collider_player_2_down->SetPos(position.x - 20, position.y - 45);
-					collider_player_2_down->SetSize(50, 45);
+				if (collider_player_down != nullptr) {
+					collider_player_down->SetPos(position.x + 20, position.y - 45);
+					collider_player_down->SetSize(50, 45);
 				}
 			}
-			position.x += speed;
+			position.x -= speed;
 			break;
 
-		case CROUCH_DOWN2:
-			current_animation = &crouch_down2;
-			shadow_x = position.x - 5;
+		case CROUCH_DOWN:
+			current_animation = &crouch_down;
+
+			shadow_x = position.x + 16;
 			//haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x + 20, position.y - 65);
-			collider_player_2_up->SetSize(35, 35);
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 15, position.y - 80);
+				collider_player_up->SetSize(35, 50);
 
-			collider_player_2_down->SetPos(position.x + 10, position.y - 30);
-			collider_player_2_down->SetSize(50, 30);
+				collider_player_down->SetPos(position.x - 20, position.y - 30);
+				collider_player_down->SetSize(50, 30);
 
-			collider_player_2_up->SetPos(position.x + 45, position.y - 65);
-			collider_player_2_up->SetSize(35, 35);
+				collider_player_up->SetPos(position.x - 40, position.y - 65);
+				collider_player_up->SetSize(35, 35);
 
-			collider_player_2_down->SetPos(position.x + 30, position.y - 30);
-			collider_player_2_down->SetSize(50, 30);
-			shadow_x = position.x + shadow_w / 3;
+				collider_player_down->SetPos(position.x - 40, position.y - 30);
+				collider_player_down->SetSize(50, 30);
+				shadow_x -= shadow_w / 3;
 			}
 			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 15, position.y - 80);
-			collider_player_2_up->SetSize(35, 50);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x - 20, position.y - 30);
-			collider_player_2_down->SetSize(50, 30);
-			}
-			if (collider_player_2_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
-			collider_player_2_up->SetPos(position.x - 40, position.y - 65);
-			collider_player_2_up->SetSize(35, 35);
-
-			collider_player_2_down->SetPos(position.x - 40, position.y - 30);
-			collider_player_2_down->SetSize(50, 30);
-			}
-			}
-			break;
-			*/
-			//Wan-fu crouch down
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 40, position.y - 85);
-					collider_player_2_up->SetSize(35, 55);
+					collider_player_up->SetPos(position.x + 20, position.y - 65);
+					collider_player_up->SetSize(35, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 20, position.y - 30);
-					collider_player_2_down->SetSize(70, 30);
+					collider_player_down->SetPos(position.x + 10, position.y - 30);
+					collider_player_down->SetSize(50, 30);
 				}
-				if (collider_player_2_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
-					collider_player_2_up->SetPos(position.x + 35, position.y - 75);
-					collider_player_2_up->SetSize(55, 45);
+				if (collider_player_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
+					collider_player_up->SetPos(position.x + 45, position.y - 65);
+					collider_player_up->SetSize(35, 35);
 
-					collider_player_2_down->SetPos(position.x + 30, position.y - 30);
-					collider_player_2_down->SetSize(60, 30);
+					collider_player_down->SetPos(position.x + 30, position.y - 30);
+					collider_player_down->SetSize(50, 30);
+				}
+			}*/
+			//wan-fu crouch down
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 23, position.y - 80);
+					collider_player_up->SetSize(35, 60);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 40, position.y - 30);
+					collider_player_down->SetSize(50, 30);
+				}
+				if (collider_player_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
+					collider_player_up->SetPos(position.x - 35, position.y - 75);
+					collider_player_up->SetSize(35, 35);
+
+					collider_player_down->SetPos(position.x - 35, position.y - 30);
+					collider_player_down->SetSize(50, 30);
 				}
 
-				shadow_x = position.x + shadow_w / 3;
+				shadow_x -= shadow_w / 3;
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 23, position.y - 80);
-					collider_player_2_up->SetSize(35, 60);
+					collider_player_up->SetPos(position.x + 40, position.y - 85);
+					collider_player_up->SetSize(35, 55);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 40, position.y - 30);
-					collider_player_2_down->SetSize(50, 30);
+					collider_player_down->SetPos(position.x + 20, position.y - 30);
+					collider_player_down->SetSize(70, 30);
 				}
-				if (collider_player_2_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
-					collider_player_2_up->SetPos(position.x - 35, position.y - 75);
-					collider_player_2_up->SetSize(55, 50);
+				if (collider_player_up != nullptr && current_animation->SeeCurrentFrame() > 2 && current_animation->SeeCurrentFrame() < 6) {
+					collider_player_up->SetPos(position.x + 35, position.y - 75);
+					collider_player_up->SetSize(55, 45);
 
-					collider_player_2_down->SetPos(position.x - 35, position.y - 30);
-					collider_player_2_down->SetSize(58, 30);
+					collider_player_down->SetPos(position.x + 30, position.y - 30);
+					collider_player_down->SetSize(60, 30);
 				}
 			}
 			break;
-		case CROUCH_UP2:
-			current_animation = &crouch_up2;
+		case CROUCH_UP:
+			current_animation = &crouch_up;
 			break;
-		case CROUCH_PUNCH2:
-			current_animation = &crouch_punch2;
-			shadow_x = position.x;
+		case CROUCH_KICK:
+			current_animation = &crouch_kick;
 			//haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x + 55, position.y - 45);
-			collider_player_2_up->SetSize(38, 35);
-
-			collider_player_2_down->SetPos(position.x + 15, position.y - 15);
-			collider_player_2_down->SetSize(60, 15);
-
-			if (collider_player_2_attack == nullptr)
-			{
-			collider_player_2_attack = App->collision->AddCollider({ position.x + 55, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-			}
-			shadow_x = position.x + shadow_w / 3;
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 40, position.y - 65);
-			collider_player_2_up->SetSize(35, 35);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x - 30, position.y - 30);
-			collider_player_2_down->SetSize(100, 30);
-			}
-			if (collider_player_2_attack == nullptr)
-			{
-			collider_player_2_attack = App->collision->AddCollider({ position.x - 70, position.y - 15,80,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-			}
-			}
-			break;
-			*/
-			//wan-fu crouch punch 
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 35, position.y - 80);
-					collider_player_2_up->SetSize(35, 50);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 5, position.y - 30);
-					collider_player_2_down->SetSize(70, 35);
-				}
-				if (collider_player_2_attack == nullptr)
-				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x + 55, position.y - 50,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr) {
+					collider_player_up->SetPos(position.x - 10, position.y - 55);
+					collider_player_up->SetSize(40, 35);
 				}
 
-				shadow_x = position.x + shadow_w / 3;
-			}
-			else {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x - 35, position.y - 80);
-					collider_player_2_up->SetSize(35, 50);
+				if (collider_player_down != nullptr) {
+					collider_player_down->SetPos(position.x - 30, position.y - 20);
+					collider_player_down->SetSize(75, 25);
 				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x - 5, position.y - 30);
-					collider_player_2_down->SetSize(70, 35);
-				}
-				if (collider_player_2_attack == nullptr)
-				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x - 55, position.y - 50,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-				}
-			}
-			break;
-		case CROUCH_KICK2:
-			current_animation = &crouch_kick2;
-			//haohmaru
-			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			if (collider_player_2_up != nullptr) {
-			collider_player_2_up->SetPos(position.x + 10, position.y - 55);
-			collider_player_2_up->SetSize(40, 35);
-			}
-			if (collider_player_2_down) {
-			collider_player_2_down->SetPos(position.x + 5, position.y - 20);
-			collider_player_2_down->SetSize(75, 25);
-			}
 
-			if (collider_player_2_attack == nullptr) {
-			collider_player_2_attack = App->collision->AddCollider({ position.x + 15, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-			collider_player_2_attack->SetSize(85, 15);
-			shadow_x = position.x;
-			}
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 10, position.y - 55);
-			collider_player_2_up->SetSize(40, 35);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x - 30, position.y - 20);
-			collider_player_2_down->SetSize(75, 25);
-			}
-			if (collider_player_2_attack == nullptr) {
-			collider_player_2_attack = App->collision->AddCollider({ position.x - 50, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-			collider_player_2_attack->SetSize(85, 15);
-			}
-			}
-			break;
-			*/
-			//Wan-fu crouch kick
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 30, position.y - 70);
-					collider_player_2_up->SetSize(40, 50);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 30, position.y - 20);
-					collider_player_2_down->SetSize(40, 25);
-				}
-				if (collider_player_2_attack == nullptr) {
-					collider_player_2_attack = App->collision->AddCollider({ position.x + 25, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetSize(85, 15);
+				if (collider_player_attack == nullptr) {
+					collider_player_attack = App->collision->AddCollider({ position.x - 50, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetSize(85, 15);
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 30, position.y - 70);
-					collider_player_2_up->SetSize(40, 50);
+					collider_player_up->SetPos(position.x + 10, position.y - 55);
+					collider_player_up->SetSize(40, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 30, position.y - 20);
-					collider_player_2_down->SetSize(40, 25);
+					collider_player_down->SetPos(position.x + 5, position.y - 20);
+					collider_player_down->SetSize(75, 25);
 				}
-				if (collider_player_2_attack == nullptr) {
-					collider_player_2_attack = App->collision->AddCollider({ position.x - 55, position.y - 10,100,20 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetSize(85, 15);
+				if (collider_player_attack == nullptr) {
+					collider_player_attack = App->collision->AddCollider({ position.x + 15, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetSize(85, 15);
+				}
+			}*/
+			//wan-fu crouch kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 30, position.y - 70);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 30, position.y - 20);
+					collider_player_down->SetSize(40, 25);
+				}
+				if (collider_player_attack == nullptr) {
+					collider_player_attack = App->collision->AddCollider({ position.x - 55, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetSize(85, 15);
 				}
 			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 30, position.y - 70);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 30, position.y - 20);
+					collider_player_down->SetSize(40, 25);
+				}
+				if (collider_player_attack == nullptr) {
+					collider_player_attack = App->collision->AddCollider({ position.x + 25, position.y - 10,100,20 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetSize(85, 15);
+				}
+				shadow_x = position.x + 30;
+			}
 			break;
-		case JUMP_NEUTRAL2:
-			current_animation = &jump_neutral2;
+		case CROUCH_PUNCH:
+			current_animation = &crouch_punch;
+			shadow_x = position.x + 20;
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 20, position.y - 80);
+					collider_player_up->SetSize(35, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 30);
+					collider_player_down->SetSize(70, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x - 50, position.y - 50,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				}
+
+				shadow_x -= shadow_w / 3;
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_up->SetSize(35, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 5, position.y - 30);
+					collider_player_down->SetSize(70, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x + 55, position.y - 50,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+				}
+			}
+
+			break;
+		case JUMP_NEUTRAL:
+			current_animation = &jump_neutral;
 			position.y -= speed * 2 * mult;
 
 			if (position.y <= 100) {
@@ -1726,8 +1670,8 @@ update_status ModulePlayer2::Update()
 			else if (position.y == initial_position.y)
 			{
 				mult = 1;
-				jump_neutral2.Reset();
-				state2 = IDLE2;
+				jump_neutral.Reset();
+				state = IDLE;
 				App->render->StartCameraShake(400, 2);
 			}
 			else if (position.y > initial_position.y)
@@ -1737,61 +1681,143 @@ update_status ModulePlayer2::Update()
 			}
 			//haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x, position.y - 90);
-			collider_player_2_up->SetSize(35, 35);
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x, position.y - 90);
+				collider_player_up->SetSize(35, 35);
 
-			collider_player_2_down->SetPos(position.x, position.y - 50);
-			collider_player_2_down->SetSize(50, 30);
-			shadow_x = position.x;
+				collider_player_down->SetPos(position.x - 12, position.y - 50);
+				collider_player_down->SetSize(50, 30);
 			}
 			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x, position.y - 90);
-			collider_player_2_up->SetSize(35, 35);
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x, position.y - 90);
+					collider_player_up->SetSize(35, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x, position.y - 50);
+					collider_player_down->SetSize(50, 30);
+				}
 			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x - 12, position.y - 50);
-			collider_player_2_down->SetSize(50, 30);
-			}
-			}
-			break;
 			*/
 			//wan-fu jump neutral
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 30, position.y - 90);
-					collider_player_2_up->SetSize(45, 35);
+					collider_player_up->SetPos(position.x - 30, position.y - 100);
+					collider_player_up->SetSize(35, 50);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 25, position.y - 50);
-					collider_player_2_down->SetSize(55, 35);
+					collider_player_down->SetPos(position.x - 40, position.y - 50);
+					collider_player_down->SetSize(50, 30);
 				}
-
-				shadow_x = position.x;
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x-30, position.y - 100);
-					collider_player_2_up->SetSize(35, 50);
+					collider_player_up->SetPos(position.x + 30, position.y - 90);
+					collider_player_up->SetSize(45, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 40, position.y - 50);
-					collider_player_2_down->SetSize(50, 30);
+					collider_player_down->SetPos(position.x + 25, position.y - 50);
+					collider_player_down->SetSize(55, 35);
 				}
 			}
 			break;
-		case JUMP_FORWARD2:
-			current_animation = &jump_forward2;
+		case JUMP_FORWARD:
+			current_animation = &jump_forward;
+			/*
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 20, position.y - 90);
+				collider_player_up->SetSize(40, 50);
 
+				collider_player_down->SetPos(position.x, position.y - 50);
+				collider_player_down->SetSize(30, 30);
+
+				if (current_animation->SeeCurrentFrame() > 5)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x - 20, position.y - 45);
+						collider_player_up->SetSize(45, 35);
+					}
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 15, position.y - 100);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 10, position.y - 60);
+					collider_player_down->SetSize(30, 30);
+				}
+				if (current_animation->SeeCurrentFrame() > 4)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 10, position.y - 55);
+						collider_player_up->SetSize(45, 35);
+					}
+				}
+			}
+			*/
+			//Wan-Fu Jump forward
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetSize(50, 35);
+				}
+				if (current_animation->SeeCurrentFrame() > 5)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x - 40, position.y - 75);
+						collider_player_up->SetSize(45, 35);
+
+						collider_player_down->SetPos(position.x - 35, position.y - 45);
+						collider_player_down->SetSize(50, 35);
+					}
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 1)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_down->SetSize(75, 30);
+					}
+				}
+			}
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed;
+			position.x += 1.25*speed;
 
 			if (position.y <= 85) {
 				mult = -1;
@@ -1799,106 +1825,17 @@ update_status ModulePlayer2::Update()
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
+				jump_forward.Reset();
 				mult = 1;
-				jump_forward2.Reset();
-				state2 = IDLE2;
-				App->render->StartCameraShake(500,2);
+				state = IDLE;
+				App->render->StartCameraShake(400, 2);
 			}
-			//haohmaru
-			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x + 15, position.y - 1000);
-			collider_player_2_up->SetSize(40, 50);
-
-			collider_player_2_down->SetPos(position.x + 10, position.y - 60);
-			collider_player_2_down->SetSize(30, 30);
-
-			if (current_animation->SeeCurrentFrame() > 4)
-			{
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x + 10, position.y - 55);
-			collider_player_2_up->SetSize(45, 35);
-			}
-			}
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 20, position.y - 90);
-			collider_player_2_up->SetSize(40, 50);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x, position.y - 50);
-			collider_player_2_down->SetSize(30, 30);
-			}
-			if (current_animation->SeeCurrentFrame() > 5)
-			{
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 20, position.y - 45);
-			collider_player_2_up->SetSize(45, 35);
-			}
-			}
-			}
-			*/
-			//wan-fu jump forward
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 35, position.y - 100);
-					collider_player_2_up->SetSize(50, 50);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 20, position.y - 50);
-					collider_player_2_down->SetSize(60, 40);
-				}
-				if (current_animation->SeeCurrentFrame() > 1)
-				{
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x + 40, position.y - 90);
-						collider_player_2_up->SetSize(60, 60);
-					}
-					if (collider_player_2_down != nullptr)
-					{
-						collider_player_2_down->SetPos(position.x + 20, position.y - 45);
-						collider_player_2_down->SetSize(75, 40);
-					}
-				}
-			}
-			else {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x - 25, position.y - 90);
-					collider_player_2_up->SetSize(40, 50);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x-35, position.y - 45);
-					collider_player_2_down->SetSize(50, 35);
-				}
-				if (current_animation->SeeCurrentFrame() > 5)
-				{
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x - 40, position.y - 75);
-						collider_player_2_up->SetSize(45, 35);
-
-						collider_player_2_down->SetPos(position.x - 35, position.y - 45);
-						collider_player_2_down->SetSize(50, 35);
-					}
-				}
-			}
-			shadow_x = position.x;
 			break;
-		case JUMP_BACKWARD2:
-			current_animation = &jump_backward2;
+		case JUMP_BACKWARD:
+			current_animation = &jump_backward;
 
 			position.y -= speed * 1.75 * mult;
-			position.x += 1.75*speed;
+			position.x -= 1.75*speed;
 
 			if (position.y <= 85) {
 				mult = -1;
@@ -1906,473 +1843,421 @@ update_status ModulePlayer2::Update()
 			else if (position.y == initial_position.y)
 			{
 				mult = 1;
-				jump_backward2.Reset();
-				state2 = IDLE2;
-				App->render->StartCameraShake(500, 2);
+				jump_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				jump_backward2.Reset();
-				state2 = IDLE2;
-				App->render->StartCameraShake(400, 2);
+				jump_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
 				mult = 1;
 			}
 			//haohmaru
 			/*
 			if (flip != SDL_FLIP_HORIZONTAL)
 			{
-			if (collider_player_2_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_up->SetPos(position.x, position.y - 90);
-			collider_player_2_up->SetSize(35, 35);
+			collider_player_up->SetPos(position.x, position.y - 90);
+			collider_player_up->SetSize(35, 35);
 			}
-			if (collider_player_2_down != nullptr)
+			if (collider_player_down != nullptr)
 			{
-			collider_player_2_down->SetPos(position.x, position.y - 50);
-			collider_player_2_down->SetSize(40, 30);
+			collider_player_down->SetPos(position.x, position.y - 50);
+			collider_player_down->SetSize(40, 30);
 			}
 			if (current_animation->SeeCurrentFrame() > 4) {
-			collider_player_2_up->SetPos(position.x + 20, position.y - 45);
-			collider_player_2_up->SetSize(35, 35);
+			collider_player_up->SetPos(position.x + 20, position.y - 45);
+			collider_player_up->SetSize(35, 35);
 			}
 			}
 			else {
-			if (collider_player_2_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_up->SetPos(position.x, position.y - 90);
-			collider_player_2_up->SetSize(35, 35);
+			collider_player_up->SetPos(position.x, position.y - 90);
+			collider_player_up->SetSize(35, 35);
 			}
-			if (collider_player_2_down != nullptr)
+			if (collider_player_down != nullptr)
 			{
-			collider_player_2_down->SetPos(position.x, position.y - 50);
-			collider_player_2_down->SetSize(40, 30);
+			collider_player_down->SetPos(position.x, position.y - 50);
+			collider_player_down->SetSize(40, 30);
 			}
 			if (current_animation->SeeCurrentFrame() > 4)
 			{
-			if (collider_player_2_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_up->SetPos(position.x - 20, position.y - 45);
-			collider_player_2_up->SetSize(35, 35);
+			collider_player_up->SetPos(position.x - 20, position.y - 45);
+			collider_player_up->SetSize(35, 35);
 			}
 			}
 			}
 			*/
-			//wan-fu jump backward
-			if (flip != SDL_FLIP_HORIZONTAL)
-			{
-				if (collider_player_2_up != nullptr)
+			//Wan-Fu Jump Backward
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 35, position.y - 100);
-					collider_player_2_up->SetSize(60, 50);
+					collider_player_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_up->SetSize(40, 50);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 20, position.y - 50);
-					collider_player_2_down->SetSize(50, 40);
-				}
-				if (current_animation->SeeCurrentFrame() > 1)
-				{
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x + 35, position.y - 90);
-						collider_player_2_up->SetSize(45, 60);
-					}
-					if (collider_player_2_down != nullptr)
-					{
-						collider_player_2_down->SetPos(position.x + 20, position.y - 45);
-						collider_player_2_down->SetSize(75, 30);
-					}
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetSize(50, 35);
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 25, position.y - 90);
-					collider_player_2_up->SetSize(40, 50);
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 35, position.y - 45);
-					collider_player_2_down->SetSize(50, 35);
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
 				}
-				if (current_animation->SeeCurrentFrame() > 5)
+				if (current_animation->SeeCurrentFrame() > 1)
 				{
-					if (collider_player_2_up != nullptr)
+					if (collider_player_up != nullptr)
 					{
-						collider_player_2_up->SetPos(position.x - 40, position.y - 75);
-						collider_player_2_up->SetSize(45, 35);
-
-						collider_player_2_down->SetPos(position.x - 35, position.y - 45);
-						collider_player_2_down->SetSize(50, 35);
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_down->SetSize(75, 30);
 					}
 				}
 			}
 			shadow_x = position.x;
 			break;
-			case JUMP_PUNCH2:
-				current_animation = &jump_punch2;
-				//Wan-Fu jump punch
-				if (flip != SDL_FLIP_HORIZONTAL) {
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x + 35, position.y - 80);
-						collider_player_2_up->SetSize(80, 35);
-					}
-					if (collider_player_2_down != nullptr)
-					{
-						collider_player_2_down->SetPos(position.x -25, position.y - 45);
-						collider_player_2_down->SetSize(60, 47);
-					}
-					if (collider_player_2_attack == nullptr)
-					{
-						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-						collider_player_2_attack->to_delete = false;
-						collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
-						collider_player_2_attack->SetSize(60, 20);
-					}
-					else
-					{
-						collider_player_2_attack->SetPos(position.x + 60, position.y - 70);
-					}
+		case JUMP_PUNCH:
+			current_animation = &jump_punch;
+			//Wan-Fu Jump Punch
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 65, position.y - 80);
+					collider_player_up->SetSize(80, 35);
 				}
-				else {
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x - 65, position.y - 80);
-						collider_player_2_up->SetSize(80, 35);
-					}
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_down->SetPos(position.x - 25, position.y - 45);
-						collider_player_2_down->SetSize(60, 47);
-					}
-					if (collider_player_2_attack == nullptr)
-					{
-						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-						collider_player_2_attack->to_delete = false;
-						collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
-						collider_player_2_attack->SetSize(60, 20);
-					}
-					else
-					{
-						collider_player_2_attack->SetPos(position.x - 60, position.y - 70);
-					}
+				if (collider_player_up != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
 				}
-				position.y -= speed * 1.75 * mult;
-				position.x += 1.25*speed*-direction_x;
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x - 60, position.y - 70);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_up->SetSize(80, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 60, position.y - 70);
+				}
+			}
 
-				if (position.y <= 100) {
-					mult = -1;
-				}
-				else if (position.y > initial_position.y)
-				{
-					position.y = initial_position.y;
-					jump_punch2.Reset();
-					mult = 1;
-					state2 = IDLE2;
-					App->render->StartCameraShake(400, 2);
-					direction_x = 0;
-				}
-				else if (position.y > initial_position.y)
-				{
-					position.y = initial_position.y;
-					mult = 1;
-				}
-				shadow_x = position.x;
-				break;
-			case JUMP_KICK2:
-				current_animation = &jump_kick2;
-				//Wan-Fu jump_kick
-				if (flip == SDL_FLIP_HORIZONTAL) {
-					shadow_x = position.x;
-					shadow_x = position.x;
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x - 10, position.y - 75);
-						collider_player_2_up->SetSize(40, 55);
-					}
-					if (collider_player_2_down != nullptr)
-					{
-						collider_player_2_down->SetPos(position.x - 30, position.y - 50);
-						collider_player_2_down->SetSize(60, 35);
-					}
-					if (collider_player_2_attack == nullptr)
-					{
-						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-						collider_player_2_attack->SetPos(position.x + 55, position.y - 40);
-						collider_player_2_attack->SetSize(55, 35);
-					}
-					else
-					{
-						collider_player_2_attack->SetPos(position.x - 65, position.y - 30);
-					}
-				}
-				else {
-					shadow_x = position.x + 20;
-					if (collider_player_2_up != nullptr)
-					{
-						collider_player_2_up->SetPos(position.x + 40, position.y - 75);
-						collider_player_2_up->SetSize(40, 55);
-					}
-					if (collider_player_2_down != nullptr)
-					{
-						collider_player_2_down->SetPos(position.x + 40, position.y - 50);
-						collider_player_2_down->SetSize(60, 35);
-					}
-					if (collider_player_2_attack == nullptr)
-					{
-						collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-						collider_player_2_attack->SetPos(position.x + 55, position.y - 40);
-						collider_player_2_attack->SetSize(55, 35);
-					}
-					else
-					{
-						collider_player_2_attack->SetPos(position.x + 75, position.y - 30);
-					}
-				}
-				position.y -= speed * 1.75 * mult;
-				position.x += 1.25*speed*-direction_x;
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed*direction_x;
 
-				if (position.y <= 100) {
-					mult = -1;
-				}
-				else if (position.y > initial_position.y)
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_punch.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			shadow_x = position.x;
+			break;
+		case JUMP_KICK:
+			current_animation = &jump_kick;
+			//Wan-Fu Jump Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					position.y = initial_position.y;
-					jump_kick2.Reset();
-					mult = 1;
-					state2 = IDLE2;
-					App->render->StartCameraShake(400, 2);
-					direction_x = 0;
+					collider_player_up->SetPos(position.x - 10, position.y - 75);
+					collider_player_up->SetSize(40, 55);
 				}
-				else if (position.y > initial_position.y)
+				if (collider_player_down != nullptr)
 				{
-					position.y = initial_position.y;
-					mult = 1;
+					collider_player_down->SetPos(position.x - 30, position.y - 50);
+					collider_player_down->SetSize(60, 35);
 				}
-				break;
-		case PUNCH2:
-			current_animation = &punch2;
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x - 65, position.y - 30);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 40, position.y - 75);
+					collider_player_up->SetSize(40, 55);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 40, position.y - 50);
+					collider_player_down->SetSize(60, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 75, position.y - 30);
+				}
+			}
+
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed*direction_x;
+
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_kick.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			shadow_x = position.x;
+			break;
+		case PUNCH:
+			current_animation = &punch;
 			//haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			if (collider_player_2_up != nullptr)
+			if (flip == SDL_FLIP_HORIZONTAL) {
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_up->SetPos(position.x + 20, position.y - 60);
-			collider_player_2_up->SetSize(50, 47);
+			collider_player_up->SetPos(position.x - 20, position.y - 60);
+			collider_player_up->SetSize(50, 47);
 			}
-			if (collider_player_2_down != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_down->SetPos(position.x, position.y - 10);
-			collider_player_2_down->SetSize(70, 15);
+			collider_player_down->SetPos(position.x - 18, position.y - 10);
+			collider_player_down->SetSize(70, 15);
 			}
-			if (collider_player_2_attack == nullptr)
+			if (collider_player_attack == nullptr)
 			{
-			collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-			collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
-			collider_player_2_attack->SetSize(67, 30);
+			collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+			collider_player_attack->to_delete = false;
+			collider_player_attack->SetPos(position.x - 60, position.y - 50);
+			collider_player_attack->SetSize(67, 30);
 			}
 			}
 			else {
-			if (collider_player_2_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_up->SetPos(position.x - 20, position.y - 60);
-			collider_player_2_up->SetSize(50, 47);
+			collider_player_up->SetPos(position.x + 35, position.y - 60);
+			collider_player_up->SetSize(50, 47);
 			}
-			if (collider_player_2_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_down->SetPos(position.x - 10, position.y - 10);
-			collider_player_2_down->SetSize(70, 15);
+			collider_player_down->SetPos(position.x + 5, position.y - 10);
+			collider_player_down->SetSize(70, 15);
 			}
-			if (collider_player_2_attack == nullptr)
+			if (collider_player_attack == nullptr)
 			{
-			collider_player_2_attack = App->collision->AddCollider({ position.x - 500, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-			collider_player_2_attack->SetPos(position.x - 60, position.y - 50);
-			collider_player_2_attack->SetSize(67, 30);
+			collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+			collider_player_attack->to_delete = false;
+			collider_player_attack->SetPos(position.x + 60, position.y - 50);
+			collider_player_attack->SetSize(67, 30);
 			}
 			}
 			*/
-			//Wan-Fu punch
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+			//Wan-Fu Punch
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 35, position.y - 60);
-					collider_player_2_up->SetSize(50, 47);
+					collider_player_up->SetPos(position.x - 20, position.y - 60);
+					collider_player_up->SetSize(50, 47);
 				}
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 5, position.y - 10);
-					collider_player_2_down->SetSize(70, 15);
+					collider_player_down->SetPos(position.x - 18, position.y - 10);
+					collider_player_down->SetSize(70, 15);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->to_delete = false;
-					collider_player_2_attack->SetPos(position.x + 60, position.y - 50);
-					collider_player_2_attack->SetSize(67, 30);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x - 60, position.y - 50);
+					collider_player_attack->SetSize(67, 30);
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 20, position.y - 60);
-					collider_player_2_up->SetSize(50, 47);
+					collider_player_up->SetPos(position.x + 35, position.y - 60);
+					collider_player_up->SetSize(50, 47);
 				}
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 10, position.y - 10);
-					collider_player_2_down->SetSize(70, 15);
+					collider_player_down->SetPos(position.x + 5, position.y - 10);
+					collider_player_down->SetSize(70, 15);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x - 500, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x - 60, position.y - 50);
-					collider_player_2_attack->SetSize(67, 30);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 60, position.y - 50);
+					collider_player_attack->SetSize(67, 30);
 				}
 			}
 			break;
-		case KICK2:
-			current_animation = &kick2;
-			//haohmaru
+		case DIE:
+			current_animation = &die;
+			if ((show_fx == true) && (current_animation->SeeCurrentFrame() == 7))
+			{
+				if (flip == SDL_FLIP_NONE)
+				{
+					App->particles->AddParticle(App->particles->dust, position.x + 10, position.y - 40);
+					App->particles->AddParticle(App->particles->dust, position.x + 50, position.y - 30);
+					App->particles->AddParticle(App->particles->dust, position.x + 80, position.y - 40);
+					show_fx = false;
+				}
+				else
+				{
+					App->particles->AddParticle(App->particles->dust, position.x - 40, position.y - 40);
+					App->particles->AddParticle(App->particles->dust, position.x, position.y - 30);
+					App->particles->AddParticle(App->particles->dust, position.x + 30, position.y - 40);
+					show_fx = false;
+				}
+			}
+			position.y = initial_position.y + 10;
+			break;
+		case KICK:
+			current_animation = &kick;
+			//Haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			if (collider_player_2_up != nullptr) {
-			collider_player_2_up->SetPos(position.x + 10, position.y - 70);
-			collider_player_2_up->SetSize(50, 30);
-			}
-			if (collider_player_2_down != nullptr) {
-			collider_player_2_down->SetPos(position.x + 20, position.y - 80);
-			collider_player_2_down->SetSize(25, 85);
-			}
-			if (collider_player_2_attack == nullptr)
-			{
-			collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
-			collider_player_2_attack->SetPos(position.x + 30, position.y - 35);
-			collider_player_2_attack->SetSize(56, 30);
-			}
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 20, position.y - 70);
-			collider_player_2_up->SetSize(50, 30);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x, position.y - 80);
-			collider_player_2_down->SetSize(25, 85);
-			}
-			if (collider_player_2_attack == nullptr)
-			{
-			collider_player_2_attack = App->collision->AddCollider({ position.x - 43, position.y - 35,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-			collider_player_2_attack->SetSize(56, 30);
-			}
-			}
-			break;
-			*/
-			//Wan-Fu kick
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 40, position.y - 100);
-					collider_player_2_up->SetSize(40, 75);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 40, position.y - 100);
-					collider_player_2_down->SetSize(1, 1);
-				}
-				if (collider_player_2_attack == nullptr)
-				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x + 50, position.y - 70);
-					collider_player_2_attack->SetSize(50, 50);
-				}
-			}
-			else {
-				if(collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x - 25, position.y - 100);
-					collider_player_2_up->SetSize(40, 75);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x - 25, position.y - 100);
-					collider_player_2_down->SetSize(1, 1);
-				}
-				if (collider_player_2_attack == nullptr)
-				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x - 50, position.y - 70);
-					collider_player_2_attack->SetSize(45, 50);
-				}
-			}
-			break;
-		case TWISTER2:
-			current_animation = &twister2;
-			//haohmaru
-			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x + 15, position.y - 75);
-			collider_player_2_up->SetSize(40, 45);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x + 5, position.y - 35);
-			collider_player_2_down->SetSize(60, 40);
-			}
-			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
-			Particle* p = App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
-			is_tornado_created2 = true;
-			p->speed = { -2,0 };
-			}
-			}
-			else {
-			if (collider_player_2_up != nullptr)
-			{
-			collider_player_2_up->SetPos(position.x - 20, position.y - 75);
-			collider_player_2_up->SetSize(40, 45);
-			}
-			if (collider_player_2_down != nullptr)
-			{
-			collider_player_2_down->SetPos(position.x - 30, position.y - 35);
-			collider_player_2_down->SetSize(60, 40);
-			}
-			if (current_animation->SeeCurrentFrame() == 10 && !is_tornado_created2) {
-			App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
-			is_tornado_created2 = true;
-			}
-			}
-			break;
-			*/
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				collider_player_up->SetPos(position.x - 20, position.y - 70);
+				collider_player_up->SetSize(50, 30);
 
+				collider_player_down->SetPos(position.x, position.y - 80);
+				collider_player_down->SetSize(25, 85);
 
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x - 43, position.y - 35,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack->SetSize(56, 30);
+				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 20, position.y - 75);
-					collider_player_2_up->SetSize(40, 45);
+					collider_player_up->SetPos(position.x + 10, position.y - 70);
+					collider_player_up->SetSize(50, 30);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 30, position.y - 35);
-					collider_player_2_down->SetSize(60, 40);
+					collider_player_down->SetPos(position.x + 20, position.y - 80);
+					collider_player_down->SetSize(25, 85);
 				}
-				if (current_animation->SeeCurrentFrame() == 10 && !are_particles_created2) {
-					App->particles->AddParticle(App->particles->tornado, position.x, position.y - 205, COLLIDER_PLAYER_2_PARTICLES);
-					are_particles_created2 = true;
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 30, position.y - 35);
+					collider_player_attack->SetSize(56, 30);
+				}
+			}
+			*/
+			//Wan-Fu Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 25, position.y - 100);
+					collider_player_up->SetSize(40, 75);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 100);
+					collider_player_down->SetSize(1, 1);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x - 50, position.y - 70);
+					collider_player_attack->SetSize(45, 50);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 40, position.y - 100);
+					collider_player_up->SetSize(40, 75);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 40, position.y - 100);
+					collider_player_down->SetSize(1, 1);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 70);
+					collider_player_attack->SetSize(45, 50);
 				}
 			}
 			break;
-		case SPECIAL_ATTACK_2:
+		case SPECIAL_ATTACK:
 			//current_animation = &twister;
-			current_animation = &specialattack2;
+			current_animation = &specialattack;
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -2409,42 +2294,41 @@ update_status ModulePlayer2::Update()
 			}
 			}
 			*/
-			//Wan-Fu special attack
+			//Wan-Fu Special Attack
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 23, position.y - 90);
-					collider_player_2_up->SetSize(40, 45);
+					collider_player_up->SetPos(position.x - 23, position.y - 90);
+					collider_player_up->SetSize(40, 45);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 28, position.y - 45);
-					collider_player_2_down->SetSize(60, 30);
+					collider_player_down->SetPos(position.x - 28, position.y - 45);
+					collider_player_down->SetSize(60, 30);
 				}
-				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created2) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x -60, position.y, COLLIDER_PLAYER_2_PARTICLES,0,SDL_FLIP_HORIZONTAL);
-					are_particles_created2 = true;
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y, COLLIDER_PLAYER_PARTICLES, 0, SDL_FLIP_HORIZONTAL);
+					are_particles_created = true;
 				}
 				position.x += 1 * speed;
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 15, position.y - 90);
-					collider_player_2_up->SetSize(45, 45);
+					collider_player_up->SetPos(position.x + 15, position.y - 90);
+					collider_player_up->SetSize(45, 45);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 5, position.y - 50);
-					collider_player_2_down->SetSize(60, 30);
+					collider_player_down->SetPos(position.x + 5, position.y - 50);
+					collider_player_down->SetSize(60, 30);
 				}
-				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created2) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_2_PARTICLES);
-					are_particles_created2 = true;
+				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
+					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
+					are_particles_created = true;
 				}
 				position.x -= 1 * speed;
 			}
-	
 			position.y -= speed * 2 * mult;
 
 			if (position.y <= 30) {
@@ -2453,357 +2337,265 @@ update_status ModulePlayer2::Update()
 			else if (position.y == initial_position.y)
 			{
 				mult = 1;
-				specialattack2.Reset();
-				state2 = IDLE2;
-				are_particles_created2 = false;
+				specialattack.Reset();
+				state = IDLE;
+				are_particles_created = false;
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				specialattack2.Reset();
-				state2 = IDLE2;
-				are_particles_created2 = false;
-				mult = 1;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
+				specialattack.Reset();
+				state = IDLE;
+				are_particles_created = false;
 				mult = 1;
 			}
 			break;
-		case DIE2:
-			current_animation = &die2;
-			if ((show_fx == true) && (current_animation->SeeCurrentFrame() == 7))
-			{
-				if (flip == SDL_FLIP_NONE)
-				{
-					App->particles->AddParticle(App->particles->dust, position.x + 10, position.y - 40);
-					App->particles->AddParticle(App->particles->dust, position.x + 50, position.y - 30);
-					App->particles->AddParticle(App->particles->dust, position.x + 80, position.y - 40);
-					show_fx = false;
-				}
-				else 
-				{
-					App->particles->AddParticle(App->particles->dust, position.x-40, position.y - 40);
-					App->particles->AddParticle(App->particles->dust, position.x, position.y - 30);
-					App->particles->AddParticle(App->particles->dust, position.x + 30, position.y - 40);
-					show_fx = false;
-				}
-			}
-			position.y = initial_position.y + 10;
+		case WIN:
+			current_animation = &win;
 			break;
-		case EN_GARDE2:
-			current_animation = &en_garde2;
-			//Wan-Fu en garde
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 43, position.y - 80);
-					collider_player_2_up->SetSize(38, 35);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 30, position.y - 45);
-					collider_player_2_down->SetSize(60, 45);
-				}
-
-				shadow_x = position.x;
-			}
-			else {
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x - 22, position.y - 80);
-					collider_player_2_up->SetSize(35, 35);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x - 30, position.y - 45);
-					collider_player_2_down->SetSize(60, 45);
-				}
-			}
-			break;
-		case WIN2:
-			current_animation = &win2;
-			break;
-		case HIT2:
-			current_animation = &hit2;
+		case HIT:
+			current_animation = &hit;
 			shadow_x = position.x;
 			//haohmaru
 			/*
-			if (flip != SDL_FLIP_HORIZONTAL) {
-			collider_player_2_up->SetPos(position.x + 15, position.y - 85);
-			collider_player_2_down->SetPos(position.x + 20, position.y - 45);
+			if (flip == SDL_FLIP_HORIZONTAL) {
+
 			}
 			else {
-			if (collider_player_2_up != nullptr)
+			if (collider_player_up != nullptr)
 			{
-			collider_player_2_up->SetPos(position.x - 15, position.y - 85);
+			collider_player_up->SetPos(position.x + 15, position.y - 85);
 			}
-			if (collider_player_2_down != nullptr)
+			if (collider_player_down != nullptr)
 			{
-			collider_player_2_down->SetPos(position.x - 30, position.y - 45);
+			collider_player_down->SetPos(position.x + 10, position.y - 45);
 			}
 			}
 			break;
-			}
 			*/
-			//Wan-Fu hit
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+			//Wan-Fu Hit
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 15, position.y - 85);
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 10, position.y - 45);
+					collider_player_down->SetPos(position.x - 30, position.y - 45);
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetPos(position.x + 15, position.y - 85);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 30, position.y - 45);
+					collider_player_down->SetPos(position.x + 10, position.y - 45);
 				}
 			}
-			break;		
-		case HEAVY_PUNCH2:
-			current_animation = &heavy_punch2;
+			break;
+		case EN_GARDE:
+			current_animation = &en_garde;
+			//Wan-Fu En garde
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 22, position.y - 80);
+					collider_player_up->SetSize(30, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 30, position.y - 45);
+					collider_player_down->SetSize(40, 45);
+				}
+
+				shadow_x = position.x;
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 43, position.y - 80);
+					collider_player_up->SetSize(38, 35);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 30, position.y - 45);
+					collider_player_down->SetSize(60, 45);
+				}
+				shadow_x = position.x + 23;
+			}
+			break;
+		case HEAVY_PUNCH:
+			current_animation = &heavy_punch;
 			//Wan-Fu Heavy Punch
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
-					collider_player_2_up->SetSize(45, 45);
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetSize(45, 45);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 25, position.y - 50);
-					collider_player_2_down->SetSize(60, 50);
+					collider_player_down->SetPos(position.x - 25, position.y - 50);
+					collider_player_down->SetSize(60, 50);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->to_delete = false;
-					collider_player_2_attack->SetPos(position.x - 45, position.y - 50);
-					collider_player_2_attack->SetSize(70, 30);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x - 45, position.y - 50);
+					collider_player_attack->SetSize(70, 30);
 				}
 				if (current_animation->SeeCurrentFrame() > 7)
 				{
-					if (collider_player_2_up != nullptr)
+					if (collider_player_up != nullptr)
 					{
-						collider_player_2_up->SetPos(position.x - 13, position.y - 75);
-						collider_player_2_up->SetSize(45, 45);
+						collider_player_up->SetPos(position.x - 13, position.y - 75);
+						collider_player_up->SetSize(45, 45);
 					}
-					if (collider_player_2_down != nullptr)
+					if (collider_player_down != nullptr)
 					{
-						collider_player_2_down->SetPos(position.x - 12, position.y - 35);
-						collider_player_2_down->SetSize(60, 35);
+						collider_player_down->SetPos(position.x - 12, position.y - 35);
+						collider_player_down->SetSize(60, 35);
 					}
-					if (collider_player_2_attack != nullptr)
+					if (collider_player_attack != nullptr)
 					{
-						collider_player_2_attack->SetPos(position.x - 80, position.y - 55);
-						collider_player_2_attack->SetSize(65, 30);
+						collider_player_attack->SetPos(position.x - 80, position.y - 55);
+						collider_player_attack->SetSize(65, 30);
 					}
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 20, position.y - 85);
-					collider_player_2_up->SetSize(45, 45);
+					collider_player_up->SetPos(position.x + 20, position.y - 85);
+					collider_player_up->SetSize(45, 45);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 15, position.y - 50);
-					collider_player_2_down->SetSize(60, 50);
+					collider_player_down->SetPos(position.x + 15, position.y - 50);
+					collider_player_down->SetSize(60, 50);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->to_delete = false;
-					collider_player_2_attack->SetPos(position.x + 35, position.y - 50);
-					collider_player_2_attack->SetSize(70, 30);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 35, position.y - 50);
+					collider_player_attack->SetSize(70, 30);
 				}
 				if (current_animation->SeeCurrentFrame() > 7)
 				{
-					if (collider_player_2_up != nullptr)
+					if (collider_player_up != nullptr)
 					{
-						collider_player_2_up->SetPos(position.x + 50, position.y - 75);
-						collider_player_2_up->SetSize(45, 45);
+						collider_player_up->SetPos(position.x + 50, position.y - 75);
+						collider_player_up->SetSize(45, 45);
 					}
-					if (collider_player_2_down != nullptr)
+					if (collider_player_down != nullptr)
 					{
-						collider_player_2_down->SetPos(position.x + 34, position.y - 35);
-						collider_player_2_down->SetSize(60, 35);
+						collider_player_down->SetPos(position.x + 34, position.y - 35);
+						collider_player_down->SetSize(60, 35);
 					}
-					if (collider_player_2_attack != nullptr)
+					if (collider_player_attack != nullptr)
 					{
-						collider_player_2_attack->SetPos(position.x + 96, position.y - 55);
-						collider_player_2_attack->SetSize(65, 30);
+						collider_player_attack->SetPos(position.x + 96, position.y - 55);
+						collider_player_attack->SetSize(65, 30);
 					}
 				}
 			}
 			shadow_x = position.x;
 			break;
-		case HEAVY_KICK2:
-			current_animation = &heavy_kick2;
+		case HEAVY_KICK:
+			current_animation = &heavy_kick;
 			//Wan-Fu Heavy Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 15, position.y - 95);
-					collider_player_2_up->SetSize(35, 50);
+					collider_player_up->SetPos(position.x - 15, position.y - 95);
+					collider_player_up->SetSize(35, 50);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 15, position.y - 45);
-					collider_player_2_down->SetSize(35, 45);
+					collider_player_down->SetPos(position.x - 15, position.y - 45);
+					collider_player_down->SetSize(35, 45);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x - 60, position.y - 78);
-					collider_player_2_attack->SetSize(55, 35);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x - 60, position.y - 78);
+					collider_player_attack->SetSize(55, 35);
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 35, position.y - 95);
-					collider_player_2_up->SetSize(35, 50);
+					collider_player_up->SetPos(position.x + 35, position.y - 95);
+					collider_player_up->SetSize(35, 50);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 35, position.y - 45);
-					collider_player_2_down->SetSize(35, 45);
+					collider_player_down->SetPos(position.x + 35, position.y - 45);
+					collider_player_down->SetSize(35, 45);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x + 63, position.y - 78);
-					collider_player_2_attack->SetSize(55, 35);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 63, position.y - 78);
+					collider_player_attack->SetSize(55, 35);
 				}
 			}
 			shadow_x = position.x;
 			break;
-		case JUMP_HEAVY_PUNCH2:
-			current_animation = &jump_heavy_punch2;
-			//Wan-Fu Jump Heavy Punch
+		case JUMP_HEAVY_PUNCH:
+			current_animation = &jump_heavy_punch;
+			//Wan-Fu Jump Punch
 			if (flip == SDL_FLIP_HORIZONTAL) {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x - 65, position.y - 80);
-					collider_player_2_up->SetSize(80, 35);
+					collider_player_up->SetPos(position.x - 65, position.y - 80);
+					collider_player_up->SetSize(80, 35);
 				}
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x - 25, position.y - 45);
-					collider_player_2_down->SetSize(60, 47);
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->to_delete = false;
-					collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
-					collider_player_2_attack->SetSize(60, 20);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
 				}
 				else
 				{
-					collider_player_2_attack->SetPos(position.x - 60, position.y - 70);
+					collider_player_attack->SetPos(position.x - 60, position.y - 70);
 				}
 			}
 			else {
-				if (collider_player_2_up != nullptr)
+				if (collider_player_up != nullptr)
 				{
-					collider_player_2_up->SetPos(position.x + 35, position.y - 80);
-					collider_player_2_up->SetSize(80, 35);
+					collider_player_up->SetPos(position.x + 35, position.y - 80);
+					collider_player_up->SetSize(80, 35);
 				}
-				if (collider_player_2_down != nullptr)
+				if (collider_player_down != nullptr)
 				{
-					collider_player_2_down->SetPos(position.x + 25, position.y - 45);
-					collider_player_2_down->SetSize(60, 47);
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(60, 47);
 				}
-				if (collider_player_2_attack == nullptr)
+				if (collider_player_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->to_delete = false;
-					collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
-					collider_player_2_attack->SetSize(60, 20);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->to_delete = false;
+					collider_player_attack->SetPos(position.x + 65, position.y - 70);
+					collider_player_attack->SetSize(60, 20);
 				}
 				else
 				{
-					collider_player_2_attack->SetPos(position.x + 60, position.y - 70);
+					collider_player_attack->SetPos(position.x + 60, position.y - 70);
 				}
 			}
-			position.y -= speed * 1.75 * mult;
-			position.x += 1.25*speed*-direction_x;
 
-			if (position.y <= 100) {
-				mult = -1;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				jump_heavy_punch2.Reset();
-				mult = 1;
-				state2 = IDLE2;
-				App->render->StartCameraShake(400, 2);
-				direction_x = 0;
-			} 
-			shadow_x = position.x;
-			break;
-		case JUMP_HEAVY_KICK2:
-			current_animation = &jump_kick2;
-			//Wan-Fu Jump Kick
-			if (flip == SDL_FLIP_HORIZONTAL) {
-				shadow_x = position.x;
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x - 10, position.y - 75);
-					collider_player_2_up->SetSize(40, 55);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x - 30, position.y - 50);
-					collider_player_2_down->SetSize(60, 35);
-				}
-				if (collider_player_2_attack == nullptr)
-				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x + 55, position.y - 40);
-					collider_player_2_attack->SetSize(55, 35);
-				}
-				else
-				{
-					collider_player_2_attack->SetPos(position.x - 65, position.y - 30);
-				}
-			}
-			else {
-				shadow_x = position.x + 20;
-				if (collider_player_2_up != nullptr)
-				{
-					collider_player_2_up->SetPos(position.x + 40, position.y - 75);
-					collider_player_2_up->SetSize(40, 55);
-				}
-				if (collider_player_2_down != nullptr)
-				{
-					collider_player_2_down->SetPos(position.x + 40, position.y - 50);
-					collider_player_2_down->SetSize(60, 35);
-				}
-				if (collider_player_2_attack == nullptr)
-				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
-					collider_player_2_attack->SetPos(position.x + 55, position.y - 40);
-					collider_player_2_attack->SetSize(55, 35);
-				}
-				else
-				{
-					collider_player_2_attack->SetPos(position.x + 75, position.y - 30);
-				}
-			}
 			position.y -= speed * 1.75 * mult;
 			position.x += 1.25*speed*direction_x;
 
@@ -2813,49 +2605,203 @@ update_status ModulePlayer2::Update()
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				jump_kick2.Reset();
+				jump_heavy_punch.Reset();
 				mult = 1;
-				state2 = IDLE2;
+				state = IDLE;
 				App->render->StartCameraShake(400, 2);
 				direction_x = 0;
 			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			shadow_x = position.x;
 			break;
-		case DASH_FORWARD2:
-			current_animation = &dash_forward2;
-			if (flip != SDL_FLIP_HORIZONTAL) {
-
+		case JUMP_HEAVY_KICK:
+			current_animation = &jump_kick;
+			//Wan-Fu Jump Kick
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 10, position.y - 75);
+					collider_player_up->SetSize(40, 55);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 30, position.y - 50);
+					collider_player_down->SetSize(60, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x - 65, position.y - 30);
+				}
 			}
 			else {
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 40, position.y - 75);
+					collider_player_up->SetSize(40, 55);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 40, position.y - 50);
+					collider_player_down->SetSize(60, 35);
+				}
+				if (collider_player_attack == nullptr)
+				{
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
+					collider_player_attack->SetPos(position.x + 55, position.y - 40);
+					collider_player_attack->SetSize(55, 35);
+				}
+				else
+				{
+					collider_player_attack->SetPos(position.x + 75, position.y - 30);
+				}
 			}
-			break;
-		case DASH_BACKWARD2:
-			current_animation = &dash_backward2;
-			if (flip != SDL_FLIP_HORIZONTAL) {
 
+			position.y -= speed * 1.75 * mult;
+			position.x += 1.25*speed*direction_x;
+
+			if (position.y <= 100) {
+				mult = -1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				jump_kick.Reset();
+				mult = 1;
+				state = IDLE;
+				App->render->StartCameraShake(400, 2);
+				direction_x = 0;
+			}
+			shadow_x = position.x;
+			break;
+		case DASH_FORWARD:
+			current_animation = &dash_forward;
+
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				position.x -= 2;
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetSize(30, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(50, 45);
+				}
 			}
 			else {
-
+				position.x += 4;
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 30, position.y - 85);
+					collider_player_up->SetSize(40, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(55, 45);
+				}
 			}
 			break;
+		case DASH_BACKWARD:
+			current_animation = &dash_backward;
+
+			position.y -= speed * 0.1 * mult;
+			position.x -= 2 * speed;
+
+			if (position.y <= 80) {
+				mult = -0.2;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				dash_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				dash_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+				mult = 1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetSize(50, 35);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 1)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_down->SetSize(75, 30);
+					}
+				}
+			}
+			break;
+		default:
+			LOG("No state found :(");
+			break;
+		}
 	}
-
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	//SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	//haohmaru shadow
+	// SDL_Rect shadow = { 1348, 2627, 70, 17 };
+	//wan-fu shadow
 	SDL_Rect shadow = { 1181,138,91,17 };
 	SDL_RendererFlip lflip;
 	lflip = flip;
-
-	if ((state2 == GRAB2)||(state2 == DIE2)||(state2 == GRABBED2)||(state2 == DASH_BACKWARD2)||(state2 == DASH_FORWARD2))
+	if ((state == GRAB) || (state == DIE) || (state == GRABBED) || (state == DASH_BACKWARD) || (state == DASH_FORWARD))
 	{
-		player2_textures = App->player2->spritesheet2_2;
+		player_textures = spritesheet2;
 	}
 	else
 	{
-		player2_textures = App->player2->spritesheet1_2;
+		player_textures = spritesheet1;
 	}
-	if (position.x < App->player->position.x+App->player->current_animation->GetCurrentFrame().w/2) {
+	if (position.x < App->player2->position.x + App->player2->current_animation->GetCurrentFrame().w / 2) {
 		flip = SDL_FLIP_NONE;
 	}
 	else {
@@ -2872,138 +2818,82 @@ update_status ModulePlayer2::Update()
 			position.x += current_animation->GetCurrentFrame().w / 2;
 		}
 	}
-	if ((state2 == GRAB2) || (state2 == GRABBED2))
-	{
+	/*if ((state == GRAB) || (state == GRABBED)) {
 		flip = gflip;
-	}
+	}*/
 	if (flip == SDL_FLIP_HORIZONTAL) {
-		//shadow 
 		if (shadow_blit) {
-			App->render->Blit(spritesheet1_2, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
+			//shadow
+			App->render->Blit(spritesheet1, shadow_x - shadow.w / 2, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
 		//player
-		App->render->Blit(player2_textures, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
+		App->render->Blit(player_textures, position.x - current_animation->GetCurrentRect().w / 2, position.y - r.h, &r, flip);
 	}
 	else {
-		//shadow
 		if (shadow_blit) {
-			App->render->Blit(spritesheet1_2, shadow_x, initial_position.y - 10, &shadow, flip);
+			//shadow
+			App->render->Blit(spritesheet1, shadow_x, initial_position.y - 10, &shadow, flip);
 			shadow_blit = false;
 		}
 		else {
 			shadow_blit = true;
 		}
 		//player
-		App->render->Blit(player2_textures, position.x, position.y - r.h, &r, flip);
+		App->render->Blit(player_textures, position.x, position.y - r.h, &r, flip);
 
 	}
+
 	return UPDATE_CONTINUE;
-	}
-}
-
-bool ModulePlayer2::CleanUp() {
-	LOG("Unloading player");
-
-	App->audio->UnLoadFx(attack_fx);
-	App->audio->UnLoadFx(kick_fx);
-	App->audio->UnLoadFx(twister_fx);
-	App->audio->UnLoadFx(hit_fx);
-	App->collision->CleanUp();
-	collider_player_2_up = nullptr;
-	collider_player_2_mid = nullptr;
-	collider_player_2_down = nullptr;
-	collider_player_2_attack = nullptr;
-	App->ui->Disable();
-	return true;
 }
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
-	
-	if ((state2 != DIE2)&&(!App->is_paused)) {
+
+	if ((state != DIE) && (!App->is_paused)) {
 		switch (c2->type)
 		{
 		case COLLIDER_WALL_LEFT:
-			if (!player_input2.pressing_right && state2 != DIE2 && state2 != WIN2)
+			if (!player_input.pressing_D && state != DIE && state != WIN)
 				position.x += speed;
 
 			break;
 		case COLLIDER_WALL_RIGHT:
-			if (!player_input2.pressing_left && state2 != DIE2 && state2 != WIN2)
+			if (!player_input.pressing_A && state != DIE && state != WIN)
 				position.x -= speed;
 			break;
-		case COLLIDER_PLAYER:
-			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DIE2) && (state2 != WIN2)&&(state2 != HIT2)&&(state2 != GRABBED2))
+		case COLLIDER_PLAYER_2:
+			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DIE) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (state != GRAB))
 			{
-					if (App->player->position.x > position.x)
-					{
-						position.x = lposition.x - speed;
-					}
-					else
-					{
-						position.x = lposition.x + speed;
-					}
-			}
-			/*
-			if (player_input2.holding_J)
-			{
-				state2 = GRAB2;
-				if (App->player->flip == SDL_FLIP_NONE)
+				if (App->player2->position.x > position.x)
 				{
-					App->player->grab_right = false;
+					position.x = lposition.x - speed;
 				}
 				else
 				{
-					App->player->grab_right = true;
+					position.x = lposition.x + speed;
 				}
 			}
-			*/
-			break;
-			
-		case COLLIDER_PLAYER_1_ATTACK:
-			if (!App->player->collider_player_attack->to_delete && !god) {
-				App->player->hit_percent++;
-				App->audio->PlayFX(hit_fx);
-				App->judge->state_j = HIT1_J;
-				life -= 10;
-				state2 = HIT2;
-				switch (App->player->state)
+			/*	if ((player_input.holding_V)&&(state != GRAB))
 				{
-				case States::KICK:
-					App->ui->player1_point += 50;
-					break;
-				case States::PUNCH:
-					App->ui->player1_point += 50;
-					break;
-				case States::CROUCH_PUNCH:
-					App->ui->player1_point += 200;
-					break;
-				case States::CROUCH_KICK:
-					App->ui->player1_point += 200;
-					break;
-				case States::TWISTER:
-					App->ui->player1_point += 400;
-					break;
-				case States::JUMP_PUNCH:
-					App->ui->player1_point += 50;
-					break;
-				case States::JUMP_KICK:
-					App->ui->player1_point += 50;
-					break;
-				case States::HEAVY_PUNCH:
-					App->ui->player1_point += 200;
-					break;
-				case States::HEAVY_KICK:
-					App->ui->player1_point += 200;
-					break;
-				default:
-					break;
+					state = GRAB;
+					App->player2->state2 = GRABBED2;
+					App->player2->gflip = App->player2->flip;
+					gposition = App->player2->lposition.x;
 				}
-				App->player->collider_player_attack->to_delete = true;
-				if ((position.x < App->player->position.x) && (position.x > App->render->left->rect.x + 60))
+				*/
+			break;
+		case COLLIDER_PLAYER_2_ATTACK:
+			if (!App->player2->collider_player_2_attack->to_delete && !god) {
+				App->player2->hit_percent++;
+				App->audio->PlayFX(hit_fx);
+				App->judge->state_j = HIT2_J;
+				life -= 10;
+				state = HIT;
+				App->player2->collider_player_2_attack->to_delete = true;
+				if ((position.x < App->player2->position.x) && (position.x > App->render->left->rect.x + 60))
 				{
 					position.x -= 10;
 				}
@@ -3011,8 +2901,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				{
 					position.x += 10;
 				}
-				//blood
-				if ((App->player->state == PUNCH) || (App->player->state == HEAVY_PUNCH) || (App->player->state == CROUCH_PUNCH)||(App->player->state == JUMP_HEAVY_PUNCH))
+				if ((App->player2->state2 == PUNCH2) || (App->player2->state2 == HEAVY_PUNCH2) || (App->player2->state2 == CROUCH_PUNCH2) || (App->player2->state2 == JUMP_HEAVY_PUNCH2))
 				{
 					if (flip == SDL_FLIP_NONE)
 					{
@@ -3020,11 +2909,10 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					}
 					else
 					{
-						App->particles->AddParticle(App->particles->blood, position.x-40, position.y - 67.5);
+						App->particles->AddParticle(App->particles->blood, position.x - 40, position.y - 67.5);
 					}
 				}
-				//flash 
-				else if ((App->player->state == KICK) || (App->player->state == HEAVY_KICK) || (App->player->state == CROUCH_KICK)||(App->player->state == JUMP_HEAVY_KICK))
+				else if ((App->player2->state2 == KICK2) || (App->player2->state2 == HEAVY_KICK2) || (App->player2->state2 == CROUCH_KICK2) || (App->player2->state2 == JUMP_HEAVY_KICK2))
 				{
 					if (flip == SDL_FLIP_NONE)
 					{
@@ -3032,34 +2920,59 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					}
 					else
 					{
-						App->particles->AddParticle(App->particles->flash, position.x -20, position.y - 67.5);
+						App->particles->AddParticle(App->particles->flash, position.x + 35, position.y - 67.5);
 					}
+				}
+
+				switch (App->player2->state2)
+				{
+				case States2::KICK2:
+					App->ui->player2_point += 50;
+					break;
+				case States2::PUNCH2:
+					App->ui->player2_point += 50;
+					break;
+				case States2::CROUCH_PUNCH2:
+					App->ui->player2_point += 200;
+					break;
+				case States2::CROUCH_KICK2:
+					App->ui->player2_point += 200;
+					break;
+				case States2::TWISTER2:
+					App->ui->player2_point += 400;
+				case States2::JUMP_PUNCH2:
+					App->ui->player2_point += 50;
+					break;
+				case States2::JUMP_KICK2:
+					App->ui->player2_point += 50;
+					break;
+				default:
+					break;
 				}
 			}
 			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			break;
-		case COLLIDER_PLAYER_PARTICLES:
+		case COLLIDER_PLAYER_2_PARTICLES:
 			App->audio->PlayFX(hit_fx);
+			App->judge->state_j = HIT2_J;
 			life -= 20;
-			state2 = HIT2;
-			App->judge->state_j = HIT1_J;
-			position.x += 5;
+			state = HIT;
+			position.x -= 5;
 			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
-			App->ui->player1_point += 400;
 			break;
 		default:
 			break;
 		}
 	}
-
 }
 
 void ModulePlayer2::BlockControls(bool block)
 {
 	controls = !block;
 }
+
 void ModulePlayer2::PlayerCollidersCleanUp() {
 	if (collider_player_2_up != nullptr)
 	{
@@ -3147,6 +3060,7 @@ bool ModulePlayer2::checkSpecialAttack() {
 	
 	return false;
 }
+
 void ModulePlayer2::newInput(char newInput) {
 	if (lastInput > 0)
 		lastInput--;
