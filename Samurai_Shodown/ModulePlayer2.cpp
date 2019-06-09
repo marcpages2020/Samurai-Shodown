@@ -660,9 +660,9 @@ ModulePlayer2::ModulePlayer2()
 				jump_kick2.PushBack({ 466, 1831, 132, 110 }, 0.3f);
 				jump_kick2.PushBack({ 625, 1831, 132, 110 }, 0.3f);
 				jump_kick2.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
-				jump_kick2.PushBack({ 790, 1831, 133, 125 }, 0.3f);
-				jump_kick2.PushBack({ 949, 1831, 133, 125 }, 0.3f);
-				jump_kick2.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_kick2.PushBack({ 790, 1827, 133, 124 }, 0.3f);
+				jump_kick2.PushBack({ 949, 1827, 133, 124 }, 0.3f);
+				jump_kick2.PushBack({ 1112, 1827, 133, 124 }, 0.3f);
 				jump_kick2.loop = false;
 			}
 			//jump heavy kick

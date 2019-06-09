@@ -2843,8 +2843,8 @@ update_status ModulePlayer::Update()
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
 
-			position.y -= speed * 1.75 * mult;
-			position.x -= 1.75*speed;
+			position.y -= speed * 1.00 * mult;
+			position.x -= 1.00*speed;
 
 			if (position.y <= 85) {
 				mult = -1;
