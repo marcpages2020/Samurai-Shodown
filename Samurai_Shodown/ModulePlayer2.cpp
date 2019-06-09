@@ -2854,7 +2854,14 @@ update_status ModulePlayer2::Update()
 			current_animation = &dash_backward2;
 
 			position.y -= speed * 1.25 * mult;
-			position.x -= 1.75*speed;
+			if (flip == SDL_FLIP_HORIZONTAL)
+			{
+				position.x += 1.75*speed;
+			}
+			else
+			{
+				position.x -= 1.75*speed;
+			}
 
 			if (position.y <= 180) {
 				mult = -1;

@@ -2826,14 +2826,13 @@ update_status ModulePlayer::Update()
 			current_animation = &dash_backward;
 			if (flip == SDL_FLIP_HORIZONTAL)
 			{
-				position.y += speed * 1.25 * mult;
+				position.x += 1.75*speed;
 			}
 			else
 			{
-				position.y -= speed * 1.25 * mult;
+				position.x -= 1.75*speed;
 			}
-
-			position.x -= 1.75*speed;
+			position.y -= speed * 1.25 * mult;
 
 			if (position.y <= 180) {
 				mult = -1;
