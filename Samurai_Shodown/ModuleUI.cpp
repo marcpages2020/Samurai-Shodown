@@ -334,7 +334,7 @@ update_status ModuleUI::Update() {
 	{
 		App->render->Blit(column, 63, 193, NULL, SDL_FLIP_NONE, 0.75f);
 		App->render->Blit(column, 295, 193, NULL, SDL_FLIP_HORIZONTAL, 0.75f);
-		App->render->Blit(finish_round, 0, 0, &curtain);
+		App->render->Blit(finish_round, -64, 0, &curtain);
 	}
 	if (show_ui==true)
 	{

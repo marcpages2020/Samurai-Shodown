@@ -866,6 +866,7 @@ bool ModulePlayer2::Start()
 	special_attack_fx = App->audio->LoadFX("Assets/Audio/Fx/Characters/Wan-Fu/special_attack.wav");
 	App->ui->player1_point = 0;
 	App->ui->player2_point = 0;
+	App->ui->Enable();
 	state2 = IDLE2;
 	current_animation = &idle2;
 	inputs[0] = ' ';
