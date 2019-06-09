@@ -681,11 +681,11 @@ ModulePlayer::ModulePlayer()
 			{
 				jump_punch.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
 				jump_punch.PushBack({ 956, 635, 115, 112 }, 0.3f);
-				jump_punch.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_punch.PushBack({ 1087, 635, 115, 112 }, 0.3f);
 				jump_punch.PushBack({ 1227, 619, 108, 136 }, 0.3f);
-				jump_punch.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_punch.PushBack({ 1355, 619, 108, 136 }, 0.3f);
 				jump_punch.PushBack({ 1487, 619, 108, 136 }, 0.3f);
-				jump_punch.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_punch.PushBack({ 1611, 621, 125, 130 }, 0.3f);
 				jump_punch.PushBack({ 1766, 619, 125, 130 }, 0.3f);
 				jump_punch.PushBack({ 1914, 619, 125, 130 }, 0.3f);
 				jump_punch.PushBack({ 1443, 764, 119, 130 }, 0.3f);
