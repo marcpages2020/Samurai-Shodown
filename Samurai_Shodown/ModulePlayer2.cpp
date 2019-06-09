@@ -2864,7 +2864,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 			if (!player_input2.pressing_left && state2 != DIE2 && state2 != WIN2)
 				position.x -= speed;
 			break;
-		case COLLIDER_PLAYER_2:
+		case COLLIDER_PLAYER:
 			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DIE2) && (state2 != WIN2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2))
 			{
 				if (App->player->position.x > position.x)
