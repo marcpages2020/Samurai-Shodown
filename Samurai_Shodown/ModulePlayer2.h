@@ -98,6 +98,8 @@ public:
 	Animation specialattack2;
 	Animation grab2;
 	Animation grabbed2;
+	Animation dash_forward2;
+	Animation dash_backward2;
 	Animation* current_animation = nullptr;
 
 		
@@ -120,6 +122,8 @@ public:
 	int shadow_x;
 	int shadow_w = 70;
 	void PlayerCollidersCleanUp();
+
+	bool checkDash(bool type); //type 1=dash forward. 2=dash backward
 
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced

@@ -942,6 +942,8 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		if (state2 == BACKWARD2) {
+			if (checkDash(2))
+				state2 = DASH_BACKWARD2;
 			if (!player_input2.pressing_right)
 				state2 = IDLE2;
 			if (player_input2.pressing_H) {
@@ -968,6 +970,8 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_BACKWARD2;
 		}
 		if (state2 == FORWARD2) {
+			if (checkDash(1))
+				state2 = DASH_FORWARD2;
 			if (!player_input2.pressing_left)
 				state2 = IDLE2;
 			if (player_input2.pressing_H) {
@@ -2783,6 +2787,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 		case DASH_FORWARD2:
+			current_animation = &dash_forward2;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 
 			}
@@ -2791,6 +2796,7 @@ update_status ModulePlayer2::Update()
 			}
 			break;
 		case DASH_BACKWARD2:
+			current_animation = &dash_backward2;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 
 			}
@@ -3167,4 +3173,16 @@ void ModulePlayer2::introduceInputs() {
 
 	if (isPressingAnything == false)
 		newInput(' ');
+}
+
+bool ModulePlayer2::checkDash(bool type) {
+	//type 1=dash forward. 2=dash backward
+
+	if (type == 1) {
+
+	}
+	else if (type == 2) {
+
+	}
+	return false;
 }
