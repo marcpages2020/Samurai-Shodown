@@ -996,11 +996,13 @@ update_status ModulePlayer::PreUpdate()
 		introduceInputs(); //For special attack
 		//states 
 		{
-			if (state == IDLE) {				
+			if (state == IDLE) {		
+				if (player_input.pressing_M)
+					state = DASH_BACKWARD;
 				if (player_input.pressing_A)
 					state = BACKWARD;
 				if (player_input.pressing_D)
-					state = FORWARD;
+					state = FORWARD;				
 				if (player_input.pressing_C) {
 					state = PUNCH;					
 					hit_done++;
@@ -1038,6 +1040,8 @@ update_status ModulePlayer::PreUpdate()
 					state = CROUCH_DOWN;
 			}
 			if (state == BACKWARD) {
+				if (checkDash(2))
+					state = DASH_BACKWARD;
 				if (!player_input.pressing_A)
 					state = IDLE;
 				if (player_input.pressing_C) {
@@ -1068,6 +1072,8 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_BACKWARD;
 			}
 			if (state == FORWARD) {
+				if (checkDash(1))
+					state = DASH_FORWARD;
 				if (!player_input.pressing_D)
 					state = IDLE;
 				if (player_input.pressing_C) {
@@ -1096,6 +1102,18 @@ update_status ModulePlayer::PreUpdate()
 				}
 				if (player_input.pressing_W)
 					state = JUMP_FORWARD;
+			}
+			if (state == DASH_BACKWARD) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					dash_backward.Reset();
+				}
+			}
+			if (state == DASH_FORWARD) {
+				if (current_animation->Finished()) {
+					state = IDLE;
+					dash_forward.Reset();
+				}
 			}
 			if (state == KICK) {
 				if (current_animation->Finished()) {
@@ -2786,6 +2804,7 @@ update_status ModulePlayer::Update()
 			shadow_x = position.x;
 			break;
 		case DASH_FORWARD:
+			current_animation = &dash_forward;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 
 			}
@@ -2794,6 +2813,7 @@ update_status ModulePlayer::Update()
 			}
 			break;
 		case DASH_BACKWARD:
+			current_animation = &dash_backward;
 			if (flip != SDL_FLIP_HORIZONTAL) {
 
 			}
@@ -3159,4 +3179,16 @@ void ModulePlayer::introduceInputs() {
 
 	if (isPressingAnything == false)
 		newInput(' ');
+}
+
+bool ModulePlayer::checkDash(bool type) {
+	//type 1=dash forward. 2=dash backward
+
+	if (type == 1) {
+
+	}
+	else if (type == 2) {
+
+	}
+	return false;
 }

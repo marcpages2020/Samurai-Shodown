@@ -140,6 +140,8 @@ public:
 	bool grab_right = false;
 	bool show_fx = false;
 
+	bool checkDash(bool type); //type 1=dash forward. 2=dash backward
+
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
 	void introduceInputs();
