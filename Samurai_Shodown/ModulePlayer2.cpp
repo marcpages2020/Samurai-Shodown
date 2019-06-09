@@ -2861,7 +2861,7 @@ update_status ModulePlayer2::Update()
 	SDL_Rect shadow = { 1181,138,91,17 };
 	SDL_RendererFlip lflip;
 	lflip = flip;
-	if ((state2 == GRAB2)||(state2 == DIE2)||(state2 == GRABBED2))
+	if ((state2 == GRAB2)||(state2 == DIE2)||(state2 == GRABBED2)||(state2 == DASH_BACKWARD2)||(state2 == DASH_FORWARD2))
 	{
 		player2_textures = App->player2->spritesheet2_2;
 	}
