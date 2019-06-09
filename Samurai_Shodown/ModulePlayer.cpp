@@ -3067,7 +3067,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			App->judge->state_j = HIT2_J;
 			life -= 20;
 			state = HIT;
-			position.x -= 5;
+			if (flip == SDL_FLIP_HORIZONTAL)
+			{
+				position.x += 5;
+			}
+			else {
+				position.x -= 5;
+			}
 			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			break;
