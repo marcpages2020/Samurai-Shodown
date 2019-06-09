@@ -116,7 +116,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	//tornado_tex = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
-	fire_sword_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
+	fire_sword_tex = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu1_1.png");
 	fx_particles = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/fx_particles.png");
 	particle_tex;
 	return true;

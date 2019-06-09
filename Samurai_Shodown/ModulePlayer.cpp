@@ -986,11 +986,11 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_Q)
 		{
-
+			state = SPECIAL_ATTACK;
 		}
 		if (player_input.pressing_E)
 		{
-
+			App->player2->state2 = SPECIAL_ATTACK_2;
 		}
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH) && (state != JUMP_HEAVY_KICK) && (collider_player_attack != nullptr))
 		{
@@ -2433,7 +2433,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(60, 30);
 				}
 				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
+					App->particles->AddParticle(App->particles->fire_sword, position.x, position.y-90, COLLIDER_PLAYER_PARTICLES);
 					are_particles_created = true;
 				}
 				position.x -= 1 * speed;
