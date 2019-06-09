@@ -1341,6 +1341,11 @@ update_status ModulePlayer::PreUpdate()
 					state = IDLE;
 					hit.Reset();
 				}
+				if ((position.y == initial_position.y)&&(lposition.y < initial_position.y))
+				{
+					state = IDLE;
+					hit.Reset();
+				}
 			}
 			if (state == SPECIAL_ATTACK)
 			{
@@ -2090,7 +2095,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x + 65, position.y - 70);
 					collider_player_attack->SetSize(60, 20);
@@ -2251,7 +2256,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x - 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
@@ -2270,7 +2275,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x + 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
@@ -2348,7 +2353,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->SetPos(position.x - 50, position.y - 70);
 					collider_player_attack->SetSize(45, 50);
 				}
@@ -2366,7 +2371,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->SetPos(position.x + 55, position.y - 70);
 					collider_player_attack->SetSize(45, 50);
 				}
@@ -2559,7 +2564,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x - 45, position.y - 50);
 					collider_player_attack->SetSize(70, 30);
@@ -2596,7 +2601,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x + 35, position.y - 50);
 					collider_player_attack->SetSize(70, 30);
@@ -2638,7 +2643,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->SetPos(position.x - 60, position.y - 78);
 					collider_player_attack->SetSize(55, 35);
 				}
@@ -2656,7 +2661,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->SetPos(position.x + 63, position.y - 78);
 					collider_player_attack->SetSize(55, 35);
 				}
@@ -2702,7 +2707,7 @@ update_status ModulePlayer::Update()
 				}
 				if (collider_player_attack == nullptr)
 				{
-					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player);
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x + 65, position.y - 70);
 					collider_player_attack->SetSize(60, 20);
