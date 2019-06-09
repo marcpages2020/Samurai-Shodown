@@ -156,8 +156,10 @@ public:
 	int direction_x = 0;
 	int hit_percent = 0;
 	int hit_done = 0;		
+	int gposition;
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;	
+	SDL_RendererFlip gflip = SDL_FLIP_NONE;
 };
 
 #endif // __ModulePlayer_H__

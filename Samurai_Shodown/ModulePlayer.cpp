@@ -681,11 +681,11 @@ ModulePlayer::ModulePlayer()
 			{
 				jump_punch.PushBack({ 820, 635, 115, 112 }, 0.3f);//1
 				jump_punch.PushBack({ 956, 635, 115, 112 }, 0.3f);
-				jump_punch.PushBack({ 1089, 635, 115, 112 }, 0.3f);
+				jump_punch.PushBack({ 1087, 635, 115, 112 }, 0.3f);
 				jump_punch.PushBack({ 1227, 619, 108, 136 }, 0.3f);
-				jump_punch.PushBack({ 1255, 619, 108, 136 }, 0.3f);
+				jump_punch.PushBack({ 1355, 619, 108, 136 }, 0.3f);
 				jump_punch.PushBack({ 1487, 619, 108, 136 }, 0.3f);
-				jump_punch.PushBack({ 1619, 621, 125, 130 }, 0.3f);
+				jump_punch.PushBack({ 1611, 621, 125, 130 }, 0.3f);
 				jump_punch.PushBack({ 1766, 619, 125, 130 }, 0.3f);
 				jump_punch.PushBack({ 1914, 619, 125, 130 }, 0.3f);
 				jump_punch.PushBack({ 1443, 764, 119, 130 }, 0.3f);
@@ -988,10 +988,13 @@ update_status ModulePlayer::PreUpdate()
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
 			state = GRAB;
+			gflip = flip;
 		}
 		if (player_input.pressing_E)
 		{
-			App->judge->state_j = FINISH_J;
+			App->player2->state2 = GRABBED2;
+			App->player2->gflip = SDL_FLIP_HORIZONTAL;
+			gposition = App->player2->position.x;
 		}
 		introduceInputs(); //For special attack
 		//states 
@@ -2841,6 +2844,10 @@ update_status ModulePlayer::Update()
 			break;
 		case GRAB:
 			current_animation = &grab;
+			if (current_animation->SeeCurrentFrame()>1)
+			{
+				position.x = gposition;
+			}
 			break;
 		case GRABBED:
 			current_animation = &grabbed;
@@ -2886,6 +2893,9 @@ update_status ModulePlayer::Update()
 		{
 			position.x += current_animation->GetCurrentFrame().w / 2;
 		}
+	}
+	if ((state == GRAB) || (state == GRABBED)) {
+		flip = gflip;
 	}
 	if (flip == SDL_FLIP_HORIZONTAL) {
 		if (shadow_blit) {
@@ -2942,10 +2952,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 						position.x = lposition.x + speed;
 					}
 			}
-			if (player_input.holding_V)
+			if ((player_input.holding_V)&&(state != GRAB))
 			{
 				state = GRAB;
 				App->player2->state2 = GRABBED2;
+				App->player2->gflip = App->player2->flip;
+				gposition = App->player2->position.x;
 			}
 			break;
 		case COLLIDER_PLAYER_2_ATTACK:
