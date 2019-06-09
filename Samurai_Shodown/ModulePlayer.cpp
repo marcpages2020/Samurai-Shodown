@@ -665,14 +665,14 @@ ModulePlayer::ModulePlayer()
 				win.PushBack({ 181, 1711, 110, 117 }, 0.1f);
 				win.PushBack({ 332, 1711, 110, 117 }, 0.1f);
 				win.PushBack({ 479, 1711, 110, 118 }, 0.1f);
-				win.PushBack({ 619, 1711, 110, 118 }, 0.1f);
+				win.PushBack({ 620, 1711, 110, 118 }, 0.1f);
 				win.PushBack({ 759, 1711, 110, 118 }, 0.1f);
 				win.PushBack({ 896, 1711, 110, 116 }, 0.1f);
 				win.PushBack({ 1032, 1711, 110, 116 }, 0.1f);
 				win.PushBack({ 1170, 1711, 110, 116 }, 0.1f);
 				win.PushBack({ 1303, 1711, 110, 120 }, 0.1f);
 				win.PushBack({ 1433, 1711, 110, 120 }, 0.1f);
-				win.PushBack({ 1557, 1711, 110, 120 }, 0.1f);
+				win.PushBack({ 1558, 1711, 110, 120 }, 0.1f);
 				win.loop = true;
 			}
 
