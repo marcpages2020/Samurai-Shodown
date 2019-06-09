@@ -899,8 +899,7 @@ ModulePlayer::ModulePlayer()
 				dash_forward.loop = false;
 			}
 
-			//dash backward
-			
+			//dash backward			
 			{
 				dash_backward.PushBack({ 368, 579, 106, 156}, 2.5f);
 				dash_backward.PushBack({ 368, 579, 106, 156 }, 2.5f);
@@ -2835,14 +2834,14 @@ update_status ModulePlayer::Update()
 			else if (position.y == initial_position.y)
 			{
 				mult = 1;
-				jump_backward.Reset();
+				dash_backward.Reset();
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				jump_backward.Reset();
+				dash_backward.Reset();
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
 				mult = 1;

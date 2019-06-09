@@ -799,12 +799,12 @@ ModulePlayer2::ModulePlayer2()
 
 			//dash backward
 			{
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
-				dash_backward2.PushBack({ 46, 579, 107, 156 }, 0.2f);
-				dash_backward2.PushBack({ 154, 579, 107, 156 }, 0.2f);
-				dash_backward2.PushBack({ 261, 579, 107, 156 }, 0.2f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward2.PushBack({ 46, 579, 107, 156 }, 2.5f);
+				dash_backward2.PushBack({ 154, 579, 107, 156 }, 2.5f);
+				dash_backward2.PushBack({ 261, 579, 107, 156 }, 2.5f);
 				dash_backward2.loop = false;
 			}
 
@@ -2820,22 +2820,96 @@ update_status ModulePlayer2::Update()
 				direction_x = 0;
 			}
 			break;
-		case DASH_FORWARD2:
+		case DASH_FORWARD:
 			current_animation = &dash_forward2;
-			if (flip != SDL_FLIP_HORIZONTAL) {
 
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				position.x -= 2;
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_2_up->SetSize(30, 40);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_2_down->SetSize(50, 45);
+				}
 			}
 			else {
-
+				position.x += 4;
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 30, position.y - 85);
+					collider_player_2_up->SetSize(40, 40);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_2_down->SetSize(55, 45);
+				}
 			}
 			break;
-		case DASH_BACKWARD2:
+		case DASH_BACKWARD:
 			current_animation = &dash_backward2;
-			if (flip != SDL_FLIP_HORIZONTAL) {
 
+			position.y -= speed * 1.25 * mult;
+			position.x -= 1.75*speed;
+
+			if (position.y <= 180) {
+				mult = -1;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				dash_backward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(400, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				dash_backward2.Reset();
+				state2 = IDLE2;
+				App->render->StartCameraShake(400, 3);
+				mult = 1;
+			}
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_2_up->SetSize(40, 50);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_2_down->SetSize(50, 35);
+				}
 			}
 			else {
-
+				if (collider_player_2_up != nullptr)
+				{
+					collider_player_2_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_2_up->SetSize(60, 50);
+				}
+				if (collider_player_2_down != nullptr)
+				{
+					collider_player_2_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_2_down->SetSize(50, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 1)
+				{
+					if (collider_player_2_up != nullptr)
+					{
+						collider_player_2_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_2_up->SetSize(45, 60);
+					}
+					if (collider_player_2_down != nullptr)
+					{
+						collider_player_2_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_2_down->SetSize(75, 30);
+					}
+				}
 			}
 			break;
 	}
