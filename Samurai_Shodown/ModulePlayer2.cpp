@@ -3117,6 +3117,8 @@ void ModulePlayer2::introduceInputs() {
 	if (player_input2.pressing_right) {
 		newInput('a');
 		isPressingAnything = true;
+		if (checkSpecialAttack())
+			state2 = SPECIAL_ATTACK_2;
 	}
 	if (player_input2.pressing_down) {
 		newInput('s');
