@@ -124,7 +124,7 @@ public:
 	int gposition;
 	void PlayerCollidersCleanUp();
 
-	void checkDash(int type); //type 1=dash forward. 2=dash backward
+	void checkDash(); //type 1=dash forward. 2=dash backward
 
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced

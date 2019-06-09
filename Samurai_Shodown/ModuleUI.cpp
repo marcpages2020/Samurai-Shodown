@@ -323,8 +323,6 @@ bool ModuleUI::CleanUp() {
 }
 
 update_status ModuleUI::Update() {
-	SDL_Rect curtain;
-	curtain = {0,961,512,38};
 	if (play_jinjoni == true)
 	{
 		App->audio->PlayFX(jinjoni_fx);
@@ -334,7 +332,6 @@ update_status ModuleUI::Update() {
 	{
 		App->render->Blit(column, 63, 193, NULL, SDL_FLIP_NONE, 0.75f);
 		App->render->Blit(column, 295, 193, NULL, SDL_FLIP_HORIZONTAL, 0.75f);
-		App->render->Blit(finish_round, -64, -4, &curtain);
 	}
 	if (show_ui==true)
 	{

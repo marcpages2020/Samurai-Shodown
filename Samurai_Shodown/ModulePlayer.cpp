@@ -986,11 +986,11 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_Q)
 		{
-			state = SPECIAL_ATTACK;
+			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
 		}
 		if (player_input.pressing_E)
 		{
-			App->player2->state2 = SPECIAL_ATTACK_2;
+
 		}
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH) && (state != JUMP_HEAVY_KICK) && (collider_player_attack != nullptr))
 		{
@@ -1944,7 +1944,7 @@ update_status ModulePlayer::Update()
 			current_animation = &jump_backward;
 
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.25*speed;
+			position.x -= 1.75*speed;
 
 			if (position.y <= 85) {
 				mult = -1;
@@ -2416,7 +2416,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(60, 30);
 				}
 				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y-90, COLLIDER_PLAYER_PARTICLES,0,SDL_FLIP_HORIZONTAL);
+					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y, COLLIDER_PLAYER_PARTICLES,0,SDL_FLIP_HORIZONTAL);
 					are_particles_created = true;
 				}
 				position.x += 1 * speed;
@@ -2433,7 +2433,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(60, 30);
 				}
 				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x, position.y-90, COLLIDER_PLAYER_PARTICLES);
+					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
 					are_particles_created = true;
 				}
 				position.x -= 1 * speed;
@@ -2825,48 +2825,8 @@ update_status ModulePlayer::Update()
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
 
-			if (flip == SDL_FLIP_HORIZONTAL) {
-				if (collider_player_up != nullptr)
-				{
-					collider_player_up->SetPos(position.x - 25, position.y - 90);
-					collider_player_up->SetSize(40, 50);
-				}
-				if (collider_player_down != nullptr)
-				{
-					collider_player_down->SetPos(position.x - 35, position.y - 45);
-					collider_player_down->SetSize(50, 35);
-				}
-				direction_x = -1;
-			}
-			else {
-				direction_x = 1;
-				if (collider_player_up != nullptr)
-				{
-					collider_player_up->SetPos(position.x + 35, position.y - 100);
-					collider_player_up->SetSize(60, 50);
-				}
-				if (collider_player_down != nullptr)
-				{
-					collider_player_down->SetPos(position.x + 20, position.y - 50);
-					collider_player_down->SetSize(50, 40);
-				}
-				if (current_animation->SeeCurrentFrame() > 1)
-				{
-					if (collider_player_up != nullptr)
-					{
-						collider_player_up->SetPos(position.x + 35, position.y - 90);
-						collider_player_up->SetSize(45, 60);
-					}
-					if (collider_player_down != nullptr)
-					{
-						collider_player_down->SetPos(position.x + 20, position.y - 45);
-						collider_player_down->SetSize(75, 30);
-					}
-				}
-			}
-
 			position.y -= speed * 0.1 * mult;
-			position.x -= 2*speed*direction_x;
+			position.x -= 2*speed;
 
 			if (position.y <= 80) {
 				mult = -0.2;
@@ -2891,7 +2851,43 @@ update_status ModulePlayer::Update()
 				position.y = initial_position.y;
 				mult = 1;
 			}
-			
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetSize(50, 35);
+				}
+			}
+			else {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 1)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_down->SetSize(75, 30);
+					}
+				}
+			}
 			break;
 		default:
 			LOG("No state found :(");
@@ -3071,13 +3067,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			App->judge->state_j = HIT2_J;
 			life -= 20;
 			state = HIT;
-			if (flip == SDL_FLIP_HORIZONTAL)
-			{
-				position.x += 5;
-			}
-			else {
-				position.x -= 5;
-			}
+			position.x -= 5;
 			App->render->StartCameraShake(400, 2);
 			App->render->StartSlowdown(800, 30);
 			break;
@@ -3298,108 +3288,98 @@ void ModulePlayer::checkDash(int type) {
 
 				i++;
 			}
-		}else if (type == 2) {
-			//check dash backward
-			i = 0;
-			j = lastInput;
-			done = 0; //If done = 2. Dash = true 
-			while (i < 8) {
-				switch (done) {
-				case 0:
-					if (inputs[j] == 'a')//forward
-						done++;
-					break;
-				case 1:
-					if (inputs[j] == ' ')//empty
-						done++;
-					else if (inputs[j] != 'a')
-						done = 3;
-					break;
-				case 2:
-					if (inputs[j] == 'a')//forward
-						state = DASH_BACKWARD;
-					else if (inputs[j] != ' ')
-						done = 3;
-					break;
-				default:
-					//Dash is false
-					break;
-				}
-
-				if (j < 99)
-					j++;
-				else
-					j = 0;
-
-				i++;
-			}
-		}		
-	}
-	else if(flip == SDL_FLIP_HORIZONTAL){
-		if (type == 2) {
-			//check dash forward
-			i = 0;
-			j = lastInput;
-			done = 0; //If done = 2. Dash = true 
-			while (i < 8) {
-				switch (done) {
-				case 0:
-					if (inputs[j] == 'a')//forward
-						done++;
-					break;
-				case 1:
-					if (inputs[j] == ' ')//empty
-						done++;
-					break;
-				case 2:
-					if (inputs[j] == 'a')//forward
-						state = DASH_FORWARD;
-					break;
-				default:
-					//Dash is false
-					break;
-				}
-
-				if (j < 99)
-					j++;
-				else
-					j = 0;
-
-				i++;
-			}
-		}else if (type == 1) {
-			//check dash backward
-			i = 0;
-			j = lastInput;
-			done = 0; //If done = 2. Dash = true 
-			i = 0;
-			while (i < 8) {
-				switch (done) {
-				case 0:
-					if (inputs[j] == 'd')//forward
-						done++;
-					break;
-				case 1:
-					if (inputs[j] == ' ')//empty
-						done++;
-					break;
-				case 2:
-					if (inputs[j] == 'd')//forward
-						state = DASH_BACKWARD;
-					break;
-				default:
-					//Dash is false
-					break;
-				}
-
-				if (j < 99)
-					j++;
-				else
-					j = 0;
-
-				i++;
-			}
 		}
 		
+		//check dash backward
+		int i = 0;
+		int j = lastInput;
+		int done = 0; //If done = 2. Dash = true 
+		while (i < 8) {
+			switch (done) {
+			case 0:
+				if (inputs[j] == 'a')//forward
+					done++;
+				break;
+			case 1:
+				if (inputs[j] == ' ')//empty
+					done++;
+				else if (inputs[j] != 'a')
+					done = 3;
+				break;
+			case 2:
+				if (inputs[j] == 'a')//forward
+					state = DASH_BACKWARD;
+				else if (inputs[j] != ' ')
+					done = 3;
+				break;
+			default:
+				//Dash is false
+				break;
+			}
+
+			if (j < 99)
+				j++;
+			else
+				j = 0;
+
+			i++;
+		}
+	}
+	else {
+		//check dash forward
+		while (i < 8) {
+			switch (done) {
+			case 0:
+				if (inputs[j] == 'a')//forward
+					done++;
+				break;
+			case 1:
+				if (inputs[j] == ' ')//empty
+					done++;
+				break;
+			case 2:
+				if (inputs[j] == 'a')//forward
+					state = DASH_FORWARD;
+				break;
+			default:
+				//Dash is false
+				break;
+			}
+
+			if (j < 99)
+				j++;
+			else
+				j = 0;
+
+			i++;
+		}
+		//check dash backward
+		i = 0;
+		while (i < 8) {
+			switch (done) {
+			case 0:
+				if (inputs[j] == 'd')//forward
+					done++;
+				break;
+			case 1:
+				if (inputs[j] == ' ')//empty
+					done++;
+				break;
+			case 2:
+				if (inputs[j] == 'd')//forward
+					state = DASH_BACKWARD;
+				break;
+			default:
+				//Dash is false
+				break;
+			}
+
+			if (j < 99)
+				j++;
+			else
+				j = 0;
+
+			i++;
+		}
 	}
 }
