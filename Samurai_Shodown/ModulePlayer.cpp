@@ -1473,7 +1473,7 @@ update_status ModulePlayer::Update()
 		case FORWARD:
 			current_animation = &forward;
 			position.x += speed;
-			checkDash();
+			checkDash(1);
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -1524,7 +1524,7 @@ update_status ModulePlayer::Update()
 		case BACKWARD:
 			current_animation = &backward;
 			shadow_x = position.x + 10;
-			checkDash();
+			checkDash(2);
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -3243,7 +3243,7 @@ void ModulePlayer::introduceInputs() {
 		newInput(' ');
 }
 
-void ModulePlayer::checkDash() {
+void ModulePlayer::checkDash(int type) {
 	//type 1=dash forward. 2=dash backward
 	//Input button combination for dash	
 	int i = 0;
@@ -3252,41 +3252,44 @@ void ModulePlayer::checkDash() {
 
 	if (flip != SDL_FLIP_HORIZONTAL) {
 		//check dash forward
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'd')//forward
-					done++;
-				else if (inputs[j] != ' ')
-					done = 3;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				else if (inputs[j] != 'd' || inputs[j] != ' ')
-					done = 3;
-				break;
-			case 2:
-				if (inputs[j] == 'd')//forward
-					state = DASH_FORWARD;
-				//else if (inputs[j] != 'd' || inputs[j] != ' ')
-				//	done = 3;
-				break;
-			case 3:
-				//Dash is false
-				break;
-			default:
-				//Dash is false
-				break;
+		if (type == 1) {
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'd')//forward
+						done++;
+					else if (inputs[j] != ' ')
+						done = 3;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					else if (inputs[j] != 'd' || inputs[j] != ' ')
+						done = 3;
+					break;
+				case 2:
+					if (inputs[j] == 'd')//forward
+						state = DASH_FORWARD;
+					//else if (inputs[j] != 'd' || inputs[j] != ' ')
+					//	done = 3;
+					break;
+				case 3:
+					//Dash is false
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
 			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
 		}
+		
 		//check dash backward
 		int i = 0;
 		int j = lastInput;
