@@ -2825,32 +2825,6 @@ update_status ModulePlayer::Update()
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
 
-			position.y -= speed * 0.1 * mult;
-			position.x -= 2*speed;
-
-			if (position.y <= 80) {
-				mult = -0.2;
-			}
-			else if (position.y == initial_position.y)
-			{
-				mult = 1;
-				dash_backward.Reset();
-				state = IDLE;
-				App->render->StartCameraShake(400, 3);
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				dash_backward.Reset();
-				state = IDLE;
-				App->render->StartCameraShake(400, 3);
-				mult = 1;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				mult = 1;
-			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
 				{
@@ -2862,8 +2836,10 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetPos(position.x - 35, position.y - 45);
 					collider_player_down->SetSize(50, 35);
 				}
+				direction_x = -1;
 			}
 			else {
+				direction_x = 1;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 35, position.y - 100);
@@ -2888,6 +2864,35 @@ update_status ModulePlayer::Update()
 					}
 				}
 			}
+
+			position.y -= speed * 0.1 * mult;
+			position.x -= 2*speed*direction_x;
+
+			if (position.y <= 80) {
+				mult = -0.2;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				dash_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				dash_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+				mult = 1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				current_animation->SeeCurrentFrame > 5;
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			
 			break;
 		default:
 			LOG("No state found :(");
@@ -3294,98 +3299,108 @@ void ModulePlayer::checkDash(int type) {
 
 				i++;
 			}
+		}else if (type == 2) {
+			//check dash backward
+			i = 0;
+			j = lastInput;
+			done = 0; //If done = 2. Dash = true 
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'a')//forward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					else if (inputs[j] != 'a')
+						done = 3;
+					break;
+				case 2:
+					if (inputs[j] == 'a')//forward
+						state = DASH_BACKWARD;
+					else if (inputs[j] != ' ')
+						done = 3;
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
+			}
+		}		
+	}
+	else if(flip == SDL_FLIP_HORIZONTAL){
+		if (type == 2) {
+			//check dash forward
+			i = 0;
+			j = lastInput;
+			done = 0; //If done = 2. Dash = true 
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'a')//forward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					break;
+				case 2:
+					if (inputs[j] == 'a')//forward
+						state = DASH_FORWARD;
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
+			}
+		}else if (type == 1) {
+			//check dash backward
+			i = 0;
+			j = lastInput;
+			done = 0; //If done = 2. Dash = true 
+			i = 0;
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'd')//forward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					break;
+				case 2:
+					if (inputs[j] == 'd')//forward
+						state = DASH_BACKWARD;
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
+			}
 		}
 		
-		//check dash backward
-		int i = 0;
-		int j = lastInput;
-		int done = 0; //If done = 2. Dash = true 
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'a')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				else if (inputs[j] != 'a')
-					done = 3;
-				break;
-			case 2:
-				if (inputs[j] == 'a')//forward
-					state = DASH_BACKWARD;
-				else if (inputs[j] != ' ')
-					done = 3;
-				break;
-			default:
-				//Dash is false
-				break;
-			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
-		}
-	}
-	else {
-		//check dash forward
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'a')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				break;
-			case 2:
-				if (inputs[j] == 'a')//forward
-					state = DASH_FORWARD;
-				break;
-			default:
-				//Dash is false
-				break;
-			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
-		}
-		//check dash backward
-		i = 0;
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'd')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				break;
-			case 2:
-				if (inputs[j] == 'd')//forward
-					state = DASH_BACKWARD;
-				break;
-			default:
-				//Dash is false
-				break;
-			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
-		}
 	}
 }
