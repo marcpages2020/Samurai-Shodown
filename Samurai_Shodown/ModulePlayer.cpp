@@ -902,12 +902,12 @@ ModulePlayer::ModulePlayer()
 			//dash backward
 			
 			{
-				dash_backward.PushBack({ 368, 579, 106, 156}, 0.3f);
-				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.3f);
-				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.3f);
-				dash_backward.PushBack({ 46, 579, 107, 156 }, 0.3f);
-				dash_backward.PushBack({ 154, 579, 107, 156 }, 0.3f);
-				dash_backward.PushBack({ 261, 579, 107, 156 }, 0.3f);
+				dash_backward.PushBack({ 368, 579, 106, 156}, 2.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward.PushBack({ 46, 579, 107, 156 }, 2.5f);
+				dash_backward.PushBack({ 154, 579, 107, 156 }, 2.5f);
+				dash_backward.PushBack({ 261, 579, 107, 156 }, 2.5f);
 				dash_backward.loop = false;
 			}
 
