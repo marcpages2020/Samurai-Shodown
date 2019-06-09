@@ -1304,7 +1304,7 @@ update_status ModulePlayer2::PreUpdate()
 	{
 		state2 = IDLE2;
 	}
-	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2)))
+	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2) && (state2 != DASH_BACKWARD2)))
 	{
 		state2 = JUMP_NEUTRAL2;
 	}

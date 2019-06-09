@@ -2846,7 +2846,7 @@ update_status ModulePlayer::Update()
 			position.y -= speed * 0.1 * mult;
 			position.x -= 0.1*speed;
 
-			if (position.y <= 85) {
+			if (position.y <= 120) {
 				mult = -1;
 			}
 			else if (position.y == initial_position.y)
@@ -2946,7 +2946,7 @@ update_status ModulePlayer::Update()
 			break;
 		}
 	}
-	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)&&(state != JUMP_HEAVY_PUNCH)&&(state != JUMP_HEAVY_KICK)&&(state != GRAB)))
+	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)&&(state != JUMP_HEAVY_PUNCH)&&(state != JUMP_HEAVY_KICK)&&(state != GRAB)&&(state != DASH_BACKWARD)))
 	{
 		state = JUMP_NEUTRAL;
 	}
