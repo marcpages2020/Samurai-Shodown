@@ -2,7 +2,7 @@
 
 
 
-We are four students from CITM in Terrassa and in our Project 1 subject and we are making a tribute to the Samurai Shodown a fighting game.
+We are four students from CITM in Terrassa and in our Project 1 subject we are making a tribute to the Samurai Shodown a fighting game.
 
 ## Team:
 
