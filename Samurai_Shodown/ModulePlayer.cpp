@@ -1388,7 +1388,10 @@ update_status ModulePlayer::PreUpdate()
 			{
 				state = IDLE;
 			}
-			
+			if (life <= 1)
+			{
+				state = DIE;
+			}
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN) {
