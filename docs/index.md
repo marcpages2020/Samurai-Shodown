@@ -11,7 +11,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ## Team:
 
-[Marc Pages](https://github.com/marcpages2020)
+[Marc Pagès](https://github.com/marcpages2020) 
 
 [Pablo Galve](https://github.com/pablogalve)
 
