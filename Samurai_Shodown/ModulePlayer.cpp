@@ -3179,7 +3179,7 @@ void ModulePlayer::introduceInputs() {
 		newInput(' ');
 }
 
-bool ModulePlayer::checkDash(bool type) {
+bool ModulePlayer::checkDash(int type) {
 	//type 1=dash forward. 2=dash backward
 	//Input button combination for dash	
 	int i = 0;
@@ -3246,11 +3246,60 @@ bool ModulePlayer::checkDash(bool type) {
 	}
 	else if (type == 2) {
 		if (flip != SDL_FLIP_HORIZONTAL) {
+			while (i < 80) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'a')//backward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					break;
+				case 2:
+					if (inputs[j] == 'a')//backward
+						return true;
+					break;
+				default:
+					//Dash is false
+					return false;
+				}
 
+				if (j < 99)
+					j++;
+				else
+					j = 0;
 
+				i++;
+			}
 		}
 		else {
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'd')//backward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					break;
+				case 2:
+					if (inputs[j] == 'd')//backward
+						return true;
+					break;
+				default:
+					//Dash is false
+					return false;
+				}
 
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
+			}
 		}
 	}
 	return false;
