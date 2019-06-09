@@ -1216,8 +1216,6 @@ update_status ModulePlayer2::PreUpdate()
 			if (position.y < initial_position.y)
 			{
 				position.y++;
-				if (App->player->state != GRAB)
-				{
 					if (flip == SDL_FLIP_HORIZONTAL)
 					{
 						position.x += speed/4;
@@ -1226,7 +1224,6 @@ update_status ModulePlayer2::PreUpdate()
 					{
 						position.x -= speed/4;
 					}
-				}
 			}
 			if (current_animation->Finished()) {
 				state2 = IDLE2;
@@ -1293,10 +1290,18 @@ update_status ModulePlayer2::PreUpdate()
 				grabbed2.Reset();
 			}
 		}
+		if (life <= 1)
+		{
+			state2 = DIE2;
+		}
 	}
 	if ((!controls) && (state2 != EN_GARDE2))
 	{
 		state2 = IDLE2;
+	}
+	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2)))
+	{
+		state2 = JUMP_NEUTRAL2;
 	}
 	if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
 	{
@@ -2852,10 +2857,7 @@ update_status ModulePlayer2::Update()
 			position.x = App->player->gposition;
 			break;
 	}
-	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2)))
-	{
-		state2 = JUMP_NEUTRAL2;
-	}
+
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	//SDL_Rect shadow = { 1348, 2627, 70, 17 };
