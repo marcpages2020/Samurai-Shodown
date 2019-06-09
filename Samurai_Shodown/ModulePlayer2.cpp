@@ -924,9 +924,11 @@ update_status ModulePlayer2::PreUpdate()
 			if (player_input2.pressing_down)
 				state2 = CROUCH_DOWN2;
 			if (player_input2.pressing_P) {
-				hit_done++;
-				App->audio->PlayFX(special_attack_fx);
-				state2 = SPECIAL_ATTACK_2;
+				//This should only be enabled for development
+
+				//hit_done++;
+				//App->audio->PlayFX(special_attack_fx);
+				//state2 = SPECIAL_ATTACK_2;
 			}
 			if (player_input2.pressing_J) {
 				state2 = HEAVY_PUNCH2;

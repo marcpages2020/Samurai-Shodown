@@ -1022,12 +1022,14 @@ update_status ModulePlayer::PreUpdate()
 					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_M) {
+					//This should only be enabled for development
+
 					//App->audio->PlayFX(twister_fx);
-					App->audio->PlayFX(special_attack_fx);
-					hit_done++;
+					//App->audio->PlayFX(special_attack_fx);
+					//hit_done++;
 					//state = TWISTER;
-					state = SPECIAL_ATTACK;
-					App->render->StartCameraShake(1200, 2);
+					//state = SPECIAL_ATTACK; 
+					//App->render->StartCameraShake(1200, 2);
 					//App->render->StartSlowdown(750, 20);
 				}
 				if (player_input.pressing_W)
@@ -1062,15 +1064,6 @@ update_status ModulePlayer::PreUpdate()
 				{
 					state = GRAB;
 				}
-				if (player_input.pressing_M) {
-					//App->audio->PlayFX(twister_fx);
-					App->audio->PlayFX(special_attack_fx);
-					hit_done++;
-					//state = TWISTER;
-					state = SPECIAL_ATTACK;
-					App->render->StartCameraShake(1200, 2);
-					//App->render->StartSlowdown(750, 20);
-				}
 				if (player_input.pressing_W)
 					state = JUMP_BACKWARD;
 			}
@@ -1096,16 +1089,7 @@ update_status ModulePlayer::PreUpdate()
 					state = HEAVY_KICK;
 					hit_done++;
 					App->audio->PlayFX(kick_fx);
-				}
-				if (player_input.pressing_M) {
-					//App->audio->PlayFX(twister_fx);
-					App->audio->PlayFX(special_attack_fx);
-					hit_done++;
-					//state = TWISTER;
-					state = SPECIAL_ATTACK;
-					App->render->StartCameraShake(1200, 2);
-					//App->render->StartSlowdown(750, 20);
-				}
+				}				
 				if (player_input.pressing_E)
 				{
 					state = GRAB;
