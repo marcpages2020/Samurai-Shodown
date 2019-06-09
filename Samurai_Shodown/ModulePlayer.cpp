@@ -3216,7 +3216,7 @@ void ModulePlayer::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 8) {
+		while (i < 15) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'a')//forward
@@ -3273,7 +3273,7 @@ void ModulePlayer::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 8) {
+		while (i < 15) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'd')//forward
