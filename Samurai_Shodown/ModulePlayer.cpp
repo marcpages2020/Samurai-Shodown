@@ -1101,7 +1101,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_FORWARD;
 			}
 			if (state == DASH_BACKWARD) {
-				if ((current_animation->Finished())&&(position.y >= initial_position.y)) {
+				if (current_animation->Finished()) {
 					state = IDLE;
 					dash_backward.Reset();
 				}
@@ -2200,7 +2200,6 @@ update_status ModulePlayer::Update()
 			break;
 		case PUNCH:
 			current_animation = &punch;
-			
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -2261,6 +2260,10 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x - 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
 				}
+				if ((current_animation->SeeCurrentFrame() == 1) || (current_animation->SeeCurrentFrame() == 2))
+				{
+					position.x + 50;
+				}
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -2279,6 +2282,10 @@ update_status ModulePlayer::Update()
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x + 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
+				}
+				if ((current_animation->SeeCurrentFrame() == 1) || (current_animation->SeeCurrentFrame() == 2))
+				{
+					position.x - 50;
 				}
 			}
 			break;
