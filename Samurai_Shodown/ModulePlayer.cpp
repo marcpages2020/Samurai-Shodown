@@ -2888,7 +2888,6 @@ update_status ModulePlayer::Update()
 			}
 			else if (position.y > initial_position.y)
 			{
-				current_animation->SeeCurrentFrame > 5;
 				position.y = initial_position.y;
 				mult = 1;
 			}
