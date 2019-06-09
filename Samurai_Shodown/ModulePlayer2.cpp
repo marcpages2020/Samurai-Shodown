@@ -1026,6 +1026,18 @@ update_status ModulePlayer2::PreUpdate()
 			if (player_input2.pressing_up)
 				state2 = JUMP_FORWARD2;
 		}
+		if (state2 == DASH_BACKWARD2) {
+			if (current_animation->Finished()) {
+				state2 = IDLE2;
+				dash_backward2.Reset();
+			}
+		}
+		if (state2 == DASH_FORWARD2) {
+			if (current_animation->Finished()) {
+				state2 = IDLE2;
+				dash_forward2.Reset();
+			}
+		}
 		if (state2 == KICK2) {
 			if (current_animation->Finished()) {
 				state2 = IDLE2;

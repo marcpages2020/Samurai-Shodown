@@ -997,8 +997,6 @@ update_status ModulePlayer::PreUpdate()
 		//states 
 		{
 			if (state == IDLE) {		
-				if (player_input.pressing_M)
-					state = DASH_BACKWARD;
 				if (player_input.pressing_A)
 					state = BACKWARD;
 				if (player_input.pressing_D)
