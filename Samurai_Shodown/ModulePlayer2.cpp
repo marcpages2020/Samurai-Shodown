@@ -777,8 +777,38 @@ ModulePlayer2::ModulePlayer2()
 					die2.loop = false;
 			}
 
-			//grab animation
+			//dash forward
+			{
+				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.5f);
+				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.5f);
+				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.5f);
+				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.5f);
+				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.5f);
+				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.5f);
+				dash_forward2.PushBack({ 761, 403, 117, 130 }, 0.5f);
+				dash_forward2.PushBack({ 877, 403, 117, 130 }, 0.5f);
+				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.5f);
+				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.5f);
+				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.5f);
+				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.5f);
+				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.5f);
+				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.5f);
+				dash_forward2.loop = false;
+			}
 
+
+			//dash backward
+			{
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.5f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.5f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.5f);
+				dash_backward2.PushBack({ 46, 579, 107, 156 }, 0.5f);
+				dash_backward2.PushBack({ 154, 579, 107, 156 }, 0.5f);
+				dash_backward2.PushBack({ 261, 579, 107, 156 }, 0.5f);
+				dash_backward2.loop = false;
+			}
+
+			//grab animation
 			{
 				grab2.PushBack({ 46, 1517, 133, 225 }, 0.3f);
 				grab2.PushBack({ 179, 1517, 133, 225 }, 0.3f);
@@ -3056,11 +3086,11 @@ bool ModulePlayer2::checkSpecialAttack() {
 					done++;
 				break;
 			case 1:
-				if (inputs[j] == 'd' || 's')//down and forward
+				if (inputs[j] == 'a' || 's')//down and forward
 					done++;
 				break;
 			case 2:
-				if (inputs[j] == 'd')//forward
+				if (inputs[j] == 'a')//forward
 					done++;
 				break;
 			case 3:
@@ -3087,11 +3117,11 @@ bool ModulePlayer2::checkSpecialAttack() {
 					done++;
 				break;
 			case 1:
-				if (inputs[j] == 'a' || 's')//down and forward
+				if (inputs[j] == 'd' || 's')//down and forward
 					done++;
 				break;
 			case 2:
-				if (inputs[j] == 'a')//forward
+				if (inputs[j] == 'd')//forward
 					done++;
 				break;
 			case 3:
@@ -3133,11 +3163,11 @@ void ModulePlayer2::introduceInputs() {
 	bool isPressingAnything = false;
 
 	if (player_input2.pressing_left) {
-		newInput('d');
+		newInput('a');
 		isPressingAnything = true;
 	}
 	if (player_input2.pressing_right) {
-		newInput('a');
+		newInput('d');
 		isPressingAnything = true;		
 	}
 	if (player_input2.pressing_down) {
