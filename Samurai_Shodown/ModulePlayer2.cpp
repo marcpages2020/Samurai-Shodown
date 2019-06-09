@@ -1381,7 +1381,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &forward2;
 			position.x -= speed;
 			shadow_x = position.x;
-			checkDash();
+			checkDash(1);
 			//haohmaru
 			/*
 			if (flip != SDL_FLIP_HORIZONTAL) {
@@ -1434,7 +1434,7 @@ update_status ModulePlayer2::Update()
 		case BACKWARD2:
 			current_animation = &backward2;
 			shadow_x = position.x;
-			checkDash();
+			checkDash(2);
 			//haohmaru
 			/*
 			if (flip != SDL_FLIP_HORIZONTAL) {
@@ -3281,45 +3281,58 @@ void ModulePlayer2::introduceInputs() {
 	if (isPressingAnything == false)
 		newInput(' ');
 }
-
-void ModulePlayer2::checkDash() {
+void ModulePlayer2::checkDash(int type) {
 	//type 1=dash forward. 2=dash backward
 	//Input button combination for dash	
 	int i = 0;
-	int j = lastInput;//<- Change this
+	int j = lastInput;
 	int done = 0; //If done = 2. Dash = true 
 
 	if (flip != SDL_FLIP_HORIZONTAL) {
 		//check dash forward
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'd')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				break;
-			case 2:
-				if (inputs[j] == 'd')//forward
-					state2 = DASH_FORWARD2;
-				break;
-			default:
-				//Dash is false
-				break;
+		if (type == 1) {
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'd')//forward
+						done++;
+					else if (inputs[j] != ' ')
+						done = 3;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					else if (inputs[j] != 'd' || inputs[j] != ' ')
+						done = 3;
+					break;
+				case 2:
+					if (inputs[j] == 'd')//forward
+						state2 = DASH_FORWARD2;
+					//else if (inputs[j] != 'd' || inputs[j] != ' ')
+					//	done = 3;
+					break;
+				case 3:
+					//Dash is false
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
 			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
 		}
+
 		//check dash backward
-		i = 0;
-		while (i < 15) {
+		int i = 0;
+		int j = lastInput;
+		int done = 0; //If done = 2. Dash = true 
+		while (i < 8) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'a')//forward
@@ -3328,10 +3341,14 @@ void ModulePlayer2::checkDash() {
 			case 1:
 				if (inputs[j] == ' ')//empty
 					done++;
+				else if (inputs[j] != 'a')
+					done = 3;
 				break;
 			case 2:
 				if (inputs[j] == 'a')//forward
 					state2 = DASH_BACKWARD2;
+				else if (inputs[j] != ' ')
+					done = 3;
 				break;
 			default:
 				//Dash is false
@@ -3376,7 +3393,7 @@ void ModulePlayer2::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 15) {
+		while (i < 8) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'd')//forward
