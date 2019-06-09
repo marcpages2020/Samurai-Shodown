@@ -1229,6 +1229,11 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = IDLE2;
 				hit2.Reset();
 			}
+			if ((position.y == initial_position.y) && (lposition.y < initial_position.y))
+			{
+				state2 = IDLE2;
+				hit2.Reset();
+			}
 		}
 		if ((player_input2.pressing_F5)) {
 			god = !god;
@@ -2296,7 +2301,7 @@ update_status ModulePlayer2::Update()
 				}
 				if (collider_player_2_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 					collider_player_2_attack->SetPos(position.x + 50, position.y - 70);
 					collider_player_2_attack->SetSize(50, 50);
 				}
@@ -2314,7 +2319,7 @@ update_status ModulePlayer2::Update()
 				}
 				if (collider_player_2_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player);
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,80,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 					collider_player_2_attack->SetPos(position.x - 50, position.y - 70);
 					collider_player_2_attack->SetSize(45, 50);
 				}
@@ -2739,7 +2744,7 @@ update_status ModulePlayer2::Update()
 				}
 				if (collider_player_2_attack == nullptr)
 				{
-					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_1_ATTACK, (Module*)App->player2);
+					collider_player_2_attack = App->collision->AddCollider({ position.x, position.y,78,40 }, COLLIDER_PLAYER_2_ATTACK, (Module*)App->player2);
 					collider_player_2_attack->to_delete = false;
 					collider_player_2_attack->SetPos(position.x + 65, position.y - 70);
 					collider_player_2_attack->SetSize(60, 20);
