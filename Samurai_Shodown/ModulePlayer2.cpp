@@ -779,32 +779,32 @@ ModulePlayer2::ModulePlayer2()
 
 			//dash forward
 			{
-				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.5f);
-				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.5f);
-				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.5f);
-				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.5f);
-				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.5f);
-				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.5f);
-				dash_forward2.PushBack({ 761, 403, 117, 130 }, 0.5f);
-				dash_forward2.PushBack({ 877, 403, 117, 130 }, 0.5f);
-				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.5f);
-				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.5f);
-				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.5f);
-				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.5f);
-				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.5f);
-				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.5f);
+				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.2f);
+				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.2f);
+				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.2f);
+				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.2f);
+				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.2f);
+				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.2f);
+				dash_forward2.PushBack({ 761, 403, 117, 130 }, 0.2f);
+				dash_forward2.PushBack({ 877, 403, 117, 130 }, 0.2f);
+				dash_forward2.PushBack({ 393, 404, 122, 129 }, 0.2f);
+				dash_forward2.PushBack({ 515, 404, 122, 129 }, 0.2f);
+				dash_forward2.PushBack({ 638, 404, 122, 129 }, 0.2f);
+				dash_forward2.PushBack({ 45, 417, 116, 115 }, 0.2f);
+				dash_forward2.PushBack({ 162, 417, 116, 115 }, 0.2f);
+				dash_forward2.PushBack({ 277, 417, 116, 115 }, 0.2f);
 				dash_forward2.loop = false;
 			}
 
 
 			//dash backward
 			{
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.5f);
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.5f);
-				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.5f);
-				dash_backward2.PushBack({ 46, 579, 107, 156 }, 0.5f);
-				dash_backward2.PushBack({ 154, 579, 107, 156 }, 0.5f);
-				dash_backward2.PushBack({ 261, 579, 107, 156 }, 0.5f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
+				dash_backward2.PushBack({ 368, 579, 106, 156 }, 0.2f);
+				dash_backward2.PushBack({ 46, 579, 107, 156 }, 0.2f);
+				dash_backward2.PushBack({ 154, 579, 107, 156 }, 0.2f);
+				dash_backward2.PushBack({ 261, 579, 107, 156 }, 0.2f);
 				dash_backward2.loop = false;
 			}
 
