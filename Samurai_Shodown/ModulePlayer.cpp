@@ -1325,8 +1325,6 @@ update_status ModulePlayer::PreUpdate()
 				if (position.y < initial_position.y)
 				{
 					position.y++;
-					if (App->player2->state2 != GRAB2)
-					{
 						if (flip == SDL_FLIP_HORIZONTAL)
 						{
 							position.x += speed / 4;
@@ -1335,7 +1333,6 @@ update_status ModulePlayer::PreUpdate()
 						{
 							position.x -= speed / 4;
 						}
-					}
 				}
 				if (current_animation->Finished()) {
 					state = IDLE;
@@ -2260,14 +2257,6 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x - 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
 				}
-				if (current_animation->SeeCurrentFrame() == 1)
-				{
-					position.x += 50;
-				}
-				if (current_animation->SeeCurrentFrame() == 3)
-				{
-					position.x -= 50;
-				}
 			}
 			else {
 				if (collider_player_up != nullptr)
@@ -2286,14 +2275,6 @@ update_status ModulePlayer::Update()
 					collider_player_attack->to_delete = false;
 					collider_player_attack->SetPos(position.x + 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
-				}
-				if (current_animation->SeeCurrentFrame() == 1) 
-				{
-					position.x -= 50;
-				}
-				if (current_animation->SeeCurrentFrame() == 3)
-				{
-					position.x += 50;
 				}
 			}
 			break;
