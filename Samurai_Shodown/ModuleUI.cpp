@@ -468,6 +468,7 @@ update_status ModuleUI::Update() {
 			vtransition = false;
 			htransition = true;
 			App->ui->ResetScene();
+			App->judge->state_j = BEGIN_J;
 		}
 		else
 		{
@@ -479,7 +480,7 @@ update_status ModuleUI::Update() {
 	{
 		if (App->ui->HorizontalTransition() == false)
 		{
-			htransition = false;	
+			htransition = false;
 		}
 		else
 		{
@@ -548,10 +549,6 @@ update_status ModuleUI::Update() {
 			}
 		}
 		
-	}
-	if (begin.Finished())
-	{
-
 	}
 	return UPDATE_CONTINUE;
 }

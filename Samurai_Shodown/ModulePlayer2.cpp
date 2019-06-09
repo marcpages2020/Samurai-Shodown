@@ -759,8 +759,6 @@ ModulePlayer2::ModulePlayer2()
 			}
 			//die
 			{
-				//die
-				{
 					die2.PushBack({ 45,746,127,156 }, 0.1f);//1
 					die2.PushBack({ 172,746,127,156 }, 0.1f);
 					die2.PushBack({ 300,746,127,156 }, 0.1f);
@@ -777,10 +775,81 @@ ModulePlayer2::ModulePlayer2()
 					die2.PushBack({ 1751,846,160,56 }, 0.1f);
 					die2.PushBack({ 1877,909,160,56 }, 0.1f);
 					die2.loop = false;
-				}
+			}
+
+			//grab animation
+
+			{
+				grab2.PushBack({ 46, 1517, 133, 225 }, 0.3f);
+				grab2.PushBack({ 179, 1517, 133, 225 }, 0.3f);
+				grab2.PushBack({ 314, 1517, 133, 225 }, 0.3f);
+				grab2.PushBack({ 448, 1517, 135, 225 }, 0.3f);
+				grab2.PushBack({ 583, 1517, 135, 225 }, 0.3f);
+				grab2.PushBack({ 719, 1517, 135, 225 }, 0.3f);
+				grab2.PushBack({ 855, 1517, 172, 225 }, 0.3f);
+				grab2.PushBack({ 1029, 1517, 172, 225 }, 0.3f);
+				grab2.PushBack({ 1201, 1517, 172, 225 }, 0.3f);
+				grab2.PushBack({ 1374, 1517, 157, 225 }, 0.3f);
+				grab2.PushBack({ 1530, 1517, 157, 225 }, 0.3f);
+				grab2.PushBack({ 1685, 1517, 157, 225 }, 0.3f);
+				grab2.PushBack({ 1820, 1517, 81, 225 }, 0.3f);//red
+				grab2.PushBack({ 1910, 1517, 81, 225 }, 0.3f);
+				grab2.PushBack({ 1910, 1517, 81, 225 }, 0.3f);
+				grab2.PushBack({ 1910, 1517, 81, 225 }, 0.3f);
+				grab2.PushBack({ 364, 1750, 118, 225 }, 0.3f);
+				grab2.PushBack({ 482, 1750, 118, 225 }, 0.3f);
+				grab2.PushBack({ 600, 1750, 118, 225 }, 0.3f);
+				grab2.PushBack({ 718, 1750, 86, 225 }, 0.3f);
+				grab2.PushBack({ 806, 1750, 86, 225 }, 0.3f);
+				grab2.PushBack({ 893, 1750, 86, 225 }, 0.3f);
+				grab2.PushBack({ 979, 1750, 129, 225 }, 0.3f);
+				grab2.PushBack({ 1108, 1750, 129, 225 }, 0.3f);
+				grab2.PushBack({ 1237, 1750, 129, 225 }, 0.3f);
+				grab2.PushBack({ 1367, 1750, 107, 225 }, 0.3f);
+				grab2.PushBack({ 1473, 1750, 107, 225 }, 0.3f);
+				grab2.PushBack({ 1581, 1750, 107, 225 }, 0.3f);
+				grab2.PushBack({ 1688, 1750, 106, 225 }, 0.3f);
+				grab2.PushBack({ 1795, 1750, 106, 225 }, 0.3f);
+				grab2.PushBack({ 1901, 1750, 106, 225 }, 0.3f);
+				grab2.loop = false;
 			}
 
 
+			//grabbed animation
+
+			{
+				grabbed2.PushBack({ 108, 0, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 250, 0, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 382, 0, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 518, 0, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 663, 0, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 799, 0, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 928, 0, 128, 157 }, 0.15f);
+				grabbed2.PushBack({ 1082, 0, 128, 157 }, 0.15f);
+				grabbed2.PushBack({ 1220, 0, 128, 157 }, 0.15f);
+				grabbed2.PushBack({ 1355, 0, 173, 157 }, 0.15f);
+				grabbed2.PushBack({ 1538, 0, 173, 157 }, 0.15f);
+				grabbed2.PushBack({ 1724, 0, 173, 157 }, 0.15f);
+				grabbed2.PushBack({ 86, 205, 131, 157 }, 0.15f);
+				grabbed2.PushBack({ 242, 205, 131, 157 }, 0.15f);
+				grabbed2.PushBack({ 390, 205, 131, 157 }, 0.15f);
+				grabbed2.PushBack({ 559, 205, 117, 157 }, 0.15f);
+				grabbed2.PushBack({ 709, 205, 117, 157 }, 0.15f);
+				grabbed2.PushBack({ 850, 205, 117, 157 }, 0.15f);
+				grabbed2.PushBack({ 1007, 205, 160, 157 }, 0.15f);
+				grabbed2.PushBack({ 1211, 205, 160, 157 }, 0.15f);
+				grabbed2.PushBack({ 1416, 205, 160, 157 }, 0.15f);
+				grabbed2.PushBack({ 1591, 205, 117, 157 }, 0.15f);
+				grabbed2.PushBack({ 1733, 205, 117, 157 }, 0.15f);
+				grabbed2.PushBack({ 1879, 205, 117, 157 }, 0.15f);
+				grabbed2.PushBack({ 734, 582, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 866, 582, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 1011, 582, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 1173, 582, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 1313, 582, 107, 157 }, 0.15f);
+				grabbed2.PushBack({ 1456, 582, 107, 157 }, 0.15f);
+				grabbed2.loop = false;
+			}
 		}
 	}
 }
@@ -2711,6 +2780,12 @@ update_status ModulePlayer2::Update()
 				direction_x = 0;
 			}
 			break;
+		case GRAB2:
+			current_animation = &grab2;
+			break;
+		case GRABBED2:
+			current_animation = &grabbed2;
+			break;
 	}
 	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2)))
 	{
@@ -2807,7 +2882,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 				position.x -= speed;
 			break;
 		case COLLIDER_PLAYER:
-			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DIE2) && (state2 != WIN2)&&(state2 != HIT2))
+			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != TWISTER2) && (state2 != DIE2) && (state2 != WIN2)&&(state2 != HIT2)&&(state2 != GRABBED2))
 			{
 					if (App->player->position.x > position.x)
 					{

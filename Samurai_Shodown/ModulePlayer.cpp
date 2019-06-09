@@ -747,36 +747,36 @@ ModulePlayer::ModulePlayer()
 			//grabbed animation
 
 			{
-				grabbed.PushBack({ 108, 0, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 250, 0, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 382, 0, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 518, 0, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 663, 0, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 799, 0, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 928, 0, 128, 157 }, 0.2f);
-				grabbed.PushBack({ 1082, 0, 128, 157 }, 0.2f);
-				grabbed.PushBack({ 1220, 0, 128, 157 }, 0.2f);
-				grabbed.PushBack({ 1355, 0, 173, 157 }, 0.2f);
-				grabbed.PushBack({ 1538, 0, 173, 157 }, 0.2f);
-				grabbed.PushBack({ 1724, 0, 173, 157 }, 0.2f);
-				grabbed.PushBack({ 86, 205, 131, 157 }, 0.2f);
-				grabbed.PushBack({ 242, 205, 131, 157 }, 0.2f);
-				grabbed.PushBack({ 390, 205, 131, 157 }, 0.2f);
-				grabbed.PushBack({ 559, 205, 117, 157 }, 0.2f);
-				grabbed.PushBack({ 709, 205, 117, 157 }, 0.2f);
-				grabbed.PushBack({ 850, 205, 117, 157 }, 0.2f);
-				grabbed.PushBack({ 1007, 205, 160, 157 }, 0.2f);
-				grabbed.PushBack({ 1211, 205, 160, 157 }, 0.2f);
-				grabbed.PushBack({ 1416, 205, 160, 157 }, 0.2f);
-				grabbed.PushBack({ 1591, 205, 117, 157 }, 0.2f);
-				grabbed.PushBack({ 1733, 205, 117, 157 }, 0.2f);
-				grabbed.PushBack({ 1879, 205, 117, 157 }, 0.2f);
-				grabbed.PushBack({ 734, 582, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 866, 582, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 1011, 582, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 1173, 582, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 1313, 582, 107, 157 }, 0.2f);
-				grabbed.PushBack({ 1456, 582, 107, 157 }, 0.2f);
+				grabbed.PushBack({ 108, 0, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 250, 0, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 382, 0, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 518, 0, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 663, 0, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 799, 0, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 928, 0, 128, 157 }, 0.15f);
+				grabbed.PushBack({ 1082, 0, 128, 157 }, 0.15f);
+				grabbed.PushBack({ 1220, 0, 128, 157 }, 0.15f);
+				grabbed.PushBack({ 1355, 0, 173, 157 }, 0.15f);
+				grabbed.PushBack({ 1538, 0, 173, 157 }, 0.15f);
+				grabbed.PushBack({ 1724, 0, 173, 157 }, 0.15f);
+				grabbed.PushBack({ 86, 205, 131, 157 }, 0.15f);
+				grabbed.PushBack({ 242, 205, 131, 157 }, 0.15f);
+				grabbed.PushBack({ 390, 205, 131, 157 }, 0.15f);
+				grabbed.PushBack({ 559, 205, 117, 157 }, 0.15f);
+				grabbed.PushBack({ 709, 205, 117, 157 }, 0.15f);
+				grabbed.PushBack({ 850, 205, 117, 157 }, 0.15f);
+				grabbed.PushBack({ 1007, 205, 160, 157 }, 0.15f);
+				grabbed.PushBack({ 1211, 205, 160, 157 }, 0.15f);
+				grabbed.PushBack({ 1416, 205, 160, 157 }, 0.15f);
+				grabbed.PushBack({ 1591, 205, 117, 157 }, 0.15f);
+				grabbed.PushBack({ 1733, 205, 117, 157 }, 0.15f);
+				grabbed.PushBack({ 1879, 205, 117, 157 }, 0.15f);
+				grabbed.PushBack({ 734, 582, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 866, 582, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 1011, 582, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 1173, 582, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 1313, 582, 107, 157 }, 0.15f);
+				grabbed.PushBack({ 1456, 582, 107, 157 }, 0.15f);
 				grabbed.loop = false;
 			}
 			
@@ -987,12 +987,11 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			state = GRABBED;
+			state = GRAB;
 		}
 		if (player_input.pressing_E)
 		{
-			state = DIE;
-			show_fx = true;
+			App->judge->state_j = FINISH_J;
 		}
 		introduceInputs(); //For special attack
 		//states 
@@ -2896,8 +2895,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		case COLLIDER_PLAYER_2:
 			if (((state != KICK) && (state != PUNCH) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH)) && (state != TWISTER) && (state != DIE) && (state != WIN) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != GRAB))
 			{
-				//if (App->player2->position.y == position.y)
-				//{
 					if (App->player2->position.x > position.x)
 					{
 						position.x = lposition.x - speed;
@@ -2906,8 +2903,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 					{
 						position.x = lposition.x + speed;
 					}
-				}
-			//}
+			}
+			if (player_input.holding_V)
+			{
+				state = GRAB;
+				App->player2->state2 = GRABBED2;
+			}
 			break;
 		case COLLIDER_PLAYER_2_ATTACK:
 			if (!App->player2->collider_player_2_attack->to_delete && !god) {

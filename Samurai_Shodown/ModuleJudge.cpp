@@ -94,24 +94,25 @@ ModuleJudge::ModuleJudge() {
 
 		//finish animation
 		{
-			finish.PushBack({ 1059, 114, 72, 86 }, 0.5f);
-			finish.PushBack({ 125, 378, 42, 75 }, 0.5f);
-			finish.PushBack({ 188, 368, 32, 85 }, 0.5f);
-			finish.PushBack({ 248, 368, 38, 85 }, 0.5f);
-			finish.PushBack({ 188, 368, 32, 85 }, 0.5f);
-			finish.PushBack({ 248, 368, 38, 85 }, 0.5f);
-			finish.PushBack({ 188, 368, 32, 85 }, 0.5f);
-			finish.PushBack({ 248, 368, 38, 85 }, 0.5f);
-			finish.PushBack({ 45, 125, 40, 76 }, 0.5f);
-			finish.PushBack({ 106, 128, 38, 73 }, 0.5f);
-			finish.PushBack({ 161, 137, 38, 64 }, 0.5f);
-			finish.PushBack({ 221, 143, 36, 58 }, 0.5f);
-			finish.PushBack({ 286, 143, 34, 58 }, 0.5f);
-			finish.PushBack({ 221, 143, 36, 58 }, 0.5f);
-			finish.PushBack({ 161, 137, 38, 64 }, 0.5f);
-			finish.PushBack({ 106, 128, 38, 73 }, 0.5f);
-			finish.PushBack({ 45, 125, 40, 76 }, 0.5f);
-			finish.loop = false;
+			//finish.PushBack({ 1059, 114, 72, 86 }, 0.5f);
+			//finish.PushBack({ 125, 378, 42, 75 }, 0.5f);
+			finish.PushBack({ 184, 368, 40, 85 }, 0.2f);
+			finish.PushBack({ 247, 368, 40, 85 }, 0.2f);
+			finish.PushBack({ 317, 368, 40, 85 }, 0.2f);
+			finish.PushBack({ 381, 368, 40, 85 }, 0.2f);
+			//finish.PushBack({ 188, 368, 40, 85 }, 0.2f);
+			//finish.PushBack({ 248, 368, 40, 85 }, 0.2f);
+
+			//finish.PushBack({ 45, 125, 40, 76 }, 0.5f);
+			//finish.PushBack({ 106, 128, 38, 73 }, 0.5f);
+			//finish.PushBack({ 161, 137, 38, 64 }, 0.5f);
+			//finish.PushBack({ 221, 143, 36, 58 }, 0.5f);
+			//finish.PushBack({ 286, 143, 34, 58 }, 0.5f);
+			//finish.PushBack({ 221, 143, 36, 58 }, 0.5f);
+			//finish.PushBack({ 161, 137, 38, 64 }, 0.5f);
+			//finish.PushBack({ 106, 128, 38, 73 }, 0.5f);
+			//finish.PushBack({ 45, 125, 40, 76 }, 0.5f);
+			finish.loop = true;
 		}
 	}
 
@@ -165,11 +166,11 @@ update_status ModuleJudge::PreUpdate() {
 		}
 		if (state_j == FINISH_J)
 		{
-			if (current_animation->Finished())
+			/*if (current_animation->Finished())
 			{
 				state_j = IDLE_J;
 				finish.Reset();
-			}
+			}*/
 		}
 		if ((state_j != BEGIN_J)&&(state_j != HIT1_J) && (state_j != HIT2_J)&&(state_j != FINISH_J))
 		{
@@ -212,6 +213,10 @@ update_status ModuleJudge::Update() {
 	if (current_animation == &begin_j)
 	{
 		App->render->Blit(judge_tex, position_x-6.5, position_y-53, &current_animation->GetCurrentFrame());
+	}
+	else if (current_animation == &finish)
+	{
+		App->render->Blit(judge_tex, position_x+10, position_y - 15, &current_animation->GetCurrentFrame());
 	}
 	else
 	{
