@@ -3336,9 +3336,9 @@ void ModulePlayer2::checkDash(int type) {
 		}
 
 		//check dash backward
-		int i = 0;
-		int j = lastInput;
-		int done = 0; //If done = 2. Dash = true 
+		i = 0;
+		j = lastInput;
+		done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:
@@ -3372,6 +3372,9 @@ void ModulePlayer2::checkDash(int type) {
 	}
 	else {
 		//check dash forward
+		i = 0;
+		j = lastInput;
+		done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:
@@ -3400,6 +3403,8 @@ void ModulePlayer2::checkDash(int type) {
 		}
 		//check dash backward
 		i = 0;
+		j = lastInput;
+		done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:
