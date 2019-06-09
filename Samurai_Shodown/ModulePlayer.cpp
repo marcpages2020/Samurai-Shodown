@@ -2823,15 +2823,39 @@ update_status ModulePlayer::Update()
 			}
 			break;
 		case GRAB:
-			current_animation = &grab;
-			if (current_animation->SeeCurrentFrame()>1)
-			{
-				position.x = gposition;
-			}
+		/*	current_animation = &grab;
+				if (flip == SDL_FLIP_NONE)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(gposition + 40, initial_position.y-90);
+					}
+					if (collider_player_mid != nullptr)
+					{
+						collider_player_mid->SetPos(gposition + 40, initial_position.y-60);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(gposition + 40, initial_position.y-30);
+					}
+					if (current_animation->SeeCurrentFrame()>15)
+					{
+						position.x+=6;
+					}
+					else
+					{
+						position.x = gposition - 80;
+					}
+				}
+				if (current_animation->Finished())
+				{
+					position.x = gposition + 60;
+				}
 			break;
 		case GRABBED:
 			current_animation = &grabbed;
 			break;
+			*/
 		default:
 			LOG("No state found :(");
 			break;
@@ -2874,9 +2898,9 @@ update_status ModulePlayer::Update()
 			position.x += current_animation->GetCurrentFrame().w / 2;
 		}
 	}
-	if ((state == GRAB) || (state == GRABBED)) {
+	/*if ((state == GRAB) || (state == GRABBED)) {
 		flip = gflip;
-	}
+	}*/
 	if (flip == SDL_FLIP_HORIZONTAL) {
 		if (shadow_blit) {
 			//shadow
@@ -2932,13 +2956,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 						position.x = lposition.x + speed;
 					}
 			}
-			if ((player_input.holding_V)&&(state != GRAB))
+		/*	if ((player_input.holding_V)&&(state != GRAB))
 			{
 				state = GRAB;
 				App->player2->state2 = GRABBED2;
 				App->player2->gflip = App->player2->flip;
-				gposition = App->player2->position.x;
+				gposition = App->player2->lposition.x;
 			}
+			*/
 			break;
 		case COLLIDER_PLAYER_2_ATTACK:
 			if (!App->player2->collider_player_2_attack->to_delete && !god) {
