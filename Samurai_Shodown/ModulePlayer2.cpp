@@ -2782,6 +2782,22 @@ update_status ModulePlayer2::Update()
 				direction_x = 0;
 			}
 			break;
+		case DASH_FORWARD2:
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+			}
+			else {
+
+			}
+			break;
+		case DASH_BACKWARD2:
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+			}
+			else {
+
+			}
+			break;
 		case GRAB2:
 			current_animation = &grab2;
 			break;

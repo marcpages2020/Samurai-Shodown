@@ -2785,6 +2785,22 @@ update_status ModulePlayer::Update()
 			}
 			shadow_x = position.x;
 			break;
+		case DASH_FORWARD:
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+			}
+			else {
+
+			}
+			break;
+		case DASH_BACKWARD:
+			if (flip != SDL_FLIP_HORIZONTAL) {
+
+			}
+			else {
+
+			}
+			break;
 		case GRAB:
 			current_animation = &grab;
 			break;
