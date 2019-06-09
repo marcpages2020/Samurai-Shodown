@@ -2824,17 +2824,15 @@ update_status ModulePlayer::Update()
 			break;
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
-
 			if (flip == SDL_FLIP_HORIZONTAL)
 			{
-				position.y += speed * 1.25 * mult;
+				position.x += 1.75*speed;
 			}
 			else
 			{
-				position.y -= speed * 1.25 * mult;
+				position.x -= 1.75*speed;
 			}
-
-			position.x -= 1.75*speed;
+			position.y -= speed * 1.25 * mult;
 
 			if (position.y <= 180) {
 				mult = -1;
@@ -3294,9 +3292,9 @@ void ModulePlayer::checkDash(int type) {
 		}
 		
 		//check dash backward
-		int i = 0;
-		int j = lastInput;
-		int done = 0; //If done = 2. Dash = true 
+		i = 0;
+		j = lastInput;
+		done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:
@@ -3330,6 +3328,9 @@ void ModulePlayer::checkDash(int type) {
 	}
 	else {
 		//check dash forward
+		i = 0;
+		j = lastInput;
+		done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:
@@ -3358,6 +3359,8 @@ void ModulePlayer::checkDash(int type) {
 		}
 		//check dash backward
 		i = 0;
+		j = lastInput;
+		done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:

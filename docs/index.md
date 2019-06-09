@@ -11,7 +11,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ## Team:
 
-[Marc Pagès](https://github.com/marcpages2020) 
+[Marc PagÃ¨s](https://github.com/marcpages2020) 
 
 * Code
 
@@ -43,6 +43,23 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ### Player 1
 
+With Controller:
+* Jostick to move
+* A to kick
+* X to punch
+* Jostick Down + X to counch punch
+* S + A to crounch kick
+* Jostick Up + X to jump punch
+* Jostick Up + A to jump kick
+* Jostick Up + B to jump heavy punch
+* Jostick Up + Y to jump heavy kick
+* Y to  heavy punch
+* B to heavy kick
+* X + Jostick Right + (Jostick Right + Jostick Down) + Jostick Down to special attack
+* Double click Jostick Right to dash
+* Double click Jostick Left to dash backward
+
+With keyboard:
 * A to go left
 * D to go right
 * W to jump
@@ -64,6 +81,23 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ### Player 2
 
+With Controller:
+* Jostick to move
+* A to kick
+* X to punch
+* Jostick Down + X to counch punch
+* S + A to crounch kick
+* Jostick Up + X to jump punch
+* Jostick Up + A to jump kick
+* Jostick Up + B to jump heavy punch
+* Jostick Up + Y to jump heavy kick
+* Y to  heavy punch
+* B to heavy kick
+* X + Jostick Right + (Jostick Right + Jostick Down) + Jostick Down to special attack
+* Double click Jostick Right to dash
+* Double click Jostick Left to dash backward
+
+With Keyboard:
 * Left Arrow to go left
 * Right Arrow to go right
 * Up Arrow to jump
@@ -81,6 +115,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 * Double click Right Arrow to dash
 * Double click Left Arrow to dash backward
 * H + Right Arrow + (Right Arrow + Down Arrow) + Down Arrow to special attack
+
 
 ### Trailer
 
