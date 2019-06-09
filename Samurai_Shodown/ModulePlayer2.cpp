@@ -2138,7 +2138,7 @@ update_status ModulePlayer2::Update()
 					}
 				}
 				position.y -= speed * 1.75 * mult;
-				position.x += 1.25*speed*direction_x;
+				position.x += 1.25*speed*-direction_x;
 
 				if (position.y <= 100) {
 					mult = -1;
