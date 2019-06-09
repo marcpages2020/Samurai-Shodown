@@ -845,14 +845,14 @@ ModulePlayer2::ModulePlayer2()
 	}
 }
 
-ModulePlayer::~ModulePlayer() {}
+ModulePlayer2::~ModulePlayer2() {}
 
 // Load assets
 bool ModulePlayer2::Start()
 {
 	bool ret = true;
 	LOG("Loading player 12\n");
-	initial_position.x = position.x = shadow_x = 25;
+	initial_position.x = position.x = shadow_x = 305;
 	position.y = initial_position.y = 215;
 	lposition = position;
 	//player_textures = App->textures->Load("Assets/Sprites/Characters/Haohmaru/Haohmaru.png");
@@ -870,9 +870,9 @@ bool ModulePlayer2::Start()
 	current_animation = &idle2;
 	inputs[0] = ' ';
 	if (!collider_player_2_up)
-		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER, (Module*)App->player);
+		collider_player_2_up = App->collision->AddCollider({ position.x + 15, position.y - 85,30,40 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	if (!collider_player_2_down)
-		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER, (Module*)App->player);
+		collider_player_2_down = App->collision->AddCollider({ position.x + 10, position.y - 45,40,45 }, COLLIDER_PLAYER_2, (Module*)App->player2);
 	return ret;
 }
 
@@ -1363,7 +1363,7 @@ update_status ModulePlayer2::Update()
 		case FORWARD2:
 			current_animation = &forward2;
 			position.x += speed;
-			checkDash(1);
+			//checkDash(1);
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
@@ -1414,7 +1414,7 @@ update_status ModulePlayer2::Update()
 		case BACKWARD2:
 			current_animation = &backward2;
 			shadow_x = position.x + 10;
-			checkDash(2);
+			//checkDash(2);
 			//haohmaru
 			/*
 			if (flip == SDL_FLIP_HORIZONTAL) {
