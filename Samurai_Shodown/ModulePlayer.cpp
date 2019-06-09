@@ -2802,11 +2802,31 @@ update_status ModulePlayer::Update()
 		case DASH_FORWARD:
 			current_animation = &dash_forward;
 			
-			if (flip != SDL_FLIP_HORIZONTAL) {
-				
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				position.x -= 2;
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 15, position.y - 85);
+					collider_player_up->SetSize(30, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 25, position.y - 45);
+					collider_player_down->SetSize(50, 45);
+				}
 			}
 			else {
-
+				position.x += 2;
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 30, position.y - 85);
+					collider_player_up->SetSize(40, 40);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 25, position.y - 45);
+					collider_player_down->SetSize(55, 45);
+				}
 			}
 			break;
 		case DASH_BACKWARD:
@@ -3193,14 +3213,23 @@ void ModulePlayer::checkDash() {
 			case 0:
 				if (inputs[j] == 'd')//forward
 					done++;
+				else if (inputs[j] != ' ')
+					done = 3;
 				break;
 			case 1:
 				if (inputs[j] == ' ')//empty
 					done++;
+				else if (inputs[j] != 'd' || inputs[j] != ' ')
+					done = 3;
 				break;
 			case 2:
 				if (inputs[j] == 'd')//forward
 					state = DASH_FORWARD;
+				//else if (inputs[j] != 'd' || inputs[j] != ' ')
+				//	done = 3;
+				break;
+			case 3:
+				//Dash is false
 				break;
 			default:
 				//Dash is false
@@ -3216,7 +3245,7 @@ void ModulePlayer::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 15) {
+		while (i < 8) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'a')//forward
@@ -3225,10 +3254,14 @@ void ModulePlayer::checkDash() {
 			case 1:
 				if (inputs[j] == ' ')//empty
 					done++;
+				else if (inputs[j] != 'a')
+					done = 3;
 				break;
 			case 2:
 				if (inputs[j] == 'a')//forward
 					state = DASH_BACKWARD;
+				else if (inputs[j] != ' ')
+					done = 3;
 				break;
 			default:
 				//Dash is false
@@ -3273,7 +3306,7 @@ void ModulePlayer::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 15) {
+		while (i < 8) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'd')//forward
