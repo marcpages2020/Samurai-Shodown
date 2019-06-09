@@ -123,7 +123,7 @@ public:
 	int shadow_w = 70;
 	void PlayerCollidersCleanUp();
 
-	bool checkDash(bool type); //type 1=dash forward. 2=dash backward
+	bool checkDash(int type); //type 1=dash forward. 2=dash backward
 
 	//Special attack 
 	bool checkSpecialAttack(); //return true if special attack input has been introduced
