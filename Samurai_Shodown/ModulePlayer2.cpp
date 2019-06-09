@@ -1835,7 +1835,7 @@ update_status ModulePlayer2::Update()
 			current_animation = &jump_backward2;
 
 			position.y -= speed * 1.75 * mult;
-			position.x -= 1.75*speed;
+			position.x -= 1.25*speed;
 
 			if (position.y <= 85) {
 				mult = -1;
