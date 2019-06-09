@@ -22,19 +22,40 @@ We are four students from CITM in Terrassa and in our Project 1 subject we are m
 * D to go right
 * W to jump
 * S to crouch
-* C to kick
-* V to punch
-* B to do a twister
+* V to kick
+* C to punch
+* S + C to counch punch
+* S + V to crounch kick
+* W + C to jump punch
+* W + V to jump kick
+* W + N to jump heavy punch
+* W + B to jump heavy kick
+* B to  heavy punch
+* N to heavy kick
+* Double click D to dash
+* Double click A to dash backward
+* C + D + (D + S) + S to special attack
+
 
 ### Player 2
 
-* Left arrow to go left
-* Right arrow to go right
-* Up arrow to jump
-* Down arrow to crouch
+* Left Arrow to go left
+* Right Arrow to go right
+* Up Arrow to jump
+* Down Arrow to crouch
 * J to kick
-* K to punch
-* L to do a twister
+* H to punch
+* Down Arrow + H to counch punch
+* Down Arrow + J to crounch kick
+* Up Arrow + H to jump punch
+* Up Arrow + J to jump kick
+* Up Arrow + L to jump heavy punch
+* Up Arrow + K to jump heavy kick
+* K to  heavy punch
+* L to heavy kick
+* Double click Right Arrow to dash
+* Double click Left Arrow to dash backward
+* H + Right Arrow + (Right Arrow + Down Arrow) + Down Arrow to special attack
 
 ## Team:
 
