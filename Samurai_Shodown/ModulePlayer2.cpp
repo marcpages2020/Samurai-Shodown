@@ -666,7 +666,7 @@ ModulePlayer2::ModulePlayer2()
 				jump_kick2.loop = false;
 			}
 			//jump heavy kick
-			{
+			/*{
 				jump_heavy_kick2.PushBack({ 30, 1831, 111, 104 }, 0.3f);
 				jump_heavy_kick2.PushBack({ 164, 1831, 111, 104 }, 0.3f);
 				jump_heavy_kick2.PushBack({ 313, 1831, 111, 104 }, 0.3f);
@@ -677,7 +677,7 @@ ModulePlayer2::ModulePlayer2()
 				jump_heavy_kick2.PushBack({ 949, 1831, 133, 125 }, 0.3f);
 				jump_heavy_kick2.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
 				jump_heavy_kick2.loop = false;
-			}
+			}*/
 
 			//win animation
 			{
@@ -2762,7 +2762,7 @@ update_status ModulePlayer2::Update()
 			shadow_x = position.x;
 			break;
 		case JUMP_HEAVY_KICK2:
-			current_animation = &jump_heavy_kick2;
+			current_animation = &jump_kick2;
 			//Wan-Fu Jump Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				shadow_x = position.x;

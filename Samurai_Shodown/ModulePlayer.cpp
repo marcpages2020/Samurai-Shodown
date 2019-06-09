@@ -848,7 +848,7 @@ ModulePlayer::ModulePlayer()
 			}
 
 			//jump heavy kick
-			{
+			/*{
 				jump_heavy_kick.PushBack({ 30, 1831, 111, 104 }, 0.3f);
 				jump_heavy_kick.PushBack({ 164, 1831, 111, 104 }, 0.3f);
 				jump_heavy_kick.PushBack({ 313, 1831, 111, 104 }, 0.3f);
@@ -859,7 +859,7 @@ ModulePlayer::ModulePlayer()
 				jump_heavy_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
 				jump_heavy_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
 				jump_heavy_kick.loop = false;
-			}
+			}*/
 			//die
 			{
 				die.PushBack({ 45,746,127,156 }, 0.1f);//1
@@ -2733,7 +2733,7 @@ update_status ModulePlayer::Update()
 			shadow_x = position.x;
 			break;
 		case JUMP_HEAVY_KICK:
-			current_animation = &jump_heavy_kick;
+			current_animation = &jump_kick;
 			//Wan-Fu Jump Kick
 			if (flip == SDL_FLIP_HORIZONTAL) {
 				if (collider_player_up != nullptr)
