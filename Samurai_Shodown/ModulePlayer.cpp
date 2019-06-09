@@ -701,9 +701,9 @@ ModulePlayer::ModulePlayer()
 				jump_kick.PushBack({ 466, 1831, 132, 110 }, 0.3f);
 				jump_kick.PushBack({ 625, 1831, 132, 110 }, 0.3f);
 				jump_kick.PushBack({ 1271, 1831, 132, 110 }, 0.3f);
-				jump_kick.PushBack({ 790, 1831, 133, 125 }, 0.3f);
-				jump_kick.PushBack({ 949, 1831, 133, 125 }, 0.3f);
-				jump_kick.PushBack({ 1112, 1831, 133, 125 }, 0.3f);
+				jump_kick.PushBack({ 790, 1827, 133, 124 }, 0.3f);
+				jump_kick.PushBack({ 949, 1827, 133, 124 }, 0.3f);
+				jump_kick.PushBack({ 1112, 1827, 133, 124 }, 0.3f);
 				jump_kick.loop = false;
 			}
 			//grab animation
