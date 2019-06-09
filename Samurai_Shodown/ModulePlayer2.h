@@ -121,6 +121,7 @@ public:
 	int attack_frames = 0;
 	int shadow_x;
 	int shadow_w = 70;
+	int gposition;
 	void PlayerCollidersCleanUp();
 
 	void checkDash(); //type 1=dash forward. 2=dash backward
@@ -152,6 +153,7 @@ public:
 	Mix_Chunk* special_attack_fx;
 
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+	SDL_RendererFlip gflip = SDL_FLIP_HORIZONTAL;
 
 	SDL_Texture* player2_textures=nullptr;
 	SDL_Texture* spritesheet1_2 = nullptr;
