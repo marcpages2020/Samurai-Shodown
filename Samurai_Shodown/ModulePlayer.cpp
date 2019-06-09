@@ -1117,7 +1117,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_FORWARD;
 			}
 			if (state == DASH_BACKWARD) {
-				if (current_animation->Finished()) {
+				if (position.y == initial_position.y) {
 					state = IDLE;
 					dash_backward.Reset();
 				}
