@@ -123,4 +123,4 @@ With Keyboard:
 
 ### Download our game
 
-https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.1
+<https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0>
