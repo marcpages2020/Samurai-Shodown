@@ -925,6 +925,7 @@ update_status ModulePlayer2::PreUpdate()
 			player_input2.pressing_K = App->input->keyboard[SDL_SCANCODE_K] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_Y][GAME_PAD_2] == KEY_DOWN;
 			player_input2.pressing_L = App->input->keyboard[SDL_SCANCODE_L] == KEY_DOWN || App->input->game_pad[SDL_CONTROLLER_BUTTON_B][GAME_PAD_2] == KEY_DOWN;
 			player_input2.pressing_P = App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN;
+			player_input2.pressing_F5 = App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN;
 			player_input2.holding_J = App->input->keyboard[SDL_SCANCODE_J] == KEY_REPEAT || App->input->game_pad[SDL_CONTROLLER_BUTTON_A][GAME_PAD_2] == KEY_REPEAT;
 
 			if (player_input2.pressing_left && player_input2.pressing_right) {
