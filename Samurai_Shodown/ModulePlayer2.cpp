@@ -3127,7 +3127,7 @@ void ModulePlayer2::introduceInputs() {
 		newInput(' ');
 }
 
-void ModulePlayer2::checkDash() {
+void ModulePlayer2::checkDash(int type) {
 	//type 1=dash forward. 2=dash backward
 	//Input button combination for dash	
 	int i = 0;
