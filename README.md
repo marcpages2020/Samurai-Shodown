@@ -18,6 +18,23 @@ We are four students from CITM in Terrassa and in our Project 1 subject we are m
 
 ### Player 1
 
+With Controller:
+* Jostick to move
+* A to kick
+* X to punch
+* Jostick Down + X to counch punch
+* S + A to crounch kick
+* Jostick Up + X to jump punch
+* Jostick Up + A to jump kick
+* Jostick Up + B to jump heavy punch
+* Jostick Up + Y to jump heavy kick
+* Y to  heavy punch
+* B to heavy kick
+* X + Jostick Right + (Jostick Right + Jostick Down) + Jostick Down to special attack
+* Double click Jostick Right to dash
+* Double click Jostick Left to dash backward
+
+With keyboard:
 * A to go left
 * D to go right
 * W to jump
@@ -39,6 +56,23 @@ We are four students from CITM in Terrassa and in our Project 1 subject we are m
 
 ### Player 2
 
+With Controller:
+* Jostick to move
+* A to kick
+* X to punch
+* Jostick Down + X to counch punch
+* S + A to crounch kick
+* Jostick Up + X to jump punch
+* Jostick Up + A to jump kick
+* Jostick Up + B to jump heavy punch
+* Jostick Up + Y to jump heavy kick
+* Y to  heavy punch
+* B to heavy kick
+* X + Jostick Right + (Jostick Right + Jostick Down) + Jostick Down to special attack
+* Double click Jostick Right to dash
+* Double click Jostick Left to dash backward
+
+With Keyboard:
 * Left Arrow to go left
 * Right Arrow to go right
 * Up Arrow to jump
