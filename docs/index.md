@@ -1,4 +1,4 @@
-## Introduction
+﻿## Introduction
 
 
 
@@ -120,3 +120,7 @@ With Keyboard:
 ### Trailer
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E-6JAjPpcuk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Download our game
+
+https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.1
