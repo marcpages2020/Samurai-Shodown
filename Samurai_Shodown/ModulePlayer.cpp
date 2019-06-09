@@ -2260,9 +2260,13 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x - 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
 				}
-				if ((current_animation->SeeCurrentFrame() == 1) || (current_animation->SeeCurrentFrame() == 2))
+				if (current_animation->SeeCurrentFrame() == 1)
 				{
-					position.x + 50;
+					position.x += 50;
+				}
+				if (current_animation->SeeCurrentFrame() == 3)
+				{
+					position.x -= 50;
 				}
 			}
 			else {
@@ -2283,9 +2287,13 @@ update_status ModulePlayer::Update()
 					collider_player_attack->SetPos(position.x + 60, position.y - 50);
 					collider_player_attack->SetSize(67, 30);
 				}
-				if ((current_animation->SeeCurrentFrame() == 1) || (current_animation->SeeCurrentFrame() == 2))
+				if (current_animation->SeeCurrentFrame() == 1) 
 				{
-					position.x - 50;
+					position.x -= 50;
+				}
+				if (current_animation->SeeCurrentFrame() == 3)
+				{
+					position.x += 50;
 				}
 			}
 			break;
