@@ -882,20 +882,20 @@ ModulePlayer::ModulePlayer()
 
 			//dash forward
 			{
-				dash_forward.PushBack({ 45, 417, 116, 115}, 0.5f);
-				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.5f);
-				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.5f);
-				dash_forward.PushBack({ 393, 404, 122, 129}, 0.5f);
-				dash_forward.PushBack({ 515, 404, 122, 129}, 0.5f);
-				dash_forward.PushBack({ 638, 404, 122, 129}, 0.5f);
-				dash_forward.PushBack({ 761, 403, 117, 130}, 0.5f);
-				dash_forward.PushBack({ 877, 403, 117, 130}, 0.5f);
-				dash_forward.PushBack({ 393, 404, 122, 129}, 0.5f);
-				dash_forward.PushBack({ 515, 404, 122, 129}, 0.5f);
-				dash_forward.PushBack({ 638, 404, 122, 129}, 0.5f);
-				dash_forward.PushBack({ 45, 417, 116, 115 }, 0.5f);
-				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.5f);
-				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.5f);
+				dash_forward.PushBack({ 45, 417, 116, 115}, 0.3f);
+				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.3f);
+				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.3f);
+				dash_forward.PushBack({ 393, 404, 122, 129}, 0.3f);
+				dash_forward.PushBack({ 515, 404, 122, 129}, 0.3f);
+				dash_forward.PushBack({ 638, 404, 122, 129}, 0.3f);
+				dash_forward.PushBack({ 761, 403, 117, 130}, 0.3f);
+				dash_forward.PushBack({ 877, 403, 117, 130}, 0.3f);
+				dash_forward.PushBack({ 393, 404, 122, 129}, 0.3f);
+				dash_forward.PushBack({ 515, 404, 122, 129}, 0.3f);
+				dash_forward.PushBack({ 638, 404, 122, 129}, 0.3f);
+				dash_forward.PushBack({ 45, 417, 116, 115 }, 0.3f);
+				dash_forward.PushBack({ 162, 417, 116, 115 }, 0.3f);
+				dash_forward.PushBack({ 277, 417, 116, 115 }, 0.3f);
 				dash_forward.loop = false;
 			}
 
@@ -903,12 +903,12 @@ ModulePlayer::ModulePlayer()
 			//dash backward
 			
 			{
-				dash_backward.PushBack({ 368, 579, 106, 156}, 0.5f);
-				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.5f);
-				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.5f);
-				dash_backward.PushBack({ 46, 579, 107, 156 }, 0.5f);
-				dash_backward.PushBack({ 154, 579, 107, 156 }, 0.5f);
-				dash_backward.PushBack({ 261, 579, 107, 156 }, 0.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156}, 0.3f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.3f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.3f);
+				dash_backward.PushBack({ 46, 579, 107, 156 }, 0.3f);
+				dash_backward.PushBack({ 154, 579, 107, 156 }, 0.3f);
+				dash_backward.PushBack({ 261, 579, 107, 156 }, 0.3f);
 				dash_backward.loop = false;
 			}
 
@@ -1101,7 +1101,7 @@ update_status ModulePlayer::PreUpdate()
 					state = JUMP_FORWARD;
 			}
 			if (state == DASH_BACKWARD) {
-				if (current_animation->Finished()) {
+				if ((current_animation->Finished())&&(position.y >= initial_position.y)) {
 					state = IDLE;
 					dash_backward.Reset();
 				}
@@ -2827,7 +2827,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else {
-				position.x += 2;
+				position.x += 4;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 30, position.y - 85);
@@ -2844,10 +2844,10 @@ update_status ModulePlayer::Update()
 			current_animation = &dash_backward;
 
 			position.y -= speed * 0.1 * mult;
-			position.x -= 0.1*speed;
+			position.x -= 2*speed;
 
-			if (position.y <= 120) {
-				mult = -1;
+			if (position.y <= 80) {
+				mult = -0.2;
 			}
 			else if (position.y == initial_position.y)
 			{

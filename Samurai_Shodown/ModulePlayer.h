@@ -152,7 +152,7 @@ public:
 	int shadow_x;
 	int shadow_w = 70;
 	int life = 100;
-	int mult = 1;
+	float mult = 1;
 	int direction_x = 0;
 	int hit_percent = 0;
 	int hit_done = 0;		
