@@ -899,16 +899,15 @@ ModulePlayer::ModulePlayer()
 				dash_forward.loop = false;
 			}
 
-
 			//dash backward
 			
 			{
-				dash_backward.PushBack({ 368, 579, 106, 156}, 0.3f);
-				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.3f);
-				dash_backward.PushBack({ 368, 579, 106, 156 }, 0.3f);
-				dash_backward.PushBack({ 46, 579, 107, 156 }, 0.3f);
-				dash_backward.PushBack({ 154, 579, 107, 156 }, 0.3f);
-				dash_backward.PushBack({ 261, 579, 107, 156 }, 0.3f);
+				dash_backward.PushBack({ 368, 579, 106, 156}, 2.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward.PushBack({ 368, 579, 106, 156 }, 2.5f);
+				dash_backward.PushBack({ 46, 579, 107, 156 }, 2.5f);
+				dash_backward.PushBack({ 154, 579, 107, 156 }, 2.5f);
+				dash_backward.PushBack({ 261, 579, 107, 156 }, 2.5f);
 				dash_backward.loop = false;
 			}
 
@@ -987,6 +986,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
+			state = SPECIAL_ATTACK;
 		}
 		if (player_input.pressing_E)
 		{
@@ -2417,7 +2417,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(60, 30);
 				}
 				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y, COLLIDER_PLAYER_PARTICLES,0,SDL_FLIP_HORIZONTAL);
+					App->particles->AddParticle(App->particles->fire_sword, position.x - 50, position.y-90, COLLIDER_PLAYER_PARTICLES,0,SDL_FLIP_HORIZONTAL);
 					are_particles_created = true;
 				}
 				position.x += 1 * speed;
@@ -2434,7 +2434,7 @@ update_status ModulePlayer::Update()
 					collider_player_down->SetSize(60, 30);
 				}
 				if (current_animation->SeeCurrentFrame() == 14 && !are_particles_created) {
-					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y, COLLIDER_PLAYER_PARTICLES);
+					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y-90, COLLIDER_PLAYER_PARTICLES);
 					are_particles_created = true;
 				}
 				position.x -= 1 * speed;
