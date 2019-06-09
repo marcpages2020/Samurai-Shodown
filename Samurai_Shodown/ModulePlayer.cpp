@@ -2826,30 +2826,25 @@ update_status ModulePlayer::Update()
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
 
-			position.y -= speed * 0.1 * mult;
-			position.x -= 2*speed;
+			position.y -= speed * 1.75 * mult;
+			position.x -= 1.75*speed;
 
-			if (position.y <= 80) {
-				mult = -0.2;
+			if (position.y <= 180) {
+				mult = -1;
 			}
 			else if (position.y == initial_position.y)
 			{
 				mult = 1;
-				dash_backward.Reset();
+				jump_backward.Reset();
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
 			}
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				dash_backward.Reset();
+				jump_backward.Reset();
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
-				mult = 1;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
 				mult = 1;
 			}
 			if (flip == SDL_FLIP_HORIZONTAL) {
