@@ -2963,6 +2963,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 						position.x = lposition.x + speed;
 					}
 			}
+			/*
 			if (player_input2.holding_J)
 			{
 				state2 = GRAB2;
@@ -2975,7 +2976,9 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					App->player->grab_right = true;
 				}
 			}
+			*/
 			break;
+			
 		case COLLIDER_PLAYER_1_ATTACK:
 			if (!App->player->collider_player_attack->to_delete && !god) {
 				App->player->hit_percent++;
