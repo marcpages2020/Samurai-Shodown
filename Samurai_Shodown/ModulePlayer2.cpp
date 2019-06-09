@@ -2066,7 +2066,7 @@ update_status ModulePlayer2::Update()
 					}
 				}
 				position.y -= speed * 1.75 * mult;
-				position.x += 1.25*speed*direction_x;
+				position.x += 1.25*speed*-direction_x;
 
 				if (position.y <= 100) {
 					mult = -1;
@@ -3252,7 +3252,7 @@ void ModulePlayer2::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 8) {
+		while (i < 15) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'a')//forward
@@ -3309,7 +3309,7 @@ void ModulePlayer2::checkDash() {
 		}
 		//check dash backward
 		i = 0;
-		while (i < 8) {
+		while (i < 15) {
 			switch (done) {
 			case 0:
 				if (inputs[j] == 'd')//forward
