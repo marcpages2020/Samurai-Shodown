@@ -63,7 +63,7 @@ Marc Pages: https://github.com/marcpages2020
 
 Pablo Galve: https://github.com/pablogalve
 
-Silvino: https://github.com/silvino00
+Silvino Medina: https://github.com/silvino00
 
 Oriol Capdevila: https://github.com/OriolCS2
 
