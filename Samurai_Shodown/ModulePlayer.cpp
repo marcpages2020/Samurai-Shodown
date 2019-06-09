@@ -899,7 +899,6 @@ ModulePlayer::ModulePlayer()
 				dash_forward.loop = false;
 			}
 
-
 			//dash backward
 			
 			{
@@ -987,6 +986,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
+			state = SPECIAL_ATTACK;
 		}
 		if (player_input.pressing_E)
 		{
@@ -2826,7 +2826,7 @@ update_status ModulePlayer::Update()
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
 
-			position.y -= speed * 1.75 * mult;
+			position.y -= speed * 1.25 * mult;
 			position.x -= 1.75*speed;
 
 			if (position.y <= 180) {
