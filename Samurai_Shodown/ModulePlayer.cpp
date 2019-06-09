@@ -2835,11 +2835,68 @@ update_status ModulePlayer::Update()
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
 
-			if (flip != SDL_FLIP_HORIZONTAL) {
+			position.y -= speed * 1.75 * mult;
+			position.x -= 1.75*speed;
 
+			if (position.y <= 85) {
+				mult = -1;
+			}
+			else if (position.y == initial_position.y)
+			{
+				mult = 1;
+				dash_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				dash_backward.Reset();
+				state = IDLE;
+				App->render->StartCameraShake(400, 3);
+				mult = 1;
+			}
+			else if (position.y > initial_position.y)
+			{
+				position.y = initial_position.y;
+				mult = 1;
+			}
+			if (flip == SDL_FLIP_HORIZONTAL) {
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x - 25, position.y - 90);
+					collider_player_up->SetSize(40, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x - 35, position.y - 45);
+					collider_player_down->SetSize(50, 35);
+				}
 			}
 			else {
-
+				if (collider_player_up != nullptr)
+				{
+					collider_player_up->SetPos(position.x + 35, position.y - 100);
+					collider_player_up->SetSize(60, 50);
+				}
+				if (collider_player_down != nullptr)
+				{
+					collider_player_down->SetPos(position.x + 20, position.y - 50);
+					collider_player_down->SetSize(50, 40);
+				}
+				if (current_animation->SeeCurrentFrame() > 1)
+				{
+					if (collider_player_up != nullptr)
+					{
+						collider_player_up->SetPos(position.x + 35, position.y - 90);
+						collider_player_up->SetSize(45, 60);
+					}
+					if (collider_player_down != nullptr)
+					{
+						collider_player_down->SetPos(position.x + 20, position.y - 45);
+						collider_player_down->SetSize(75, 30);
+					}
+				}
 			}
 			break;
 		case GRAB:
@@ -3131,9 +3188,7 @@ bool ModulePlayer::checkSpecialAttack() {
 
 			i++;
 		}
-	}
-
-	
+	}	
 	return false;
 }
 
@@ -3215,7 +3270,7 @@ void ModulePlayer::checkDash() {
 	//type 1=dash forward. 2=dash backward
 	//Input button combination for dash	
 	int i = 0;
-	int j = lastInput;//<- Change this
+	int j = lastInput;
 	int done = 0; //If done = 2. Dash = true 
 
 	if (flip != SDL_FLIP_HORIZONTAL) {
@@ -3256,7 +3311,9 @@ void ModulePlayer::checkDash() {
 			i++;
 		}
 		//check dash backward
-		i = 0;
+		int i = 0;
+		int j = lastInput;
+		int done = 0; //If done = 2. Dash = true 
 		while (i < 8) {
 			switch (done) {
 			case 0:
