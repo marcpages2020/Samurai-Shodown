@@ -933,7 +933,23 @@ update_status ModulePlayer2::PreUpdate()
 			}
 		}
 		introduceInputs(); //For special attack
-
+		if ((!controls) && (state2 != EN_GARDE2))
+		{
+			state2 = IDLE2;
+		}
+		if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2) && (state2 != DASH_BACKWARD2)))
+		{
+			state2 = JUMP_NEUTRAL2;
+		}
+		if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
+		{
+			collider_player_2_attack->to_delete = true;
+			collider_player_2_attack = nullptr;
+		}
+		if (life <= 1)
+		{
+			state2 = DIE2;
+		}
 		if (state2 == IDLE2) {
 			if (player_input2.pressing_left)
 				state2 = FORWARD2;
@@ -1295,23 +1311,6 @@ update_status ModulePlayer2::PreUpdate()
 				grabbed2.Reset();
 			}
 		}
-		if (life <= 1)
-		{
-			state2 = DIE2;
-		}
-	}
-	if ((!controls) && (state2 != EN_GARDE2))
-	{
-		state2 = IDLE2;
-	}
-	if ((position.y < initial_position.y) && ((state2 != JUMP_BACKWARD2) && (state2 != JUMP_NEUTRAL2) && (state2 != JUMP_FORWARD2) && (state2 != HIT2) && (state2 != SPECIAL_ATTACK_2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (state2 != GRAB2) && (state2 != DASH_BACKWARD2)))
-	{
-		state2 = JUMP_NEUTRAL2;
-	}
-	if ((state2 != PUNCH2) && (state2 != KICK2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2) && (state2 != HEAVY_PUNCH2) && (state2 != HEAVY_KICK2) && (state2 != JUMP_PUNCH2) && (state2 != JUMP_KICK2) && (state2 != JUMP_HEAVY_PUNCH2) && (state2 != JUMP_HEAVY_KICK2) && (collider_player_2_attack != nullptr))
-	{
-		collider_player_2_attack->to_delete = true;
-		collider_player_2_attack = nullptr;
 	}
 	return UPDATE_CONTINUE;
 }
@@ -1726,7 +1725,6 @@ update_status ModulePlayer2::Update()
 			}
 			else if (position.y == initial_position.y)
 			{
-
 				mult = 1;
 				jump_neutral2.Reset();
 				state2 = IDLE2;
@@ -1797,13 +1795,6 @@ update_status ModulePlayer2::Update()
 
 			if (position.y <= 85) {
 				mult = -1;
-			}
-			else if (position.y == initial_position.y)
-			{
-				mult = 1;
-				jump_forward2.Reset();
-				state2 = IDLE2;
-				App->render->StartCameraShake(500,2);
 			}
 			else if (position.y > initial_position.y)
 			{
@@ -1926,13 +1917,6 @@ update_status ModulePlayer2::Update()
 				state2 = IDLE2;
 				App->render->StartCameraShake(400, 2);
 				mult = 1;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				mult = 1;
-				jump_forward2.Reset();
-				App->render->StartCameraShake(500, 2);
 			}
 			//haohmaru
 			/*
@@ -2763,7 +2747,7 @@ update_status ModulePlayer2::Update()
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				jump_kick2.Reset();
+				jump_heavy_punch2.Reset();
 				mult = 1;
 				state2 = IDLE2;
 				App->render->StartCameraShake(400, 2);
@@ -2853,13 +2837,6 @@ update_status ModulePlayer2::Update()
 			else {
 
 			}
-			break;
-		case GRAB2:
-			current_animation = &grab2;
-			break;
-		case GRABBED2:
-			current_animation = &grabbed2;
-			position.x = App->player->gposition;
 			break;
 	}
 

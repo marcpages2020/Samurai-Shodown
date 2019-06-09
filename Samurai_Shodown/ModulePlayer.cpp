@@ -996,6 +996,26 @@ update_status ModulePlayer::PreUpdate()
 			App->player2->gflip = SDL_FLIP_HORIZONTAL;
 			gposition = App->player2->position.x;
 		}
+		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH) && (state != JUMP_HEAVY_KICK) && (collider_player_attack != nullptr))
+		{
+			collider_player_attack->to_delete = true;
+			collider_player_attack = nullptr;
+		}
+		if ((player_input.pressing_F4)) {
+			god = !god;
+		}
+		if ((!controls) && (state != EN_GARDE))
+		{
+			state = IDLE;
+		}
+		if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK) && (state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH) && (state != JUMP_HEAVY_KICK) && (state != GRAB) && (state != DASH_BACKWARD)))
+		{
+			state = JUMP_NEUTRAL;
+		}
+		if (life <= 1)
+		{
+			state = DIE;
+		}
 		introduceInputs(); //For special attack
 		//states 
 		{
@@ -1378,30 +1398,16 @@ update_status ModulePlayer::PreUpdate()
 					win.Reset();
 				}
 			}
-			if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK)&&(state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH)&&(state != JUMP_HEAVY_KICK)&&(collider_player_attack != nullptr))
-			{
-				collider_player_attack->to_delete = true;
-				collider_player_attack = nullptr;
-			}
-			if ((player_input.pressing_F4)) {
-				god = !god;
-			}
-			if ((!controls) && (state != EN_GARDE))
-			{
-				state = IDLE;
-			}
-			if (life <= 1)
-			{
-				state = DIE;
-			}
 		}
 	}
+	/*
 	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN) {
 		state = States::IDLE;
 		current_animation = &idle;
 		App->player2->state2 = States2::IDLE2;
 		App->player2->current_animation = &App->player2->idle2;
 	}
+	*/
 	return UPDATE_CONTINUE;
 }
 
@@ -1769,7 +1775,6 @@ update_status ModulePlayer::Update()
 			break;
 		case JUMP_NEUTRAL:
 			current_animation = &jump_neutral;
-
 			position.y -= speed * 2 * mult;
 
 			if (position.y <= 100) {
@@ -1938,11 +1943,6 @@ update_status ModulePlayer::Update()
 				state = IDLE;
 				App->render->StartCameraShake(400, 2);
 			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				mult = 1;
-			}
 			break;
 		case JUMP_BACKWARD:
 			current_animation = &jump_backward;
@@ -1966,11 +1966,6 @@ update_status ModulePlayer::Update()
 				jump_backward.Reset();
 				state = IDLE;
 				App->render->StartCameraShake(400, 3);
-				mult = 1;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
 				mult = 1;
 			}
 			//haohmaru
@@ -2793,16 +2788,11 @@ update_status ModulePlayer::Update()
 			else if (position.y > initial_position.y)
 			{
 				position.y = initial_position.y;
-				jump_heavy_kick.Reset();
+				jump_kick.Reset();
 				mult = 1;
 				state = IDLE;
 				App->render->StartCameraShake(400, 2);
 				direction_x = 0;
-			}
-			else if (position.y > initial_position.y)
-			{
-				position.y = initial_position.y;
-				mult = 1;
 			}
 			shadow_x = position.x;
 			break;
@@ -2903,48 +2893,10 @@ update_status ModulePlayer::Update()
 				}
 			}
 			break;
-		case GRAB:
-		/*	current_animation = &grab;
-				if (flip == SDL_FLIP_NONE)
-				{
-					if (collider_player_up != nullptr)
-					{
-						collider_player_up->SetPos(gposition + 40, initial_position.y-90);
-					}
-					if (collider_player_mid != nullptr)
-					{
-						collider_player_mid->SetPos(gposition + 40, initial_position.y-60);
-					}
-					if (collider_player_down != nullptr)
-					{
-						collider_player_down->SetPos(gposition + 40, initial_position.y-30);
-					}
-					if (current_animation->SeeCurrentFrame()>15)
-					{
-						position.x+=6;
-					}
-					else
-					{
-						position.x = gposition - 80;
-					}
-				}
-				if (current_animation->Finished())
-				{
-					position.x = gposition + 60;
-				}
-			break;
-		case GRABBED:
-			current_animation = &grabbed;
-			break;
-			*/
 		default:
 			LOG("No state found :(");
 			break;
 		}
-	}
-	if ((position.y < initial_position.y) && ((state != JUMP_BACKWARD) && (state != JUMP_NEUTRAL) && (state != JUMP_FORWARD) && (state != HIT) && (state != SPECIAL_ATTACK)&&(state != JUMP_PUNCH)&&(state != JUMP_KICK)&&(state != JUMP_HEAVY_PUNCH)&&(state != JUMP_HEAVY_KICK)&&(state != GRAB)&&(state != DASH_BACKWARD)))
-	{
-		state = JUMP_NEUTRAL;
 	}
 	//Draw everything
 	SDL_Rect r = current_animation->GetCurrentFrame();
