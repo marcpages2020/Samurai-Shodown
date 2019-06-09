@@ -990,7 +990,7 @@ update_status ModulePlayer::PreUpdate()
 		}
 		if (player_input.pressing_E)
 		{
-
+			App->player2->state2 = SPECIAL_ATTACK_2;
 		}
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH) && (state != JUMP_HEAVY_KICK) && (collider_player_attack != nullptr))
 		{
