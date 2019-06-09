@@ -42,8 +42,8 @@ ModuleCharacterSelection::~ModuleCharacterSelection() {
 bool ModuleCharacterSelection::Init() {
 	background = App->textures->Load("Assets/Sprites/Scenes/character_selection_background.png");
 	character = App->textures->Load("Assets/Sprites/UI/finish_round.png");
-	player1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu.png");
-	player2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu-color2.png");
+	player1 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu1_1.png");
+	player2 = App->textures->Load("Assets/Sprites/Characters/Wan-Fu/Wan-Fu2_1.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/character_selection.ogg");
 	character_selected = App->audio->LoadFX("Assets/Audio/Fx/character_selected.wav");
 	App->audio->PlayMusic(music, 1);
