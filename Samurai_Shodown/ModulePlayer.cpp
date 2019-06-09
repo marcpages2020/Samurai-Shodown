@@ -987,14 +987,10 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			//App->particles->AddParticle(App->particles->flash, position.x+55, position.y-67.5,COLLIDER_NONE,0,SDL_FLIP_HORIZONTAL);
-			state = GRAB;
-			gflip = flip;
 		}
 		if (player_input.pressing_E)
 		{
-			App->player2->state2 = GRABBED2;
-			App->player2->gflip = SDL_FLIP_HORIZONTAL;
-			gposition = App->player2->position.x;
+
 		}
 		if ((state != PUNCH) && (state != KICK) && (state != CROUCH_KICK) && (state != CROUCH_PUNCH) && (state != HEAVY_PUNCH) && (state != HEAVY_KICK) && (state != JUMP_PUNCH) && (state != JUMP_KICK) && (state != JUMP_HEAVY_PUNCH) && (state != JUMP_HEAVY_KICK) && (collider_player_attack != nullptr))
 		{
