@@ -2824,7 +2824,6 @@ update_status ModulePlayer::Update()
 			break;
 		case DASH_BACKWARD:
 			current_animation = &dash_backward;
-
 			if (flip == SDL_FLIP_HORIZONTAL)
 			{
 				position.y += speed * 1.25 * mult;
