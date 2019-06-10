@@ -2,7 +2,7 @@
 
 
 
-We are four students from CITM in Terrassa and in our Project 1 subject we are making a tribute to the Samurai Shodown (fighting game).
+We are four students from CITM in Terrassa (Barcelona) and in our Project 1 subject we are making a tribute to Samurai Shodown, a fighting game.
 
 ## Controls
 
@@ -19,20 +19,20 @@ We are four students from CITM in Terrassa and in our Project 1 subject we are m
 ### Player 1
 
 With Controller:
-* Jostick to move
+* Joystick to move
 * A to kick
 * X to punch
-* Jostick Down + X to counch punch
+* Joystick Down + X to counch punch
 * S + A to crounch kick
-* Jostick Up + X to jump punch
-* Jostick Up + A to jump kick
-* Jostick Up + B to jump heavy punch
-* Jostick Up + Y to jump heavy kick
+* Joystick Up + X to jump punch
+* Joystick Up + A to jump kick
+* Joystick Up + B to jump heavy punch
+* Joystick Up + Y to jump heavy kick
 * Y to  heavy punch
 * B to heavy kick
-* X + Jostick Right + (Jostick Right + Jostick Down) + Jostick Down to special attack
-* Double click Jostick Right to dash
-* Double click Jostick Left to dash backward
+* X + Joystick Right + (Joystick Right + Joystick Down) + Joystick Down to special attack
+* Double click Joystick Right to dash
+* Double click Joystick Left to dash backward
 
 With keyboard:
 * A to go left
@@ -57,20 +57,20 @@ With keyboard:
 ### Player 2
 
 With Controller:
-* Jostick to move
+* Joystick to move
 * A to kick
 * X to punch
-* Jostick Down + X to counch punch
+* Joystick Down + X to counch punch
 * S + A to crounch kick
-* Jostick Up + X to jump punch
-* Jostick Up + A to jump kick
-* Jostick Up + B to jump heavy punch
-* Jostick Up + Y to jump heavy kick
+* Joystick Up + X to jump punch
+* Joystick Up + A to jump kick
+* Joystick Up + B to jump heavy punch
+* Joystick Up + Y to jump heavy kick
 * Y to  heavy punch
 * B to heavy kick
-* X + Jostick Right + (Jostick Right + Jostick Down) + Jostick Down to special attack
-* Double click Jostick Right to dash
-* Double click Jostick Left to dash backward
+* X + Joystick Right + (Joystick Right + Joystick Down) + Joystick Down to special attack
+* Double click Joystick Right to dash
+* Double click Joystick Left to dash backward
 
 With Keyboard:
 * Left Arrow to go left
