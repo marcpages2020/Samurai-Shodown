@@ -2,7 +2,7 @@
 
 
 
-We are four students from CITM in Terrassa and in our Project 1 subject we are making a tribute to Samurai Shodown, a fighting game.
+We are four students from CITM in Terrassa (Barcelona) and in our Project 1 subject we are making a tribute to Samurai Shodown, a fighting game.
 
 ## About the game
 
@@ -31,7 +31,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ## Controls
 
-* Space to pass/skip screens(intros and ending).
+* Space to pass/skip screens (intros and ending).
 * F1 to show colliders
 * F2 change between the two stages
 * F3 Go to win screen
@@ -39,7 +39,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 * F5 god mode player 2
 * F6 pause game
 * F7 finish round as a draw
-* F8 finish round seting the time to 0
+* F8 finish round seting time to 0
 
 ### Player 1
 
@@ -124,3 +124,9 @@ With Keyboard:
 ### Download our game
 
 [Samurai Shodown 1.0](https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0)
+
+### Our repository
+[Our repository](https://github.com/marcpages2020/Samurai-Shodown)
+
+### Take a look at our Wiki
+[Our wiki](https://github.com/marcpages2020/Samurai-Shodown/wiki)
