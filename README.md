@@ -6,7 +6,7 @@ We are four students from CITM in Terrassa (Barcelona) and in our Project 1 subj
 
 ## Controls
 
-* Space to pass/skip screens(intros and ending).
+* Space to pass/skip screens (intros and ending).
 * F1 to show colliders
 * F2 change between the two stages
 * F3 Go to win screen
@@ -14,7 +14,7 @@ We are four students from CITM in Terrassa (Barcelona) and in our Project 1 subj
 * F5 god mode player 2
 * F6 pause game
 * F7 finish round as a draw
-* F8 finish round seting the time to 0
+* F8 finish round seting time to 0
 
 ### Player 1
 
@@ -131,11 +131,12 @@ Additions:
 * 0.4.5
 - Improved Welcome Screen
 - Improved Congrats Screen
-Adittions:
+Addittions:
  - Sound effects
  - UI 
  - Camera movement
  - Crouch slash and crouch kick
+ 
 * 0.5
 - Improved UI
 - Player 2 gameplay improved
@@ -145,3 +146,10 @@ Adittions:
 - New character: Wan-Fu
 - New Stage: China Seian Wan-Fu
 - Gamepad control now available 
+
+* 0.7
+-Special attack with button combination
+-Shadows
+
+* 1
+-New movement: Dash
