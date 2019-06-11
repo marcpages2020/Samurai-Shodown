@@ -101,7 +101,7 @@ Silvino Medina: https://github.com/silvino00
 
 Oriol Capdevila: https://github.com/OriolCS2
 
-Changelist:
+## Changelist:
 * 0.1:
  -Bases of the game
 - Empty background scroll
