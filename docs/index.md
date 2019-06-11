@@ -38,13 +38,13 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E-6JAjPpcuk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Download our game [Samurai Shodown 1.0](https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0)
+### Download our game  [Samurai Shodown 1.0](https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0)
 
 
-### [Take a look at our repository](https://github.com/marcpages2020/Samurai-Shodown)
+### Take a look at our [repository](https://github.com/marcpages2020/Samurai-Shodown)
 
 
-### [And don't miss our wiki!](https://github.com/marcpages2020/Samurai-Shodown/wiki)
+### And don't miss our [wiki!](https://github.com/marcpages2020/Samurai-Shodown/wiki)
 
 
 ## Controls
