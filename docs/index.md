@@ -29,6 +29,21 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ![](https://github.com/marcpages2020/Samurai-Shodown/raw/master/Assets/Images/Wiki/Home/20190311_122730.jpg?raw=true)
 
+
+### Trailer
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E-6JAjPpcuk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Download our game
+
+[Samurai Shodown 1.0](https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0)
+
+### Our repository
+[Our repository](https://github.com/marcpages2020/Samurai-Shodown)
+
+### Take a look at our Wiki
+[Our wiki](https://github.com/marcpages2020/Samurai-Shodown/wiki)
+
 ## Controls
 
 * Space to pass/skip screens (intros and ending).
@@ -78,7 +93,6 @@ With keyboard:
 * Double click A to dash backward
 * C + D + (D + S) + S to special attack
 
-
 ### Player 2
 
 With Controller:
@@ -115,18 +129,3 @@ With Keyboard:
 * Double click Right Arrow to dash
 * Double click Left Arrow to dash backward
 * H + Right Arrow + (Right Arrow + Down Arrow) + Down Arrow to special attack
-
-
-### Trailer
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/E-6JAjPpcuk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### Download our game
-
-[Samurai Shodown 1.0](https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0)
-
-### Our repository
-[Our repository](https://github.com/marcpages2020/Samurai-Shodown)
-
-### Take a look at our Wiki
-[Our wiki](https://github.com/marcpages2020/Samurai-Shodown/wiki)
