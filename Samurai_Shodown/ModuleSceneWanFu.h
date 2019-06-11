@@ -29,7 +29,7 @@ public:
 
 public:
 	Mix_Music *music=nullptr;
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* background_tex = nullptr;
 	SDL_Texture* column = nullptr;
 	Animation background;
 	Collider* left_wall;

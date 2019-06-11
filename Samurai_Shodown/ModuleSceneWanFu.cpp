@@ -63,7 +63,7 @@ bool ModuleSceneWanFu::Start()
 {
 	LOG("Loading Wan-Fu Scene");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
+	background_tex = App->textures->Load("Assets/Sprites/Scenes/ChinaSeianWan-Fu.png");
 	//column = App->textures->Load("Assets/Sprites/Scenes/column.png");
 	music = App->audio->LoadMusic("Assets/Audio/Music/Wan-Fu.ogg");
 	App->audio->PlayMusic(music, NULL);
@@ -73,7 +73,7 @@ bool ModuleSceneWanFu::Start()
 	//App->haohmaru->Enable();
 	//App->wanfu->Enable();
 	left_wall = App->collision->AddCollider({ -90,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_LEFT);
-	right_wall = App->collision->AddCollider({ 420,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
+	right_wall = App->collision->AddCollider({ 440,0,50,SCREEN_HEIGHT }, COLLIDER_WALL_RIGHT);
 	App->render->SetCamera();
 	return ret;
 }
@@ -86,7 +86,7 @@ bool ModuleSceneWanFu::CleanUp()
 	App->player2->Disable();
 	App->judge->Disable();
 	App->ui->Disable();
-	App->textures->Unload(graphics);
+	App->textures->Unload(background_tex);
 	Mix_FadeOutMusic(1250);
 	App->audio->UnLoadMusic(music);
 	left_wall = nullptr;
@@ -102,7 +102,7 @@ update_status ModuleSceneWanFu::Update()
 	b = background.GetCurrentFrame();
 	App->render->MoveCamera();
 
-	App->render->Blit(graphics, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
+	App->render->Blit(background_tex, -60, -100, &b,SDL_FLIP_NONE, 0.75f);
 	App->render->Blit(column, 40, 100);
 
 	if (((App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN) || (App->ui->victory == true && !App->ui->die_scene)) || (App->ui->draw >= 3 && !App->ui->die_scene))
