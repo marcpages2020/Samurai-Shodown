@@ -47,7 +47,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 ### Player 1
 
-With Controller:
+With Xbox Controller:
 * Joystick to move
 * A to kick
 * X to punch
@@ -84,7 +84,7 @@ With keyboard:
 
 ### Player 2
 
-With Controller:
+With Xbox Controller:
 * Joystick to move
 * A to kick
 * X to punch
