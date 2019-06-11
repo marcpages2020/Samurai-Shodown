@@ -15,10 +15,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 ## Team:
 
 [Marc Pagès](https://github.com/marcpages2020) |[Pablo Galve](https://github.com/pablogalve)|[Silvino Medina](https://github.com/silvino00)|[Oriol Capdevila](https://github.com/OriolCS2)
-
---- | --- | --- | ---
-
-* Code | * QA/Code | * Art/Design | * Management
+| Code | QA/Code |  Art/Design |  Management
 
 ![](https://github.com/marcpages2020/Samurai-Shodown/raw/master/Assets/Images/Wiki/Home/20190311_122730.jpg?raw=true)
 
