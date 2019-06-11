@@ -120,28 +120,25 @@ With Keyboard:
 * H + Right Arrow + (Right Arrow + Down Arrow) + Down Arrow to special attack
 
 ## Changelist:
-* 0.1:
- -Bases of the game
+* 0.1
+- Bases of the game
 - Empty background scroll
 
 * 0.1.5
--Main character added
--Main character can be moved, punch and kick
+- Main character added
+- Main character can be moved, punch and kick
 
 * 0.2
-Additions:
 - Welcome Screen 
 - First level 
 - Second level 
 - Congrats scene 
 
 * 0.3
-Additions:
 - Tornado movement
 - Neo Geo Screen
 
 * 0.4
-Additions:
 - Colliders
 - God Mode
 - Second player
@@ -149,11 +146,10 @@ Additions:
 * 0.4.5
 - Improved Welcome Screen
 - Improved Congrats Screen
-Addittions:
- - Sound effects
- - UI 
- - Camera movement
- - Crouch slash and crouch kick
+- Sound effects
+- UI 
+- Camera movement
+- Crouch slash and crouch kick
  
 * 0.5
 - Improved UI
