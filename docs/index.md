@@ -5,7 +5,9 @@ We are four students from CITM in Terrassa (Barcelona) and in our Project 1 subj
 ![](https://github.com/marcpages2020/Samurai-Shodown/blob/master/Assets/Images/samsho000.png?raw=true)
 
 
+
 ## About the game
+
 
 
 Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game developed by SNK and released in 1993 for the Neo Geo, later adapted to other consoles such as the SNES, Sega Mega Drive, Sega CD, PlayStation2 and the XBOX among many others. The objective of the game is to beat your enemy before the time is over, in the case the time is over and both players are still alive, the player who has more health will be the winner of the round. The player who wins two rounds will be the winner of the game.
