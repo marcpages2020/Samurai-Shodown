@@ -621,8 +621,9 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_FORWARD2;
 		}
 		if (state2 == DASH_BACKWARD2) {
-			if (current_animation->Finished()) {
+			if (position.y > initial_position.y) {
 				state2 = IDLE2;
+				position.y = initial_position.y;
 				dash_backward2.Reset();
 			}
 		}
