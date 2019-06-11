@@ -214,14 +214,27 @@ void ModuleRender::MoveCamera()
 	Collider* left_wall = nullptr;
 	Collider* right_wall = nullptr;
 
-	if ((player_1.x < left->rect.x + left->rect.w)) {
+	if (App->scene_haohmaru->IsEnabled() == true)
+	{
+		left_wall = App->scene_haohmaru->left_wall;
+		right_wall = App->scene_haohmaru->right_wall;
+	}
+
+	else if (App->scene_wanfu->IsEnabled() == true)
+	{
+		left_wall = App->scene_wanfu->left_wall;
+		right_wall = App->scene_wanfu->right_wall;
+	}
+
+
+	if ((player_1.x < left->rect.x + left->rect.w)&&(left->rect.x > left_wall->rect.x)) {
 		if (player_2.x + 50 < right->rect.x) {
 			right->rect.x -= App->player->speed;
 			left->rect.x -= App->player->speed;
 			camera.x -= App->player->speed * SCREEN_SIZE;
 		}
 	}
-	else if ((player_2.x > right->rect.x - 48)) {
+	else if ((player_2.x > right->rect.x - 48) && (right->rect.x < right_wall->rect.x)) {
 		if (player_1.x > left->rect.x + left->rect.w) {
 			right->rect.x += App->player->speed;
 			left->rect.x += App->player->speed;
@@ -243,18 +256,6 @@ void ModuleRender::MoveCamera()
 		}
 	}
 
-	if (App->scene_haohmaru->IsEnabled()==true)
-	{
-		left_wall = App->scene_haohmaru->left_wall;
-		right_wall = App->scene_haohmaru->right_wall;
-	}
-
-	else if (App->scene_wanfu->IsEnabled()==true)
-	{
-		left_wall = App->scene_wanfu->left_wall;
-		right_wall = App->scene_wanfu->right_wall;
-	}
-	
 	if (camera.x + SCREEN_WIDTH > right_wall->rect.x + right_wall->rect.w )
 	{
 		camera.x--;
