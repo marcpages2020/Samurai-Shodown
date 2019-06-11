@@ -1913,7 +1913,7 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			else {
-				position.x += 4;
+				position.x += 3;
 				if (collider_player_2_up != nullptr)
 				{
 					collider_player_2_up->SetPos(position.x + 30, position.y - 85);
@@ -1928,8 +1928,6 @@ update_status ModulePlayer2::Update()
 			break;
 		case DASH_BACKWARD:
 			current_animation = &dash_backward2;
-
-			position.y -= speed * 1.25 * mult;
 			if (flip == SDL_FLIP_HORIZONTAL)
 			{
 				position.x += 1.75*speed;
@@ -1938,6 +1936,7 @@ update_status ModulePlayer2::Update()
 			{
 				position.x -= 1.75*speed;
 			}
+			position.y -= speed * 1.25 * mult;
 
 			if (position.y <= 180) {
 				mult = -1;

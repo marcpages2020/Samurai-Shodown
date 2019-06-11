@@ -1950,7 +1950,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else {
-				position.x += 4;
+				position.x += 3;
 				if (collider_player_up != nullptr)
 				{
 					collider_player_up->SetPos(position.x + 30, position.y - 85);
