@@ -30,13 +30,10 @@ enum States2 {
 	IDLE2,
 	KICK2,
 	PUNCH2,
-	TWISTER2,
 	HIT2,
 	EN_GARDE2,
 	DIE2,
 	WIN2,
-	GRAB2,
-	GRABBED2,
 	DASH_FORWARD2,
 	DASH_BACKWARD2,
 	SPECIAL_ATTACK_2
@@ -93,11 +90,7 @@ public:
 	Animation crouch_up2;
 	Animation crouch_punch2;
 	Animation crouch_kick2;
-	Animation twister2;
-	Animation twisterAlone2;
 	Animation specialattack2;
-	Animation grab2;
-	Animation grabbed2;
 	Animation dash_forward2;
 	Animation dash_backward2;
 	Animation* current_animation = nullptr;
@@ -148,12 +141,10 @@ public:
 
 	Mix_Chunk* attack_fx;
 	Mix_Chunk* kick_fx;
-	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	Mix_Chunk* special_attack_fx;
 
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
-	SDL_RendererFlip gflip = SDL_FLIP_HORIZONTAL;
 
 	SDL_Texture* player2_textures=nullptr;
 	SDL_Texture* spritesheet1_2 = nullptr;

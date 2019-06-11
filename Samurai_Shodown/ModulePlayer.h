@@ -31,11 +31,8 @@ enum States
 	IDLE,
 	KICK,
 	PUNCH,
-	TWISTER,
 	HIT,
 	EN_GARDE,
-	GRAB,
-	GRABBED,
 	WIN,
 	DIE,
 	DASH_FORWARD,
@@ -97,17 +94,13 @@ public:
 	Animation crouch_down;
 	Animation crouch_punch;
 	Animation crouch_kick;
-	Animation twister;
-	Animation twisterAlone;
 	Animation fire_sword;
 	Animation en_garde;
 	Animation specialattack;
-	Animation grab;
 	Animation win;
 	Animation die;
 	Animation dash_forward;
 	Animation dash_backward;
-	Animation grabbed;
 	Animation* current_animation = nullptr;
 	
 	iPoint position;
@@ -127,7 +120,6 @@ public:
 	
 	Mix_Chunk* attack_fx;
 	Mix_Chunk* kick_fx;
-	Mix_Chunk* twister_fx;
 	Mix_Chunk* hit_fx;
 	Mix_Chunk* special_attack_fx;	
 
@@ -160,7 +152,6 @@ public:
 	int gposition;
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;	
-	SDL_RendererFlip gflip = SDL_FLIP_NONE;
 };
 
 #endif // __ModulePlayer_H__

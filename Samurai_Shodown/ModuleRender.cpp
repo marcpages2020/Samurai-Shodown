@@ -211,6 +211,8 @@ void ModuleRender::MoveCamera()
 
 	iPoint player_1 = App->player->position;
 	iPoint player_2 = App->player2->position;
+	Collider* left_wall;
+	Collider* right_wall;
 
 	if ((player_1.x < left->rect.x + left->rect.w)) {
 		if (player_2.x + 50 < right->rect.x) {
