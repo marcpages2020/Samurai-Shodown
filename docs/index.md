@@ -1,6 +1,6 @@
 ﻿## Introduction
 
-![](https://github.com/marcpages2020/Samurai-Shodown/blob/master/Assets/Images/samsho000.png)
+![](https://github.com/marcpages2020/Samurai-Shodown/blob/master/Assets/Images/samsho000.png?raw=true)
 
 We are four students from CITM in Terrassa (Barcelona) and in our Project 1 subject we are making a tribute to Samurai Shodown, a fighting game.
 
