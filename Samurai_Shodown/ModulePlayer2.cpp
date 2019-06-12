@@ -2183,7 +2183,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 					}
 				}
 			}
-			App->render->StartCameraShake(400, 2);
+			App->render->StartCameraShake(400, 1);
 			App->render->StartSlowdown(800, 30);
 			break;
 		case COLLIDER_PLAYER_PARTICLES:
