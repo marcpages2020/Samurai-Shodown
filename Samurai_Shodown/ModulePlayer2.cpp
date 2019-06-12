@@ -621,8 +621,9 @@ update_status ModulePlayer2::PreUpdate()
 				state2 = JUMP_FORWARD2;
 		}
 		if (state2 == DASH_BACKWARD2) {
-			if (current_animation->Finished()) {
+			if (position.y > initial_position.y) {
 				state2 = IDLE2;
+				position.y = initial_position.y;
 				dash_backward2.Reset();
 			}
 		}
@@ -1913,7 +1914,7 @@ update_status ModulePlayer2::Update()
 				}
 			}
 			else {
-				position.x += 4;
+				position.x += 3;
 				if (collider_player_2_up != nullptr)
 				{
 					collider_player_2_up->SetPos(position.x + 30, position.y - 85);
@@ -1928,8 +1929,6 @@ update_status ModulePlayer2::Update()
 			break;
 		case DASH_BACKWARD:
 			current_animation = &dash_backward2;
-
-			position.y -= speed * 1.25 * mult;
 			if (flip == SDL_FLIP_HORIZONTAL)
 			{
 				position.x += 1.75*speed;
@@ -1938,6 +1937,7 @@ update_status ModulePlayer2::Update()
 			{
 				position.x -= 1.75*speed;
 			}
+			position.y -= speed * 1.25 * mult;
 
 			if (position.y <= 180) {
 				mult = -1;
@@ -2363,7 +2363,7 @@ void ModulePlayer2::checkDash(int type) {
 
 	if (flip != SDL_FLIP_HORIZONTAL) {
 		//check dash forward
-		if (type == 1) {
+		if (type == 2) {
 			while (i < 8) {
 				switch (done) {
 				case 0:
@@ -2400,102 +2400,107 @@ void ModulePlayer2::checkDash(int type) {
 				i++;
 			}
 		}
+		if (type == 1) {
+			//check dash backward
+			i = 0;
+			j = lastInput;
+			done = 0; //If done = 2. Dash = true 
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'a')//forward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					else if (inputs[j] != 'a')
+						done = 3;
+					break;
+				case 2:
+					if (inputs[j] == 'a')//forward
+						state2 = DASH_BACKWARD2;
+					else if (inputs[j] != ' ')
+						done = 3;
+					break;
+				default:
+					//Dash is false
+					break;
+				}
 
-		//check dash backward
-		i = 0;
-		j = lastInput;
-		done = 0; //If done = 2. Dash = true 
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'a')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				else if (inputs[j] != 'a')
-					done = 3;
-				break;
-			case 2:
-				if (inputs[j] == 'a')//forward
-					state2 = DASH_BACKWARD2;
-				else if (inputs[j] != ' ')
-					done = 3;
-				break;
-			default:
-				//Dash is false
-				break;
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
 			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
 		}
 	}
 	else {
-		//check dash forward
-		i = 0;
-		j = lastInput;
-		done = 0; //If done = 2. Dash = true 
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'a')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				break;
-			case 2:
-				if (inputs[j] == 'a')//forward
-					state2 = DASH_FORWARD2;
-				break;
-			default:
-				//Dash is false
-				break;
+		if (type == 1) {
+			//check dash forward
+			i = 0;
+			j = lastInput;
+			done = 0; //If done = 2. Dash = true 
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'a')//forward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					break;
+				case 2:
+					if (inputs[j] == 'a')//forward
+						state2 = DASH_FORWARD2;
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
 			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
 		}
-		//check dash backward
-		i = 0;
-		j = lastInput;
-		done = 0; //If done = 2. Dash = true 
-		while (i < 8) {
-			switch (done) {
-			case 0:
-				if (inputs[j] == 'd')//forward
-					done++;
-				break;
-			case 1:
-				if (inputs[j] == ' ')//empty
-					done++;
-				break;
-			case 2:
-				if (inputs[j] == 'd')//forward
-					state2 = DASH_BACKWARD2;
-				break;
-			default:
-				//Dash is false
-				break;
+		if (type == 2) {
+			//check dash backward
+			i = 0;
+			j = lastInput;
+			done = 0; //If done = 2. Dash = true 
+			while (i < 8) {
+				switch (done) {
+				case 0:
+					if (inputs[j] == 'd')//forward
+						done++;
+					break;
+				case 1:
+					if (inputs[j] == ' ')//empty
+						done++;
+					break;
+				case 2:
+					if (inputs[j] == 'd')//forward
+						state2 = DASH_BACKWARD2;
+					break;
+				default:
+					//Dash is false
+					break;
+				}
+
+				if (j < 99)
+					j++;
+				else
+					j = 0;
+
+				i++;
 			}
-
-			if (j < 99)
-				j++;
-			else
-				j = 0;
-
-			i++;
 		}
 	}
 }
