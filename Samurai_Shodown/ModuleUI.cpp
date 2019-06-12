@@ -325,24 +325,22 @@ bool ModuleUI::CleanUp() {
 update_status ModuleUI::Update() {
 	SDL_Rect curtain;
 	curtain = { 0,961,512,38 };
-	if (play_jinjoni == true)
-	{
-		App->audio->PlayFX(jinjoni_fx);
-		play_jinjoni = false;
-	}
 	if (App->scene_wanfu->IsEnabled() == true)
 	{
 		App->render->Blit(column, 63, 193, NULL, SDL_FLIP_NONE, 0.75f);
 		App->render->Blit(column, 295, 193, NULL, SDL_FLIP_HORIZONTAL, 0.75f);
 		App->render->Blit(finish_round, -64, -4, &curtain);
 	}
+	if ((SDL_GetTicks() > 2000) && (play_iza == true)) { 
+		App->audio->PlayFX(iza_fx); 
+		play_iza = false;
+	}
 	if (show_ui==true)
 	{
 		if (play_begin == true)
 		{
-			App->audio->PlayFX(begin_fx);
-			play_begin = false;
 			App->judge->state_j = BEGIN_J;
+			play_begin = false;
 		}
 		if (play_ippon==true)
 		{
@@ -496,12 +494,14 @@ update_status ModuleUI::Update() {
 		App->player->BlockControls(true);
 		App->player2->BlockControls(true);
 		App->render->Blit(finish_round, SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 2 - 65, &en_garde.GetCurrentFrame());
+		if (en_garde.SeeCurrentFrame() == 22) App->audio->PlayFX(jinjoni_fx);
 		if (en_garde.Finished())
 		{
 			en_garde.Reset();
 			en_garde_bool = false;
 			play_begin = true;
 			show_ui = true;
+			//App->audio->PlayFX(jinjoni_fx);
 		}
 	}
 	if (show_ui && !en_garde_bool && !begin_finish) {
@@ -509,6 +509,7 @@ update_status ModuleUI::Update() {
 			if (player1_wins + player2_wins + draw == 0) {
 				if (!duel_1.Finished()) {
 					App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 43, SCREEN_HEIGHT / 2 - 15, &duel_1.GetCurrentFrame());
+					if (duel_1.SeeCurrentFrame() == 1) App->audio->PlayFX(ipponme_fx);
 					App->player->BlockControls(true);
 					App->player2->BlockControls(true);
 				}
@@ -521,6 +522,7 @@ update_status ModuleUI::Update() {
 					App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 43, SCREEN_HEIGHT / 2 - 15, &duel_2.GetCurrentFrame());
 					App->player->BlockControls(true);
 					App->player2->BlockControls(true);
+					if (duel_2.SeeCurrentFrame() == 1) App->audio->PlayFX(ipponme_fx);
 				}
 				else {
 					duel = false;
@@ -529,6 +531,7 @@ update_status ModuleUI::Update() {
 			else if (player1_wins + player2_wins + draw == 2) {
 				if (!duel_3.Finished()) {
 					App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 43, SCREEN_HEIGHT / 2 - 15, &duel_3.GetCurrentFrame());
+					if (duel_3.SeeCurrentFrame() == 1) App->audio->PlayFX(ipponme_fx);
 					App->player->BlockControls(true);
 					App->player2->BlockControls(true);
 				}
@@ -544,6 +547,7 @@ update_status ModuleUI::Update() {
 				App->render->Blit(ui_png, SCREEN_WIDTH / 2 - 51, SCREEN_HEIGHT / 2 - 24, &begin.GetCurrentFrame());
 				App->player->BlockControls(true);
 				App->player2->BlockControls(true);
+				if (begin.SeeCurrentFrame() == 2) App->audio->PlayFX(begin_fx);
 			}
 			else {
 				App->player->BlockControls(false);
@@ -681,7 +685,6 @@ bool ModuleUI::HorizontalTransition() {
 	{
 		left_black_rect.w = SCREEN_WIDTH / 2;
 		right_black_rect.x = SCREEN_WIDTH / 2;
-		play_ipponme= true;
 		return false;
 	}
 	else

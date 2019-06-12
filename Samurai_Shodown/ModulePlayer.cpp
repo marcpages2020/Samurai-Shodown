@@ -545,6 +545,7 @@ update_status ModulePlayer::PreUpdate()
 		if (player_input.pressing_Q)
 		{
 			state = SPECIAL_ATTACK;
+			App->audio->PlayFX(special_attack_fx);
 		}
 		if (player_input.pressing_E)
 		{
@@ -591,7 +592,7 @@ update_status ModulePlayer::PreUpdate()
 				if (player_input.pressing_B) {
 					state = KICK;
 					hit_done++;
-					App->audio->PlayFX(attack_fx);
+					App->audio->PlayFX(kick_fx);
 				}
 				if (player_input.pressing_N) {
 					state = HEAVY_KICK;
@@ -2039,7 +2040,7 @@ update_status ModulePlayer::Update()
 	SDL_Rect shadow = { 1181,138,91,17 };
 	SDL_RendererFlip lflip;
 	lflip = flip;
-	if ((state == DASH_BACKWARD)||(state == DASH_FORWARD))
+	if ((state == DASH_BACKWARD)||(state == DASH_FORWARD)||(state == DIE))
 	{
 		player_textures = spritesheet2;
 	}
@@ -2317,8 +2318,10 @@ void ModulePlayer::introduceInputs() {
 	if (player_input.pressing_S) {
 		newInput('s');
 		isPressingAnything = true;
-		if (checkSpecialAttack())
+		if (checkSpecialAttack()) {
 			state = SPECIAL_ATTACK;
+			App->audio->PlayFX(special_attack_fx);
+		}
 	}
 	if (player_input.pressing_D) {
 		newInput('d');

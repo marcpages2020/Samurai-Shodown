@@ -124,6 +124,7 @@ public:
 	bool play_jinjoni = true;
 	bool play_victory = true;
 	bool play_ippon = false;
+	bool play_iza = true;
 	int animtime = 0;
 	Animation* current_duel_anim = nullptr;
 	Animation duel_1;

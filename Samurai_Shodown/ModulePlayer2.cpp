@@ -2001,7 +2001,7 @@ update_status ModulePlayer2::Update()
 	SDL_RendererFlip lflip;
 	lflip = flip;
 
-	if ((state2 == DASH_BACKWARD2)||(state2 == DASH_FORWARD2))
+	if ((state2 == DASH_BACKWARD2)||(state2 == DASH_FORWARD2)||(state2 == DIE2))
 	{
 		player2_textures = App->player2->spritesheet2_2;
 	}
@@ -2323,8 +2323,11 @@ void ModulePlayer2::introduceInputs() {
 	if (player_input2.pressing_down) {
 		newInput('s');
 		isPressingAnything = true;
-		if (checkSpecialAttack())
+		if (checkSpecialAttack()) {
 			state2 = SPECIAL_ATTACK_2;
+			App->audio->PlayFX(special_attack_fx);
+		}
+		
 	}
 	if (player_input2.pressing_up) {
 		newInput('w');
