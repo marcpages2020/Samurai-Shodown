@@ -1522,7 +1522,7 @@ update_status ModulePlayer2::Update()
 					App->particles->AddParticle(App->particles->fire_sword, position.x -60, position.y-90, COLLIDER_PLAYER_2_PARTICLES,0,SDL_FLIP_HORIZONTAL);
 					are_particles_created2 = true;
 				}
-				position.x += 1 * speed;
+				position.x += 1.5 * speed;
 			}
 			else {
 				if (collider_player_2_up != nullptr)
@@ -1539,7 +1539,7 @@ update_status ModulePlayer2::Update()
 					App->particles->AddParticle(App->particles->fire_sword, position.x + 50, position.y -90, COLLIDER_PLAYER_2_PARTICLES);
 					are_particles_created2 = true;
 				}
-				position.x -= 1 * speed;
+				position.x -= 1.5 * speed;
 			}
 	
 			position.y -= speed * 2 * mult;
@@ -2078,12 +2078,12 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2) {
 		{
 		case COLLIDER_WALL_LEFT:
 			if (!player_input2.pressing_right && state2 != DIE2 && state2 != WIN2)
-				position.x += speed;
+				position.x += 1.5*speed;
 
 			break;
 		case COLLIDER_WALL_RIGHT:
 			if (!player_input2.pressing_left && state2 != DIE2 && state2 != WIN2)
-				position.x -= speed;
+				position.x -= 1.5*speed;
 			break;
 		case COLLIDER_PLAYER:
 			if (((state2 != KICK2) && (state2 != PUNCH2) && (state2 != CROUCH_KICK2) && (state2 != CROUCH_PUNCH2)) && (state2 != DIE2) && (state2 != WIN2)&&(state2 != HIT2))
