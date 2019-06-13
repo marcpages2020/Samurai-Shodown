@@ -23,6 +23,7 @@ Samurai Shodown (also known as Samurai Spirits in Japan) is a fighting game deve
 
 <iframe width="560" height="315" src="https://youtu.be/dTUZ-r-2Ct4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+[trailer](https://youtu.be/dTUZ-r-2Ct4)
 
 ### Download our game  [Samurai Shodown 1.0](https://github.com/marcpages2020/Samurai-Shodown/releases/tag/1.0)
 
