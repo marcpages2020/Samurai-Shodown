@@ -165,4 +165,7 @@ With Keyboard:
 -Shadows
 
 * 1
--New movement: Dash
+- New movement: Dash
+
+* 1.1
+- Bugs Fixed
