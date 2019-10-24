@@ -2095,10 +2095,7 @@ update_status ModulePlayer::Update()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
-	if (App->scene_wanfu)
-	{
 
-	}
 	if ((state != DIE) && (!App->is_paused)) {
 		switch (c2->type)
 		{
